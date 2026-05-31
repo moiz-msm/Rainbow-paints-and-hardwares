@@ -1,0 +1,266 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 0. Global Safety Net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // --- PRIMITIVE HELPERS ---
+    function isSignedIn() { return request.auth != null; }
+    function incoming() { return request.resource.data; }
+    function existing() { return resource.data; }
+    function isValidId(id) { return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$'); }
+    function isVerified() { return isSignedIn() && request.auth.token.email_verified == true; }
+
+    // --- ROLE RESOLUTION ---
+    function isSetupAdmin() {
+      return isSignedIn() && 'email' in request.auth.token && request.auth.token.email != null && (
+        request.auth.token.email.matches('(?i)^moizmiyaji30@gmail\\.com$')
+      );
+    }
+    
+    function getUserRole() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+    }
+
+    function isOwner() {
+      return isSetupAdmin() || (
+        isSignedIn() && 
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+        getUserRole() == 'owner'
+      );
+    }
+
+    // Admins have either 'owner' or 'admin' roles, or setup admin
+    function isAdmin() {
+      return isSetupAdmin() || (
+        isSignedIn() && 
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+        getUserRole() in ['owner', 'admin']
+      );
+    }
+
+    // Staff includes anyone who isn't a customer
+    function isStaff() {
+      return isSetupAdmin() || (
+        isSignedIn() && 
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+        getUserRole() != 'customer'
+      );
+    }
+
+    // --- VALIDATION HELPERS ---
+    function isValidUser(data, userId) {
+      return data.keys().hasAll(['uid', 'email', 'role']) &&
+             data.keys().size() <= 7 &&
+             data.uid == userId &&
+             data.uid is string && data.uid.size() <= 128 &&
+             data.email is string && data.email.size() <= 256 &&
+             data.role is string && data.role.size() <= 64 &&
+             (!('name' in data) || (data.name is string && data.name.size() <= 256)) &&
+             (!('phone' in data) || (data.phone is string && data.phone.size() <= 32)) &&
+             (!('createdAt' in data) || (data.createdAt is int || data.createdAt is timestamp || data.createdAt is float)) &&
+             (!('isActive' in data) || (data.isActive is bool));
+    }
+
+    function isValidOrder(data) {
+      return data.keys().hasAll(['userId', 'products', 'status', 'total']) &&
+             data.keys().size() <= 12 &&
+             data.userId is string && data.userId.size() <= 128 &&
+             data.status is string && data.status.size() <= 50 &&
+             (data.total is int || data.total is float) && data.total >= 0 &&
+             data.products is list && data.products.size() > 0 && data.products.size() <= 100 &&
+             (!('phone' in data) || (data.phone is string && data.phone.size() <= 32)) &&
+             (!('paymentStatus' in data) || (data.paymentStatus is string && data.paymentStatus.size() <= 50)) &&
+             (!('subtotal' in data) || (data.subtotal is int || data.subtotal is float)) &&
+             (!('deliveryCharge' in data) || (data.deliveryCharge is int || data.deliveryCharge is float)) &&
+             (!('createdAt' in data) || (data.createdAt is int || data.createdAt is timestamp || data.createdAt is float));
+    }
+
+    function isValidReview(data) {
+      return data.keys().hasAll(['productId', 'rating', 'userId']) &&
+             data.keys().size() <= 6 &&
+             data.productId is string && data.productId.size() <= 128 &&
+             data.userId is string && data.userId.size() <= 128 &&
+             (data.rating is int || data.rating is float) && data.rating >= 1 && data.rating <= 5 &&
+             (!('comment' in data) || (data.comment is string && data.comment.size() <= 1000)) &&
+             (!('createdAt' in data) || (data.createdAt is int || data.createdAt is timestamp || data.createdAt is float));
+    }
+
+    // --- COLLECTIONS ---
+
+    // 1. Users Collection
+    match /users/{userId} {
+      // Users can read themselves. Staff, Admin, and Owner can read all users' profiles.
+      allow read: if isStaff() || (isSignedIn() && request.auth.uid == userId);
+      
+      // Creating a user profile
+      allow create: if isSignedIn() && request.auth.uid == userId && isValidId(userId) && isValidUser(incoming(), userId) && (
+        (incoming().role == 'customer') || // Standard signups create "customer" role
+        (incoming().role == 'owner' && isSetupAdmin()) || // Setup admin can assign the owner role
+        (
+          exists(/databases/$(database)/documents/system/rolesConfig) &&
+          incoming().email.lower() in get(/databases/$(database)/documents/system/rolesConfig).data._pendingEmails &&
+          incoming().role == get(/databases/$(database)/documents/system/rolesConfig).data._pendingEmails[incoming().email.lower()]
+        )
+      );
+      
+      // Updating a user profile with immutability guards on role and uid
+      allow update: if isValidId(userId) && isValidUser(incoming(), userId) && (
+        (isOwner()) || // Owners can do anything to users
+        (isAdmin() && existing().role != 'owner' && incoming().role != 'owner') || // Admins can edit staff/customers but cannot create/edit owners
+        (isStaff() && existing().role == 'customer' && incoming().role == 'customer') || // Basic staff can only edit customers (or you can restrict further)
+        (
+          isSignedIn() && 
+          request.auth.uid == userId && 
+          incoming().diff(existing()).affectedKeys().hasOnly(['name', 'phone', 'isActive', 'avatar']) &&
+          incoming().role == existing().role &&
+          incoming().uid == existing().uid &&
+          incoming().email == existing().email
+        )
+      );
+
+      // Only the Owner can delete users, and they cannot delete themselves
+      allow delete: if isOwner() && request.auth.uid != userId;
+
+      // Subcollections of Users - completely isolated to staff/above and self
+      match /cart/{cartId} {
+        allow read, write: if isStaff() || (isSignedIn() && request.auth.uid == userId);
+      }
+      match /wishlist/{wishlistId} {
+        allow read, write: if isStaff() || (isSignedIn() && request.auth.uid == userId);
+      }
+      match /addresses/{addressId} {
+        allow read, write: if isStaff() || (isSignedIn() && request.auth.uid == userId);
+      }
+      match /notifications/{notificationId} {
+        allow read: if isStaff() || (isSignedIn() && request.auth.uid == userId);
+        allow write: if isStaff(); // Staff, Admins and Owners can broadcast/dispatch notifications
+      }
+    }
+
+    // 1.5 System / Admin Config
+    match /system/{docId} {
+      allow read: if true;
+      allow create: if docId == 'config' && !exists(/databases/$(database)/documents/system/config) && isSignedIn();
+      allow update, delete: if isOwner();
+    }
+
+    // 2. Products Collection
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if isStaff();
+    }
+
+    // 2.5 Brands Collection
+    match /brands/{brandId} {
+      allow read: if true;
+      allow write: if isStaff();
+    }
+
+    // 3. Categories Collection
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow write: if isStaff();
+    }
+
+    // 4. Orders Collection
+    match /orders/{orderId} {
+      // Users can only view their own orders. Staff and above can view all orders.
+      allow read: if isStaff() || (isSignedIn() && existing().userId == request.auth.uid);
+      
+      // Creating an order (authenticated users can only create orders for themselves)
+      allow create: if isSignedIn() && isValidId(orderId) && isValidOrder(incoming()) && incoming().userId == request.auth.uid;
+      
+      // Updating orders is allowed for Staff and above (for status changes, processing, dispatch, etc.)
+      allow update: if isStaff();
+
+      // Deleting orders is restricted to the Owner
+      allow delete: if isOwner();
+    }
+
+    // 5. Reviews Collection
+    match /reviews/{reviewId} {
+      allow read: if true;
+      allow create: if isSignedIn() && isValidId(reviewId) && isValidReview(incoming()) && incoming().userId == request.auth.uid;
+      allow update: if isValidId(reviewId) && isValidReview(incoming()) && (
+        isStaff() || 
+        (isSignedIn() && existing().userId == request.auth.uid && incoming().userId == request.auth.uid)
+      );
+      allow delete: if isStaff() || (isSignedIn() && existing().userId == request.auth.uid);
+    }
+
+    // 6. Coupons Collection 
+    match /coupons/{couponId} {
+      allow read, write: if isStaff();
+    }
+
+    // 7. Activity Logs Collection (Readable only by Staff and above, writable on creation)
+    match /activity_logs/{logId} {
+      allow read: if isStaff();
+      allow create: if isSignedIn() && isValidId(logId) && (
+        incoming().keys().hasAll(['type', 'message', 'timestamp']) &&
+        incoming().keys().size() <= 6 &&
+        incoming().type is string && incoming().type.size() <= 50 &&
+        incoming().message is string && incoming().message.size() <= 2056 &&
+        (!('userId' in incoming()) || (incoming().userId is string && incoming().userId.size() <= 128)) &&
+        (!('metadata' in incoming()) || (incoming().metadata is map))
+      );
+      allow update, delete: if isOwner();
+    }
+
+    // 9. Visualizations Collection (AI Photo Studio)
+    match /visualizations/{visId} {
+      allow read: if isStaff() || (isSignedIn() && (
+        !exists(/databases/$(database)/documents/visualizations/$(visId)) ||
+        get(/databases/$(database)/documents/visualizations/$(visId)).data.userId == request.auth.uid
+      ));
+      allow create: if isSignedIn() && isValidId(visId) && incoming().userId == request.auth.uid;
+      allow update: if isSignedIn() && isValidId(visId) && existing().userId == request.auth.uid && incoming().userId == request.auth.uid;
+      allow delete: if isStaff() || (isSignedIn() && existing().userId == request.auth.uid);
+    }
+
+    // 10. Leads Collection (CRM request leads)
+    match /leads/{leadId} {
+      allow read: if isStaff();
+      allow create: if isValidId(leadId) && (
+        incoming().keys().hasAll(['type', 'name', 'phone', 'status']) &&
+        incoming().keys().size() <= 8 &&
+        incoming().type is string &&
+        incoming().name is string &&
+        incoming().phone is string &&
+        incoming().status in ['NEW', 'FOLLOW_UP', 'CONVERTED', 'CLOSED']
+      );
+      allow update: if isStaff();
+      allow delete: if isOwner();
+    }
+
+    // 11. Abandoned Carts Collection
+    match /abandoned_carts/{cartId} {
+      allow read: if isStaff() || (isSignedIn() && cartId == request.auth.uid);
+      allow write: if isStaff() || (
+        isValidId(cartId) && (
+          !isSignedIn() || cartId == request.auth.uid
+        )
+      );
+    }
+
+    // 12. Admin Notifications Collection
+    match /admin_notifications/{notifId} {
+      allow read: if isStaff();
+      allow create: if isValidId(notifId) && (
+        incoming().keys().hasAll(['title', 'message', 'type', 'read']) &&
+        incoming().read == false
+      );
+      allow update: if isStaff();
+      allow delete: if isOwner();
+    }
+
+    // 13. Collection Groups (Analytics)
+    match /{path=**}/wishlist/{wishlistId} {
+      allow read: if isStaff();
+    }
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile containing roles and basic info.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "role": { "type": "string", "enum": ["owner", "admin", "staff", "customer"] },
+        "createdAt": { "type": "number", "description": "Timestamp" },
+        "isActive": { "type": "boolean" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Paint product.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "brand": { "type": "string" },
+        "category": { "type": "string" },
+        "price": { "type": "number" },
+        "discountPrice": { "type": "number" },
+        "sizes": { "type": "array" },
+        "shadeCode": { "type": "string" },
+        "shadeName": { "type": "string" },
+        "stock": { "type": "number" },
+        "images": { "type": "array" },
+        "description": { "type": "string" },
+        "featured": { "type": "boolean" },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["name", "price", "stock"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "Product categories.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "order": { "type": "number" }
+      },
+      "required": ["name"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer order.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "products": { "type": "array" },
+        "status": { "type": "string" },
+        "paymentStatus": { "type": "string" },
+        "deliveryAddress": { "type": "object" },
+        "phone": { "type": "string" },
+        "subtotal": { "type": "number" },
+        "deliveryCharge": { "type": "number" },
+        "total": { "type": "number" },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["userId", "products", "status", "total"]
+    },
+    "CartItem": {
+      "title": "Cart Item",
+      "description": "User's cart item.",
+      "type": "object",
+      "properties": {
+        "productId": { "type": "string" },
+        "quantity": { "type": "number" }
+      },
+      "required": ["productId", "quantity"]
+    },
+    "WishlistItem": {
+      "title": "Wishlist Item",
+      "description": "User's wishlist item.",
+      "type": "object",
+      "properties": {
+        "productId": { "type": "string" }
+      },
+      "required": ["productId"]
+    },
+    "Address": {
+      "title": "Address",
+      "description": "User's saved address",
+      "type": "object",
+      "properties": {
+        "street": { "type": "string" },
+        "city": { "type": "string" },
+        "zip": { "type": "string" }
+      },
+      "required": ["street", "city"]
+    },
+    "Review": {
+      "title": "Review",
+      "description": "Product review",
+      "type": "object",
+      "properties": {
+        "productId": { "type": "string" },
+        "rating": { "type": "number" },
+        "comment": { "type": "string" },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["productId", "rating"]
+    },
+    "Coupon": {
+      "title": "Coupon",
+      "description": "Discount coupon",
+      "type": "object",
+      "properties": {
+        "code": { "type": "string" },
+        "discountPercent": { "type": "number" },
+        "isActive": { "type": "boolean" }
+      },
+      "required": ["code", "discountPercent"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "User notification",
+      "type": "object",
+      "properties": {
+        "message": { "type": "string" },
+        "read": { "type": "boolean" },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["message"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "Users collection"
+    },
+    "/products/{productId}": {
+      "schema": { "$ref": "#/entities/Product" },
+      "description": "Products collection"
+    },
+    "/categories/{categoryId}": {
+      "schema": { "$ref": "#/entities/Category" },
+      "description": "Categories"
+    },
+    "/orders/{orderId}": {
+      "schema": { "$ref": "#/entities/Order" },
+      "description": "Orders collection"
+    },
+    "/users/{userId}/cart/{cartId}": {
+      "schema": { "$ref": "#/entities/CartItem" },
+      "description": "User cart items"
+    },
+    "/users/{userId}/wishlist/{wishlistId}": {
+      "schema": { "$ref": "#/entities/WishlistItem" },
+      "description": "User wishlist items"
+    },
+    "/users/{userId}/addresses/{addressId}": {
+      "schema": { "$ref": "#/entities/Address" },
+      "description": "User addresses"
+    },
+    "/users/{userId}/notifications/{notificationId}": {
+      "schema": { "$ref": "#/entities/Notification" },
+      "description": "User notifications"
+    },
+    "/reviews/{reviewId}": {
+      "schema": { "$ref": "#/entities/Review" },
+      "description": "Product reviews"
+    },
+    "/coupons/{couponId}": {
+      "schema": { "$ref": "#/entities/Coupon" },
+      "description": "Coupons"
+    }
+  }
+}

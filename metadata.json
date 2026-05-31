@@ -1,0 +1,6 @@
+{
+  "name": "Rainbow Paints & Hardwares - Elite Studio",
+  "description": "The ultimate luxury paint experience. Featuring architectural visualizers, precision cost estimators, and the full range of Asian Paints and Berger Royale finishes.",
+  "requestFramePermissions": ["camera", "geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
