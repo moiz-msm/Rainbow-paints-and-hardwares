@@ -169,10 +169,15 @@ service cloud.firestore {
     // 4. Orders Collection
     match /orders/{orderId} {
       // Users can only view their own orders. Staff and above can view all orders.
-      allow read: if isStaff() || (isSignedIn() && existing().userId == request.auth.uid);
+      allow get: if true; // Allows order tracking if you have the ID
+      allow list: if isStaff() || (isSignedIn() && existing().userId == request.auth.uid);
       
-      // Creating an order (authenticated users can only create orders for themselves)
-      allow create: if isSignedIn() && isValidId(orderId) && isValidOrder(incoming()) && incoming().userId == request.auth.uid;
+      // Creating an order (authenticated users can only create orders for themselves, guests can create with 'GUEST')
+      allow create: if isValidId(orderId) && isValidOrder(incoming()) && (
+        (isSignedIn() && incoming().userId == request.auth.uid) ||
+        (!isSignedIn() && incoming().userId == 'GUEST') ||
+        (isSignedIn() && incoming().userId == 'GUEST')
+      );
       
       // Updating orders is allowed for Staff and above (for status changes, processing, dispatch, etc.)
       allow update: if isStaff();
@@ -245,6 +250,12 @@ service cloud.firestore {
           !isSignedIn() || cartId == request.auth.uid
         )
       );
+    }
+
+    // 11.5 Analytics Events
+    match /analytics_events/{eventId} {
+      allow read: if isStaff();
+      allow create: if true;
     }
 
     // 12. Admin Notifications Collection

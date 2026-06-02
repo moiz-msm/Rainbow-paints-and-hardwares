@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../lib/firebase";
-import { collection, onSnapshot, collectionGroup } from "firebase/firestore";
+import { collection, onSnapshot, collectionGroup, query, where } from "firebase/firestore";
 import {
   DollarSign,
   ShoppingBag,
@@ -37,11 +37,17 @@ export default function AnalyticsAdmin() {
     productCount: 0,
   });
 
+  const [abandonedCartsList, setAbandonedCartsList] = useState<any[]>([]);
+  const [visualizerViewsList, setVisualizerViewsList] = useState<any[]>([]);
+  const [wishlistItemsList, setWishlistItemsList] = useState<any[]>([]);
+  const [usersMap, setUsersMap] = useState<Record<string, any>>({});
+
   const [gaStats, setGaStats] = useState({
     totalUsers: 0,
     signedInUsers: 0,
     savedProducts: 0,
     abandonedCarts: 0,
+    visualizerViews: 0,
     pageViews: 0,
     sessions: 0,
     bounceRate: "42.3%",
@@ -85,10 +91,15 @@ export default function AnalyticsAdmin() {
         revenue: recentDataMap[date],
       }));
       setRevenueData(chartData);
-    });
+    }, (err) => console.log('AnalyticsAdmin orders err:', err));
 
     const unsubUsers = onSnapshot(collection(db, "users"), (snap) => {
       setStats((s) => ({ ...s, activeUsers: snap.size }));
+      const uMap: Record<string, any> = {};
+      snap.forEach((d) => {
+        uMap[d.id] = d.data();
+      });
+      setUsersMap(uMap);
       const mockTotalUsers = Math.floor(snap.size * 1.8) + 152;
       setGaStats(prev => ({
         ...prev,
@@ -108,21 +119,34 @@ export default function AnalyticsAdmin() {
           referral: Math.floor(mockTotalUsers * 0.10),
         }
       }));
-    });
+    }, (err) => console.log('AnalyticsAdmin users err:', err));
 
     const unsubProducts = onSnapshot(collection(db, "products"), (snap) => {
       setStats((s) => ({ ...s, productCount: snap.size }));
-    });
+    }, (err) => console.log('AnalyticsAdmin products err:', err));
 
     const unsubCarts = onSnapshot(collection(db, "abandoned_carts"), (snap) => {
       setGaStats(prev => ({ ...prev, abandonedCarts: snap.size }));
-    });
+      const list: any[] = [];
+      snap.forEach(doc => list.push({ id: doc.id, ...doc.data() }));
+      setAbandonedCartsList(list);
+    }, (err) => console.log('AnalyticsAdmin carts err:', err));
+
+    const unsubVisualizer = onSnapshot(query(collection(db, "analytics_events"), where("type", "==", "view_visualizer")), (snap) => {
+      setGaStats(prev => ({ ...prev, visualizerViews: snap.size }));
+      const list: any[] = [];
+      snap.forEach(doc => list.push({ id: doc.id, ...doc.data() }));
+      setVisualizerViewsList(list);
+    }, (err) => console.log('AnalyticsAdmin visualizer err:', err));
 
     let unsubWishlist = () => {};
     try {
       unsubWishlist = onSnapshot(collectionGroup(db, "wishlist"), (snap) => {
         setGaStats(prev => ({ ...prev, savedProducts: snap.size }));
-      });
+        const list: any[] = [];
+        snap.forEach(doc => list.push({ id: doc.id, userId: doc.ref.parent.parent?.id, ...doc.data() }));
+        setWishlistItemsList(list);
+      }, (err) => console.log('AnalyticsAdmin wishlist err:', err));
     } catch (err) {
       console.warn("Could not query wishlist collectionGroup, needs index", err);
     }
@@ -132,6 +156,7 @@ export default function AnalyticsAdmin() {
       unsubUsers();
       unsubProducts();
       unsubCarts();
+      unsubVisualizer();
       unsubWishlist();
     };
   }, []);
@@ -151,10 +176,15 @@ export default function AnalyticsAdmin() {
           </div>
           <div className="flex items-center gap-2">
             <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span className="text-xs font-semibold text-zinc-600">Live Data</span>
-            <div className="ml-2 text-[10px] font-medium text-zinc-400 bg-zinc-50 px-2 py-1 rounded border border-zinc-200">
-              Last 30 Days
-            </div>
+            <span className="text-xs font-semibold text-zinc-600">Simulated Dashboard</span>
+          </div>
+        </div>
+
+        <div className="bg-blue-50 border border-blue-100 text-blue-800 px-4 py-3 rounded-xl text-sm flex items-start gap-3">
+          <Globe className="w-5 h-5 text-blue-500 shrink-0 mt-0.5" />
+          <div>
+            <p className="font-semibold">Firebase Analytics is Active</p>
+            <p className="text-blue-600/80 mt-1">We have turned analytics on in Firebase. Events such as <strong>add_to_cart</strong>, <strong>remove_from_cart</strong>, <strong>begin_checkout</strong> (for abandoned carts analysis), <strong>add_to_wishlist</strong>, and <strong>view_visualizer</strong> are actively being tracked. The data below (like Wishlists, Abandoned Carts, and Visualizer Views) is now fetching <strong>real-time from Firestore</strong> natively. Some ambient metrics (sessions, pageviews) remain estimated.</p>
           </div>
         </div>
 
@@ -235,13 +265,22 @@ export default function AnalyticsAdmin() {
                   <p className="font-bold text-zinc-900">{gaStats.abandonedCarts}</p>
                 </div>
               </div>
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center pb-3 border-b border-zinc-50">
                 <div>
                   <p className="text-xs font-semibold text-zinc-600 text-rose-600 flex items-center gap-1"><Heart className="w-3 h-3"/> Saved to Wishlist</p>
-                  <p className="text-[10px] text-zinc-400">Future intent to buy</p>
+                  <p className="text-[10px] text-zinc-400">Products saved by users</p>
                 </div>
                 <div className="text-right">
                   <p className="font-bold text-zinc-900">{gaStats.savedProducts}</p>
+                </div>
+              </div>
+              <div className="flex justify-between items-center">
+                <div>
+                  <p className="text-xs font-semibold text-zinc-600 text-purple-600 flex items-center gap-1"><Monitor className="w-3 h-3"/> Visualizer Views</p>
+                  <p className="text-[10px] text-zinc-400">Users trying room paints</p>
+                </div>
+                <div className="text-right">
+                  <p className="font-bold text-zinc-900">{gaStats.visualizerViews}</p>
                 </div>
               </div>
             </div>
@@ -369,6 +408,107 @@ export default function AnalyticsAdmin() {
               />
             </AreaChart>
           </ResponsiveContainer>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Abandoned Carts */}
+        <div className="bg-white rounded-2xl border border-zinc-200 shadow-sm p-6 overflow-auto max-h-96">
+          <h3 className="text-lg font-bold text-zinc-900 mb-4 flex items-center gap-2 font-sans tracking-tight">
+            <ShoppingCart className="w-5 h-5 text-orange-500" /> Recent Abandoned Carts
+          </h3>
+          {abandonedCartsList.length === 0 ? (
+            <p className="text-sm text-zinc-500 italic">No abandoned carts found.</p>
+          ) : (
+            <div className="space-y-4">
+              {abandonedCartsList.map((cart, idx) => (
+                <div key={idx} className="border-b border-zinc-50 pb-3 last:border-0 last:pb-0">
+                  <p className="text-sm font-medium text-zinc-800">Session: {cart.id.slice(0,8)}...</p>
+                  {cart.userId && usersMap[cart.userId] ? (
+                    <div className="text-xs text-blue-600 font-medium my-1">
+                      {usersMap[cart.userId].name || 'Unnamed'} • {usersMap[cart.userId].email || 'No email'}{usersMap[cart.userId].phone ? ` • ${usersMap[cart.userId].phone}` : ''}
+                    </div>
+                  ) : (
+                    <div className="text-xs text-zinc-400 my-1">Guest User</div>
+                  )}
+                  <p className="text-xs text-zinc-500">Items: {cart.itemCount || cart.items?.length || 0}</p>
+                  {cart.updatedAt && (
+                    <p className="text-[10px] text-zinc-400 mt-1">
+                      {new Date(cart.updatedAt.toMillis ? cart.updatedAt.toMillis() : Date.now()).toLocaleString()}
+                    </p>
+                  )}
+                  {cart.items && cart.items.length > 0 && (
+                     <div className="mt-2 pl-3 border-l-2 border-zinc-100 space-y-1">
+                        {cart.items.slice(0,2).map((item: any, i: number) => (
+                           <div key={i} className="text-xs text-zinc-600 line-clamp-1 flex justify-between">
+                              <span>{item.name} (x{item.quantity})</span>
+                              <span className="text-zinc-400">₹{(item.unitPrice * item.size * item.quantity).toLocaleString()}</span>
+                           </div>
+                        ))}
+                        {cart.items.length > 2 && <div className="text-[10px] text-zinc-400 pt-1">+{cart.items.length - 2} more items</div>}
+                     </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Visualizer Views */}
+        <div className="bg-white rounded-2xl border border-zinc-200 shadow-sm p-6 overflow-auto max-h-96">
+          <h3 className="text-lg font-bold text-zinc-900 mb-4 flex items-center gap-2 font-sans tracking-tight">
+            <Monitor className="w-5 h-5 text-purple-500" /> Recent Visualizer Usage
+          </h3>
+          {visualizerViewsList.length === 0 ? (
+            <p className="text-sm text-zinc-500 italic">No visualizer views found.</p>
+          ) : (
+            <div className="space-y-4">
+              {visualizerViewsList.map((view, idx) => (
+                <div key={idx} className="border-b border-zinc-50 pb-3 last:border-0 last:pb-0">
+                  <p className="text-sm font-medium text-zinc-800">Viewed Visualizer</p>
+                  {view.userId && usersMap[view.userId] ? (
+                    <div className="text-xs text-purple-600 font-medium my-1">
+                      {usersMap[view.userId].name || 'Unnamed'} • {usersMap[view.userId].email || 'No email'}{usersMap[view.userId].phone ? ` • ${usersMap[view.userId].phone}` : ''}
+                    </div>
+                  ) : (
+                    <div className="text-xs text-zinc-400 my-1">Guest User</div>
+                  )}
+                  {view.timestamp && (
+                    <p className="text-[10px] text-zinc-400 mt-1">
+                      {new Date(view.timestamp.toMillis ? view.timestamp.toMillis() : Date.now()).toLocaleString()}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Wishlists */}
+        <div className="bg-white rounded-2xl border border-zinc-200 shadow-sm p-6 overflow-auto max-h-96">
+          <h3 className="text-lg font-bold text-zinc-900 mb-4 flex items-center gap-2 font-sans tracking-tight">
+            <Heart className="w-5 h-5 text-rose-500" /> Recent Wishlist Saves
+          </h3>
+          {wishlistItemsList.length === 0 ? (
+            <p className="text-sm text-zinc-500 italic">No wishlists found.</p>
+          ) : (
+            <div className="space-y-4">
+              {wishlistItemsList.map((item, idx) => (
+                <div key={idx} className="border-b border-zinc-50 pb-3 last:border-0 last:pb-0">
+                  <p className="text-sm font-medium text-zinc-800 line-clamp-1">{item.name}</p>
+                  <p className="text-xs text-zinc-500 capitalize">{item.type} {item.shadeCode ? `(${item.shadeCode})` : ''}</p>
+                  {item.userId && usersMap[item.userId] ? (
+                    <div className="text-[10px] text-rose-600 font-medium mt-1">
+                      Saved by: {usersMap[item.userId].name} ({usersMap[item.userId].email})
+                      {usersMap[item.userId].phone ? ` - ${usersMap[item.userId].phone}` : ''}
+                    </div>
+                  ) : (
+                    item.userId && <p className="text-[10px] text-zinc-400 mt-1">User ID: {item.userId.slice(0, 8)}...</p>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

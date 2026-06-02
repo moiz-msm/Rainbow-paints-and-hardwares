@@ -21,12 +21,12 @@ export default function Header() {
   const totalItems = items.reduce((acc, item) => acc + item.quantity, 0);
   const totalWishlistItems = wishlistItems.length;
 
-  const isProductsPage = location.pathname === '/products';
+  const isProductsPage = location.pathname === '/buy-paint-online';
   const showSearch = location.pathname.startsWith('/buy-paint-online') || 
                      location.pathname.startsWith('/c/') ||
                      location.pathname.startsWith('/brands/') ||
                      location.pathname.startsWith('/p/') ||
-                     location.pathname === '/products';
+                     location.pathname === '/buy-paint-online';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,17 +55,15 @@ export default function Header() {
     }
   };
 
-  // Update hash links to use full paths if not on home page
   const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'Buy Products', href: '/products' },
-    { name: 'Color Visualizer', href: '/visualizer' },
-    { name: 'Paint Cost Calculator', href: '/calculator' },
-    { name: 'Request Visit', href: '/#free-sample' },
+    { name: 'Shop', href: '/buy-paint-online' },
+    { name: 'Visualizer', href: '/visualizer' },
+    { name: 'Calculator', href: '/calculator' },
+    { name: 'Track Order', href: '/track-order' },
     { name: 'Blog', href: '/#blog' },
     { name: 'FAQs', href: '/#faqs' },
     { name: 'About Us', href: '/about' },
-    { name: 'Contact / Visit Us', href: '/#contact' },
+    { name: 'Contact', href: '/#contact' },
   ];
 
   return (
@@ -77,11 +75,15 @@ export default function Header() {
           <div className="flex justify-between items-center w-full">
             
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2 sm:gap-3 group relative shrink-0">
+            <Link to="/" title="Home" aria-label="Home" className="flex items-center gap-2 sm:gap-3 group relative shrink-0">
               <div className="flex items-center justify-center shrink-0 group-hover:opacity-80 transition-opacity duration-300">
                 <img 
                   src="/mascot.png" 
                   alt="Rainbow Paint and Hardwares" 
+                  fetchPriority="high"
+                  loading="eager"
+                  width="100"
+                  height="80"
                   className="w-auto h-12 sm:h-16 lg:h-20 object-contain rounded-lg shrink-0" 
                 />
               </div>
@@ -93,7 +95,7 @@ export default function Header() {
 
             {/* Desktop Nav - Inline for non-products page */}
             {!isProductsPage && (
-              <nav className="hidden lg:flex items-center gap-1.5 xl:gap-5">
+              <nav aria-label="Main Navigation" className="hidden lg:flex items-center gap-1.5 xl:gap-5">
                 {navLinks.map((link) => (
                   link.href.startsWith('/') ? (
                     <Link key={link.name} to={link.href} className="text-[8px] xl:text-[9.5px] font-display font-semibold text-gold/80 hover:text-gold transition-colors tracking-[0.05em] xl:tracking-[0.15em] uppercase whitespace-nowrap">
@@ -116,7 +118,7 @@ export default function Header() {
                 </div>
               )}
               <div className="relative profile-menu-container">
-                <button title={user ? user.displayName || 'Profile' : 'Sign In'} onClick={handleProfileClick} className={`p-2 transition-colors shadow-sm border border-zinc-200 rounded-xl flex items-center justify-center bg-white text-gold hover:bg-black/5`}>
+                <button aria-label={user ? user.displayName || 'Profile' : 'Sign In'} title={user ? user.displayName || 'Profile' : 'Sign In'} onClick={handleProfileClick} className={`p-2 transition-colors shadow-sm border border-zinc-200 rounded-xl flex items-center justify-center bg-white text-gold hover:bg-black/5`}>
                   {user ? <span className="text-[10px] uppercase font-bold px-1">{user.displayName?.charAt(0) || 'U'}</span> : <User className="w-5 h-5 text-gold" />}
                 </button>
                 <AnimatePresence>
@@ -166,6 +168,7 @@ export default function Header() {
                 }} 
                 className="p-2 text-gold/80 hover:text-gold transition-colors relative bg-white shadow-sm border border-zinc-200 hover:bg-black/5 rounded-xl mr-1 select-none cursor-pointer"
                 title="Wishlist & Palette Studio"
+                aria-label="Wishlist & Palette Studio"
               >
                 <Heart className="w-5 h-5 text-gold fill-gold/20" />
                 {totalWishlistItems > 0 && (
@@ -181,6 +184,8 @@ export default function Header() {
                 initial={{ scale: 1 }}
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 0.3 }}
+                title="View Cart"
+                aria-label="View Cart"
               >
                 <ShoppingCart className="w-5 h-5 text-gold" />
                 {totalItems > 0 && (
@@ -193,6 +198,8 @@ export default function Header() {
                 <button 
                   className="p-1.5 sm:p-2 z-[90] relative shrink-0 ml-1"
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  title={isMobileMenuOpen ? "Close Menu" : "Open Menu"}
+                  aria-label={isMobileMenuOpen ? "Close Menu" : "Open Menu"}
                 >
                   {isMobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6 text-gold drop-shadow-md" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6 text-gold" />}
                 </button>
@@ -207,7 +214,7 @@ export default function Header() {
               </div>
             )}
             <div className="relative shrink-0 profile-menu-container">
-              <button title={user ? user.displayName || 'Profile' : 'Sign In'} onClick={handleProfileClick} className={`p-1.5 sm:p-2 transition-colors shadow-sm border border-zinc-200 rounded-xl flex items-center justify-center bg-white text-gold hover:bg-black/5`}>
+              <button aria-label={user ? user.displayName || 'Profile' : 'Sign In'} title={user ? user.displayName || 'Profile' : 'Sign In'} onClick={handleProfileClick} className={`p-1.5 sm:p-2 transition-colors shadow-sm border border-zinc-200 rounded-xl flex items-center justify-center bg-white text-gold hover:bg-black/5`}>
                 {user ? <span className="text-[10px] uppercase font-bold px-1">{user.displayName?.charAt(0) || 'U'}</span> : <User className="w-4 h-4 text-gold" />}
               </button>
               <AnimatePresence>
@@ -254,6 +261,7 @@ export default function Header() {
               }} 
               className="p-1.5 sm:p-2 text-gold/80 hover:text-gold transition-colors bg-white shadow-sm border border-zinc-200 hover:bg-black/5 rounded-xl shrink-0 mr-1 relative select-none"
               title="Wishlist & Palette Studio"
+              aria-label="Wishlist & Palette Studio"
             >
               <Heart className="w-4 h-4 text-gold fill-gold/20" />
               {totalWishlistItems > 0 && (
@@ -269,6 +277,8 @@ export default function Header() {
               initial={{ scale: 1 }}
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 0.3 }}
+              title="View Cart"
+              aria-label="View Cart"
             >
               <ShoppingCart className="w-4 h-4 text-gold" />
               {totalItems > 0 && (
@@ -280,6 +290,8 @@ export default function Header() {
             <button 
               className="p-1.5 sm:p-2 z-[90] relative shrink-0"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              title={isMobileMenuOpen ? "Close Menu" : "Open Menu"}
+              aria-label={isMobileMenuOpen ? "Close Menu" : "Open Menu"}
             >
               {isMobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6 text-gold drop-shadow-md" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6 text-gold" />}
             </button>
@@ -315,7 +327,7 @@ export default function Header() {
                 if (e.target === e.currentTarget) setIsMobileMenuOpen(false);
               }}
             >
-              <nav className="flex flex-col gap-1 text-right items-end w-full">
+              <nav aria-label="Mobile Navigation" className="flex flex-col gap-1 text-right items-end w-full">
                 {navLinks.map((link, idx) => (
                   <motion.div
                     key={link.name}

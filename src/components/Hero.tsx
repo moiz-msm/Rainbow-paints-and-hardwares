@@ -5,31 +5,45 @@ import { Link } from 'react-router-dom';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[100dvh] lg:min-h-[85vh] flex flex-col justify-center lg:justify-start pt-[78px] sm:pt-[140px] lg:pt-[160px] pb-[12dvh] sm:pb-4 overflow-hidden bg-royale-bg">
+    <section className="relative min-h-[100dvh] lg:h-screen lg:max-h-[850px] lg:min-h-0 flex flex-col justify-center lg:justify-center pt-[78px] sm:pt-[140px] lg:pt-[80px] pb-[12dvh] sm:pb-4 lg:pb-6 overflow-hidden bg-royale-bg">
       {/* Background Image with soft fade mask */}
       <div className="absolute inset-x-0 bottom-0 top-[64px] sm:top-[64px] lg:top-[72px] z-0 pointer-events-none flex justify-end">
+        
+        {/* Layer 1: Left-to-right gradient to blend the image horizontally with the background */}
         <div className="absolute inset-0 bg-gradient-to-r from-royale-bg via-royale-bg/95 to-transparent z-10 w-[85%] sm:w-[75%] lg:w-[65%]" />
+        
+        {/* Layer 2: Bottom-to-top gradient for a smooth ambient fade along the Y-axis */}
         <div className="absolute inset-0 bg-gradient-to-t from-royale-bg via-transparent to-transparent z-10 h-full w-full" />
+        
+        {/* Layer 2.5: Extra bottom fade for mobile and tablet */}
+        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-royale-bg via-royale-bg/80 to-transparent z-10 lg:hidden" />
+        
+        {/* Layer 3: The Image with a CSS mask for the hard edges */}
         <img 
           src="/hero-bg.png" 
           alt="Modern beautiful living space" 
-          className="w-[85%] sm:w-[80%] lg:w-[75%] h-full object-cover object-right"
+          className="w-[85%] sm:w-[80%] lg:w-[75%] h-full object-cover object-top scale-[0.75] sm:scale-[0.85] lg:scale-100 origin-top-right"
           referrerPolicy="no-referrer"
-          style={{ maskImage: 'linear-gradient(to right, transparent, black 25%)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 25%)' }}
+          fetchPriority="high"
+          loading="eager"
+          style={{ 
+            maskImage: 'linear-gradient(to right, transparent, black 25%)', 
+            WebkitMaskImage: 'linear-gradient(to right, transparent, black 25%)' 
+          }}
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full flex flex-col flex-1 justify-center lg:justify-start lg:pt-12 sm:mt-0">
-        <div className="flex flex-row items-center justify-between gap-4 sm:gap-6 lg:gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full flex flex-col flex-1 justify-center lg:justify-center lg:pt-0 sm:mt-0">
+        <div className="flex flex-row items-center justify-between gap-4 sm:gap-6 lg:gap-4">
           
           {/* Left Content */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex-[1.4] sm:flex-1 flex flex-col gap-3 sm:gap-5 text-center items-center"
+            className="flex-[1.4] sm:flex-1 flex flex-col gap-2 sm:gap-4 lg:gap-3 text-center items-center"
           >
-            <div className="flex flex-col items-center gap-3 sm:gap-5 max-w-3xl">
+            <div className="flex flex-col items-center gap-2 sm:gap-4 lg:gap-3 max-w-3xl">
               <motion.p 
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -39,7 +53,7 @@ export default function Hero() {
                 Premium Paints. Unmatched Protection.
               </motion.p>
               
-              <h1 className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif font-medium text-ivory leading-[1.2] lg:leading-[1.1] tracking-[0.05em] uppercase max-w-2xl text-center">
+              <h1 className="text-2xl sm:text-4xl lg:text-4xl xl:text-5xl font-serif font-medium text-ivory leading-[1.2] lg:leading-[1.1] tracking-[0.05em] uppercase max-w-2xl text-center">
                 20+ Years of Trusted <br className="hidden sm:block" />
                 <span className="text-gold">Paint Solutions</span>
               </h1>
@@ -65,7 +79,7 @@ export default function Hero() {
             </div>
 
             {/* Features Grid (Desktop View) */}
-            <div className="hidden lg:grid grid-cols-4 gap-2 w-full max-w-4xl mx-auto mt-6">
+            <div className="hidden lg:grid grid-cols-4 gap-2 w-full max-w-4xl mx-auto lg:mt-2">
               {[
                 { emoji: "📦", title: "100+ Products", sub: "from India's top leading brands" },
                 { emoji: "🎨", title: "4000+ Color Shades", sub: "latest and popular shades" },
@@ -86,7 +100,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Right Content - Mascot Character (Layout Placeholder) */}
-          <div className="flex-[0.8] sm:flex-1 flex-shrink-0 relative h-[120px] sm:h-[200px] md:h-[260px] lg:h-[280px] xl:h-[340px] invisible pointer-events-none" />
+          <div className="flex-[0.8] sm:flex-1 flex-shrink-0 relative h-[120px] sm:h-[200px] md:h-[260px] lg:h-[220px] xl:h-[280px] invisible pointer-events-none" />
         </div>
 
         {/* Features Grid (Mobile/Tablet View) */}
@@ -114,20 +128,6 @@ export default function Hero() {
           ))}
         </motion.div>
 
-        {/* Scroll Hint Arrow */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-32 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2"
-        >
-          <span className="text-[7px] uppercase tracking-[0.4em] text-ivory/30 font-medium whitespace-nowrap">Scroll to explore</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-            className="w-px h-10 bg-gradient-to-b from-gold/50 to-transparent"
-          />
-        </motion.div>
 
         {/* Ambient Gold Dust (reduced count/complexity) */}
         <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
@@ -158,7 +158,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-2 lg:mt-6 py-3 sm:py-4 lg:py-6 px-1 lg:px-4 bg-royale-surface/50 border border-zinc-200 rounded-2xl grid grid-cols-4 gap-1 lg:gap-0"
+          className="mt-2 lg:mt-3 py-3 sm:py-4 lg:py-4 px-1 lg:px-4 bg-royale-surface/50 border border-zinc-200 rounded-2xl grid grid-cols-4 gap-1 lg:gap-0"
         >
           {[
             { label: "Years Trust", value: 20, suffix: "+" },

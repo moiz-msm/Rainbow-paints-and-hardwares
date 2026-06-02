@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect, MouseEvent, useMemo } from 'react';
 import { 
-  Sparkles, Upload, Paintbrush, RefreshCcw, ChevronRight, Pipette, Camera, AlertCircle, X, ChevronDown
+  Sparkles, Upload, Paintbrush, RefreshCcw, ChevronRight, Pipette, Camera, AlertCircle, X, ChevronDown, Check, PenTool, Share2, Download
 } from 'lucide-react';
+import { exportCanvasAsImage } from '../lib/exportUtils';
 import { useAuthStore } from '../store/useAuthStore';
 import { shadeService, Shade } from '../services/shadeService';
 import { db } from '../lib/firebase';
@@ -166,7 +167,9 @@ export default function AIPhotoStudio({
   };
   
   // Custom tool modes & full paint pool preloading
-  const [toolMode, setToolMode] = useState<'paint' | 'picker'>('paint');
+  const [toolMode, setToolMode] = useState<'paint' | 'picker' | 'polygon'>('paint');
+  const [polygonPoints, setPolygonPoints] = useState<{x: number, y: number}[]>([]);
+  const [previewPoint, setPreviewPoint] = useState<{x: number, y: number} | null>(null);
   const [fullPool, setFullPool] = useState<Shade[]>([]);
   const [pickedPixelColor, setPickedPixelColor] = useState<{ hex: string; rgb: { r: number; g: number; b: number } } | null>(null);
 
@@ -419,16 +422,11 @@ export default function AIPhotoStudio({
   };
 
   // Advanced Eyedropper / Color Picker Engine
-  const performInteractivePick = (e: MouseEvent<HTMLCanvasElement>) => {
+  const performInteractivePick = (x: number, y: number) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d', { willReadFrequently: true });
     if (!ctx) return;
-
-    // Get exact canvas coordinates
-    const rect = canvas.getBoundingClientRect();
-    const x = Math.floor(((e.clientX - rect.left) / rect.width) * canvas.width);
-    const y = Math.floor(((e.clientY - rect.top) / rect.height) * canvas.height);
 
     try {
       const pixel = ctx.getImageData(x, y, 1, 1).data;
@@ -440,27 +438,148 @@ export default function AIPhotoStudio({
     }
   };
 
-  const handleCanvasClick = (e: MouseEvent<HTMLCanvasElement>) => {
-    if (toolMode === 'picker') {
-      performInteractivePick(e);
-    } else {
-      performInteractivePaint(e);
-    }
-  };
-
-  // Advanced Flood Fill & Paint Engine with Intelligent Adaptive Parameters
-  const performInteractivePaint = (e: MouseEvent<HTMLCanvasElement>) => {
-    if (!activeShade || loading || isAiProcessing) return;
+  const applyPolygonFill = () => {
+    if (!activeShade || polygonPoints.length < 3) return;
 
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Get exact canvas coordinates
+    // Convert paint HEX to RGB
+    const targetRGB = hexToRgb(activeShade.hex);
+    if (!targetRGB) return;
+
+    // Create a boolean mask of the polygon by drawing it on a temporary canvas
+    const maskCanvas = document.createElement('canvas');
+    maskCanvas.width = canvas.width;
+    maskCanvas.height = canvas.height;
+    const maskCtx = maskCanvas.getContext('2d');
+    if (!maskCtx) return;
+
+    maskCtx.fillStyle = "white";
+    maskCtx.beginPath();
+    maskCtx.moveTo(polygonPoints[0].x, polygonPoints[0].y);
+    for (let i = 1; i < polygonPoints.length; i++) {
+       maskCtx.lineTo(polygonPoints[i].x, polygonPoints[i].y);
+    }
+    maskCtx.closePath();
+    maskCtx.fill();
+
+    const polyImgData = maskCtx.getImageData(0, 0, canvas.width, canvas.height);
+    const currentData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const originalData = history[0]; // Reference base image to preserve genuine textures
+
+    // Calculate actual average luminance of the masked segment from the base image
+    let totalLuma = 0;
+    let maskCount = 0;
+    for (let i = 0; i < polyImgData.data.length; i += 4) {
+      if (polyImgData.data[i] > 128) {
+        const r = originalData.data[i];
+         const g = originalData.data[i+1];
+        const b = originalData.data[i+2];
+        totalLuma += 0.299 * r + 0.587 * g + 0.114 * b;
+        maskCount++;
+      }
+    }
+    const avgLuma = maskCount > 0 ? (totalLuma / maskCount) : 128;
+
+    for (let i = 0; i < polyImgData.data.length; i += 4) {
+      if (polyImgData.data[i] > 128) {
+        const r = originalData.data[i];
+        const g = originalData.data[i + 1];
+        const b = originalData.data[i + 2];
+        const luma = 0.299 * r + 0.587 * g + 0.114 * b;
+        let ratio = avgLuma > 0 ? (luma / avgLuma) : 1.0;
+        
+        if (ratio > 1.0) {
+          ratio = 1.0 + Math.tanh((ratio - 1.0) * 0.4) * 0.25; 
+        } else {
+          ratio = Math.pow(ratio, 0.75);
+        }
+
+        const paintR = Math.min(255, Math.max(0, targetRGB.r * ratio));
+        const paintG = Math.min(255, Math.max(0, targetRGB.g * ratio));
+        const paintB = Math.min(255, Math.max(0, targetRGB.b * ratio));
+
+        const alpha = 0.90;
+        currentData.data[i] = Math.floor((1 - alpha) * r + alpha * paintR);
+        currentData.data[i + 1] = Math.floor((1 - alpha) * g + alpha * paintG);
+        currentData.data[i + 2] = Math.floor((1 - alpha) * b + alpha * paintB);
+      }
+    }
+
+    ctx.putImageData(currentData, 0, 0);
+
+    const savedState = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const newHistory = history.slice(0, historyIndex + 1);
+    newHistory.push(savedState);
+    setHistory(newHistory);
+    setHistoryIndex(newHistory.length - 1);
+
+    setPolygonPoints([]);
+    setToolMode('paint');
+  };
+
+  const updatePreviewPoint = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
     const rect = canvas.getBoundingClientRect();
-    const x = Math.floor(((e.clientX - rect.left) / rect.width) * canvas.width);
-    const y = Math.floor(((e.clientY - rect.top) / rect.height) * canvas.height);
+    
+    // mobile offset: apply negative Y offset so the finger doesn't block the point
+    let clientY = e.clientY;
+    if (e.pointerType === 'touch') {
+      clientY = Math.max(rect.top, clientY - 50); // 50px offset up
+    }
+
+    const x = Math.max(0, Math.min(canvas.width, Math.floor(((e.clientX - rect.left) / rect.width) * canvas.width)));
+    const y = Math.max(0, Math.min(canvas.height, Math.floor(((clientY - rect.top) / rect.height) * canvas.height)));
+    
+    setPreviewPoint({ x, y });
+    return { x, y };
+  };
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    e.currentTarget.setPointerCapture(e.pointerId);
+    if (e.pointerType === 'touch') {
+      updatePreviewPoint(e);
+    }
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    if (e.pointerType === 'touch' && e.currentTarget.hasPointerCapture(e.pointerId)) {
+      updatePreviewPoint(e);
+    }
+  };
+
+  const handlePointerUp = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    e.currentTarget.releasePointerCapture(e.pointerId);
+    
+    let targetPoint = previewPoint;
+    if (e.pointerType !== 'touch') {
+      targetPoint = updatePreviewPoint(e);
+    }
+    setPreviewPoint(null);
+
+    if (!targetPoint) return;
+
+    if (toolMode === 'picker') {
+      performInteractivePick(targetPoint.x, targetPoint.y);
+    } else if (toolMode === 'polygon') {
+      setPolygonPoints(prev => [...prev, targetPoint!]);
+    } else {
+      performInteractivePaint(targetPoint.x, targetPoint.y);
+    }
+  };
+
+  // Advanced Flood Fill & Paint Engine with Intelligent Adaptive Parameters
+  const performInteractivePaint = (x: number, y: number) => {
+    if (!activeShade || loading || isAiProcessing) return;
+
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
     // Run flood fill segmentation
     const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -561,7 +680,7 @@ export default function AIPhotoStudio({
     setHistoryIndex(newHistory.length - 1);
   };
 
-  // Fast tolerance-based flood fill algorithm
+  // Fast tolerance-based flood fill algorithm with improved edge and wall boundary detection
   const runFloodFill = (imgData: ImageData, startX: number, startY: number, tol: number): Uint8Array | null => {
     const w = imgData.width;
     const h = imgData.height;
@@ -573,6 +692,11 @@ export default function AIPhotoStudio({
     const startR = imgData.data[startIndex];
     const startG = imgData.data[startIndex + 1];
     const startB = imgData.data[startIndex + 2];
+
+    const startLuma = Math.max(1, 0.299 * startR + 0.587 * startG + 0.114 * startB);
+    const sCr = startR / startLuma;
+    const sCg = startG / startLuma;
+    const sCb = startB / startLuma;
 
     const queue: number[] = [startX, startY];
     let head = 0;
@@ -594,6 +718,10 @@ export default function AIPhotoStudio({
       const pg = imgData.data[pIdx4 + 1];
       const pb = imgData.data[pIdx4 + 2];
 
+      const luma = Math.max(1, 0.299 * r + 0.587 * g + 0.114 * b);
+      const pLuma = Math.max(1, 0.299 * pr + 0.587 * pg + 0.114 * pb);
+      const lumaDist = Math.abs(luma - pLuma);
+
       const globalDist = Math.sqrt(
         (r - startR) * (r - startR) +
         (g - startG) * (g - startG) +
@@ -606,12 +734,28 @@ export default function AIPhotoStudio({
         (b - pb) * (b - pb)
       );
 
+      if (localDist > 25 || lumaDist > 20) {
+        visited[nIdx] = 1;
+        return;
+      }
+
+      const cR = r / luma;
+      const cG = g / luma;
+      const cB = b / luma;
+      const chromaDist = Math.sqrt(
+        (cR - sCr) * (cR - sCr) +
+        (cG - sCg) * (cG - sCg) +
+        (cB - sCb) * (cB - sCb)
+      ) * 100;
+
       // Gradient propagation rules:
-      // Allow extremely gradual shifts (low localDist) to extend past the base tolerance.
-      if (globalDist <= tol || (localDist <= 10 && globalDist <= tol * 2.25)) {
+      // Allow extremely gradual shifts (low localDist) and similar color profiles (chromaDist)
+      if (globalDist <= tol || (chromaDist <= 12 && localDist <= 10 && globalDist <= tol * 3.5)) {
         visited[nIdx] = 1;
         mask[nIdx] = 1;
         queue.push(nx, ny);
+      } else {
+        visited[nIdx] = 1;
       }
     };
 
@@ -783,18 +927,42 @@ export default function AIPhotoStudio({
                   Mode:
                 </span>
                 <button 
-                  onClick={() => setToolMode('paint')}
+                  onClick={() => { setToolMode('paint'); setPolygonPoints([]); }}
                   className={`px-2.5 py-0.5 rounded-md flex items-center gap-1 transition-all ${toolMode === 'paint' ? 'bg-gold text-white font-bold shadow-sm' : 'text-zinc-600 hover:text-zinc-900'}`}
                 >
-                  <Paintbrush className="w-3 h-3 text-current" /> Paint
+                  <Paintbrush className="w-3 h-3 text-current" /> Auto Paint
                 </button>
                 <button 
-                  onClick={() => setToolMode('picker')}
+                  onClick={() => { setToolMode('polygon'); setPolygonPoints([]); }}
+                  className={`px-2.5 py-0.5 rounded-md flex items-center gap-1 transition-all ${toolMode === 'polygon' ? 'bg-gold text-white font-bold shadow-sm' : 'text-zinc-600 hover:text-zinc-900'}`}
+                >
+                  <PenTool className="w-3 h-3 text-current" /> Manual Mask
+                </button>
+                <button 
+                  onClick={() => { setToolMode('picker'); setPolygonPoints([]); }}
                   className={`px-2.5 py-0.5 rounded-md flex items-center gap-1 transition-all ${toolMode === 'picker' ? 'bg-gold text-white font-bold shadow-sm' : 'text-zinc-600 hover:text-zinc-900'}`}
                 >
                   <Pipette className="w-3 h-3 text-current" /> Color Picker
                 </button>
               </div>
+              
+              {toolMode === 'polygon' && (
+                <div className="flex items-center gap-1 border border-zinc-300 bg-zinc-50 rounded-lg p-1 shadow-inner translate-x-0 animate-in fade-in slide-in-from-left-2 duration-200">
+                  <button 
+                    onClick={() => { setPolygonPoints([]); setToolMode('paint'); }} 
+                    className="px-2 py-0.5 rounded-md flex items-center gap-1 text-[10px] font-bold text-zinc-600 hover:bg-zinc-200 transition-colors"
+                  >
+                     <X className="w-3 h-3"/> Cancel
+                  </button>
+                  <button 
+                    onClick={applyPolygonFill} 
+                    disabled={polygonPoints.length < 3}
+                    className={`px-2 py-0.5 rounded-md flex items-center gap-1 text-[10px] font-bold transition-all ${polygonPoints.length < 3 ? 'text-zinc-400 cursor-not-allowed' : 'bg-zinc-900 text-white shadow-sm hover:bg-zinc-800 hover:shadow-md cursor-pointer'}`}
+                  >
+                     <Check className="w-3 h-3"/> Confirm
+                  </button>
+                </div>
+              )}
 
               {selectedImage && (
                 <button 
@@ -808,13 +976,26 @@ export default function AIPhotoStudio({
             </div>
 
             <div className="flex items-center gap-2">
+              {selectedImage && historyIndex > 0 && (
+                <button 
+                  onClick={() => {
+                    if (canvasRef.current) {
+                      exportCanvasAsImage(canvasRef.current, `rainbowpaint-preview-${Date.now()}.png`);
+                    }
+                  }}
+                  className="p-2 rounded-lg border flex items-center gap-1 transition-all text-xs font-semibold bg-gold text-white border-gold hover:bg-gold/90"
+                  title="Share or Download"
+                >
+                  <Share2 className="w-3.5 h-3.5" /> <span className="hidden sm:inline">Share</span>
+                </button>
+              )}
               <button 
                 onClick={handleUndo}
                 disabled={historyIndex <= 0}
                 className={`p-2 rounded-lg border flex items-center gap-1 transition-all text-xs font-semibold ${historyIndex > 0 ? 'bg-white border-zinc-200 text-zinc-700 hover:bg-zinc-50' : 'bg-zinc-100 border-zinc-100 text-zinc-300 cursor-not-allowed'}`}
                 title="Undo last stroke"
               >
-                <RefreshCcw className="w-3.5 h-3.5 rotate-180" /> Undo
+                <RefreshCcw className="w-3.5 h-3.5 rotate-180" /> <span className="hidden sm:inline">Undo</span>
               </button>
             </div>
           </div>
@@ -837,12 +1018,68 @@ export default function AIPhotoStudio({
 
             {/* Click to Paint Canvas */}
             {selectedImage && !isCameraActive && (
-              <div className="w-full max-w-3xl mx-auto overflow-hidden rounded-xl border border-zinc-200/50 shadow-2xl bg-zinc-950/5 p-1">
+              <div className="w-full max-w-3xl mx-auto overflow-hidden rounded-xl border border-zinc-200/50 shadow-2xl bg-zinc-950/5 p-1 relative">
                 <canvas 
                   ref={canvasRef} 
-                  onClick={handleCanvasClick}
-                  className={`w-full h-auto block transition-all duration-300 hover:ring-2 hover:ring-gold/20 ${toolMode === 'picker' ? 'cursor-cell border border-dashed border-gold/40' : 'cursor-crosshair'} ${loading ? 'opacity-0' : 'opacity-100'}`}
+                  onPointerDown={handlePointerDown}
+                  onPointerMove={handlePointerMove}
+                  onPointerUp={handlePointerUp}
+                  className={`w-full h-auto block transition-all duration-300 hover:ring-2 hover:ring-gold/20 touch-none ${toolMode === 'picker' ? 'cursor-cell border border-dashed border-gold/40' : toolMode === 'polygon' ? 'cursor-crosshair' : 'cursor-crosshair'} ${loading ? 'opacity-0' : 'opacity-100'}`}
                 />
+                
+                {/* Touch Drag Preview Point Layer */}
+                {previewPoint && canvasRef.current && (
+                  <svg className="absolute top-1 left-1 pointer-events-none" style={{ width: 'calc(100% - 8px)', height: 'calc(100% - 8px)' }}>
+                     <circle 
+                       cx={`${(previewPoint.x / canvasRef.current!.width) * 100}%`} 
+                       cy={`${(previewPoint.y / canvasRef.current!.height) * 100}%`} 
+                       r="6" 
+                       fill="rgba(59, 130, 246, 0.5)" 
+                       stroke="white" 
+                       strokeWidth="2"
+                     />
+                     <circle 
+                       cx={`${(previewPoint.x / canvasRef.current!.width) * 100}%`} 
+                       cy={`${(previewPoint.y / canvasRef.current!.height) * 100}%`} 
+                       r="1.5" 
+                       fill="white" 
+                     />
+                     <line 
+                       x1={`${(previewPoint.x / canvasRef.current!.width) * 100}%`} 
+                       y1={`${(previewPoint.y / canvasRef.current!.height) * 100}%`} 
+                       x2={`${(previewPoint.x / canvasRef.current!.width) * 100}%`} 
+                       y2={`${((previewPoint.y + 40) / canvasRef.current!.height) * 100}%`} 
+                       stroke="rgba(255,255,255,0.7)" 
+                       strokeWidth="2" 
+                       strokeDasharray="4 2"
+                     />
+                  </svg>
+                )}
+
+                {/* Polygon Interactive Layer */}
+                {toolMode === 'polygon' && canvasRef.current && (
+                  <svg className="absolute top-1 left-1 pointer-events-none" style={{ width: 'calc(100% - 8px)', height: 'calc(100% - 8px)' }}>
+                     {polygonPoints.length > 0 && (
+                        <polygon 
+                          points={polygonPoints.map(p => `${(p.x / canvasRef.current!.width) * 100}%,${(p.y / canvasRef.current!.height) * 100}%`).join(' ')} 
+                          fill={activeShade ? `${activeShade.hex}80` : "rgba(236, 72, 153, 0.4)"} 
+                          stroke={activeShade ? activeShade.hex : "rgba(59, 130, 246, 0.8)"} 
+                          strokeWidth="2"
+                        />
+                     )}
+                     {polygonPoints.map((p, idx) => (
+                       <circle 
+                         key={idx}
+                         cx={`${(p.x / canvasRef.current!.width) * 100}%`} 
+                         cy={`${(p.y / canvasRef.current!.height) * 100}%`} 
+                         r="4" 
+                         fill="white" 
+                         stroke={activeShade ? activeShade.hex : "#3b82f6"} 
+                         strokeWidth="2"
+                       />
+                     ))}
+                  </svg>
+                )}
               </div>
             )}
 

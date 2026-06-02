@@ -1,10 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import VisualizerSection from '../components/VisualizerSection';
 import { Sparkles, Info } from 'lucide-react';
+import SEO from '../components/SEO';
+import { analytics, db } from '../lib/firebase';
+import { logEvent } from 'firebase/analytics';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { useAuthStore } from '../store/useAuthStore';
 
 export default function VisualizerPage() {
+  useEffect(() => {
+    if (analytics) {
+      logEvent(analytics, 'view_visualizer', {
+        page_path: '/visualizer',
+        page_title: 'Color Visualizer'
+      });
+    }
+    
+    // Also record in Firestore for Admin Dashboard real-time view
+    const user = useAuthStore.getState().user;
+    addDoc(collection(db, 'analytics_events'), {
+      type: 'view_visualizer',
+      userId: user ? user.uid : null,
+      timestamp: serverTimestamp()
+    }).catch(console.warn);
+  }, []);
+
   return (
     <div className="pt-20 pb-12 bg-royale-bg min-h-screen">
+      <SEO 
+        title="Color Visualizer | Preview Paint Colors | Rainbow Paints & Hardwares"
+        description="Virtually paint your room with our advanced Color Visualizer. Preview thousands of paint shades from top brands before you buy."
+      />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
         <div className="flex flex-col items-center justify-center text-center max-w-3xl mx-auto gap-4">
           <div className="flex flex-row items-center justify-center gap-3">

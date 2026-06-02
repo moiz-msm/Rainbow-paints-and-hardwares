@@ -58,9 +58,11 @@ export default function CartDrawer() {
               </div>
               <button 
                 onClick={toggleCart}
+                title="Close Cart"
+                aria-label="Close Cart"
                 className="p-2 text-zinc-500 hover:text-ivory rounded-full hover:bg-black/5 transition-colors"
               >
-                <X className="w-5 h-5" />
+                <X aria-hidden="true" className="w-5 h-5" />
               </button>
             </div>
 
@@ -111,16 +113,18 @@ export default function CartDrawer() {
                           <div className="flex items-center gap-2 bg-zinc-100 rounded-lg p-1">
                             <button 
                               onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))}
+                              title="Decrease quantity" aria-label="Decrease quantity"
                               className="p-1 hover:bg-black/5 rounded text-zinc-500 hover:text-ivory transition-colors"
                             >
-                              <Minus className="w-3 h-3" />
+                              <Minus aria-hidden="true" className="w-3 h-3" />
                             </button>
                             <span className="text-xs font-bold w-4 text-center text-ivory">{item.quantity}</span>
                             <button 
                               onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                              title="Increase quantity" aria-label="Increase quantity"
                               className="p-1 hover:bg-black/5 rounded text-zinc-500 hover:text-ivory transition-colors"
                             >
-                              <Plus className="w-3 h-3" />
+                              <Plus aria-hidden="true" className="w-3 h-3" />
                             </button>
                           </div>
                           <p className="text-sm font-semibold text-gold">
@@ -130,9 +134,10 @@ export default function CartDrawer() {
                       </div>
                       <button 
                         onClick={() => removeItem(item.id)}
+                        title="Remove item" aria-label="Remove item"
                         className="absolute right-2 top-2 p-1.5 opacity-100 bg-red-500/20 text-red-400 rounded-lg hover:bg-red-500 hover:text-ivory transition-all"
                       >
-                        <Trash2 className="w-4 h-4" />
+                        <Trash2 aria-hidden="true" className="w-4 h-4" />
                       </button>
                     </div>
                   ))}

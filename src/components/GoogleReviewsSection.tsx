@@ -253,6 +253,8 @@ export default function GoogleReviewsSection() {
                             <img 
                               src={review.avatarUrl} 
                               alt={review.authorName} 
+                              loading="lazy"
+                              decoding="async"
                               className="w-8 h-8 rounded-full border border-zinc-100 select-none pointer-events-none" 
                               referrerPolicy="no-referrer"
                             />

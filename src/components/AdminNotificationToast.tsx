@@ -30,6 +30,8 @@ export default function AdminNotificationToast() {
       
       setPendingOrdersCount(currentSize);
       prevCountRef.current = currentSize;
+    }, (error) => {
+      console.warn("AdminNotificationToast listener error:", error);
     });
 
     return () => unsub();

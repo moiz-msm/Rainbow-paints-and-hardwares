@@ -1,10 +1,15 @@
 import React from 'react';
 import CalculatorSection from '../components/CalculatorSection';
 import { Calculator } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export default function CalculatorPage() {
   return (
     <div className="pt-24 pb-12 bg-royale-bg min-h-screen">
+      <SEO 
+        title="Paint Cost Calculator | Estimate Paint Quantity | Rainbow Paints & Hardwares"
+        description="Easily estimate how much paint you need and the expected cost. Use our Paint Cost Calculator to plan your painting project efficiently."
+      />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
 

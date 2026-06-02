@@ -19,12 +19,14 @@ import {
 import { useUserAddresses } from '../hooks/useUserAddresses';
 import { useDebounce } from '../hooks/useDebounce';
 import GoogleReviewsSection from '../components/GoogleReviewsSection';
+import { analytics } from '../lib/firebase';
+import { logEvent } from 'firebase/analytics';
 
 export default function CheckoutPage() {
   const navigate = useNavigate();
   const { items } = useCartStore();
   const { setCurrentOrderDraft } = useOrderStore();
-  const { user } = useAuthStore();
+  const { user, openAuthModal } = useAuthStore();
   
   const { 
     pincode: deliveryPincode, 
@@ -120,6 +122,23 @@ export default function CheckoutPage() {
   const totalAfterDiscount = Math.max(0, subtotal - discount);
   const gst = totalAfterDiscount * 0.18; // 18% GST
 
+  // Track initial checkout step
+  useEffect(() => {
+    if (items.length > 0 && analytics) {
+      logEvent(analytics, 'begin_checkout', {
+        currency: 'INR',
+        value: subtotal,
+        items: items.map(item => ({
+          item_id: item.id,
+          item_name: item.name,
+          item_brand: item.brand,
+          price: item.unitPrice * item.size,
+          quantity: item.quantity
+        }))
+      });
+    }
+  }, [items]);
+
   // Live trigger store shipping calculations based on active checkout subtotals
   useEffect(() => {
     updateCartSubtotal(totalAfterDiscount);
@@ -143,7 +162,7 @@ export default function CheckoutPage() {
       <div className="bg-royale-bg min-h-screen pt-24 pb-12 flex flex-col items-center justify-center p-4">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">Your cart is empty</h2>
         <button 
-          onClick={() => navigate('/products')}
+          onClick={() => navigate('/buy-paint-online')}
           className="px-6 py-3 bg-gold text-black rounded-lg font-bold hover:bg-gold/90 transition-colors"
         >
           Browse Products
@@ -293,7 +312,7 @@ export default function CheckoutPage() {
         
         {/* Breadcrumb */}
         <div className="flex items-center text-sm text-gray-500 mb-8">
-          <span className="cursor-pointer hover:text-black" onClick={() => navigate('/products')}>Cart</span>
+          <span className="cursor-pointer hover:text-black" onClick={() => navigate('/buy-paint-online')}>Cart</span>
           <ChevronRight className="w-4 h-4 mx-2" />
           <span className="text-black font-semibold">Checkout</span>
           <ChevronRight className="w-4 h-4 mx-2" />
@@ -396,9 +415,20 @@ export default function CheckoutPage() {
                 </div>
 
                 <div className="space-y-2 md:col-span-2">
-                  <label className="text-sm font-medium text-gray-700">Email Address</label>
+                  <div className="flex items-center justify-between">
+                    <label className="text-sm font-medium text-gray-700">Email Address</label>
+                    {!user && (
+                      <button 
+                        type="button" 
+                        onClick={() => openAuthModal()}
+                        className="text-xs font-semibold text-blue-600 hover:text-blue-800 transition-colors bg-blue-50 hover:bg-blue-100 px-2.5 py-1 rounded-md border border-blue-200"
+                      >
+                        Have an account? Sign In
+                      </button>
+                    )}
+                  </div>
                   <input type="email" name="email" autoComplete="email" value={address.email || ''} onChange={e => setAddress({...address, email: e.target.value})} className="w-full p-3 border border-gray-200 bg-gray-50 rounded-xl outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all" placeholder="Enter email to receive order updates" />
-                  {!user && <p className="text-xs text-gray-500 mt-1">Enter email to receive order updates.</p>}
+                  {!user && <p className="text-xs text-gray-500 mt-1">Enter email to receive order updates, or sign in to track orders easily.</p>}
                 </div>
 
                 {/* Free Nominatim Autocomplete Address search field */}

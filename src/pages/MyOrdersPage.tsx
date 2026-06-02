@@ -33,7 +33,7 @@ export default function MyOrdersPage() {
             <h2 className="text-xl font-bold text-gray-900 mb-2">No orders found</h2>
             <p className="text-gray-500 mb-6">You haven't placed any orders yet.</p>
             <button 
-              onClick={() => navigate('/products')}
+              onClick={() => navigate('/buy-paint-online')}
               className="px-6 py-3 bg-gold text-black rounded-lg font-bold hover:bg-gold/90 transition-colors"
             >
               Start Shopping

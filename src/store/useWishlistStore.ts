@@ -1,7 +1,8 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { doc, getDocs, collection, setDoc, deleteDoc, writeBatch } from 'firebase/firestore';
-import { db } from '../lib/firebase';
+import { db, analytics } from '../lib/firebase';
+import { logEvent } from 'firebase/analytics';
 
 export interface WishlistProductItem {
   id: string; // format: "prod_${productId}_${size}_${shadeCode}"
@@ -169,6 +170,16 @@ export const useWishlistStore = create<WishlistStore>()(
           get().addToast({
             productName: newItem.name,
             shadeName: `${newItem.shades.length} Colors`,
+          });
+        }
+
+        if (analytics) {
+          logEvent(analytics, 'add_to_wishlist', {
+            items: [{
+              item_id: id,
+              item_name: newItem.name,
+              item_category: newItem.type,
+            }]
           });
         }
 

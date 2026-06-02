@@ -11,6 +11,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import DeliveryEstimator from '../components/DeliveryEstimator';
 import { InlineShadePicker, DEFAULT_WHITES } from '../components/ProductsSection';
 import { Shade } from '../services/shadeService';
+import SEO from '../components/SEO';
 
 const SIZES = [1, 4, 10, 20];
 
@@ -191,6 +192,56 @@ export default function ProductDetailPage() {
     return { finish, dryingTime, coverage, washability, base, warranty, desc1, desc2 };
   }, [product]);
 
+  const productSchema = useMemo(() => {
+    if (!product) return null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": product.name,
+      "image": product.image,
+      "description": productDetails?.desc1 || `Buy ${product.name} online. ${product.subCategory} from ${product.brand}.`,
+      "brand": {
+        "@type": "Brand",
+        "name": product.brand
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": product.price,
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock",
+        "url": `https://rainbowpaint.in/p/${product.slug}`
+      }
+    };
+  }, [product, productDetails]);
+
+  const breadcrumbSchema = useMemo(() => {
+    if (!product) return null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://rainbowpaint.in/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Products",
+          "item": "https://rainbowpaint.in/buy-paint-online"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": product.name,
+          "item": `https://rainbowpaint.in/p/${product.slug}`
+        }
+      ]
+    };
+  }, [product]);
+
   if (loading) {
     return (
       <div className="pt-24 pb-12 bg-royale-bg min-h-[80vh] flex items-center justify-center">
@@ -303,7 +354,13 @@ export default function ProductDetailPage() {
   );
 
   return (
-    <div className="pt-[72px] sm:pt-24 pb-12 bg-royale-bg min-h-screen text-ivory/90 relative overflow-x-hidden selection:bg-gold/30">
+    <article className="pt-[72px] sm:pt-24 pb-12 bg-royale-bg min-h-screen text-ivory/90 relative overflow-x-hidden selection:bg-gold/30">
+      <SEO 
+        title={`${product.name} | ${product.brand} | Buy Paints Online`}
+        description={productDetails?.desc1 || `Buy ${product.name} online. ${product.subCategory} from ${product.brand}. Get the best quality paints and colors delivered to your doorstep.`}
+        image={product.image}
+        schema={[productSchema, breadcrumbSchema].filter(Boolean)}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px]">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-[10px] sm:text-xs font-sans text-zinc-500 mb-6 uppercase tracking-wider">
@@ -473,7 +530,7 @@ export default function ProductDetailPage() {
               {boughtTogether.map(rp => (
                 <Link to={`/p/${rp.name.replace(/\s+/g, '-').toLowerCase()}`} key={rp.id} className="group flex items-center bg-royale-surface border border-zinc-200 hover:border-gold/30 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_8px_30px_rgba(184,151,90,0.1)] p-3">
                   <div className="relative bg-white w-20 h-20 shrink-0 rounded-xl flex items-center justify-center p-2">
-                    <img src={rp.image} alt={rp.name} className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                    <img src={rp.image} alt={rp.name} loading="lazy" decoding="async" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
                   </div>
                   <div className="pl-4 flex flex-col flex-1">
                     <span className="text-[9px] uppercase tracking-wider text-gold font-display font-bold mb-1">{rp.brand}</span>
@@ -494,7 +551,7 @@ export default function ProductDetailPage() {
               {relatedProducts.map(rp => (
                 <Link to={`/p/${rp.name.replace(/\s+/g, '-').toLowerCase()}`} key={rp.id} className="group flex flex-col bg-royale-surface border border-zinc-200 hover:border-gold/30 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_8px_30px_rgba(184,151,90,0.1)]">
                   <div className="relative bg-white aspect-[4/3] p-4 sm:p-6 flex items-center justify-center">
-                    <img src={rp.image} alt={rp.name} className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                    <img src={rp.image} alt={rp.name} loading="lazy" decoding="async" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
                   </div>
                   <div className="p-4 sm:p-5 flex flex-col flex-1">
                     <span className="text-[9px] uppercase tracking-wider text-gold font-display font-bold mb-1">{rp.brand}</span>
@@ -507,7 +564,7 @@ export default function ProductDetailPage() {
           </div>
         )}
       </div>
-    </div>
+    </article>
   );
 }
 

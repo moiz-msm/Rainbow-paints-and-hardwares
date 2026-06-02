@@ -49,7 +49,7 @@ export default function Interactive2DShowroom({
     : ['back', 'left', 'right', 'ceiling', 'floor'];
 
   return (
-    <div className="w-full relative select-none flex flex-col bg-white border border-zinc-200/80 rounded-none sm:rounded-2xl shadow-md overflow-hidden">
+    <div id="interactive-2d-showroom" className="w-full relative select-none flex flex-col bg-white border border-zinc-200/80 rounded-none sm:rounded-2xl shadow-md overflow-hidden">
       {/* 1. Cohesive Header Control Row */}
       <div className="flex items-center justify-between px-3.5 py-2.5 bg-[#faf9f6]/95 text-zinc-900 border-b border-zinc-200 z-20">
         <div className="flex items-center gap-1.5 min-w-0">

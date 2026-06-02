@@ -339,7 +339,7 @@ export default function WishlistDrawer() {
                         <p className="text-xs text-zinc-600">Save your favorite paints to compare and buy easily!</p>
                       </div>
                       <button 
-                        onClick={() => { toggleWishlist(); navigate('/products'); }}
+                        onClick={() => { toggleWishlist(); navigate('/buy-paint-online'); }}
                         className="px-5 py-2 bg-zinc-900 border border-zinc-800 text-gold rounded-full text-xs hover:bg-zinc-800 transition-colors mt-2"
                       >
                         Browse Products
@@ -386,10 +386,10 @@ export default function WishlistDrawer() {
 
                         <button
                           onClick={() => removeItem(item.id, user?.uid || null)}
+                          title="Remove product" aria-label="Remove product"
                           className="absolute right-3 top-3.5 p-1.5 text-zinc-400 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-colors cursor-pointer"
-                          title="Remove product"
                         >
-                          <Trash2 className="w-4 h-4" />
+                          <Trash2 aria-hidden="true" className="w-4 h-4" />
                         </button>
                       </div>
                     ))
@@ -440,10 +440,10 @@ export default function WishlistDrawer() {
                           <div className="flex items-center gap-1 shrink-0 mr-8">
                             <button
                               onClick={() => handleCopy(item.hex, item.id)}
+                              title="Copy Hex Code" aria-label="Copy Hex Code"
                               className="p-1.5 text-zinc-400 hover:text-white bg-black/20 hover:bg-black/40 rounded-lg transition-colors cursor-pointer"
-                              title="Copy Hex"
                             >
-                              {copiedId === item.id ? <Check className="w-3.5 h-3.5 text-green-500" /> : <Copy className="w-3.5 h-3.5" />}
+                              {copiedId === item.id ? <Check aria-hidden="true" className="w-3.5 h-3.5 text-green-500" /> : <Copy aria-hidden="true" className="w-3.5 h-3.5" />}
                             </button>
                             <button
                               onClick={() => {
@@ -459,10 +459,10 @@ export default function WishlistDrawer() {
 
                           <button
                             onClick={() => removeItem(item.id, user?.uid || null)}
+                            title="Remove shade" aria-label="Remove shade"
                             className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 text-zinc-400 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-colors cursor-pointer"
-                            title="Remove shade"
                           >
-                            <Trash2 className="w-4 h-4" />
+                            <Trash2 aria-hidden="true" className="w-4 h-4" />
                           </button>
                         </div>
                       ))}
@@ -559,23 +559,23 @@ export default function WishlistDrawer() {
                               navigator.clipboard.writeText(shareUrl);
                               handleCopy(shareUrl, `${item.id}-share`);
                             }}
+                            title="Share combination link" aria-label="Share combination link"
                             className="p-1.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white border border-zinc-700 rounded-lg text-xs flex items-center justify-center transition-all cursor-pointer shadow-sm relative"
-                            title="Share combination link"
                           >
                             {copiedId === `${item.id}-share` ? (
-                              <Check className="w-3.5 h-3.5 text-green-500 animate-pulse" />
+                              <Check aria-hidden="true" className="w-3.5 h-3.5 text-green-500 animate-pulse" />
                             ) : (
-                              <Share2 className="w-3.5 h-3.5" />
+                              <Share2 aria-hidden="true" className="w-3.5 h-3.5" />
                             )}
                           </button>
                         </div>
 
                         <button
                           onClick={() => removeItem(item.id, user?.uid || null)}
+                          title="Delete Palette" aria-label="Delete Palette"
                           className="absolute right-4 top-4 p-1.5 text-zinc-400 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-colors cursor-pointer shadow-sm"
-                          title="Delete Palette"
                         >
-                          <Trash2 className="w-4 h-4" />
+                          <Trash2 aria-hidden="true" className="w-4 h-4" />
                         </button>
                       </div>
                     ))

@@ -5,16 +5,16 @@ import { brandDetails } from '../data';
 
 export default function BrandsDealIn() {
   return (
-    <div id="brands" className="py-6 sm:py-8 mb-4 overflow-hidden">
+    <section id="brands" className="py-6 sm:py-8 mb-4 overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-6 border-b border-zinc-200 pb-4">
+        <header className="text-center mb-6 border-b border-zinc-200 pb-4">
           <span className="text-[8px] sm:text-[9px] font-display font-medium text-gold/80 uppercase tracking-[0.4em] mb-2 block">
             Authorised Dealer & Distributor
           </span>
           <h2 className="text-xl sm:text-2xl font-serif font-light text-ivory tracking-wide">
             Featured Brands
           </h2>
-        </div>
+        </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {brandDetails.map((brand, idx) => (
@@ -64,7 +64,7 @@ export default function BrandsDealIn() {
 
               {/* Footer Link */}
               <Link 
-                to={`/products?brand=${encodeURIComponent(brand.name)}`}
+                to={`/buy-paint-online?brand=${encodeURIComponent(brand.name)}`}
                 className="flex items-center text-gold/60 text-[9px] font-display font-bold uppercase tracking-widest group-hover:text-gold transition-colors duration-500"
               >
                 View Products <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
@@ -76,6 +76,6 @@ export default function BrandsDealIn() {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

@@ -54,10 +54,12 @@ export default function ProductSearchInput() {
   }, [searchQuery]);
 
   return (
-    <div className="relative w-full" ref={searchContainerRef}>
-      <Search className="absolute left-2.5 sm:left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gold/50" />
+    <div className="relative w-full" ref={searchContainerRef} role="search">
+      <Search aria-hidden="true" className="absolute left-2.5 sm:left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gold/50" />
       <input
-        type="text"
+        type="search"
+        title="Search products and brands"
+        aria-label="Search products and brands"
         placeholder="Search products, brands..."
         value={searchQuery}
         onChange={(e) => {
@@ -67,7 +69,7 @@ export default function ProductSearchInput() {
         onFocus={() => {
           if (searchQuery.trim()) setShowSuggestions(true);
         }}
-        className="w-full bg-white shadow-sm border border-zinc-200 rounded-xl py-1.5 sm:py-2 pl-8 sm:pl-9 pr-7 sm:pr-8 text-xs sm:text-sm text-ivory placeholder:text-ivory/30 focus:border-gold/50 focus:outline-none transition-colors"
+        className="w-full bg-white shadow-sm border border-zinc-200 rounded-xl py-1.5 sm:py-2 pl-8 sm:pl-9 pr-7 sm:pr-8 text-xs sm:text-sm text-zinc-800 placeholder:text-zinc-400 focus:border-gold/50 focus:outline-none transition-colors"
       />
       {searchQuery && (
         <button 
@@ -75,9 +77,11 @@ export default function ProductSearchInput() {
             setSearchQuery("");
             setShowSuggestions(false);
           }}
+          title="Clear search"
+          aria-label="Clear search"
           className="absolute right-2 top-1/2 -translate-y-1/2 p-1 hover:bg-black/10 rounded-full transition-colors"
         >
-          <X className="w-3.5 h-3.5 text-gold/50 hover:text-gold" />
+          <X aria-hidden="true" className="w-3.5 h-3.5 text-gold/50 hover:text-gold" />
         </button>
       )}
 

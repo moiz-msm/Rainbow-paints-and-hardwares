@@ -39,19 +39,26 @@ export default function OfferPopup() {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center px-4 pointer-events-auto">
+        <motion.div 
+          key="offer-popup"
+          className="fixed inset-0 z-[9999] flex items-center justify-center px-4 pointer-events-auto"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0 }}
+        >
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm cursor-pointer"
             onClick={handleClose}
           />
           
           <motion.div 
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            initial={{ scale: 0.95, y: 20 }}
+            animate={{ scale: 1, y: 0 }}
+            exit={{ scale: 0.95, y: 20 }}
             transition={{ type: "spring", duration: 0.5 }}
             className="relative w-[90vw] max-w-[280px] sm:max-w-[300px] xl:max-w-[320px] bg-royale-bg border border-gold/40 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] flex flex-col"
           >
@@ -195,7 +202,7 @@ export default function OfferPopup() {
 
             </div>
           </motion.div>
-        </div>
+        </motion.div>
       )}
     </AnimatePresence>
   );

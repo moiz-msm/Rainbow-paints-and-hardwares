@@ -1,5 +1,5 @@
 import React, { useState, useEffect, memo, useRef, useMemo } from "react";
-import { Heart, Filter, ChevronDown, SortAsc, Plus, Search, X, Minus } from "lucide-react";
+import { Heart, Filter, ChevronDown, SortAsc, Plus, Search, X, Minus, Share2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { mockProducts, subCategories, brands } from "../data";
 import { useSearchParams, useNavigate } from "react-router-dom";
@@ -10,6 +10,7 @@ import { useDebounce } from "../hooks/useDebounce";
 import { useProductSearchStore } from '../store/useProductSearchStore';
 import AsianPaintsPlainFinishesShowroom from "./AsianPaintsPlainFinishesShowroom";
 import { useWishlistStore } from "../store/useWishlistStore";
+import { exportElementAsImage } from "../lib/exportUtils";
 import { useAuthStore } from "../store/useAuthStore";
 import DeliveryEstimator from "./DeliveryEstimator";
 import { db } from "../lib/firebase";
@@ -400,6 +401,7 @@ const ProductCard = memo(({ product }: { product: any }) => {
 
   return (
     <motion.div
+      id={`product-card-${product.id}`}
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -415,8 +417,8 @@ const ProductCard = memo(({ product }: { product: any }) => {
         </div>
       )}
 
-      {/* Heart Action */}
-      <div className="absolute top-1.5 right-1.5 z-20">
+      {/* Heart & Share Action */}
+      <div className="absolute top-1.5 right-1.5 z-20 flex flex-col gap-1.5">
         <button 
           onClick={handleToggleWishlist}
           className={`p-1.5 rounded-full border bg-white/90 hover:bg-white border-zinc-200 transition-all duration-300 transform hover:scale-110 cursor-pointer flex items-center justify-center select-none ${
@@ -428,6 +430,16 @@ const ProductCard = memo(({ product }: { product: any }) => {
         >
           <Heart className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isWishlisted ? 'fill-current' : ''}`} />
         </button>
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            exportElementAsImage(`product-card-${product.id}`, `rainbowpaint-product-${product.name.replace(/\s+/g, '-')}.png`);
+          }}
+          className="p-1.5 rounded-full border bg-white/90 hover:bg-white border-zinc-200 transition-all duration-300 transform hover:scale-110 cursor-pointer flex items-center justify-center select-none text-zinc-400 hover:text-gold shadow-sm opacity-0 group-hover:opacity-100"
+          title="Share Product"
+        >
+          <Share2 className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+        </button>
       </div>
 
       {/* Image */}
@@ -437,6 +449,8 @@ const ProductCard = memo(({ product }: { product: any }) => {
             src={product.image}
             alt={product.name}
             className="h-full object-contain group-hover:scale-110 transition-transform duration-500"
+            loading="lazy"
+            decoding="async"
           />
         ) : (
           <div className="h-full w-full bg-zinc-100/50 rounded-xl flex flex-col items-center justify-center text-zinc-400">
@@ -590,12 +604,16 @@ export default function ProductsSection({ initialCategory, initialBrand }: { ini
       const list: any[] = [];
       snapshot.forEach(d => list.push({ id: d.id, ...d.data() }));
       setDbProducts(list);
+    }, (error) => {
+      console.warn("Products listener error:", error);
     });
 
     const unsubBrands = onSnapshot(collection(db, 'brands'), (snapshot) => {
       const list: string[] = [];
       snapshot.forEach(d => list.push(d.data().name));
       setDbBrands(list);
+    }, (error) => {
+      console.warn("Brands listener error:", error);
     });
 
     const unsubCategories = onSnapshot(collection(db, 'categories'), (snapshot) => {
@@ -606,6 +624,8 @@ export default function ProductsSection({ initialCategory, initialBrand }: { ini
       });
       // also scrape subcategories from dbProducts to populate the UI realistically
       setDbCategories(Object.keys(catMap).map(k => ({ name: k, subCategories: [] })));
+    }, (error) => {
+      console.warn("Categories listener error:", error);
     });
 
     return () => {
@@ -660,7 +680,7 @@ export default function ProductsSection({ initialCategory, initialBrand }: { ini
     const matchCat =
       activeCategoryFilter === "All Categories" ||
       (activeCategoryFilter.startsWith("All ") && p.topCategory === activeCategoryFilter.replace("All ", "")) ||
-      p.subCategory === activeCategoryFilter;
+      (p.subCategory && p.subCategory.toLowerCase() === activeCategoryFilter.toLowerCase());
     const matchBrand = activeBrand === "All Brands" || p.brand === activeBrand;
     
     // Check if searchQuery is in product name or properties or subCategory

@@ -32,7 +32,7 @@ const slides: Slide[] = [
     subtext: "",
     badge: "",
     actionType: 'route-scroll',
-    target: '/products',
+    target: '/buy-paint-online',
   },
   {
     id: 2,
@@ -200,21 +200,24 @@ export default function AnnouncementBanner() {
       {/* Buying Guide Modal Backdrop & Panel */}
       <AnimatePresence>
         {isModalOpen && (
-          <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
+          <motion.div 
+            key="smart-guide-modal"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[200] flex items-center justify-center p-4"
+          >
             {/* Semi-transparent dark overlay */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+            <div
               onClick={() => setIsModalOpen(false)}
-              className="absolute inset-0 bg-black/75 backdrop-blur-md"
+              className="absolute inset-0 bg-black/75 backdrop-blur-md cursor-pointer"
             />
 
             {/* Smart Guide Modal Content */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 15 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 15 }}
+              initial={{ scale: 0.95, y: 15 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 15 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               className="relative bg-royale-bg border border-gold/20 w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl flex flex-col text-[#0B1021] max-h-[90vh]"
             >
@@ -275,7 +278,7 @@ export default function AnnouncementBanner() {
                         Look through leading brands (Asian Paints, Berger, MRF) and compare finish, washability, coverage & budget.
                       </p>
                       <button 
-                        onClick={() => { setIsModalOpen(false); navigate('/products'); }}
+                        onClick={() => { setIsModalOpen(false); navigate('/buy-paint-online'); }}
                         className="text-[10px] font-bold text-gold inline-flex items-center gap-1 hover:gap-2 transition-all mt-2 cursor-pointer"
                       >
                         Compare Paints <ArrowRight className="w-3 h-3" />
@@ -317,7 +320,7 @@ export default function AnnouncementBanner() {
                       <button 
                         onClick={() => {
                           setIsModalOpen(false);
-                          navigate('/products');
+                          navigate('/buy-paint-online');
                           setTimeout(() => {
                             const el = document.getElementById('sleek-delivery-estimator');
                             if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -377,14 +380,14 @@ export default function AnnouncementBanner() {
                   Ready to transform your home with absolute confidence?
                 </span>
                 <button
-                  onClick={() => { setIsModalOpen(false); navigate('/products'); }}
+                  onClick={() => { setIsModalOpen(false); navigate('/buy-paint-online'); }}
                   className="bg-gradient-to-r from-gold to-[#D4B572] hover:from-[#D4B572] hover:to-gold text-white px-5 py-2 rounded-full text-xs font-semibold shadow-md active:scale-95 transition-all text-center w-full sm:w-auto tracking-wide cursor-pointer"
                 >
                   Start Shopping Step by Step
                 </button>
               </div>
             </motion.div>
-          </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </>

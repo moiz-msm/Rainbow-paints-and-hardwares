@@ -551,10 +551,10 @@ export default function CRMPanel() {
                     Rainbow Paint & Hardwares
                   </p>
                   <p className="text-[10px] text-zinc-500">
-                    Gandhipuram, Coimbatore, Tamil Nadu - 641012
+                    54 Cox Street, Kattoor, Coimbatore, Tamil Nadu - 641009
                   </p>
                   <p className="text-[10px] text-zinc-500">
-                    Contact: +91 80724 42930 | support@rainbowpaints.com
+                    Contact: +91 80724 42930 | rainbow_paint@hotmail.com
                   </p>
                 </div>
                 <div className="text-right">

@@ -60,6 +60,8 @@ export default function ContactSection() {
               <img 
                 src="/store-front.jpg" 
                 alt="Rainbow Paints and Hardwares Store Front" 
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover rounded-xl"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1594904576884-25cb9c0aeb95?q=80&w=2000&auto=format&fit=crop";

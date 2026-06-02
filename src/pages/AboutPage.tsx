@@ -1,9 +1,29 @@
 import React from 'react';
 import { Info } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export default function AboutPage() {
+  const aboutSchema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Rainbow Paints & Hardware",
+      "foundingDate": "2001",
+      "description": "Trusted destination for paints, coatings, hardware, and expert painting solutions in Coimbatore since 2001.",
+      "url": "https://rainbowpaint.in",
+      "logo": "https://rainbowpaint.in/Logo.jpg"
+    }
+  };
+
   return (
-    <div className="pt-24 pb-20 bg-royale-bg min-h-screen">
+    <article className="pt-24 pb-20 bg-royale-bg min-h-screen">
+      <SEO 
+        title="About Us | Rainbow Paints & Hardwares" 
+        description="Learn about Rainbow Paints & Hardwares, Coimbatore's trusted destination for paints and hardware since 2001."
+        url="https://rainbowpaint.in/about"
+        schema={aboutSchema}
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="mb-12">
@@ -67,6 +87,6 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 }

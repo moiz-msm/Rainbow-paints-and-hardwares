@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { shadeService, Shade } from '../services/shadeService';
 import AIPhotoStudio from './AIPhotoStudio';
 import Interactive2DShowroom from './Interactive2DShowroom';
+import { exportElementAsImage } from '../lib/exportUtils';
 import { useWishlistStore } from '../store/useWishlistStore';
 import { useAuthStore } from '../store/useAuthStore';
 
@@ -19,10 +20,14 @@ const ShadeCard = memo(({ shade, onSelect, textColor, isFavorite, onToggleFavori
   isSelected?: boolean
 }) => (
   <div 
+    id={`shade-card-${shade.shadeCode?.replace(/[^a-zA-Z0-9]/g, '-')}`}
     onClick={() => onSelect(shade)}
     className={`group cursor-pointer rounded-lg overflow-hidden transition-all relative h-full flex flex-col bg-[#faf9f6] hover:-translate-y-1 active:scale-[0.97] ${isSelected ? 'border-2 border-gold ring-2 ring-gold/30 shadow-[0_6px_16px_rgba(200,165,100,0.3)] z-10' : 'border border-zinc-200 shadow-sm hover:border-gold/50 hover:shadow-[0_6px_16px_rgba(200,165,100,0.15)]'}`}
   >
-    <div className="flex-grow w-full transition-all relative min-h-[50px] sm:min-h-[70px] lg:min-h-[75px]" style={{ backgroundColor: shade.hex }}>
+    <div 
+      className="flex-grow w-full transition-all relative min-h-[50px] sm:min-h-[70px] lg:min-h-[75px]" 
+      style={{ backgroundColor: shade.hex }}
+    >
         {onToggleFavorite && (
           <button 
             onClick={(e) => {
@@ -37,6 +42,16 @@ const ShadeCard = memo(({ shade, onSelect, textColor, isFavorite, onToggleFavori
             <Heart className={`w-3.5 h-3.5 ${isFavorite ? 'fill-red-500 text-red-500' : 'text-white'}`} />
           </button>
         )}
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            exportElementAsImage(`shade-card-${shade.shadeCode?.replace(/[^a-zA-Z0-9]/g, '-')}`, `rainbowpaint-shade-${shade.name}.png`);
+          }}
+          className="absolute top-1.5 left-1.5 z-20 p-1.5 rounded-full bg-black/20 hover:bg-black/45 text-white transition-all transform hover:scale-110 backdrop-blur-xs select-none cursor-pointer opacity-75 hover:opacity-100"
+          title="Share Shade"
+        >
+          <Share2 className="w-3 h-3" />
+        </button>
     </div>
     <div className="bg-[#faf9f6] p-1.5 sm:p-2.5 text-center flex flex-col justify-center items-center gap-0.5 border-t border-zinc-100 shrink-0">
        <p className="text-[8px] sm:text-[9.5px] md:text-[10px] text-zinc-800 font-bold truncate w-full px-0.5">{shade.name}</p>
@@ -1031,22 +1046,24 @@ export default function VisualizerSection() {
         </div>
 
         {/* Showroom Header with Collapse/Expand action */}
-        <div className="flex items-center justify-between bg-[#faf9f6]/95 border border-zinc-200 p-3 sm:p-4 rounded-2xl shadow-xs mb-6 relative z-10">
+        <div 
+          onClick={() => setIsWorkspaceCollapsed(!isWorkspaceCollapsed)}
+          className="flex items-center justify-between bg-[#faf9f6]/95 border border-zinc-200 p-3 sm:p-4 rounded-2xl shadow-xs mb-6 relative z-10 cursor-pointer hover:bg-zinc-50 transition-colors"
+        >
           <div className="flex items-center gap-2.5">
             <Sparkles className="w-4 h-4 text-gold shrink-0 animate-pulse" />
             <div>
               <h3 className="font-serif text-base sm:text-lg text-zinc-900 flex items-center gap-2 leading-none">
                 {visualizerMode === 'ai' ? 'Custom Shade Visualiser' : '3D Showroom Models'}
               </h3>
-              <p className="text-xs text-zinc-500 mt-1">
+              <p className="text-xs text-zinc-500 mt-1 flex-1">
                 {visualizerMode === 'ai' ? 'Upload a photo of your room or click \'Use Live Camera\' to capture your walls in real time!' : 'Visualize architectural paint pairings in real-time'}
               </p>
             </div>
           </div>
           
           <button
-            onClick={() => setIsWorkspaceCollapsed(!isWorkspaceCollapsed)}
-            className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-[8.5px] sm:text-[10px] font-sans font-semibold uppercase tracking-widest bg-gold text-white hover:bg-gold/90 transition-all flex items-center gap-2 shadow-sm cursor-pointer border border-transparent"
+            className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-[8.5px] sm:text-[10px] font-sans font-semibold uppercase tracking-widest bg-gold text-white hover:bg-gold/90 transition-all flex items-center gap-2 shadow-sm cursor-pointer border border-transparent pointer-events-none"
           >
             {isWorkspaceCollapsed ? (
               <>
@@ -1092,16 +1109,24 @@ export default function VisualizerSection() {
                           </button>
                         ))}
                       </div>
-                      <button 
-                        onClick={handleReset}
-                        className="self-center sm:self-auto px-3.5 py-1.5 font-display font-semibold uppercase tracking-widest text-[9px] sm:text-[10px] rounded-full transition-all border bg-[#faf9f6]/90 border-gold/40 text-gold hover:border-gold hover:bg-gold/5 lg:hover:scale-105 flex items-center gap-1.5 shadow-xs"
-                      >
-                        <RefreshCcw className="w-2.5 h-2.5 text-gold" /> Reset Colors
-                      </button>
+                      <div className="flex items-center gap-2 self-center sm:self-auto">
+                        <button 
+                          onClick={() => exportElementAsImage('interactive-2d-showroom', `rainbowpaint-room-${activeRoom}-${Date.now()}.png`)}
+                          className="px-3.5 py-1.5 font-display font-semibold uppercase tracking-widest text-[9px] sm:text-[10px] rounded-full transition-all border bg-gold/10 border-gold text-gold hover:bg-gold hover:text-white lg:hover:scale-105 flex items-center gap-1.5 shadow-xs"
+                        >
+                          <Share2 className="w-2.5 h-2.5" /> Share
+                        </button>
+                        <button 
+                          onClick={handleReset}
+                          className="px-3.5 py-1.5 font-display font-semibold uppercase tracking-widest text-[9px] sm:text-[10px] rounded-full transition-all border bg-[#faf9f6]/90 border-gold/40 text-gold hover:border-gold hover:bg-gold/5 lg:hover:scale-105 flex items-center gap-1.5 shadow-xs"
+                        >
+                          <RefreshCcw className="w-2.5 h-2.5 text-gold" /> Reset Colors
+                        </button>
+                      </div>
                     </div>
 
                     {/* SVG 2D Interactive Room Showroom */}
-                    <div className="lg:sticky lg:top-[142px] sticky top-[102px] sm:top-[126px] z-30 flex flex-col w-[calc(100%+2rem)] -mx-4 sm:mx-0 sm:w-full glass-panel p-0 rounded-none sm:rounded-2xl border-x-0 sm:border-x border-y sm:border-y border-zinc-200 bg-[#faf9f6]/95 backdrop-blur-xl shadow-lg">
+                    <div id="interactive-2d-showroom" className="lg:sticky lg:top-[142px] sticky top-[102px] sm:top-[126px] z-30 flex flex-col w-[calc(100%+2rem)] -mx-4 sm:mx-0 sm:w-full glass-panel p-0 rounded-none sm:rounded-2xl border-x-0 sm:border-x border-y sm:border-y border-zinc-200 bg-[#faf9f6]/95 backdrop-blur-xl shadow-lg">
                       <Interactive2DShowroom
                         activeRoom={activeRoom}
                         colors={currentRoomColors}
@@ -1112,7 +1137,7 @@ export default function VisualizerSection() {
                     </div>
 
                     {/* Designer Curated Color Schemes Row */}
-                    <div className="bg-[#faf9f6]/90 border border-zinc-200 rounded-2xl p-4 shadow-xs mt-2 relative overflow-hidden">
+                    <div id="ai-color-palettes" className="bg-[#faf9f6]/90 border border-zinc-200 rounded-2xl p-4 shadow-xs mt-2 relative overflow-hidden">
                       <div 
                         onClick={() => setIsAiTheoryCollapsed(!isAiTheoryCollapsed)}
                         className={`flex items-center justify-between gap-2 flex-wrap cursor-pointer group/header select-none ${isAiTheoryCollapsed ? '' : 'border-b border-zinc-150 pb-2.5 mb-3.5'}`}
@@ -1136,6 +1161,15 @@ export default function VisualizerSection() {
                           </div>
                         </div>
                         <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              exportElementAsImage('ai-color-palettes', `rainbowpaint-palettes-${Date.now()}.png`);
+                            }}
+                            className="px-2.5 py-1 text-gold border border-gold/40 hover:bg-gold/10 rounded-lg text-[9px] font-display font-semibold uppercase tracking-wider flex items-center gap-1 transition-all active:scale-95 cursor-pointer shadow-xs"
+                          >
+                            <Share2 className="w-2.5 h-2.5" /> Share
+                          </button>
                           {activeShade && activeShade.hex !== aiSeedShade?.hex && (
                             <button
                               onClick={(e) => {
@@ -1338,8 +1372,8 @@ export default function VisualizerSection() {
                       className="bg-transparent w-full border-none py-1.5 text-xs text-zinc-900 focus:outline-none placeholder:text-zinc-400 font-sans min-w-0"
                     />
                     {sSearch && (
-                      <button onClick={() => setSSearch('')} className="p-1 hover:bg-zinc-100 dark:hover:bg-zinc-100/10 rounded-full transition-colors text-gold hover:text-gold/80 shrink-0">
-                        <X className="w-3 h-3" />
+                      <button onClick={() => setSSearch('')} title="Clear search" aria-label="Clear search" className="p-1 hover:bg-zinc-100 dark:hover:bg-zinc-100/10 rounded-full transition-colors text-gold hover:text-gold/80 shrink-0">
+                        <X aria-hidden="true" className="w-3 h-3" />
                       </button>
                     )}
                   </div>

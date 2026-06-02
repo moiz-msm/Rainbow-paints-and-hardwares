@@ -13,7 +13,9 @@ import {
   Store,
   Bell,
   ShieldUser,
-  BarChart
+  BarChart,
+  Settings,
+  Activity
 } from 'lucide-react';
 import { auth, db } from '../lib/firebase';
 import { signOut } from 'firebase/auth';
@@ -25,11 +27,13 @@ import ProductsAdmin from '../components/admin/ProductsAdmin';
 import CouponsAdmin from '../components/admin/CouponsAdmin';
 import StaffAdmin from '../components/admin/StaffAdmin';
 import AnalyticsAdmin from '../components/admin/AnalyticsAdmin';
-
+import LeadManagementPanel from '../components/admin/LeadManagementPanel';
+import StoreSettingsAdmin from '../components/admin/StoreSettingsAdmin';
+import OperationsAdmin from '../components/admin/OperationsAdmin';
 
 export default function AdminDashboard() {
   const { user, role, loading } = useAuthStore();
-  const [activeTab, setActiveTab] = useState<'overview' | 'analytics' | 'orders' | 'users' | 'products' | 'coupons' | 'staff'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'analytics' | 'orders' | 'leads' | 'users' | 'products' | 'coupons' | 'staff' | 'settings' | 'operations'>('overview');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [pendingOrdersCount, setPendingOrdersCount] = useState(0);
   const [allowedTabs, setAllowedTabs] = useState<string[]>([]);
@@ -46,7 +50,7 @@ export default function AdminDashboard() {
     // Fetch role configuration
     const unsubRoles = onSnapshot(doc(db, 'system', 'rolesConfig'), (docSnapshot) => {
       if (role === 'owner' || role === 'admin') {
-        const fullAccess = ['overview', 'analytics', 'orders', 'users', 'products', 'coupons', 'staff'];
+        const fullAccess = ['overview', 'analytics', 'orders', 'leads', 'users', 'products', 'coupons', 'staff', 'settings', 'operations'];
         setAllowedTabs(fullAccess);
         if (!fullAccess.includes(activeTab)) setActiveTab('overview');
       } else {
@@ -93,10 +97,13 @@ export default function AdminDashboard() {
     { id: 'overview', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'analytics', label: 'Analytics', icon: BarChart },
     { id: 'orders', label: 'Orders', icon: ShoppingBag, badge: pendingOrdersCount },
-    { id: 'users', label: 'Customers', icon: Users },
+    { id: 'leads', label: 'Lead Management', icon: Users },
+    { id: 'users', label: 'Customers', icon: ShieldUser },
     { id: 'products', label: 'Inventory', icon: Package },
     { id: 'coupons', label: 'Promotions', icon: Ticket },
-    { id: 'staff', label: 'Staff Configuration', icon: ShieldUser }
+    { id: 'staff', label: 'Staff Configuration', icon: ShieldUser },
+    { id: 'settings', label: 'Store Settings', icon: Settings },
+    { id: 'operations', label: 'Store Operations', icon: Activity }
   ];
 
   const navItems = allNavItems.filter(item => allowedTabs.includes(item.id));
@@ -109,10 +116,13 @@ export default function AdminDashboard() {
       case 'overview': return <StatsAdmin />;
       case 'analytics': return <AnalyticsAdmin />;
       case 'orders': return <OrdersAdmin />;
+      case 'leads': return <LeadManagementPanel />;
       case 'users': return <UsersAdmin />;
       case 'products': return <ProductsAdmin />;
       case 'coupons': return <CouponsAdmin />;
       case 'staff': return <StaffAdmin />;
+      case 'settings': return <StoreSettingsAdmin />;
+      case 'operations': return <OperationsAdmin />;
       default: return <StatsAdmin />;
     }
   };

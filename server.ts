@@ -1,4 +1,5 @@
 import express from "express";
+import compression from "compression";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
@@ -22,6 +23,9 @@ function getAI(): GoogleGenAI {
 async function startServer() {
   const app = express();
   const PORT = 3000;
+
+  // Compress all responses for better SEO/performance
+  app.use(compression());
 
   app.use(express.json());
 
@@ -50,10 +54,16 @@ Style: Concise (max 2 sentences). Direct to tools/sections only when relevant.`;
 
       res.json({ text: response.text });
     } catch (error: any) {
-      console.error("Gemini Error:", error);
+      const errorMsg = error?.message || String(error);
+      const isQuota = error?.status === 429 || errorMsg.toLowerCase().includes("quota") || errorMsg.toLowerCase().includes("429");
       
-      // Check for quota/rate limit errors
-      if (error?.status === 429 || error?.message?.includes("quota") || error?.message?.includes("429")) {
+      if (!isQuota) {
+        console.error("Gemini Error:", error);
+      } else {
+        console.warn("Gemini Quota Exceeded (Chat). Returning limited capacity.");
+      }
+      
+      if (isQuota) {
         return res.status(429).json({ error: "QUOTA_EXCEEDED" });
       }
 
@@ -163,13 +173,18 @@ Please output a valid JSON object matching this structure exactly:
       const parsed = JSON.parse(response.text || "{}");
       res.json(parsed);
     } catch (error: any) {
-      console.error("Gemini Palette Error:", error);
       const errorMsg = error?.message || String(error);
       const isQuota = errorMsg.toLowerCase().includes("quota") || 
                       errorMsg.toLowerCase().includes("limit") || 
                       errorMsg.toLowerCase().includes("429") || 
                       error?.status === "RESOURCE_EXHAUSTED" || 
                       error?.code === 429;
+                      
+      if (!isQuota) {
+        console.error("Gemini Palette Error:", error);
+      } else {
+        console.warn("Gemini Palette Quota Exceeded. Switched to mathematical fallback.");
+      }
       
       res.json({
         status: "fallback",
@@ -562,8 +577,15 @@ Please output a valid JSON object matching this structure exactly:
 
       res.json({ status: "success", advice: response.text });
     } catch (error: any) {
-      console.error("Paint weather consult failed:", error);
-      res.status(500).json({ error: "Consultation helper error" });
+      const errorMsg = error?.message || String(error);
+      const isQuota = error?.status === 429 || errorMsg.toLowerCase().includes("quota") || errorMsg.toLowerCase().includes("429");
+      
+      if (!isQuota) {
+        console.error("Paint weather consult failed:", error);
+      } else {
+        console.warn("Paint weather consult Quota Exceeded. Failed gracefully.");
+      }
+      res.status(isQuota ? 429 : 500).json({ error: "Consultation helper error" });
     }
   });
 
@@ -610,15 +632,15 @@ Please output a valid JSON object matching this structure exactly:
 
         const itemsListHtml = orderDetails?.items?.map((it: any) => `
           <tr>
-            <td style="padding: 16px 0; border-bottom: 1px solid #27272a;">
-              <span style="color: #f4f4f5; font-size: 14px; font-weight: 500; display: block; margin-bottom: 4px;">${it.name || 'Premium Paint Paint'}</span>
-              ${it.size ? `<span style="color: #a1a1aa; font-size: 12px; display: block;">Size: ${it.size}</span>` : ''}
-              <span style="color: #a1a1aa; font-size: 12px;">₹${it.unitPrice.toLocaleString('en-IN')} each</span>
+            <td style="padding: 16px 0; border-bottom: 1px solid #e4e4e7;">
+              <span style="color: #18181b; font-size: 14px; font-weight: 500; display: block; margin-bottom: 4px;">${it.name || 'Premium Paint Paint'}</span>
+              ${it.size ? `<span style="color: #71717a; font-size: 12px; display: block;">Size: ${it.size}</span>` : ''}
+              <span style="color: #71717a; font-size: 12px;">₹${it.unitPrice.toLocaleString('en-IN')} each</span>
             </td>
-            <td style="padding: 16px 0; border-bottom: 1px solid #27272a; color: #d4d4d8; font-size: 14px; text-align: center;">
+            <td style="padding: 16px 0; border-bottom: 1px solid #e4e4e7; color: #52525b; font-size: 14px; text-align: center;">
               ${it.quantity}
             </td>
-            <td style="padding: 16px 0; border-bottom: 1px solid #27272a; color: #f4f4f5; font-size: 14px; text-align: right; font-weight: 500;">
+            <td style="padding: 16px 0; border-bottom: 1px solid #e4e4e7; color: #18181b; font-size: 14px; text-align: right; font-weight: 500;">
               ₹${(it.unitPrice * it.quantity).toLocaleString('en-IN')}
             </td>
           </tr>
@@ -627,31 +649,31 @@ Please output a valid JSON object matching this structure exactly:
         const customerEmail = orderDetails?.shippingAddress?.email || 'customer@rainbowpaints.com';
 
         const paymentSuccessHtml = `
-          <div style="font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #27272a; border-radius: 4px; overflow: hidden; background-color: #09090b; box-shadow: 0 4px 12px rgba(0,0,0,0.5);">
-            <div style="background-color: #000000; padding: 40px 32px; text-align: center; border-bottom: 2px solid #d4af37;">
+          <div style="font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e4e4e7; border-radius: 8px; overflow: hidden; background-color: #faf9f6; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+            <div style="background-color: #ffffff; padding: 40px 32px; text-align: center; border-bottom: 2px solid #d4af37;">
               <span style="font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #d4af37; font-weight: 500; display: block; margin-bottom: 12px;">Rainbow Paints Coimbatore</span>
-              <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: 300; letter-spacing: 1px;">Thank You For Your Order</h1>
+              <h1 style="color: #18181b; margin: 0; font-size: 24px; font-weight: 600; letter-spacing: 1px;">Thank You For Your Order</h1>
             </div>
             
             <div style="padding: 40px 32px;">
-              <p style="color: #d4d4d8; font-size: 15px; line-height: 1.6; margin-top: 0; font-weight: 300;">
+              <p style="color: #52525b; font-size: 15px; line-height: 1.6; margin-top: 0; font-weight: 400;">
                 Dear ${orderDetails?.shippingAddress?.name || 'Customer'},
               </p>
-              <p style="color: #d4d4d8; font-size: 15px; line-height: 1.6; font-weight: 300;">
+              <p style="color: #52525b; font-size: 15px; line-height: 1.6; font-weight: 400;">
                 We are preparing your premium paints for delivery. Your order is confirmed and currently being processed at our Coimbatore warehouse.
               </p>
 
               <div style="margin: 32px 0; text-align: center;">
-                <a href="${APP_URL}/order/${orderId}" style="display: inline-block; background-color: #d4af37; color: #000000; text-decoration: none; padding: 14px 28px; font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; border-radius: 2px;">Track Your Order</a>
+                <a href="${APP_URL}/track-order?id=${orderId}" style="display: inline-block; background-color: #d4af37; color: #ffffff; text-decoration: none; padding: 14px 28px; font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; border-radius: 4px;">Track Your Order</a>
               </div>
               
-              <h3 style="color: #ffffff; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin: 32px 0 16px 0; font-weight: 500; border-bottom: 1px solid #27272a; padding-bottom: 8px;">Official Tax Invoice</h3>
+              <h3 style="color: #18181b; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin: 32px 0 16px 0; font-weight: 600; border-bottom: 1px solid #e4e4e7; padding-bottom: 8px;">Official Tax Invoice</h3>
               <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px;">
                 <thead>
                   <tr>
-                    <th style="padding: 12px 0; text-align: left; color: #a1a1aa; font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #27272a;">Product Detail</th>
-                    <th style="padding: 12px 0; text-align: center; color: #a1a1aa; font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #27272a;">Qty</th>
-                    <th style="padding: 12px 0; text-align: right; color: #a1a1aa; font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #27272a;">Subtotal</th>
+                    <th style="padding: 12px 0; text-align: left; color: #71717a; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #e4e4e7;">Product Detail</th>
+                    <th style="padding: 12px 0; text-align: center; color: #71717a; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #e4e4e7;">Qty</th>
+                    <th style="padding: 12px 0; text-align: right; color: #71717a; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #e4e4e7;">Subtotal</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -659,45 +681,45 @@ Please output a valid JSON object matching this structure exactly:
                 </tbody>
               </table>
 
-              <div style="background-color: #18181b; padding: 24px; border-radius: 4px;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; color: #a1a1aa;">
+              <div style="background-color: #ffffff; padding: 24px; border-radius: 8px; border: 1px solid #e4e4e7;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; color: #71717a;">
                   <span>Subtotal</span>
                   <span style="float: right;">₹${(orderDetails?.subtotal || 0).toLocaleString('en-IN')}</span>
                   <div style="clear: both;"></div>
                 </div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; color: #a1a1aa;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; color: #71717a;">
                   <span>GST (18% inclusive)</span>
                   <span style="float: right;">₹${(orderDetails?.gst || 0).toLocaleString('en-IN')}</span>
                   <div style="clear: both;"></div>
                 </div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 13px; color: #a1a1aa;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 13px; color: #71717a;">
                   <span>Delivery</span>
                   <span style="float: right;">₹${(orderDetails?.deliveryFee || 0).toLocaleString('en-IN')}</span>
                   <div style="clear: both;"></div>
                 </div>
-                <div style="display: flex; justify-content: space-between; font-size: 16px; color: #ffffff; font-weight: 500; border-top: 1px solid #27272a; padding-top: 16px;">
+                <div style="display: flex; justify-content: space-between; font-size: 16px; color: #18181b; font-weight: 600; border-top: 1px solid #e4e4e7; padding-top: 16px;">
                   <span>Total Paid</span>
                   <span style="float: right; color: #d4af37;">₹${(orderDetails?.total || 0).toLocaleString('en-IN')}</span>
                   <div style="clear: both;"></div>
                 </div>
               </div>
 
-              <h3 style="color: #ffffff; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin: 32px 0 16px 0; font-weight: 500; border-bottom: 1px solid #27272a; padding-bottom: 8px;">Shipping Destination</h3>
-              <div style="border: 1px solid #27272a; padding: 16px; border-radius: 4px; font-size: 13px; color: #d4d4d8; line-height: 1.6;">
-                <strong style="color: #ffffff;">${orderDetails?.shippingAddress?.name}</strong><br />
+              <h3 style="color: #18181b; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin: 32px 0 16px 0; font-weight: 600; border-bottom: 1px solid #e4e4e7; padding-bottom: 8px;">Shipping Destination</h3>
+              <div style="border: 1px solid #e4e4e7; padding: 16px; border-radius: 8px; font-size: 13px; color: #52525b; line-height: 1.6; background-color: #ffffff;">
+                <strong style="color: #18181b;">${orderDetails?.shippingAddress?.name}</strong><br />
                 ${orderDetails?.shippingAddress?.line1}<br />
-                ${orderDetails?.shippingAddress?.city}, ${orderDetails?.shippingAddress?.state} - <strong style="color: #ffffff;">${orderDetails?.shippingAddress?.pincode}</strong><br />
+                ${orderDetails?.shippingAddress?.city}, ${orderDetails?.shippingAddress?.state} - <strong style="color: #18181b;">${orderDetails?.shippingAddress?.pincode}</strong><br />
                 Contact: ${orderDetails?.shippingAddress?.phone}
               </div>
 
               <div style="margin-top: 32px; text-align: center;">
                 <p style="color: #71717a; font-size: 11px; margin-bottom: 0;">
-                  Need assistance? Call Coimbatore Store Direct at +91 422 2561932.
+                  Need assistance? Call Coimbatore Store Direct at +91 8072442930.
                 </p>
               </div>
             </div>
             
-            <div style="background-color: #000000; padding: 24px 32px; border-top: 1px solid #27272a; text-align: center;">
+            <div style="background-color: #ffffff; padding: 24px 32px; border-top: 1px solid #e4e4e7; text-align: center;">
               <p style="color: #71717a; font-size: 10px; margin: 0; text-transform: uppercase; letter-spacing: 2px;">
                 Authorized Premium Distributors • Coimbatore
               </p>
@@ -741,7 +763,11 @@ Please output a valid JSON object matching this structure exactly:
     app.use(vite.middlewares);
   } else {
     const distPath = path.join(process.cwd(), 'dist');
-    app.use(express.static(distPath));
+    app.use(express.static(distPath, {
+      maxAge: '1y',
+      etag: true,
+      lastModified: true
+    }));
     app.get('*', (req, res) => {
       res.sendFile(path.join(distPath, 'index.html'));
     });
