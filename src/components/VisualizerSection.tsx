@@ -94,7 +94,8 @@ const SURF_LABELS: Record<string, string> = {
 const BRANDS = [
   { id: 'all', label: 'All' },
   { id: 'asian', label: 'Asian Paints' },
-  { id: 'berger', label: 'Berger Paints' }
+  { id: 'berger', label: 'Berger Paints' },
+  { id: 'mrf', label: 'MRF Vapocure' }
 ];
 
 const FAMILIES = [
@@ -1077,11 +1078,11 @@ export default function VisualizerSection() {
           </button>
         </div>
 
-        <div id="visualizer-container" className="flex flex-col lg:grid lg:grid-cols-12 gap-5 lg:gap-6 lg:items-start relative w-full">
+        <div id="visualizer-container" className="flex flex-col gap-5 lg:gap-6 lg:items-start relative w-full">
           
           {/* Workspace Area: 3D Rooms OR AI Space (Collapsible) */}
           {!isWorkspaceCollapsed && (
-            <div className="transition-all duration-500 ease-in-out flex flex-col gap-4 lg:col-span-8">
+            <div className="transition-all duration-500 ease-in-out flex flex-col gap-4 w-full">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -1136,208 +1137,6 @@ export default function VisualizerSection() {
                       />
                     </div>
 
-                    {/* Designer Curated Color Schemes Row */}
-                    <div id="ai-color-palettes" className="bg-[#faf9f6]/90 border border-zinc-200 rounded-2xl p-4 shadow-xs mt-2 relative overflow-hidden">
-                      <div 
-                        onClick={() => setIsAiTheoryCollapsed(!isAiTheoryCollapsed)}
-                        className={`flex items-center justify-between gap-2 flex-wrap cursor-pointer group/header select-none ${isAiTheoryCollapsed ? '' : 'border-b border-zinc-150 pb-2.5 mb-3.5'}`}
-                      >
-                        <div className="flex items-center gap-2">
-                          <Palette className="w-4 h-4 text-gold shrink-0" />
-                          <div>
-                            <h4 className="font-serif text-[13px] font-bold text-zinc-900 leading-none flex items-center gap-1.5 group-hover/header:text-gold transition-colors">
-                              AI Color Theory Harmonies
-                              <ChevronDown className={`w-3.5 h-3.5 text-zinc-400 transition-transform duration-300 ${isAiTheoryCollapsed ? '' : 'rotate-180'}`} />
-                            </h4>
-                            <div className="flex items-center gap-1.5 flex-wrap mt-1">
-                              <p className="text-[10px] text-zinc-400 font-sans leading-none">Dynamic combinations from our catalog.</p>
-                              {aiSeedShade && (
-                                <span className="inline-flex items-center gap-1 text-[9px] bg-gold/10 text-zinc-700 font-medium px-2 py-0.5 rounded-full border border-gold/20 leading-none">
-                                  <span className="w-1.5 h-1.5 rounded-full inline-block shrink-0 animate-ping duration-1000" style={{ backgroundColor: aiSeedShade.hex }} />
-                                  Anchor: <strong className="text-gold font-bold">{aiSeedShade.name}</strong>
-                                </span>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
-                          <button 
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              exportElementAsImage('ai-color-palettes', `rainbowpaint-palettes-${Date.now()}.png`);
-                            }}
-                            className="px-2.5 py-1 text-gold border border-gold/40 hover:bg-gold/10 rounded-lg text-[9px] font-display font-semibold uppercase tracking-wider flex items-center gap-1 transition-all active:scale-95 cursor-pointer shadow-xs"
-                          >
-                            <Share2 className="w-2.5 h-2.5" /> Share
-                          </button>
-                          {activeShade && activeShade.hex !== aiSeedShade?.hex && (
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                setAiSeedShade(activeShade);
-                              }}
-                              className="px-2.5 py-1 bg-gold hover:bg-gold/90 text-white border border-gold rounded-lg text-[9px] font-display font-semibold uppercase tracking-wider flex items-center gap-1 transition-all active:scale-95 cursor-pointer shadow-xs"
-                              title={`Regenerate theory combinations centered on ${activeShade.name}`}
-                            >
-                              <Sparkles className="w-2.5 h-2.5 text-white shrink-0" /> Focus AI on {activeShade.name}
-                            </button>
-                          )}
-                          {isAiLoading && (
-                            <div className="flex items-center gap-1.5 bg-gold/10 px-2 py-0.5 rounded-full border border-gold/20 animate-pulse shrink-0">
-                              <Sparkles className="w-2.5 h-2.5 text-gold" />
-                              <span className="text-[8px] font-mono tracking-wider font-semibold uppercase text-gold font-bold">Gemini...</span>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                      
-                      {!isAiTheoryCollapsed && (
-                        <div className={`grid grid-cols-1 md:grid-cols-4 gap-3 transition-opacity duration-300 ${isAiLoading ? 'opacity-65 pointer-events-none' : ''}`}>
-                        {resolvedPresets.map((preset, idx) => (
-                          <div
-                            key={idx}
-                            onClick={() => applyCuratedPreset(preset.colors, preset.resolvedShades)}
-                            className={`p-3 text-left border rounded-xl shadow-xs group cursor-pointer flex flex-col justify-between transition-all ${
-                              preset.style === 'custom'
-                                ? 'border-[#dfd6c0] bg-[#faf9f6] ring-1 ring-gold/20 hover:border-gold/75 hover:bg-white shadow-[0_4px_12px_rgba(200,165,100,0.06)]'
-                                : 'border-zinc-250 bg-white/50 hover:bg-white hover:border-gold/50'
-                            }`}
-                          >
-                            <div className="w-full">
-                              <h5 className="font-serif text-xs font-bold text-zinc-900 mb-1 group-hover:text-gold transition-colors flex items-center justify-between gap-1.5 w-full">
-                                <span className="truncate">{preset.name}</span>
-                                {preset.style === 'custom' && (
-                                  <span className="shrink-0 text-[7.5px] uppercase font-bold tracking-wider font-display text-gold bg-gold/10 px-1.5 py-0.5 rounded-full flex items-center gap-1">
-                                    <Sparkles className="w-2.5 h-2.5" /> Live
-                                  </span>
-                                )}
-                              </h5>
-                              <p className="text-[9.5px] text-zinc-500 leading-snug mb-3.5 h-[28px] overflow-hidden">{preset.desc}</p>
-                            </div>
-                            
-                            <div className="w-full">
-                              <div className="flex h-4 w-full rounded overflow-hidden border border-zinc-200 shadow-3xs">
-                                {Object.entries(preset.colors).map(([surf, color]) => {
-                                  const matchedShade = preset.resolvedShades[surf];
-                                  const tooltipText = matchedShade
-                                    ? `${matchedShade.brand}: ${matchedShade.name} (${matchedShade.shadeCode})`
-                                    : `${surf}: ${color}`;
-                                  return (
-                                    <div 
-                                      key={surf} 
-                                      className="flex-grow h-full" 
-                                      style={{ backgroundColor: color }}
-                                      title={tooltipText}
-                                    />
-                                  );
-                                })}
-                              </div>
-
-                              <div className="mt-3 pt-2.5 border-t border-zinc-150">
-                                <span className="block text-[8px] font-mono text-zinc-400 uppercase tracking-widest mb-1.5 text-center">
-                                  Select color to preview
-                                </span>
-                                <div className="grid grid-cols-5 gap-1.5">
-                                  {Object.entries(preset.colors).map(([surf, color]) => {
-                                    const matchedShade = preset.resolvedShades[surf];
-                                    const label = SURF_LABELS[surf] || surf;
-                                    const shade: Shade = matchedShade || {
-                                      id: `temp-${surf}-${color}`,
-                                      name: label,
-                                      shadeCode: color,
-                                      hex: color,
-                                      rgb: '',
-                                      brand: 'Default',
-                                      category: 'Theme',
-                                      finish: 'Matte',
-                                      popular: false,
-                                      family: 'Neutral'
-                                    };
-                                    
-                                    const isCurrentActive = activeShade?.hex.toLowerCase() === shade.hex.toLowerCase();
-                                    
-                                    return (
-                                      <div
-                                        key={surf}
-                                        onClick={(e) => {
-                                          e.stopPropagation();
-                                          handleShadeSelect(shade);
-                                        }}
-                                        className={`aspect-[3/4] rounded-lg border flex flex-col bg-[#faf9f6] relative overflow-hidden group/item cursor-pointer transition-all hover:-translate-y-0.5 active:scale-95 ${
-                                          isCurrentActive 
-                                            ? 'border-gold ring-1 ring-gold/30 shadow-[0_2px_6px_rgba(200,165,100,0.15)] z-10 scale-[1.03]' 
-                                            : 'border-zinc-200 shadow-3xs hover:border-gold/30 hover:shadow-[0_2px_4px_rgba(200,165,100,0.08)]'
-                                        }`}
-                                        title={`Apply ${label}: ${shade.name} (${shade.shadeCode}) to clipboard`}
-                                      >
-                                        <div 
-                                          className="flex-grow w-full transition-transform group-hover/item:scale-105" 
-                                          style={{ backgroundColor: color }}
-                                        />
-                                        <div className="bg-[#faf9f6]/90 p-0.5 text-center flex flex-col justify-center items-center h-[18px] border-t border-zinc-100 shrink-0 select-none overflow-hidden">
-                                          <span className="text-[5.5px] text-zinc-850 font-bold leading-tight truncate w-full px-0.5">
-                                            {shade.shadeCode}
-                                          </span>
-                                        </div>
-                                      </div>
-                                    );
-                                  })}
-                                </div>
-                              </div>
-
-                              {/* Save Palette & Share Action Footer */}
-                              <div className="mt-3 pt-2 border-t border-zinc-150 flex items-center justify-between gap-1.5 relative w-full leading-none">
-                                <span className="text-[8.5px] font-sans font-bold text-zinc-500 uppercase tracking-wider group-hover:text-gold transition-colors">
-                                  Apply Palette
-                                </span>
-                                
-                                <div className="flex items-center gap-1.5 z-20">
-                                  {/* Wishlist toggle button */}
-                                  {(() => {
-                                    const isPresetWishlisted = wishlistItems.some(item => 
-                                      item.type === 'combination' && 
-                                      item.name === preset.name
-                                    );
-                                    return (
-                                      <button
-                                        type="button"
-                                        onClick={(e) => handleTogglePresetWishlist(e, preset)}
-                                        className={`p-1 rounded-md border transition-all hover:scale-105 active:scale-95 cursor-pointer ${
-                                          isPresetWishlisted 
-                                            ? 'bg-red-50 border-red-200 text-red-500' 
-                                            : 'bg-white border-zinc-200 text-zinc-400 hover:text-red-500 hover:border-red-100'
-                                        }`}
-                                        title={isPresetWishlisted ? "Remove palette from wishlist" : "Save palette to wishlist"}
-                                      >
-                                        <Heart className={`w-3 h-3 ${isPresetWishlisted ? 'fill-current' : ''}`} />
-                                      </button>
-                                    );
-                                  })()}
-
-                                  {/* Share button */}
-                                  <button
-                                    type="button"
-                                    onClick={(e) => handleSharePalette(e, preset, idx)}
-                                    className="p-1 rounded-md border bg-white border-zinc-200 text-zinc-400 hover:text-gold hover:border-gold/30 hover:bg-gold/5 transition-all hover:scale-105 active:scale-95 cursor-pointer"
-                                    title="Share palette link"
-                                  >
-                                    <Share2 className="w-3 h-3" />
-                                  </button>
-                                </div>
-
-                                {/* Live Link Copied Tooltip */}
-                                {sharedPresetIdx === idx && (
-                                  <div className="absolute right-0 -top-7 bg-zinc-950 text-white text-[8px] font-medium px-2 py-0.5 rounded shadow-lg border border-zinc-800 animate-bounce tracking-wide z-30">
-                                    Link Copied!
-                                  </div>
-                                )}
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                      )}
-                    </div>
                   </>
                 )}
               </motion.div>
@@ -1345,118 +1144,14 @@ export default function VisualizerSection() {
           )}
 
           {/* Controls Area / Sidebar Panel */}
-          <div className={`transition-all duration-500 ease-in-out w-[calc(100%+2rem)] -mx-4 sm:mx-0 sm:w-full glass-panel rounded-none sm:rounded-2xl border-x-0 sm:border-x border-y sm:border-y border-zinc-200 bg-[#faf9f6]/95 backdrop-blur-xl flex flex-col shadow-lg h-full ${
-            isWorkspaceCollapsed ? 'lg:col-span-12' : 'lg:col-span-4'
-          }`}>
+          <div className="transition-all duration-500 ease-in-out w-[calc(100%+2rem)] -mx-4 sm:mx-0 sm:w-full glass-panel rounded-none sm:rounded-2xl border-x-0 sm:border-x border-y sm:border-y border-zinc-200 bg-[#faf9f6]/95 backdrop-blur-xl flex flex-col shadow-lg h-full">
             
 
 
 
 
-            {/* Colour Comparison & Filters Dashboard */}
+            {/* Colour Comparison Dashboard */}
             <div className="border-b border-zinc-200/50 flex flex-col gap-3.5 p-3.5 shrink-0">
-              
-              {/* Filters Block */}
-              <div className="flex flex-col gap-2 pb-1">
-                <span className="text-[8px] font-display font-semibold uppercase tracking-[0.2em] text-gold block">Filter Catalog</span>
-                
-                {/* Search Bar */}
-                <div className="relative">
-                  <div className="flex items-center gap-2 bg-white border border-zinc-200 shadow-3xs rounded-lg px-2.5 h-[32px] transition-all focus-within:border-gold/50 focus-within:ring-1 focus-within:ring-gold/15">
-                    <Search className="w-3.5 h-3.5 text-gold shrink-0" />
-                    <input 
-                      type="text" 
-                      placeholder="Search shade by name or code" 
-                      value={sSearch}
-                      onChange={e => setSSearch(e.target.value)}
-                      className="bg-transparent w-full border-none py-1.5 text-xs text-zinc-900 focus:outline-none placeholder:text-zinc-400 font-sans min-w-0"
-                    />
-                    {sSearch && (
-                      <button onClick={() => setSSearch('')} title="Clear search" aria-label="Clear search" className="p-1 hover:bg-zinc-100 dark:hover:bg-zinc-100/10 rounded-full transition-colors text-gold hover:text-gold/80 shrink-0">
-                        <X aria-hidden="true" className="w-3 h-3" />
-                      </button>
-                    )}
-                  </div>
-                </div>
-
-                {/* Brand & Family Dropdowns */}
-                <div className="grid grid-cols-2 gap-2">
-                  <div className="relative" ref={brandRef}>
-                    <button
-                      type="button"
-                      onClick={() => setIsBrandOpen(!isBrandOpen)}
-                      className="bg-[#faf9f6]/95 border border-zinc-200 hover:bg-zinc-50 transition-all rounded-lg py-1 px-2.5 text-[10px] font-display font-semibold text-zinc-800 outline-none shadow-sm w-full text-left flex items-center justify-between gap-1 group h-[32px]"
-                    >
-                      <span className="truncate">
-                        <span className="text-zinc-500 font-normal mr-1">Brand:</span>
-                        {sBrand === 'all' ? 'All' : (BRANDS.find(b => b.id === sBrand)?.label || sBrand)}
-                      </span>
-                      <ChevronDown className={`w-3.5 h-3.5 text-gold transition-transform duration-300 ${isBrandOpen ? 'rotate-180' : ''}`} />
-                    </button>
-                    <AnimatePresence>
-                      {isBrandOpen && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                          animate={{ opacity: 1, y: 0, scale: 1 }}
-                          exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                          transition={{ duration: 0.2 }}
-                          className="absolute top-[calc(100%+4px)] left-0 w-[180px] bg-[#faf9f6]/95 backdrop-blur-xl border border-zinc-200 shadow-xl rounded-xl p-2 z-[100] max-h-[220px] overflow-y-auto custom-scrollbar"
-                        >
-                          <div className="flex flex-col gap-0.5">
-                            {BRANDS.map(b => (
-                              <button
-                                key={b.id}
-                                onClick={() => { setSBrand(b.id); setIsBrandOpen(false); }}
-                                className={`text-left px-2 .5 py-1.5 rounded-md text-xs font-medium transition-all duration-300 ${sBrand === b.id ? 'bg-zinc-100 text-zinc-900 font-bold' : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900'}`}
-                              >
-                                {b.id === 'all' ? 'All Brands' : b.label}
-                              </button>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-
-                  <div className="relative" ref={familyRef}>
-                    <button
-                      type="button"
-                      onClick={() => setIsFamilyOpen(!isFamilyOpen)}
-                      className="bg-[#faf9f6]/95 border border-zinc-200 hover:bg-zinc-50 transition-all rounded-lg py-1 px-2.5 text-[10px] font-display font-semibold text-zinc-800 outline-none shadow-sm w-full text-left flex items-center justify-between gap-1 group capitalize h-[32px]"
-                    >
-                      <span className="truncate">
-                        <span className="text-zinc-500 font-normal mr-1">Family:</span>
-                        {sFamily === 'all' ? 'All' : sFamily}
-                      </span>
-                      <ChevronDown className={`w-3.5 h-3.5 text-gold transition-transform duration-300 ${isFamilyOpen ? 'rotate-180' : ''}`} />
-                    </button>
-                    <AnimatePresence>
-                      {isFamilyOpen && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                          animate={{ opacity: 1, y: 0, scale: 1 }}
-                          exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                          transition={{ duration: 0.2 }}
-                          className="absolute top-[calc(100%+4px)] right-0 w-[180px] bg-[#faf9f6]/95 backdrop-blur-xl border border-zinc-200 shadow-xl rounded-xl p-2 z-[100] max-h-[220px] overflow-y-auto custom-scrollbar"
-                        >
-                          <div className="flex flex-col gap-0.5">
-                            {FAMILIES.map(f => (
-                              <button
-                                key={f}
-                                onClick={() => { setSFamily(f); setIsFamilyOpen(false); }}
-                                className={`text-left px-2 py-1.5 rounded-md text-xs font-medium capitalize transition-all duration-300 ${sFamily === f ? 'bg-zinc-100 text-zinc-900 font-bold' : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900'}`}
-                              >
-                                {f === 'all' ? 'All Families' : f}
-                              </button>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                </div>
-
-              </div>
               
               {/* Selected Shade Preview */}
               <div className="relative shrink-0 pt-1">
@@ -1659,6 +1354,209 @@ export default function VisualizerSection() {
                   </div>
                 )}
               </div>
+            </div>
+
+            {/* Designer Curated Color Schemes Row */}
+            <div id="ai-color-palettes" className="bg-[#faf9f6]/90 border border-zinc-200 rounded-2xl p-4 shadow-xs mt-2 relative overflow-hidden">
+              <div 
+                onClick={() => setIsAiTheoryCollapsed(!isAiTheoryCollapsed)}
+                className={`flex items-center justify-between gap-2 flex-wrap cursor-pointer group/header select-none ${isAiTheoryCollapsed ? '' : 'border-b border-zinc-150 pb-2.5 mb-3.5'}`}
+              >
+                <div className="flex items-center gap-2">
+                  <Palette className="w-4 h-4 text-gold shrink-0" />
+                  <div>
+                    <h4 className="font-serif text-[13px] font-bold text-zinc-900 leading-none flex items-center gap-1.5 group-hover/header:text-gold transition-colors">
+                      AI Color Theory Harmonies
+                      <ChevronDown className={`w-3.5 h-3.5 text-zinc-400 transition-transform duration-300 ${isAiTheoryCollapsed ? '' : 'rotate-180'}`} />
+                    </h4>
+                    <div className="flex items-center gap-1.5 flex-wrap mt-1">
+                      <p className="text-[10px] text-zinc-400 font-sans leading-none">Dynamic combinations from our catalog.</p>
+                      {aiSeedShade && (
+                        <span className="inline-flex items-center gap-1 text-[9px] bg-gold/10 text-zinc-700 font-medium px-2 py-0.5 rounded-full border border-gold/20 leading-none">
+                          <span className="w-1.5 h-1.5 rounded-full inline-block shrink-0 animate-ping duration-1000" style={{ backgroundColor: aiSeedShade.hex }} />
+                          Anchor: <strong className="text-gold font-bold">{aiSeedShade.name}</strong>
+                        </span>
+                      )}
+                    </div>
+                </div>
+              </div>
+              <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    exportElementAsImage('ai-color-palettes', `rainbowpaint-palettes-${Date.now()}.png`);
+                  }}
+                  className="px-2.5 py-1 text-gold border border-gold/40 hover:bg-gold/10 rounded-lg text-[9px] font-display font-semibold uppercase tracking-wider flex items-center gap-1 transition-all active:scale-95 cursor-pointer shadow-xs"
+                >
+                  <Share2 className="w-2.5 h-2.5" /> Share
+                </button>
+                {activeShade && activeShade.hex !== aiSeedShade?.hex && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setAiSeedShade(activeShade);
+                    }}
+                    className="px-2.5 py-1 bg-gold hover:bg-gold/90 text-white border border-gold rounded-lg text-[9px] font-display font-semibold uppercase tracking-wider flex items-center gap-1 transition-all active:scale-95 cursor-pointer shadow-xs"
+                    title={`Regenerate theory combinations centered on ${activeShade.name}`}
+                  >
+                    <Sparkles className="w-2.5 h-2.5 text-white shrink-0" /> Focus AI on {activeShade.name}
+                  </button>
+                )}
+                {isAiLoading && (
+                  <div className="flex items-center gap-1.5 bg-gold/10 px-2 py-0.5 rounded-full border border-gold/20 animate-pulse shrink-0">
+                    <Sparkles className="w-2.5 h-2.5 text-gold" />
+                    <span className="text-[8px] font-mono tracking-wider font-semibold uppercase text-gold font-bold">Gemini...</span>
+                  </div>
+                )}
+              </div>
+            </div>
+            
+            {!isAiTheoryCollapsed && (
+              <div className={`grid grid-cols-1 md:grid-cols-4 gap-3 transition-opacity duration-300 ${isAiLoading ? 'opacity-65 pointer-events-none' : ''}`}>
+              {resolvedPresets.map((preset, idx) => (
+                <div
+                  key={idx}
+                  onClick={() => applyCuratedPreset(preset.colors, preset.resolvedShades)}
+                  className={`p-3 text-left border rounded-xl shadow-xs group cursor-pointer flex flex-col justify-between transition-all ${
+                    preset.style === 'custom'
+                      ? 'border-[#dfd6c0] bg-[#faf9f6] ring-1 ring-gold/20 hover:border-gold/75 hover:bg-white shadow-[0_4px_12px_rgba(200,165,100,0.06)]'
+                      : 'border-zinc-250 bg-white/50 hover:bg-white hover:border-gold/50'
+                  }`}
+                >
+                  <div className="w-full">
+                    <h5 className="font-serif text-xs font-bold text-zinc-900 mb-1 group-hover:text-gold transition-colors flex items-center justify-between gap-1.5 w-full">
+                      <span className="truncate">{preset.name}</span>
+                      {preset.style === 'custom' && (
+                        <span className="shrink-0 text-[7.5px] uppercase font-bold tracking-wider font-display text-gold bg-gold/10 px-1.5 py-0.5 rounded-full flex items-center gap-1">
+                          <Sparkles className="w-2.5 h-2.5" /> Live
+                        </span>
+                      )}
+                    </h5>
+                    <p className="text-[9.5px] text-zinc-500 leading-snug mb-3.5 h-[28px] overflow-hidden">{preset.desc}</p>
+                  </div>
+                  
+                  <div className="w-full">
+                    <div className="flex h-4 w-full rounded overflow-hidden border border-zinc-200 shadow-3xs">
+                      {Object.entries(preset.colors).map(([surf, color]) => {
+                        const matchedShade = preset.resolvedShades[surf];
+                        const tooltipText = matchedShade
+                          ? `${matchedShade.brand}: ${matchedShade.name} (${matchedShade.shadeCode})`
+                          : `${surf}: ${color}`;
+                        return (
+                          <div 
+                            key={surf} 
+                            className="flex-grow h-full" 
+                            style={{ backgroundColor: color }}
+                            title={tooltipText}
+                          />
+                        );
+                      })}
+                    </div>
+
+                    <div className="mt-3 pt-2.5 border-t border-zinc-150">
+                      <span className="block text-[8px] font-mono text-zinc-400 uppercase tracking-widest mb-1.5 text-center">
+                        Select color to preview
+                      </span>
+                      <div className="grid grid-cols-5 gap-1.5">
+                        {Object.entries(preset.colors).map(([surf, color]) => {
+                          const matchedShade = preset.resolvedShades[surf];
+                          const label = SURF_LABELS[surf] || surf;
+                          const shade: Shade = matchedShade || {
+                            id: `temp-${surf}-${color}`,
+                            name: label,
+                            shadeCode: color,
+                            hex: color,
+                            rgb: '',
+                            brand: 'Default',
+                            category: 'Theme',
+                            finish: 'Matte',
+                            popular: false,
+                            family: 'Neutral'
+                          };
+                          
+                          const isCurrentActive = activeShade?.hex.toLowerCase() === shade.hex.toLowerCase();
+                          
+                          return (
+                            <div
+                              key={surf}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleShadeSelect(shade);
+                              }}
+                              className={`aspect-[3/4] rounded-lg border flex flex-col bg-[#faf9f6] relative overflow-hidden group/item cursor-pointer transition-all hover:-translate-y-0.5 active:scale-95 ${
+                                isCurrentActive 
+                                  ? 'border-gold ring-1 ring-gold/30 shadow-[0_2px_6px_rgba(200,165,100,0.15)] z-10 scale-[1.03]' 
+                                  : 'border-zinc-200 shadow-3xs hover:border-gold/30 hover:shadow-[0_2px_4px_rgba(200,165,100,0.08)]'
+                              }`}
+                              title={`Apply ${label}: ${shade.name} (${shade.shadeCode}) to clipboard`}
+                            >
+                              <div 
+                                className="flex-grow w-full transition-transform group-hover/item:scale-105" 
+                                style={{ backgroundColor: color }}
+                              />
+                              <div className="bg-[#faf9f6]/90 p-0.5 text-center flex flex-col justify-center items-center h-[18px] border-t border-zinc-100 shrink-0 select-none overflow-hidden">
+                                <span className="text-[5.5px] text-zinc-850 font-bold leading-tight truncate w-full px-0.5">
+                                  {shade.shadeCode}
+                                </span>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    {/* Save Palette & Share Action Footer */}
+                    <div className="mt-3 pt-2 border-t border-zinc-150 flex items-center justify-between gap-1.5 relative w-full leading-none">
+                      <span className="text-[8.5px] font-sans font-bold text-zinc-500 uppercase tracking-wider group-hover:text-gold transition-colors">
+                        Apply Palette
+                      </span>
+                      
+                      <div className="flex items-center gap-1.5 z-20">
+                        {/* Wishlist toggle button */}
+                        {(() => {
+                          const isPresetWishlisted = wishlistItems.some(item => 
+                            item.type === 'combination' && 
+                            item.name === preset.name
+                          );
+                          return (
+                            <button
+                              type="button"
+                              onClick={(e) => handleTogglePresetWishlist(e, preset)}
+                              className={`p-1 rounded-md border transition-all hover:scale-105 active:scale-95 cursor-pointer ${
+                                isPresetWishlisted 
+                                  ? 'bg-red-50 border-red-200 text-red-500' 
+                                  : 'bg-white border-zinc-200 text-zinc-400 hover:text-red-500 hover:border-red-100'
+                              }`}
+                              title={isPresetWishlisted ? "Remove palette from wishlist" : "Save palette to wishlist"}
+                            >
+                              <Heart className={`w-3 h-3 ${isPresetWishlisted ? 'fill-current' : ''}`} />
+                            </button>
+                          );
+                        })()}
+
+                        {/* Share button */}
+                        <button
+                          type="button"
+                          onClick={(e) => handleSharePalette(e, preset, idx)}
+                          className="p-1 rounded-md border bg-white border-zinc-200 text-zinc-400 hover:text-gold hover:border-gold/30 hover:bg-gold/5 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                          title="Share palette link"
+                        >
+                          <Share2 className="w-3 h-3" />
+                        </button>
+                      </div>
+
+                      {/* Live Link Copied Tooltip */}
+                      {sharedPresetIdx === idx && (
+                        <div className="absolute right-0 -top-7 bg-zinc-950 text-white text-[8px] font-medium px-2 py-0.5 rounded shadow-lg border border-zinc-800 animate-bounce tracking-wide z-30">
+                          Link Copied!
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            )}
             </div>
 
             {/* Custom Paint Color Matcher & Picker Panel */}
@@ -2098,6 +1996,109 @@ export default function VisualizerSection() {
             {/* Shade List */}
             <div className="p-4 flex flex-col flex-grow min-h-[400px]">
 
+              {/* Filters Block */}
+              <div className="flex flex-col gap-2 pb-3 border-b border-zinc-200/50 mb-3">
+                <span className="text-[8px] font-display font-semibold uppercase tracking-[0.2em] text-gold block">Filter Catalog</span>
+                
+                {/* Search Bar */}
+                <div className="relative">
+                  <div className="flex items-center gap-2 bg-white border border-zinc-200 shadow-3xs rounded-lg px-2.5 h-[32px] transition-all focus-within:border-gold/50 focus-within:ring-1 focus-within:ring-gold/15">
+                    <Search className="w-3.5 h-3.5 text-gold shrink-0" />
+                    <input 
+                      type="text" 
+                      placeholder="Search shade by name or code" 
+                      value={sSearch}
+                      onChange={e => setSSearch(e.target.value)}
+                      className="bg-transparent w-full border-none py-1.5 text-xs text-zinc-900 focus:outline-none placeholder:text-zinc-400 font-sans min-w-0"
+                    />
+                    {sSearch && (
+                      <button onClick={() => setSSearch('')} title="Clear search" aria-label="Clear search" className="p-1 hover:bg-zinc-100 dark:hover:bg-zinc-100/10 rounded-full transition-colors text-gold hover:text-gold/80 shrink-0">
+                        <X aria-hidden="true" className="w-3 h-3" />
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {/* Brand & Family Dropdowns */}
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="relative" ref={brandRef}>
+                    <button
+                      type="button"
+                      onClick={() => setIsBrandOpen(!isBrandOpen)}
+                      className="bg-[#faf9f6]/95 border border-zinc-200 hover:bg-zinc-50 transition-all rounded-lg py-1 px-2.5 text-[10px] font-display font-semibold text-zinc-800 outline-none shadow-sm w-full text-left flex items-center justify-between gap-1 group h-[32px]"
+                    >
+                      <span className="truncate">
+                        <span className="text-zinc-500 font-normal mr-1">Brand:</span>
+                        {sBrand === 'all' ? 'All' : (BRANDS.find(b => b.id === sBrand)?.label || sBrand)}
+                      </span>
+                      <ChevronDown className={`w-3.5 h-3.5 text-gold transition-transform duration-300 ${isBrandOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                    <AnimatePresence>
+                      {isBrandOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-[calc(100%+4px)] left-0 w-[180px] bg-[#faf9f6]/95 backdrop-blur-xl border border-zinc-200 shadow-xl rounded-xl p-2 z-[100] max-h-[220px] overflow-y-auto custom-scrollbar"
+                        >
+                          <div className="flex flex-col gap-0.5">
+                            {BRANDS.map(b => (
+                              <button
+                                key={b.id}
+                                onClick={() => { setSBrand(b.id); setIsBrandOpen(false); }}
+                                className={`text-left px-2 py-1.5 rounded-md text-xs font-medium transition-all duration-300 ${sBrand === b.id ? 'bg-zinc-100 text-zinc-900 font-bold' : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900'}`}
+                              >
+                                {b.id === 'all' ? 'All Brands' : b.label}
+                              </button>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  <div className="relative" ref={familyRef}>
+                    <button
+                      type="button"
+                      onClick={() => setIsFamilyOpen(!isFamilyOpen)}
+                      className="bg-[#faf9f6]/95 border border-zinc-200 hover:bg-zinc-50 transition-all rounded-lg py-1 px-2.5 text-[10px] font-display font-semibold text-zinc-800 outline-none shadow-sm w-full text-left flex items-center justify-between gap-1 group capitalize h-[32px]"
+                    >
+                      <span className="truncate">
+                        <span className="text-zinc-500 font-normal mr-1">Family:</span>
+                        {sFamily === 'all' ? 'All' : sFamily}
+                      </span>
+                      <ChevronDown className={`w-3.5 h-3.5 text-gold transition-transform duration-300 ${isFamilyOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                    <AnimatePresence>
+                      {isFamilyOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-[calc(100%+4px)] right-0 w-[180px] bg-[#faf9f6]/95 backdrop-blur-xl border border-zinc-200 shadow-xl rounded-xl p-2 z-[100] max-h-[220px] overflow-y-auto custom-scrollbar"
+                        >
+                          <div className="flex flex-col gap-0.5">
+                            {FAMILIES.map(f => (
+                              <button
+                                key={f}
+                                onClick={() => { setSFamily(f); setIsFamilyOpen(false); }}
+                                className={`text-left px-2 py-1.5 rounded-md text-xs font-medium capitalize transition-all duration-300 ${sFamily === f ? 'bg-zinc-100 text-zinc-900 font-bold' : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900'}`}
+                              >
+                                {f === 'all' ? 'All Families' : f}
+                              </button>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </div>
+
+              </div>
+
+
               {/* Quick Tabs: Recent / Favorites */}
               {(recent.length > 0 || (favorites.length > 0 && shades.some(s => favorites.includes(s.id)))) && (
                 <div className="mb-4 space-y-3">
@@ -2149,7 +2150,7 @@ export default function VisualizerSection() {
               </div>
 
               <div className="flex-grow pb-4 relative overflow-y-auto custom-scrollbar" ref={scrollContainerRef}>
-                <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-4 gap-1.5 sm:gap-2.5 content-start">
+                <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 gap-1.5 sm:gap-2.5 content-start">
                   {shades.slice(0, visibleCount).map((shade) => (
                     <div key={shade.id} className="aspect-[3/4] sm:aspect-[4/5] md:aspect-[3/4] lg:aspect-[4/5]">
                       <ShadeCard 

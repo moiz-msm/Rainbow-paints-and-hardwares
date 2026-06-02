@@ -231,7 +231,8 @@ export default function AIPhotoStudio({
 
     return {
       asian: findBestForBrand('asian'),
-      berger: findBestForBrand('berger')
+      berger: findBestForBrand('berger'),
+      mrf: findBestForBrand('mrf')
     };
   }, [pickedPixelColor, poolToUse]);
 
@@ -1268,6 +1269,29 @@ export default function AIPhotoStudio({
                       ) : (
                         <div className="bg-white border border-dashed border-zinc-200 rounded-xl p-3 text-center text-[10px] text-zinc-400">
                           Fetching Berger match...
+                        </div>
+                      )}
+
+                      {/* MRF Paint Match */}
+                      {pickerMatches.mrf ? (
+                        <button
+                          type="button"
+                          onClick={() => onSelectShade && onSelectShade(pickerMatches.mrf!.shade)}
+                          className={`text-left bg-white p-2.5 rounded-xl border flex items-center gap-2.5 transition-all duration-300 hover:-translate-y-0.5 ${activeShade?.id === pickerMatches.mrf.shade.id ? 'border-gold ring-1 ring-gold/30 shadow-[0_4px_10px_rgba(200,165,100,0.1)]' : 'border-zinc-200/80 hover:border-gold/30'}`}
+                        >
+                          <div className="w-8 h-8 rounded-md flex-shrink-0 border" style={{ backgroundColor: pickerMatches.mrf.shade.hex }} />
+                          <div className="min-w-0 flex-grow leading-tight">
+                            <span className="text-[7.5px] font-display font-bold uppercase text-zinc-400 tracking-wider block">MRF Vapocure</span>
+                            <span className="font-serif text-[11.5px] font-bold text-zinc-800 block truncate">{pickerMatches.mrf.shade.name}</span>
+                            <span className="text-[7.5px] font-mono text-zinc-400 block">{pickerMatches.mrf.shade.shadeCode}</span>
+                          </div>
+                          <span className="text-[9px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded ml-auto leading-none shrink-0">
+                            {pickerMatches.mrf.similarity}% Match
+                          </span>
+                        </button>
+                      ) : (
+                        <div className="bg-white border border-dashed border-zinc-200 rounded-xl p-3 text-center text-[10px] text-zinc-400">
+                          Fetching MRF match...
                         </div>
                       )}
                     </div>

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[100dvh] lg:h-screen lg:max-h-[850px] lg:min-h-0 flex flex-col justify-center lg:justify-center pt-[78px] sm:pt-[140px] lg:pt-[80px] pb-[12dvh] sm:pb-4 lg:pb-6 overflow-hidden bg-royale-bg">
+    <section className="relative min-h-[100dvh] lg:min-h-[700px] lg:h-screen lg:max-h-[850px] flex flex-col justify-center lg:justify-center pt-[100px] sm:pt-[140px] lg:pt-[110px] pb-[12dvh] sm:pb-4 lg:pb-6 overflow-hidden bg-royale-bg">
       {/* Background Image with soft fade mask */}
       <div className="absolute inset-x-0 bottom-0 top-[64px] sm:top-[64px] lg:top-[72px] z-0 pointer-events-none flex justify-end">
         

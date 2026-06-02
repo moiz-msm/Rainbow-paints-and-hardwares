@@ -281,7 +281,7 @@ export default function ProductDetailPage() {
         hex: selectedShade.hex
       } : undefined
     });
-    toggleCart();
+    
   };
 
   const renderExtraDetails = (idPostfix: string) => (

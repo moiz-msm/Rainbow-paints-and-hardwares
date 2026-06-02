@@ -21,6 +21,7 @@ const SIZES = [1, 4, 10, 20];
 export const DEFAULT_WHITES: Record<string, { name: string, code: string, hex: string }> = {
   'Asian Paints': { name: 'White', code: '', hex: '#FFFFFF' },
   'Berger Paints': { name: 'White', code: '', hex: '#FFFFFF' },
+  'MRF Paints': { name: 'White', code: '', hex: '#FFFFFF' },
   'MRF Vapocure': { name: 'White', code: '', hex: '#FFFFFF' },
   'default': { name: 'White', code: '', hex: '#FFFFFF' }
 };
