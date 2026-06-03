@@ -50,7 +50,7 @@ async function fetchRoadDistance(lat: number, lon: number): Promise<{ distance: 
       Math.sin(dLon / 2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   const estDistanceKm = parseFloat((6371 * c * 1.25).toFixed(1));
-  const durationMin = Math.round((estDistanceKm / 25) * 60) + 60; // 1 hr processing
+  const durationMin = Math.round((estDistanceKm / 25) * 60); // Travel time only
 
   const durationText = durationMin >= 60 
     ? `${Math.floor(durationMin / 60)} hr ${durationMin % 60 > 0 ? durationMin % 60 + ' mins' : ''}`.trim()

@@ -117,7 +117,7 @@ useCartStore.subscribe((state, prevState) => {
     const user = useAuthStore.getState().user;
     if (state.items.length > 0) {
       setDoc(doc(db, 'abandoned_carts', currentSessionId), {
-        items: state.items,
+        items: JSON.parse(JSON.stringify(state.items)),
         updatedAt: serverTimestamp(),
         itemCount: state.items.length,
         userId: user ? user.uid : null

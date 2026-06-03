@@ -65,7 +65,7 @@ export default function DeliveryEstimator() {
           {!loading && pincode && trackingStatus === 'serviceable' && (estimation || deliveryDetails) ? (
             <div className="flex items-center gap-1.5 text-emerald-600">
               <Clock className="w-4 h-4" />
-              <span className="font-semibold">{estimation ? estimation.text.replace(/Estimated delivery:\s*(ETA:\s*)?/g, 'Expected in: ') : `Expected in: ${deliveryDetails?.zone?.eta || '24 hrs'}`}</span>
+              <span className="font-semibold">{estimation ? estimation.text.replace(/Estimated delivery:\s*(ETA:\s*)?/g, '') : (deliveryDetails?.eta || '24 hrs')}</span>
             </div>
           ) : !loading && pincode && trackingStatus === 'not-serviceable' ? (
             <div className="flex items-center gap-1.5 text-rose-500">
@@ -171,7 +171,7 @@ export default function DeliveryEstimator() {
                   <motion.div initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="flex items-start gap-2 mt-2">
                     <Clock className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                     <p className="text-sm font-medium text-emerald-600">
-                      Serviceable! {estimation ? estimation.text.replace(/Estimated delivery:\s*(ETA:\s*)?/g, 'Expected in: ') : `Expected in: ${deliveryDetails?.zone?.eta || '24 hrs'}`}
+                      Serviceable! {estimation ? estimation.text.replace(/Estimated delivery:\s*(ETA:\s*)?/g, '') : (deliveryDetails?.eta || '24 hrs')}
                     </p>
                   </motion.div>
                 )}

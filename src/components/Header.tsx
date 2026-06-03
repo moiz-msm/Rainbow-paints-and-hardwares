@@ -87,7 +87,7 @@ export default function Header() {
                   className="w-auto h-12 sm:h-16 lg:h-20 object-contain rounded-lg shrink-0" 
                 />
               </div>
-              <div className={`flex flex-col shrink-0 ${isProductsPage ? 'hidden xl:flex' : 'flex'}`}>
+              <div className={`flex flex-col shrink-0 ${showSearch ? 'hidden xl:flex' : 'flex'}`}>
                 <span className="font-serif font-medium text-[19px] sm:text-xl tracking-[0.1em] sm:tracking-[0.25em] leading-none text-ivory uppercase">RAINBOW</span>
                 <span className="text-[6.5px] sm:text-[7px] uppercase tracking-[0.12em] sm:tracking-[0.4em] text-gold font-display font-medium mt-1 whitespace-nowrap">PAINT AND HARDWARES</span>
               </div>

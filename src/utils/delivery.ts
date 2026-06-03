@@ -118,8 +118,8 @@ export function determineDeliveryDetails(distanceKm: number, cartSubtotal: numbe
     durationText = m > 0 ? `${h} hr ${m} mins` : `${h} hr`;
   }
   
-  // Return the stable zone ETA text instead of fluctuating minutes
-  const etaText = zone.eta;
+  // Return the exact calculated duration text
+  const etaText = durationText;
 
   return {
     zone,

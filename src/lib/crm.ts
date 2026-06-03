@@ -55,9 +55,9 @@ export const crmService = {
     try {
       const cartRef = doc(db, 'abandoned_carts', userId || 'anonymous_' + Date.now());
       await setDoc(cartRef, {
-        userId,
-        phone,
-        items,
+        userId: userId || null,
+        phone: phone || null,
+        items: JSON.parse(JSON.stringify(items)),
         total,
         lastActive: serverTimestamp(),
         status: 'OPEN'
