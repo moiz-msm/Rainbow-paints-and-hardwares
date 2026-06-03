@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
@@ -19,6 +19,7 @@ import WishlistToastContainer from './components/WishlistToastContainer';
 import AdminNotificationToast from './components/AdminNotificationToast';
 import AddedToCartBanner from './components/AddedToCartBanner';
 import Home from './pages/Home';
+import { lazyWithRetry as lazy } from './utils/lazyWithRetry';
 
 // Lazy load heavy pages
 const ProductsPage = lazy(() => import('./pages/ProductsPage'));

@@ -1,7 +1,6 @@
 import express from "express";
 import compression from "compression";
 import path from "path";
-import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 import { Resend } from "resend";
 
@@ -757,8 +756,10 @@ Please output a valid JSON object matching this structure exactly:
 async function startDevServer() {
   const PORT = process.env.PORT || 3000;
   
-// Vite middleware for development
+  // Vite middleware for development
   if (process.env.NODE_ENV !== "production") {
+    const vitePackage = "vite";
+    const { createServer: createViteServer } = await import(vitePackage);
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",
@@ -767,11 +768,18 @@ async function startDevServer() {
   } else {
     const distPath = path.join(process.cwd(), 'dist');
     app.use(express.static(distPath, {
-      maxAge: '1y',
+      setHeaders: (res, path) => {
+        if (path.endsWith('index.html')) {
+          res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+        } else {
+          res.setHeader('Cache-Control', 'public, max-age=31536000'); // 1 year
+        }
+      },
       etag: true,
       lastModified: true
     }));
     app.get('*', (req, res) => {
+      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
       res.sendFile(path.join(distPath, 'index.html'));
     });
   }

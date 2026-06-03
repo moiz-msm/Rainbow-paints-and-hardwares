@@ -258,27 +258,27 @@ export const InlineShadePicker = ({ brand, onSelect, currentShade }: {
             initial={{ opacity: 0, scale: 0.95, y: -5 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -5 }}
-            className="absolute top-full left-1/2 -translate-x-1/2 w-[160px] mt-1 bg-[#ffffff]/95 border border-zinc-200 rounded-lg shadow-2xl z-[100] overflow-hidden backdrop-blur-md"
+            className="absolute top-full left-0 sm:left-1/2 sm:-translate-x-1/2 w-[calc(100%+16px)] -ml-2 sm:ml-0 sm:w-[280px] mt-1 bg-[#ffffff]/95 border border-zinc-200 rounded-lg shadow-2xl z-[100] overflow-hidden backdrop-blur-md"
           >
              {results.length > 0 ? (
-               <div className="p-1 max-h-[140px] overflow-y-auto custom-scrollbar">
+               <div className="p-1 max-h-[220px] overflow-y-auto custom-scrollbar">
                   {results.map(shade => (
                     <button 
                       key={shade.id}
                       onClick={() => { onSelect(shade); setIsSearching(false); setSearch(""); }}
-                      className="w-full flex items-center gap-2 p-1.5 rounded hover:bg-black/5 transition-colors text-left group"
+                      className="w-full flex items-center gap-3 p-2 rounded hover:bg-black/5 transition-colors text-left group"
                     >
-                      <div className="w-5 h-5 rounded border border-zinc-200 shadow-sm" style={{ backgroundColor: shade.hex }} />
-                      <div className="min-w-0">
-                        <p className="text-[8px] font-medium text-zinc-900 group-hover:text-gold truncate">{shade.name}</p>
-                        <p className="text-[6px] text-gold font-bold font-mono">{shade.shadeCode}</p>
+                      <div className="w-6 h-6 sm:w-8 sm:h-8 rounded border border-zinc-200 shadow-sm shrink-0" style={{ backgroundColor: shade.hex }} />
+                      <div className="min-w-0 flex-1">
+                        <p className="text-[10px] sm:text-xs font-medium text-zinc-900 group-hover:text-gold truncate">{shade.name}</p>
+                        <p className="text-[8px] sm:text-[10px] text-gold font-bold font-mono">{shade.shadeCode}</p>
                       </div>
                     </button>
                   ))}
                </div>
              ) : (
-               <div className="p-3 text-center">
-                 <p className="text-[7px] text-gold uppercase tracking-widest font-bold">No Match</p>
+               <div className="p-4 text-center">
+                 <p className="text-[10px] text-gold uppercase tracking-widest font-bold">No Match</p>
                </div>
              )}
           </motion.div>

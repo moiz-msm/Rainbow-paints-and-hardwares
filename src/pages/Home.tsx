@@ -1,6 +1,7 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense } from "react";
 import SEO from "../components/SEO";
 import Hero from "../components/Hero";
+import { lazyWithRetry as lazy } from "../utils/lazyWithRetry";
 
 const ShopByCategory = lazy(() => import("../components/ShopByCategory"));
 const BrandsDealIn = lazy(() => import("../components/BrandsDealIn"));
