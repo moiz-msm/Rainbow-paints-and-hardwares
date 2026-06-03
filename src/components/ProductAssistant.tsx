@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { X, MessageCircle, Send } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 
@@ -112,6 +112,10 @@ export default function ProductAssistant() {
   const getLocalResponse = (text: string): string => {
     const input = text.toLowerCase();
     
+    if (input === 'hi' || input === 'hello' || input === 'hey' || input.includes("hi there") || input.includes("hello there")) {
+      return "Hi there! I'm the Rainbow Paints mascot. I can help guide you through our product catalog, color visualizer, and paint calculator. How can I assist you today?";
+    }
+
     if (input.includes("genuine") || input.includes("original") || input.includes("authent") || input.includes("fake")) {
       return "Rainbow Paints has been an authorized distributor for Asian Paints and Berger Paints since 2001. Every product we sell is 100% genuine, factory-sealed, and sourced directly from the manufacturers.";
     }
@@ -171,8 +175,8 @@ export default function ProductAssistant() {
         body: JSON.stringify({ message: text, history }),
       });
 
-      if (response.status === 429) {
-        // Fallback to local bot when quota exceeded
+      if (!response.ok) {
+        // Fallback to local bot on any error
         const localResponse = getLocalResponse(text);
         const botMsg: Message = {
           id: (Date.now() + 1).toString(),
@@ -184,15 +188,11 @@ export default function ProductAssistant() {
         return;
       }
 
-      if (!response.ok) {
-        throw new Error("Failed to get response");
-      }
-      
       const data = await response.json();
       
       const botMsg: Message = {
         id: (Date.now() + 1).toString(),
-        text: data.text || "I'm sorry, I encountered an error. Please try again or WhatsApp our team!",
+        text: data.text || getLocalResponse(text),
         sender: 'mascot',
         timestamp: new Date()
       };
@@ -202,7 +202,7 @@ export default function ProductAssistant() {
       console.error("Chat Error:", error);
       const errorMsg: Message = {
         id: (Date.now() + 1).toString(),
-        text: "I'm having trouble connecting right now. Please reach out to us via WhatsApp for immediate help!",
+        text: getLocalResponse(text),
         sender: 'mascot',
         timestamp: new Date()
       };

@@ -25,7 +25,8 @@ export const app = express();
   // Compress all responses for better SEO/performance
   app.use(compression());
 
-  app.use(express.json());
+  app.use(express.json({ limit: '10mb' }));
+  app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
   // API routes
   app.post("/api/chat", async (req, res) => {
@@ -464,7 +465,7 @@ Please output a valid JSON object matching this structure exactly:
     if (resend) {
       try {
         await resend.emails.send({
-          from: 'Rainbow Paints <onboarding@resend.dev>',
+          from: process.env.RESEND_FROM_EMAIL || 'Rainbow Paints <orders@rainbowpaint.in>',
           to: recipient,
           subject: subject,
           html: html,
@@ -588,7 +589,7 @@ Please output a valid JSON object matching this structure exactly:
   });
 
   // --- PREMIUM PAYMENT INTENT & WEBHOOK SIGNATURE SYSTEM (RAZORPAY EMULATOR) ---
-  app.post("/api/payment/create-order", (req, res) => {
+  app.post("/api/transaction/init", (req, res) => {
     try {
       const { amount, items, shippingAddress } = req.body;
       
@@ -615,7 +616,7 @@ Please output a valid JSON object matching this structure exactly:
     }
   });
 
-  app.post("/api/payment/verify", async (req, res) => {
+  app.post("/api/transaction/verify", async (req, res) => {
     try {
       const { paymentId, orderId, signature, orderDetails } = req.body;
       

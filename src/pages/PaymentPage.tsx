@@ -37,7 +37,7 @@ export default function PaymentPage() {
     setErrorStatus(null);
     try {
       // 1. Initiate transaction with backend order intent
-      const response = await fetch('/api/payment/create-order', {
+      const response = await fetch('/api/transaction/init', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -51,7 +51,8 @@ export default function PaymentPage() {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to configure payment session on backend');
+        const errText = await response.text();
+        throw new Error(`Server returned ${response.status}: ${errText}`);
       }
 
       const data = await response.json();
@@ -64,7 +65,7 @@ export default function PaymentPage() {
       const signature = data.paymentToken; // Validated token signature from backend
 
       // 2. Perform backend cryptographic signature checks & email logs dispatch
-      const verifyRes = await fetch('/api/payment/verify', {
+      const verifyRes = await fetch('/api/transaction/verify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

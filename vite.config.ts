@@ -14,6 +14,7 @@ export default defineConfig(({mode}) => {
       alias: {
         '@': path.resolve(__dirname, '.'),
       },
+      dedupe: ['react', 'react-dom', 'framer-motion', 'motion'],
     },
     build: {
       chunkSizeWarningLimit: 2000
