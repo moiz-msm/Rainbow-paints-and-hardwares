@@ -20,10 +20,8 @@ function getAI(): GoogleGenAI {
   return aiClient;
 }
 
-async function startServer() {
-  const app = express();
-  const PORT = 3000;
-
+export const app = express();
+  
   // Compress all responses for better SEO/performance
   app.use(compression());
 
@@ -754,7 +752,11 @@ Please output a valid JSON object matching this structure exactly:
     }
   });
 
-  // Vite middleware for development
+  
+async function startDevServer() {
+  const PORT = process.env.PORT || 3000;
+  
+// Vite middleware for development
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
       server: { middlewareMode: true },
@@ -773,9 +775,15 @@ Please output a valid JSON object matching this structure exactly:
     });
   }
 
-  app.listen(PORT, "0.0.0.0", () => {
+  if (process.env.VERCEL !== "1" && process.env.NODE_ENV !== "test") {
+    app.listen(Number(PORT), "0.0.0.0", () => {
     console.log(`Server running on http://localhost:${PORT}`);
   });
+  }
 }
 
-startServer();
+if (process.env.VERCEL !== "1" && process.env.NODE_ENV !== "test") {
+  startDevServer();
+}
+
+export default app;
