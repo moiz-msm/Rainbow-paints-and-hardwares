@@ -6,6 +6,7 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
@@ -101,6 +102,7 @@ export default function App() {
         <AddedToCartBanner />
         <AuthModal />
         <ProductAssistant />
+        <SpeedInsights />
       </Router>
     </AuthProvider>
     </HelmetProvider>
