@@ -16,7 +16,7 @@ const GoogleReviewsSection = lazy(() => import("../components/GoogleReviewsSecti
 export default function Home() {
   const storeSchema = {
     "@context": "https://schema.org",
-    "@type": "HomeAndConstructionBusiness",
+    "@type": ["HomeAndConstructionBusiness", "PaintStore"],
     "name": "Rainbow Paints & Hardwares",
     "image": "https://rainbowpaint.in/hero-bg.png",
     "@id": "https://rainbowpaint.in/",
@@ -27,17 +27,18 @@ export default function Home() {
       "@type": "PostalAddress",
       "streetAddress": "54 Cox Street, Kattoor",
       "addressLocality": "Coimbatore",
+      "addressRegion": "Tamil Nadu",
       "postalCode": "641009",
       "addressCountry": "IN"
     },
-    "description": "Buy paint online from top India leading brands. Best pricing, doorstep delivery, and 4000+ color shades."
+    "description": "Top paint shop in Coimbatore. Buy paint online with best pricing, doorstep delivery across Coimbatore, and 4000+ color shades."
   };
 
   return (
     <>
       <SEO 
-        title="Rainbow Paints & Hardwares | Buy Paint Online – Lowest Prices guarantee"
-        description="Buy paint online from top India leading brands. Best pricing, doorstep delivery, and 4000+ color shades. Find the perfect color for your home."
+        title="Rainbow Paints & Hardwares | Best Paint Shop in Coimbatore"
+        description="Buy paint online from the top paint shop in Coimbatore. Rainbow Paints & Hardwares offers best pricing, local doorstep delivery, and 4000+ color shades."
         url="https://rainbowpaint.in/"
         schema={storeSchema}
       />
