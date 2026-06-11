@@ -237,7 +237,7 @@ export default function ProductAssistant() {
             <div className="bg-zinc-50/80 backdrop-blur-sm p-4 sm:p-6 border-b border-zinc-100 flex items-center gap-4">
               <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-gold/10 border-2 border-gold/20 flex items-center justify-center overflow-hidden shrink-0 shadow-inner">
                 <img 
-                  src="/mascot.png" 
+                  src="/mascot.webp" 
                   alt="Mascot" 
                   referrerPolicy="no-referrer" 
                   className="w-8 h-8 sm:w-11 sm:h-11 object-contain" 
@@ -356,7 +356,7 @@ export default function ProductAssistant() {
             >
               <motion.img 
                 layoutId="mascot-img" 
-                src="/mascot.png" 
+                src="/mascot.webp" 
                 alt="Mascot" 
                 referrerPolicy="no-referrer"
                 className="w-14 h-14 md:w-24 md:h-24 object-contain" 

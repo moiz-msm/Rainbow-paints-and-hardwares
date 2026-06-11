@@ -816,7 +816,7 @@ Please output a valid JSON object matching this structure exactly:
       
       try {
         const { initializeApp } = await import('firebase/app');
-        const { getFirestore, collection, getDocs } = await import('firebase/firestore');
+        const { initializeFirestore, collection, getDocs } = await import('firebase/firestore');
         const fs = await import('fs');
         const path = await import('path');
         let firebaseConfig;
@@ -830,7 +830,9 @@ Please output a valid JSON object matching this structure exactly:
         
         if (firebaseConfig) {
           const appClient = initializeApp(firebaseConfig, 'sitemap-server');
-          const db = getFirestore(appClient);
+          const db = firebaseConfig.firestoreDatabaseId 
+            ? initializeFirestore(appClient, { experimentalForceLongPolling: true }, firebaseConfig.firestoreDatabaseId)
+            : initializeFirestore(appClient, { experimentalForceLongPolling: true });
           
           const productsRef = collection(db, 'products');
           const snapshot = await getDocs(productsRef);

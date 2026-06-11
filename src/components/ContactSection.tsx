@@ -58,7 +58,7 @@ export default function ContactSection() {
           >
             <div className="glass-panel p-2 rounded-2xl sm:rounded-3xl overflow-hidden h-[300px] sm:h-full min-h-[300px] hover-gold-glow shadow-2xl">
               <img 
-                src="/Store-front.jpg" 
+                src="/Store-front.webp" 
                 alt="Rainbow Paints and Hardwares Store Front" 
                 loading="lazy"
                 decoding="async"

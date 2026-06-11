@@ -18,7 +18,7 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": ["HomeAndConstructionBusiness", "PaintStore", "Organization"],
     "name": "Rainbow Paints & Hardwares",
-    "image": "https://rainbowpaint.in/Hero-bg.png",
+    "image": "https://rainbowpaint.in/Hero-bg.webp",
     "@id": "https://rainbowpaint.in/#organization",
     "url": "https://rainbowpaint.in",
     "telephone": "+918072442930",
@@ -32,7 +32,7 @@ export default function Home() {
       "addressCountry": "IN"
     },
     "description": "Top paint shop in Coimbatore. Buy paint online with best pricing, doorstep delivery across Coimbatore, and 4000+ color shades.",
-    "logo": "https://rainbowpaint.in/Logo.jpg",
+    "logo": "https://rainbowpaint.in/mascot.png",
     "sameAs": [
       "https://www.facebook.com/rainbowpaints",
       "https://www.instagram.com/rainbowpaints"
