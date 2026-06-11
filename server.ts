@@ -819,11 +819,16 @@ Please output a valid JSON object matching this structure exactly:
         const { getFirestore, collection, getDocs } = await import('firebase/firestore');
         const fs = await import('fs');
         const path = await import('path');
+        let firebaseConfig;
+        try {
+          const mod = await import('./firebase-applet-config.json', { with: { type: 'json' } });
+          firebaseConfig = mod.default || mod;
+        } catch {
+          // Fallback context in CJS when run through esbuild
+          firebaseConfig = require('./firebase-applet-config.json');
+        }
         
-        const configPath = path.join(process.cwd(), 'firebase-applet-config.json');
-        if (fs.existsSync(configPath)) {
-          const configStr = fs.readFileSync(configPath, 'utf8');
-          const firebaseConfig = JSON.parse(configStr);
+        if (firebaseConfig) {
           const appClient = initializeApp(firebaseConfig, 'sitemap-server');
           const db = getFirestore(appClient);
           
@@ -851,7 +856,7 @@ Please output a valid JSON object matching this structure exactly:
   <url>
     <loc>https://rainbowpaint.in/</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-    <changefreq>default</changefreq>
+    <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://rainbowpaint.in/about</loc>

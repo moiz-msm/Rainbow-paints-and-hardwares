@@ -32,7 +32,7 @@ export default function Home() {
       "addressCountry": "IN"
     },
     "description": "Top paint shop in Coimbatore. Buy paint online with best pricing, doorstep delivery across Coimbatore, and 4000+ color shades.",
-    "logo": "https://rainbowpaint.in/logo.png",
+    "logo": "https://rainbowpaint.in/Logo.jpg",
     "sameAs": [
       "https://www.facebook.com/rainbowpaints",
       "https://www.instagram.com/rainbowpaints"
