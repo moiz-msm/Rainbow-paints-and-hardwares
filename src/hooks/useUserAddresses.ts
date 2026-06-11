@@ -57,6 +57,23 @@ export function useUserAddresses() {
       const addressId = 'addr_' + Math.random().toString(36).substring(2, 9);
       const addressesRef = collection(db, 'users', user.uid, 'addresses');
       
+      // Check for exact duplicates first to prevent address spam
+      const qDupes = query(addressesRef);
+      const dupesSnapshot = await getDocs(qDupes);
+      let isDuplicate = false;
+      dupesSnapshot.forEach((docSnap) => {
+        const existing = docSnap.data();
+        if (existing.line1 === newAddr.line1 && existing.pincode === newAddr.pincode) {
+          isDuplicate = true;
+        }
+      });
+
+      if (isDuplicate) {
+        // Just fetch again and return without doing duplicate insert
+        await fetchAddresses();
+        return;
+      }
+      
       if (newAddr.isDefault) {
         // Unset any existing defaults
         const qSnapshot = await getDocs(addressesRef);

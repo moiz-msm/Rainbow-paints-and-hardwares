@@ -59,12 +59,10 @@ export default function AboutPage() {
               </p>
               <div className="w-full md:w-1/2 lg:w-2/5 shrink-0 rounded-xl overflow-hidden border border-zinc-100 shadow-md">
                 <img 
-                  src="/store-front.jpg" 
+                  src="/Store-front.jpg" 
                   alt="Rainbow Paint & Hardwares Physical Store" 
+                  referrerPolicy="no-referrer"
                   className="w-full h-auto object-cover aspect-video sm:aspect-square md:aspect-[4/3] hover:scale-105 transition-transform duration-700"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1594904576884-25cb9c0aeb95?q=80&w=2000&auto=format&fit=crop";
-                  }}
                 />
               </div>
             </div>

@@ -129,13 +129,11 @@ export const mockProducts = [
     brand: "Asian Paints",
     topCategory: "Home Paint",
     subCategory: "Interior Wall",
-    price: "₹ 1,200.00",
+    price: "₹ 892.00",
     properties: [
-      "Ultra Luxury Sheen (Teflon™ Guard)",
-      "High Stain Repellent & Washable",
-      "Stretching Paint Film (Prevents Hairline Cracks)",
-      "Anti-Bacterial & Environmentally Safe",
-      "8 Years Performance Warranty*"
+      "Perfect Crème Finish in Ultra Sheen",
+      "Teflon Surface Protector",
+      "8 Years Warranty"
     ],
     popular: true,
     image:
@@ -182,13 +180,11 @@ export const mockProducts = [
     brand: "Asian Paints",
     topCategory: "Home Paint",
     subCategory: "Interior Wall",
-    price: "₹ 1,400.00",
+    price: "₹ 1011.00",
     properties: [
-      "Ultimate Silk Luxury Sheen",
-      "Five-Star Environmental Safety Rating",
-      "Crack-Filling Elastomeric Film (Stretchable)",
-      "Water-Resistant and Steam-Proof",
-      "10 Years Performance Warranty*"
+      "Water Beading Technology",
+      "Luxury with Teflon™",
+      "8 Years Warranty"
     ],
     popular: true,
     image: "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/royale-aspira-new-packshot.png",
@@ -359,6 +355,22 @@ export const mockProducts = [
     popular: true,
     image:
       "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/Nilaya-Arc-Matt-new.png",
+  },
+  {
+    id: 60,
+    name: "Nilaya Arc Pearlescent",
+    brand: "Asian Paints",
+    topCategory: "Home Paint",
+    subCategory: "Interior Wall",
+    price: "₹ 1,200.00",
+    properties: [
+      "Lime-Based Finish",
+      "Alluring Pearl Finish",
+      "10 Years Warranty",
+    ],
+    popular: true,
+    image:
+      "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/Nilaya-Arc-Pearlescent-new.png",
   },
   {
     id: 15,

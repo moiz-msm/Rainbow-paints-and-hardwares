@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShoppingCart, X, Plus, Minus, Trash2, Phone } from 'lucide-react';
+import { ShoppingCart, X, Plus, Minus, Trash2, Phone, ShieldCheck, Award, Truck } from 'lucide-react';
 import { useCartStore } from '../store/useCartStore';
 
 import { useNavigate } from 'react-router-dom';
@@ -156,7 +156,7 @@ export default function CartDrawer() {
                     toggleCart();
                     navigate('/checkout');
                   }}
-                  className="w-full mb-3 flex items-center justify-center gap-2 py-3.5 bg-gold text-black rounded-xl font-bold hover:bg-gold/90 shadow-lg shadow-gold/20 transition-all outline-none"
+                  className="w-full mb-3 flex items-center justify-center gap-2 py-3.5 bg-gradient-gold hover:opacity-90 text-white rounded-xl font-bold transition-all outline-none shadow-lg shadow-gold/20"
                 >
                   Proceed to Checkout
                 </button>
@@ -167,8 +167,22 @@ export default function CartDrawer() {
                   <Phone className="w-5 h-5 fill-current" />
                   Place Order via WhatsApp
                 </button>
-                <p className="text-[10px] text-center text-zinc-500 mt-3 font-sans">
-                  You will be redirected to WhatsApp to confirm your order details with our team.
+                <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mt-4 text-[10px] text-zinc-500 font-medium">
+                  <div className="flex items-center gap-1.5">
+                    <ShieldCheck className="w-3.5 h-3.5 text-green-500" />
+                    <span>Secure Checkout</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Award className="w-3.5 h-3.5 text-gold" />
+                    <span>Genuine Products</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Truck className="w-3.5 h-3.5 text-indigo-400" />
+                    <span>Tracked Delivery</span>
+                  </div>
+                </div>
+                <p className="text-[9px] text-center text-zinc-400 mt-3 font-sans max-w-[250px] mx-auto leading-tight">
+                  You will be redirected to WhatsApp to confirm your order details securely.
                 </p>
               </div>
             )}

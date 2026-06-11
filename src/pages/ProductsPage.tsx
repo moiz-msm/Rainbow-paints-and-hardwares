@@ -3,13 +3,22 @@ import { useParams, Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 import ProductsSection from '../components/ProductsSection';
 import SEO from '../components/SEO';
+import Breadcrumb from '../components/Breadcrumb';
+import { brands } from '../data';
 
 export default function ProductsPage() {
   const { categorySlug, brandSlug } = useParams<{ categorySlug?: string, brandSlug?: string }>();
 
   // Optional: Convert slug to a display format (e.g., 'interior-paints' -> 'Interior Paints')
   const initialCategory = categorySlug ? categorySlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : undefined;
-  const initialBrand = brandSlug ? brandSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : undefined;
+  let initialBrand = brandSlug ? brandSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : undefined;
+  
+  if (brandSlug) {
+    const exactBrand = brands.find(b => b.toLowerCase().replace(/\s+/g, '-') === brandSlug);
+    if (exactBrand) {
+      initialBrand = exactBrand;
+    }
+  }
 
   const pageTitle = initialCategory || initialBrand || 'All Products';
   const pageDescription = `Explore our wide range of ${pageTitle.toLowerCase()}. Get the best quality paints and colors delivered to your doorstep.`;
@@ -37,44 +46,25 @@ export default function ProductsPage() {
     };
   }, [pageTitle, pageDescription, categorySlug, brandSlug]);
 
-  const breadcrumbSchema = useMemo(() => {
-    return {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://rainbowpaint.in/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": pageTitle,
-          "item": `https://rainbowpaint.in${categorySlug ? '/c/' + categorySlug : brandSlug ? '/brands/' + brandSlug : '/buy-paint-online'}`
-        }
-      ]
-    };
-  }, [pageTitle, categorySlug, brandSlug]);
-
   return (
     <div className="pt-20 sm:pt-24 pb-12 bg-royale-bg min-h-screen relative">
       <SEO 
         title={`${pageTitle} | Buy Paints Online`}
         description={pageDescription}
-        schema={[collectionSchema, breadcrumbSchema]}
+        schema={[collectionSchema]}
+        type="category"
       />
       
       {/* Category Header visible only if we have a specific category or brand */}
       {(initialCategory || initialBrand) && (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px] mb-8">
-           {/* Breadcrumb */}
-           <div className="flex items-center text-sm text-ivory/60 mb-6">
-            <Link to="/" className="cursor-pointer hover:text-gold transition-colors">Home</Link>
-            <ChevronRight className="w-4 h-4 mx-2" />
-            <span className="text-ivory font-medium">{pageTitle}</span>
-          </div>
+           <Breadcrumb 
+             className="text-ivory/60"
+             items={[
+               { label: 'Home', href: '/' },
+               { label: pageTitle }
+             ]}
+           />
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-ivory tracking-tight uppercase">
             {pageTitle}

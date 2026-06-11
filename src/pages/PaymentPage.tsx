@@ -15,6 +15,7 @@ import {
   Lock,
   Loader2
 } from 'lucide-react';
+import Breadcrumb from '../components/Breadcrumb';
 
 export default function PaymentPage() {
   const navigate = useNavigate();
@@ -50,6 +51,15 @@ export default function PaymentPage() {
 
       // Attempt backend verification strictly for email triggering (non-blocking)
       try {
+        const { generateInvoiceDataUri } = await import('../utils/invoiceGenerator');
+        const invoiceB64 = generateInvoiceDataUri({
+          ...(currentOrderDraft as any),
+          id: newOrderId,
+          date: new Date().toISOString(),
+          paymentMethod: selectedMethod,
+          status: 'PROCESSING'
+        });
+
         await fetch('/api/transaction/verify', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -57,6 +67,7 @@ export default function PaymentPage() {
             paymentId: `pay_${Math.random().toString(36).substring(2, 11)}`,
             orderId: newOrderId,
             signature: `rp_sign_token_mock_local`,
+            invoiceBase64: invoiceB64,
             orderDetails: {
               ...currentOrderDraft,
               shippingAddress: {
@@ -97,14 +108,14 @@ export default function PaymentPage() {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Breadcrumb */}
-        <div className="flex items-center justify-center text-sm text-gray-400 mb-8">
-          <span className="cursor-pointer hover:text-white transition-colors" onClick={() => navigate('/buy-paint-online')}>Catalog</span>
-          <ChevronRight className="w-4 h-4 mx-2" />
-          <span className="cursor-pointer hover:text-white transition-colors" onClick={() => navigate('/checkout')}>Checkout</span>
-          <ChevronRight className="w-4 h-4 mx-2" />
-          <span className="text-gold font-semibold">Payment Gateway</span>
-        </div>
+        <Breadcrumb 
+          className="justify-center text-gray-400"
+          items={[
+            { label: 'Catalog', href: '/buy-paint-online' },
+            { label: 'Checkout', href: '/checkout' },
+            { label: 'Payment Gateway' }
+          ]} 
+        />
 
         {errorStatus && (
           <div className="bg-red-500/10 border border-red-500/20 text-red-200 p-4 rounded-xl text-xs mb-6 max-w-xl mx-auto flex items-center gap-3">
@@ -160,7 +171,7 @@ export default function PaymentPage() {
           <button 
             onClick={initiatePayment}
             disabled={isProcessing}
-            className="w-full flex items-center justify-center py-4 bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 rounded-2xl font-bold text-black shadow-lg shadow-amber-500/15 hover:opacity-95 transition-all outline-none mt-8 disabled:opacity-40 disabled:cursor-not-allowed text-sm"
+            className="w-full flex items-center justify-center py-4 bg-gradient-gold rounded-2xl font-bold text-white shadow-lg shadow-gold/15 hover:opacity-95 transition-all outline-none mt-8 disabled:opacity-40 disabled:cursor-not-allowed text-sm"
           >
             {isProcessing ? (
               <span className="flex items-center gap-2">

@@ -5,21 +5,21 @@ import { lazyWithRetry as lazy } from "../utils/lazyWithRetry";
 
 const ShopByCategory = lazy(() => import("../components/ShopByCategory"));
 const BrandsDealIn = lazy(() => import("../components/BrandsDealIn"));
+const ShopByBrand = lazy(() => import("../components/ShopByBrand"));
 const ProductsAndIndustrial = lazy(() => import("../components/ProductsAndIndustrial"));
 const ContactSection = lazy(() => import("../components/ContactSection"));
 const FaqSection = lazy(() => import("../components/FaqSection"));
 const BlogSection = lazy(() => import("../components/BlogSection"));
-const FreeSampleSection = lazy(() => import("../components/FreeSampleSection"));
 const ToolsOverview = lazy(() => import("../components/ToolsOverview"));
 const GoogleReviewsSection = lazy(() => import("../components/GoogleReviewsSection"));
 
 export default function Home() {
   const storeSchema = {
     "@context": "https://schema.org",
-    "@type": ["HomeAndConstructionBusiness", "PaintStore"],
+    "@type": ["HomeAndConstructionBusiness", "PaintStore", "Organization"],
     "name": "Rainbow Paints & Hardwares",
-    "image": "https://rainbowpaint.in/hero-bg.png",
-    "@id": "https://rainbowpaint.in/",
+    "image": "https://rainbowpaint.in/Hero-bg.png",
+    "@id": "https://rainbowpaint.in/#organization",
     "url": "https://rainbowpaint.in",
     "telephone": "+918072442930",
     "priceRange": "INR",
@@ -31,7 +31,33 @@ export default function Home() {
       "postalCode": "641009",
       "addressCountry": "IN"
     },
-    "description": "Top paint shop in Coimbatore. Buy paint online with best pricing, doorstep delivery across Coimbatore, and 4000+ color shades."
+    "description": "Top paint shop in Coimbatore. Buy paint online with best pricing, doorstep delivery across Coimbatore, and 4000+ color shades.",
+    "logo": "https://rainbowpaint.in/logo.png",
+    "sameAs": [
+      "https://www.facebook.com/rainbowpaints",
+      "https://www.instagram.com/rainbowpaints"
+    ]
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://rainbowpaint.in/#website",
+    "url": "https://rainbowpaint.in/",
+    "name": "Rainbow Paints & Hardwares",
+    "alternateName": ["Rainbow Paint and Hardwares", "Rainbow Paints", "rainbowpaint.in"],
+    "description": "Buy paint online from top India leading brands.",
+    "publisher": {
+      "@id": "https://rainbowpaint.in/#organization"
+    },
+    "potentialAction": [{
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://rainbowpaint.in/buy-paint-online?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }]
   };
 
   return (
@@ -40,17 +66,17 @@ export default function Home() {
         title="Rainbow Paints & Hardwares | Best Paint Shop in Coimbatore"
         description="Buy paint online from the top paint shop in Coimbatore. Rainbow Paints & Hardwares offers best pricing, local doorstep delivery, and 4000+ color shades."
         url="https://rainbowpaint.in/"
-        schema={storeSchema}
+        schema={[storeSchema, websiteSchema]}
       />
       <Hero />
       <Suspense fallback={<div className="h-20 w-full bg-royale-bg"></div>}>
-        <BrandsDealIn />
         <ShopByCategory />
+        <ShopByBrand />
+        <BrandsDealIn />
         <ProductsAndIndustrial />
         <ToolsOverview />
-        <FreeSampleSection />
-        <BlogSection />
         <GoogleReviewsSection />
+        <BlogSection />
         <FaqSection showLink={true} limit={4} />
         <ContactSection />
       </Suspense>

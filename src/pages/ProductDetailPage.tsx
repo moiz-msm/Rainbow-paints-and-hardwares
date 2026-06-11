@@ -2,18 +2,34 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import { ArrowLeft, Star, ShoppingCart, Heart, Check, ChevronRight, Filter, Ruler, Info, Minus, Plus } from 'lucide-react';
+import { ArrowLeft, Star, ShoppingCart, Heart, Check, ChevronRight, Filter, Ruler, Info, Minus, Plus, ShieldCheck, Tags, Truck, Award } from 'lucide-react';
 import { useCartStore } from '../store/useCartStore';
 import { useWishlistStore } from '../store/useWishlistStore';
 import { useAuthStore } from '../store/useAuthStore';
 import { mockProducts } from '../data';
 import { motion, AnimatePresence } from 'framer-motion';
+import PolicyHighlights from '../components/PolicyHighlights';
 import DeliveryEstimator from '../components/DeliveryEstimator';
 import { InlineShadePicker, DEFAULT_WHITES } from '../components/ProductsSection';
 import { Shade } from '../services/shadeService';
 import SEO from '../components/SEO';
+import Breadcrumb from '../components/Breadcrumb';
 
 const SIZES = [1, 4, 10, 20];
+
+const getCategoryBadgeStyle = (category: string) => {
+  if (!category) return "bg-zinc-100 text-zinc-600 border-zinc-200 hover:bg-zinc-200";
+  const cat = category.toLowerCase();
+  if (cat.includes('interior')) return "bg-blue-50 text-blue-600 border-blue-100 hover:bg-blue-100";
+  if (cat.includes('exterior')) return "bg-amber-50 text-amber-600 border-amber-100 hover:bg-amber-100";
+  if (cat.includes('primer')) return "bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100";
+  if (cat.includes('waterproof')) return "bg-teal-50 text-teal-600 border-teal-100 hover:bg-teal-100";
+  if (cat.includes('wood')) return "bg-orange-50 text-orange-600 border-orange-100 hover:bg-orange-100";
+  if (cat.includes('metal') || cat.includes('grill')) return "bg-stone-50 text-stone-600 border-stone-200 hover:bg-stone-100";
+  if (cat.includes('epoxy') || cat.includes('pu ') || cat.includes('enamel')) return "bg-purple-50 text-purple-600 border-purple-100 hover:bg-purple-100";
+  if (cat.includes('industrial')) return "bg-indigo-50 text-indigo-600 border-indigo-100 hover:bg-indigo-100";
+  return "bg-zinc-100 text-zinc-600 border-zinc-200 hover:bg-zinc-200";
+};
 
 export default function ProductDetailPage() {
   const { productSlug } = useParams<{ productSlug: string }>();
@@ -153,7 +169,7 @@ export default function ProductDetailPage() {
     
     let finish = "Smooth & Matte";
     let dryingTime = "30-45 Minutes";
-    let coverage = "120-140 sq.ft/L (1 coat)";
+    let coverage = "120-140 sq.ft/L (2 coats)";
     let washability = "Medium";
     let base = "Water Based";
     let warranty = isExterior ? "7-10 Years" : "As per brand terms";
@@ -213,34 +229,6 @@ export default function ProductDetailPage() {
       }
     };
   }, [product, productDetails]);
-
-  const breadcrumbSchema = useMemo(() => {
-    if (!product) return null;
-    return {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://rainbowpaint.in/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Products",
-          "item": "https://rainbowpaint.in/buy-paint-online"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": product.name,
-          "item": `https://rainbowpaint.in/p/${product.slug}`
-        }
-      ]
-    };
-  }, [product]);
 
   if (loading) {
     return (
@@ -356,20 +344,28 @@ export default function ProductDetailPage() {
   return (
     <article className="pt-[72px] sm:pt-24 pb-12 bg-royale-bg min-h-screen text-ivory/90 relative overflow-x-hidden selection:bg-gold/30">
       <SEO 
-        title={`${product.name} | ${product.brand} | Buy Paints Online`}
-        description={productDetails?.desc1 || `Buy ${product.name} online. ${product.subCategory} from ${product.brand}. Get the best quality paints and colors delivered to your doorstep.`}
+        type="product"
+        title={`${product.name} - Buy ${product.brand} Paints Online`}
+        description={productDetails?.desc1 || `Buy ${product.name} online. ${product.subCategory} from ${product.brand}.`}
+        keywords={`${product.name}, ${product.brand}, ${product.category}, ${product.subCategory}`}
+        url={`https://rainbowpaint.in/p/${product.slug || product.name.replace(/\s+/g, '-').toLowerCase()}`}
         image={product.image}
-        schema={[productSchema, breadcrumbSchema].filter(Boolean)}
+        productBrand={product.brand}
+        productPrice={currentPrice}
+        productCurrency="INR"
+        productAvailability="InStock"
+        schema={[productSchema].filter(Boolean)}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px]">
-        {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-[10px] sm:text-xs font-sans text-zinc-500 mb-6 uppercase tracking-wider">
-          <Link to="/" className="hover:text-gold transition-colors">Home</Link>
-          <ChevronRight className="w-3 h-3" />
-          <Link to="/buy-paint-online" className="hover:text-gold transition-colors">Products</Link>
-          <ChevronRight className="w-3 h-3" />
-          <span className="text-zinc-600 font-semibold truncate">{product.name}</span>
-        </nav>
+        <Breadcrumb 
+          items={[
+            { label: 'Home', href: '/' },
+            { label: 'Products', href: '/buy-paint-online' },
+            ...(product.brand ? [{ label: product.brand, href: `/brands/${product.brand.toLowerCase().replace(/\s+/g, '-')}` }] : []),
+            ...(product.subCategory ? [{ label: product.subCategory, href: `/c/${product.subCategory.toLowerCase().replace(/\s+/g, '-')}` }] : []),
+            { label: product.name }
+          ]} 
+        />
 
         <button onClick={() => navigate(-1)} className="text-zinc-500 hover:text-ivory flex items-center gap-2 text-xs mb-8 transition-colors">
           <ArrowLeft className="w-3.5 h-3.5" /> Back to Products
@@ -387,7 +383,7 @@ export default function ProductDetailPage() {
               {/* Product Badges */}
               <div className="absolute top-4 left-4 z-10 flex flex-col gap-2">
                 {product.popular && (
-                  <span className="bg-gold text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+                  <span className="bg-gradient-gold text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
                     Best Seller
                   </span>
                 )}
@@ -426,12 +422,56 @@ export default function ProductDetailPage() {
           {/* Product Info Column */}
           <div className="md:col-span-6 lg:col-span-7 flex flex-col">
             <div className="mb-2 flex items-center justify-between">
-              <span className="text-gold font-display text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-semibold">{product.brand}</span>
+              <div className="flex items-center gap-2">
+                <span className="text-gold font-display text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-semibold">{product.brand}</span>
+                {product.subCategory && (
+                  <span className={`text-[8px] md:text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-widest border transition-colors ${getCategoryBadgeStyle(product.subCategory)}`} title={product.subCategory}>
+                    {product.subCategory}
+                  </span>
+                )}
+              </div>
             </div>
             
-            <h1 className="text-3xl md:text-5xl font-serif font-medium text-ivory mb-8 leading-tight">
+            <h1 className="text-3xl md:text-5xl font-serif font-medium text-ivory mb-4 leading-tight">
               {product.name}
             </h1>
+
+            <div className="flex items-center gap-2 mb-8 bg-green-50 w-fit px-3 py-1.5 rounded-full border border-green-100">
+              <div className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </div>
+              <span className="text-[10px] font-bold text-green-700 uppercase tracking-widest">In Stock - Ready to Ship</span>
+            </div>
+
+            <div className="mb-8 w-full">
+              <div className="grid grid-cols-4 gap-1.5 sm:gap-3 lg:gap-4">
+                {[
+                  { icon: ShieldCheck, title: "Authorized distributors", sub: "for featured products" },
+                  { icon: Tags, title: "Same Price as In-Store", sub: "no online extra charge" },
+                  { icon: Truck, title: "Doorstep delivery", sub: "skip the trip, we deliver" },
+                  { icon: Award, title: "20+ yrs trusted", sub: "msme/gst certified" }
+                ].map((item, idx) => {
+                  const Icon = item.icon;
+                  return (
+                  <div key={idx} className="flex flex-col items-center justify-start sm:justify-center text-center p-2 sm:p-3 md:p-4 rounded-[10px] sm:rounded-2xl border border-gold/20 bg-gradient-to-b from-white/5 to-gold/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group hover:shadow-[0_15px_40px_-5px_rgba(184,151,90,0.15)] hover:border-gold/40 hover:-translate-y-1">
+                    <div className="w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 mb-1.5 sm:mb-2 rounded-lg sm:rounded-[14px] bg-white/10 shadow-[0_4px_15px_rgba(184,151,90,0.1)] flex items-center justify-center border border-gold/10 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+                      <span className="text-gold drop-shadow-[0_2px_5px_rgba(184,151,90,0.2)]">
+                        <Icon className="w-3.5 h-3.5 sm:w-5 sm:h-5 md:w-6 md:h-6" strokeWidth={1.5} />
+                      </span>
+                    </div>
+                    <div className="flex flex-col gap-0.5 sm:gap-1 items-center">
+                      <p className="text-[7.5px] sm:text-[10px] md:text-xs font-display font-bold text-ivory uppercase tracking-tight sm:tracking-widest leading-[1.1] sm:leading-tight group-hover:text-gold transition-colors">
+                        {item.title}
+                      </p>
+                      <p className="text-[6.5px] sm:text-[9px] md:text-[10px] text-ivory/60 font-sans tracking-tight sm:tracking-wide leading-tight max-w-[150px]">
+                        {item.sub}
+                      </p>
+                    </div>
+                  </div>
+                )})}
+              </div>
+            </div>
 
             {/* Delivery Estimator */}
             <div className="mb-8 w-full">
@@ -466,7 +506,7 @@ export default function ProductDetailPage() {
                 {SIZES.map(size => (
                   <button
                     key={size}
-                    onClick={() => setSelectedSize(size)}
+                    onClick={() => { setSelectedSize(size); setQuantity(1); }}
                     className={`py-3 px-2 rounded-xl border text-center transition-all ${
                       selectedSize === size 
                         ? 'border-gold bg-gold/10 text-gold shadow-[0_0_15px_rgba(184,151,90,0.15)] ring-1 ring-gold/30' 
@@ -504,7 +544,7 @@ export default function ProductDetailPage() {
             </div>
 
             {/* Quantity & Add to Cart */}
-            <div className="flex flex-row gap-4 mb-10 w-full">
+            <div className="flex flex-row gap-4 mb-8 w-full">
               <div className="flex items-center justify-between border border-zinc-200 bg-white rounded-xl px-2 w-[120px] sm:w-32 shrink-0 h-14 sm:h-16">
                 <button 
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
@@ -523,11 +563,13 @@ export default function ProductDetailPage() {
 
               <button 
                 onClick={handleAddToCart}
-                className="flex-1 h-14 sm:h-16 bg-gradient-to-r from-gold to-[#D4B572] hover:from-[#D4B572] hover:to-gold text-zinc-950 font-display font-bold uppercase tracking-widest text-sm sm:text-base rounded-xl flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-95 shadow-[0_4px_20px_rgba(184,151,90,0.25)]"
+                className="flex-1 h-14 sm:h-16 bg-gradient-gold hover:opacity-90 text-white font-display font-bold uppercase tracking-widest text-sm sm:text-base rounded-xl flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-95 shadow-[0_4px_20px_rgba(184,151,90,0.25)]"
               >
                 <ShoppingCart className="w-5 h-5" /> Add to Cart
               </button>
             </div>
+            
+            <PolicyHighlights />
             
             {/* Mobile Details */}
             <div className="block md:hidden mt-2">

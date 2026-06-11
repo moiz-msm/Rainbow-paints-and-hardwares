@@ -1,14 +1,21 @@
 import React from "react";
-import FaqSection from "../components/FaqSection";
+import FaqSection, { faqs } from "../components/FaqSection";
 import { HelpCircle } from "lucide-react";
 import SEO from "../components/SEO";
+import Breadcrumb from "../components/Breadcrumb";
 
 export default function FaqPage() {
-  // A generic FAQPage schema without all items (can be expanded later)
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": []
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
   };
 
   return (
@@ -19,6 +26,9 @@ export default function FaqPage() {
         url="https://rainbowpaint.in/faqs"
         schema={faqSchema}
       />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
+        <Breadcrumb />
+      </div>
       <FaqSection />
     </div>
   );

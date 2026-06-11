@@ -58,7 +58,7 @@ export default function OrderSuccessPage() {
             </button>
             <button 
               onClick={() => navigate('/buy-paint-online')}
-              className="px-8 py-3 bg-gold text-black rounded-xl font-bold hover:bg-gold/90 transition-colors flex items-center justify-center gap-2"
+              className="px-8 py-3 bg-gradient-gold text-white rounded-xl font-bold hover:opacity-90 transition-colors flex items-center justify-center gap-2"
             >
               Continue Shopping <ArrowRight className="w-5 h-5" />
             </button>

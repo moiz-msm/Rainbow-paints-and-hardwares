@@ -586,13 +586,14 @@ export default function VisualizerSection() {
 
     const target = hexToRgb(customColorMatch);
 
-    const findBestForBrand = (brandId: 'asian' | 'berger') => {
+    const findBestForBrand = (brandId: 'asian' | 'berger' | 'mrf') => {
       let minDistance = Infinity;
       let closest: Shade | null = null;
       
       for (const shade of allPool) {
         if (brandId === 'asian' && !shade.brand.toLowerCase().includes('asian')) continue;
         if (brandId === 'berger' && !shade.brand.toLowerCase().includes('berger')) continue;
+        if (brandId === 'mrf' && !shade.brand.toLowerCase().includes('mrf')) continue;
 
         const sRGB = hexToRgb(shade.hex);
         const dist = Math.sqrt(
@@ -613,7 +614,8 @@ export default function VisualizerSection() {
 
     return {
       asian: findBestForBrand('asian'),
-      berger: findBestForBrand('berger')
+      berger: findBestForBrand('berger'),
+      mrf: findBestForBrand('mrf')
     };
   }, [customColorMatch, allPool]);
 
@@ -1926,63 +1928,99 @@ export default function VisualizerSection() {
                           </span>
                           <div className="grid grid-cols-2 gap-2.5">
                             {/* Asian Paint */}
-                            {matchedShades.asian ? (
-                              <button
-                                onClick={() => handleShadeSelect(matchedShades.asian!.shade, true)}
-                                className={`text-left bg-white border rounded-xl overflow-hidden shadow-xs flex flex-col relative transition-all duration-350 hover:-translate-y-0.5 ${activeShade?.id === matchedShades.asian.shade.id ? 'border-gold ring-1 ring-gold/35 shadow-[0_4px_10px_rgba(200,165,100,0.15)]' : 'border-zinc-200/80 hover:border-gold/30'}`}
-                              >
-                                <div className="h-2 w-full" style={{ backgroundColor: matchedShades.asian.shade.hex }} />
-                                <div className="p-2 flex flex-col justify-between flex-grow w-full">
-                                  <div>
-                                    <h4 className="font-serif text-[10px] font-bold text-zinc-900 truncate mb-0.5">
-                                      {matchedShades.asian.shade.name}
-                                    </h4>
-                                    <p className="text-[7.5px] font-mono text-zinc-400 capitalize truncate">
-                                      {matchedShades.asian.shade.shadeCode}
-                                    </p>
+                            {(!activeShade || !activeShade.brand.toLowerCase().includes('asian')) && (
+                              matchedShades.asian ? (
+                                <button
+                                  onClick={() => handleShadeSelect(matchedShades.asian!.shade, true)}
+                                  className={`text-left bg-white border rounded-xl overflow-hidden shadow-xs flex flex-col relative transition-all duration-350 hover:-translate-y-0.5 ${activeShade?.id === matchedShades.asian.shade.id ? 'border-gold ring-1 ring-gold/35 shadow-[0_4px_10px_rgba(200,165,100,0.15)]' : 'border-zinc-200/80 hover:border-gold/30'}`}
+                                >
+                                  <div className="h-2 w-full" style={{ backgroundColor: matchedShades.asian.shade.hex }} />
+                                  <div className="p-2 flex flex-col justify-between flex-grow w-full">
+                                    <div>
+                                      <h4 className="font-serif text-[10px] font-bold text-zinc-900 truncate mb-0.5">
+                                        {matchedShades.asian.shade.name}
+                                      </h4>
+                                      <p className="text-[7.5px] font-mono text-zinc-400 capitalize truncate">
+                                        {matchedShades.asian.shade.shadeCode}
+                                      </p>
+                                    </div>
+                                    <div className="flex justify-between items-center text-[7.5px] mt-1.5 border-t border-zinc-50 pt-1 w-full">
+                                      <span className="font-medium text-[7px] text-zinc-500 uppercase">Asian</span>
+                                      <span className="font-bold text-emerald-700 bg-emerald-50 px-1 rounded">
+                                        {matchedShades.asian.similarity}%
+                                      </span>
+                                    </div>
                                   </div>
-                                  <div className="flex justify-between items-center text-[7.5px] mt-1.5 border-t border-zinc-50 pt-1 w-full">
-                                    <span className="font-medium text-[7px] text-zinc-500 uppercase">Asian</span>
-                                    <span className="font-bold text-emerald-700 bg-emerald-50 px-1 rounded">
-                                      {matchedShades.asian.similarity}%
-                                    </span>
-                                  </div>
+                                </button>
+                              ) : (
+                                <div className="bg-white border border-dashed border-zinc-200 rounded-xl p-3 text-center text-[9px] text-zinc-400">
+                                  Fetching Asian formula...
                                 </div>
-                              </button>
-                            ) : (
-                              <div className="bg-white border border-dashed border-zinc-200 rounded-xl p-3 text-center text-[9px] text-zinc-400">
-                                Fetching Asian formula...
-                              </div>
+                              )
                             )}
 
                             {/* Berger Paint */}
-                            {matchedShades.berger ? (
-                              <button
-                                onClick={() => handleShadeSelect(matchedShades.berger!.shade, true)}
-                                className={`text-left bg-white border rounded-xl overflow-hidden shadow-xs flex flex-col relative transition-all duration-350 hover:-translate-y-0.5 ${activeShade?.id === matchedShades.berger.shade.id ? 'border-gold ring-1 ring-gold/35 shadow-[0_4px_10px_rgba(200,165,100,0.15)]' : 'border-zinc-200/80 hover:border-gold/30'}`}
-                              >
-                                <div className="h-2 w-full" style={{ backgroundColor: matchedShades.berger.shade.hex }} />
-                                <div className="p-2 flex flex-col justify-between flex-grow w-full">
-                                  <div>
-                                    <h4 className="font-serif text-[10px] font-bold text-zinc-900 truncate mb-0.5">
-                                      {matchedShades.berger.shade.name}
-                                    </h4>
-                                    <p className="text-[7.5px] font-mono text-zinc-400 capitalize truncate">
-                                      {matchedShades.berger.shade.shadeCode}
-                                    </p>
+                            {(!activeShade || !activeShade.brand.toLowerCase().includes('berger')) && (
+                              matchedShades.berger ? (
+                                <button
+                                  onClick={() => handleShadeSelect(matchedShades.berger!.shade, true)}
+                                  className={`text-left bg-white border rounded-xl overflow-hidden shadow-xs flex flex-col relative transition-all duration-350 hover:-translate-y-0.5 ${activeShade?.id === matchedShades.berger.shade.id ? 'border-gold ring-1 ring-gold/35 shadow-[0_4px_10px_rgba(200,165,100,0.15)]' : 'border-zinc-200/80 hover:border-gold/30'}`}
+                                >
+                                  <div className="h-2 w-full" style={{ backgroundColor: matchedShades.berger.shade.hex }} />
+                                  <div className="p-2 flex flex-col justify-between flex-grow w-full">
+                                    <div>
+                                      <h4 className="font-serif text-[10px] font-bold text-zinc-900 truncate mb-0.5">
+                                        {matchedShades.berger.shade.name}
+                                      </h4>
+                                      <p className="text-[7.5px] font-mono text-zinc-400 capitalize truncate">
+                                        {matchedShades.berger.shade.shadeCode}
+                                      </p>
+                                    </div>
+                                    <div className="flex justify-between items-center text-[7.5px] mt-1.5 border-t border-zinc-50 pt-1 w-full">
+                                      <span className="font-medium text-[7px] text-zinc-500 uppercase">Berger</span>
+                                      <span className="font-bold text-emerald-700 bg-emerald-50 px-1 rounded">
+                                        {matchedShades.berger.similarity}%
+                                      </span>
+                                    </div>
                                   </div>
-                                  <div className="flex justify-between items-center text-[7.5px] mt-1.5 border-t border-zinc-50 pt-1 w-full">
-                                    <span className="font-medium text-[7px] text-zinc-500 uppercase">Berger</span>
-                                    <span className="font-bold text-emerald-700 bg-emerald-50 px-1 rounded">
-                                      {matchedShades.berger.similarity}%
-                                    </span>
-                                  </div>
+                                </button>
+                              ) : (
+                                <div className="bg-white border border-dashed border-zinc-200 rounded-xl p-3 text-center text-[9px] text-zinc-400">
+                                  Fetching Berger formula...
                                 </div>
-                              </button>
-                            ) : (
-                              <div className="bg-white border border-dashed border-zinc-200 rounded-xl p-3 text-center text-[9px] text-zinc-400">
-                                Fetching Berger formula...
-                              </div>
+                              )
+                            )}
+
+                            {/* MRF Paint */}
+                            {(!activeShade || !activeShade.brand.toLowerCase().includes('mrf')) && (
+                              matchedShades.mrf ? (
+                                <button
+                                  onClick={() => handleShadeSelect(matchedShades.mrf!.shade, true)}
+                                  className={`text-left bg-white border rounded-xl overflow-hidden shadow-xs flex flex-col relative transition-all duration-350 hover:-translate-y-0.5 ${activeShade?.id === matchedShades.mrf.shade.id ? 'border-gold ring-1 ring-gold/35 shadow-[0_4px_10px_rgba(200,165,100,0.15)]' : 'border-zinc-200/80 hover:border-gold/30'}`}
+                                >
+                                  <div className="h-2 w-full" style={{ backgroundColor: matchedShades.mrf.shade.hex }} />
+                                  <div className="p-2 flex flex-col justify-between flex-grow w-full">
+                                    <div>
+                                      <h4 className="font-serif text-[10px] font-bold text-zinc-900 truncate mb-0.5">
+                                        {matchedShades.mrf.shade.name}
+                                      </h4>
+                                      <p className="text-[7.5px] font-mono text-zinc-400 capitalize truncate">
+                                        {matchedShades.mrf.shade.shadeCode}
+                                      </p>
+                                    </div>
+                                    <div className="flex justify-between items-center text-[7.5px] mt-1.5 border-t border-zinc-50 pt-1 w-full">
+                                      <span className="font-medium text-[7px] text-zinc-500 uppercase">MRF Vapocure</span>
+                                      <span className="font-bold text-emerald-700 bg-emerald-50 px-1 rounded">
+                                        {matchedShades.mrf.similarity}%
+                                      </span>
+                                    </div>
+                                  </div>
+                                </button>
+                              ) : (
+                                <div className="bg-white border border-dashed border-zinc-200 rounded-xl p-3 text-center text-[9px] text-zinc-400">
+                                  Fetching MRF formula...
+                                </div>
+                              )
                             )}
                           </div>
                         </div>

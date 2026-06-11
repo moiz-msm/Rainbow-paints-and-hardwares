@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, animate, useInView } from 'framer-motion';
-import { ArrowRight, ShoppingCart, Palette } from 'lucide-react';
+import { ArrowRight, ShoppingCart, Palette, PackageOpen, Truck, Tags } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Hero() {
@@ -15,12 +15,12 @@ export default function Hero() {
         {/* Layer 2: Bottom-to-top gradient for a smooth ambient fade along the Y-axis */}
         <div className="absolute inset-0 bg-gradient-to-t from-royale-bg via-transparent to-transparent z-10 h-full w-full" />
         
-        {/* Layer 2.5: Extra bottom fade for mobile and tablet */}
-        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-royale-bg via-royale-bg/80 to-transparent z-10 lg:hidden" />
+        {/* Layer 2.5: Extra bottom fade for mobile and tablet AND Desktop */}
+        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-royale-bg via-royale-bg/80 to-transparent z-10" />
         
         {/* Layer 3: The Image with a CSS mask for the hard edges */}
         <img 
-          src="/hero-bg.png" 
+          src="/Hero-bg.png" 
           alt="Modern beautiful living space" 
           className="w-[85%] sm:w-[80%] lg:w-[75%] h-full object-cover object-top scale-[0.75] sm:scale-[0.85] lg:scale-100 origin-top-right"
           referrerPolicy="no-referrer"
@@ -81,26 +81,39 @@ export default function Hero() {
             {/* Features Grid (Desktop View) */}
             <div className="hidden lg:grid grid-cols-4 gap-2 w-full max-w-4xl mx-auto lg:mt-2">
               {[
-                { emoji: "📦", title: "100+ Products", sub: "from India's top leading brands" },
-                { emoji: "🎨", title: "4000+ Color Shades", sub: "latest and popular shades" },
-                { emoji: "🚚", title: "Doorstep Delivery", sub: "in 60-120 mins guaranteed" },
-                { emoji: "🏷️", title: "Best Pricing", sub: "lowest- no middleman involved" }
-              ].map((item, idx) => (
-                <div key={idx} className="flex flex-col items-center text-center gap-2 p-4 rounded-2xl border border-zinc-200 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group bg-royale-surface/50 hover-gold-glow">
-                  <span className="text-2xl group-hover:scale-110 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] shrink-0 drop-shadow-[0_4px_10px_rgba(184,151,90,0.2)]">{item.emoji}</span>
+                { icon: PackageOpen, title: "100+ Products", sub: "from India's top leading brands" },
+                { icon: Palette, title: "4000+ Color Shades", sub: "latest and popular shades" },
+                { icon: Truck, title: "Doorstep Delivery", sub: "in 60-120 mins guaranteed" },
+                { icon: Tags, title: "Best Pricing", sub: "lowest- no middleman involved" }
+              ].map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                <div key={idx} className="flex flex-col items-center justify-start text-center gap-1.5 p-4 rounded-2xl border border-gold/20 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group bg-gradient-to-b from-white/5 to-gold/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-1 hover:shadow-[0_15px_40px_-5px_rgba(184,151,90,0.15)] hover:border-gold/40">
+                  <div className="w-12 h-12 mb-1 rounded-[14px] bg-white/10 shadow-[0_4px_15px_rgba(184,151,90,0.1)] flex items-center justify-center border border-gold/10 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+                    <span className="text-gold drop-shadow-[0_2px_5px_rgba(184,151,90,0.2)]">
+                      <Icon className="w-6 h-6" strokeWidth={1.5} />
+                    </span>
+                  </div>
                   <div className="flex flex-col items-center overflow-hidden">
                     <p className="text-[10px] font-display font-bold text-gold uppercase tracking-tight leading-tight transition-colors duration-500 lg:whitespace-normal">
                       {item.title}
                     </p>
-                    <p className="text-[9px] text-ivory/60 font-sans font-medium leading-tight mt-1 line-clamp-2 uppercase tracking-wider transition-colors duration-500 group-hover:text-ivory/80">{item.sub}</p>
+                    <p className="text-[9px] text-ivory/60 font-sans font-medium leading-[1.15] mt-1 line-clamp-2 uppercase tracking-wider transition-colors duration-500 group-hover:text-ivory/80">{item.sub}</p>
                   </div>
                 </div>
-              ))}
+              )})}
             </div>
           </motion.div>
 
-          {/* Right Content - Mascot Character (Layout Placeholder) */}
-          <div className="flex-[0.8] sm:flex-1 flex-shrink-0 relative h-[120px] sm:h-[200px] md:h-[260px] lg:h-[220px] xl:h-[280px] invisible pointer-events-none" />
+          {/* Right Content - Mascot Placeholder */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8, x: 20 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="flex-[0.8] sm:flex-1 flex flex-col items-center justify-center relative h-[180px] sm:h-[250px] md:h-[320px] lg:h-[400px] xl:h-[450px]"
+          >
+             {/* Mascot image removed, keeping container for layout */}
+          </motion.div>
         </div>
 
         {/* Features Grid (Mobile/Tablet View) */}
@@ -111,21 +124,27 @@ export default function Hero() {
           className="grid lg:hidden grid-cols-4 gap-1.5 sm:gap-4 w-full mt-3 sm:mt-6"
         >
           {[
-            { emoji: "📦", title: "100+ Products", sub: "from India's top leading brands" },
-            { emoji: "🎨", title: "4000+ Color Shades", sub: "latest and popular shades" },
-            { emoji: "🚚", title: "Doorstep Delivery", sub: "in 60-120 mins guaranteed" },
-            { emoji: "🏷️", title: "Best Pricing", sub: "lowest- no middleman involved" }
-          ].map((item, idx) => (
-            <div key={idx} className="flex flex-col items-center text-center gap-1 sm:gap-2 p-1.5 sm:p-4 rounded-xl sm:rounded-2xl border border-zinc-200 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group bg-royale-surface/50 hover-gold-glow">
-              <span className="text-lg sm:text-2xl group-hover:scale-110 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] shrink-0 drop-shadow-[0_4px_10px_rgba(184,151,90,0.2)]">{item.emoji}</span>
+            { icon: PackageOpen, title: "100+ Products", sub: "from India's top leading brands" },
+            { icon: Palette, title: "4000+ Color Shades", sub: "latest and popular shades" },
+            { icon: Truck, title: "Doorstep Delivery", sub: "in 60-120 mins guaranteed" },
+            { icon: Tags, title: "Best Pricing", sub: "lowest- no middleman involved" }
+          ].map((item, idx) => {
+            const Icon = item.icon;
+            return (
+            <div key={idx} className="flex flex-col items-center justify-start text-center p-1.5 sm:p-4 rounded-xl sm:rounded-2xl border border-gold/20 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group bg-gradient-to-b from-white/5 to-gold/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-1 hover:shadow-[0_15px_40px_-5px_rgba(184,151,90,0.15)] hover:border-gold/40">
+              <div className="w-7 h-7 sm:w-12 sm:h-12 mb-1.5 sm:mb-2 rounded-lg sm:rounded-[14px] bg-white/10 shadow-[0_4px_15px_rgba(184,151,90,0.1)] flex items-center justify-center border border-gold/10 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+                <span className="text-gold drop-shadow-[0_2px_5px_rgba(184,151,90,0.2)]">
+                  <Icon className="w-3.5 h-3.5 sm:w-6 sm:h-6" strokeWidth={1.5} />
+                </span>
+              </div>
               <div className="flex flex-col items-center overflow-hidden w-full">
-                <p className="text-[7.5px] sm:text-[11px] font-display font-bold text-gold uppercase tracking-tighter leading-tight transition-colors duration-500 whitespace-nowrap lg:whitespace-normal truncate w-full">
+                <p className="text-[7.5px] sm:text-[11px] font-display font-bold text-gold uppercase tracking-tighter leading-[1.1] sm:leading-tight transition-colors duration-500 whitespace-nowrap lg:whitespace-normal truncate w-full">
                   {item.title}
                 </p>
-                <p className="block text-[6px] sm:text-[9px] text-ivory/60 font-sans font-medium leading-[1.1] sm:leading-tight mt-0.5 sm:mt-1 line-clamp-2 uppercase tracking-wide sm:tracking-wider transition-colors duration-500 group-hover:text-ivory/80">{item.sub}</p>
+                <p className="block text-[6px] sm:text-[9px] text-ivory/60 font-sans font-medium leading-[1.15] mt-0.5 sm:mt-1 line-clamp-2 uppercase tracking-wide sm:tracking-wider transition-colors duration-500 group-hover:text-ivory/80">{item.sub}</p>
               </div>
             </div>
-          ))}
+          )})}
         </motion.div>
 
 

@@ -5,6 +5,7 @@ import {
   LayoutDashboard, 
   Users, 
   ShoppingBag, 
+  ShoppingCart,
   Package, 
   Ticket,
   LogOut,
@@ -30,10 +31,12 @@ import AnalyticsAdmin from '../components/admin/AnalyticsAdmin';
 import LeadManagementPanel from '../components/admin/LeadManagementPanel';
 import StoreSettingsAdmin from '../components/admin/StoreSettingsAdmin';
 import OperationsAdmin from '../components/admin/OperationsAdmin';
+import AbandonedCartsAdmin from '../components/admin/AbandonedCartsAdmin';
+import ContentAdmin from '../components/admin/ContentAdmin';
 
 export default function AdminDashboard() {
   const { user, role, loading } = useAuthStore();
-  const [activeTab, setActiveTab] = useState<'overview' | 'analytics' | 'orders' | 'leads' | 'users' | 'products' | 'coupons' | 'staff' | 'settings' | 'operations'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'analytics' | 'orders' | 'leads' | 'users' | 'products' | 'coupons' | 'staff' | 'settings' | 'operations' | 'abandoned_carts' | 'content'>('overview');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [pendingOrdersCount, setPendingOrdersCount] = useState(0);
   const [allowedTabs, setAllowedTabs] = useState<string[]>([]);
@@ -50,7 +53,7 @@ export default function AdminDashboard() {
     // Fetch role configuration
     const unsubRoles = onSnapshot(doc(db, 'system', 'rolesConfig'), (docSnapshot) => {
       if (role === 'owner' || role === 'admin') {
-        const fullAccess = ['overview', 'analytics', 'orders', 'leads', 'users', 'products', 'coupons', 'staff', 'settings', 'operations'];
+        const fullAccess = ['overview', 'analytics', 'orders', 'abandoned_carts', 'content', 'leads', 'users', 'products', 'coupons', 'staff', 'settings', 'operations'];
         setAllowedTabs(fullAccess);
         if (!fullAccess.includes(activeTab)) setActiveTab('overview');
       } else {
@@ -97,6 +100,8 @@ export default function AdminDashboard() {
     { id: 'overview', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'analytics', label: 'Analytics', icon: BarChart },
     { id: 'orders', label: 'Orders', icon: ShoppingBag, badge: pendingOrdersCount },
+    { id: 'abandoned_carts', label: 'Abandoned Carts', icon: ShoppingCart },
+    { id: 'content', label: 'Content Management', icon: LayoutDashboard },
     { id: 'leads', label: 'Lead Management', icon: Users },
     { id: 'users', label: 'Customers', icon: ShieldUser },
     { id: 'products', label: 'Inventory', icon: Package },
@@ -116,6 +121,8 @@ export default function AdminDashboard() {
       case 'overview': return <StatsAdmin />;
       case 'analytics': return <AnalyticsAdmin />;
       case 'orders': return <OrdersAdmin />;
+      case 'abandoned_carts': return <AbandonedCartsAdmin />;
+      case 'content': return <ContentAdmin />;
       case 'leads': return <LeadManagementPanel />;
       case 'users': return <UsersAdmin />;
       case 'products': return <ProductsAdmin />;

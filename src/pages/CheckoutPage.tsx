@@ -21,6 +21,7 @@ import { useDebounce } from '../hooks/useDebounce';
 import GoogleReviewsSection from '../components/GoogleReviewsSection';
 import { analytics } from '../lib/firebase';
 import { logEvent } from 'firebase/analytics';
+import Breadcrumb from '../components/Breadcrumb';
 
 export default function CheckoutPage() {
   const navigate = useNavigate();
@@ -163,7 +164,7 @@ export default function CheckoutPage() {
         <h2 className="text-2xl font-bold text-gray-800 mb-4">Your cart is empty</h2>
         <button 
           onClick={() => navigate('/buy-paint-online')}
-          className="px-6 py-3 bg-gold text-black rounded-lg font-bold hover:bg-gold/90 transition-colors"
+          className="px-6 py-3 bg-gradient-gold text-white rounded-lg font-bold hover:opacity-90 transition-colors"
         >
           Browse Products
         </button>
@@ -310,14 +311,13 @@ export default function CheckoutPage() {
     <div className="bg-royale-bg min-h-screen pt-24 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Breadcrumb */}
-        <div className="flex items-center text-sm text-gray-500 mb-8">
-          <span className="cursor-pointer hover:text-black" onClick={() => navigate('/buy-paint-online')}>Cart</span>
-          <ChevronRight className="w-4 h-4 mx-2" />
-          <span className="text-black font-semibold">Checkout</span>
-          <ChevronRight className="w-4 h-4 mx-2" />
-          <span>Payment</span>
-        </div>
+        <Breadcrumb 
+          items={[
+            { label: 'Cart', href: '/buy-paint-online' },
+            { label: 'Checkout', href: '/checkout' },
+            { label: 'Payment' }
+          ]} 
+        />
 
         <div className="flex flex-col lg:flex-row gap-8">
           
@@ -338,6 +338,7 @@ export default function CheckoutPage() {
                       <div 
                         key={saved.id}
                         onClick={async () => {
+                          setSaveToFirebase(false);
                           setAddress({
                             name: saved.name,
                             phone: saved.phone,
@@ -829,7 +830,7 @@ export default function CheckoutPage() {
                   type="submit" 
                   form="checkout-form"
                   disabled={!isDirectServiceable}
-                  className="w-full flex items-center justify-center py-4 bg-gold text-black rounded-xl font-bold text-lg hover:bg-gold/90 shadow-lg shadow-gold/20 transition-all outline-none disabled:bg-zinc-300 disabled:text-zinc-500 disabled:shadow-none disabled:cursor-not-allowed"
+                  className="w-full flex items-center justify-center py-4 bg-gradient-gold text-white rounded-xl font-bold text-lg hover:opacity-90 shadow-lg shadow-gold/20 transition-all outline-none disabled:bg-zinc-300 disabled:text-zinc-500 disabled:shadow-none disabled:cursor-not-allowed"
                 >
                   {isDirectServiceable ? 'Proceed to Payment' : 'Auto Checkout Blocked'}
                 </button>

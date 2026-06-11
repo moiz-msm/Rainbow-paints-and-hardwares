@@ -58,14 +58,11 @@ export default function ContactSection() {
           >
             <div className="glass-panel p-2 rounded-2xl sm:rounded-3xl overflow-hidden h-[300px] sm:h-full min-h-[300px] hover-gold-glow shadow-2xl">
               <img 
-                src="/store-front.jpg" 
+                src="/Store-front.jpg" 
                 alt="Rainbow Paints and Hardwares Store Front" 
                 loading="lazy"
                 decoding="async"
                 className="w-full h-full object-cover rounded-xl"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1594904576884-25cb9c0aeb95?q=80&w=2000&auto=format&fit=crop";
-                }}
               />
             </div>
 

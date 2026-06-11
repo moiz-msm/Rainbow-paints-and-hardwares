@@ -269,7 +269,19 @@ service cloud.firestore {
       allow delete: if isOwner();
     }
 
-    // 13. Collection Groups (Analytics)
+    // 12.5 Newsletter Subscriptions
+    match /newsletter_subscriptions/{subId} {
+      allow read: if isStaff();
+      allow create: if true;
+    }
+
+    // 13. Content Collection
+    match /content/{contentId} {
+      allow read: if true;
+      allow write: if isStaff();
+    }
+
+    // 14. Collection Groups (Analytics)
     match /{path=**}/wishlist/{wishlistId} {
       allow read: if isStaff();
     }

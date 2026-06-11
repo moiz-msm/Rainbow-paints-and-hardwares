@@ -34,7 +34,7 @@ export default function MyOrdersPage() {
             <p className="text-gray-500 mb-6">You haven't placed any orders yet.</p>
             <button 
               onClick={() => navigate('/buy-paint-online')}
-              className="px-6 py-3 bg-gold text-black rounded-lg font-bold hover:bg-gold/90 transition-colors"
+              className="px-6 py-3 bg-gradient-gold text-white rounded-lg font-bold hover:opacity-90 transition-colors"
             >
               Start Shopping
             </button>

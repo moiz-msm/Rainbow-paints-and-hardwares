@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ChevronDown, HelpCircle, ArrowRight } from "lucide-react";
 
-const faqs = [
+export const faqs = [
   {
     question: "Do you provide on-site wall inspection?",
     answer:
@@ -50,6 +50,21 @@ const faqs = [
     answer:
       "Absolutely. You can use our 'Request Visit' feature for a site inspection or reach out to us via WhatsApp. Our technical team is always ready to guide you on product selection and quantity requirements.",
   },
+  {
+    question: "Where can I find an authorized Asian Paints or Berger Paints dealer in Coimbatore?",
+    answer:
+      "Rainbow Paints & Hardwares is a certified and trusted dealer for both Asian Paints and Berger Paints in Coimbatore. We offer the complete range of interior, exterior, waterproofing, and wood finish products from top brands."
+  },
+  {
+    question: "What is the best paint for exterior walls to protect from rain?",
+    answer:
+      "For severe weather conditions, we highly recommend Asian Paints Apex Ultima Protek or Berger WeatherCoat Long Life. These provide excellent waterproofing and anti-algal protection for exterior walls."
+  },
+  {
+    question: "Can I buy wall putty, primer, and painting tools online?",
+    answer:
+      "Yes, our online store features a full range of painting accessories including wall putty, primers, rollers, brushes, and masking tapes. Everything you need for a complete painting job can be delivered to your door in Coimbatore."
+  }
 ];
 
 export default function FaqSection({

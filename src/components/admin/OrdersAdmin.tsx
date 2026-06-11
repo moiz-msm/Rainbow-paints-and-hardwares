@@ -62,13 +62,30 @@ export default function OrdersAdmin() {
     downloadExcel(flattenedData, "Orders_Export");
   };
 
-  const saveStatus = async (id: string) => {
+  const saveStatus = async (id: string, orderData: any) => {
     if (!editStatus) return;
     try {
       await updateDoc(doc(db, "orders", id), {
         status: editStatus.toUpperCase(),
       });
       setEditingId(null);
+
+      // Trigger email if OUT_FOR_DELIVERY or DELIVERED
+      if (editStatus.toUpperCase() === 'OUT_FOR_DELIVERY' || editStatus.toUpperCase() === 'DELIVERED') {
+        const customerEmail = orderData.deliveryAddress?.email || users.find(u => u.id === orderData.userId)?.email;
+        if (customerEmail) {
+          fetch('/api/transaction/status-update', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              orderId: id,
+              status: editStatus.toUpperCase(),
+              customerEmail,
+              customerName: orderData.deliveryAddress?.name
+            })
+          }).catch(console.error);
+        }
+      }
     } catch (e) {
       alert("Error updating order");
     }
@@ -198,7 +215,7 @@ export default function OrdersAdmin() {
                          >
                            {ORDER_STATUSES.map(s => <option key={s} value={s}>{s}</option>)}
                          </select>
-                         <button onClick={() => saveStatus(order.id)} className="text-emerald-600 hover:text-emerald-700">
+                         <button onClick={() => saveStatus(order.id, order)} className="text-emerald-600 hover:text-emerald-700">
                            <CheckCircle className="w-4 h-4" />
                          </button>
                       </div>

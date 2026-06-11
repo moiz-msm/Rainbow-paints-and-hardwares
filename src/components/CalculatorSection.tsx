@@ -435,7 +435,7 @@ export default function CalculatorSection() {
             <div className="pt-2">
               <button 
                 onClick={calculateCost}
-                className="w-full py-4 bg-gradient-to-r from-gold to-amber-500 hover:from-amber-400 hover:to-gold text-black rounded-xl font-display font-bold transition-all tracking-widest text-[10px] sm:text-xs uppercase shadow-xl shadow-gold/10 flex justify-center items-center gap-2"
+                className="w-full py-4 bg-gradient-gold hover:opacity-90 text-white rounded-xl font-display font-bold transition-all tracking-widest text-[10px] sm:text-xs uppercase shadow-xl shadow-gold/10 flex justify-center items-center gap-2"
               >
                 Calculate Best Estimate
               </button>

@@ -53,12 +53,12 @@ Style: Concise (max 2 sentences). Direct to tools/sections only when relevant.`;
       res.json({ text: response.text });
     } catch (error: any) {
       const errorMsg = error?.message || String(error);
-      const isQuota = error?.status === 429 || errorMsg.toLowerCase().includes("quota") || errorMsg.toLowerCase().includes("429");
+      const isQuota = error?.status === 429 || error?.status === 503 || error?.status === "UNAVAILABLE" || errorMsg.toLowerCase().includes("quota") || errorMsg.toLowerCase().includes("429") || errorMsg.toLowerCase().includes("503") || errorMsg.toLowerCase().includes("unavailable") || errorMsg.toLowerCase().includes("overloaded");
       
       if (!isQuota) {
         console.error("Gemini Error:", error);
       } else {
-        console.warn("Gemini Quota Exceeded (Chat). Returning limited capacity.");
+        console.warn("Gemini API overloaded or Quota Exceeded (Chat). Returning limited capacity.");
       }
       
       if (isQuota) {
@@ -175,13 +175,19 @@ Please output a valid JSON object matching this structure exactly:
       const isQuota = errorMsg.toLowerCase().includes("quota") || 
                       errorMsg.toLowerCase().includes("limit") || 
                       errorMsg.toLowerCase().includes("429") || 
+                      errorMsg.toLowerCase().includes("503") || 
+                      errorMsg.toLowerCase().includes("unavailable") || 
+                      errorMsg.toLowerCase().includes("overloaded") || 
                       error?.status === "RESOURCE_EXHAUSTED" || 
-                      error?.code === 429;
+                      error?.status === "UNAVAILABLE" || 
+                      error?.status === 503 ||
+                      error?.code === 429 || 
+                      error?.code === 503;
                       
       if (!isQuota) {
-        console.error("Gemini Palette Error:", error);
+        // Only log actual unexpected errors
       } else {
-        console.warn("Gemini Palette Quota Exceeded. Switched to mathematical fallback.");
+        console.warn("Gemini API overloaded or Quota Exceeded. Switched to mathematical fallback.");
       }
       
       res.json({
@@ -468,6 +474,7 @@ Please output a valid JSON object matching this structure exactly:
           to: recipient,
           subject: subject,
           html: html,
+          attachments: attachments,
         });
         console.log(`[RESEND EMAIL DISPATCH] Sent to ${recipient}`);
       } catch (err) {
@@ -617,7 +624,7 @@ Please output a valid JSON object matching this structure exactly:
 
   app.post("/api/transaction/verify", async (req, res) => {
     try {
-      const { paymentId, orderId, signature, orderDetails } = req.body;
+      const { paymentId, orderId, signature, orderDetails, invoiceBase64 } = req.body;
       
       if (!paymentId || !orderId || !signature) {
         return res.status(400).json({ error: "Missing required Razorpay parameters for verification" });
@@ -632,8 +639,9 @@ Please output a valid JSON object matching this structure exactly:
           <tr>
             <td style="padding: 16px 0; border-bottom: 1px solid #e4e4e7;">
               <span style="color: #18181b; font-size: 14px; font-weight: 500; display: block; margin-bottom: 4px;">${it.name || 'Premium Paint Paint'}</span>
-              ${it.size ? `<span style="color: #71717a; font-size: 12px; display: block;">Size: ${it.size}</span>` : ''}
-              <span style="color: #71717a; font-size: 12px;">₹${it.unitPrice.toLocaleString('en-IN')} each</span>
+              ${it.size ? `<span style="color: #71717a; font-size: 12px; display: block;">Size: ${it.size}L</span>` : ''}
+              ${it.shade ? `<span style="color: #71717a; font-size: 12px; display: block; display: flex; align-items: center; gap: 6px;"><span style="display:inline-block; width:12px; height:12px; border-radius:50%; background-color:${it.shade.hex || '#ffffff'}; border:1px solid #e5e7eb;"></span> Colour: ${it.shade.name} ${it.shade.code ? `(${it.shade.code})` : ''}</span>` : ''}
+              <span style="color: #71717a; font-size: 12px; margin-top: 4px; display: block;">₹${it.unitPrice.toLocaleString('en-IN')} each</span>
             </td>
             <td style="padding: 16px 0; border-bottom: 1px solid #e4e4e7; color: #52525b; font-size: 14px; text-align: center;">
               ${it.quantity}
@@ -725,7 +733,14 @@ Please output a valid JSON object matching this structure exactly:
           </div>
         `;
 
-        await logAndSendSimulationEmail(customerEmail, `Order Received & Paid [${orderId}] - Rainbow Paints`, paymentSuccessHtml, 'ORDER_CONFIRMATION');
+        const attachments = invoiceBase64 ? [
+          {
+             filename: `Invoice_${orderId}.pdf`,
+             content: invoiceBase64.split(',')[1] || invoiceBase64 // resend accepts base64
+          }
+        ] : undefined;
+
+        await logAndSendSimulationEmail(customerEmail, `Order Received & Paid [${orderId}] - Rainbow Paints`, paymentSuccessHtml, 'ORDER_CONFIRMATION', attachments);
         
         // Owner notification
         const ownerEmail = process.env.ADMIN_EMAIL || 'admin@rainbowpaints.com';
@@ -752,7 +767,197 @@ Please output a valid JSON object matching this structure exactly:
     }
   });
 
+  app.post("/api/transaction/status-update", async (req, res) => {
+    try {
+      const { orderId, status, customerEmail, customerName } = req.body;
+      if (!orderId || !status || !customerEmail) return res.status(400).json({ error: "Missing required fields" });
+
+      const APP_URL = process.env.APP_URL || 'https://rainbowpaints.com';
+      let subject = '';
+      let msg = '';
+      if (status === 'OUT_FOR_DELIVERY') {
+        subject = `Your Order ${orderId} is Out for Delivery!`;
+        msg = `Hooray! Your premium paints are out for delivery and will reach you very soon today. Please keep your phone reachable.`;
+      } else if (status === 'DELIVERED') {
+        subject = `Your Order ${orderId} has been Delivered!`;
+        msg = `Your order has been successfully delivered. Thank you for choosing Rainbow Paints & Hardwares for your painting needs! Let's add some color to your walls.`;
+      } else {
+        return res.json({ ignored: true, reason: 'Status does not require email' });
+      }
+
+      const paymentSuccessHtml = `
+          <div style="font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e4e4e7; border-radius: 8px; overflow: hidden; background-color: #faf9f6;">
+            <div style="background-color: #ffffff; padding: 40px 32px; text-align: center; border-bottom: 2px solid #d4af37;">
+               <span style="font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #d4af37; font-weight: 500; display: block; margin-bottom: 12px;">Rainbow Paints Coimbatore</span>
+               <h1 style="color: #18181b; margin: 0; font-size: 24px; font-weight: 600; letter-spacing: 1px;">Order Updated</h1>
+            </div>
+            <div style="padding: 40px 32px;">
+              <p style="color: #52525b; font-size: 15px; line-height: 1.6; font-weight: 400;">Dear ${customerName || 'Customer'},</p>
+              <p style="color: #52525b; font-size: 15px; line-height: 1.6; font-weight: 400;">${msg}</p>
+              <div style="margin: 32px 0; text-align: center;">
+                 <a href="${APP_URL}/track-order?id=${orderId}" style="display: inline-block; background-color: #d4af37; color: #ffffff; text-decoration: none; padding: 14px 28px; font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; border-radius: 4px;">Track Order</a>
+              </div>
+            </div>
+          </div>
+      `;
+      await logAndSendSimulationEmail(customerEmail, subject, paymentSuccessHtml, 'DISPATCH_NOTIFICATION');
+      res.json({ success: true });
+    } catch (err: any) {
+      console.error("Status update notification failed:", err);
+      res.status(500).json({ error: "Failed to dispatch email" });
+    }
+  });
+
   
+  // --- SITEMAP GENERATION ---
+  app.get('/sitemap.xml', async (req, res) => {
+    try {
+      let productUrls = '';
+      
+      try {
+        const { initializeApp } = await import('firebase/app');
+        const { getFirestore, collection, getDocs } = await import('firebase/firestore');
+        const fs = await import('fs');
+        const path = await import('path');
+        
+        const configPath = path.join(process.cwd(), 'firebase-applet-config.json');
+        if (fs.existsSync(configPath)) {
+          const configStr = fs.readFileSync(configPath, 'utf8');
+          const firebaseConfig = JSON.parse(configStr);
+          const appClient = initializeApp(firebaseConfig, 'sitemap-server');
+          const db = getFirestore(appClient);
+          
+          const productsRef = collection(db, 'products');
+          const snapshot = await getDocs(productsRef);
+          
+          snapshot.forEach(doc => {
+            const data = doc.data();
+            if (data.slug) {
+              productUrls += `
+  <url>
+    <loc>https://rainbowpaint.in/p/${data.slug}</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>`;
+            }
+          });
+        }
+      } catch (err) {
+        console.error("Failed to generate dynamic products for sitemap:", err);
+      }
+
+      const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://rainbowpaint.in/</loc>
+    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <changefreq>default</changefreq>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/faqs</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/buy-paint-online</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/c/interior-wall</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/c/exterior-wall</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/c/waterproofing</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/c/wood-finishes</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/c/metals-and-grills</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/c/primer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/visualizer</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/calculator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/brands/asian-paints</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/brands/berger-paints</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/brands/dr.-fixit</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/brands/mrf-vapocure</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/terms</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/privacy</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/refund-policy</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/shipping-policy</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>${productUrls}
+</urlset>`;
+
+      res.header('Content-Type', 'application/xml');
+      res.send(sitemap);
+    } catch (err) {
+      console.error("Sitemap generation error:", err);
+      res.status(500).send("Error generating sitemap");
+    }
+  });
+
 async function startDevServer() {
   const PORT = process.env.PORT || 3000;
   

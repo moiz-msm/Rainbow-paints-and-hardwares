@@ -95,7 +95,17 @@ export const shadeService = {
     
     // Apply Filters
     let filtered = pool.filter(s => {
-      const familyMatch = family === 'all' || s.family.toLowerCase() === family.toLowerCase();
+      let familyMatch = false;
+      if (family === 'all') {
+        familyMatch = true;
+      } else {
+        const query = family.toLowerCase();
+        const target = s.family.toLowerCase();
+        familyMatch = target === query || target + 's' === query || query + 's' === target || 
+                      (query === 'greys' && target === 'grey') || (query === 'whites' && target === 'white') ||
+                      (query === 'neutrals' && target === 'neutral');
+      }
+      
       const searchLower = search.toLowerCase();
       const searchMatch = !search || 
         s.name.toLowerCase().includes(searchLower) || 

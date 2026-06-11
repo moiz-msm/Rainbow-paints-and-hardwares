@@ -319,7 +319,7 @@ export default function WishlistDrawer() {
                   <button
                     onClick={handleSaveCombination}
                     disabled={selectedComboColors.length < 2 || !comboName.trim()}
-                    className="w-full flex items-center justify-center gap-1.5 py-2.5 bg-gold disabled:bg-zinc-800 disabled:text-zinc-500 text-black text-xs font-display font-medium uppercase tracking-wider rounded-xl hover:bg-gold/90 transition-all cursor-pointer"
+                    className="w-full flex items-center justify-center gap-1.5 py-2.5 bg-gradient-gold disabled:bg-zinc-800 disabled:text-zinc-500 text-white text-xs font-display font-medium uppercase tracking-wider rounded-xl hover:opacity-90 transition-all cursor-pointer"
                   >
                     <Layers className="w-3.5 h-3.5" /> Save Combination Palette
                   </button>

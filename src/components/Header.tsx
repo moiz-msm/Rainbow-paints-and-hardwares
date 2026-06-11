@@ -80,6 +80,7 @@ export default function Header() {
                 <img 
                   src="/mascot.png" 
                   alt="Rainbow Paint and Hardwares" 
+                  referrerPolicy="no-referrer"
                   fetchPriority="high"
                   loading="eager"
                   width="100"
@@ -172,7 +173,7 @@ export default function Header() {
               >
                 <Heart className="w-5 h-5 text-gold fill-gold/20" />
                 {totalWishlistItems > 0 && (
-                  <span className="absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-gold text-[9px] font-bold text-black ring-2 ring-royale-bg">
+                  <span className="absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-gold text-[9px] font-bold text-white ring-2 ring-royale-bg">
                     {totalWishlistItems}
                   </span>
                 )}
@@ -189,7 +190,7 @@ export default function Header() {
               >
                 <ShoppingCart className="w-5 h-5 text-gold" />
                 {totalItems > 0 && (
-                  <span className="absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[9px] font-bold text-[#ffffff] ring-2 ring-royale-bg">
+                  <span className="absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[9px] font-bold text-white ring-2 ring-royale-bg">
                     {totalItems}
                   </span>
                 )}
@@ -265,7 +266,7 @@ export default function Header() {
             >
               <Heart className="w-4 h-4 text-gold fill-gold/20" />
               {totalWishlistItems > 0 && (
-                <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-gold text-[8px] font-bold text-black ring-1 ring-royale-bg">
+                <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-gold text-[8px] font-bold text-white ring-1 ring-royale-bg">
                   {totalWishlistItems}
                 </span>
               )}
@@ -282,7 +283,7 @@ export default function Header() {
             >
               <ShoppingCart className="w-4 h-4 text-gold" />
               {totalItems > 0 && (
-                <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-red-500 text-[8px] font-bold text-[#ffffff] ring-1 ring-royale-bg">
+                <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-red-500 text-[8px] font-bold text-white ring-1 ring-royale-bg">
                   {totalItems}
                 </span>
               )}

@@ -32,7 +32,7 @@ export default function LocationSEOPage() {
         <p className="text-zinc-400 max-w-2xl mx-auto mb-8 text-lg">
           Rainbow Paints offers fast delivery and competitive pricing on premium interior and exterior paints, waterproofing, and hardware supplies in {locationName} and surrounding areas.
         </p>
-        <Link to="/buy-paint-online" className="px-8 py-3 bg-gold text-black font-bold uppercase rounded hover:bg-gold/90 transition">
+        <Link to="/buy-paint-online" className="px-8 py-3 bg-gradient-gold text-white font-bold uppercase rounded hover:opacity-90 transition">
           Shop Paints Locally
         </Link>
       </div>

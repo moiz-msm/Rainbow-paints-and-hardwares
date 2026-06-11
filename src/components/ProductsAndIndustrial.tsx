@@ -1,5 +1,5 @@
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowRight, Package } from 'lucide-react';
 import WhatsappIcon from './WhatsappIcon';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -13,49 +13,116 @@ const categoryIcons = [
 ];
 
 export default function ProductsAndIndustrial() {
+  const [formData, setFormData] = useState({
+    name: '',
+    area: '',
+    pinCode: ''
+  });
+
+  const handleWhatsapp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    try {
+      const { crmService } = await import('../lib/crm');
+      await crmService.addLead({
+        type: 'VISIT',
+        name: formData.name || 'Unknown',
+        phone: 'WhatsApp User',
+        metadata: {
+          area: formData.area,
+          pinCode: formData.pinCode,
+          requestMessage: 'Free Paint Sample Kit & Site Visit'
+        },
+      });
+
+      // Notify server CRM for real-time alerting and HTML log tracking
+      await fetch('/api/notify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: `New Site Visit Request: ${formData.name || 'Premium Lead'}`,
+          message: `Customer ${formData.name || 'Unknown'} requested a luxury site consultation and sample layout kit for a surface area of ${formData.area || 'unspecified'} sq ft. Pin code: ${formData.pinCode || '641001'}.`,
+          type: 'CRM_LEAD_ALERT',
+          recipientEmail: 'admin@rainbowpaints.com',
+          metadata: {
+            customerName: formData.name,
+            estimatedAreaSqFt: formData.area,
+            pincodeMatches: formData.pinCode,
+            priority: 'HIGH'
+          }
+        })
+      });
+    } catch (err) {
+      console.warn("Could not log CRM/notification, but progressing...", err);
+    }
+
+    const message = `Hi Rainbow Paints! I would like to book a free site visit.\n\n*Name:* ${formData.name || 'Not provided'}\n*Approx Area:* ${formData.area || 'Not provided'} sq.ft\n*Pin Code:* ${formData.pinCode || 'Not provided'}\n\n*Interested in:* Free Paint Sample Kit & Site Visit`;
+    window.open(`https://wa.me/918072442930?text=${encodeURIComponent(message)}`, '_blank');
+  };
+
   return (
     <section className="py-8 sm:py-12 bg-royale-bg relative overflow-hidden" id="products-industrial">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
           
-          {/* Products Section */}
-          <Link to="/buy-paint-online" className="group block h-full">
-            <motion.div 
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -5 }}
-              className="h-full relative rounded-2xl sm:rounded-[2rem] overflow-hidden border border-zinc-200 bg-royale-surface/80 p-6 sm:p-8 flex flex-col justify-between hover-gold-glow"
-            >
-              {/* Background Glow */}
-              <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-blue-600/5 rounded-full blur-[40px] -mr-32 -mt-32 group-hover:bg-blue-600/10 transition-colors duration-700" />
-              
-              <div className="relative z-10 flex flex-col items-start text-left mb-8">
-                <span className="text-gold font-display font-medium tracking-[0.4em] uppercase text-[8px] sm:text-[9px] mb-3 block">All products catalogue</span>
-                <h2 className="text-2xl sm:text-3xl font-serif font-medium text-ivory mb-4 uppercase tracking-tight leading-tight">
-                  Explore India's <span className="text-gradient italic">Leading Brands</span>
-                </h2>
-                <p className="text-[11px] sm:text-xs mb-6 leading-relaxed font-sans font-light text-ivory/80 max-w-sm">
-                  Explore our wide range of products from all of India's leading brands. From luxury interior finishes to heavy-duty industrial coatings, all in one elite catalog.
-                </p>
-                
-                <div className="flex flex-wrap gap-3 items-center opacity-60 group-hover:opacity-100 transition-opacity duration-700">
-                  {categoryIcons.map((item, idx) => (
-                    <div key={idx} className="flex items-center gap-1.5 border border-zinc-200 px-2 py-1 rounded-md bg-white shadow-sm border border-zinc-200">
-                      <span className="text-[10px] grayscale brightness-200">{item.emoji}</span>
-                      <span className="text-[7.5px] uppercase font-display font-semibold tracking-[0.1em] text-ivory/60">{item.name}</span>
-                    </div>
-                  ))}
-                </div>
+          {/* Site Visit Section */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            whileHover={{ y: -5 }}
+            className="h-full relative rounded-2xl sm:rounded-[2rem] overflow-hidden border border-zinc-200 bg-white p-6 sm:p-8 flex flex-col justify-between hover-gold-glow shadow-sm"
+          >
+            {/* Background Glow */}
+            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gold/5 rounded-full blur-[40px] -mr-32 -mt-32 group-hover:bg-gold/10 transition-colors duration-700" />
+            
+            <div className="relative z-10 flex flex-col items-start text-left mb-6">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white shadow-sm border border-zinc-200 flex items-center justify-center mb-4 border border-zinc-200">
+                  <Package className="w-5 h-5 sm:w-6 sm:h-6 text-gold" />
               </div>
+              <h2 className="text-xl sm:text-2xl font-serif font-medium mb-2 leading-tight text-zinc-900">
+                Request site <span className="italic text-gradient font-light">visit.</span>
+              </h2>
+              <p className="text-zinc-500 text-[10px] sm:text-xs mb-4 max-w-sm italic font-light">
+                Free visit - free consultation - free measurement - free quote - free paint sample - by experts on your doorstep - no obligation, no cost.
+              </p>
+            </div>
 
-              <div className="relative z-10 flex justify-end">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#B8975A] flex items-center justify-center group-hover:scale-110 group-hover:-rotate-45 transition-all duration-700 shadow-xl shadow-[#B8975A]/20">
-                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+            <form onSubmit={handleWhatsapp} className="relative z-10 space-y-3 mt-auto w-full">
+              <div className="grid sm:grid-cols-2 gap-3">
+                <div className="space-y-1 sm:space-y-1.5">
+                  <label className="text-[8px] sm:text-[9px] font-semibold uppercase tracking-widest text-gold ml-1">Full Name</label>
+                  <input 
+                    type="text" 
+                    value={formData.name}
+                    onChange={e => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full bg-zinc-50 border border-zinc-200 rounded-lg sm:rounded-xl px-3 py-2.5 focus:outline-none focus:border-gold/50 transition-colors text-zinc-800 text-[10px] sm:text-xs placeholder:text-zinc-400 font-medium" placeholder="John Doe" 
+                  />
+                </div>
+                <div className="space-y-1 sm:space-y-1.5">
+                  <label className="text-[8px] sm:text-[9px] font-semibold uppercase tracking-widest text-gold ml-1">Approx Sq Ft Area</label>
+                  <input 
+                    type="text" 
+                    value={formData.area}
+                    onChange={e => setFormData({ ...formData, area: e.target.value })}
+                    className="w-full bg-zinc-50 border border-zinc-200 rounded-lg sm:rounded-xl px-3 py-2.5 focus:outline-none focus:border-gold/50 transition-colors text-zinc-800 text-[10px] sm:text-xs placeholder:text-zinc-400 font-medium" placeholder="e.g. 1500" 
+                  />
                 </div>
               </div>
-            </motion.div>
-          </Link>
+              <div className="space-y-1 sm:space-y-1.5">
+                <label className="text-[8px] sm:text-[9px] font-semibold uppercase tracking-widest text-gold ml-1">Pin Code</label>
+                <input 
+                  type="text" 
+                  value={formData.pinCode}
+                  onChange={e => setFormData({ ...formData, pinCode: e.target.value })}
+                  className="w-full bg-zinc-50 border border-zinc-200 rounded-lg sm:rounded-xl px-3 py-2.5 focus:outline-none focus:border-gold/50 transition-colors text-zinc-800 text-[10px] sm:text-xs placeholder:text-zinc-400 font-medium" placeholder="641001" 
+                />
+              </div>
+              <button type="submit" className="w-full bg-[#25D366] hover:bg-[#20b858] text-white py-3 mt-2 rounded-xl font-semibold flex items-center justify-center gap-2 transition-transform active:scale-[0.98] shadow-lg shadow-[#25D366]/20 text-[10px] sm:text-xs uppercase tracking-wider">
+                <WhatsappIcon className="w-4 h-4" /> Book Via Whatsapp
+              </button>
+            </form>
+          </motion.div>
 
           {/* Industrial Section */}
           <motion.div 

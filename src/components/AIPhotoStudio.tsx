@@ -236,41 +236,6 @@ export default function AIPhotoStudio({
     };
   }, [pickedPixelColor, poolToUse]);
 
-  // Compute cross-brand equivalents in real-time:
-  // If activeShade is from asian, show closest matching berger, and vice-versa.
-  const crossBrandEquivalent = useMemo(() => {
-    if (!activeShade || poolToUse.length === 0) return null;
-    const isCurrentlyAsian = activeShade.brand.toLowerCase().includes('asian');
-    const targetBrand = isCurrentlyAsian ? 'berger' : 'asian';
-    
-    const targetRGB = hexToRgb(activeShade.hex);
-    if (!targetRGB) return null;
-
-    let minDistance = Infinity;
-    let closest: Shade | null = null;
-
-    for (const shade of poolToUse) {
-      if (!shade.brand.toLowerCase().includes(targetBrand.toLowerCase())) continue;
-
-      const sRGB = hexToRgb(shade.hex);
-      if (!sRGB) continue;
-
-      const dist = Math.sqrt(
-        (targetRGB.r - sRGB.r) * (targetRGB.r - sRGB.r) +
-        (targetRGB.g - sRGB.g) * (targetRGB.g - sRGB.g) +
-        (targetRGB.b - sRGB.b) * (targetRGB.b - sRGB.b)
-      );
-
-      if (dist < minDistance) {
-        minDistance = dist;
-        closest = shade;
-      }
-    }
-
-    const similarity = Math.max(0, Math.min(100, Math.round((1 - minDistance / 442) * 100)));
-    return closest ? { shade: closest, similarity } : null;
-  }, [activeShade, poolToUse]);
-
   // Canvas / repaint state
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [segMode, setSegMode] = useState<'sam' | 'manual'>('sam');

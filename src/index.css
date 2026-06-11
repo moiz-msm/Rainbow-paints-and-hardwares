@@ -18,6 +18,7 @@
   html {
     overflow-x: clip;
     -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
   }
   
   body {
@@ -44,6 +45,10 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#D4B572] via-[#C8A45D] to-[#A38148];
   }
 
+  .bg-gradient-gold {
+    @apply bg-gradient-to-r from-[#A38148] via-[#D4B572] to-[#B8975A];
+  }
+
   .hover-gold-glow {
     @apply transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)];
   }
@@ -62,5 +67,19 @@
     @apply bg-gold/30 rounded-full hover:bg-gold/50 transition-colors duration-500;
   }
 }
+
+/* Custom NProgress styling completely adopting the gold theme */
+#nprogress .bar {
+  background: var(--color-gold) !important;
+  height: 3px !important;
+}
+#nprogress .peg {
+  box-shadow: 0 0 10px var(--color-gold), 0 0 5px var(--color-gold) !important;
+}
+#nprogress .spinner-icon {
+  border-top-color: var(--color-gold) !important;
+  border-left-color: var(--color-gold) !important;
+}
+
 
 

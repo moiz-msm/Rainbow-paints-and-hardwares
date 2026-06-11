@@ -30,6 +30,7 @@ interface OrderItem {
 interface OrderAddress {
   name: string;
   phone: string;
+  email?: string;
   line1: string;
   landmark?: string;
   city: string;
@@ -109,6 +110,24 @@ export default function CRMPanel() {
         setSelectedOrder((prev) =>
           prev ? { ...prev, status: newStatus } : null,
         );
+      }
+
+      // Trigger email if OUT_FOR_DELIVERY or DELIVERED
+      if (newStatus === 'OUT_FOR_DELIVERY' || newStatus === 'DELIVERED') {
+        const orderData = orders.find(o => o.id === orderId);
+        const customerEmail = orderData?.deliveryAddress?.email || customers.find(c => c.id === orderData?.userId)?.email;
+        if (customerEmail) {
+          fetch('/api/transaction/status-update', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              orderId,
+              status: newStatus,
+              customerEmail,
+              customerName: orderData?.deliveryAddress?.name
+            })
+          }).catch(console.error);
+        }
       }
     } catch (e) {
       console.error("Error updating order status:", e);

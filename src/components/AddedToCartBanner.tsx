@@ -94,7 +94,7 @@ export default function AddedToCartBanner() {
                   closeBanner();
                   navigate('/checkout');
                 }}
-                className="flex-1 md:flex-initial px-5 py-2.5 rounded-xl bg-gradient-to-r from-gold to-[#D4B572] hover:from-[#D4B572] hover:to-gold text-black font-semibold text-xs uppercase tracking-wider transition-all duration-200 shadow-lg shadow-gold/10 hover:shadow-gold/20 flex items-center justify-center gap-1.5 cursor-pointer text-center"
+                className="flex-1 md:flex-initial px-5 py-2.5 rounded-xl bg-gradient-gold hover:opacity-90 text-white font-semibold text-xs uppercase tracking-wider transition-all duration-200 shadow-lg shadow-gold/10 hover:shadow-gold/20 flex items-center justify-center gap-1.5 cursor-pointer text-center"
               >
                 Checkout <ArrowRight className="w-3.5 h-3.5" />
               </button>
