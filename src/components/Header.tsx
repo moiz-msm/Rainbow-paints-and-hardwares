@@ -8,7 +8,6 @@ import { useWishlistStore } from '../store/useWishlistStore';
 import { auth } from '../lib/firebase';
 import ProductSearchInput from './ProductSearchInput';
 import AnnouncementBanner from './AnnouncementBanner';
-import mascotImg from '../assets/mascot.png';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -79,7 +78,7 @@ export default function Header() {
             <Link to="/" title="Home" aria-label="Home" className="flex items-center gap-2 sm:gap-3 group relative shrink-0">
               <div className="flex items-center justify-center shrink-0 group-hover:opacity-80 transition-opacity duration-300">
                 <img 
-                  src={mascotImg} 
+                  src="/mascot.png" 
                   alt="Rainbow Paint and Hardwares" 
                   referrerPolicy="no-referrer"
                   fetchPriority="high"

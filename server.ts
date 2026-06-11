@@ -812,47 +812,6 @@ Please output a valid JSON object matching this structure exactly:
   // --- SITEMAP GENERATION ---
   app.get('/sitemap.xml', async (req, res) => {
     try {
-      let productUrls = '';
-      
-      try {
-        const { initializeApp } = await import('firebase/app');
-        const { initializeFirestore, collection, getDocs } = await import('firebase/firestore');
-        const fs = await import('fs');
-        const path = await import('path');
-        let firebaseConfig;
-        try {
-          const mod = await import('./firebase-applet-config.json', { with: { type: 'json' } });
-          firebaseConfig = mod.default || mod;
-        } catch {
-          // Fallback context in CJS when run through esbuild
-          firebaseConfig = require('./firebase-applet-config.json');
-        }
-        
-        if (firebaseConfig) {
-          const appClient = initializeApp(firebaseConfig, 'sitemap-server');
-          const db = firebaseConfig.firestoreDatabaseId 
-            ? initializeFirestore(appClient, { experimentalForceLongPolling: true }, firebaseConfig.firestoreDatabaseId)
-            : initializeFirestore(appClient, { experimentalForceLongPolling: true });
-          
-          const productsRef = collection(db, 'products');
-          const snapshot = await getDocs(productsRef);
-          
-          snapshot.forEach(doc => {
-            const data = doc.data();
-            if (data.slug) {
-              productUrls += `
-  <url>
-    <loc>https://rainbowpaint.in/p/${data.slug}</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>`;
-            }
-          });
-        }
-      } catch (err) {
-        console.error("Failed to generate dynamic products for sitemap:", err);
-      }
-
       const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -954,7 +913,7 @@ Please output a valid JSON object matching this structure exactly:
     <loc>https://rainbowpaint.in/shipping-policy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-  </url>${productUrls}
+  </url>
 </urlset>`;
 
       res.header('Content-Type', 'application/xml');

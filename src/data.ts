@@ -1,6 +1,3 @@
-import asianPaintsLogo from '../public/asian-paints.svg';
-import bergerPaintsLogo from '../public/berger-paints.png';
-import drFixitLogo from '../public/dr-fixit.svg';
 export const topCategories = ["All Categories", "Home Paint", "Industrial"];
 
 export const subCategories: Record<string, string[]> = {
@@ -43,21 +40,21 @@ export interface BrandDetail {
 export const brandDetails: BrandDetail[] = [
   {
     name: "Asian Paints",
-    logo: asianPaintsLogo,
+    logo: "/asian-paints.svg",
     description: "India's #1 paint brand — Royale luxury emulsions, Apex exterior & Teflon technology trusted by millions of homes.",
     tags: ["Interior", "Exterior", "Primer"],
     isAuthorised: true
   },
   {
     name: "Berger Paints",
-    logo: bergerPaintsLogo,
+    logo: "/berger-paints.png",
     description: "Premium Silk luxury emulsions & WeatherCoat exterior series. Value leader in India's premium paint segment.",
     tags: ["Silk Range", "Weathercoat", "Distemper"],
     isAuthorised: true
   },
   {
     name: "Dr. Fixit",
-    logo: drFixitLogo,
+    logo: "/dr-fixit.svg",
     description: "The trusted name in structural waterproofing and construction chemicals for permanent protection against water damage.",
     tags: ["Waterproofing", "Roofseal", "Bathseal"],
     isAuthorised: true

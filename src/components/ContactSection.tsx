@@ -1,7 +1,6 @@
 import React from 'react';
 import { MapPin, Phone, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
-import storeFrontImg from '../assets/store-front.jpg';
 
 export default function ContactSection() {
   return (
@@ -59,7 +58,7 @@ export default function ContactSection() {
           >
             <div className="glass-panel p-2 rounded-2xl sm:rounded-3xl overflow-hidden h-[300px] sm:h-full min-h-[300px] hover-gold-glow shadow-2xl">
               <img 
-                src={storeFrontImg} 
+                src="/store-front.jpg" 
                 alt="Rainbow Paints and Hardwares Store Front" 
                 loading="lazy"
                 decoding="async"
