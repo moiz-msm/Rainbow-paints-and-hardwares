@@ -277,7 +277,7 @@ export default function ProductDetailPage() {
       {/* Highlights/Properties */}
       {product.properties && product.properties.length > 0 && (
         <div className="bg-white rounded-2xl p-5 border border-zinc-200 mb-8 shadow-sm">
-          <h4 className="text-[11px] font-display font-semibold uppercase tracking-widest text-gold mb-3 flex items-center gap-2"><Star className="w-3.5 h-3.5"/> Key Features</h4>
+          <h2 className="text-[11px] font-display font-semibold uppercase tracking-widest text-gold mb-3 flex items-center gap-2"><Star className="w-3.5 h-3.5"/> Key Features</h2>
           <ul className="grid sm:grid-cols-2 gap-3 pb-1">
             {product.properties.map((prop: string, idx: number) => (
               <li key={idx} className="flex items-start gap-2.5 text-xs text-zinc-700 font-sans">
@@ -298,7 +298,7 @@ export default function ProductDetailPage() {
             key={tab.id}
             onClick={() => setActiveTab(tab.id as any)}
             className={`pb-3 text-xs sm:text-sm font-display font-semibold uppercase tracking-wider transition-all relative ${
-              activeTab === tab.id ? 'text-gold' : 'text-zinc-500 hover:text-zinc-900'
+              activeTab === tab.id ? 'text-gold' : 'text-zinc-600 hover:text-zinc-900'
             }`}
           >
             {tab.label}
@@ -367,7 +367,7 @@ export default function ProductDetailPage() {
           ]} 
         />
 
-        <button onClick={() => navigate(-1)} className="text-zinc-500 hover:text-ivory flex items-center gap-2 text-xs mb-8 transition-colors">
+        <button onClick={() => navigate(-1)} className="text-zinc-600 hover:text-ivory flex items-center gap-2 text-xs mb-8 transition-colors">
           <ArrowLeft className="w-3.5 h-3.5" /> Back to Products
         </button>
 
@@ -391,7 +391,7 @@ export default function ProductDetailPage() {
               
               <button 
                 onClick={handleWishlistToggle}
-                className="absolute top-4 right-4 z-10 p-2.5 rounded-full bg-white/90 backdrop-blur shadow-sm hover:scale-110 active:scale-95 transition-all text-zinc-400 hover:text-rose-500"
+                className="absolute top-4 right-4 z-10 p-2.5 rounded-full bg-white/90 backdrop-blur shadow-sm hover:scale-110 active:scale-95 transition-all text-zinc-600 hover:text-rose-500"
               >
                 <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-rose-500 text-rose-500' : ''}`} />
               </button>
@@ -482,9 +482,9 @@ export default function ProductDetailPage() {
             {isPaint && (
               <div className="mb-8">
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-[11px] text-zinc-800 font-display uppercase tracking-widest font-semibold flex items-center gap-1.5">
+                  <h2 className="text-[11px] text-zinc-800 font-display uppercase tracking-widest font-semibold flex items-center gap-1.5">
                     <Info className="w-3.5 h-3.5 text-gold"/> Select Color & Finish
-                  </h3>
+                  </h2>
                 </div>
                 <div className="bg-white border border-zinc-200 p-3 rounded-xl">
                   <InlineShadePicker 
@@ -499,7 +499,7 @@ export default function ProductDetailPage() {
             {/* Size Selector */}
             <div className="mb-8">
               <div className="flex items-center justify-between mb-3">
-                <h3 className="text-[11px] text-zinc-800 font-display uppercase tracking-widest font-semibold flex items-center gap-1.5"><Ruler className="w-3.5 h-3.5 text-gold"/> Capacity / Size</h3>
+                <h2 className="text-[11px] text-zinc-800 font-display uppercase tracking-widest font-semibold flex items-center gap-1.5"><Ruler className="w-3.5 h-3.5 text-gold"/> Capacity / Size</h2>
               </div>
               
               <div className="grid grid-cols-4 gap-2 sm:gap-3">
@@ -523,9 +523,9 @@ export default function ProductDetailPage() {
             <div className="mb-8">
               <div className="flex items-end gap-3 mb-1">
                 <span className="text-3xl font-display font-medium text-ivory">₹{currentPrice.toLocaleString()}</span>
-                {selectedSize === 1 && <span className="text-zinc-500 line-through text-sm mb-1">₹{Math.floor(basePrice * 1.15).toLocaleString()}</span>}
+                {selectedSize === 1 && <span className="text-zinc-600 line-through text-sm mb-1">₹{Math.floor(basePrice * 1.15).toLocaleString()}</span>}
               </div>
-              <p className="text-[10px] text-zinc-500 font-medium uppercase tracking-wider">Inclusive of all taxes</p>
+              <p className="text-[10px] text-zinc-600 font-medium uppercase tracking-wider">Inclusive of all taxes</p>
             </div>
 
             {/* Bulk Enquiry */}
@@ -534,7 +534,7 @@ export default function ProductDetailPage() {
                 href={`https://wa.me/918072442930?text=${encodeURIComponent(`Hi Rainbow Paints! I'm looking for bulk pricing for ${product.name} (${product.brand}).`)}`}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 text-zinc-500 hover:text-[#25D366] transition-colors text-[10px] sm:text-xs font-semibold uppercase tracking-wider group bg-zinc-100 hover:bg-[#25D366]/10 px-3 py-1.5 rounded-full"
+                className="inline-flex items-center gap-2 text-zinc-600 hover:text-[#25D366] transition-colors text-[10px] sm:text-xs font-semibold uppercase tracking-wider group bg-zinc-100 hover:bg-[#25D366]/10 px-3 py-1.5 rounded-full"
               >
                 <svg className="w-4 h-4 text-[#25D366] group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -548,14 +548,14 @@ export default function ProductDetailPage() {
               <div className="flex items-center justify-between border border-zinc-200 bg-white rounded-xl px-2 w-[120px] sm:w-32 shrink-0 h-14 sm:h-16">
                 <button 
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="w-10 h-10 rounded shrink-0 flex items-center justify-center text-zinc-500 hover:text-ivory hover:bg-zinc-200/50 transition-colors"
+                  className="w-10 h-10 rounded shrink-0 flex items-center justify-center text-zinc-600 hover:text-ivory hover:bg-zinc-200/50 transition-colors"
                 >
                   <Minus className="w-4 h-4" />
                 </button>
                 <span className="font-display font-medium text-base text-ivory w-8 text-center">{quantity}</span>
                 <button 
                   onClick={() => setQuantity(Math.min(10, quantity + 1))}
-                  className="w-10 h-10 rounded shrink-0 flex items-center justify-center text-zinc-500 hover:text-ivory hover:bg-zinc-200/50 transition-colors"
+                  className="w-10 h-10 rounded shrink-0 flex items-center justify-center text-zinc-600 hover:text-ivory hover:bg-zinc-200/50 transition-colors"
                 >
                   <Plus className="w-4 h-4" />
                 </button>
@@ -582,7 +582,7 @@ export default function ProductDetailPage() {
         {/* Frequently Bought Together Section */}
         {boughtTogether.length > 0 && (
           <div className="mt-20 pt-16 border-t border-zinc-200/50">
-            <h3 className="text-2xl font-serif text-ivory mb-8">Customers buy these <span className="text-gradient italic">Together</span></h3>
+            <h2 className="text-2xl font-serif text-ivory mb-8">Customers buy these <span className="text-gradient italic">Together</span></h2>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {boughtTogether.map(rp => (
                 <Link to={`/p/${rp.name.replace(/\s+/g, '-').toLowerCase()}`} key={rp.id} className="group flex items-center bg-royale-surface border border-zinc-200 hover:border-gold/30 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_8px_30px_rgba(184,151,90,0.1)] p-3">
@@ -591,7 +591,7 @@ export default function ProductDetailPage() {
                   </div>
                   <div className="pl-4 flex flex-col flex-1">
                     <span className="text-[9px] uppercase tracking-wider text-gold font-display font-bold mb-1">{rp.brand}</span>
-                    <h4 className="text-xs font-medium text-ivory mb-1 leading-tight line-clamp-2">{rp.name}</h4>
+                    <h3 className="text-xs font-medium text-ivory mb-1 leading-tight line-clamp-2">{rp.name}</h3>
                     <span className="text-sm font-display text-ivory mt-auto font-semibold">₹{rp.price || 850}</span>
                   </div>
                 </Link>
@@ -603,7 +603,7 @@ export default function ProductDetailPage() {
         {/* Related Products Section */}
         {relatedProducts.length > 0 && (
           <div className="mt-20 pt-16 border-t border-zinc-200/50">
-            <h3 className="text-2xl font-serif text-ivory mb-8">You might also <span className="text-gradient italic">Like</span></h3>
+            <h2 className="text-2xl font-serif text-ivory mb-8">You might also <span className="text-gradient italic">Like</span></h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
               {relatedProducts.map(rp => (
                 <Link to={`/p/${rp.name.replace(/\s+/g, '-').toLowerCase()}`} key={rp.id} className="group flex flex-col bg-royale-surface border border-zinc-200 hover:border-gold/30 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_8px_30px_rgba(184,151,90,0.1)]">
@@ -612,7 +612,7 @@ export default function ProductDetailPage() {
                   </div>
                   <div className="p-4 sm:p-5 flex flex-col flex-1">
                     <span className="text-[9px] uppercase tracking-wider text-gold font-display font-bold mb-1">{rp.brand}</span>
-                    <h4 className="text-sm font-medium text-ivory mb-2 leading-tight line-clamp-2">{rp.name}</h4>
+                    <h3 className="text-sm font-medium text-ivory mb-2 leading-tight line-clamp-2">{rp.name}</h3>
                     <span className="text-lg font-display text-ivory mt-auto">{rp.price}</span>
                   </div>
                 </Link>

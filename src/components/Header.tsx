@@ -8,6 +8,7 @@ import { useWishlistStore } from '../store/useWishlistStore';
 import { auth } from '../lib/firebase';
 import ProductSearchInput from './ProductSearchInput';
 import AnnouncementBanner from './AnnouncementBanner';
+import mascotImg from '../assets/mascot.png';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -78,7 +79,7 @@ export default function Header() {
             <Link to="/" title="Home" aria-label="Home" className="flex items-center gap-2 sm:gap-3 group relative shrink-0">
               <div className="flex items-center justify-center shrink-0 group-hover:opacity-80 transition-opacity duration-300">
                 <img 
-                  src="/mascot.png" 
+                  src={mascotImg} 
                   alt="Rainbow Paint and Hardwares" 
                   referrerPolicy="no-referrer"
                   fetchPriority="high"
@@ -127,7 +128,7 @@ export default function Header() {
                     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute right-0 top-full mt-2 w-48 bg-white border border-zinc-200 rounded-xl shadow-xl overflow-hidden z-[100]">
                       <div className="px-4 py-3 border-b border-zinc-100">
                         <p className="text-xs font-medium text-zinc-900 truncate">{user.displayName || 'User'}</p>
-                        <p className="text-[10px] text-zinc-500 truncate">{user.email}</p>
+                        <p className="text-[10px] text-zinc-600 truncate">{user.email}</p>
                         <span className="inline-block mt-1 px-1.5 py-0.5 bg-gold/10 text-gold text-[9px] font-bold uppercase rounded">{role || 'Customer'}</span>
                       </div>
                       <div className="p-1">
@@ -223,7 +224,7 @@ export default function Header() {
                   <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute right-0 top-full mt-2 w-48 bg-white border border-zinc-200 rounded-xl shadow-xl overflow-hidden z-[100]">
                     <div className="px-4 py-3 border-b border-zinc-100 text-left">
                       <p className="text-xs font-medium text-zinc-900 truncate">{user.displayName || 'User'}</p>
-                      <p className="text-[10px] text-zinc-500 truncate">{user.email}</p>
+                      <p className="text-[10px] text-zinc-600 truncate">{user.email}</p>
                       <span className="inline-block mt-1 px-1.5 py-0.5 bg-gold/10 text-gold text-[9px] font-bold uppercase rounded">{role || 'Customer'}</span>
                     </div>
                     <div className="p-1">

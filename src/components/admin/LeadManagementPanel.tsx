@@ -38,7 +38,7 @@ export default function LeadManagementPanel() {
 
   if (loading)
     return (
-      <div className="p-8 text-center text-zinc-500">Loading Leads...</div>
+      <div className="p-8 text-center text-zinc-600">Loading Leads...</div>
     );
 
   return (
@@ -72,11 +72,11 @@ export default function LeadManagementPanel() {
             </div>
 
             <h3 className="font-bold text-zinc-900 mb-1">{lead.name}</h3>
-            <p className="text-sm text-zinc-500 flex items-center gap-2 mb-1">
+            <p className="text-sm text-zinc-600 flex items-center gap-2 mb-1">
               <span className="font-medium text-zinc-700">{lead.phone}</span>
             </p>
             {lead.email && (
-              <p className="text-xs text-zinc-400 mb-1">{lead.email}</p>
+              <p className="text-xs text-zinc-600 mb-1">{lead.email}</p>
             )}
 
             {(lead.metadata || lead.address) && (
@@ -99,7 +99,7 @@ export default function LeadManagementPanel() {
               </div>
             )}
 
-            <div className="mt-4 pt-3 border-t border-zinc-100 text-[10px] text-zinc-400 flex items-center gap-1">
+            <div className="mt-4 pt-3 border-t border-zinc-100 text-[10px] text-zinc-600 flex items-center gap-1">
               <Clock className="w-3 h-3" />
               {lead.createdAt?.toDate
                 ? lead.createdAt.toDate().toLocaleString()
@@ -108,7 +108,7 @@ export default function LeadManagementPanel() {
           </div>
         ))}
         {leads.length === 0 && (
-          <div className="col-span-full py-12 text-center text-zinc-400">
+          <div className="col-span-full py-12 text-center text-zinc-600">
             No leads generated yet.
           </div>
         )}

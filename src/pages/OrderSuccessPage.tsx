@@ -23,7 +23,7 @@ export default function OrderSuccessPage() {
       <div className="min-h-screen flex items-center justify-center p-4">
         <div className="text-center">
           <RefreshCw className="animate-spin w-8 h-8 text-gold mx-auto mb-4" />
-          <p className="text-gray-500">Loading order details...</p>
+          <p className="text-zinc-600">Loading order details...</p>
         </div>
       </div>
     );
@@ -47,7 +47,7 @@ export default function OrderSuccessPage() {
           
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Order Confirmed!</h1>
           <p className="text-gray-600 text-lg mb-2">Thank you for shopping with Rainbow Paints & Hardwares.</p>
-          <p className="text-gray-500 mb-8">Your order <span className="font-bold text-black">{order.id}</span> has been placed successfully.</p>
+          <p className="text-zinc-600 mb-8">Your order <span className="font-bold text-black">{order.id}</span> has been placed successfully.</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button 
@@ -67,9 +67,9 @@ export default function OrderSuccessPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
           <div className="bg-royale-surface p-6 rounded-2xl shadow-sm">
-            <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-              <Package className="w-5 h-5 text-gray-400" /> Order Summary
-            </h3>
+            <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <Package className="w-5 h-5 text-zinc-600" /> Order Summary
+            </h2>
             <div className="space-y-3">
               {order.items.map(item => (
                 <div key={item.id} className="flex justify-between text-sm">
@@ -103,21 +103,21 @@ export default function OrderSuccessPage() {
 
           <div className="bg-royale-surface p-6 rounded-2xl shadow-sm space-y-6">
             <div>
-              <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">Delivery Details</h3>
+              <h2 className="text-sm font-semibold text-zinc-600 uppercase tracking-wider mb-2">Delivery Details</h2>
               <p className="font-semibold text-gray-900">{order.shippingAddress.name}</p>
               <p className="text-gray-600 text-sm mt-1">{order.shippingAddress.line1}, {order.shippingAddress.city}, {order.shippingAddress.state} {order.shippingAddress.pincode}</p>
               <p className="text-gray-600 text-sm mt-1">Phone: {order.shippingAddress.phone}</p>
             </div>
             
             <div>
-              <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">Estimated Delivery</h3>
+              <h2 className="text-sm font-semibold text-zinc-600 uppercase tracking-wider mb-2">Estimated Delivery</h2>
               <p className="font-semibold text-black bg-blue-50 px-3 py-2 rounded-lg inline-block border border-blue-100">
                 {new Date(order.estimatedDelivery).toLocaleDateString('en-IN', { weekday: 'long', month: 'long', day: 'numeric' })}
               </p>
             </div>
             
             <div>
-              <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">Payment Mode</h3>
+              <h2 className="text-sm font-semibold text-zinc-600 uppercase tracking-wider mb-2">Payment Mode</h2>
               <p className="font-semibold text-gray-900">{order.paymentMethod}</p>
             </div>
           </div>

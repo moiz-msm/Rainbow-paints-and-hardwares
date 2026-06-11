@@ -18,7 +18,7 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": ["HomeAndConstructionBusiness", "PaintStore", "Organization"],
     "name": "Rainbow Paints & Hardwares",
-    "image": "https://rainbowpaint.in/Hero-bg.png",
+    "image": "https://rainbowpaint.in/hero-bg.png",
     "@id": "https://rainbowpaint.in/#organization",
     "url": "https://rainbowpaint.in",
     "telephone": "+918072442930",

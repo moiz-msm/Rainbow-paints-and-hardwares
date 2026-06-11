@@ -55,7 +55,7 @@ const ShadeCard = memo(({ shade, onSelect, textColor, isFavorite, onToggleFavori
     </div>
     <div className="bg-[#faf9f6] p-1.5 sm:p-2.5 text-center flex flex-col justify-center items-center gap-0.5 border-t border-zinc-100 shrink-0">
        <p className="text-[8px] sm:text-[9.5px] md:text-[10px] text-zinc-800 font-bold truncate w-full px-0.5">{shade.name}</p>
-       <p className="text-[7px] sm:text-[8px] md:text-[8.5px] text-zinc-500 font-mono tracking-wider">{shade.shadeCode}</p>
+       <p className="text-[7px] sm:text-[8px] md:text-[8.5px] text-zinc-600 font-mono tracking-wider">{shade.shadeCode}</p>
     </div>
   </div>
 ));
@@ -1035,13 +1035,13 @@ export default function VisualizerSection() {
           <div className="flex items-center gap-1.5 border border-zinc-200 bg-[#fdfbf7]/95 p-1 rounded-full shadow-sm max-w-md w-full sm:w-auto">
             <button 
               onClick={() => setVisualizerMode('3d')}
-              className={`flex-1 sm:flex-none px-5 py-2.5 text-[10px] font-sans font-semibold uppercase tracking-widest rounded-full transition-all flex items-center justify-center gap-2 ${visualizerMode === '3d' ? 'bg-gold text-white shadow-md' : 'text-zinc-500 hover:text-gold hover:bg-gold/5'}`}
+              className={`flex-1 sm:flex-none px-5 py-2.5 text-[10px] font-sans font-semibold uppercase tracking-widest rounded-full transition-all flex items-center justify-center gap-2 ${visualizerMode === '3d' ? 'bg-gold text-white shadow-md' : 'text-zinc-600 hover:text-gold hover:bg-gold/5'}`}
             >
               <Sparkles className={`w-3.5 h-3.5 ${visualizerMode === '3d' ? 'text-white' : 'text-gold'}`} /> Preview Model
             </button>
             <button 
               onClick={() => setVisualizerMode('ai')}
-              className={`flex-1 sm:flex-none px-5 py-2.5 text-[10px] font-sans font-semibold uppercase tracking-widest rounded-full transition-all flex items-center justify-center gap-2 ${visualizerMode === 'ai' ? 'bg-gold text-white shadow-md' : 'text-zinc-500 hover:text-gold hover:bg-gold/5'}`}
+              className={`flex-1 sm:flex-none px-5 py-2.5 text-[10px] font-sans font-semibold uppercase tracking-widest rounded-full transition-all flex items-center justify-center gap-2 ${visualizerMode === 'ai' ? 'bg-gold text-white shadow-md' : 'text-zinc-600 hover:text-gold hover:bg-gold/5'}`}
             >
               <Palette className={`w-3.5 h-3.5 ${visualizerMode === 'ai' ? 'text-white' : 'text-gold'}`} /> Upload Image
             </button>
@@ -1056,10 +1056,10 @@ export default function VisualizerSection() {
           <div className="flex items-center gap-2.5">
             <Sparkles className="w-4 h-4 text-gold shrink-0 animate-pulse" />
             <div>
-              <h3 className="font-serif text-base sm:text-lg text-zinc-900 flex items-center gap-2 leading-none">
+              <h2 className="font-serif text-base sm:text-lg text-zinc-900 flex items-center gap-2 leading-none">
                 {visualizerMode === 'ai' ? 'Custom Shade Visualiser' : '3D Showroom Models'}
-              </h3>
-              <p className="text-xs text-zinc-500 mt-1 flex-1">
+              </h2>
+              <p className="text-xs text-zinc-600 mt-1 flex-1">
                 {visualizerMode === 'ai' ? 'Upload a photo of your room or click \'Use Live Camera\' to capture your walls in real time!' : 'Visualize architectural paint pairings in real-time'}
               </p>
             </div>
@@ -1106,7 +1106,7 @@ export default function VisualizerSection() {
                           <button 
                             key={id} 
                             onClick={() => { setActiveRoom(id); setActiveSurf(info.surfs[0]); }} 
-                            className={`px-3.5 focus:outline-none py-1.5 font-sans font-semibold uppercase tracking-widest text-[9px] sm:text-[10px] rounded-full transition-all border ${activeRoom === id ? 'bg-gold text-white border-transparent shadow-md scale-102 font-bold' : 'bg-transparent border-zinc-200 text-zinc-500 hover:text-gold hover:border-gold/30 hover:bg-gold/5'}`}
+                            className={`px-3.5 focus:outline-none py-1.5 font-sans font-semibold uppercase tracking-widest text-[9px] sm:text-[10px] rounded-full transition-all border ${activeRoom === id ? 'bg-gold text-white border-transparent shadow-md scale-102 font-bold' : 'bg-transparent border-zinc-200 text-zinc-600 hover:text-gold hover:border-gold/30 hover:bg-gold/5'}`}
                           >
                             {info.name}
                           </button>
@@ -1180,9 +1180,9 @@ export default function VisualizerSection() {
                     {!activeShade && <Palette className="w-4.5 h-4.5 text-gold shrink-0 animate-pulse" />}
                   </div>
                   <div className="flex-grow min-w-0">
-                    <h4 className="font-serif text-sm sm:text-base text-zinc-950 font-bold leading-normal mb-0.5 truncate">{activeShade ? activeShade.name : 'Choose a paint catalog swatch'}</h4>
+                    <h3 className="font-serif text-sm sm:text-base text-zinc-950 font-bold leading-normal mb-0.5 truncate">{activeShade ? activeShade.name : 'Choose a paint catalog swatch'}</h3>
                     <p className="text-[9px] text-gold uppercase tracking-widest leading-none font-bold">{activeShade ? activeShade.brand : 'Tap any swatches below to view'}</p>
-                    {activeShade && <code className="text-[8.5px] text-zinc-500 font-mono tracking-wider">{activeShade.shadeCode}</code>}
+                    {activeShade && <code className="text-[8.5px] text-zinc-600 font-mono tracking-wider">{activeShade.shadeCode}</code>}
                   </div>
                   {activeShade && (
                     <div className="flex flex-col gap-1.5 shrink-0">
@@ -1212,7 +1212,7 @@ export default function VisualizerSection() {
                       <button 
                         onClick={copyShade}
                         className={`px-2 py-1 rounded-md text-[8.5px] font-display uppercase tracking-wider transition-all flex items-center justify-center gap-1 border w-full ${
-                          copied ? 'bg-gold border-gold text-white shadow-sm font-semibold' : 'bg-white border-zinc-200 text-zinc-500 hover:border-zinc-300 hover:bg-zinc-50 shadow-xs'
+                          copied ? 'bg-gold border-gold text-white shadow-sm font-semibold' : 'bg-white border-zinc-200 text-zinc-600 hover:border-zinc-300 hover:bg-zinc-50 shadow-xs'
                         }`}
                       >
                         {copied ? (
@@ -1230,12 +1230,12 @@ export default function VisualizerSection() {
               <div>
                 <div className="flex justify-between items-center mb-1.5">
                   <span className="text-[8px] font-display font-semibold uppercase tracking-[0.2em] text-gold flex items-center gap-1.5"><Palette className="w-3 h-3" /> Compare Clipboard Palette</span>
-                  <span className="text-[9px] text-zinc-500 font-medium font-sans">{combination.length}/5</span>
+                  <span className="text-[9px] text-zinc-600 font-medium font-sans">{combination.length}/5</span>
                 </div>
                 
                 {combination.length === 0 ? (
                   <div className="h-[52px] border border-dashed border-[#dfd6c0] rounded-lg flex items-center justify-center bg-transparent">
-                    <p className="text-[9px] text-zinc-400 font-medium text-center px-4 leading-normal">
+                    <p className="text-[9px] text-zinc-600 font-medium text-center px-4 leading-normal">
                       Compare customized shades here by tapping "+ Palette" above
                     </p>
                   </div>
@@ -1281,7 +1281,7 @@ export default function VisualizerSection() {
                           <label htmlFor="custom-palette-name-input" className="text-[8px] font-display font-semibold uppercase tracking-widest text-[#cca564] leading-none">
                             Customize Palette Name
                           </label>
-                          <span className="text-[7.5px] text-zinc-400 font-mono">Brand Your Blend</span>
+                          <span className="text-[7.5px] text-zinc-600 font-mono">Brand Your Blend</span>
                         </div>
                         <input
                           id="custom-palette-name-input"
@@ -1367,12 +1367,12 @@ export default function VisualizerSection() {
                 <div className="flex items-center gap-2">
                   <Palette className="w-4 h-4 text-gold shrink-0" />
                   <div>
-                    <h4 className="font-serif text-[13px] font-bold text-zinc-900 leading-none flex items-center gap-1.5 group-hover/header:text-gold transition-colors">
+                    <h3 className="font-serif text-[13px] font-bold text-zinc-900 leading-none flex items-center gap-1.5 group-hover/header:text-gold transition-colors">
                       AI Color Theory Harmonies
-                      <ChevronDown className={`w-3.5 h-3.5 text-zinc-400 transition-transform duration-300 ${isAiTheoryCollapsed ? '' : 'rotate-180'}`} />
-                    </h4>
+                      <ChevronDown className={`w-3.5 h-3.5 text-zinc-600 transition-transform duration-300 ${isAiTheoryCollapsed ? '' : 'rotate-180'}`} />
+                    </h3>
                     <div className="flex items-center gap-1.5 flex-wrap mt-1">
-                      <p className="text-[10px] text-zinc-400 font-sans leading-none">Dynamic combinations from our catalog.</p>
+                      <p className="text-[10px] text-zinc-600 font-sans leading-none">Dynamic combinations from our catalog.</p>
                       {aiSeedShade && (
                         <span className="inline-flex items-center gap-1 text-[9px] bg-gold/10 text-zinc-700 font-medium px-2 py-0.5 rounded-full border border-gold/20 leading-none">
                           <span className="w-1.5 h-1.5 rounded-full inline-block shrink-0 animate-ping duration-1000" style={{ backgroundColor: aiSeedShade.hex }} />
@@ -1426,15 +1426,15 @@ export default function VisualizerSection() {
                   }`}
                 >
                   <div className="w-full">
-                    <h5 className="font-serif text-xs font-bold text-zinc-900 mb-1 group-hover:text-gold transition-colors flex items-center justify-between gap-1.5 w-full">
+                    <h4 className="font-serif text-xs font-bold text-zinc-900 mb-1 group-hover:text-gold transition-colors flex items-center justify-between gap-1.5 w-full">
                       <span className="truncate">{preset.name}</span>
                       {preset.style === 'custom' && (
                         <span className="shrink-0 text-[7.5px] uppercase font-bold tracking-wider font-display text-gold bg-gold/10 px-1.5 py-0.5 rounded-full flex items-center gap-1">
                           <Sparkles className="w-2.5 h-2.5" /> Live
                         </span>
                       )}
-                    </h5>
-                    <p className="text-[9.5px] text-zinc-500 leading-snug mb-3.5 h-[28px] overflow-hidden">{preset.desc}</p>
+                    </h4>
+                    <p className="text-[9.5px] text-zinc-600 leading-snug mb-3.5 h-[28px] overflow-hidden">{preset.desc}</p>
                   </div>
                   
                   <div className="w-full">
@@ -1456,7 +1456,7 @@ export default function VisualizerSection() {
                     </div>
 
                     <div className="mt-3 pt-2.5 border-t border-zinc-150">
-                      <span className="block text-[8px] font-mono text-zinc-400 uppercase tracking-widest mb-1.5 text-center">
+                      <span className="block text-[8px] font-mono text-zinc-600 uppercase tracking-widest mb-1.5 text-center">
                         Select color to preview
                       </span>
                       <div className="grid grid-cols-5 gap-1.5">
@@ -1509,7 +1509,7 @@ export default function VisualizerSection() {
 
                     {/* Save Palette & Share Action Footer */}
                     <div className="mt-3 pt-2 border-t border-zinc-150 flex items-center justify-between gap-1.5 relative w-full leading-none">
-                      <span className="text-[8.5px] font-sans font-bold text-zinc-500 uppercase tracking-wider group-hover:text-gold transition-colors">
+                      <span className="text-[8.5px] font-sans font-bold text-zinc-600 uppercase tracking-wider group-hover:text-gold transition-colors">
                         Apply Palette
                       </span>
                       
@@ -1527,7 +1527,7 @@ export default function VisualizerSection() {
                               className={`p-1 rounded-md border transition-all hover:scale-105 active:scale-95 cursor-pointer ${
                                 isPresetWishlisted 
                                   ? 'bg-red-50 border-red-200 text-red-500' 
-                                  : 'bg-white border-zinc-200 text-zinc-400 hover:text-red-500 hover:border-red-100'
+                                  : 'bg-white border-zinc-200 text-zinc-600 hover:text-red-500 hover:border-red-100'
                               }`}
                               title={isPresetWishlisted ? "Remove palette from wishlist" : "Save palette to wishlist"}
                             >
@@ -1540,7 +1540,7 @@ export default function VisualizerSection() {
                         <button
                           type="button"
                           onClick={(e) => handleSharePalette(e, preset, idx)}
-                          className="p-1 rounded-md border bg-white border-zinc-200 text-zinc-400 hover:text-gold hover:border-gold/30 hover:bg-gold/5 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                          className="p-1 rounded-md border bg-white border-zinc-200 text-zinc-600 hover:text-gold hover:border-gold/30 hover:bg-gold/5 transition-all hover:scale-105 active:scale-95 cursor-pointer"
                           title="Share palette link"
                         >
                           <Share2 className="w-3 h-3" />
@@ -1714,7 +1714,7 @@ export default function VisualizerSection() {
                                     className={`flex-1 text-center py-1 rounded text-[9.5px] font-bold tracking-wider uppercase transition-all ${
                                       colorAdjustTab === 'hsl'
                                         ? 'bg-zinc-950 text-white shadow-xs'
-                                        : 'text-zinc-500 hover:text-zinc-850'
+                                        : 'text-zinc-600 hover:text-zinc-850'
                                     }`}
                                   >
                                     HSL Mode
@@ -1725,7 +1725,7 @@ export default function VisualizerSection() {
                                     className={`flex-1 text-center py-1 rounded text-[9.5px] font-bold tracking-wider uppercase transition-all ${
                                       colorAdjustTab === 'rgb'
                                         ? 'bg-zinc-950 text-white shadow-xs'
-                                        : 'text-zinc-500 hover:text-zinc-850'
+                                        : 'text-zinc-600 hover:text-zinc-850'
                                     }`}
                                   >
                                     RGB Mode
@@ -1736,7 +1736,7 @@ export default function VisualizerSection() {
                                   <div className="space-y-2.5">
                                     {/* Hue Control Slider */}
                                     <div className="space-y-0.5">
-                                      <div className="flex justify-between items-center text-[8px] font-semibold text-zinc-500 uppercase tracking-wider">
+                                      <div className="flex justify-between items-center text-[8px] font-semibold text-zinc-600 uppercase tracking-wider">
                                         <span>HUE: {hVal.h}°</span>
                                         <span>Color Spectrum</span>
                                       </div>
@@ -1758,7 +1758,7 @@ export default function VisualizerSection() {
 
                                     {/* Saturation Control Slider */}
                                     <div className="space-y-0.5">
-                                      <div className="flex justify-between items-center text-[8px] font-semibold text-zinc-500 uppercase tracking-wider">
+                                      <div className="flex justify-between items-center text-[8px] font-semibold text-zinc-600 uppercase tracking-wider">
                                         <span>SATURATION: {hVal.s}%</span>
                                         <span>Vividness</span>
                                       </div>
@@ -1780,7 +1780,7 @@ export default function VisualizerSection() {
 
                                     {/* Lightness Control Slider */}
                                     <div className="space-y-0.5">
-                                      <div className="flex justify-between items-center text-[8px] font-semibold text-zinc-500 uppercase tracking-wider">
+                                      <div className="flex justify-between items-center text-[8px] font-semibold text-zinc-600 uppercase tracking-wider">
                                         <span>LIGHTNESS: {hVal.l}%</span>
                                         <span>Shade Brightness</span>
                                       </div>
@@ -1804,7 +1804,7 @@ export default function VisualizerSection() {
                                   <div className="space-y-2.5">
                                     {/* Red Channel Slider */}
                                     <div className="space-y-0.5">
-                                      <div className="flex justify-between items-center text-[8px] font-semibold text-zinc-500 uppercase tracking-wider">
+                                      <div className="flex justify-between items-center text-[8px] font-semibold text-zinc-600 uppercase tracking-wider">
                                         <span className="text-red-650 font-bold">RED channel: {rgbVal.r}</span>
                                         <span>0 - 255</span>
                                       </div>
@@ -1826,7 +1826,7 @@ export default function VisualizerSection() {
 
                                     {/* Green Channel Slider */}
                                     <div className="space-y-0.5">
-                                      <div className="flex justify-between items-center text-[8px] font-semibold text-zinc-500 uppercase tracking-wider">
+                                      <div className="flex justify-between items-center text-[8px] font-semibold text-zinc-600 uppercase tracking-wider">
                                         <span className="text-emerald-700 font-bold">GREEN channel: {rgbVal.g}</span>
                                         <span>0 - 255</span>
                                       </div>
@@ -1848,7 +1848,7 @@ export default function VisualizerSection() {
 
                                     {/* Blue Channel Slider */}
                                     <div className="space-y-0.5">
-                                      <div className="flex justify-between items-center text-[8px] font-semibold text-zinc-500 uppercase tracking-wider">
+                                      <div className="flex justify-between items-center text-[8px] font-semibold text-zinc-600 uppercase tracking-wider">
                                         <span className="text-blue-650 font-bold">BLUE channel: {rgbVal.b}</span>
                                         <span>0 - 255</span>
                                       </div>
@@ -1937,15 +1937,15 @@ export default function VisualizerSection() {
                                   <div className="h-2 w-full" style={{ backgroundColor: matchedShades.asian.shade.hex }} />
                                   <div className="p-2 flex flex-col justify-between flex-grow w-full">
                                     <div>
-                                      <h4 className="font-serif text-[10px] font-bold text-zinc-900 truncate mb-0.5">
+                                      <h3 className="font-serif text-[10px] font-bold text-zinc-900 truncate mb-0.5">
                                         {matchedShades.asian.shade.name}
-                                      </h4>
-                                      <p className="text-[7.5px] font-mono text-zinc-400 capitalize truncate">
+                                      </h3>
+                                      <p className="text-[7.5px] font-mono text-zinc-600 capitalize truncate">
                                         {matchedShades.asian.shade.shadeCode}
                                       </p>
                                     </div>
                                     <div className="flex justify-between items-center text-[7.5px] mt-1.5 border-t border-zinc-50 pt-1 w-full">
-                                      <span className="font-medium text-[7px] text-zinc-500 uppercase">Asian</span>
+                                      <span className="font-medium text-[7px] text-zinc-600 uppercase">Asian</span>
                                       <span className="font-bold text-emerald-700 bg-emerald-50 px-1 rounded">
                                         {matchedShades.asian.similarity}%
                                       </span>
@@ -1953,7 +1953,7 @@ export default function VisualizerSection() {
                                   </div>
                                 </button>
                               ) : (
-                                <div className="bg-white border border-dashed border-zinc-200 rounded-xl p-3 text-center text-[9px] text-zinc-400">
+                                <div className="bg-white border border-dashed border-zinc-200 rounded-xl p-3 text-center text-[9px] text-zinc-600">
                                   Fetching Asian formula...
                                 </div>
                               )
@@ -1969,15 +1969,15 @@ export default function VisualizerSection() {
                                   <div className="h-2 w-full" style={{ backgroundColor: matchedShades.berger.shade.hex }} />
                                   <div className="p-2 flex flex-col justify-between flex-grow w-full">
                                     <div>
-                                      <h4 className="font-serif text-[10px] font-bold text-zinc-900 truncate mb-0.5">
+                                      <h3 className="font-serif text-[10px] font-bold text-zinc-900 truncate mb-0.5">
                                         {matchedShades.berger.shade.name}
-                                      </h4>
-                                      <p className="text-[7.5px] font-mono text-zinc-400 capitalize truncate">
+                                      </h3>
+                                      <p className="text-[7.5px] font-mono text-zinc-600 capitalize truncate">
                                         {matchedShades.berger.shade.shadeCode}
                                       </p>
                                     </div>
                                     <div className="flex justify-between items-center text-[7.5px] mt-1.5 border-t border-zinc-50 pt-1 w-full">
-                                      <span className="font-medium text-[7px] text-zinc-500 uppercase">Berger</span>
+                                      <span className="font-medium text-[7px] text-zinc-600 uppercase">Berger</span>
                                       <span className="font-bold text-emerald-700 bg-emerald-50 px-1 rounded">
                                         {matchedShades.berger.similarity}%
                                       </span>
@@ -1985,7 +1985,7 @@ export default function VisualizerSection() {
                                   </div>
                                 </button>
                               ) : (
-                                <div className="bg-white border border-dashed border-zinc-200 rounded-xl p-3 text-center text-[9px] text-zinc-400">
+                                <div className="bg-white border border-dashed border-zinc-200 rounded-xl p-3 text-center text-[9px] text-zinc-600">
                                   Fetching Berger formula...
                                 </div>
                               )
@@ -2001,15 +2001,15 @@ export default function VisualizerSection() {
                                   <div className="h-2 w-full" style={{ backgroundColor: matchedShades.mrf.shade.hex }} />
                                   <div className="p-2 flex flex-col justify-between flex-grow w-full">
                                     <div>
-                                      <h4 className="font-serif text-[10px] font-bold text-zinc-900 truncate mb-0.5">
+                                      <h3 className="font-serif text-[10px] font-bold text-zinc-900 truncate mb-0.5">
                                         {matchedShades.mrf.shade.name}
-                                      </h4>
-                                      <p className="text-[7.5px] font-mono text-zinc-400 capitalize truncate">
+                                      </h3>
+                                      <p className="text-[7.5px] font-mono text-zinc-600 capitalize truncate">
                                         {matchedShades.mrf.shade.shadeCode}
                                       </p>
                                     </div>
                                     <div className="flex justify-between items-center text-[7.5px] mt-1.5 border-t border-zinc-50 pt-1 w-full">
-                                      <span className="font-medium text-[7px] text-zinc-500 uppercase">MRF Vapocure</span>
+                                      <span className="font-medium text-[7px] text-zinc-600 uppercase">MRF Vapocure</span>
                                       <span className="font-bold text-emerald-700 bg-emerald-50 px-1 rounded">
                                         {matchedShades.mrf.similarity}%
                                       </span>
@@ -2017,7 +2017,7 @@ export default function VisualizerSection() {
                                   </div>
                                 </button>
                               ) : (
-                                <div className="bg-white border border-dashed border-zinc-200 rounded-xl p-3 text-center text-[9px] text-zinc-400">
+                                <div className="bg-white border border-dashed border-zinc-200 rounded-xl p-3 text-center text-[9px] text-zinc-600">
                                   Fetching MRF formula...
                                 </div>
                               )
@@ -2047,7 +2047,7 @@ export default function VisualizerSection() {
                       placeholder="Search shade by name or code" 
                       value={sSearch}
                       onChange={e => setSSearch(e.target.value)}
-                      className="bg-transparent w-full border-none py-1.5 text-xs text-zinc-900 focus:outline-none placeholder:text-zinc-400 font-sans min-w-0"
+                      className="bg-transparent w-full border-none py-1.5 text-xs text-zinc-900 focus:outline-none placeholder:text-zinc-600 font-sans min-w-0"
                     />
                     {sSearch && (
                       <button onClick={() => setSSearch('')} title="Clear search" aria-label="Clear search" className="p-1 hover:bg-zinc-100 dark:hover:bg-zinc-100/10 rounded-full transition-colors text-gold hover:text-gold/80 shrink-0">
@@ -2066,7 +2066,7 @@ export default function VisualizerSection() {
                       className="bg-[#faf9f6]/95 border border-zinc-200 hover:bg-zinc-50 transition-all rounded-lg py-1 px-2.5 text-[10px] font-display font-semibold text-zinc-800 outline-none shadow-sm w-full text-left flex items-center justify-between gap-1 group h-[32px]"
                     >
                       <span className="truncate">
-                        <span className="text-zinc-500 font-normal mr-1">Brand:</span>
+                        <span className="text-zinc-600 font-normal mr-1">Brand:</span>
                         {sBrand === 'all' ? 'All' : (BRANDS.find(b => b.id === sBrand)?.label || sBrand)}
                       </span>
                       <ChevronDown className={`w-3.5 h-3.5 text-gold transition-transform duration-300 ${isBrandOpen ? 'rotate-180' : ''}`} />
@@ -2103,7 +2103,7 @@ export default function VisualizerSection() {
                       className="bg-[#faf9f6]/95 border border-zinc-200 hover:bg-zinc-50 transition-all rounded-lg py-1 px-2.5 text-[10px] font-display font-semibold text-zinc-800 outline-none shadow-sm w-full text-left flex items-center justify-between gap-1 group capitalize h-[32px]"
                     >
                       <span className="truncate">
-                        <span className="text-zinc-500 font-normal mr-1">Family:</span>
+                        <span className="text-zinc-600 font-normal mr-1">Family:</span>
                         {sFamily === 'all' ? 'All' : sFamily}
                       </span>
                       <ChevronDown className={`w-3.5 h-3.5 text-gold transition-transform duration-300 ${isFamilyOpen ? 'rotate-180' : ''}`} />
@@ -2210,10 +2210,10 @@ export default function VisualizerSection() {
                           <Search className="w-6 h-6 text-gold" />
                         )}
                       </div>
-                      <h5 className="text-sm font-serif text-ivory mb-1">
+                      <h4 className="text-sm font-serif text-ivory mb-1">
                         {sFamily === 'favorites' ? 'No Favorites Saved' : 'No Shades Found'}
-                      </h5>
-                      <p className="text-[10px] text-zinc-500 max-w-[160px] leading-relaxed">
+                      </h4>
+                      <p className="text-[10px] text-zinc-600 max-w-[160px] leading-relaxed">
                         {sFamily === 'favorites' 
                           ? 'Tap the heart icon on any shade to view it here for rapid access.'
                           : 'Try modifying your search or reset filters.'}

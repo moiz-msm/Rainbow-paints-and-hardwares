@@ -458,7 +458,7 @@ export default function AsianPaintsPlainFinishesShowroom() {
                   <div className="hidden sm:block"></div>
                   {/* Product Select A */}
                   <div className="space-y-1.5 relative z-[45]">
-                    <label className="text-[10px] font-display font-bold uppercase tracking-wider text-zinc-500 block">Product A (Super Luxury)</label>
+                    <label className="text-[10px] font-display font-bold uppercase tracking-wider text-zinc-600 block">Product A (Super Luxury)</label>
                     <div className="relative">
                       <button
                         type="button"
@@ -472,7 +472,7 @@ export default function AsianPaintsPlainFinishesShowroom() {
                         <span className="truncate">
                           {profilesArray.find(p => p.id === compareA)?.name || 'Select Product'}
                         </span>
-                        <ChevronDown className={`w-4 h-4 text-zinc-400 shrink-0 transition-transform duration-300 ${isCompareADropdownOpen ? 'rotate-180' : ''}`} />
+                        <ChevronDown className={`w-4 h-4 text-zinc-600 shrink-0 transition-transform duration-300 ${isCompareADropdownOpen ? 'rotate-180' : ''}`} />
                       </button>
                       {isCompareADropdownOpen && (
                         <>
@@ -499,7 +499,7 @@ export default function AsianPaintsPlainFinishesShowroom() {
 
                   {/* Product Select B */}
                   <div className="space-y-1.5 relative z-[44]">
-                    <label className="text-[10px] font-display font-bold uppercase tracking-wider text-zinc-500 block">Product B (Premium Base)</label>
+                    <label className="text-[10px] font-display font-bold uppercase tracking-wider text-zinc-600 block">Product B (Premium Base)</label>
                     <div className="relative">
                       <button
                         type="button"
@@ -513,7 +513,7 @@ export default function AsianPaintsPlainFinishesShowroom() {
                         <span className="truncate">
                           {profilesArray.find(p => p.id === compareB)?.name || 'Select Product'}
                         </span>
-                        <ChevronDown className={`w-4 h-4 text-zinc-400 shrink-0 transition-transform duration-300 ${isCompareBDropdownOpen ? 'rotate-180' : ''}`} />
+                        <ChevronDown className={`w-4 h-4 text-zinc-600 shrink-0 transition-transform duration-300 ${isCompareBDropdownOpen ? 'rotate-180' : ''}`} />
                       </button>
                       {isCompareBDropdownOpen && (
                         <>
@@ -540,7 +540,7 @@ export default function AsianPaintsPlainFinishesShowroom() {
 
                   {/* Product Select C */}
                   <div className="space-y-1.5 relative z-[43]">
-                    <label className="text-[10px] font-display font-bold uppercase tracking-wider text-zinc-500 block">Product C (Economy Segment)</label>
+                    <label className="text-[10px] font-display font-bold uppercase tracking-wider text-zinc-600 block">Product C (Economy Segment)</label>
                     <div className="relative">
                       <button
                         type="button"
@@ -554,7 +554,7 @@ export default function AsianPaintsPlainFinishesShowroom() {
                         <span className="truncate">
                           {profilesArray.find(p => p.id === compareC)?.name || 'Select Product'}
                         </span>
-                        <ChevronDown className={`w-4 h-4 text-zinc-400 shrink-0 transition-transform duration-300 ${isCompareCDropdownOpen ? 'rotate-180' : ''}`} />
+                        <ChevronDown className={`w-4 h-4 text-zinc-600 shrink-0 transition-transform duration-300 ${isCompareCDropdownOpen ? 'rotate-180' : ''}`} />
                       </button>
                       {isCompareCDropdownOpen && (
                         <>
@@ -584,7 +584,7 @@ export default function AsianPaintsPlainFinishesShowroom() {
                 <div className="border border-zinc-200 rounded-2xl overflow-hidden bg-white shadow-sm">
               {/* Product Headers row */}
               <div className="grid grid-cols-4 border-b border-zinc-200 bg-[#f9f6f0]/70 py-3 text-center sm:text-left animate-fade-in">
-                <div className="p-3 text-zinc-550 text-zinc-500 font-display font-bold text-[10px] uppercase tracking-wider self-center sm:pl-6 leading-none">Characteristics</div>
+                <div className="p-3 text-zinc-550 text-zinc-600 font-display font-bold text-[10px] uppercase tracking-wider self-center sm:pl-6 leading-none">Characteristics</div>
                 {[compareA, compareB, compareC].map((prodId) => {
                   const p = PAINT_PROFILES[prodId];
                   return (
@@ -598,7 +598,7 @@ export default function AsianPaintsPlainFinishesShowroom() {
                         {p.category}
                       </span>
                       <h4 className="font-serif font-bold text-xs sm:text-sm text-[#0B1021] mt-1.5 truncate max-w-[150px] mx-auto">{p.name}</h4>
-                      <p className="text-[10px] font-mono text-gold font-bold mt-0.5">₹{p.price} <span className="text-zinc-500 font-sans font-normal text-[9px]">per L</span></p>
+                      <p className="text-[10px] font-mono text-gold font-bold mt-0.5">₹{p.price} <span className="text-zinc-600 font-sans font-normal text-[9px]">per L</span></p>
                     </div>
                   );
                 })}
@@ -614,8 +614,8 @@ export default function AsianPaintsPlainFinishesShowroom() {
                 { label: "VOC & Emissions", valA: PAINT_PROFILES[compareA].airQuality, valB: PAINT_PROFILES[compareB].airQuality, valC: PAINT_PROFILES[compareC].airQuality, icon: Info }
               ].map((row, rIdx) => (
                 <div key={rIdx} className="grid grid-cols-4 border-b border-zinc-100 last:border-0 hover:bg-[#f9f6f0]/20 transition-colors">
-                  <div className="p-3 text-zinc-500 text-xs font-sans font-medium flex items-center gap-1.5 sm:pl-6">
-                    <row.icon className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
+                  <div className="p-3 text-zinc-600 text-xs font-sans font-medium flex items-center gap-1.5 sm:pl-6">
+                    <row.icon className="w-3.5 h-3.5 text-zinc-600 shrink-0" />
                     <span>{row.label}</span>
                   </div>
                   <div className="p-3 text-center self-center text-xs text-zinc-800 font-sans font-semibold">{row.valA}</div>
@@ -626,7 +626,7 @@ export default function AsianPaintsPlainFinishesShowroom() {
 
               {/* Specific detail advantages row */}
               <div className="grid grid-cols-4 bg-[#f9f6f0]/30 py-4">
-                <div className="p-3 font-display font-medium text-zinc-500 text-[10px] uppercase tracking-wider sm:pl-6">Core Advantages</div>
+                <div className="p-3 font-display font-medium text-zinc-600 text-[10px] uppercase tracking-wider sm:pl-6">Core Advantages</div>
                 {[compareA, compareB, compareC].map(prodId => {
                   const p = PAINT_PROFILES[prodId];
                   return (
@@ -646,12 +646,12 @@ export default function AsianPaintsPlainFinishesShowroom() {
 
               {/* Best For Row */}
               <div className="grid grid-cols-4 border-t border-zinc-100 bg-[#f9f6f0]/10">
-                <div className="p-3 font-display font-medium text-zinc-500 text-[10px] uppercase tracking-wider self-center sm:pl-6 p-3">Best Suited For</div>
+                <div className="p-3 font-display font-medium text-zinc-600 text-[10px] uppercase tracking-wider self-center sm:pl-6 p-3">Best Suited For</div>
                 {[compareA, compareB, compareC].map(prodId => {
                   const p = PAINT_PROFILES[prodId];
                   return (
                     <div key={prodId} className="p-3 text-center self-center">
-                      <p className="text-[10px] text-zinc-500 leading-tight italic">{p.bestFor}</p>
+                      <p className="text-[10px] text-zinc-600 leading-tight italic">{p.bestFor}</p>
                     </div>
                   );
                 })}
@@ -711,7 +711,7 @@ export default function AsianPaintsPlainFinishesShowroom() {
                       className={`py-1.5 px-1 rounded bg-white hover:bg-zinc-50 cursor-pointer w-full text-[9px] font-display font-medium border text-center block transition-all ${
                         customArea === p.val 
                           ? 'border-gold text-gold font-semibold shadow-xs' 
-                          : 'border-zinc-200 text-zinc-550 text-zinc-500 hover:border-zinc-300'
+                          : 'border-zinc-200 text-zinc-550 text-zinc-600 hover:border-zinc-300'
                       }`}
                     >
                       {p.label}
@@ -724,7 +724,7 @@ export default function AsianPaintsPlainFinishesShowroom() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                 {/* Select Formulation */}
                 <div className="space-y-1 relative z-30">
-                  <label className="text-[10px] font-display font-bold uppercase tracking-wider text-zinc-500 block pb-1">Desired Formulation</label>
+                  <label className="text-[10px] font-display font-bold uppercase tracking-wider text-zinc-600 block pb-1">Desired Formulation</label>
                   <div className="relative">
                     <button
                       type="button"
@@ -736,7 +736,7 @@ export default function AsianPaintsPlainFinishesShowroom() {
                           ? `${profilesArray.find(p => p.id === calcProduct)?.name} (₹${profilesArray.find(p => p.id === calcProduct)?.price}/L)` 
                           : 'Select Product'}
                       </span>
-                      <ChevronDown className={`w-4 h-4 text-zinc-400 shrink-0 transition-transform duration-300 ${isCalcProductDropdownOpen ? 'rotate-180' : ''}`} />
+                      <ChevronDown className={`w-4 h-4 text-zinc-600 shrink-0 transition-transform duration-300 ${isCalcProductDropdownOpen ? 'rotate-180' : ''}`} />
                     </button>
                     {isCalcProductDropdownOpen && (
                       <>
@@ -763,19 +763,19 @@ export default function AsianPaintsPlainFinishesShowroom() {
 
                 {/* Coats Select */}
                 <div className="space-y-1">
-                  <label className="text-[10px] font-display font-bold uppercase tracking-wider text-zinc-500 block pb-1">Number of Coats</label>
+                  <label className="text-[10px] font-display font-bold uppercase tracking-wider text-zinc-600 block pb-1">Number of Coats</label>
                   <div className="grid grid-cols-2 gap-2 bg-white/70 p-1 rounded-xl border border-zinc-200/85">
                     <button
                       type="button"
                       onClick={() => setCoatCount(1)}
-                      className={`py-1.5 px-2 rounded-lg text-xs font-display cursor-pointer transition-all ${coatCount === 1 ? 'bg-zinc-100 font-bold text-gold shadow-xs' : 'text-zinc-400 hover:text-zinc-650'}`}
+                      className={`py-1.5 px-2 rounded-lg text-xs font-display cursor-pointer transition-all ${coatCount === 1 ? 'bg-zinc-100 font-bold text-gold shadow-xs' : 'text-zinc-600 hover:text-zinc-650'}`}
                     >
                       1 Coat (Touchup)
                     </button>
                     <button
                       type="button"
                       onClick={() => setCoatCount(2)}
-                      className={`py-1.5 px-2 rounded-lg text-xs font-display cursor-pointer transition-all ${coatCount === 2 ? 'bg-zinc-100 font-bold text-gold shadow-xs' : 'text-zinc-400 hover:text-zinc-650'}`}
+                      className={`py-1.5 px-2 rounded-lg text-xs font-display cursor-pointer transition-all ${coatCount === 2 ? 'bg-zinc-100 font-bold text-gold shadow-xs' : 'text-zinc-600 hover:text-zinc-650'}`}
                     >
                       2 Coats (Regular)
                     </button>
@@ -785,7 +785,7 @@ export default function AsianPaintsPlainFinishesShowroom() {
 
               {/* Custom Shade selection suggestbox */}
               <div className="space-y-1.5 pt-2 relative">
-                <label className="text-[10px] font-display font-bold uppercase tracking-wider text-zinc-500 block pb-1">Pick Color / Custom Shade</label>
+                <label className="text-[10px] font-display font-bold uppercase tracking-wider text-zinc-600 block pb-1">Pick Color / Custom Shade</label>
                 
                 {/* Input with visual indicator */}
                 <div className="relative">
@@ -798,7 +798,7 @@ export default function AsianPaintsPlainFinishesShowroom() {
                     placeholder="Search Asian Paints shade sheet (e.g., Pink, 1204)..."
                     value={shadesSearch}
                     onChange={(e) => setShadesSearch(e.target.value)}
-                    className="w-full bg-white text-xs text-zinc-800 border border-zinc-200 rounded-xl py-2.5 pl-11 pr-8 focus:border-gold outline-none transition-all placeholder:text-zinc-400 font-sans shadow-xs"
+                    className="w-full bg-white text-xs text-zinc-800 border border-zinc-200 rounded-xl py-2.5 pl-11 pr-8 focus:border-gold outline-none transition-all placeholder:text-zinc-600 font-sans shadow-xs"
                   />
                   {loadingShades && (
                     <div className="absolute right-3 top-1/2 -translate-y-1/2">
@@ -834,7 +834,7 @@ export default function AsianPaintsPlainFinishesShowroom() {
                             <div className="w-5 h-5 rounded-md border border-zinc-200" style={{ backgroundColor: shade.hex }} />
                             <div>
                               <span className="text-xs font-semibold text-zinc-850 block leading-tight">{shade.name}</span>
-                              <span className="text-[8px] font-mono text-zinc-400 block leading-none">{shade.shadeCode}</span>
+                              <span className="text-[8px] font-mono text-zinc-600 block leading-none">{shade.shadeCode}</span>
                             </div>
                           </div>
                           <span className="text-[8px] font-display font-medium text-gold uppercase tracking-wider bg-gold/5 px-1.5 py-0.5 rounded border border-gold/10">
@@ -863,11 +863,11 @@ export default function AsianPaintsPlainFinishesShowroom() {
                 {/* Formula results cards */}
                 <div className="grid grid-cols-2 gap-3 pt-1">
                   <div className="bg-white p-3 rounded-xl border border-zinc-200/70 leading-tight shadow-sm">
-                    <span className="text-[8px] font-display font-bold uppercase tracking-wider text-zinc-500">Paint Required</span>
-                    <span className="font-mono text-lg font-bold text-[#0B1021] block mt-1">{estimatorResult.litersNeeded} <span className="text-[10px] font-sans text-zinc-500">Liters</span></span>
+                    <span className="text-[8px] font-display font-bold uppercase tracking-wider text-zinc-600">Paint Required</span>
+                    <span className="font-mono text-lg font-bold text-[#0B1021] block mt-1">{estimatorResult.litersNeeded} <span className="text-[10px] font-sans text-zinc-600">Liters</span></span>
                   </div>
                   <div className="bg-white p-3 rounded-xl border border-zinc-200/70 leading-tight shadow-sm flex flex-col justify-between">
-                    <span className="text-[8px] font-display font-bold uppercase tracking-wider text-zinc-500">Selected Shade</span>
+                    <span className="text-[8px] font-display font-bold uppercase tracking-wider text-zinc-600">Selected Shade</span>
                     <div className="flex items-center justify-between gap-1.5 mt-1 min-w-0">
                       <span className="font-sans text-xs font-bold text-zinc-800 truncate flex items-center gap-1.5 min-w-0">
                         <div className="w-3 h-3 rounded-full shrink-0 border border-zinc-200" style={{ backgroundColor: selectedShade ? selectedShade.hex : '#ffffff' }} />
@@ -903,7 +903,7 @@ export default function AsianPaintsPlainFinishesShowroom() {
                           className={`p-1 rounded-md shrink-0 border transition-colors cursor-pointer select-none ${
                             wishlistItems.some(item => item.type === 'shade' && item.hex === selectedShade.hex)
                               ? 'text-red-500 border-red-100 bg-red-50/50'
-                              : 'text-zinc-400 border-zinc-100 hover:text-red-500 bg-zinc-50'
+                              : 'text-zinc-600 border-zinc-100 hover:text-red-500 bg-zinc-50'
                           }`}
                           title={wishlistItems.some(item => item.type === 'shade' && item.hex === selectedShade.hex) ? "Remove from wishlist" : "Add to wishlist"}
                         >
@@ -921,18 +921,18 @@ export default function AsianPaintsPlainFinishesShowroom() {
                     <Package className="w-4 h-4 text-gold shrink-0" />
                     <span className="font-mono text-xs font-bold text-[#0B1021] uppercase tracking-wide">{estimatorResult.recommendedPacksString}</span>
                   </div>
-                  <span className="text-[9px] text-zinc-505 text-zinc-500 mt-1 block leading-tight">Provides the exact volume while maximizing packaging discounts (up to 12% off list price).</span>
+                  <span className="text-[9px] text-zinc-505 text-zinc-600 mt-1 block leading-tight">Provides the exact volume while maximizing packaging discounts (up to 12% off list price).</span>
                 </div>
 
                 {/* Cost summary card */}
                 <div className="bg-white p-4 rounded-xl border border-zinc-200/80 leading-tight mt-1 flex items-center justify-between shadow-xs">
                   <div>
-                    <span className="text-[8px] font-display font-bold uppercase tracking-wider text-zinc-500 block">Total Est Paint Cost</span>
+                    <span className="text-[8px] font-display font-bold uppercase tracking-wider text-zinc-600 block">Total Est Paint Cost</span>
                     <span className="text-lg sm:text-xl font-bold text-emerald-600">₹{estimatorResult.optimizedCost.toLocaleString()}</span>
-                    <span className="text-[8.5px] text-zinc-400 block mt-0.5">Inclusive of 18% GST</span>
+                    <span className="text-[8.5px] text-zinc-600 block mt-0.5">Inclusive of 18% GST</span>
                   </div>
                   <div className="text-right">
-                    <span className="text-[8px] font-display font-bold uppercase tracking-wider text-zinc-500 block">Estimated Saving</span>
+                    <span className="text-[8px] font-display font-bold uppercase tracking-wider text-zinc-600 block">Estimated Saving</span>
                     <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 border border-emerald-100 rounded mt-1 inline-block">Save ~₹{Math.round(estimatorResult.optimizedCost * 0.12)}</span>
                   </div>
                 </div>
@@ -960,7 +960,7 @@ export default function AsianPaintsPlainFinishesShowroom() {
                     </>
                   )}
                 </button>
-                <span className="text-[9px] text-center block text-zinc-400 font-sans">
+                <span className="text-[9px] text-center block text-zinc-600 font-sans">
                   *Packs automatically come configured in {selectedShade?.name || 'Classic White'}
                 </span>
               </div>
@@ -1018,7 +1018,7 @@ export default function AsianPaintsPlainFinishesShowroom() {
                 </div>
 
                 <div className="pt-3 border-t border-zinc-100 leading-tight">
-                  <span className="text-[8px] font-display font-bold uppercase tracking-wider text-zinc-500 block mb-1.5">Matching Catalog lines</span>
+                  <span className="text-[8px] font-display font-bold uppercase tracking-wider text-zinc-600 block mb-1.5">Matching Catalog lines</span>
                   <div className="flex flex-col gap-1">
                     {finish.products.map((pName, pIdx) => (
                       <div key={pIdx} className="flex items-center gap-1.5 text-[10.5px] text-zinc-700 font-sans font-medium">

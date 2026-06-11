@@ -51,7 +51,7 @@ export default function StatsAdmin() {
         <div className="bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
           <div className="flex justify-between items-start">
             <div>
-              <span className="text-xs font-semibold text-zinc-500 uppercase tracking-wider block mb-1">
+              <span className="text-xs font-semibold text-zinc-600 uppercase tracking-wider block mb-1">
                 Total Revenue
               </span>
               <p className="text-3xl font-bold tracking-tight text-zinc-900">
@@ -71,7 +71,7 @@ export default function StatsAdmin() {
         <div className="bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
           <div className="flex justify-between items-start">
             <div>
-              <span className="text-xs font-semibold text-zinc-500 uppercase tracking-wider block mb-1">
+              <span className="text-xs font-semibold text-zinc-600 uppercase tracking-wider block mb-1">
                 Total Orders
               </span>
               <p className="text-3xl font-bold tracking-tight text-zinc-900">
@@ -91,7 +91,7 @@ export default function StatsAdmin() {
         <div className="bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
           <div className="flex justify-between items-start">
             <div>
-              <span className="text-xs font-semibold text-zinc-500 uppercase tracking-wider block mb-1">
+              <span className="text-xs font-semibold text-zinc-600 uppercase tracking-wider block mb-1">
                 Registered Users
               </span>
               <p className="text-3xl font-bold tracking-tight text-zinc-900">
@@ -111,7 +111,7 @@ export default function StatsAdmin() {
         <div className="bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
           <div className="flex justify-between items-start">
             <div>
-              <span className="text-xs font-semibold text-zinc-500 uppercase tracking-wider block mb-1">
+              <span className="text-xs font-semibold text-zinc-600 uppercase tracking-wider block mb-1">
                 Inventory Check
               </span>
               <p className="text-3xl font-bold tracking-tight text-zinc-900">

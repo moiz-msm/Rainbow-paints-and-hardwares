@@ -1,6 +1,7 @@
 import React from 'react';
 import { Info } from 'lucide-react';
 import SEO from '../components/SEO';
+import storeFrontImg from '../assets/store-front.jpg';
 
 export default function AboutPage() {
   const aboutSchema = {
@@ -59,7 +60,7 @@ export default function AboutPage() {
               </p>
               <div className="w-full md:w-1/2 lg:w-2/5 shrink-0 rounded-xl overflow-hidden border border-zinc-100 shadow-md">
                 <img 
-                  src="/Store-front.jpg" 
+                  src={storeFrontImg} 
                   alt="Rainbow Paint & Hardwares Physical Store" 
                   referrerPolicy="no-referrer"
                   className="w-full h-auto object-cover aspect-video sm:aspect-square md:aspect-[4/3] hover:scale-105 transition-transform duration-700"

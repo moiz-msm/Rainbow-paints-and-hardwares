@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, MessageCircle, Send } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
+import mascotImg from '../assets/mascot.png';
 
 interface Message {
   id: string;
@@ -237,14 +238,14 @@ export default function ProductAssistant() {
             <div className="bg-zinc-50/80 backdrop-blur-sm p-4 sm:p-6 border-b border-zinc-100 flex items-center gap-4">
               <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-gold/10 border-2 border-gold/20 flex items-center justify-center overflow-hidden shrink-0 shadow-inner">
                 <img 
-                  src="/mascot.png" 
+                  src={mascotImg} 
                   alt="Mascot" 
                   referrerPolicy="no-referrer" 
                   className="w-8 h-8 sm:w-11 sm:h-11 object-contain" 
                 />
               </div>
               <div>
-                <h3 className="text-ivory font-display font-bold text-[10px] sm:text-sm uppercase tracking-[0.2em]">Rainbow Assistant</h3>
+                <h2 className="text-ivory font-display font-bold text-[10px] sm:text-sm uppercase tracking-[0.2em]">Rainbow Assistant</h2>
                 <div className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-500 animate-pulse" />
                   <span className="text-[8px] sm:text-[10px] text-emerald-600 font-bold uppercase tracking-widest">Active to help</span>
@@ -252,7 +253,7 @@ export default function ProductAssistant() {
               </div>
               <button 
                 onClick={() => setIsOpen(false)}
-                className="ml-auto p-1.5 sm:p-2.5 hover:bg-zinc-200 rounded-full transition-all text-zinc-400 hover:text-ivory"
+                className="ml-auto p-1.5 sm:p-2.5 hover:bg-zinc-200 rounded-full transition-all text-zinc-600 hover:text-ivory"
               >
                 <X className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
@@ -356,7 +357,7 @@ export default function ProductAssistant() {
             >
               <motion.img 
                 layoutId="mascot-img" 
-                src="/mascot.png" 
+                src={mascotImg} 
                 alt="Mascot" 
                 referrerPolicy="no-referrer"
                 className="w-14 h-14 md:w-24 md:h-24 object-contain" 

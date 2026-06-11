@@ -1077,9 +1077,4 @@ const ApartmentModel = ({ colors, activeSurf, onSurfClick }: any) => {
   );
 };
 
-export const PhotorealExteriorModern = (props: any) => <ModernLuxuryBungalowModel {...props} />;
-export const PhotorealExteriorVilla = (props: any) => <IndianVillaModel {...props} />;
-export const PhotorealExteriorApartment = (props: any) => <ApartmentModel {...props} />;
-export const PhotorealLivingRoom = (props: any) => <LivingRoomModel {...props} />;
-export const PhotorealBedroom = (props: any) => <BedroomModel {...props} />;
-export const PhotorealOffice = (props: any) => <OfficeModel {...props} />;
+// Removed unused export Photoreal components

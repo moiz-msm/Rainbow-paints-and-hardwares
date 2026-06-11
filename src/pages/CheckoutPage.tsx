@@ -374,7 +374,7 @@ export default function CheckoutPage() {
                           )}
                         </div>
                         <p className="text-zinc-600 text-xs truncate">{saved.line1}</p>
-                        <p className="text-zinc-500 text-[11px] mt-1">{saved.city}, TN {saved.pincode}</p>
+                        <p className="text-zinc-600 text-[11px] mt-1">{saved.city}, TN {saved.pincode}</p>
                         <p className="text-zinc-900 text-xs font-semibold mt-2">{saved.phone}</p>
                       </div>
                     );
@@ -429,7 +429,7 @@ export default function CheckoutPage() {
                     )}
                   </div>
                   <input type="email" name="email" autoComplete="email" value={address.email || ''} onChange={e => setAddress({...address, email: e.target.value})} className="w-full p-3 border border-gray-200 bg-gray-50 rounded-xl outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all" placeholder="Enter email to receive order updates" />
-                  {!user && <p className="text-xs text-gray-500 mt-1">Enter email to receive order updates, or sign in to track orders easily.</p>}
+                  {!user && <p className="text-xs text-zinc-600 mt-1">Enter email to receive order updates, or sign in to track orders easily.</p>}
                 </div>
 
                 {/* Free Nominatim Autocomplete Address search field */}
@@ -467,7 +467,7 @@ export default function CheckoutPage() {
                       className="w-full p-3 border border-gray-200 bg-gray-50 rounded-xl outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all pr-10" 
                       placeholder="Start typing your Coimbatore street or community..." 
                     />
-                    <div className="absolute right-3.5 top-3.5 text-zinc-400">
+                    <div className="absolute right-3.5 top-3.5 text-zinc-600">
                       <ChevronDown className="w-4 h-4" />
                     </div>
 
@@ -523,7 +523,7 @@ export default function CheckoutPage() {
                               className="p-3 hover:bg-zinc-50 border-b border-zinc-100 last:border-0 cursor-pointer text-sm text-zinc-800 text-left"
                             >
                               <div className="font-semibold text-zinc-900">{p.structured_formatting.main_text}</div>
-                              <div className="text-zinc-500 text-xs">{p.structured_formatting.secondary_text}</div>
+                              <div className="text-zinc-600 text-xs">{p.structured_formatting.secondary_text}</div>
                             </div>
                           ))}
                         </motion.div>
@@ -638,7 +638,7 @@ export default function CheckoutPage() {
                   </div>
                 ) : (
                   <div className="flex items-center gap-3 p-4 bg-zinc-50 rounded-xl border border-zinc-200 text-left">
-                    <Truck className="w-5 h-5 text-zinc-500 shrink-0" />
+                    <Truck className="w-5 h-5 text-zinc-600 shrink-0" />
                     <div className="text-sm">
                       <span className="font-semibold text-zinc-700">Estimated Delivery: </span>
                       <span className="text-zinc-800 font-medium">Please enter Coimbatore address or pincode to calculate accurate road distance ETA</span>
@@ -662,12 +662,12 @@ export default function CheckoutPage() {
                       {item.image ? (
                         <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                       ) : (
-                        <div className="w-full h-full bg-zinc-100 flex items-center justify-center text-[10px] text-zinc-400">No Image</div>
+                        <div className="w-full h-full bg-zinc-100 flex items-center justify-center text-[10px] text-zinc-600">No Image</div>
                       )}
                     </div>
                     <div className="flex-1 min-w-0">
                       <h4 className="text-sm font-semibold text-gray-900 truncate">{item.name}</h4>
-                      <div className="text-xs text-gray-500 mt-1 flex flex-wrap items-center gap-2">
+                      <div className="text-xs text-zinc-600 mt-1 flex flex-wrap items-center gap-2">
                         <span>{item.size}L x {item.quantity}</span>
                         {item.shade && (
                           <div className="flex items-center gap-1.5 bg-gray-50 px-2 py-0.5 rounded-md border border-gray-100">
@@ -830,12 +830,12 @@ export default function CheckoutPage() {
                   type="submit" 
                   form="checkout-form"
                   disabled={!isDirectServiceable}
-                  className="w-full flex items-center justify-center py-4 bg-gradient-gold text-white rounded-xl font-bold text-lg hover:opacity-90 shadow-lg shadow-gold/20 transition-all outline-none disabled:bg-zinc-300 disabled:text-zinc-500 disabled:shadow-none disabled:cursor-not-allowed"
+                  className="w-full flex items-center justify-center py-4 bg-gradient-gold text-white rounded-xl font-bold text-lg hover:opacity-90 shadow-lg shadow-gold/20 transition-all outline-none disabled:bg-zinc-300 disabled:text-zinc-600 disabled:shadow-none disabled:cursor-not-allowed"
                 >
                   {isDirectServiceable ? 'Proceed to Payment' : 'Auto Checkout Blocked'}
                 </button>
                 
-                <div className="mt-4 flex items-center justify-center gap-2 text-xs text-gray-500">
+                <div className="mt-4 flex items-center justify-center gap-2 text-xs text-zinc-600">
                   <ShieldCheck className="w-4 h-4 text-green-600" />
                   <span>Secure 128-bit SSL encrypted checkout</span>
                 </div>

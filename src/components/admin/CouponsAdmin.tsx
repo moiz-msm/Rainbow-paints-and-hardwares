@@ -91,14 +91,14 @@ export default function CouponsAdmin() {
 
   if (loading)
     return (
-      <div className="p-10 text-center text-zinc-500">Loading Promotions...</div>
+      <div className="p-10 text-center text-zinc-600">Loading Promotions...</div>
     );
 
   return (
     <div className="bg-white rounded-2xl border border-zinc-200 shadow-sm overflow-hidden flex flex-col">
       <div className="p-5 border-b border-zinc-200 flex flex-col md:flex-row justify-between items-center gap-4 bg-zinc-50">
         <div className="relative w-full md:w-80">
-          <Search className="w-4 h-4 absolute left-3 top-3.5 text-zinc-400" />
+          <Search className="w-4 h-4 absolute left-3 top-3.5 text-zinc-600" />
           <input
             type="text"
             placeholder="Search promo codes..."
@@ -125,7 +125,7 @@ export default function CouponsAdmin() {
 
       {showAddForm && (
         <div className="p-6 border-b border-zinc-200 bg-zinc-50/80 animate-fade-in relative block">
-          <button onClick={() => setShowAddForm(false)} className="absolute top-4 right-4 text-zinc-400 hover:text-zinc-600">
+          <button onClick={() => setShowAddForm(false)} className="absolute top-4 right-4 text-zinc-600 hover:text-zinc-600">
             <X className="w-5 h-5" />
           </button>
           <h3 className="font-semibold text-zinc-900 mb-4 text-sm uppercase tracking-wider">
@@ -133,7 +133,7 @@ export default function CouponsAdmin() {
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 items-end">
             <div>
-              <label className="block text-xs font-medium text-zinc-500 mb-1">Code</label>
+              <label className="block text-xs font-medium text-zinc-600 mb-1">Code</label>
               <input
                 type="text"
                 placeholder="e.g. SUMMER50"
@@ -145,7 +145,7 @@ export default function CouponsAdmin() {
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-zinc-500 mb-1">Type</label>
+              <label className="block text-xs font-medium text-zinc-600 mb-1">Type</label>
               <select
                 className="w-full border border-zinc-200 p-2.5 rounded-lg text-sm bg-white focus:ring-1 focus:ring-emerald-500 outline-none"
                 value={newCoupon.discountType}
@@ -158,7 +158,7 @@ export default function CouponsAdmin() {
               </select>
             </div>
             <div>
-              <label className="block text-xs font-medium text-zinc-500 mb-1">Value</label>
+              <label className="block text-xs font-medium text-zinc-600 mb-1">Value</label>
               <input
                 type="number"
                 placeholder="Discount"
@@ -173,7 +173,7 @@ export default function CouponsAdmin() {
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-zinc-500 mb-1">Min. Order (Optional)</label>
+              <label className="block text-xs font-medium text-zinc-600 mb-1">Min. Order (Optional)</label>
               <input
                 type="number"
                 placeholder="0"
@@ -200,7 +200,7 @@ export default function CouponsAdmin() {
       <div className="overflow-x-auto">
         <table className="w-full text-left text-sm whitespace-nowrap">
           <thead>
-            <tr className="bg-zinc-50/50 text-zinc-500 border-b border-zinc-200">
+            <tr className="bg-zinc-50/50 text-zinc-600 border-b border-zinc-200">
               <th className="px-6 py-4 font-semibold">Code</th>
               <th className="px-6 py-4 font-semibold">Discount</th>
               <th className="px-6 py-4 font-semibold">Conditions</th>
@@ -222,7 +222,7 @@ export default function CouponsAdmin() {
                     ? `${coupon.discountValue}% OFF`
                     : `₹${coupon.discountValue} OFF`}
                 </td>
-                <td className="px-6 py-4 text-zinc-500">
+                <td className="px-6 py-4 text-zinc-600">
                   {coupon.minOrderValue > 0
                     ? `Min purchase ₹${coupon.minOrderValue}`
                     : "No minimum"}
@@ -245,7 +245,7 @@ export default function CouponsAdmin() {
                 <td className="px-6 py-4 text-right">
                   <button
                     onClick={() => handleDelete(coupon.id)}
-                    className="p-1.5 text-zinc-400 hover:text-red-600 transition-colors ml-2"
+                    className="p-1.5 text-zinc-600 hover:text-red-600 transition-colors ml-2"
                     title="Delete Coupon"
                   >
                     <Trash2 className="w-4 h-4" />
@@ -257,7 +257,7 @@ export default function CouponsAdmin() {
               <tr>
                 <td
                   colSpan={5}
-                  className="px-6 py-10 text-center text-zinc-500"
+                  className="px-6 py-10 text-center text-zinc-600"
                 >
                   No promos found.
                 </td>

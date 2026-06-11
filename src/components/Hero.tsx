@@ -20,7 +20,7 @@ export default function Hero() {
         
         {/* Layer 3: The Image with a CSS mask for the hard edges */}
         <img 
-          src="/Hero-bg.png" 
+          src="/hero-bg.png" 
           alt="Modern beautiful living space" 
           className="w-[85%] sm:w-[80%] lg:w-[75%] h-full object-cover object-top scale-[0.75] sm:scale-[0.85] lg:scale-100 origin-top-right"
           referrerPolicy="no-referrer"
