@@ -78,7 +78,7 @@ export default function Header() {
             <Link to="/" title="Home" aria-label="Home" className="flex items-center gap-2 sm:gap-3 group relative shrink-0">
               <div className="flex items-center justify-center shrink-0 group-hover:opacity-80 transition-opacity duration-300">
                 <img 
-                  src="/mascot.webp" 
+                  src="/mascot.png" 
                   alt="Rainbow Paint and Hardwares" 
                   referrerPolicy="no-referrer"
                   fetchPriority="high"

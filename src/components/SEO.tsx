@@ -21,7 +21,7 @@ export default function SEO({
   description = "Buy paint online from top India leading brands. Best pricing, doorstep delivery, and 4000+ color shades.", 
   keywords = "Asian Paints, Berger Paints, MRF Paints, Dr Fixit, interior wall paint, exterior wall paint, waterproofing, pu and epoxy, industrial paints, colour visualizer, paint cost calculator, faq, blog, buy paint online, wall paint, home colors", 
   url = "https://rainbowpaint.in",
-  image = "/Hero-bg.webp",
+  image = "/Hero-bg.png",
   schema,
   type = "website",
   productBrand,
