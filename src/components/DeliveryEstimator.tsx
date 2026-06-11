@@ -51,10 +51,10 @@ export default function DeliveryEstimator() {
       >
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-zinc-50 group-hover:bg-white flex items-center justify-center shrink-0 border border-zinc-100 group-hover:border-gold/20 transition-colors shadow-xs">
-            <MapPin className="w-4 h-4 sm:w-[18px] sm:h-[18px] text-zinc-600 group-hover:text-gold transition-colors" />
+            <MapPin className="w-4 h-4 sm:w-[18px] sm:h-[18px] text-zinc-500 group-hover:text-gold transition-colors" />
           </div>
           <div>
-            <p className="text-[9px] sm:text-[10px] text-zinc-600 font-sans font-medium tracking-widest uppercase mb-0.5">Delivery location</p>
+            <p className="text-[9px] sm:text-[10px] text-zinc-500 font-sans font-medium tracking-widest uppercase mb-0.5">Delivery location</p>
             <p className="text-[13px] sm:text-sm font-semibold text-zinc-900 group-hover:text-gold font-sans flex items-center gap-1 transition-colors">
               {pincode ? pincode : 'Check serviceability'}
             </p>
@@ -73,7 +73,7 @@ export default function DeliveryEstimator() {
               <span className="font-medium whitespace-nowrap">Not Serviceable</span>
             </div>
           ) : loading ? (
-             <div className="flex items-center gap-1.5 text-zinc-600">
+             <div className="flex items-center gap-1.5 text-zinc-500">
                <RefreshCw className="w-4 h-4 animate-spin" />
                <span className="font-medium">Checking...</span>
              </div>
@@ -106,11 +106,11 @@ export default function DeliveryEstimator() {
               <div className="flex items-start justify-between mb-4">
                 <div>
                   <h3 className="text-lg font-bold text-zinc-900">Delivery Time</h3>
-                  <p className="text-sm text-zinc-600 mt-1">Please enter Pincode to check delivery time & serviceability</p>
+                  <p className="text-sm text-zinc-500 mt-1">Please enter Pincode to check delivery time & serviceability</p>
                 </div>
                 <button 
                   onClick={() => setIsModalOpen(false)}
-                  className="p-1 text-zinc-600 hover:text-zinc-600 hover:bg-zinc-100 rounded-full transition-colors"
+                  className="p-1 text-zinc-400 hover:text-zinc-600 hover:bg-zinc-100 rounded-full transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>

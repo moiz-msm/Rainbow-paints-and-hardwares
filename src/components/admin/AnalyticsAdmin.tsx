@@ -171,7 +171,7 @@ export default function AnalyticsAdmin() {
             </div>
             <div>
               <h3 className="text-lg font-bold text-zinc-900">Google Analytics 4 Overview</h3>
-              <p className="text-xs text-zinc-600">Real-time user engagement and store traffic metrics</p>
+              <p className="text-xs text-zinc-500">Real-time user engagement and store traffic metrics</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -191,37 +191,37 @@ export default function AnalyticsAdmin() {
         {/* Primary Engagement Metrics */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
           <div className="p-4 bg-zinc-50 rounded-xl border border-zinc-100">
-            <p className="text-[10px] sm:text-xs font-semibold text-zinc-600 uppercase tracking-wider mb-1 flex items-center gap-1"><Users className="w-3.5 h-3.5" /> Total Users</p>
+            <p className="text-[10px] sm:text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-1 flex items-center gap-1"><Users className="w-3.5 h-3.5" /> Total Users</p>
             <p className="text-2xl font-bold text-zinc-900">{gaStats.totalUsers.toLocaleString()}</p>
             <div className="mt-2 flex items-center gap-1 text-[10px] font-medium text-emerald-600">
               <TrendingUp className="w-3 h-3" /> +12.5%
             </div>
           </div>
           <div className="p-4 bg-zinc-50 rounded-xl border border-zinc-100">
-            <p className="text-[10px] sm:text-xs font-semibold text-zinc-600 uppercase tracking-wider mb-1 flex items-center gap-1"><MousePointerClick className="w-3.5 h-3.5" /> Sessions</p>
+            <p className="text-[10px] sm:text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-1 flex items-center gap-1"><MousePointerClick className="w-3.5 h-3.5" /> Sessions</p>
             <p className="text-2xl font-bold text-zinc-900">{gaStats.sessions.toLocaleString()}</p>
-            <div className="mt-2 text-[10px] font-medium text-zinc-600">
+            <div className="mt-2 text-[10px] font-medium text-zinc-400">
               {(gaStats.sessions / (gaStats.totalUsers || 1)).toFixed(2)} per user
             </div>
           </div>
           <div className="p-4 bg-zinc-50 rounded-xl border border-zinc-100">
-            <p className="text-[10px] sm:text-xs font-semibold text-zinc-600 uppercase tracking-wider mb-1 flex items-center gap-1"><PieChartIcon className="w-3.5 h-3.5" /> Page Views</p>
+            <p className="text-[10px] sm:text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-1 flex items-center gap-1"><PieChartIcon className="w-3.5 h-3.5" /> Page Views</p>
             <p className="text-2xl font-bold text-zinc-900">{gaStats.pageViews.toLocaleString()}</p>
             <div className="mt-2 flex items-center gap-1 text-[10px] font-medium text-emerald-600">
               <TrendingUp className="w-3 h-3" /> +8.2%
             </div>
           </div>
           <div className="p-4 bg-zinc-50 rounded-xl border border-zinc-100">
-            <p className="text-[10px] sm:text-xs font-semibold text-zinc-600 uppercase tracking-wider mb-1 flex items-center gap-1"><Percent className="w-3.5 h-3.5" /> Bounce Rate</p>
+            <p className="text-[10px] sm:text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-1 flex items-center gap-1"><Percent className="w-3.5 h-3.5" /> Bounce Rate</p>
             <p className="text-2xl font-bold text-zinc-900">{gaStats.bounceRate}</p>
             <div className="mt-2 text-[10px] font-medium text-emerald-600">
               Improved by 1.2%
             </div>
           </div>
           <div className="p-4 bg-zinc-50 rounded-xl border border-zinc-100 sm:col-span-2 lg:col-span-1">
-            <p className="text-[10px] sm:text-xs font-semibold text-zinc-600 uppercase tracking-wider mb-1 flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> Avg Session</p>
+            <p className="text-[10px] sm:text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-1 flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> Avg Session</p>
             <p className="text-2xl font-bold text-zinc-900">{gaStats.avgSessionDuration}</p>
-            <div className="mt-2 text-[10px] font-medium text-zinc-600">
+            <div className="mt-2 text-[10px] font-medium text-zinc-400">
               Time on site
             </div>
           </div>
@@ -237,7 +237,7 @@ export default function AnalyticsAdmin() {
               <div className="flex justify-between items-center pb-3 border-b border-zinc-50">
                 <div>
                   <p className="text-xs font-semibold text-zinc-600">E-Commerce Conv. Rate</p>
-                  <p className="text-[10px] text-zinc-600">Orders per session</p>
+                  <p className="text-[10px] text-zinc-400">Orders per session</p>
                 </div>
                 <div className="text-right">
                   <p className="font-bold text-zinc-900">
@@ -248,7 +248,7 @@ export default function AnalyticsAdmin() {
               <div className="flex justify-between items-center pb-3 border-b border-zinc-50">
                 <div>
                   <p className="text-xs font-semibold text-zinc-600">Average Order Value (AOV)</p>
-                  <p className="text-[10px] text-zinc-600">Total Revenue / Orders</p>
+                  <p className="text-[10px] text-zinc-400">Total Revenue / Orders</p>
                 </div>
                 <div className="text-right">
                   <p className="font-bold text-zinc-900">
@@ -259,7 +259,7 @@ export default function AnalyticsAdmin() {
               <div className="flex justify-between items-center pb-3 border-b border-zinc-50">
                 <div>
                   <p className="text-xs font-semibold text-zinc-600 text-orange-600 flex items-center gap-1"><ShoppingCart className="w-3 h-3"/> Abandoned Carts</p>
-                  <p className="text-[10px] text-zinc-600">Users who didn't finish checkout</p>
+                  <p className="text-[10px] text-zinc-400">Users who didn't finish checkout</p>
                 </div>
                 <div className="text-right">
                   <p className="font-bold text-zinc-900">{gaStats.abandonedCarts}</p>
@@ -268,7 +268,7 @@ export default function AnalyticsAdmin() {
               <div className="flex justify-between items-center pb-3 border-b border-zinc-50">
                 <div>
                   <p className="text-xs font-semibold text-zinc-600 text-rose-600 flex items-center gap-1"><Heart className="w-3 h-3"/> Saved to Wishlist</p>
-                  <p className="text-[10px] text-zinc-600">Products saved by users</p>
+                  <p className="text-[10px] text-zinc-400">Products saved by users</p>
                 </div>
                 <div className="text-right">
                   <p className="font-bold text-zinc-900">{gaStats.savedProducts}</p>
@@ -277,7 +277,7 @@ export default function AnalyticsAdmin() {
               <div className="flex justify-between items-center">
                 <div>
                   <p className="text-xs font-semibold text-zinc-600 text-purple-600 flex items-center gap-1"><Monitor className="w-3 h-3"/> Visualizer Views</p>
-                  <p className="text-[10px] text-zinc-600">Users trying room paints</p>
+                  <p className="text-[10px] text-zinc-400">Users trying room paints</p>
                 </div>
                 <div className="text-right">
                   <p className="font-bold text-zinc-900">{gaStats.visualizerViews}</p>
@@ -343,12 +343,12 @@ export default function AnalyticsAdmin() {
                 <div className="bg-purple-50 p-3 rounded-lg border border-purple-100">
                    <p className="text-[10px] text-purple-600 font-bold uppercase mb-1 flex items-center gap-1"><Smartphone className="w-3 h-3" /> Mobile</p>
                    <p className="text-lg font-bold text-zinc-900">{gaStats.deviceBreakdown.mobile}</p>
-                   <p className="text-[10px] text-zinc-600 mt-0.5">{((gaStats.deviceBreakdown.mobile / Math.max(gaStats.totalUsers, 1)) * 100).toFixed(1)}%</p>
+                   <p className="text-[10px] text-zinc-500 mt-0.5">{((gaStats.deviceBreakdown.mobile / Math.max(gaStats.totalUsers, 1)) * 100).toFixed(1)}%</p>
                 </div>
                 <div className="bg-zinc-50 p-3 rounded-lg border border-zinc-100">
                    <p className="text-[10px] text-zinc-600 font-bold uppercase mb-1 flex items-center gap-1"><Monitor className="w-3 h-3" /> Desktop</p>
                    <p className="text-lg font-bold text-zinc-900">{gaStats.deviceBreakdown.desktop}</p>
-                   <p className="text-[10px] text-zinc-600 mt-0.5">{((gaStats.deviceBreakdown.desktop / Math.max(gaStats.totalUsers, 1)) * 100).toFixed(1)}%</p>
+                   <p className="text-[10px] text-zinc-500 mt-0.5">{((gaStats.deviceBreakdown.desktop / Math.max(gaStats.totalUsers, 1)) * 100).toFixed(1)}%</p>
                 </div>
               </div>
             </div>
@@ -418,7 +418,7 @@ export default function AnalyticsAdmin() {
             <ShoppingCart className="w-5 h-5 text-orange-500" /> Recent Abandoned Carts
           </h3>
           {abandonedCartsList.length === 0 ? (
-            <p className="text-sm text-zinc-600 italic">No abandoned carts found.</p>
+            <p className="text-sm text-zinc-500 italic">No abandoned carts found.</p>
           ) : (
             <div className="space-y-4">
               {abandonedCartsList.map((cart, idx) => (
@@ -429,11 +429,11 @@ export default function AnalyticsAdmin() {
                       {usersMap[cart.userId].name || 'Unnamed'} • {usersMap[cart.userId].email || 'No email'}{usersMap[cart.userId].phone ? ` • ${usersMap[cart.userId].phone}` : ''}
                     </div>
                   ) : (
-                    <div className="text-xs text-zinc-600 my-1">Guest User</div>
+                    <div className="text-xs text-zinc-400 my-1">Guest User</div>
                   )}
-                  <p className="text-xs text-zinc-600">Items: {cart.itemCount || cart.items?.length || 0}</p>
+                  <p className="text-xs text-zinc-500">Items: {cart.itemCount || cart.items?.length || 0}</p>
                   {cart.updatedAt && (
-                    <p className="text-[10px] text-zinc-600 mt-1">
+                    <p className="text-[10px] text-zinc-400 mt-1">
                       {new Date(cart.updatedAt.toMillis ? cart.updatedAt.toMillis() : Date.now()).toLocaleString()}
                     </p>
                   )}
@@ -442,10 +442,10 @@ export default function AnalyticsAdmin() {
                         {cart.items.slice(0,2).map((item: any, i: number) => (
                            <div key={i} className="text-xs text-zinc-600 line-clamp-1 flex justify-between">
                               <span>{item.name} (x{item.quantity})</span>
-                              <span className="text-zinc-600">₹{(item.unitPrice * item.size * item.quantity).toLocaleString()}</span>
+                              <span className="text-zinc-400">₹{(item.unitPrice * item.size * item.quantity).toLocaleString()}</span>
                            </div>
                         ))}
-                        {cart.items.length > 2 && <div className="text-[10px] text-zinc-600 pt-1">+{cart.items.length - 2} more items</div>}
+                        {cart.items.length > 2 && <div className="text-[10px] text-zinc-400 pt-1">+{cart.items.length - 2} more items</div>}
                      </div>
                   )}
                 </div>
@@ -460,7 +460,7 @@ export default function AnalyticsAdmin() {
             <Monitor className="w-5 h-5 text-purple-500" /> Recent Visualizer Usage
           </h3>
           {visualizerViewsList.length === 0 ? (
-            <p className="text-sm text-zinc-600 italic">No visualizer views found.</p>
+            <p className="text-sm text-zinc-500 italic">No visualizer views found.</p>
           ) : (
             <div className="space-y-4">
               {visualizerViewsList.map((view, idx) => (
@@ -471,10 +471,10 @@ export default function AnalyticsAdmin() {
                       {usersMap[view.userId].name || 'Unnamed'} • {usersMap[view.userId].email || 'No email'}{usersMap[view.userId].phone ? ` • ${usersMap[view.userId].phone}` : ''}
                     </div>
                   ) : (
-                    <div className="text-xs text-zinc-600 my-1">Guest User</div>
+                    <div className="text-xs text-zinc-400 my-1">Guest User</div>
                   )}
                   {view.timestamp && (
-                    <p className="text-[10px] text-zinc-600 mt-1">
+                    <p className="text-[10px] text-zinc-400 mt-1">
                       {new Date(view.timestamp.toMillis ? view.timestamp.toMillis() : Date.now()).toLocaleString()}
                     </p>
                   )}
@@ -490,20 +490,20 @@ export default function AnalyticsAdmin() {
             <Heart className="w-5 h-5 text-rose-500" /> Recent Wishlist Saves
           </h3>
           {wishlistItemsList.length === 0 ? (
-            <p className="text-sm text-zinc-600 italic">No wishlists found.</p>
+            <p className="text-sm text-zinc-500 italic">No wishlists found.</p>
           ) : (
             <div className="space-y-4">
               {wishlistItemsList.map((item, idx) => (
                 <div key={idx} className="border-b border-zinc-50 pb-3 last:border-0 last:pb-0">
                   <p className="text-sm font-medium text-zinc-800 line-clamp-1">{item.name}</p>
-                  <p className="text-xs text-zinc-600 capitalize">{item.type} {item.shadeCode ? `(${item.shadeCode})` : ''}</p>
+                  <p className="text-xs text-zinc-500 capitalize">{item.type} {item.shadeCode ? `(${item.shadeCode})` : ''}</p>
                   {item.userId && usersMap[item.userId] ? (
                     <div className="text-[10px] text-rose-600 font-medium mt-1">
                       Saved by: {usersMap[item.userId].name} ({usersMap[item.userId].email})
                       {usersMap[item.userId].phone ? ` - ${usersMap[item.userId].phone}` : ''}
                     </div>
                   ) : (
-                    item.userId && <p className="text-[10px] text-zinc-600 mt-1">User ID: {item.userId.slice(0, 8)}...</p>
+                    item.userId && <p className="text-[10px] text-zinc-400 mt-1">User ID: {item.userId.slice(0, 8)}...</p>
                   )}
                 </div>
               ))}

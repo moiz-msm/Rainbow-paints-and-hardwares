@@ -14,7 +14,7 @@ export default function OrderDetailsPage() {
   if (!order) {
     return (
       <div className="bg-royale-bg min-h-screen pt-24 pb-12 flex flex-col items-center justify-center">
-        <h1 className="text-2xl font-bold text-gray-900 mb-4">Order not found</h1>
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">Order not found</h2>
         <button onClick={() => navigate('/my-orders')} className="text-blue-600 hover:text-blue-800 font-semibold flex items-center gap-2">
           <ChevronLeft className="w-5 h-5" /> Back to My Orders
         </button>
@@ -37,14 +37,14 @@ export default function OrderDetailsPage() {
     <div className="bg-royale-bg min-h-screen pt-24 pb-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <button onClick={() => navigate('/my-orders')} className="text-zinc-600 hover:text-gray-900 font-semibold flex items-center gap-2 mb-6">
+        <button onClick={() => navigate('/my-orders')} className="text-gray-500 hover:text-gray-900 font-semibold flex items-center gap-2 mb-6">
           <ChevronLeft className="w-5 h-5" /> Back to My Orders
         </button>
 
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Order #{order.id}</h1>
-            <p className="text-zinc-600 mt-1">Placed on {new Date(order.date).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
+            <p className="text-gray-500 mt-1">Placed on {new Date(order.date).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
           </div>
           <button 
             onClick={() => generateInvoice(order)}
@@ -81,8 +81,8 @@ export default function OrderDetailsPage() {
                       </div>
                       
                       <div className="ml-4 sm:ml-0 sm:mt-4">
-                        <div className={`font-bold ${isCompleted ? 'text-gray-900' : 'text-zinc-600'}`}>{step.label}</div>
-                        <div className="text-xs text-zinc-600 mt-1 hidden sm:block">{step.desc}</div>
+                        <div className={`font-bold ${isCompleted ? 'text-gray-900' : 'text-gray-400'}`}>{step.label}</div>
+                        <div className="text-xs text-gray-500 mt-1 hidden sm:block">{step.desc}</div>
                       </div>
                     </div>
                   );
@@ -99,7 +99,7 @@ export default function OrderDetailsPage() {
           <div className="lg:col-span-2 space-y-6">
             <div className="bg-royale-surface rounded-2xl shadow-sm p-6 sm:p-8">
               <h2 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2 border-b border-gray-100 pb-4">
-                <Package className="w-5 h-5 text-zinc-600" /> Items in this Order
+                <Package className="w-5 h-5 text-gray-400" /> Items in this Order
               </h2>
               
               <div className="space-y-6">
@@ -109,12 +109,12 @@ export default function OrderDetailsPage() {
                       {item.image ? (
                         <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                       ) : (
-                        <div className="w-full h-full bg-zinc-100 flex items-center justify-center text-[10px] text-zinc-600">No Image</div>
+                        <div className="w-full h-full bg-zinc-100 flex items-center justify-center text-[10px] text-zinc-400">No Image</div>
                       )}
                     </div>
                     <div className="flex-1 min-w-0">
                       <h3 className="font-bold text-gray-900 truncate">{item.name}</h3>
-                      <p className="text-sm text-zinc-600 mt-1 truncate">{item.brand}</p>
+                      <p className="text-sm text-gray-500 mt-1 truncate">{item.brand}</p>
                       <div className="flex flex-wrap items-center gap-2 mt-2 text-sm text-gray-600">
                         <span className="bg-gray-100 px-2 py-1 rounded-md">Size: {item.size}L</span>
                         <span className="bg-gray-100 px-2 py-1 rounded-md">Qty: {item.quantity}</span>
@@ -128,7 +128,7 @@ export default function OrderDetailsPage() {
                     </div>
                     <div className="text-right shrink-0 ml-2">
                       <div className="font-bold text-gray-900">₹{(item.unitPrice * item.size * item.quantity).toLocaleString()}</div>
-                      <div className="text-xs text-zinc-600 mt-1">₹{item.unitPrice}/L</div>
+                      <div className="text-xs text-gray-500 mt-1">₹{item.unitPrice}/L</div>
                     </div>
                   </div>
                 ))}
@@ -140,7 +140,7 @@ export default function OrderDetailsPage() {
                 <HelpCircle className="w-6 h-6 text-blue-500" />
                 <div>
                   <h3 className="font-bold text-gray-900">Need help with your order?</h3>
-                  <p className="text-sm text-zinc-600">Contact our support team for assistance.</p>
+                  <p className="text-sm text-gray-500">Contact our support team for assistance.</p>
                 </div>
               </div>
               <a 
@@ -180,7 +180,7 @@ export default function OrderDetailsPage() {
 
             <div className="bg-royale-surface rounded-2xl shadow-sm p-6">
               <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2 border-b border-gray-100 pb-3">
-                <MapPin className="w-5 h-5 text-zinc-600" /> Shipping Info
+                <MapPin className="w-5 h-5 text-gray-400" /> Shipping Info
               </h2>
               <div className="text-sm text-gray-600 space-y-1">
                 <p className="font-semibold text-gray-900 text-base">{order.shippingAddress.name}</p>
@@ -188,13 +188,13 @@ export default function OrderDetailsPage() {
                 {order.shippingAddress.landmark && <p>Landmark: {order.shippingAddress.landmark}</p>}
                 <p>{order.shippingAddress.city}, {order.shippingAddress.state} {order.shippingAddress.pincode}</p>
                 <p className="pt-2 font-medium">Phone: {order.shippingAddress.phone}</p>
-                {order.shippingAddress.email && <p className="font-medium text-zinc-600">Email: {order.shippingAddress.email}</p>}
+                {order.shippingAddress.email && <p className="font-medium text-gray-500">Email: {order.shippingAddress.email}</p>}
               </div>
             </div>
 
             <div className="bg-royale-surface rounded-2xl shadow-sm p-6">
               <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2 border-b border-gray-100 pb-3">
-                <CreditCard className="w-5 h-5 text-zinc-600" /> Payment Info
+                <CreditCard className="w-5 h-5 text-gray-400" /> Payment Info
               </h2>
               <div className="text-sm text-gray-600">
                 <p>Method: <span className="font-semibold text-gray-900">{order.paymentMethod}</span></p>

@@ -93,7 +93,7 @@ export default function OfferPopup() {
                   </div>
                   <div>
                     <h3 className="text-[9px] sm:text-[10px] font-bold text-ivory uppercase tracking-widest mb-0.5">Free Paint Sample</h3>
-                    <p className="text-[7px] sm:text-[8px] text-zinc-600 leading-tight">On-site wall application</p>
+                    <p className="text-[7px] sm:text-[8px] text-zinc-500 leading-tight">On-site wall application</p>
                   </div>
                 </div>
                 <div className="bg-white shadow-sm border border-zinc-200 rounded-xl p-2.5 text-center flex flex-col items-center gap-1.5">
@@ -102,7 +102,7 @@ export default function OfferPopup() {
                   </div>
                   <div>
                     <h3 className="text-[9px] sm:text-[10px] font-bold text-ivory uppercase tracking-widest mb-0.5">Free Measurement</h3>
-                    <p className="text-[7px] sm:text-[8px] text-zinc-600 leading-tight">Free sq.ft estimate</p>
+                    <p className="text-[7px] sm:text-[8px] text-zinc-500 leading-tight">Free sq.ft estimate</p>
                   </div>
                 </div>
               </div>
@@ -133,7 +133,7 @@ export default function OfferPopup() {
                         className="w-full bg-white shadow-sm border border-zinc-200 rounded-lg px-2 py-1.5 text-[9px] sm:text-[10px] text-zinc-900 font-semibold focus:outline-none focus:border-gold/50 transition-all flex items-center justify-between text-left"
                       >
                         <span className="truncate">{formData.projectType}</span>
-                        <ChevronDown className={`w-3 h-3 text-zinc-600 shrink-0 transition-transform duration-300 ${isTypeDropdownOpen ? 'rotate-180' : ''}`} />
+                        <ChevronDown className={`w-3 h-3 text-zinc-400 shrink-0 transition-transform duration-300 ${isTypeDropdownOpen ? 'rotate-180' : ''}`} />
                       </button>
                       {isTypeDropdownOpen && (
                         <>

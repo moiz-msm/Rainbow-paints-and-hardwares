@@ -145,8 +145,8 @@ export default function AccountSettingsPage() {
   if (!user) {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-        <h1 className="text-2xl font-serif text-zinc-900 mb-4">You are not signed in</h1>
-        <p className="text-zinc-600 mb-8">Please sign in to view your account settings.</p>
+        <h2 className="text-2xl font-serif text-zinc-900 mb-4">You are not signed in</h2>
+        <p className="text-zinc-500 mb-8">Please sign in to view your account settings.</p>
         <Link to="/" className="text-gold font-medium hover:underline">Go Home</Link>
       </div>
     );
@@ -164,12 +164,12 @@ export default function AccountSettingsPage() {
           <div className="p-6 sm:p-8 border-b border-zinc-100">
             <h2 className="text-xl font-serif font-medium text-zinc-900 mb-2">Profile Details</h2>
             <div className="flex items-center gap-4 mt-6">
-              <div className="w-16 h-16 bg-zinc-100 rounded-full flex items-center justify-center text-zinc-600">
+              <div className="w-16 h-16 bg-zinc-100 rounded-full flex items-center justify-center text-zinc-400">
                 <User className="w-8 h-8" />
               </div>
               <div>
                 <p className="text-lg font-medium text-zinc-900">{user.displayName || 'User'}</p>
-                <p className="text-sm text-zinc-600">ID: {user.uid}</p>
+                <p className="text-sm text-zinc-500">ID: {user.uid}</p>
               </div>
             </div>
           </div>
@@ -205,7 +205,7 @@ export default function AccountSettingsPage() {
                   </div>
                   <div>
                     <h3 className="text-sm font-medium text-zinc-900">Google Account</h3>
-                    <p className="text-xs text-zinc-600">
+                    <p className="text-xs text-zinc-500">
                       {isGoogleLinked ? 'Connected' : 'Not connected'}
                     </p>
                   </div>
@@ -239,7 +239,7 @@ export default function AccountSettingsPage() {
                   </div>
                   <div>
                     <h3 className="text-sm font-medium text-zinc-900">Phone Number (SMS)</h3>
-                    <p className="text-xs text-zinc-600">
+                    <p className="text-xs text-zinc-500">
                       {isPhoneLinked ? (user.phoneNumber || 'Connected') : 'Not connected'}
                     </p>
                   </div>
@@ -277,7 +277,7 @@ export default function AccountSettingsPage() {
                       <div>
                         <label className="block text-xs font-medium text-zinc-700 mb-1">Phone Number</label>
                         <div className="relative">
-                          <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-600" />
+                          <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
                           <input 
                             type="tel" 
                             required 
@@ -302,7 +302,7 @@ export default function AccountSettingsPage() {
                       <div>
                         <label className="block text-xs font-medium text-zinc-700 mb-1">Verification Code</label>
                         <div className="relative">
-                          <Shield className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-600" />
+                          <Shield className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
                           <input 
                             type="text" 
                             required 
@@ -328,7 +328,7 @@ export default function AccountSettingsPage() {
             </div>
             
             <div className="mt-8 border-t border-zinc-100 pt-6">
-              <p className="text-xs text-zinc-600">
+              <p className="text-xs text-zinc-500">
                 You can link multiple providers so you can sign in using any of them, while all pointing to the same account data (orders, profile, etc.).
               </p>
             </div>

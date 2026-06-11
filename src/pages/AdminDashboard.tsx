@@ -167,7 +167,7 @@ export default function AdminDashboard() {
               <Store className="w-5 h-5 ml-0.5" />
             </div>
             <div>
-              <h1 className="font-display font-bold text-zinc-900 leading-none">Admin Portal</h1>
+              <h2 className="font-display font-bold text-zinc-900 leading-none">Admin Portal</h2>
               <p className="text-xs text-zinc-500 mt-1">Store Management</p>
             </div>
           </div>

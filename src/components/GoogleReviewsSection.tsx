@@ -237,7 +237,7 @@ export default function GoogleReviewsSection() {
                               />
                             ))}
                           </div>
-                          <span className="text-[10px] text-zinc-600 font-medium font-mono">{review.time}</span>
+                          <span className="text-[10px] text-zinc-400 font-medium font-mono">{review.time}</span>
                         </div>
 
                         {/* Card review text */}
@@ -264,12 +264,12 @@ export default function GoogleReviewsSection() {
                             </div>
                           )}
                           <div className="min-w-0">
-                            <h3 className="text-xs font-semibold text-ivory tracking-wide flex items-center gap-1.5 truncate">
+                            <h4 className="text-xs font-semibold text-ivory tracking-wide flex items-center gap-1.5 truncate">
                               {review.authorName}
                               {review.isVerified && (
                                 <CheckCircle className="w-3.5 h-3.5 text-amber-500 shrink-0 fill-amber-50/40" />
                               )}
-                            </h3>
+                            </h4>
                             <span className="text-[9px] text-ivory/60 font-medium tracking-wider uppercase block mt-0.5">
                               {review.isLocalGuide ? "Local Guide" : "Verified Customer"}
                             </span>

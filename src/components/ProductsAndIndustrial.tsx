@@ -83,7 +83,7 @@ export default function ProductsAndIndustrial() {
               <h2 className="text-xl sm:text-2xl font-serif font-medium mb-2 leading-tight text-zinc-900">
                 Request site <span className="italic text-gradient font-light">visit.</span>
               </h2>
-              <p className="text-zinc-600 text-[10px] sm:text-xs mb-4 max-w-sm italic font-light">
+              <p className="text-zinc-500 text-[10px] sm:text-xs mb-4 max-w-sm italic font-light">
                 Free visit - free consultation - free measurement - free quote - free paint sample - by experts on your doorstep - no obligation, no cost.
               </p>
             </div>
@@ -96,7 +96,7 @@ export default function ProductsAndIndustrial() {
                     type="text" 
                     value={formData.name}
                     onChange={e => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full bg-zinc-50 border border-zinc-200 rounded-lg sm:rounded-xl px-3 py-2.5 focus:outline-none focus:border-gold/50 transition-colors text-zinc-800 text-[10px] sm:text-xs placeholder:text-zinc-600 font-medium" placeholder="John Doe" 
+                    className="w-full bg-zinc-50 border border-zinc-200 rounded-lg sm:rounded-xl px-3 py-2.5 focus:outline-none focus:border-gold/50 transition-colors text-zinc-800 text-[10px] sm:text-xs placeholder:text-zinc-400 font-medium" placeholder="John Doe" 
                   />
                 </div>
                 <div className="space-y-1 sm:space-y-1.5">
@@ -105,7 +105,7 @@ export default function ProductsAndIndustrial() {
                     type="text" 
                     value={formData.area}
                     onChange={e => setFormData({ ...formData, area: e.target.value })}
-                    className="w-full bg-zinc-50 border border-zinc-200 rounded-lg sm:rounded-xl px-3 py-2.5 focus:outline-none focus:border-gold/50 transition-colors text-zinc-800 text-[10px] sm:text-xs placeholder:text-zinc-600 font-medium" placeholder="e.g. 1500" 
+                    className="w-full bg-zinc-50 border border-zinc-200 rounded-lg sm:rounded-xl px-3 py-2.5 focus:outline-none focus:border-gold/50 transition-colors text-zinc-800 text-[10px] sm:text-xs placeholder:text-zinc-400 font-medium" placeholder="e.g. 1500" 
                   />
                 </div>
               </div>
@@ -115,7 +115,7 @@ export default function ProductsAndIndustrial() {
                   type="text" 
                   value={formData.pinCode}
                   onChange={e => setFormData({ ...formData, pinCode: e.target.value })}
-                  className="w-full bg-zinc-50 border border-zinc-200 rounded-lg sm:rounded-xl px-3 py-2.5 focus:outline-none focus:border-gold/50 transition-colors text-zinc-800 text-[10px] sm:text-xs placeholder:text-zinc-600 font-medium" placeholder="641001" 
+                  className="w-full bg-zinc-50 border border-zinc-200 rounded-lg sm:rounded-xl px-3 py-2.5 focus:outline-none focus:border-gold/50 transition-colors text-zinc-800 text-[10px] sm:text-xs placeholder:text-zinc-400 font-medium" placeholder="641001" 
                 />
               </div>
               <button type="submit" className="w-full bg-[#25D366] hover:bg-[#20b858] text-white py-3 mt-2 rounded-xl font-semibold flex items-center justify-center gap-2 transition-transform active:scale-[0.98] shadow-lg shadow-[#25D366]/20 text-[10px] sm:text-xs uppercase tracking-wider">
@@ -151,19 +151,19 @@ export default function ProductsAndIndustrial() {
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6">
                 <div className="bg-white shadow-sm border border-zinc-200 rounded-xl p-3 flex flex-col items-center justify-center text-center">
-                  <h3 className="text-lg font-serif text-gold mb-1">20+</h3>
+                  <h4 className="text-lg font-serif text-gold mb-1">20+</h4>
                   <p className="text-[8px] font-display uppercase tracking-wider text-ivory/80">years service</p>
                 </div>
                 <div className="bg-white shadow-sm border border-zinc-200 rounded-xl p-3 flex flex-col items-center justify-center text-center">
-                  <h3 className="text-lg font-serif text-gold mb-1">100+</h3>
+                  <h4 className="text-lg font-serif text-gold mb-1">100+</h4>
                   <p className="text-[8px] font-display uppercase tracking-wider text-ivory/80">industries</p>
                 </div>
                 <div className="bg-white shadow-sm border border-zinc-200 rounded-xl p-3 flex flex-col items-center justify-center text-center">
-                  <h3 className="text-lg font-serif text-gold mb-1 text-[13px] sm:text-[15px]">On-Site</h3>
+                  <h4 className="text-lg font-serif text-gold mb-1 text-[13px] sm:text-[15px]">On-Site</h4>
                   <p className="text-[8px] font-display uppercase tracking-wider text-ivory/80">consultation</p>
                 </div>
                 <div className="bg-white shadow-sm border border-zinc-200 rounded-xl p-3 flex flex-col items-center justify-center text-center">
-                  <h3 className="text-lg font-serif text-gold mb-1 text-[13px] sm:text-[15px]">On-Site</h3>
+                  <h4 className="text-lg font-serif text-gold mb-1 text-[13px] sm:text-[15px]">On-Site</h4>
                   <p className="text-[8px] font-display uppercase tracking-wider text-ivory/80">delivery</p>
                 </div>
               </div>

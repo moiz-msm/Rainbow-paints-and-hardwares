@@ -31,7 +31,7 @@ export default function MyOrdersPage() {
           <div className="bg-royale-surface rounded-2xl p-12 text-center shadow-sm">
             <Package className="w-16 h-16 text-gray-300 mx-auto mb-4" />
             <h2 className="text-xl font-bold text-gray-900 mb-2">No orders found</h2>
-            <p className="text-zinc-600 mb-6">You haven't placed any orders yet.</p>
+            <p className="text-gray-500 mb-6">You haven't placed any orders yet.</p>
             <button 
               onClick={() => navigate('/buy-paint-online')}
               className="px-6 py-3 bg-gradient-gold text-white rounded-lg font-bold hover:opacity-90 transition-colors"
@@ -47,15 +47,15 @@ export default function MyOrdersPage() {
                 {/* Header */}
                 <div className="bg-gray-50 px-6 py-4 border-b border-gray-100 flex flex-wrap gap-4 items-center justify-between">
                   <div>
-                    <span className="text-sm text-zinc-600 block">Order ID</span>
+                    <span className="text-sm text-gray-500 block">Order ID</span>
                     <span className="font-bold text-gray-900">{order.id}</span>
                   </div>
                   <div>
-                    <span className="text-sm text-zinc-600 block">Date</span>
+                    <span className="text-sm text-gray-500 block">Date</span>
                     <span className="font-medium text-gray-900">{new Date(order.date).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
                   </div>
                   <div>
-                    <span className="text-sm text-zinc-600 block">Total Amount</span>
+                    <span className="text-sm text-gray-500 block">Total Amount</span>
                     <span className="font-bold text-gray-900">₹{order.total.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</span>
                   </div>
                   <div>
@@ -77,7 +77,7 @@ export default function MyOrdersPage() {
                           {item.image ? (
                             <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                           ) : (
-                            <div className="w-full h-full bg-zinc-100 flex items-center justify-center text-[10px] text-zinc-600">No Image</div>
+                            <div className="w-full h-full bg-zinc-100 flex items-center justify-center text-[10px] text-zinc-400">No Image</div>
                           )}
                         </div>
                       ))}

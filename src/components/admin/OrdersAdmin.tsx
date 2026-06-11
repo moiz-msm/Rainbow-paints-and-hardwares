@@ -133,14 +133,14 @@ export default function OrdersAdmin() {
 
   if (loading)
     return (
-      <div className="p-10 text-center text-zinc-600">Loading Orders...</div>
+      <div className="p-10 text-center text-zinc-500">Loading Orders...</div>
     );
 
   return (
     <div className="bg-white rounded-2xl border border-zinc-200 shadow-sm overflow-hidden flex flex-col">
       <div className="p-5 border-b border-zinc-200 flex flex-col md:flex-row justify-between items-center gap-4 bg-zinc-50">
         <div className="relative w-full md:w-96">
-          <Search className="w-4 h-4 absolute left-3 top-3.5 text-zinc-600" />
+          <Search className="w-4 h-4 absolute left-3 top-3.5 text-zinc-400" />
           <input
             type="text"
             placeholder="Search orders or user email..."
@@ -160,7 +160,7 @@ export default function OrdersAdmin() {
       <div className="overflow-x-auto">
         <table className="w-full text-left text-sm whitespace-nowrap">
           <thead>
-            <tr className="bg-zinc-50/50 text-zinc-600 border-b border-zinc-200">
+            <tr className="bg-zinc-50/50 text-zinc-500 border-b border-zinc-200">
               <th className="px-6 py-4 font-semibold">Order ID</th>
               <th className="px-6 py-4 font-semibold">Date</th>
               <th className="px-6 py-4 font-semibold">Account / Customer</th>
@@ -177,7 +177,7 @@ export default function OrdersAdmin() {
                   <td className="px-6 py-4 font-medium text-zinc-900 font-mono text-xs">
                     {order.id.slice(0, 8)}...
                   </td>
-                  <td className="px-6 py-4 text-zinc-600">
+                  <td className="px-6 py-4 text-zinc-500">
                     {new Date(order.createdAt).toLocaleDateString()}
                   </td>
                   <td className="px-6 py-4">
@@ -188,16 +188,16 @@ export default function OrdersAdmin() {
                       </div>
                     ) : (
                       <div className="flex items-center gap-1.5 mb-0.5">
-                        <User className="w-3.5 h-3.5 text-zinc-600" />
-                        <span className="text-xs font-medium text-zinc-600">Guest Order</span>
+                        <User className="w-3.5 h-3.5 text-zinc-400" />
+                        <span className="text-xs font-medium text-zinc-500">Guest Order</span>
                       </div>
                     )}
                     <span className="font-semibold block text-zinc-900">{order.deliveryAddress?.name}</span>
-                    <span className="text-xs text-zinc-600 block">
+                    <span className="text-xs text-zinc-400 block">
                       {order.phone || order.deliveryAddress?.phone}
                     </span>
                     {order.deliveryAddress?.email && (
-                      <span className="text-xs text-zinc-600 mt-0.5 block">
+                      <span className="text-xs text-zinc-500 mt-0.5 block">
                         {order.deliveryAddress.email}
                       </span>
                     )}
@@ -234,14 +234,14 @@ export default function OrdersAdmin() {
                   <td className="px-6 py-4 text-right flex items-center justify-end gap-1">
                     <button
                       onClick={() => handleDownloadInvoice(order)}
-                      className="p-1.5 text-zinc-600 hover:text-indigo-600 transition-colors"
+                      className="p-1.5 text-zinc-400 hover:text-indigo-600 transition-colors"
                       title="Download Invoice"
                     >
                       <FileText className="w-4 h-4" />
                     </button>
                     <button
                       onClick={() => handleDelete(order.id)}
-                      className="p-1.5 text-zinc-600 hover:text-red-600 transition-colors ml-1"
+                      className="p-1.5 text-zinc-400 hover:text-red-600 transition-colors ml-1"
                       title="Delete"
                     >
                       <Trash2 className="w-4 h-4" />
@@ -254,7 +254,7 @@ export default function OrdersAdmin() {
               <tr>
                 <td
                   colSpan={6}
-                  className="px-6 py-10 text-center text-zinc-600"
+                  className="px-6 py-10 text-center text-zinc-500"
                 >
                   No orders found.
                 </td>

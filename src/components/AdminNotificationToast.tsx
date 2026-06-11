@@ -65,7 +65,7 @@ export default function AdminNotificationToast() {
             
             <div className="flex-1 pr-6 pb-1">
               <p className="font-display font-bold text-sm text-white">New Order Alert</p>
-              <p className="text-xs font-medium text-zinc-600 mt-1 leading-relaxed">
+              <p className="text-xs font-medium text-zinc-400 mt-1 leading-relaxed">
                 You have {pendingOrdersCount} {pendingOrdersCount === 1 ? 'order' : 'orders'} pending processing.
               </p>
               <button 
@@ -81,7 +81,7 @@ export default function AdminNotificationToast() {
 
             <button 
               onClick={() => setIsVisible(false)}
-              className="absolute top-3 right-3 p-1.5 text-zinc-600 hover:text-white bg-zinc-800 hover:bg-zinc-700 rounded-lg transition-colors"
+              className="absolute top-3 right-3 p-1.5 text-zinc-500 hover:text-white bg-zinc-800 hover:bg-zinc-700 rounded-lg transition-colors"
             >
               <X className="w-3.5 h-3.5" />
             </button>

@@ -40,7 +40,7 @@ export default function AddedToCartBanner() {
                 <h4 className="text-zinc-100 text-sm font-semibold tracking-wide truncate">
                   {lastAddedItem.name}
                 </h4>
-                <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-zinc-600 mt-0.5">
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-zinc-400 mt-0.5">
                   <span>{lastAddedItem.brand}</span>
                   <span className="text-zinc-600">•</span>
                   <span>{lastAddedItem.size}L Pack</span>
@@ -67,7 +67,7 @@ export default function AddedToCartBanner() {
             {/* Middle: Cart Stats (items & price) */}
             <div className="flex items-center gap-6 py-2 px-4 bg-white/5 border border-white/10 rounded-xl w-full md:w-auto justify-around md:justify-start">
               <div className="text-left">
-                <p className="text-[10px] text-zinc-600 uppercase tracking-wider font-semibold">Total Items</p>
+                <p className="text-[10px] text-zinc-400 uppercase tracking-wider font-semibold">Total Items</p>
                 <p className="text-sm font-bold text-zinc-200">{totalItemsCount} {totalItemsCount === 1 ? 'Product' : 'Products'}</p>
               </div>
               <div className="w-[1px] h-8 bg-zinc-800" />
@@ -101,7 +101,7 @@ export default function AddedToCartBanner() {
 
               <button
                 onClick={closeBanner}
-                className="hidden md:flex p-2 text-zinc-600 hover:text-white bg-white/5 hover:bg-white/10 rounded-xl transition-all duration-200 cursor-pointer"
+                className="hidden md:flex p-2 text-zinc-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-xl transition-all duration-200 cursor-pointer"
                 title="Dismiss"
               >
                 <X className="w-4 h-4" />
@@ -113,7 +113,7 @@ export default function AddedToCartBanner() {
           {/* Direct close button for mobile view positioned at top-right corner */}
           <button
             onClick={closeBanner}
-            className="md:hidden absolute top-3 right-3 p-1.5 text-zinc-600 hover:text-white bg-white/5 hover:bg-white/10 rounded-lg transition-all duration-200"
+            className="md:hidden absolute top-3 right-3 p-1.5 text-zinc-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-lg transition-all duration-200"
             title="Dismiss ml"
           >
             <X className="w-3.5 h-3.5" />

@@ -244,7 +244,7 @@ export default function ProductAssistant() {
                 />
               </div>
               <div>
-                <h2 className="text-ivory font-display font-bold text-[10px] sm:text-sm uppercase tracking-[0.2em]">Rainbow Assistant</h2>
+                <h3 className="text-ivory font-display font-bold text-[10px] sm:text-sm uppercase tracking-[0.2em]">Rainbow Assistant</h3>
                 <div className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-500 animate-pulse" />
                   <span className="text-[8px] sm:text-[10px] text-emerald-600 font-bold uppercase tracking-widest">Active to help</span>
@@ -252,7 +252,7 @@ export default function ProductAssistant() {
               </div>
               <button 
                 onClick={() => setIsOpen(false)}
-                className="ml-auto p-1.5 sm:p-2.5 hover:bg-zinc-200 rounded-full transition-all text-zinc-600 hover:text-ivory"
+                className="ml-auto p-1.5 sm:p-2.5 hover:bg-zinc-200 rounded-full transition-all text-zinc-400 hover:text-ivory"
               >
                 <X className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>

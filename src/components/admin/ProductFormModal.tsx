@@ -138,7 +138,7 @@ export default function ProductFormModal({
           <h3 className="font-bold text-zinc-900 text-lg">
             {product ? 'Edit Product' : 'Add New Product'}
           </h3>
-          <button onClick={onClose} className="text-zinc-600 hover:text-zinc-700">
+          <button onClick={onClose} className="text-zinc-400 hover:text-zinc-700">
             <X className="w-5 h-5" />
           </button>
         </div>

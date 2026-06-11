@@ -49,7 +49,7 @@ export default function StoreSettingsAdmin() {
   };
 
   if (loading) {
-    return <div className="p-10 text-center text-zinc-600">Loading Configuration...</div>;
+    return <div className="p-10 text-center text-zinc-500">Loading Configuration...</div>;
   }
 
   return (
@@ -87,7 +87,7 @@ export default function StoreSettingsAdmin() {
                 onChange={handleChange}
                 className="w-full text-sm p-3 bg-zinc-50 border border-zinc-200 rounded-xl outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
               />
-              <p className="text-[10px] text-zinc-600 mt-1">Applied if distance-based estimation fails.</p>
+              <p className="text-[10px] text-zinc-400 mt-1">Applied if distance-based estimation fails.</p>
             </div>
             <div>
               <label className="block text-xs font-semibold text-zinc-700 mb-1.5">Free Delivery Threshold (₹)</label>
@@ -98,7 +98,7 @@ export default function StoreSettingsAdmin() {
                 onChange={handleChange}
                 className="w-full text-sm p-3 bg-zinc-50 border border-zinc-200 rounded-xl outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
               />
-              <p className="text-[10px] text-zinc-600 mt-1">Orders above this subtotal get free shipping.</p>
+              <p className="text-[10px] text-zinc-400 mt-1">Orders above this subtotal get free shipping.</p>
             </div>
             <div className="col-span-1 md:col-span-2 flex items-center gap-3">
               <input 
@@ -171,7 +171,7 @@ export default function StoreSettingsAdmin() {
                   onChange={handleChange}
                   className="w-full text-sm p-3 bg-zinc-50 border border-zinc-200 rounded-xl outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 pr-10"
                 />
-                <span className="absolute right-4 top-3.5 text-zinc-600 font-bold">%</span>
+                <span className="absolute right-4 top-3.5 text-zinc-400 font-bold">%</span>
               </div>
             </div>
           </div>

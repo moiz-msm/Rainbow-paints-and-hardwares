@@ -167,7 +167,7 @@ export default function StaffAdmin() {
               Assign Role
             </button>
           </div>
-          <p className="mt-3 text-xs text-zinc-600">If the email is not registered yet, their role will be granted when they sign up.</p>
+          <p className="mt-3 text-xs text-zinc-500">If the email is not registered yet, their role will be granted when they sign up.</p>
         </div>
 
         {/* Create New Role */}
@@ -214,7 +214,7 @@ export default function StaffAdmin() {
               {staffMembers.map(member => (
                 <tr key={member.id} className="hover:bg-zinc-50 transition-colors">
                   <td className="px-6 py-4 text-zinc-900 font-medium">{member.name || 'N/A'}</td>
-                  <td className="px-6 py-4 text-zinc-600">{member.email}</td>
+                  <td className="px-6 py-4 text-zinc-500">{member.email}</td>
                   <td className="px-6 py-4">
                     {member.role === 'owner' ? (
                       <span className="px-3 py-1 bg-zinc-900 text-zinc-100 text-xs font-bold rounded-lg truncate">Owner (Full Access)</span>
@@ -234,7 +234,7 @@ export default function StaffAdmin() {
               ))}
               {staffMembers.length === 0 && (
                 <tr>
-                  <td colSpan={3} className="px-6 py-8 text-center text-zinc-600 italic">No staff found.</td>
+                  <td colSpan={3} className="px-6 py-8 text-center text-zinc-500 italic">No staff found.</td>
                 </tr>
               )}
             </tbody>
@@ -265,7 +265,7 @@ export default function StaffAdmin() {
               })}
             </div>
             {r === 'admin' && (
-              <p className="mt-4 text-xs text-zinc-600 pt-2 border-t border-zinc-100">
+              <p className="mt-4 text-xs text-zinc-500 pt-2 border-t border-zinc-100">
                 Note: Admin role always has overarching dashboard access.
               </p>
             )}

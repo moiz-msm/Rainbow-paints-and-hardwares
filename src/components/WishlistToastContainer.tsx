@@ -43,10 +43,10 @@ const ToastItem = ({ toast }: { toast: WishlistToast }) => {
           <span className="text-[10px] uppercase font-bold tracking-widest text-red-400 font-sans block mb-0.5">
             Sign In Required
           </span>
-          <p className="text-zinc-105 text-zinc-100 text-[13px] sm:text-sm font-semibold tracking-wide">
+          <h4 className="text-zinc-105 text-zinc-100 text-[13px] sm:text-sm font-semibold tracking-wide">
             {toast.productName}
-          </p>
-          <p className="text-[11px] text-zinc-600 font-sans mt-1">
+          </h4>
+          <p className="text-[11px] text-zinc-400 font-sans mt-1">
             {toast.message}
           </p>
           <div className="mt-2.5 flex items-center gap-1 text-[10px] text-gold font-display font-medium uppercase tracking-wider group-hover:underline">
@@ -60,7 +60,7 @@ const ToastItem = ({ toast }: { toast: WishlistToast }) => {
             e.stopPropagation();
             removeToast(toast.id);
           }}
-          className="absolute right-3 top-3 p-1 text-zinc-600 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer"
+          className="absolute right-3 top-3 p-1 text-zinc-400 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer"
           title="Dismiss notification"
         >
           <X className="w-4 h-4" />
@@ -92,11 +92,11 @@ const ToastItem = ({ toast }: { toast: WishlistToast }) => {
         <span className="text-[10px] uppercase font-bold tracking-widest text-gold font-sans block mb-0.5">
           Added to Wishlist
         </span>
-        <p className="text-zinc-100 text-[13px] sm:text-sm font-semibold tracking-wide truncate">
+        <h4 className="text-zinc-100 text-[13px] sm:text-sm font-semibold tracking-wide truncate">
           {toast.productName}
-        </p>
+        </h4>
         
-        <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 mt-1.5 text-[11px] text-zinc-600 font-sans">
+        <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 mt-1.5 text-[11px] text-zinc-400 font-sans">
           {toast.size !== undefined && (
             <span className="shrink-0 bg-white/5 border border-white/10 px-1.5 py-0.5 rounded text-[10px] font-medium font-mono text-zinc-300">
               {toast.size}L Pack
@@ -119,7 +119,7 @@ const ToastItem = ({ toast }: { toast: WishlistToast }) => {
       {/* Close button */}
       <button
         onClick={() => removeToast(toast.id)}
-        className="absolute right-3 top-3 p-1 text-zinc-600 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer"
+        className="absolute right-3 top-3 p-1 text-zinc-400 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer"
         title="Dismiss notification"
       >
         <X className="w-4 h-4" />

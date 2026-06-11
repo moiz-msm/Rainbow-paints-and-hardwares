@@ -40,21 +40,21 @@ export interface BrandDetail {
 export const brandDetails: BrandDetail[] = [
   {
     name: "Asian Paints",
-    logo: "/asian-paints.svg",
+    logo: "https://upload.wikimedia.org/wikipedia/en/e/e2/Asian_paints_logo.svg",
     description: "India's #1 paint brand — Royale luxury emulsions, Apex exterior & Teflon technology trusted by millions of homes.",
     tags: ["Interior", "Exterior", "Primer"],
     isAuthorised: true
   },
   {
     name: "Berger Paints",
-    logo: "/berger-paints.png",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/f/f3/Berger_Paints_logo.png",
     description: "Premium Silk luxury emulsions & WeatherCoat exterior series. Value leader in India's premium paint segment.",
     tags: ["Silk Range", "Weathercoat", "Distemper"],
     isAuthorised: true
   },
   {
     name: "Dr. Fixit",
-    logo: "/dr-fixit.svg",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Pidilite_Industries_logo.svg",
     description: "The trusted name in structural waterproofing and construction chemicals for permanent protection against water damage.",
     tags: ["Waterproofing", "Roofseal", "Bathseal"],
     isAuthorised: true

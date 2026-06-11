@@ -37,7 +37,7 @@ export default function VisualizerPage() {
             <div className="inline-flex justify-center items-center p-2 rounded-xl glass-panel bg-royale-surface/30">
               <Sparkles className="w-5 h-5 text-gold" />
             </div>
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-medium uppercase tracking-tight">Colour <span className="text-gradient italic">Visualizer</span></h1>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-medium uppercase tracking-tight">Colour <span className="text-gradient italic">Visualizer</span></h2>
           </div>
           <div className="inline-flex items-start sm:items-center gap-2 px-3 sm:px-4 py-2 rounded-lg bg-gold/5 border border-gold/20 shadow-sm leading-snug">
             <Info className="w-3.5 h-3.5 text-gold/60 shrink-0 mt-0.5 sm:mt-0" />

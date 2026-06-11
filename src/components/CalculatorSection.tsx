@@ -220,9 +220,9 @@ export default function CalculatorSection() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="glass-panel p-5 sm:p-8 rounded-2xl border-zinc-200 bg-royale-surface/40 flex flex-col gap-5 sm:gap-6"
           >
-            <h2 className="font-serif text-lg sm:text-xl text-gold border-b border-zinc-200 pb-3 uppercase tracking-widest flex items-center gap-2">
+            <h3 className="font-serif text-lg sm:text-xl text-gold border-b border-zinc-200 pb-3 uppercase tracking-widest flex items-center gap-2">
               <Calculator className="w-5 h-5" /> Cost Estimator
-            </h2>
+            </h3>
             
             <div className="space-y-2">
               <label className="text-[9px] sm:text-[10px] font-display font-semibold uppercase tracking-widest text-gold">Project Category</label>
@@ -290,7 +290,7 @@ export default function CalculatorSection() {
                     className="w-full bg-white shadow-inner border border-zinc-200/80 rounded-lg px-4 py-2 text-sm text-zinc-900 focus:outline-none focus:border-gold/50 focus:ring-1 focus:ring-gold/30 transition-all font-sans flex items-center justify-between text-left"
                   >
                     <span>{coats === 1 ? "1 Coat" : coats === 2 ? "2 Coats (Standard)" : "3 Coats (Professional)"}</span>
-                    <ChevronDown className={`w-4 h-4 text-zinc-600 shrink-0 transition-transform duration-300 ${isCoatsOpen ? 'rotate-180' : ''}`} />
+                    <ChevronDown className={`w-4 h-4 text-zinc-400 shrink-0 transition-transform duration-300 ${isCoatsOpen ? 'rotate-180' : ''}`} />
                   </button>
                   <AnimatePresence>
                   {isCoatsOpen && (
@@ -340,7 +340,7 @@ export default function CalculatorSection() {
                     className="w-full bg-white shadow-inner border border-zinc-200/80 rounded-lg px-4 py-2 text-sm text-zinc-900 focus:outline-none focus:border-gold/50 focus:ring-1 focus:ring-gold/30 transition-all font-sans flex items-center justify-between text-left"
                   >
                     <span>{surfCond === 'new' ? 'New Wall (Fresh)' : surfCond === 'repaint' ? 'Repaint (Smooth)' : 'Rough / Damaged'}</span>
-                    <ChevronDown className={`w-4 h-4 text-zinc-600 shrink-0 transition-transform duration-300 ${isSurfCondOpen ? 'rotate-180' : ''}`} />
+                    <ChevronDown className={`w-4 h-4 text-zinc-400 shrink-0 transition-transform duration-300 ${isSurfCondOpen ? 'rotate-180' : ''}`} />
                   </button>
                   <AnimatePresence>
                   {isSurfCondOpen && (
@@ -393,7 +393,7 @@ export default function CalculatorSection() {
                 className="w-full bg-white shadow-inner border border-zinc-200/80 rounded-lg px-4 py-2 text-sm text-zinc-900 focus:outline-none focus:border-gold/50 focus:ring-1 focus:ring-gold/30 transition-all font-sans flex items-center justify-between text-left"
               >
                 <span>{quality === 'luxury' ? 'Luxury (High Sheen / Washable)' : quality === 'mid' ? 'Mid-Range (Low Sheen / Durable)' : 'Economy (Matte Finish / Value)'}</span>
-                <ChevronDown className={`w-4 h-4 text-zinc-600 shrink-0 transition-transform duration-300 ${isQualityOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-4 h-4 text-zinc-400 shrink-0 transition-transform duration-300 ${isQualityOpen ? 'rotate-180' : ''}`} />
               </button>
               <AnimatePresence>
               {isQualityOpen && (
@@ -451,7 +451,7 @@ export default function CalculatorSection() {
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             className="glass-panel p-5 sm:p-8 rounded-2xl border-zinc-200 bg-royale-surface/60 relative overflow-hidden flex flex-col h-full"
           >
-            <h2 className="font-serif text-lg sm:text-xl text-gold border-b border-zinc-200 pb-3 uppercase tracking-widest mb-6">📊 Your Estimate</h2>
+            <h3 className="font-serif text-lg sm:text-xl text-gold border-b border-zinc-200 pb-3 uppercase tracking-widest mb-6">📊 Your Estimate</h3>
             
             <AnimatePresence mode="wait">
             {!results ? (
@@ -475,7 +475,7 @@ export default function CalculatorSection() {
               >
                 {/* Summary Table */}
                 <div className="bg-gold/5 border border-gold/10 rounded-xl p-4 sm:p-5 space-y-3">
-                  <h3 className="font-serif text-sm text-gold mb-1 uppercase tracking-widest">Paint Requirement Summary</h3>
+                  <h4 className="font-serif text-sm text-gold mb-1 uppercase tracking-widest">Paint Requirement Summary</h4>
                   <div className="flex justify-between items-center pb-2 border-b border-zinc-200">
                     <span className="text-xs text-gold font-medium tracking-wide">Gross Wall Area</span>
                     <span className="text-sm font-serif text-ivory">{Math.round(results.wallArea)} sq.ft</span>
@@ -528,7 +528,7 @@ export default function CalculatorSection() {
 
                 {/* Recommended Products */}
                 <div>
-                  <h3 className="font-sans text-xs font-semibold mb-3 text-ivory">Recommended Products</h3>
+                  <h4 className="font-sans text-xs font-semibold mb-3 text-ivory">Recommended Products</h4>
                   <div className="space-y-2">
                     {results.prods.map((p: any, idx: number) => (
                       <motion.div 
@@ -572,7 +572,7 @@ export default function CalculatorSection() {
 
                 {/* Tips */}
                 <div className="bg-royale-surface border-l-2 border-gold p-4 rounded-r-xl shadow-inner">
-                  <h3 className="text-[10px] font-bold text-ivory uppercase tracking-widest mb-2">Pro Tips</h3>
+                  <h4 className="text-[10px] font-bold text-ivory uppercase tracking-widest mb-2">Pro Tips</h4>
                   <ul className="list-disc list-inside space-y-1">
                     {results.tips.map((tip: string, idx: number) => (
                       <li key={idx} className="text-xs text-ivory/80 leading-relaxed font-light">{tip}</li>

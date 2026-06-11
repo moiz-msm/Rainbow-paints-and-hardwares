@@ -113,14 +113,14 @@ export default function UsersAdmin() {
 
   if (loading)
     return (
-      <div className="p-10 text-center text-zinc-600">Loading Users...</div>
+      <div className="p-10 text-center text-zinc-500">Loading Users...</div>
     );
 
   return (
     <div className="bg-white rounded-2xl border border-zinc-200 shadow-sm overflow-hidden flex flex-col">
       <div className="p-5 border-b border-zinc-200 flex flex-col md:flex-row justify-between items-center gap-4 bg-zinc-50">
         <div className="relative w-full md:w-96">
-          <Search className="w-4 h-4 absolute left-3 top-3.5 text-zinc-600" />
+          <Search className="w-4 h-4 absolute left-3 top-3.5 text-zinc-400" />
           <input
             type="text"
             placeholder="Search users by name or email..."
@@ -140,7 +140,7 @@ export default function UsersAdmin() {
       <div className="overflow-x-auto">
         <table className="w-full text-left text-sm whitespace-nowrap">
           <thead>
-            <tr className="bg-zinc-50/50 text-zinc-600 border-b border-zinc-200">
+            <tr className="bg-zinc-50/50 text-zinc-500 border-b border-zinc-200">
               <th className="px-6 py-4 font-semibold">User</th>
               <th className="px-6 py-4 font-semibold">Contact</th>
               <th className="px-6 py-4 font-semibold">Orders</th>
@@ -157,17 +157,17 @@ export default function UsersAdmin() {
                     <span className="font-semibold text-zinc-900 block">
                       {user.name}
                     </span>
-                    <span className="text-xs text-zinc-600 font-mono">
+                    <span className="text-xs text-zinc-400 font-mono">
                       {user.id.slice(0, 8)}...
                     </span>
                   </td>
                   <td className="px-6 py-4 text-zinc-600">
                     <span className="block">{user.email}</span>
-                    <span className="text-xs text-zinc-600">
+                    <span className="text-xs text-zinc-400">
                       {user.phone || "-"}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-zinc-600">
+                  <td className="px-6 py-4 text-zinc-500">
                     <span className="font-semibold text-zinc-900">{userOrders.length}</span> orders
                     <button 
                       onClick={() => setViewingUserOrders(user)}
@@ -205,7 +205,7 @@ export default function UsersAdmin() {
                   <td className="px-6 py-4 text-right">
                     <button
                       onClick={() => handleDelete(user.id)}
-                      className="p-1.5 text-zinc-600 hover:text-red-600 transition-colors ml-2"
+                      className="p-1.5 text-zinc-400 hover:text-red-600 transition-colors ml-2"
                       title="Delete User"
                     >
                       <Trash2 className="w-4 h-4" />
@@ -218,7 +218,7 @@ export default function UsersAdmin() {
               <tr>
                 <td
                   colSpan={5}
-                  className="px-6 py-10 text-center text-zinc-600"
+                  className="px-6 py-10 text-center text-zinc-500"
                 >
                   No users found.
                 </td>
@@ -238,12 +238,12 @@ export default function UsersAdmin() {
                 </div>
                 <div>
                   <h3 className="font-bold text-zinc-900 text-lg">Order History</h3>
-                  <p className="text-sm text-zinc-600">{viewingUserOrders.name}</p>
+                  <p className="text-sm text-zinc-500">{viewingUserOrders.name}</p>
                 </div>
               </div>
               <button 
                 onClick={() => setViewingUserOrders(null)}
-                className="p-2 text-zinc-600 hover:text-zinc-600 hover:bg-zinc-100 rounded-full transition-colors"
+                className="p-2 text-zinc-400 hover:text-zinc-600 hover:bg-zinc-100 rounded-full transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -251,7 +251,7 @@ export default function UsersAdmin() {
             
             <div className="overflow-y-auto p-5">
               {orders.filter(o => o.userId === viewingUserOrders.id).length === 0 ? (
-                <div className="text-center py-10 text-zinc-600">
+                <div className="text-center py-10 text-zinc-500">
                   <ShoppingBag className="w-12 h-12 mx-auto text-zinc-200 mb-3" />
                   <p>This user hasn't placed any orders yet.</p>
                 </div>
@@ -264,8 +264,8 @@ export default function UsersAdmin() {
                       <div>
                         <div className="flex items-center gap-2 mb-1">
                           <span className="font-mono text-sm font-semibold text-zinc-900">{order.id}</span>
-                          <span className="text-xs text-zinc-600">•</span>
-                          <span className="text-xs text-zinc-600">{new Date(order.createdAt).toLocaleDateString()}</span>
+                          <span className="text-xs text-zinc-400">•</span>
+                          <span className="text-xs text-zinc-500">{new Date(order.createdAt).toLocaleDateString()}</span>
                         </div>
                         <p className="text-sm text-zinc-600">
                           {order.products?.length || 0} items • ₹{order.total?.toLocaleString()}
@@ -281,7 +281,7 @@ export default function UsersAdmin() {
                         </span>
                         <button
                           onClick={() => handleDownloadInvoice(order)}
-                          className="p-1.5 text-zinc-600 hover:text-indigo-600 transition-colors ml-2"
+                          className="p-1.5 text-zinc-400 hover:text-indigo-600 transition-colors ml-2"
                           title="Download Invoice"
                         >
                           <FileText className="w-4 h-4" />

@@ -327,7 +327,7 @@ export default function AuthModal() {
           <div className="p-6 sm:p-8">
             <button 
               onClick={closeAuthModal}
-              className="absolute top-4 right-4 p-2 text-zinc-600 hover:text-zinc-600 hover:bg-zinc-100 rounded-full transition-colors"
+              className="absolute top-4 right-4 p-2 text-zinc-400 hover:text-zinc-600 hover:bg-zinc-100 rounded-full transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
@@ -335,7 +335,7 @@ export default function AuthModal() {
             <h2 className="text-2xl font-serif font-medium text-zinc-900 mb-2">
               {mode === 'login' ? 'Welcome Back' : mode === 'signup' ? 'Create Account' : 'Reset Password'}
             </h2>
-            <p className="text-sm text-zinc-600 mb-6">
+            <p className="text-sm text-zinc-500 mb-6">
               {mode === 'login' ? 'Sign in to your account' : mode === 'signup' ? 'Join us today' : 'We will send you reset instructions'}
             </p>
 
@@ -347,7 +347,7 @@ export default function AuthModal() {
                   <div>
                     <label className="block text-xs font-medium text-zinc-700 mb-1">Full Name</label>
                     <div className="relative">
-                      <UserIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-600" />
+                      <UserIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
                       <input 
                         type="text" 
                         required 
@@ -363,7 +363,7 @@ export default function AuthModal() {
                 <div>
                   <label className="block text-xs font-medium text-zinc-700 mb-1">Email Address</label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-600" />
+                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
                     <input 
                       type="email" 
                       required 
@@ -379,7 +379,7 @@ export default function AuthModal() {
                   <div>
                     <label className="block text-xs font-medium text-zinc-700 mb-1">Password</label>
                     <div className="relative">
-                      <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-600" />
+                      <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
                       <input 
                         type="password" 
                         required 
@@ -413,7 +413,7 @@ export default function AuthModal() {
                     <div className="w-full border-t border-zinc-200"></div>
                   </div>
                   <div className="relative flex justify-center text-xs">
-                    <span className="px-2 bg-white text-zinc-600">Or continue with</span>
+                    <span className="px-2 bg-white text-zinc-400">Or continue with</span>
                   </div>
                 </div>
 
@@ -435,7 +435,7 @@ export default function AuthModal() {
               </div>
             )}
 
-            <div className="mt-6 text-center text-xs text-zinc-600">
+            <div className="mt-6 text-center text-xs text-zinc-500">
               {mode === 'login' ? (
                 <p>Don't have an account? <button onClick={() => setMode('signup')} className="text-zinc-900 font-medium hover:underline">Sign up</button></p>
               ) : mode === 'signup' ? (

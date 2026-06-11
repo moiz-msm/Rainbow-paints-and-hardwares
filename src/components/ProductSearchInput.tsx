@@ -69,7 +69,7 @@ export default function ProductSearchInput() {
         onFocus={() => {
           if (searchQuery.trim()) setShowSuggestions(true);
         }}
-        className="w-full bg-white shadow-sm border border-zinc-200 rounded-xl py-1.5 sm:py-2 pl-8 sm:pl-9 pr-7 sm:pr-8 text-xs sm:text-sm text-zinc-800 placeholder:text-zinc-600 focus:border-gold/50 focus:outline-none transition-colors"
+        className="w-full bg-white shadow-sm border border-zinc-200 rounded-xl py-1.5 sm:py-2 pl-8 sm:pl-9 pr-7 sm:pr-8 text-xs sm:text-sm text-zinc-800 placeholder:text-zinc-400 focus:border-gold/50 focus:outline-none transition-colors"
       />
       {searchQuery && (
         <button 

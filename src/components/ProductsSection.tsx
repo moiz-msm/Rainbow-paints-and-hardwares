@@ -65,7 +65,7 @@ const ShadeSelector = ({ brand, onSelect, onCancel, currentShade }: {
       className="absolute inset-0 bg-royale-bg/95 backdrop-blur-md z-[60] flex flex-col p-4 duration-300"
     >
       <div className="flex items-center justify-between mb-3">
-        <div className="text-[10px] font-display font-bold text-gold uppercase tracking-widest">Select Color</div>
+        <h4 className="text-[10px] font-display font-bold text-gold uppercase tracking-widest">Select Color</h4>
         <button onClick={onCancel} className="p-1 hover:bg-black/10 rounded-full transition-colors">
           <X className="w-3.5 h-3.5 text-ivory/50" />
         </button>
@@ -180,7 +180,7 @@ export const InlineShadePicker = ({ brand, onSelect, currentShade }: {
     <div ref={ref} className="relative w-full flex flex-col gap-2 sm:gap-2.5">
       {/* Selected Shade Display */}
       <div className="flex items-center justify-between gap-2 w-full bg-zinc-50/50 p-2 sm:p-2.5 rounded-lg border border-zinc-100 mb-1">
-        <span className="text-[10px] sm:text-xs text-zinc-600 font-bold uppercase tracking-wider shrink-0 mt-0.5">
+        <span className="text-[10px] sm:text-xs text-zinc-500 font-bold uppercase tracking-wider shrink-0 mt-0.5">
           Shade:
         </span>
         <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 min-w-0 flex-1">
@@ -211,7 +211,7 @@ export const InlineShadePicker = ({ brand, onSelect, currentShade }: {
                   family: 'whites'
                 } as Shade);
               }}
-              className="p-1 text-zinc-600 hover:text-red-500 hover:bg-red-50 rounded transition-colors"
+              className="p-1 text-zinc-400 hover:text-red-500 hover:bg-red-50 rounded transition-colors"
               title="Reset to default white"
             >
               <X className="w-4 h-4" />
@@ -223,18 +223,18 @@ export const InlineShadePicker = ({ brand, onSelect, currentShade }: {
       <div className="relative w-full">
         {isSearching ? (
           <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-zinc-100 border border-zinc-300 w-full shadow-inner animate-in fade-in zoom-in-[0.99] duration-300">
-             <Search className="w-3.5 h-3.5 text-zinc-600 shrink-0" />
+             <Search className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
              <input 
                autoFocus
                value={search}
                onChange={(e) => setSearch(e.target.value)}
                placeholder="Name / Code"
-               className="bg-transparent border-none outline-none text-xs text-zinc-900 placeholder:text-zinc-600 w-full font-medium"
+               className="bg-transparent border-none outline-none text-xs text-zinc-900 placeholder:text-zinc-500 w-full font-medium"
              />
              {loading ? (
               <div className="w-3.5 h-3.5 border-2 border-gold border-t-transparent rounded-full animate-spin shrink-0" />
              ) : (
-               <X className="w-3.5 h-3.5 text-zinc-600 cursor-pointer hover:text-zinc-700 shrink-0" onClick={() => setIsSearching(false)} />
+               <X className="w-3.5 h-3.5 text-zinc-400 cursor-pointer hover:text-zinc-700 shrink-0" onClick={() => setIsSearching(false)} />
              )}
           </div>
         ) : (
@@ -243,8 +243,8 @@ export const InlineShadePicker = ({ brand, onSelect, currentShade }: {
             className="flex items-center gap-2 px-3 py-2 rounded-lg bg-zinc-50/80 border border-zinc-200 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] hover:border-gold/30 hover:bg-zinc-50 transition-all group w-full justify-between cursor-text"
           >
             <div className="flex items-center gap-2 overflow-hidden flex-1 text-left">
-              <Search className="w-3.5 h-3.5 text-zinc-600 group-hover:text-gold/70 shrink-0 transition-colors" />
-              <p className="text-[10px] sm:text-xs text-zinc-600 font-medium whitespace-nowrap truncate tracking-tight">
+              <Search className="w-3.5 h-3.5 text-zinc-400 group-hover:text-gold/70 shrink-0 transition-colors" />
+              <p className="text-[10px] sm:text-xs text-zinc-500 font-medium whitespace-nowrap truncate tracking-tight">
                  Search name or code...
               </p>
             </div>
@@ -371,7 +371,7 @@ const AddToCartModal = ({ product, onClose }: { product: any, onClose: () => voi
       >
         <div className="flex justify-between items-center p-4 border-b border-zinc-100 bg-zinc-50/50">
           <h2 className="text-base font-bold text-zinc-900 line-clamp-1">{product.name}</h2>
-          <button onClick={onClose} className="p-1.5 rounded-full hover:bg-zinc-200/60 text-zinc-600 transition-colors">
+          <button onClick={onClose} className="p-1.5 rounded-full hover:bg-zinc-200/60 text-zinc-500 transition-colors">
             <X className="w-4 h-4" />
           </button>
         </div>
@@ -382,7 +382,7 @@ const AddToCartModal = ({ product, onClose }: { product: any, onClose: () => voi
               {product.image ? (
                 <img src={product.image} alt={product.name} className="w-full h-full object-contain mix-blend-multiply" />
               ) : (
-                <div className="text-[10px] text-zinc-600 font-medium uppercase tracking-widest text-center">No Image</div>
+                <div className="text-[10px] text-zinc-400 font-medium uppercase tracking-widest text-center">No Image</div>
               )}
             </div>
             <div className="flex-1">
@@ -400,7 +400,7 @@ const AddToCartModal = ({ product, onClose }: { product: any, onClose: () => voi
                 </div>
               ) : (
                 <div className="h-full flex flex-col justify-center">
-                  <p className="text-[9px] font-bold text-zinc-600 uppercase tracking-wider mb-1">{product.brand}</p>
+                  <p className="text-[9px] font-bold text-zinc-400 uppercase tracking-wider mb-1">{product.brand}</p>
                   <p className="text-xs font-medium text-zinc-700 line-clamp-3">{product.name}</p>
                 </div>
               )}
@@ -428,7 +428,7 @@ const AddToCartModal = ({ product, onClose }: { product: any, onClose: () => voi
                   className={`flex-1 py-2 rounded-lg border font-bold text-xs transition-all ${
                     selectedSize === size
                       ? "bg-gradient-gold text-white border-transparent shadow-md"
-                      : "bg-white border-zinc-200 text-zinc-600 hover:border-gold/50 hover:text-gold"
+                      : "bg-white border-zinc-200 text-zinc-500 hover:border-gold/50 hover:text-gold"
                   }`}
                 >
                   {size}L
@@ -442,23 +442,23 @@ const AddToCartModal = ({ product, onClose }: { product: any, onClose: () => voi
                <div>
                  <p className="text-[10px] text-gold font-bold uppercase">{selectedSize}L pack {quantity > 1 ? `x ${quantity}` : ''}</p>
                  <p className="text-xl font-bold text-zinc-900 leading-none mt-1.5 mb-0.5">₹{totalPrice.toLocaleString()}</p>
-                 <p className="text-[9px] text-zinc-600 font-medium tracking-wide">Incl. of all taxes</p>
+                 <p className="text-[9px] text-zinc-500 font-medium tracking-wide">Incl. of all taxes</p>
                  {selectedSize > 1 && (
-                   <p className="text-[10px] text-zinc-600 mt-1.5 uppercase tracking-wider">₹{Math.round(totalPrice / selectedSize).toLocaleString()} / Liter</p>
+                   <p className="text-[10px] text-zinc-400 mt-1.5 uppercase tracking-wider">₹{Math.round(totalPrice / selectedSize).toLocaleString()} / Liter</p>
                  )}
                </div>
                
                <div className="flex items-center border border-zinc-200 rounded-lg p-0.5 bg-white shadow-sm">
                  <button 
                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                   className="p-1.5 hover:bg-zinc-100 rounded text-zinc-600 transition-colors"
+                   className="p-1.5 hover:bg-zinc-100 rounded text-zinc-500 transition-colors"
                  >
                    <Minus className="w-3 h-3" />
                  </button>
                  <span className="font-bold text-xs text-zinc-900 select-none w-6 text-center">{quantity}</span>
                  <button 
                    onClick={() => setQuantity(quantity + 1)}
-                   className="p-1.5 hover:bg-zinc-100 rounded text-zinc-600 transition-colors"
+                   className="p-1.5 hover:bg-zinc-100 rounded text-zinc-500 transition-colors"
                  >
                    <Plus className="w-3 h-3" />
                  </button>
@@ -569,7 +569,7 @@ const ProductCard = memo(({ product }: { product: any }) => {
         onClick={handleToggleWishlist}
         className="absolute top-2 right-2 z-20 p-1.5 rounded-full bg-white/90 hover:bg-white backdrop-blur shadow-sm border border-zinc-100 transition-all active:scale-95 group/heart"
       >
-        <Heart className={`w-3.5 h-3.5 transition-colors ${isWishlisted ? 'fill-red-500 text-red-500' : 'text-zinc-600 group-hover/heart:text-red-500'}`} />
+        <Heart className={`w-3.5 h-3.5 transition-colors ${isWishlisted ? 'fill-red-500 text-red-500' : 'text-zinc-400 group-hover/heart:text-red-500'}`} />
       </button>
 
       <div className="relative flex items-center justify-center bg-white shrink-0 group-hover:bg-zinc-50 transition-colors border-b border-zinc-100 overflow-hidden">
@@ -895,7 +895,7 @@ export default function ProductsSection({ initialCategory, initialBrand }: { ini
                             <div key={cat.name}>
                               <div className="flex items-center gap-2 mb-3 sm:mb-4 pb-2 border-b border-zinc-200">
                                 <div className="w-1.5 h-1.5 rounded-full bg-zinc-900/40" />
-                                <div className="text-[10px] sm:text-[11px] uppercase font-bold text-zinc-900/60 tracking-[0.2em] m-0">{cat.name}</div>
+                                <h4 className="text-[10px] sm:text-[11px] uppercase font-bold text-zinc-900/60 tracking-[0.2em] m-0">{cat.name}</h4>
                               </div>
                               <div className="flex flex-col gap-1">
                                 <button
@@ -1077,7 +1077,7 @@ export default function ProductsSection({ initialCategory, initialBrand }: { ini
                     <p className="text-[7.5px] sm:text-[10px] md:text-xs font-display font-bold text-zinc-900 uppercase tracking-tight sm:tracking-widest leading-[1.1] sm:leading-tight group-hover:text-gold transition-colors">
                       {item.title}
                     </p>
-                    <p className="text-[6.5px] sm:text-[9px] md:text-[10px] text-zinc-600 font-sans tracking-tight sm:tracking-wide leading-tight max-w-[150px]">
+                    <p className="text-[6.5px] sm:text-[9px] md:text-[10px] text-zinc-500 font-sans tracking-tight sm:tracking-wide leading-tight max-w-[150px]">
                       {item.sub}
                     </p>
                   </div>

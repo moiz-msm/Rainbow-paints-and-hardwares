@@ -130,7 +130,7 @@ export default function PaymentPage() {
           <div className="w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center mx-auto mb-4">
             <Lock className="w-5 h-5 text-gold animate-pulse" />
           </div>
-          <h1 className="text-xl font-bold text-white mb-1">Verify Order Invoice</h1>
+          <h2 className="text-xl font-bold text-white mb-1">Verify Order Invoice</h2>
           <p className="text-gray-400 text-xs mb-6">Rainbow Paints Coimbatore Securing Handshake</p>
           
           <p className="text-gray-400 text-sm mb-1">Total Due Ledger</p>

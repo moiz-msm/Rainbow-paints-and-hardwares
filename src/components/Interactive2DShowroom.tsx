@@ -58,7 +58,7 @@ export default function Interactive2DShowroom({
             <span className="relative inline-flex rounded-full h-2 w-2 bg-gold"></span>
           </span>
           <div className="flex items-baseline gap-1 min-w-0">
-            <span className="text-[9px] text-zinc-600 font-display font-medium uppercase tracking-wider whitespace-nowrap">Selected Area:</span>
+            <span className="text-[9px] text-zinc-500 font-display font-medium uppercase tracking-wider whitespace-nowrap">Selected Area:</span>
             <span className="text-[11px] font-sans font-bold text-gold tracking-wide truncate">
               {SURF_LABELS[activeSurf] || activeSurf}
             </span>
@@ -73,7 +73,7 @@ export default function Interactive2DShowroom({
             className={`px-2 py-0.5 rounded text-[8px] tracking-wider font-sans font-bold uppercase transition-all duration-200 ${
               renderMode === 'accurate'
                 ? 'bg-gold text-white shadow-sm border border-transparent'
-                : 'text-zinc-600 hover:text-gold hover:bg-gold/5'
+                : 'text-zinc-500 hover:text-gold hover:bg-gold/5'
             }`}
             title="Show actual solid flat paint shades with 100% precision"
           >
@@ -85,7 +85,7 @@ export default function Interactive2DShowroom({
             className={`px-2 py-0.5 rounded text-[8px] tracking-wider font-sans font-bold uppercase transition-all duration-200 ${
               renderMode === 'ambient'
                 ? 'bg-gold text-white shadow-sm border border-transparent'
-                : 'text-zinc-600 hover:text-gold hover:bg-gold/5'
+                : 'text-zinc-500 hover:text-gold hover:bg-gold/5'
             }`}
             title="Enable depth lighting/shadow modeling"
           >
@@ -634,8 +634,8 @@ export default function Interactive2DShowroom({
       </div>
 
       {/* 3. Sleek Subtle Footer Info & Instruction Bar (Replaces floating instruction clutter) */}
-      <div className="flex items-center justify-between px-3.5 py-1.5 bg-[#faf9f6] text-zinc-600 rounded-b-none sm:rounded-b-2xl border-t border-zinc-200/50 text-[8px] sm:text-[9px] uppercase tracking-wider font-display font-semibold select-none z-10 shrink-0">
-        <span className="text-zinc-600 font-mono">1. Tap shade in catalog below</span>
+      <div className="flex items-center justify-between px-3.5 py-1.5 bg-[#faf9f6] text-zinc-400 rounded-b-none sm:rounded-b-2xl border-t border-zinc-200/50 text-[8px] sm:text-[9px] uppercase tracking-wider font-display font-semibold select-none z-10 shrink-0">
+        <span className="text-zinc-500 font-mono">1. Tap shade in catalog below</span>
         <span className="text-[#cca564] flex items-center gap-1">
           <span className="w-1 h-1 rounded-full bg-[#cca564] animate-pulse" /> 2. Click any area above to coat
         </span>

@@ -56,7 +56,7 @@ export default function Footer() {
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center text-center mb-10">
-          <h2 className="text-xl font-serif text-ivory mb-2">Join Our Newsletter</h2>
+          <h3 className="text-xl font-serif text-ivory mb-2">Join Our Newsletter</h3>
           <p className="text-sm text-ivory/60 font-light max-w-md mb-6">
             Subscribe exclusively for promotional updates, new arrival notifications, and special home painting discounts.
           </p>
