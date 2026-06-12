@@ -65,7 +65,7 @@ export default function ProductsAndIndustrial() {
 
   return (
     <section
-      className="py-4 sm:py-6 bg-transparent relative overflow-hidden"
+      className="py-12 sm:py-20 lg:py-24 border-t border-gold/10 bg-transparent relative overflow-hidden"
       id="products-industrial"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">

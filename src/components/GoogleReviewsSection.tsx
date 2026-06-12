@@ -134,7 +134,7 @@ export default function GoogleReviewsSection() {
   };
 
   return (
-    <section id="google-reviews" className="py-4 sm:py-6 bg-transparent relative overflow-hidden">
+    <section id="google-reviews" className="py-12 sm:py-20 lg:py-24 border-t border-gold/10 bg-transparent relative overflow-hidden">
       {/* Hide scrollbar helper styles */}
       <style>{`
         .no-scrollbar::-webkit-scrollbar {

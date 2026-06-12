@@ -28,7 +28,7 @@ export default function ToolsOverview() {
   return (
     <section
       id="tools"
-      className="py-4 sm:py-6 relative overflow-hidden bg-transparent"
+      className="py-12 sm:py-20 lg:py-24 border-t border-gold/10 relative overflow-hidden bg-transparent"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-4 border-b border-zinc-200 pb-4 flex flex-col items-center text-center">

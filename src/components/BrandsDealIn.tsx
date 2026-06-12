@@ -5,7 +5,7 @@ import { brandDetails } from '../data';
 
 export default function BrandsDealIn() {
   return (
-    <section id="brands" className="py-4 sm:py-6 mb-2 overflow-hidden">
+    <section id="brands" className="py-12 sm:py-20 lg:py-24 border-t border-gold/10 overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <header className="mb-4 flex flex-col items-center text-center">
           <h2 className="text-xl sm:text-2xl font-serif font-medium mb-3 uppercase tracking-tight leading-tight text-center">

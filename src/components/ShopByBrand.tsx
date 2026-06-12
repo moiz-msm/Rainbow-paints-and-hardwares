@@ -16,7 +16,7 @@ export default function ShopByBrand() {
   };
 
   return (
-    <section className="py-4 sm:py-6 mb-2 overflow-hidden bg-transparent">
+    <section className="py-12 sm:py-20 lg:py-24 border-t border-gold/10 overflow-hidden bg-transparent">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
