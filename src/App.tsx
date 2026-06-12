@@ -3,9 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { Suspense } from 'react';
+import React, { Suspense, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { MotionConfig } from 'framer-motion';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -105,9 +106,19 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
     <HelmetProvider>
       <AuthProvider>
+        <MotionConfig reducedMotion={isMobile ? "always" : "user"}>
         <Router>
         <NavigationProgress />
         <ScrollToTop />
@@ -129,6 +140,7 @@ export default function App() {
           <ProductAssistant />
         </Suspense>
       </Router>
+      </MotionConfig>
     </AuthProvider>
     </HelmetProvider>
   );
