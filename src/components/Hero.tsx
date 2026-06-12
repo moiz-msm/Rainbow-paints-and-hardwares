@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[100dvh] lg:min-h-[700px] lg:h-screen lg:max-h-[850px] flex flex-col justify-center lg:justify-center pt-[100px] sm:pt-[140px] lg:pt-[110px] pb-[12dvh] sm:pb-4 lg:pb-6 overflow-hidden bg-royale-bg">
+    <section className="relative min-h-[100dvh] lg:min-h-[700px] lg:h-screen lg:max-h-[850px] flex flex-col justify-center lg:justify-center pt-[100px] sm:pt-[140px] lg:pt-[110px] pb-[12dvh] sm:pb-4 lg:pb-6 overflow-hidden bg-transparent">
       {/* Background Image with soft fade mask */}
       <div className="absolute inset-x-0 bottom-0 top-[64px] sm:top-[64px] lg:top-[72px] z-0 pointer-events-none flex justify-end">
         
@@ -20,7 +20,7 @@ export default function Hero() {
         
         {/* Layer 3: The Image with a CSS mask for the hard edges */}
         <img 
-          src="/Hero-bg.png" 
+          src="/hero-bg.webp" 
           alt="Modern beautiful living space" 
           className="w-[85%] sm:w-[80%] lg:w-[75%] h-full object-cover object-top scale-[0.75] sm:scale-[0.85] lg:scale-100 origin-top-right"
           referrerPolicy="no-referrer"

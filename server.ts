@@ -1,5 +1,4 @@
 import express from "express";
-import compression from "compression";
 import path from "path";
 import { GoogleGenAI } from "@google/genai";
 import { Resend } from "resend";
@@ -21,9 +20,6 @@ function getAI(): GoogleGenAI {
 
 export const app = express();
   
-  // Compress all responses for better SEO/performance
-  app.use(compression());
-
   app.use(express.json({ limit: '10mb' }));
   app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
@@ -809,6 +805,154 @@ Please output a valid JSON object matching this structure exactly:
   });
 
   
+  // --- SITEMAP GENERATION ---
+  app.get('/sitemap.xml', async (req, res) => {
+    try {
+      let productUrls = '';
+      try {
+        const configPath = path.join(process.cwd(), 'firebase-applet-config.json');
+        const fs = await import('fs');
+        if (fs.existsSync(configPath)) {
+          const firebaseConfig = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+          if (firebaseConfig.projectId) {
+            const dbId = firebaseConfig.firestoreDatabaseId || '(default)';
+            const url = `https://firestore.googleapis.com/v1/projects/${firebaseConfig.projectId}/databases/${dbId}/documents/products?pageSize=1000`;
+            const response = await fetch(url);
+            if (response.ok) {
+              const data = await response.json();
+              if (data.documents && Array.isArray(data.documents)) {
+                data.documents.forEach((doc: any) => {
+                  const nameString = doc.fields?.name?.stringValue;
+                  const slug = doc.fields?.slug?.stringValue || (nameString ? nameString.replace(/\s+/g, '-').toLowerCase() : '');
+                  if (slug) {
+                    productUrls += `
+  <url>
+    <loc>https://rainbowpaint.in/p/${slug}</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>`;
+                  }
+                });
+              }
+            }
+          }
+        }
+      } catch (err) {
+        console.error("Failed to generate dynamic products for sitemap:", err);
+      }
+
+      const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://rainbowpaint.in/</loc>
+    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/faqs</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/buy-paint-online</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/c/interior-wall</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/c/exterior-wall</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/c/waterproofing</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/c/wood-finishes</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/c/metals-and-grills</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/c/primer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/visualizer</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/calculator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/brands/asian-paints</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/brands/berger-paints</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/brands/dr.-fixit</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/brands/mrf-vapocure</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/terms</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/privacy</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/refund-policy</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://rainbowpaint.in/shipping-policy</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>${productUrls}
+</urlset>`;
+
+      res.header('Content-Type', 'application/xml');
+      res.send(sitemap);
+    } catch (err) {
+      console.error("Sitemap generation error:", err);
+      res.status(500).send("Error generating sitemap");
+    }
+  });
+
 async function startDevServer() {
   const PORT = process.env.PORT || 3000;
   

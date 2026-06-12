@@ -13,7 +13,7 @@ interface BreadcrumbProps {
   className?: string; 
 }
 
-export default function Breadcrumb({ items, className = 'text-zinc-500' }: BreadcrumbProps) {
+export default function Breadcrumb({ items, className = 'text-zinc-600' }: BreadcrumbProps) {
   const location = useLocation();
 
   let breadcrumbItems: BreadcrumbItem[] = [];

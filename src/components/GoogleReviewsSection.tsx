@@ -134,7 +134,7 @@ export default function GoogleReviewsSection() {
   };
 
   return (
-    <section id="google-reviews" className="py-6 sm:py-8 bg-royale-bg relative overflow-hidden">
+    <section id="google-reviews" className="py-4 sm:py-6 bg-transparent relative overflow-hidden">
       {/* Hide scrollbar helper styles */}
       <style>{`
         .no-scrollbar::-webkit-scrollbar {
@@ -152,9 +152,9 @@ export default function GoogleReviewsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="flex flex-col items-center justify-center mb-8 gap-6 text-center">
+        <div className="flex flex-col items-center justify-center mb-6 gap-4 text-center">
           <div className="max-w-xl text-center">
-            <h2 className="text-xl sm:text-2xl font-serif font-medium mb-3 uppercase tracking-tight text-center">
+            <h2 className="text-xl sm:text-2xl font-serif font-medium mb-3 uppercase tracking-tight leading-tight text-center">
               Google <span className="text-gradient italic">Reviews</span>
             </h2>
             <p className="text-gold text-[10px] sm:text-xs font-sans font-light text-center">
@@ -237,7 +237,7 @@ export default function GoogleReviewsSection() {
                               />
                             ))}
                           </div>
-                          <span className="text-[10px] text-zinc-400 font-medium font-mono">{review.time}</span>
+                          <span className="text-[10px] text-zinc-600 font-medium font-mono">{review.time}</span>
                         </div>
 
                         {/* Card review text */}
@@ -264,12 +264,12 @@ export default function GoogleReviewsSection() {
                             </div>
                           )}
                           <div className="min-w-0">
-                            <h4 className="text-xs font-semibold text-ivory tracking-wide flex items-center gap-1.5 truncate">
+                            <h3 className="text-xs font-semibold text-ivory tracking-wide flex items-center gap-1.5 truncate">
                               {review.authorName}
                               {review.isVerified && (
                                 <CheckCircle className="w-3.5 h-3.5 text-amber-500 shrink-0 fill-amber-50/40" />
                               )}
-                            </h4>
+                            </h3>
                             <span className="text-[9px] text-ivory/60 font-medium tracking-wider uppercase block mt-0.5">
                               {review.isLocalGuide ? "Local Guide" : "Verified Customer"}
                             </span>

@@ -11,9 +11,16 @@ export const db = firebaseConfig.firestoreDatabaseId ? initializeFirestore(app, 
 export const auth = getAuth(app);
 
 let analytics: any = null;
-isSupported().then((supported) => {
-  if (supported) {
-    analytics = getAnalytics(app);
-  }
-});
+isSupported()
+  .then((supported) => {
+    if (supported && firebaseConfig.measurementId) {
+      try {
+        analytics = getAnalytics(app);
+      } catch (e) {
+        console.warn('Analytics failed to initialize');
+      }
+    }
+  })
+  .catch((e) => console.warn('Analytics isSupported failed', e));
+
 export { analytics };

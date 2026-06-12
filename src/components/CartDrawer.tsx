@@ -60,7 +60,7 @@ export default function CartDrawer() {
                 onClick={toggleCart}
                 title="Close Cart"
                 aria-label="Close Cart"
-                className="p-2 text-zinc-500 hover:text-ivory rounded-full hover:bg-black/5 transition-colors"
+                className="p-2 text-zinc-600 hover:text-ivory rounded-full hover:bg-black/5 transition-colors"
               >
                 <X aria-hidden="true" className="w-5 h-5" />
               </button>
@@ -90,12 +90,12 @@ export default function CartDrawer() {
                         {item.image ? (
                           <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                         ) : (
-                          <div className="w-full h-full bg-zinc-100 flex items-center justify-center text-[10px] text-zinc-400">No Image</div>
+                          <div className="w-full h-full bg-zinc-100 flex items-center justify-center text-[10px] text-zinc-600">No Image</div>
                         )}
                       </div>
                       <div className="flex-1 min-w-0">
                         <h3 className="text-sm font-semibold text-ivory truncate">{item.name}</h3>
-                        <p className="text-xs text-zinc-500">{item.brand} • {item.size}L Pack</p>
+                        <p className="text-xs text-zinc-600">{item.brand} • {item.size}L Pack</p>
                         
                         {item.shade && (
                           <div className="mt-1.5 flex items-center gap-2">
@@ -114,7 +114,7 @@ export default function CartDrawer() {
                             <button 
                               onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))}
                               title="Decrease quantity" aria-label="Decrease quantity"
-                              className="p-1 hover:bg-black/5 rounded text-zinc-500 hover:text-ivory transition-colors"
+                              className="p-1 hover:bg-black/5 rounded text-zinc-600 hover:text-ivory transition-colors"
                             >
                               <Minus aria-hidden="true" className="w-3 h-3" />
                             </button>
@@ -122,7 +122,7 @@ export default function CartDrawer() {
                             <button 
                               onClick={() => updateQuantity(item.id, item.quantity + 1)}
                               title="Increase quantity" aria-label="Increase quantity"
-                              className="p-1 hover:bg-black/5 rounded text-zinc-500 hover:text-ivory transition-colors"
+                              className="p-1 hover:bg-black/5 rounded text-zinc-600 hover:text-ivory transition-colors"
                             >
                               <Plus aria-hidden="true" className="w-3 h-3" />
                             </button>
@@ -167,7 +167,7 @@ export default function CartDrawer() {
                   <Phone className="w-5 h-5 fill-current" />
                   Place Order via WhatsApp
                 </button>
-                <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mt-4 text-[10px] text-zinc-500 font-medium">
+                <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mt-4 text-[10px] text-zinc-600 font-medium">
                   <div className="flex items-center gap-1.5">
                     <ShieldCheck className="w-3.5 h-3.5 text-green-500" />
                     <span>Secure Checkout</span>
@@ -181,7 +181,7 @@ export default function CartDrawer() {
                     <span>Tracked Delivery</span>
                   </div>
                 </div>
-                <p className="text-[9px] text-center text-zinc-400 mt-3 font-sans max-w-[250px] mx-auto leading-tight">
+                <p className="text-[9px] text-center text-zinc-600 mt-3 font-sans max-w-[250px] mx-auto leading-tight">
                   You will be redirected to WhatsApp to confirm your order details securely.
                 </p>
               </div>

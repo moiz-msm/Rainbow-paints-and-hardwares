@@ -34,7 +34,7 @@ export default function OperationsAdmin() {
   }, []);
 
   if (loading) {
-    return <div className="p-10 text-center text-zinc-500">Loading Operations Data...</div>;
+    return <div className="p-10 text-center text-zinc-600">Loading Operations Data...</div>;
   }
 
   return (
@@ -49,13 +49,13 @@ export default function OperationsAdmin() {
         <div className="flex bg-zinc-100 p-1 rounded-lg">
           <button
             onClick={() => setActiveTab('logs')}
-            className={`px-4 py-1.5 text-xs font-semibold rounded-md transition-colors ${activeTab === 'logs' ? 'bg-white text-zinc-900 shadow-sm' : 'text-zinc-500 hover:text-zinc-700'}`}
+            className={`px-4 py-1.5 text-xs font-semibold rounded-md transition-colors ${activeTab === 'logs' ? 'bg-white text-zinc-900 shadow-sm' : 'text-zinc-600 hover:text-zinc-700'}`}
           >
             Audit Logs
           </button>
           <button
             onClick={() => setActiveTab('carts')}
-            className={`px-4 py-1.5 text-xs font-semibold rounded-md transition-colors ${activeTab === 'carts' ? 'bg-white text-zinc-900 shadow-sm' : 'text-zinc-500 hover:text-zinc-700'}`}
+            className={`px-4 py-1.5 text-xs font-semibold rounded-md transition-colors ${activeTab === 'carts' ? 'bg-white text-zinc-900 shadow-sm' : 'text-zinc-600 hover:text-zinc-700'}`}
           >
             Active & Abandoned Carts
           </button>
@@ -67,13 +67,13 @@ export default function OperationsAdmin() {
         {activeTab === 'logs' ? (
           <div className="p-6">
             <div className="flex items-center gap-2 mb-6">
-              <Clock className="w-4 h-4 text-zinc-400" />
+              <Clock className="w-4 h-4 text-zinc-600" />
               <span className="text-sm font-medium text-zinc-600">Recent System Activity (Last 200 events)</span>
             </div>
             
             <div className="space-y-3">
               {logs.length === 0 ? (
-                <p className="text-zinc-500 text-sm text-center py-10">No activity logged recently.</p>
+                <p className="text-zinc-600 text-sm text-center py-10">No activity logged recently.</p>
               ) : (
                 logs.map(log => (
                   <div key={log.id} className="bg-white p-4 rounded-xl border border-zinc-200 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
@@ -88,12 +88,12 @@ export default function OperationsAdmin() {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-xs font-bold text-zinc-700 uppercase tracking-wider">{log.type}</span>
-                        <span className="text-[10px] text-zinc-400 whitespace-nowrap">• {new Date(log.timestamp).toLocaleString()}</span>
+                        <span className="text-[10px] text-zinc-600 whitespace-nowrap">• {new Date(log.timestamp).toLocaleString()}</span>
                       </div>
                       <p className="text-sm text-zinc-600">{log.message}</p>
                     </div>
                     {log.userId && (
-                      <div className="shrink-0 flex items-center gap-1.5 text-xs text-zinc-500 bg-zinc-50 px-2.5 py-1.5 rounded-md border border-zinc-100">
+                      <div className="shrink-0 flex items-center gap-1.5 text-xs text-zinc-600 bg-zinc-50 px-2.5 py-1.5 rounded-md border border-zinc-100">
                         <User className="w-3.5 h-3.5" />
                         <span className="font-mono text-[10px]">{log.userId.slice(0,8)}...</span>
                       </div>
@@ -112,7 +112,7 @@ export default function OperationsAdmin() {
 
              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {carts.length === 0 ? (
-                  <p className="text-zinc-500 text-sm col-span-full text-center py-10">No active carts at the moment.</p>
+                  <p className="text-zinc-600 text-sm col-span-full text-center py-10">No active carts at the moment.</p>
                 ) : (
                   carts.map(cart => {
                     const totalValue = cart.items?.reduce((acc: number, item: any) => acc + ((item.unitPrice || 0) * (item.quantity || 1)), 0) || 0;
@@ -130,8 +130,8 @@ export default function OperationsAdmin() {
                             <ShoppingCart className="w-4 h-4" />
                           </div>
                           <div>
-                            <p className="text-xs font-mono text-zinc-500 truncate max-w-[150px]">{cart.id}</p>
-                            <p className="text-[10px] text-zinc-400">{new Date(cart.updatedAt || Date.now()).toLocaleString()}</p>
+                            <p className="text-xs font-mono text-zinc-600 truncate max-w-[150px]">{cart.id}</p>
+                            <p className="text-[10px] text-zinc-600">{new Date(cart.updatedAt || Date.now()).toLocaleString()}</p>
                           </div>
                         </div>
                         
@@ -143,12 +143,12 @@ export default function OperationsAdmin() {
                             </div>
                           ))}
                           {(cart.items?.length || 0) > 3 && (
-                            <div className="text-[10px] text-zinc-400 italic">...and {(cart.items?.length || 0) - 3} more items</div>
+                            <div className="text-[10px] text-zinc-600 italic">...and {(cart.items?.length || 0) - 3} more items</div>
                           )}
                         </div>
 
                         <div className="flex justify-between items-center mt-auto border-t border-zinc-100 pt-4">
-                           <span className="text-xs text-zinc-500">Cart Value</span>
+                           <span className="text-xs text-zinc-600">Cart Value</span>
                            <span className="font-bold text-zinc-900">₹{totalValue.toLocaleString()}</span>
                         </div>
                       </div>

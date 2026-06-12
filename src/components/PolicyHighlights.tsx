@@ -21,7 +21,7 @@ export default function PolicyHighlights() {
             <Truck className="w-4 h-4 text-indigo-600" />
             <span className="text-xs font-bold text-zinc-900">Fast Local Delivery</span>
           </div>
-          <ChevronDown className={`w-3.5 h-3.5 text-zinc-400 transition-transform ${expanded === 'shipping' ? 'rotate-180' : ''}`} />
+          <ChevronDown className={`w-3.5 h-3.5 text-zinc-600 transition-transform ${expanded === 'shipping' ? 'rotate-180' : ''}`} />
         </button>
         <AnimatePresence>
           {expanded === 'shipping' && (
@@ -31,7 +31,7 @@ export default function PolicyHighlights() {
               exit={{ height: 0, opacity: 0 }}
               className="overflow-hidden"
             >
-              <div className="pt-2 text-[11px] text-zinc-500 leading-relaxed space-y-1">
+              <div className="pt-2 text-[11px] text-zinc-600 leading-relaxed space-y-1">
                 <p>• Dispatched within 24-48 hours via local authorized dealers.</p>
                 <p>• Delivery restricted to currently serviceable areas.</p>
                 <p>• Please refer to our <a href="/shipping" className="text-zinc-800 underline hover:text-indigo-600">Shipping Policy</a> for full details.</p>
@@ -51,7 +51,7 @@ export default function PolicyHighlights() {
             <RotateCcw className="w-4 h-4 text-amber-500" />
             <span className="text-xs font-bold text-zinc-900">Returns & Cancellations</span>
           </div>
-          <ChevronDown className={`w-3.5 h-3.5 text-zinc-400 transition-transform ${expanded === 'returns' ? 'rotate-180' : ''}`} />
+          <ChevronDown className={`w-3.5 h-3.5 text-zinc-600 transition-transform ${expanded === 'returns' ? 'rotate-180' : ''}`} />
         </button>
         <AnimatePresence>
           {expanded === 'returns' && (
@@ -61,7 +61,7 @@ export default function PolicyHighlights() {
               exit={{ height: 0, opacity: 0 }}
               className="overflow-hidden"
             >
-              <div className="pt-2 text-[11px] text-zinc-500 leading-relaxed space-y-1">
+              <div className="pt-2 text-[11px] text-zinc-600 leading-relaxed space-y-1">
                 <p>• <strong>Tinted/custom colour paints are non-returnable</strong>.</p>
                 <p>• Cancellations must be made within 4 hours of ordering.</p>
                 <p>• Read our <a href="/refund" className="text-zinc-800 underline hover:text-indigo-600">Refund Policy</a>.</p>

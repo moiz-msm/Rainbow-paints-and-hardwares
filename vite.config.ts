@@ -20,7 +20,8 @@ export default defineConfig(({mode}) => {
       dedupe: ['react', 'react-dom', 'framer-motion', 'motion'],
     },
     build: {
-      chunkSizeWarningLimit: 2000
+      chunkSizeWarningLimit: 2000,
+      sourcemap: false,
     },
     server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.

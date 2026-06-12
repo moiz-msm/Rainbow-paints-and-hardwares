@@ -192,14 +192,14 @@ export default function ProductsAdmin() {
 
   if (loading)
     return (
-      <div className="p-10 text-center text-zinc-500">Loading Products...</div>
+      <div className="p-10 text-center text-zinc-600">Loading Products...</div>
     );
 
   return (
     <div className="bg-white rounded-2xl border border-zinc-200 shadow-sm overflow-hidden flex flex-col">
       <div className="p-5 border-b border-zinc-200 flex flex-col md:flex-row justify-between items-center gap-4 bg-zinc-50">
         <div className="relative w-full md:w-80">
-          <Search className="w-4 h-4 absolute left-3 top-3.5 text-zinc-400" />
+          <Search className="w-4 h-4 absolute left-3 top-3.5 text-zinc-600" />
           <input
             type="text"
             placeholder="Search products..."
@@ -260,7 +260,7 @@ export default function ProductsAdmin() {
                 {dbBrands.map(b => (
                   <li key={b.id} className="flex justify-between items-center text-sm p-3 bg-zinc-50 border border-zinc-200 rounded-lg">
                     <span>{b.name}</span>
-                    <button onClick={() => handleDeleteBrand(b.id)} className="text-zinc-400 hover:text-red-500"><Trash2 className="w-4 h-4"/></button>
+                    <button onClick={() => handleDeleteBrand(b.id)} className="text-zinc-600 hover:text-red-500"><Trash2 className="w-4 h-4"/></button>
                   </li>
                 ))}
               </ul>
@@ -275,7 +275,7 @@ export default function ProductsAdmin() {
                 {dbCategories.map(c => (
                   <li key={c.id} className="flex justify-between items-center text-sm p-3 bg-zinc-50 border border-zinc-200 rounded-lg">
                     <span>{c.name}</span>
-                    <button onClick={() => handleDeleteCategory(c.id)} className="text-zinc-400 hover:text-red-500"><Trash2 className="w-4 h-4"/></button>
+                    <button onClick={() => handleDeleteCategory(c.id)} className="text-zinc-600 hover:text-red-500"><Trash2 className="w-4 h-4"/></button>
                   </li>
                 ))}
               </ul>
@@ -301,7 +301,7 @@ export default function ProductsAdmin() {
       <div className="overflow-x-auto">
         <table className="w-full text-left text-sm whitespace-nowrap">
           <thead>
-            <tr className="bg-zinc-50/50 text-zinc-500 border-b border-zinc-200">
+            <tr className="bg-zinc-50/50 text-zinc-600 border-b border-zinc-200">
               <th className="px-6 py-4 font-semibold w-16">Image</th>
               <th className="px-6 py-4 font-semibold">Name</th>
               <th className="px-6 py-4 font-semibold">Brand & Details</th>
@@ -323,7 +323,7 @@ export default function ProductsAdmin() {
                       className="w-12 h-12 object-cover rounded-xl border border-zinc-200 bg-white"
                     />
                   ) : (
-                    <div className="w-12 h-12 bg-zinc-100 border border-zinc-200 rounded-xl flex items-center justify-center text-zinc-400 text-xs">
+                    <div className="w-12 h-12 bg-zinc-100 border border-zinc-200 rounded-xl flex items-center justify-center text-zinc-600 text-xs">
                       No img
                     </div>
                   )}
@@ -332,13 +332,13 @@ export default function ProductsAdmin() {
                   <span className="font-semibold text-zinc-900 block truncate max-w-[200px]" title={prod.name}>
                     {prod.name}
                   </span>
-                  <span className="text-xs text-zinc-400 font-mono">
+                  <span className="text-xs text-zinc-600 font-mono">
                     {prod.id.slice(0, 8)}...
                   </span>
                 </td>
                 <td className="px-6 py-4 text-zinc-600">
                   <span className="block font-medium">{prod.brand}</span>
-                  <span className="text-xs text-zinc-400">
+                  <span className="text-xs text-zinc-600">
                     {prod.topCategory}
                     {prod.subCategory ? ` > ${prod.subCategory}` : ""}
                   </span>
@@ -371,14 +371,14 @@ export default function ProductsAdmin() {
                   <div className="flex items-center justify-end gap-2">
                     <button
                       onClick={() => handleEdit(prod)}
-                      className="p-1.5 text-zinc-400 hover:text-purple-600 transition-colors"
+                      className="p-1.5 text-zinc-600 hover:text-purple-600 transition-colors"
                       title="Edit Product"
                     >
                       <Edit3 className="w-4 h-4" />
                     </button>
                     <button
                       onClick={() => handleDelete(prod.id)}
-                      className="p-1.5 text-zinc-400 hover:text-red-600 transition-colors"
+                      className="p-1.5 text-zinc-600 hover:text-red-600 transition-colors"
                       title="Delete Product"
                     >
                       <Trash2 className="w-4 h-4" />
@@ -391,7 +391,7 @@ export default function ProductsAdmin() {
               <tr>
                 <td
                   colSpan={5}
-                  className="px-6 py-10 text-center text-zinc-500"
+                  className="px-6 py-10 text-center text-zinc-600"
                 >
                   No products found.
                 </td>

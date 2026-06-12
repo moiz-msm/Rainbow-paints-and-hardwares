@@ -5,15 +5,15 @@ import { brandDetails } from '../data';
 
 export default function BrandsDealIn() {
   return (
-    <section id="brands" className="py-6 sm:py-8 mb-4 overflow-hidden">
+    <section id="brands" className="py-4 sm:py-6 mb-2 overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <header className="text-center mb-6 border-b border-zinc-200 pb-4">
-          <span className="text-[8px] sm:text-[9px] font-display font-medium text-gold/80 uppercase tracking-[0.4em] mb-2 block">
-            Authorised Dealer & Distributor
-          </span>
-          <h2 className="text-xl sm:text-2xl font-serif font-light text-ivory tracking-wide">
-            Featured Brands
+        <header className="mb-4 flex flex-col items-center text-center">
+          <h2 className="text-xl sm:text-2xl font-serif font-medium mb-3 uppercase tracking-tight leading-tight text-center">
+            Featured <span className="text-gradient italic">Brands</span>
           </h2>
+          <p className="text-[10px] sm:text-xs text-gold max-w-xl mx-auto font-sans font-light leading-relaxed">
+            Authorised Dealers and Distributors
+          </p>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

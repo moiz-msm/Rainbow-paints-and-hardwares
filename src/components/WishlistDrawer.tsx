@@ -142,7 +142,7 @@ export default function WishlistDrawer() {
               </div>
               <button
                 onClick={toggleWishlist}
-                className="p-2 text-zinc-400 hover:text-white rounded-full hover:bg-white/5 transition-colors"
+                className="p-2 text-zinc-600 hover:text-white rounded-full hover:bg-white/5 transition-colors"
                 aria-label="Close Wishlist"
               >
                 <X className="w-5 h-5" />
@@ -152,7 +152,7 @@ export default function WishlistDrawer() {
             {/* Auth status announcement banner */}
             <div className="bg-[#121625]/80 border-b border-zinc-800/80 px-4 py-3 sm:px-6">
               {user ? (
-                <div className="flex items-center gap-2 text-xs text-zinc-400 select-none">
+                <div className="flex items-center gap-2 text-xs text-zinc-600 select-none">
                   <Check className="w-3.5 h-3.5 text-green-500" />
                   <span>Logged in as <strong className="text-gold font-sans font-semibold">{user.displayName || user.email}</strong>. Data synchronized securely.</span>
                 </div>
@@ -181,19 +181,19 @@ export default function WishlistDrawer() {
             <div className="flex border-b border-zinc-800 bg-[#0a0d16] select-none text-xs font-semibold">
               <button 
                 onClick={() => { setActiveTab('products'); setIsCreatingCombo(false); }}
-                className={`flex-1 py-3 text-center border-b-2 transition-all ${activeTab === 'products' ? 'text-gold border-gold' : 'text-zinc-400 border-transparent hover:text-zinc-200'}`}
+                className={`flex-1 py-3 text-center border-b-2 transition-all ${activeTab === 'products' ? 'text-gold border-gold' : 'text-zinc-600 border-transparent hover:text-zinc-200'}`}
               >
                 Products ({productItems.length})
               </button>
               <button 
                 onClick={() => { setActiveTab('shades'); setIsCreatingCombo(false); }}
-                className={`flex-1 py-3 text-center border-b-2 transition-all ${activeTab === 'shades' ? 'text-gold border-gold' : 'text-zinc-400 border-transparent hover:text-zinc-200'}`}
+                className={`flex-1 py-3 text-center border-b-2 transition-all ${activeTab === 'shades' ? 'text-gold border-gold' : 'text-zinc-600 border-transparent hover:text-zinc-200'}`}
               >
                 Shades ({shadeItems.length})
               </button>
               <button 
                 onClick={() => { setActiveTab('combinations'); }}
-                className={`flex-1 py-3 text-center border-b-2 transition-all ${activeTab === 'combinations' ? 'text-gold border-gold' : 'text-zinc-400 border-transparent hover:text-zinc-200'}`}
+                className={`flex-1 py-3 text-center border-b-2 transition-all ${activeTab === 'combinations' ? 'text-gold border-gold' : 'text-zinc-600 border-transparent hover:text-zinc-200'}`}
               >
                 Palettes ({combinationItems.length})
               </button>
@@ -211,7 +211,7 @@ export default function WishlistDrawer() {
                     </h3>
                     <button 
                       onClick={() => setIsCreatingCombo(false)}
-                      className="text-zinc-400 hover:text-white text-xs underline cursor-pointer"
+                      className="text-zinc-600 hover:text-white text-xs underline cursor-pointer"
                     >
                       Cancel
                     </button>
@@ -219,7 +219,7 @@ export default function WishlistDrawer() {
 
                   {/* Combination Name */}
                   <div className="space-y-1">
-                    <label className="text-[11px] uppercase tracking-wider text-zinc-400 block">Palette Name</label>
+                    <label className="text-[11px] uppercase tracking-wider text-zinc-600 block">Palette Name</label>
                     <input 
                       type="text" 
                       placeholder="e.g. Master Bedroom Accent, Living Room Warm"
@@ -231,7 +231,7 @@ export default function WishlistDrawer() {
 
                   {/* Active Selection swatches */}
                   <div className="space-y-1.5">
-                    <label className="text-[11px] uppercase tracking-wider text-zinc-400 flex justify-between items-center">
+                    <label className="text-[11px] uppercase tracking-wider text-zinc-600 flex justify-between items-center">
                       <span>Palette Colors ({selectedComboColors.length}/4)</span>
                       {selectedComboColors.length > 0 && (
                         <button 
@@ -245,7 +245,7 @@ export default function WishlistDrawer() {
                     
                     {selectedComboColors.length === 0 ? (
                       <div className="h-12 border border-dashed border-zinc-800 rounded-xl flex items-center justify-center bg-black/10">
-                        <span className="text-[10px] text-zinc-500 italic">Select colors below to form a palette</span>
+                        <span className="text-[10px] text-zinc-600 italic">Select colors below to form a palette</span>
                       </div>
                     ) : (
                       <div className="grid grid-cols-4 gap-2">
@@ -270,7 +270,7 @@ export default function WishlistDrawer() {
 
                   {/* Standard Swatches pool & wishlisted shades available for selection */}
                   <div className="space-y-2">
-                    <label className="text-[11px] uppercase tracking-wider text-zinc-400 block">Select Colors Below</label>
+                    <label className="text-[11px] uppercase tracking-wider text-zinc-600 block">Select Colors Below</label>
                     
                     {/* Combine wishlisted shades first then fallback list */}
                     <div className="space-y-2 bg-black/15 p-2 rounded-xl border border-zinc-800/60 max-h-48 overflow-y-auto">
@@ -296,7 +296,7 @@ export default function WishlistDrawer() {
                         </div>
                       )}
 
-                      <p className="text-[9px] text-zinc-500 uppercase tracking-widest font-bold mb-1.5">Standard Premium Shades</p>
+                      <p className="text-[9px] text-zinc-600 uppercase tracking-widest font-bold mb-1.5">Standard Premium Shades</p>
                       <div className="grid grid-cols-4 gap-1.5">
                         {COMBINATION_PALETTE_COLORS.map((color) => {
                           const isSelected = selectedComboColors.some(c => c.hex === color.hex);
@@ -319,7 +319,7 @@ export default function WishlistDrawer() {
                   <button
                     onClick={handleSaveCombination}
                     disabled={selectedComboColors.length < 2 || !comboName.trim()}
-                    className="w-full flex items-center justify-center gap-1.5 py-2.5 bg-gradient-gold disabled:bg-zinc-800 disabled:text-zinc-500 text-white text-xs font-display font-medium uppercase tracking-wider rounded-xl hover:opacity-90 transition-all cursor-pointer"
+                    className="w-full flex items-center justify-center gap-1.5 py-2.5 bg-gradient-gold disabled:bg-zinc-800 disabled:text-zinc-600 text-white text-xs font-display font-medium uppercase tracking-wider rounded-xl hover:opacity-90 transition-all cursor-pointer"
                   >
                     <Layers className="w-3.5 h-3.5" /> Save Combination Palette
                   </button>
@@ -332,10 +332,10 @@ export default function WishlistDrawer() {
                   {productItems.length === 0 ? (
                     <div className="flex flex-col items-center justify-center py-16 text-center space-y-4">
                       <div className="w-14 h-14 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center">
-                        <Heart className="w-6 h-6 text-zinc-500" />
+                        <Heart className="w-6 h-6 text-zinc-600" />
                       </div>
                       <div className="space-y-1">
-                        <p className="text-sm text-zinc-400">No products saved are in your wishlist</p>
+                        <p className="text-sm text-zinc-600">No products saved are in your wishlist</p>
                         <p className="text-xs text-zinc-600">Save your favorite paints to compare and buy easily!</p>
                       </div>
                       <button 
@@ -352,7 +352,7 @@ export default function WishlistDrawer() {
                         {item.image ? (
                           <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                         ) : (
-                          <div className="w-full h-full bg-zinc-100 flex items-center justify-center text-[10px] text-zinc-400">No Image</div>
+                          <div className="w-full h-full bg-zinc-100 flex items-center justify-center text-[10px] text-zinc-600">No Image</div>
                         )}
                         </div>
                         <div className="flex-1 min-w-0 pr-6">
@@ -360,10 +360,10 @@ export default function WishlistDrawer() {
                             {item.brand}
                           </span>
                           <h4 className="text-xs font-bold text-white leading-snug w-full truncate">{item.name}</h4>
-                          <p className="text-[11px] text-zinc-400 font-sans mt-0.5">{item.price}</p>
+                          <p className="text-[11px] text-zinc-600 font-sans mt-0.5">{item.price}</p>
                           
                           <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 my-1.5">
-                            <span className="text-[10px] text-zinc-400 font-sans font-medium">
+                            <span className="text-[10px] text-zinc-600 font-sans font-medium">
                               Size: <strong className="text-zinc-200">{item.size || 1}L</strong>
                             </span>
                             {item.shadeHex && (
@@ -387,7 +387,7 @@ export default function WishlistDrawer() {
                         <button
                           onClick={() => removeItem(item.id, user?.uid || null)}
                           title="Remove product" aria-label="Remove product"
-                          className="absolute right-3 top-3.5 p-1.5 text-zinc-400 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-colors cursor-pointer"
+                          className="absolute right-3 top-3.5 p-1.5 text-zinc-600 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-colors cursor-pointer"
                         >
                           <Trash2 aria-hidden="true" className="w-4 h-4" />
                         </button>
@@ -403,10 +403,10 @@ export default function WishlistDrawer() {
                   {shadeItems.length === 0 ? (
                     <div className="flex flex-col items-center justify-center py-16 text-center space-y-4">
                       <div className="w-14 h-14 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center">
-                        <Palette className="w-6 h-6 text-zinc-500" />
+                        <Palette className="w-6 h-6 text-zinc-600" />
                       </div>
                       <div className="space-y-1">
-                        <p className="text-sm text-zinc-400">No color shades saved to your wishlist</p>
+                        <p className="text-sm text-zinc-600">No color shades saved to your wishlist</p>
                         <p className="text-xs text-zinc-600">Explore shades in our visualizer studio and tap the heart icon!</p>
                       </div>
                       <button 
@@ -428,7 +428,7 @@ export default function WishlistDrawer() {
                             />
                             <div className="min-w-0">
                               <h4 className="text-xs font-bold text-white truncate leading-tight">{item.name}</h4>
-                              <p className="text-[10px] text-zinc-400 mt-0.5 family-mono font-mono shrink-0">
+                              <p className="text-[10px] text-zinc-600 mt-0.5 family-mono font-mono shrink-0">
                                 {item.shadeCode} • {item.hex}
                               </p>
                               <span className="text-[9px] text-gold uppercase tracking-wider px-1.5 py-0.2 bg-gold/5 rounded border border-gold/15 mt-1 inline-block select-none font-sans font-medium">
@@ -441,7 +441,7 @@ export default function WishlistDrawer() {
                             <button
                               onClick={() => handleCopy(item.hex, item.id)}
                               title="Copy Hex Code" aria-label="Copy Hex Code"
-                              className="p-1.5 text-zinc-400 hover:text-white bg-black/20 hover:bg-black/40 rounded-lg transition-colors cursor-pointer"
+                              className="p-1.5 text-zinc-600 hover:text-white bg-black/20 hover:bg-black/40 rounded-lg transition-colors cursor-pointer"
                             >
                               {copiedId === item.id ? <Check aria-hidden="true" className="w-3.5 h-3.5 text-green-500" /> : <Copy aria-hidden="true" className="w-3.5 h-3.5" />}
                             </button>
@@ -460,7 +460,7 @@ export default function WishlistDrawer() {
                           <button
                             onClick={() => removeItem(item.id, user?.uid || null)}
                             title="Remove shade" aria-label="Remove shade"
-                            className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 text-zinc-400 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-colors cursor-pointer"
+                            className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 text-zinc-600 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-colors cursor-pointer"
                           >
                             <Trash2 aria-hidden="true" className="w-4 h-4" />
                           </button>
@@ -490,10 +490,10 @@ export default function WishlistDrawer() {
                       {!isCreatingCombo && (
                         <>
                           <div className="w-14 h-14 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center">
-                            <Layers className="w-6 h-6 text-zinc-500" />
+                            <Layers className="w-6 h-6 text-zinc-600" />
                           </div>
                           <div className="space-y-1">
-                            <p className="text-sm text-zinc-400">No color combinations saved</p>
+                            <p className="text-sm text-zinc-600">No color combinations saved</p>
                             <p className="text-xs text-zinc-600">Save matched palettes with custom names or create them above!</p>
                           </div>
                         </>
@@ -504,7 +504,7 @@ export default function WishlistDrawer() {
                       <div key={item.id} className="bg-[#121625] border border-zinc-800/80 rounded-2xl p-4 space-y-3 relative group">
                         <div className="pr-8">
                           <h4 className="text-xs font-bold text-white tracking-wide">{item.name}</h4>
-                          <span className="text-[9px] text-zinc-500">
+                          <span className="text-[9px] text-zinc-600">
                             Saved on {new Date(item.addedAt).toLocaleDateString()}
                           </span>
                         </div>
@@ -533,7 +533,7 @@ export default function WishlistDrawer() {
                           {item.shades.map((shade, idx) => (
                             <div key={idx} className="bg-[#080B14] p-1 text-center rounded-lg border border-zinc-800/40">
                               <span className="text-[9px] text-zinc-200 block truncate font-medium">{shade.name}</span>
-                              <span className="text-[8px] text-zinc-500 select-all family-mono shrink-0">{shade.hex}</span>
+                              <span className="text-[8px] text-zinc-600 select-all family-mono shrink-0">{shade.hex}</span>
                             </div>
                           ))}
                         </div>
@@ -573,7 +573,7 @@ export default function WishlistDrawer() {
                         <button
                           onClick={() => removeItem(item.id, user?.uid || null)}
                           title="Delete Palette" aria-label="Delete Palette"
-                          className="absolute right-4 top-4 p-1.5 text-zinc-400 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-colors cursor-pointer shadow-sm"
+                          className="absolute right-4 top-4 p-1.5 text-zinc-600 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-colors cursor-pointer shadow-sm"
                         >
                           <Trash2 aria-hidden="true" className="w-4 h-4" />
                         </button>

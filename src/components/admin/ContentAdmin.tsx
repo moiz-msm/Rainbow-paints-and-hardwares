@@ -72,7 +72,7 @@ export default function ContentAdmin() {
           </div>
           <h2 className="text-xl font-display font-bold text-zinc-900">Content Management</h2>
         </div>
-        <p className="text-sm text-zinc-500">
+        <p className="text-sm text-zinc-600">
           Manage text, banners, and layout content across the website.
         </p>
       </div>
@@ -96,7 +96,7 @@ export default function ContentAdmin() {
               />
               <div>
                 <span className="block text-sm font-semibold text-zinc-900">Show Announcement Banner</span>
-                <span className="block text-xs text-zinc-500 mt-0.5">Display the promotional sliding banner at the very top of the website.</span>
+                <span className="block text-xs text-zinc-600 mt-0.5">Display the promotional sliding banner at the very top of the website.</span>
               </div>
             </label>
 
@@ -104,7 +104,7 @@ export default function ContentAdmin() {
               <div>
                 <label className="block text-xs font-semibold text-zinc-700 mb-1.5 uppercase tracking-wider">Banner Text</label>
                 <div className="relative">
-                  <Type className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
+                  <Type className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-600" />
                   <input
                     type="text"
                     value={bannerText}
@@ -129,13 +129,13 @@ export default function ContentAdmin() {
             </div>
 
             <div className="mt-4 p-4 rounded-xl border border-dashed border-zinc-300 bg-zinc-50">
-              <span className="block text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-2">Live Preview Preview</span>
+              <span className="block text-[10px] font-bold text-zinc-600 uppercase tracking-widest mb-2">Live Preview Preview</span>
               {bannerActive ? (
                 <div className="bg-[#0B1021] text-ivory py-2 px-4 rounded-md text-center text-xs font-medium border-b border-white/10 uppercase tracking-widest truncate">
                   {bannerText}
                 </div>
               ) : (
-                <div className="text-center text-xs text-zinc-400 py-2">
+                <div className="text-center text-xs text-zinc-600 py-2">
                   Banner is currently disabled.
                 </div>
               )}
@@ -155,7 +155,7 @@ export default function ContentAdmin() {
             </button>
           </div>
           <div className="p-6">
-            <p className="text-sm text-zinc-500 mb-4">Edit shop-specific details or Frequently Asked Questions to help customers buy.</p>
+            <p className="text-sm text-zinc-600 mb-4">Edit shop-specific details or Frequently Asked Questions to help customers buy.</p>
             <div className="text-center p-8 bg-zinc-50 border border-dashed border-zinc-300 rounded-xl">
               <span className="text-sm font-medium text-zinc-600">FAQ Editor Module (Coming soon)</span>
             </div>

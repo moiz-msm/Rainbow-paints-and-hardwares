@@ -1,14 +1,15 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Home, Sun, Droplets, TreePine, Shield, Paintbrush } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const categories = [
-  { name: 'Interior Wall', slug: 'interior-wall', emoji: '🏠' },
-  { name: 'Exterior Wall', slug: 'exterior-wall', emoji: '🌞' },
-  { name: 'Waterproofing', slug: 'waterproofing', emoji: '💧' },
-  { name: 'Wood Finishes', slug: 'wood-finishes', emoji: '🪵' },
-  { name: 'Metals & Grills', slug: 'metals-and-grills', emoji: '🛡️' },
-  { name: 'Primer', slug: 'primer', emoji: '🖌️' }
+  { name: 'Interior Wall', slug: 'interior-wall', icon: Home },
+  { name: 'Exterior Wall', slug: 'exterior-wall', icon: Sun },
+  { name: 'Waterproofing', slug: 'waterproofing', icon: Droplets },
+  { name: 'Wood Finishes', slug: 'wood-finishes', icon: TreePine },
+  { name: 'Metals & Grills', slug: 'metals-and-grills', icon: Shield },
+  { name: 'Primer', slug: 'primer', icon: Paintbrush }
 ];
 
 export default function ShopByCategory() {
@@ -23,24 +24,32 @@ export default function ShopByCategory() {
   };
 
   return (
-    <section className="py-8 sm:py-12 bg-royale-bg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl sm:text-3xl font-serif font-medium text-ivory mb-6 uppercase tracking-tight text-center">
-          Shop by <span className="text-gold italic">Category</span>
-        </h2>
+    <section className="py-4 sm:py-6 mb-2 overflow-hidden bg-transparent">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+      >
+        <header className="mb-4 flex flex-col items-center text-center">
+          <h2 className="text-xl sm:text-2xl font-serif font-medium mb-3 uppercase tracking-tight leading-tight text-center">
+            Shop by <span className="text-gradient italic">Category</span>
+          </h2>
+        </header>
         
         <div className="relative mt-2 flex items-center group">
           <button 
             onClick={() => scroll('left')}
-            className="absolute -left-2 sm:-left-4 z-10 w-8 h-8 rounded-full bg-zinc-800 border border-zinc-600 text-ivory flex items-center justify-center hover:bg-zinc-700 transition opacity-0 group-hover:opacity-100"
+            className="absolute -left-2 sm:-left-4 z-10 w-8 h-8 rounded-full bg-white/[0.02] border border-zinc-200 text-ivory flex items-center justify-center hover:bg-white/[0.05] hover:border-gold/50 hover:text-gold transition-all opacity-0 group-hover:opacity-100 shadow-sm"
             aria-label="Scroll left"
           >
-            <ChevronLeft size={18} />
+            <ChevronLeft size={16} />
           </button>
           
           <div 
             ref={scrollRef}
-            className="flex overflow-x-auto gap-3 sm:gap-4 px-2 py-2 scroll-smooth w-full"
+            className="flex overflow-x-auto gap-4 sm:gap-6 px-2 py-4 scroll-smooth w-full"
             style={{ msOverflowStyle: 'none', scrollbarWidth: 'none' }}
           >
             <style>{`
@@ -52,10 +61,12 @@ export default function ShopByCategory() {
               <Link 
                 key={category.slug} 
                 to={`/c/${category.slug}`}
-                className="flex-shrink-0 flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-4 rounded-xl border border-zinc-200 bg-white/[0.02] hover:border-gold/50 hover:bg-white/[0.05] transition-all duration-300 shadow-sm group hover-gold-glow"
+                className="flex-shrink-0 flex items-center justify-center gap-3 p-4 sm:p-5 rounded-xl border border-zinc-200 bg-white/[0.02] hover:border-gold/50 hover:bg-white/[0.05] transition-all duration-300 shadow-sm group hover-gold-glow min-w-[160px]"
               >
-                <span className="text-xl sm:text-2xl group-hover:scale-110 transition-transform duration-300">{category.emoji}</span>
-                <span className="text-gold font-serif font-medium text-xs sm:text-sm whitespace-nowrap uppercase tracking-wider transition-colors duration-300">
+                <span className="text-gold group-hover:scale-110 transition-transform duration-300">
+                  <category.icon className="w-6 h-6 sm:w-7 sm:h-7" strokeWidth={1.5} />
+                </span>
+                <span className="text-ivory font-serif font-medium text-xs sm:text-sm whitespace-nowrap uppercase tracking-wider transition-colors duration-300 group-hover:text-gold block mt-0.5">
                   {category.name}
                 </span>
               </Link>
@@ -64,13 +75,13 @@ export default function ShopByCategory() {
 
           <button 
             onClick={() => scroll('right')}
-            className="absolute -right-2 sm:-right-4 z-10 w-8 h-8 rounded-full bg-zinc-800 border border-zinc-600 text-ivory flex items-center justify-center hover:bg-zinc-700 transition opacity-0 group-hover:opacity-100"
+            className="absolute -right-2 sm:-right-4 z-10 w-8 h-8 rounded-full bg-white/[0.02] border border-zinc-200 text-ivory flex items-center justify-center hover:bg-white/[0.05] hover:border-gold/50 hover:text-gold transition-all opacity-0 group-hover:opacity-100 shadow-sm"
             aria-label="Scroll right"
           >
-            <ChevronRight size={18} />
+            <ChevronRight size={16} />
           </button>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

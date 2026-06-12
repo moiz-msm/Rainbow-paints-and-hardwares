@@ -28,7 +28,7 @@ const posts = [
 
 export default function BlogSection() {
   return (
-    <section id="blog" className="py-6 sm:py-8 relative overflow-hidden bg-royale-bg">
+    <section id="blog" className="py-4 sm:py-6 relative overflow-hidden bg-transparent">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center text-center gap-4 mb-6">
           <div className="max-w-xl">
@@ -37,7 +37,7 @@ export default function BlogSection() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
           {posts.map((post, idx) => (
             <motion.article 
               key={idx}

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="py-6 sm:py-8 relative bg-royale-bg">
+    <section id="contact" className="py-4 sm:py-6 relative bg-transparent">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
           
@@ -14,7 +14,7 @@ export default function ContactSection() {
             viewport={{ once: true }}
           >
             <div className="flex flex-col items-center lg:items-start text-center lg:text-left mb-6">
-              <h2 className="text-xl sm:text-2xl font-serif font-medium mb-3 sm:mb-4 uppercase tracking-tight text-center lg:text-left">Visit Our <span className="text-gradient italic">Store</span></h2>
+              <h2 className="text-xl sm:text-2xl font-serif font-medium mb-3 sm:mb-4 uppercase tracking-tight leading-tight text-center lg:text-left">Visit Our <span className="text-gradient italic">Store</span></h2>
               <p className="text-gold text-[10px] sm:text-xs font-light italic text-center lg:text-left">Step into our premium showroom to feel the textures, visualize colors, and get expert consultation for your next big project.</p>
             </div>
             
@@ -58,7 +58,7 @@ export default function ContactSection() {
           >
             <div className="glass-panel p-2 rounded-2xl sm:rounded-3xl overflow-hidden h-[300px] sm:h-full min-h-[300px] hover-gold-glow shadow-2xl">
               <img 
-                src="/Store-front.jpg" 
+                src="/store-front.webp" 
                 alt="Rainbow Paints and Hardwares Store Front" 
                 loading="lazy"
                 decoding="async"

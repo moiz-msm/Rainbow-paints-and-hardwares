@@ -47,14 +47,14 @@ export const brandDetails: BrandDetail[] = [
   },
   {
     name: "Berger Paints",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/f/f3/Berger_Paints_logo.png",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/3/31/Berger.png",
     description: "Premium Silk luxury emulsions & WeatherCoat exterior series. Value leader in India's premium paint segment.",
     tags: ["Silk Range", "Weathercoat", "Distemper"],
     isAuthorised: true
   },
   {
     name: "Dr. Fixit",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Pidilite_Industries_logo.svg",
+    logo: "https://www.drfixit.co.in/web/images/web-logo.png",
     description: "The trusted name in structural waterproofing and construction chemicals for permanent protection against water damage.",
     tags: ["Waterproofing", "Roofseal", "Bathseal"],
     isAuthorised: true

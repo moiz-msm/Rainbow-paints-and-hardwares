@@ -79,7 +79,7 @@ export default function FaqSection({
   const displayFaqs = limit ? faqs.slice(0, limit) : faqs;
 
   return (
-    <section id="faqs" className="py-24 relative overflow-hidden">
+    <section id="faqs" className="py-8 sm:py-12 relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[500px] bg-blue-600/5 blur-[40px] rounded-full pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -95,11 +95,11 @@ export default function FaqSection({
               FAQ Guide
             </span>
           </div>
-          <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif font-medium mb-4 uppercase tracking-tight">
+          <h2 className="text-xl sm:text-2xl font-serif font-medium mb-3 uppercase tracking-tight leading-tight text-center">
             Frequently Asked{" "}
             <span className="text-gradient italic">Questions</span>
           </h2>
-          <p className="text-gold max-w-lg mx-auto text-[10px] sm:text-xs font-sans font-light leading-relaxed italic mb-8">
+          <p className="text-gold max-w-lg mx-auto text-[10px] sm:text-xs font-sans font-light leading-relaxed italic mb-6">
             Everything you need to know about our products, services, and expert
             advice.
           </p>

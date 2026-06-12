@@ -110,7 +110,7 @@ export default function AbandonedCartsAdmin() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-zinc-100 shadow-sm">
         <div>
           <h2 className="text-xl font-display font-bold text-zinc-900">Abandoned Carts</h2>
-          <p className="text-sm text-zinc-500 mt-1">
+          <p className="text-sm text-zinc-600 mt-1">
             Track and recover potential lost sales. {carts.length} carts abandoned.
           </p>
         </div>
@@ -123,13 +123,13 @@ export default function AbandonedCartsAdmin() {
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full sm:w-64 pl-10 pr-4 py-2 bg-zinc-50 border border-zinc-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
           />
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-600" />
         </div>
       </div>
 
       <div className="grid gap-4">
         {filteredCarts.length === 0 ? (
-          <div className="bg-white p-12 rounded-2xl border border-zinc-100 text-center text-zinc-500 shadow-sm">
+          <div className="bg-white p-12 rounded-2xl border border-zinc-100 text-center text-zinc-600 shadow-sm">
             <ShoppingCart className="w-12 h-12 text-zinc-300 mx-auto mb-3" />
             <p>No abandoned carts found.</p>
           </div>
@@ -155,7 +155,7 @@ export default function AbandonedCartsAdmin() {
                         </span>
                       )}
                     </div>
-                    <div className="flex items-center gap-4 text-sm text-zinc-500">
+                    <div className="flex items-center gap-4 text-sm text-zinc-600">
                       <span className="flex items-center gap-1.5"><Clock className="w-4 h-4" /> {formatDistanceToNow(cart.updatedAt)}</span>
                       <span className="font-medium text-zinc-900 border-l border-zinc-300 pl-4">₹{total.toLocaleString()} Value</span>
                     </div>
@@ -172,7 +172,7 @@ export default function AbandonedCartsAdmin() {
                     )}
                     <button 
                       onClick={() => handleDelete(cart.id)}
-                      className="p-1.5 text-zinc-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                      className="p-1.5 text-zinc-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                       title="Delete Record"
                     >
                       <Trash2 className="w-4 h-4" />
@@ -191,7 +191,7 @@ export default function AbandonedCartsAdmin() {
                         />
                         <div className="min-w-0 flex-1">
                           <p className="text-sm font-bold text-zinc-900 truncate" title={item.name}>{item.name}</p>
-                          <p className="text-xs text-zinc-500 capitalize">{item.brand}</p>
+                          <p className="text-xs text-zinc-600 capitalize">{item.brand}</p>
                           <div className="flex items-center justify-between mt-1 pt-1 border-t border-zinc-200/60">
                             <span className="text-xs font-semibold text-zinc-700">{item.size}L × {item.quantity}</span>
                             <span className="text-xs font-bold text-zinc-900">₹{(item.unitPrice * item.size * item.quantity).toLocaleString()}</span>
