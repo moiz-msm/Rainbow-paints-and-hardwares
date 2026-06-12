@@ -8,19 +8,21 @@ import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom
 import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import CartDrawer from './components/CartDrawer';
 import ScrollToTop from './components/ScrollToTop';
-import OfferPopup from './components/OfferPopup';
 import AuthProvider from './components/AuthProvider';
-import AuthModal from './components/AuthModal';
-import ProductAssistant from './components/ProductAssistant';
-import WishlistDrawer from './components/WishlistDrawer';
-import WishlistToastContainer from './components/WishlistToastContainer';
-import AdminNotificationToast from './components/AdminNotificationToast';
-import AddedToCartBanner from './components/AddedToCartBanner';
 import NavigationProgress from './components/NavigationProgress';
 import Home from './pages/Home';
 import { lazyWithRetry as lazy } from './utils/lazyWithRetry';
+
+// Lazy load global popups, modals, and drawers
+const CartDrawer = lazy(() => import('./components/CartDrawer'));
+const OfferPopup = lazy(() => import('./components/OfferPopup'));
+const AuthModal = lazy(() => import('./components/AuthModal'));
+const ProductAssistant = lazy(() => import('./components/ProductAssistant'));
+const WishlistDrawer = lazy(() => import('./components/WishlistDrawer'));
+const WishlistToastContainer = lazy(() => import('./components/WishlistToastContainer'));
+const AdminNotificationToast = lazy(() => import('./components/AdminNotificationToast'));
+const AddedToCartBanner = lazy(() => import('./components/AddedToCartBanner'));
 
 // Lazy load heavy pages
 const ProductsPage = lazy(() => import('./pages/ProductsPage'));
@@ -116,14 +118,16 @@ export default function App() {
           </main>
           <Footer />
         </div>
-        <OfferPopup />
-        <CartDrawer />
-        <WishlistDrawer />
-        <WishlistToastContainer />
-        <AdminNotificationToast />
-        <AddedToCartBanner />
-        <AuthModal />
-        <ProductAssistant />
+        <Suspense fallback={null}>
+          <OfferPopup />
+          <CartDrawer />
+          <WishlistDrawer />
+          <WishlistToastContainer />
+          <AdminNotificationToast />
+          <AddedToCartBanner />
+          <AuthModal />
+          <ProductAssistant />
+        </Suspense>
       </Router>
     </AuthProvider>
     </HelmetProvider>

@@ -277,7 +277,7 @@ export default function ProductDetailPage() {
       {/* Highlights/Properties */}
       {product.properties && product.properties.length > 0 && (
         <div className="bg-white rounded-2xl p-5 border border-zinc-200 mb-8 shadow-sm">
-          <h2 className="text-[11px] font-display font-semibold uppercase tracking-widest text-gold mb-3 flex items-center gap-2"><Star className="w-3.5 h-3.5"/> Key Features</h2>
+          <div className="text-[11px] font-display font-semibold uppercase tracking-widest text-gold mb-3 flex items-center gap-2"><Star className="w-3.5 h-3.5"/> Key Features</div>
           <ul className="grid sm:grid-cols-2 gap-3 pb-1">
             {product.properties.map((prop: string, idx: number) => (
               <li key={idx} className="flex items-start gap-2.5 text-xs text-zinc-700 font-sans">

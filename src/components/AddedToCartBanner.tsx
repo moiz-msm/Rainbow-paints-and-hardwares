@@ -37,9 +37,9 @@ export default function AddedToCartBanner() {
                 <span className="text-[10px] uppercase font-bold tracking-widest text-emerald-400 font-sans block mb-0.5">
                   Added to Cart
                 </span>
-                <h4 className="text-zinc-100 text-sm font-semibold tracking-wide truncate">
+                <div className="text-zinc-100 text-sm font-semibold tracking-wide truncate">
                   {lastAddedItem.name}
-                </h4>
+                </div>
                 <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-zinc-600 mt-0.5">
                   <span>{lastAddedItem.brand}</span>
                   <span className="text-zinc-600">•</span>

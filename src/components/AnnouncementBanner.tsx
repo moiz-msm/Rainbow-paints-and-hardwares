@@ -5,8 +5,6 @@ import {
   Palette, 
   Calculator, 
   Truck, 
-  ChevronLeft, 
-  ChevronRight, 
   X, 
   ArrowRight, 
   CheckCircle, 
@@ -143,15 +141,6 @@ export default function AnnouncementBanner() {
 
         <div className="max-w-[1400px] w-full flex items-center justify-between gap-4 h-full relative z-10">
           
-          {/* Left Arrow (Desktop Only) */}
-          <button 
-            onClick={(e) => { e.stopPropagation(); handlePrev(); }}
-            className="hidden md:flex p-1 text-[#0f1d3a]/60 hover:text-[#0f1d3a] hover:bg-black/5 rounded-full transition-colors cursor-pointer"
-            title="Previous tip"
-          >
-            <ChevronLeft className="w-3.5 h-3.5" />
-          </button>
-
           {/* Core Banner Text */}
           <div 
             onClick={handleBannerClick}
@@ -162,38 +151,7 @@ export default function AnnouncementBanner() {
             </span>
           </div>
 
-          {/* Right Arrow + Dots */}
-          <div className="hidden md:flex items-center gap-2 shrink-0">
-            {/* Dots */}
-            <div className="flex items-center gap-1">
-              {slides.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx); }}
-                  className={`h-1 rounded-full transition-all duration-300 ${idx === currentIndex ? 'w-3 bg-white' : 'w-1 bg-white/40'}`}
-                />
-              ))}
-            </div>
-            <button 
-              onClick={(e) => { e.stopPropagation(); handleNext(); }}
-              className="p-1 text-[#0f1d3a]/60 hover:text-[#0f1d3a] hover:bg-black/5 rounded-full transition-colors cursor-pointer"
-              title="Next tip"
-            >
-              <ChevronRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-
-          {/* Simple slide dots layout for mobile */}
-          <div className="md:hidden flex items-center justify-center shrink-0">
-            <div className="flex items-center gap-1">
-              {slides.map((_, idx) => (
-                <div
-                  key={idx}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentIndex ? 'w-2.5 bg-white' : 'w-1 bg-white/40'}`}
-                />
-              ))}
-            </div>
-          </div>
+          {/* Simple slide dots layout for mobile (Removed) */}
         </div>
       </div>
 

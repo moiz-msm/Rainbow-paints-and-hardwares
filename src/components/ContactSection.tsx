@@ -29,7 +29,7 @@ export default function ContactSection() {
                     <item.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-[11px] sm:text-xs mb-0.5 sm:mb-1 text-ivory uppercase tracking-wide">{item.title}</h4>
+                    <h3 className="font-medium text-[11px] sm:text-xs mb-0.5 sm:mb-1 text-ivory uppercase tracking-wide">{item.title}</h3>
                     <div className="text-gold leading-relaxed font-light text-[9px] sm:text-[10px]">{item.content}</div>
                   </div>
                 </div>

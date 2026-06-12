@@ -826,6 +826,8 @@ Please output a valid JSON object matching this structure exactly:
       setHeaders: (res, path) => {
         if (path.endsWith('index.html')) {
           res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+        } else if (path.match(/\.(js|css|png|jpg|jpeg|gif|svg|webp|avif|woff|woff2|eot|ttf|otf)$/i)) {
+          res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
         } else {
           res.setHeader('Cache-Control', 'public, max-age=31536000'); // 1 year
         }

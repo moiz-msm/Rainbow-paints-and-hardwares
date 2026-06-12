@@ -1138,7 +1138,7 @@ export default function AIPhotoStudio({
                 <div className="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center mb-4 animate-pulse">
                   <Camera className="w-7 h-7 text-gold animate-bounce" />
                 </div>
-                <h4 className="font-serif text-sm font-bold text-zinc-950 mb-1">No Image Loaded</h4>
+                <div className="font-serif text-sm font-bold text-zinc-950 mb-1">No Image Loaded</div>
                 <p className="text-[11px] text-zinc-600 font-sans max-w-xs mb-5">
                   Upload a photo of your own room or use your camera to capture your walls and visualize colors in real-time.
                 </p>

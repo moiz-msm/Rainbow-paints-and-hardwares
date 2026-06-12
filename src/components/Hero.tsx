@@ -81,10 +81,10 @@ export default function Hero() {
             {/* Features Grid (Desktop View) */}
             <div className="hidden lg:grid grid-cols-4 gap-2 w-full max-w-4xl mx-auto lg:mt-2">
               {[
-                { icon: PackageOpen, title: "100+ Products", sub: "from India's top leading brands" },
-                { icon: Palette, title: "4000+ Color Shades", sub: "latest and popular shades" },
-                { icon: Truck, title: "Doorstep Delivery", sub: "in 60-120 mins guaranteed" },
-                { icon: Tags, title: "Best Pricing", sub: "lowest- no middleman involved" }
+                { icon: PackageOpen, title: "100+ Products" },
+                { icon: Palette, title: "4000+ Color Shades" },
+                { icon: Truck, title: "Doorstep Delivery" },
+                { icon: Tags, title: "Best Pricing" }
               ].map((item, idx) => {
                 const Icon = item.icon;
                 return (
@@ -98,7 +98,6 @@ export default function Hero() {
                     <p className="text-[10px] font-display font-bold text-gold uppercase tracking-tight leading-tight transition-colors duration-500 lg:whitespace-normal">
                       {item.title}
                     </p>
-                    <p className="text-[9px] text-ivory/60 font-sans font-medium leading-[1.15] mt-1 line-clamp-2 uppercase tracking-wider transition-colors duration-500 group-hover:text-ivory/80">{item.sub}</p>
                   </div>
                 </div>
               )})}
@@ -124,10 +123,10 @@ export default function Hero() {
           className="grid lg:hidden grid-cols-4 gap-1.5 sm:gap-4 w-full mt-3 sm:mt-6"
         >
           {[
-            { icon: PackageOpen, title: "100+ Products", sub: "from India's top leading brands" },
-            { icon: Palette, title: "4000+ Color Shades", sub: "latest and popular shades" },
-            { icon: Truck, title: "Doorstep Delivery", sub: "in 60-120 mins guaranteed" },
-            { icon: Tags, title: "Best Pricing", sub: "lowest- no middleman involved" }
+            { icon: PackageOpen, title: "100+ Products" },
+            { icon: Palette, title: "4000+ Color Shades" },
+            { icon: Truck, title: "Doorstep Delivery" },
+            { icon: Tags, title: "Best Pricing" }
           ].map((item, idx) => {
             const Icon = item.icon;
             return (
@@ -141,7 +140,6 @@ export default function Hero() {
                 <p className="text-[7.5px] sm:text-[11px] font-display font-bold text-gold uppercase tracking-tighter leading-[1.1] sm:leading-tight transition-colors duration-500 whitespace-nowrap lg:whitespace-normal truncate w-full">
                   {item.title}
                 </p>
-                <p className="block text-[6px] sm:text-[9px] text-ivory/60 font-sans font-medium leading-[1.15] mt-0.5 sm:mt-1 line-clamp-2 uppercase tracking-wide sm:tracking-wider transition-colors duration-500 group-hover:text-ivory/80">{item.sub}</p>
               </div>
             </div>
           )})}

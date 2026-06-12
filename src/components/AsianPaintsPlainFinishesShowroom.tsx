@@ -597,7 +597,7 @@ export default function AsianPaintsPlainFinishesShowroom() {
                       }`}>
                         {p.category}
                       </span>
-                      <h4 className="font-serif font-bold text-xs sm:text-sm text-[#0B1021] mt-1.5 truncate max-w-[150px] mx-auto">{p.name}</h4>
+                      <div className="font-serif font-bold text-xs sm:text-sm text-[#0B1021] mt-1.5 truncate max-w-[150px] mx-auto">{p.name}</div>
                       <p className="text-[10px] font-mono text-gold font-bold mt-0.5">₹{p.price} <span className="text-zinc-600 font-sans font-normal text-[9px]">per L</span></p>
                     </div>
                   );
