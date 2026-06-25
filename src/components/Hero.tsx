@@ -64,39 +64,40 @@ export default function Hero() {
                 <div className="h-[1px] w-8 sm:w-16 bg-black/20" />
               </div>
 
-              <p className="text-[11px] sm:text-sm lg:text-base text-gold font-sans font-light leading-tight sm:leading-snug max-w-[280px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[700px] xl:max-w-[800px] mx-auto relative z-20 text-center">
+              <p className="text-[10px] sm:text-xs text-gold font-sans font-light leading-relaxed max-w-xl mx-auto relative z-20 text-center">
                 Wide range of products, guidance and tools to help you visualise compare and buy online with complete confidence
               </p>
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 w-full mt-2 lg:mt-4">
-              <Link to="/buy-paint-online" className="bg-gradient-to-r from-gold to-[#D4B572] hover:from-[#D4B572] hover:to-gold text-white px-5 sm:px-8 py-2 sm:py-3.5 rounded-xl whitespace-nowrap text-xs sm:text-sm font-display font-bold flex items-center gap-2 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105 hover:shadow-[0_10px_25px_-5px_rgba(184,151,90,0.3)] shadow-[0_4px_15px_-5px_rgba(184,151,90,0.2)] active:scale-95 group tracking-widest uppercase">
-                <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 text-white" /> Shop Paint <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 inline-block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]" />
+              <Link to="/buy-paint-online" className="bg-gradient-to-r from-gold to-[#D4B572] hover:from-[#D4B572] hover:to-gold text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl whitespace-nowrap text-[10px] sm:text-xs font-display font-bold flex items-center gap-2 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105 hover:shadow-[0_10px_25px_-5px_rgba(184,151,90,0.3)] shadow-[0_4px_15px_-5px_rgba(184,151,90,0.2)] active:scale-95 group tracking-widest uppercase">
+                <ShoppingCart className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" /> Shop Paint
               </Link>
-              <Link to="/visualizer" className="bg-royale-surface/50 border border-zinc-200 shadow-sm px-5 sm:px-8 py-2 sm:py-3.5 rounded-xl whitespace-nowrap text-xs sm:text-sm font-display font-bold flex items-center gap-2 hover:bg-gold/5 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-gold/30 hover:scale-105 active:scale-95 tracking-widest uppercase group/visual text-gold">
-                <Palette className="w-4 h-4 sm:w-5 sm:h-5 text-gold" /> Visualise Colours <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 opacity-50 group-hover/visual:translate-x-1 group-hover/visual:opacity-100 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]" />
+              <Link to="/visualizer" className="bg-royale-surface/50 border border-zinc-200 shadow-sm px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl whitespace-nowrap text-[10px] sm:text-xs font-display font-bold flex items-center gap-2 hover:bg-gold/5 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-gold/30 hover:scale-105 active:scale-95 tracking-widest uppercase group/visual text-gold">
+                <Palette className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gold" /> Visualise Colours
               </Link>
             </div>
 
             {/* Features Grid (Desktop View) */}
             <div className="hidden lg:grid grid-cols-4 gap-2 w-full max-w-4xl mx-auto lg:mt-2">
               {[
-                { icon: PackageOpen, title: "100+ Products" },
-                { icon: Palette, title: "4000+ Color Shades" },
-                { icon: Truck, title: "Doorstep Delivery" },
-                { icon: Tags, title: "Best Pricing" }
+                { icon: PackageOpen, line1: "100+", line2: "Products" },
+                { icon: Palette, line1: "4000+", line2: "Color Shades" },
+                { icon: Truck, line1: "Doorstep", line2: "Delivery" },
+                { icon: Tags, line1: "Best", line2: "Pricing" }
               ].map((item, idx) => {
                 const Icon = item.icon;
                 return (
-                <div key={idx} className="flex flex-col items-center justify-start text-center gap-1.5 p-4 rounded-2xl border border-gold/20 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group bg-gradient-to-b from-white/5 to-gold/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-1 hover:shadow-[0_15px_40px_-5px_rgba(184,151,90,0.15)] hover:border-gold/40">
-                  <div className="w-12 h-12 mb-1 rounded-[14px] bg-white/10 shadow-[0_4px_15px_rgba(184,151,90,0.1)] flex items-center justify-center border border-gold/10 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+                <div key={idx} className="flex flex-col items-center justify-start text-center gap-1.5 p-2 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group hover:-translate-y-1">
+                  <div className="w-12 h-12 mb-1 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                     <span className="text-gold drop-shadow-[0_2px_5px_rgba(184,151,90,0.2)]">
-                      <Icon className="w-6 h-6" strokeWidth={1.5} />
+                      <Icon className="w-8 h-8" strokeWidth={1.5} />
                     </span>
                   </div>
                   <div className="flex flex-col items-center overflow-hidden">
-                    <p className="text-[10px] font-display font-bold text-gold uppercase tracking-tight leading-tight transition-colors duration-500 lg:whitespace-normal">
-                      {item.title}
+                    <p className="text-[12px] font-display font-bold text-gold uppercase tracking-tight leading-tight transition-colors duration-500 text-center">
+                      <span className="block">{item.line1}</span>
+                      <span className="block">{item.line2}</span>
                     </p>
                   </div>
                 </div>
@@ -123,22 +124,23 @@ export default function Hero() {
           className="grid lg:hidden grid-cols-4 gap-1.5 sm:gap-4 w-full mt-3 sm:mt-6"
         >
           {[
-            { icon: PackageOpen, title: "100+ Products" },
-            { icon: Palette, title: "4000+ Color Shades" },
-            { icon: Truck, title: "Doorstep Delivery" },
-            { icon: Tags, title: "Best Pricing" }
+            { icon: PackageOpen, line1: "100+", line2: "Products" },
+            { icon: Palette, line1: "4000+", line2: "Color Shades" },
+            { icon: Truck, line1: "Doorstep", line2: "Delivery" },
+            { icon: Tags, line1: "Best", line2: "Pricing" }
           ].map((item, idx) => {
             const Icon = item.icon;
             return (
-            <div key={idx} className="flex flex-col items-center justify-start text-center p-1.5 sm:p-4 rounded-xl sm:rounded-2xl border border-gold/20 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group bg-gradient-to-b from-white/5 to-gold/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-1 hover:shadow-[0_15px_40px_-5px_rgba(184,151,90,0.15)] hover:border-gold/40">
-              <div className="w-7 h-7 sm:w-12 sm:h-12 mb-1.5 sm:mb-2 rounded-lg sm:rounded-[14px] bg-white/10 shadow-[0_4px_15px_rgba(184,151,90,0.1)] flex items-center justify-center border border-gold/10 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+            <div key={idx} className="flex flex-col items-center justify-start text-center p-1 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group hover:-translate-y-1">
+              <div className="w-7 h-7 sm:w-12 sm:h-12 mb-1 sm:mb-2 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                 <span className="text-gold drop-shadow-[0_2px_5px_rgba(184,151,90,0.2)]">
-                  <Icon className="w-3.5 h-3.5 sm:w-6 sm:h-6" strokeWidth={1.5} />
+                  <Icon className="w-5 h-5 sm:w-8 sm:h-8" strokeWidth={1.5} />
                 </span>
               </div>
               <div className="flex flex-col items-center overflow-hidden w-full">
-                <p className="text-[7.5px] sm:text-[11px] font-display font-bold text-gold uppercase tracking-tighter leading-[1.1] sm:leading-tight transition-colors duration-500 whitespace-nowrap lg:whitespace-normal truncate w-full">
-                  {item.title}
+                <p className="text-[9px] sm:text-[12px] font-display font-bold text-gold uppercase tracking-tight leading-[1.2] sm:leading-tight transition-colors duration-500 text-center w-full">
+                  <span className="block">{item.line1}</span>
+                  <span className="block">{item.line2}</span>
                 </p>
               </div>
             </div>

@@ -1,4 +1,4 @@
-import React, { Suspense, useState, useEffect } from "react";
+import React, { Suspense } from "react";
 import SEO from "../components/SEO";
 import Hero from "../components/Hero";
 import { lazyWithRetry as lazy } from "../utils/lazyWithRetry";
@@ -19,34 +19,6 @@ const GoogleReviewsSection = lazy(
 );
 
 export default function Home() {
-  const [hasInteracted, setHasInteracted] = useState(false);
-
-  useEffect(() => {
-    // Delay script loading of third party widgets and below the fold image hydration
-    // until user actively scrolls or interacts
-    const handleInteraction = () => {
-      setHasInteracted(true);
-    };
-
-    window.addEventListener("scroll", handleInteraction, { once: true, passive: true });
-    window.addEventListener("mousemove", handleInteraction, { once: true, passive: true });
-    window.addEventListener("touchstart", handleInteraction, { once: true, passive: true });
-    window.addEventListener("keydown", handleInteraction, { once: true, passive: true });
-
-    // Fallback: load anyway after 4 seconds
-    const timer = setTimeout(() => {
-      setHasInteracted(true);
-    }, 4000);
-
-    return () => {
-      window.removeEventListener("scroll", handleInteraction);
-      window.removeEventListener("mousemove", handleInteraction);
-      window.removeEventListener("touchstart", handleInteraction);
-      window.removeEventListener("keydown", handleInteraction);
-      clearTimeout(timer);
-    };
-  }, []);
-
   const storeSchema = {
     "@context": "https://schema.org",
     "@type": ["HomeAndConstructionBusiness", "PaintStore", "Organization"],
@@ -111,19 +83,17 @@ export default function Home() {
         schema={[storeSchema, websiteSchema]}
       />
       <Hero />
-      {hasInteracted && (
-        <Suspense fallback={<div className="h-20 w-full bg-royale-bg"></div>}>
-          <ShopByCategory />
-          <ShopByBrand />
-          <BrandsDealIn />
-          <ProductsAndIndustrial />
-          <ToolsOverview />
-          <GoogleReviewsSection />
-          <BlogSection />
-          <FaqSection showLink={true} limit={4} />
-          <ContactSection />
-        </Suspense>
-      )}
+      <Suspense fallback={<div className="h-20 w-full bg-royale-bg"></div>}>
+        <ShopByCategory />
+        <ShopByBrand />
+        <BrandsDealIn />
+        <ProductsAndIndustrial />
+        <ToolsOverview />
+        <GoogleReviewsSection />
+        <BlogSection />
+        <FaqSection showLink={true} limit={4} />
+        <ContactSection />
+      </Suspense>
     </>
   );
 }

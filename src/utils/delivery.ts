@@ -163,18 +163,17 @@ export async function reverseGeocodeLatLng(lat: number, lon: number): Promise<{ 
   const localPincode = findNearestLocalPincode(lat, lon);
   
   try {
-    const response = await fetch(
-      `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`
-    );
+    const response = await fetch('/api/delivery/reverse-geocode', {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ lat, lon })
+    });
+    
     if (!response.ok) throw new Error('Geocoding response failed');
     const data = await response.json();
     
-    // Prefer the mathematically closest local pincode if the coordinates are in the Coimbatore region,
-    // as OSM Nominatim often resolves postcodes for the entire Coimbatore region broadly to the main head office post code '641001'.
-    const pincode = localPincode || data?.address?.postcode || null;
-    const city = data?.address?.city || data?.address?.town || data?.address?.suburb || data?.address?.state_district || 'Nearby Area';
-    const road = data?.address?.road || '';
-    const displayName = road ? `${road}, ${city}` : city;
+    const pincode = localPincode || data?.pincode || null;
+    const displayName = data?.name || 'Nearby Area';
     
     return { pincode, name: displayName };
   } catch (error) {
@@ -208,18 +207,19 @@ export async function geocodePincode(pincode: string): Promise<{ lat: number; lo
   }
 
   try {
-    const response = await fetch(
-      `https://nominatim.openstreetmap.org/search?postalcode=${pincode}&country=India&format=json&limit=1`
-    );
+    const response = await fetch('/api/delivery/geocode', {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ pincode })
+    });
     if (!response.ok) throw new Error('Pincode lookup failed');
     const data = await response.json();
     
-    if (data && data.length > 0) {
-      const result = data[0];
+    if (data && data.lat && data.lon) {
       return {
-        lat: parseFloat(result.lat),
-        lon: parseFloat(result.lon),
-        name: result.display_name?.split(',')[0] || `Pincode ${pincode}`
+        lat: parseFloat(data.lat),
+        lon: parseFloat(data.lon),
+        name: data.address || `Pincode ${pincode}`
       };
     }
     return null;

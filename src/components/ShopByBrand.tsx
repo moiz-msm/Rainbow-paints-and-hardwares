@@ -63,7 +63,7 @@ export default function ShopByBrand() {
                     className="h-8 w-8 sm:h-10 sm:w-10 object-contain bg-white rounded-md p-1 shrink-0 group-hover:scale-105 transition-transform duration-300" 
                   />
                 )}
-                <span className="text-ivory font-serif font-medium text-xs sm:text-sm whitespace-nowrap uppercase tracking-wider transition-colors duration-300 group-hover:text-gold block">
+                <span className="text-gold font-serif font-medium text-xs sm:text-sm whitespace-nowrap uppercase tracking-wider transition-colors duration-300 block">
                   {brand.name === "MRF Vapocure" ? "MRF Paints" : brand.name}
                 </span>
               </Link>

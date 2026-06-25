@@ -596,7 +596,7 @@ const ProductCard = memo(({ product }: { product: any }) => {
             </span>
           )}
         </div>
-        <h3 className="text-xs sm:text-[13px] font-bold text-zinc-900 leading-tight mb-2 line-clamp-2">
+        <h3 className="text-xs sm:text-[13px] font-bold text-ivory leading-tight mb-2 line-clamp-2">
           {product.name}
         </h3>
         
@@ -604,14 +604,14 @@ const ProductCard = memo(({ product }: { product: any }) => {
           <div className="flex items-center justify-between mb-2.5 sm:mb-3">
              <div className="flex items-baseline gap-1.5 ">
                <p className="text-[9px] sm:text-[10px] text-gold font-bold uppercase tracking-wider">From</p>
-               <p className="text-sm sm:text-base font-bold text-zinc-900 tracking-tight">₹{unitPrice.toLocaleString()}</p>
+               <p className="text-sm sm:text-base font-bold text-ivory tracking-tight">₹{unitPrice.toLocaleString()}</p>
             </div>
           </div>
           
           <div className="grid grid-cols-2 gap-2 mt-auto">
             <button 
               onClick={(e) => { e.stopPropagation(); navigate(`/p/${product.name.replace(/\s+/g, '-').toLowerCase()}`); }}
-              className="py-1.5 sm:py-2.5 rounded-lg text-[10px] sm:text-xs font-bold text-zinc-600 bg-zinc-100 hover:bg-zinc-200 hover:text-zinc-900 transition-colors uppercase tracking-widest text-center"
+              className="py-1.5 sm:py-2.5 rounded-lg text-[10px] sm:text-xs font-bold text-ivory/60 bg-zinc-100 hover:bg-zinc-200 hover:text-ivory transition-colors uppercase tracking-widest text-center"
             >
               Details
             </button>
@@ -853,10 +853,10 @@ export default function ProductsSection({ initialCategory, initialBrand }: { ini
             {/* Category Filter */}
             <div className="flex flex-col gap-1.5 sm:gap-2 flex-1 min-w-0 relative z-10" ref={categoryRef}>
               <div className="flex items-center justify-between px-1">
-                <span className="text-[9px] sm:text-[10px] text-zinc-900/70 uppercase tracking-[0.2em] font-bold flex items-center gap-1.5 shrink-0">
-                  <Filter className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-zinc-900/80" /> Category
+                <span className="text-[9px] sm:text-[10px] text-ivory/70 uppercase tracking-[0.2em] font-bold flex items-center gap-1.5 shrink-0">
+                  <Filter className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-ivory/80" /> Category
                 </span>
-                <span className="text-[9px] font-bold tracking-widest text-zinc-900 uppercase">
+                <span className="text-[9px] font-bold tracking-widest text-ivory uppercase">
                   {totalSubCategories + 1}
                 </span>
               </div>
@@ -864,10 +864,10 @@ export default function ProductsSection({ initialCategory, initialBrand }: { ini
                 <button
                   type="button"
                   onClick={() => setIsCategoryOpen(!isCategoryOpen)}
-                  className="bg-zinc-50 border border-zinc-200 hover:bg-zinc-100 hover:border-zinc-300 transition-all rounded-xl py-2 sm:py-2.5 pl-3 sm:pl-4 pr-8 sm:pr-10 text-[10px] sm:text-xs font-display font-bold text-zinc-900 outline-none shadow-sm w-full text-left truncate flex items-center justify-between group backdrop-blur-sm"
+                  className="bg-zinc-50 border border-zinc-200 hover:bg-zinc-100 hover:border-zinc-300 transition-all rounded-xl py-2 sm:py-2.5 pl-3 sm:pl-4 pr-8 sm:pr-10 text-[10px] sm:text-xs font-display font-bold text-ivory outline-none shadow-sm w-full text-left truncate flex items-center justify-between group backdrop-blur-sm"
                 >
                   <span className="truncate">{activeCategoryFilter === "All Categories" ? "All Categories" : activeCategoryFilter}</span>
-                  <ChevronDown className={`absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 w-3 sm:w-4 h-3 sm:h-4 text-zinc-900/60 transition-transform duration-300 ${isCategoryOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 w-3 sm:w-4 h-3 sm:h-4 text-ivory/60 transition-transform duration-300 ${isCategoryOpen ? 'rotate-180' : ''}`} />
                 </button>
                 
                 <AnimatePresence>
@@ -927,10 +927,10 @@ export default function ProductsSection({ initialCategory, initialBrand }: { ini
             {/* Brand Filter */}
             <div className="flex flex-col gap-1.5 sm:gap-2 flex-1 min-w-0 border-l border-zinc-200 pl-3 sm:pl-6 relative z-10" ref={brandRef}>
               <div className="flex items-center justify-between px-1">
-                <span className="text-[9px] sm:text-[10px] text-zinc-900/70 uppercase tracking-[0.2em] font-bold flex items-center gap-1.5 shrink-0">
-                  <Filter className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-zinc-900/80" /> Brand
+                <span className="text-[9px] sm:text-[10px] text-ivory/70 uppercase tracking-[0.2em] font-bold flex items-center gap-1.5 shrink-0">
+                  <Filter className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-ivory/80" /> Brand
                 </span>
-                <span className="text-[9px] font-bold tracking-widest text-zinc-900 uppercase">
+                <span className="text-[9px] font-bold tracking-widest text-ivory uppercase">
                   {availableBrands.length}
                 </span>
               </div>
@@ -938,10 +938,10 @@ export default function ProductsSection({ initialCategory, initialBrand }: { ini
                 <button
                   type="button"
                   onClick={() => setIsBrandOpen(!isBrandOpen)}
-                  className="bg-zinc-50 border border-zinc-200 hover:bg-zinc-100 hover:border-zinc-300 transition-all rounded-xl py-2 sm:py-2.5 pl-3 sm:pl-4 pr-8 sm:pr-10 text-[10px] sm:text-xs font-display font-bold text-zinc-900 outline-none shadow-sm w-full text-left truncate flex items-center justify-between group backdrop-blur-sm"
+                  className="bg-zinc-50 border border-zinc-200 hover:bg-zinc-100 hover:border-zinc-300 transition-all rounded-xl py-2 sm:py-2.5 pl-3 sm:pl-4 pr-8 sm:pr-10 text-[10px] sm:text-xs font-display font-bold text-ivory outline-none shadow-sm w-full text-left truncate flex items-center justify-between group backdrop-blur-sm"
                 >
                   <span className="truncate">{activeBrand === "All Brands" ? "All Brands" : activeBrand}</span>
-                  <ChevronDown className={`absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 w-3 sm:w-4 h-3 sm:h-4 text-zinc-900/60 transition-transform duration-300 ${isBrandOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 w-3 sm:w-4 h-3 sm:h-4 text-ivory/60 transition-transform duration-300 ${isBrandOpen ? 'rotate-180' : ''}`} />
                 </button>
                 
                 <AnimatePresence>
@@ -985,10 +985,10 @@ export default function ProductsSection({ initialCategory, initialBrand }: { ini
             {/* Sort Controls */}
             <div className="flex flex-col gap-1.5 sm:gap-2 flex-1 min-w-0 border-l border-zinc-200 pl-3 sm:pl-6 relative z-10" ref={sortRef}>
               <div className="flex items-center justify-between px-1">
-                <span className="text-[9px] sm:text-[10px] text-zinc-900/70 uppercase tracking-[0.2em] font-bold flex items-center gap-1.5 shrink-0">
-                  <SortAsc className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-zinc-900/80" /> Sort By
+                <span className="text-[9px] sm:text-[10px] text-ivory/70 uppercase tracking-[0.2em] font-bold flex items-center gap-1.5 shrink-0">
+                  <SortAsc className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-ivory/80" /> Sort By
                 </span>
-                <span className="text-[9px] font-bold tracking-widest text-zinc-900 uppercase">
+                <span className="text-[9px] font-bold tracking-widest text-ivory uppercase">
                   5
                 </span>
               </div>
@@ -996,7 +996,7 @@ export default function ProductsSection({ initialCategory, initialBrand }: { ini
                 <button
                   type="button"
                   onClick={() => setIsSortOpen(!isSortOpen)}
-                  className="bg-zinc-50 border border-zinc-200 hover:bg-zinc-100 hover:border-zinc-300 transition-all rounded-xl py-2 sm:py-2.5 pl-3 sm:pl-4 pr-8 sm:pr-10 text-[10px] sm:text-xs font-display font-bold text-zinc-900 outline-none shadow-sm w-full text-left truncate flex items-center justify-between group backdrop-blur-sm"
+                  className="bg-zinc-50 border border-zinc-200 hover:bg-zinc-100 hover:border-zinc-300 transition-all rounded-xl py-2 sm:py-2.5 pl-3 sm:pl-4 pr-8 sm:pr-10 text-[10px] sm:text-xs font-display font-bold text-ivory outline-none shadow-sm w-full text-left truncate flex items-center justify-between group backdrop-blur-sm"
                 >
                   <span className="truncate">
                     {sortOption === "Most Popular" ? "Popular" : 
@@ -1005,7 +1005,7 @@ export default function ProductsSection({ initialCategory, initialBrand }: { ini
                      sortOption === "Finish - Matt First" ? "Matt First" : 
                      "Sheen First"}
                   </span>
-                  <ChevronDown className={`absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 w-3 sm:w-4 h-3 sm:h-4 text-zinc-900/60 transition-transform duration-300 ${isSortOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 w-3 sm:w-4 h-3 sm:h-4 text-ivory/60 transition-transform duration-300 ${isSortOpen ? 'rotate-180' : ''}`} />
                 </button>
                 
                 <AnimatePresence>
@@ -1060,24 +1060,25 @@ export default function ProductsSection({ initialCategory, initialBrand }: { ini
           <div className="max-w-6xl mx-auto mb-10">
             <div className="grid grid-cols-4 gap-1.5 sm:gap-3 lg:gap-4">
               {[
-                { icon: ShieldCheck, title: "Authorized distributors", sub: "for featured products" },
-                { icon: Tags, title: "Same Price as In-Store", sub: "no online extra charge" },
-                { icon: Truck, title: "Doorstep delivery", sub: "skip the trip, we deliver" },
-                { icon: Award, title: "20+ yrs trusted", sub: "msme/gst certified" }
+                { icon: ShieldCheck, line1: "Authorized", line2: "distributors", sub: "for featured products" },
+                { icon: Tags, line1: "Same Price", line2: "as In-Store", sub: "no online extra charge" },
+                { icon: Truck, line1: "Doorstep", line2: "delivery", sub: "skip the trip, we deliver" },
+                { icon: Award, line1: "20+ yrs", line2: "trusted", sub: "msme/gst certified" }
               ].map((item, idx) => {
                 const Icon = item.icon;
                 return (
-                <div key={idx} className="flex flex-col items-center justify-start sm:justify-center text-center p-2 sm:p-3 md:p-4 rounded-[10px] sm:rounded-2xl border border-gold/20 bg-gradient-to-b from-white to-gold/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group hover:shadow-[0_15px_40px_-5px_rgba(184,151,90,0.15)] hover:border-gold/40 hover:-translate-y-1">
-                  <div className="w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 mb-1.5 sm:mb-2 rounded-lg sm:rounded-[14px] bg-white shadow-[0_4px_15px_rgba(184,151,90,0.1)] flex items-center justify-center border border-gold/10 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+                <div key={idx} className="flex flex-col items-center justify-start sm:justify-center text-center p-2 sm:p-3 md:p-4 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group hover:-translate-y-1">
+                  <div className="w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 mb-1.5 sm:mb-2 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                     <span className="text-gold drop-shadow-[0_2px_5px_rgba(184,151,90,0.2)]">
-                      <Icon className="w-3.5 h-3.5 sm:w-5 sm:h-5 md:w-6 md:h-6" strokeWidth={1.5} />
+                      <Icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8" strokeWidth={1.5} />
                     </span>
                   </div>
-                  <div className="flex flex-col gap-0.5 sm:gap-1 items-center">
-                    <p className="text-[7.5px] sm:text-[10px] md:text-xs font-display font-bold text-zinc-900 uppercase tracking-tight sm:tracking-widest leading-[1.1] sm:leading-tight group-hover:text-gold transition-colors">
-                      {item.title}
+                  <div className="flex flex-col gap-0.5 sm:gap-1 items-center overflow-hidden">
+                    <p className="text-[7.5px] sm:text-[10px] md:text-xs font-display font-bold text-gold uppercase tracking-tight sm:tracking-widest leading-[1.2] sm:leading-tight transition-colors text-center w-full">
+                      <span className="block">{item.line1}</span>
+                      <span className="block">{item.line2}</span>
                     </p>
-                    <p className="text-[6.5px] sm:text-[9px] md:text-[10px] text-zinc-600 font-sans tracking-tight sm:tracking-wide leading-tight max-w-[150px]">
+                    <p className="text-[6.5px] sm:text-[9px] md:text-[10px] text-ivory/60 font-sans tracking-tight sm:tracking-wide leading-tight max-w-[150px] mt-1">
                       {item.sub}
                     </p>
                   </div>
@@ -1095,10 +1096,10 @@ export default function ProductsSection({ initialCategory, initialBrand }: { ini
 
         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-3">
           <div className="space-y-1 text-left">
-            <h3 className="font-serif font-bold text-sm sm:text-base text-zinc-900 tracking-tight leading-tight">
+            <h3 className="font-serif font-bold text-sm sm:text-base text-ivory tracking-tight leading-tight">
               Wall paint buying guide
             </h3>
-            <p className="text-[10px] sm:text-xs text-zinc-600 font-sans leading-tight mt-0">
+            <p className="text-[10px] sm:text-xs text-ivory/60 font-sans leading-tight mt-0">
               Compare products, calculate cost & quantity, choose finishes best suitable for you.
             </p>
           </div>

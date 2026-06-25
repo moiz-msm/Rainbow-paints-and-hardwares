@@ -1,7 +1,31 @@
 import express from "express";
 import path from "path";
+import * as fs from "fs";
 import { GoogleGenAI } from "@google/genai";
 import { Resend } from "resend";
+
+const CACHE_FILE = path.join(process.cwd(), '.ai-cache.json');
+let aiCache: Record<string, any> = {};
+try {
+  if (fs.existsSync(CACHE_FILE)) {
+    aiCache = JSON.parse(fs.readFileSync(CACHE_FILE, 'utf-8'));
+  }
+} catch (e) {
+  console.log("No existing AI cache found, starting fresh.");
+}
+
+function getCached(key: string) {
+  return aiCache[key];
+}
+
+function setCacheItem(key: string, value: any) {
+  aiCache[key] = value;
+  try {
+    fs.writeFileSync(CACHE_FILE, JSON.stringify(aiCache, null, 2));
+  } catch (e) {
+    console.error("Failed to write to AI cache:", e);
+  }
+}
 
 let aiClient: GoogleGenAI | null = null;
 function getAI(): GoogleGenAI {
@@ -37,6 +61,12 @@ Style: Concise (max 2 sentences). Direct to tools/sections only when relevant.`;
 
       const contents = history ? [...history, { role: 'user', parts: [{ text: message }] }] : [{ role: 'user', parts: [{ text: message }] }];
 
+      const cacheKey = `chat_${JSON.stringify(contents)}`;
+      const cached = getCached(cacheKey);
+      if (cached) {
+        return res.json({ text: cached });
+      }
+
       const response = await getAI().models.generateContent({
         model: "gemini-2.5-flash",
         contents: contents,
@@ -46,6 +76,9 @@ Style: Concise (max 2 sentences). Direct to tools/sections only when relevant.`;
         },
       });
 
+      if (response.text) {
+        setCacheItem(cacheKey, response.text);
+      }
       res.json({ text: response.text });
     } catch (error: any) {
       const errorMsg = error?.message || String(error);
@@ -154,6 +187,12 @@ Please output a valid JSON object matching this structure exactly:
   }
 }`;
 
+      const cacheKey = `palette_${baseHex}_${surfs.join(',')}_${activeRoomLabel}`;
+      const cached = getCached(cacheKey);
+      if (cached) {
+        return res.json(cached);
+      }
+
       const response = await getAI().models.generateContent({
         model: "gemini-2.5-flash",
         contents: prompt,
@@ -165,6 +204,9 @@ Please output a valid JSON object matching this structure exactly:
       });
 
       const parsed = JSON.parse(response.text || "{}");
+      if (Object.keys(parsed).length > 0) {
+        setCacheItem(cacheKey, parsed);
+      }
       res.json(parsed);
     } catch (error: any) {
       const errorMsg = error?.message || String(error);
@@ -345,18 +387,28 @@ Please output a valid JSON object matching this structure exactly:
         }
       }
 
-      // Nominatim generic geocode
+      // Gemini Maps Grounding geocode
       const queryTerm = address || pincode || "Coimbatore";
-      const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(queryTerm)}&countrycodes=in&format=json&limit=1&addressdetails=1`;
-      const response = await fetch(url, { headers: { 'User-Agent': 'Rainbow-Paints-Local-App' } });
-      const data = await response.json() as any[];
+      const prompt = `Find the exact latitude, longitude, formatted address, and postal code (pincode) for this location in India: "${queryTerm}". 
+Return exactly a valid JSON object with {"lat": number, "lon": number, "address": "string", "pincode": "string"}.`;
 
-      if (data && data.length > 0) {
+      const aiResponse = await getAI().models.generateContent({
+        model: "gemini-3.5-flash",
+        contents: prompt,
+        config: {
+          tools: [{ googleMaps: {} }],
+          responseMimeType: "application/json"
+        }
+      });
+      
+      const parsed = JSON.parse(aiResponse.text || "{}");
+
+      if (parsed.lat && parsed.lon) {
         const result = {
-          lat: parseFloat(data[0].lat),
-          lon: parseFloat(data[0].lon),
-          address: data[0].display_name,
-          pincode: data[0].address?.postcode || pincode || ""
+          lat: parsed.lat,
+          lon: parsed.lon,
+          address: parsed.address || queryTerm,
+          pincode: parsed.pincode || pincode || ""
         };
         setCacheWithLimit(geocodeCache, key, result);
         return res.json(result);
@@ -371,7 +423,40 @@ Please output a valid JSON object matching this structure exactly:
       return res.json(fallback);
     } catch (err) {
       console.error("Geocoding Proxy Error:", err);
-      res.status(500).json({ error: "Failed to geocode address" });
+      const fallback = {
+        lat: 11.0183,
+        lon: 76.9634,
+        address: "Gandhipuram, Coimbatore, Tamil Nadu",
+        pincode: "641012"
+      };
+      return res.json(fallback);
+    }
+  });
+
+  app.post("/api/delivery/reverse-geocode", async (req, res) => {
+    try {
+      const { lat, lon } = req.body;
+      if (lat === undefined || lon === undefined) {
+        return res.status(400).json({ error: "lat and lon are required" });
+      }
+
+      const prompt = `Find the formatted location name and postal code (pincode) for the coordinates: ${lat}, ${lon} in India.
+Return exactly a valid JSON object with {"name": "string", "pincode": "string"}.`;
+
+      const aiResponse = await getAI().models.generateContent({
+        model: "gemini-3.5-flash",
+        contents: prompt,
+        config: {
+          tools: [{ googleMaps: {} }],
+          responseMimeType: "application/json"
+        }
+      });
+      
+      const parsed = JSON.parse(aiResponse.text || "{}");
+      return res.json({ name: parsed.name, pincode: parsed.pincode });
+    } catch (err) {
+      console.error("Reverse Geocoding Proxy Error:", err);
+      return res.json({ name: "Coimbatore Area", pincode: "641012" });
     }
   });
 
@@ -568,6 +653,12 @@ Please output a valid JSON object matching this structure exactly:
       Keep it high-contrast, structured and premium. Limit to 3 bullets, visually luxurious.
       `;
 
+      const cacheKey = `consultant_${purpose}_${pincode}_${surfaceAreaSqFt}_${currentMonth}`;
+      const cached = getCached(cacheKey);
+      if (cached) {
+        return res.json({ status: "success", advice: cached });
+      }
+
       const response = await getAI().models.generateContent({
         model: "gemini-2.5-flash",
         contents: [{ role: 'user', parts: [{ text: aiPrompt }] }],
@@ -576,6 +667,9 @@ Please output a valid JSON object matching this structure exactly:
         }
       });
 
+      if (response.text) {
+        setCacheItem(cacheKey, response.text);
+      }
       res.json({ status: "success", advice: response.text });
     } catch (error: any) {
       const errorMsg = error?.message || String(error);

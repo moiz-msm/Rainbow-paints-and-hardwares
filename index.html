@@ -44,11 +44,18 @@
 
     <link rel="canonical" href="https://rainbowpaint.in/" />
 
-    <!-- Preload and Non-render-blocking Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Preload hero background for LCP performance -->
+    <link
+      rel="preconnect"
+      href="https://rainbowpaints.firebaseapp.com"
+      crossorigin
+    />
+
+    <!-- Preload hero background for performance -->
     <link rel="preload" as="image" href="/hero-bg.webp" fetchpriority="high" />
+
+    <!-- Preload and Non-render-blocking Google Fonts -->
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" />
     <link
       rel="stylesheet"

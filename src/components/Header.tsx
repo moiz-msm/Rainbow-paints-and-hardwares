@@ -60,7 +60,7 @@ export default function Header() {
     { name: 'Visualizer', href: '/visualizer' },
     { name: 'Calculator', href: '/calculator' },
     { name: 'Track Order', href: '/track-order' },
-    { name: 'Blog', href: '/#blog' },
+    { name: 'Blog', href: '/blog' },
     { name: 'FAQs', href: '/#faqs' },
     { name: 'About Us', href: '/about' },
     { name: 'Contact', href: '/#contact' },
@@ -119,7 +119,7 @@ export default function Header() {
                 </div>
               )}
               <div className="relative profile-menu-container">
-                <button aria-label={user ? user.displayName || 'Profile' : 'Sign In'} title={user ? user.displayName || 'Profile' : 'Sign In'} onClick={handleProfileClick} className={`p-2 transition-colors shadow-sm border border-zinc-200 rounded-xl flex items-center justify-center bg-white text-gold hover:bg-black/5`}>
+                <button aria-label={user ? user.displayName || 'Profile' : 'Sign In'} title={user ? user.displayName || 'Profile' : 'Sign In'} onClick={handleProfileClick} className={`p-2 transition-colors rounded-xl flex items-center justify-center text-gold hover:bg-black/5`}>
                   {user ? <span className="text-[10px] uppercase font-bold px-1">{user.displayName?.charAt(0) || 'U'}</span> : <User className="w-5 h-5 text-gold" />}
                 </button>
                 <AnimatePresence>
@@ -167,7 +167,7 @@ export default function Header() {
                     toggleWishlist(); 
                   }
                 }} 
-                className="p-2 text-gold/80 hover:text-gold transition-colors relative bg-white shadow-sm border border-zinc-200 hover:bg-black/5 rounded-xl mr-1 select-none cursor-pointer"
+                className="p-2 text-gold/80 hover:text-gold transition-colors relative hover:bg-black/5 rounded-xl mr-1 select-none cursor-pointer"
                 title="Wishlist & Palette Studio"
                 aria-label="Wishlist & Palette Studio"
               >
@@ -181,7 +181,7 @@ export default function Header() {
               <motion.button 
                 key={`desktop-cart-${totalItems}`}
                 onClick={(e) => { e.stopPropagation(); toggleCart(); }} 
-                className="p-2 text-gold/80 hover:text-gold transition-colors relative bg-white shadow-sm border border-zinc-200 hover:bg-black/5 rounded-xl"
+                className="p-2 text-gold/80 hover:text-gold transition-colors relative hover:bg-black/5 rounded-xl"
                 initial={{ scale: 1 }}
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 0.3 }}
@@ -215,7 +215,7 @@ export default function Header() {
               </div>
             )}
             <div className="relative shrink-0 profile-menu-container">
-              <button aria-label={user ? user.displayName || 'Profile' : 'Sign In'} title={user ? user.displayName || 'Profile' : 'Sign In'} onClick={handleProfileClick} className={`p-1.5 sm:p-2 transition-colors shadow-sm border border-zinc-200 rounded-xl flex items-center justify-center bg-white text-gold hover:bg-black/5`}>
+              <button aria-label={user ? user.displayName || 'Profile' : 'Sign In'} title={user ? user.displayName || 'Profile' : 'Sign In'} onClick={handleProfileClick} className={`p-1.5 sm:p-2 transition-colors rounded-xl flex items-center justify-center text-gold hover:bg-black/5`}>
                 {user ? <span className="text-[10px] uppercase font-bold px-1">{user.displayName?.charAt(0) || 'U'}</span> : <User className="w-4 h-4 text-gold" />}
               </button>
               <AnimatePresence>
@@ -260,7 +260,7 @@ export default function Header() {
                   toggleWishlist(); 
                 }
               }} 
-              className="p-1.5 sm:p-2 text-gold/80 hover:text-gold transition-colors bg-white shadow-sm border border-zinc-200 hover:bg-black/5 rounded-xl shrink-0 mr-1 relative select-none"
+              className="p-1.5 sm:p-2 text-gold/80 hover:text-gold transition-colors hover:bg-black/5 rounded-xl shrink-0 mr-1 relative select-none"
               title="Wishlist & Palette Studio"
               aria-label="Wishlist & Palette Studio"
             >
@@ -274,7 +274,7 @@ export default function Header() {
             <motion.button 
               key={`mobile-cart-${totalItems}`}
               onClick={(e) => { e.stopPropagation(); toggleCart(); }} 
-              className="p-1.5 sm:p-2 text-gold/80 hover:text-gold transition-colors bg-white shadow-sm border border-zinc-200 hover:bg-black/5 rounded-xl shrink-0 relative"
+              className="p-1.5 sm:p-2 text-gold/80 hover:text-gold transition-colors hover:bg-black/5 rounded-xl shrink-0 relative"
               initial={{ scale: 1 }}
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 0.3 }}

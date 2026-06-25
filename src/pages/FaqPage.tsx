@@ -8,14 +8,104 @@ export default function FaqPage() {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": faqs.map(faq => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do you provide on-site wall inspection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we offer free site visits and moisture check inspections using digital moisture meters to ensure your walls are ready for painting and to recommend the right waterproofing solutions if needed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does a typical 3BHK painting project take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Usually, a standard 3BHK interior project takes about 7-10 days including surface preparation (putty, primer) and two coats of premium paint. Exterior projects may vary based on weather conditions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I get customized colors that are not in the standard catalog?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely! We use computerized color tinting machines from Asian Paints and Berger which can generate over 4000+ shades instantly in our store while you wait."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is waterproofing necessary before painting?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "If you have issues with dampness, salt formation (efflorescence), or peeling paint, waterproofing is critical. We recommend Dr. Fixit or Asian Paints SmartCare solutions before applying any top coat."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Economy and Luxury paint?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Luxury paints (like Royale) have a higher resin content, offering better washability, smoother finish, and better coverage per liter compared to economy paints (like Tractor Emulsion)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the online price same as the in-store price?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! We offer the exact same competitive pricing online as we do in our physical branches. There are no extra 'online convenience' charges."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you guarantee product genuineness online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "As authorized distributors for Asian Paints and Berger Paints for over 20 years, every product we ship is 100% genuine, factory-sealed, and sourced directly from the manufacturers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does doorstep delivery work for paint orders?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Once you place an order, our logistics team picks up the materials from our nearest branch and delivers them to your doorstep across Coimbatore. Most local deliveries are completed within 24-48 hours."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I get expert advice if I'm buying online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. You can use our 'Request Visit' feature for a site inspection or reach out to us via WhatsApp. Our technical team is always ready to guide you on product selection and quantity requirements."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where can I find an authorized Asian Paints or Berger Paints dealer in Coimbatore?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Rainbow Paints & Hardwares is a certified and trusted dealer for both Asian Paints and Berger Paints in Coimbatore. We offer the complete range of interior, exterior, waterproofing, and wood finish products from top brands."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the best paint for exterior walls to protect from rain?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For severe weather conditions, we highly recommend Asian Paints Apex Ultima Protek or Berger WeatherCoat Long Life. These provide excellent waterproofing and anti-algal protection for exterior walls."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I buy wall putty, primer, and painting tools online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, our online store features a full range of painting accessories including wall putty, primers, rollers, brushes, and masking tapes. Everything you need for a complete painting job can be delivered to your door in Coimbatore."
+        }
       }
-    }))
+    ]
   };
 
   return (

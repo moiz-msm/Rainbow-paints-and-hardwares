@@ -1138,7 +1138,7 @@ export default function AIPhotoStudio({
                 <div className="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center mb-4 animate-pulse">
                   <Camera className="w-7 h-7 text-gold animate-bounce" />
                 </div>
-                <div className="font-serif text-sm font-bold text-zinc-950 mb-1">No Image Loaded</div>
+                <div className="text-[10px] sm:text-[11px] font-sans font-bold uppercase tracking-widest text-zinc-950 mb-1">No Image Loaded</div>
                 <p className="text-[11px] text-zinc-600 font-sans max-w-xs mb-5">
                   Upload a photo of your own room or use your camera to capture your walls and visualize colors in real-time.
                 </p>
@@ -1201,7 +1201,7 @@ export default function AIPhotoStudio({
                           <div className="w-8 h-8 rounded-md flex-shrink-0 border" style={{ backgroundColor: pickerMatches.asian.shade.hex }} />
                           <div className="min-w-0 flex-grow leading-tight">
                             <span className="text-[7.5px] font-display font-bold uppercase text-zinc-600 tracking-wider block">Asian Paints</span>
-                            <span className="font-serif text-[11.5px] font-bold text-zinc-800 block truncate">{pickerMatches.asian.shade.name}</span>
+                            <span className="text-[10px] sm:text-[11px] font-sans font-bold uppercase tracking-widest text-zinc-800 block truncate">{pickerMatches.asian.shade.name}</span>
                             <span className="text-[7.5px] font-mono text-zinc-600 block">{pickerMatches.asian.shade.shadeCode}</span>
                           </div>
                           <span className="text-[9px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded ml-auto leading-none shrink-0">
@@ -1224,7 +1224,7 @@ export default function AIPhotoStudio({
                           <div className="w-8 h-8 rounded-md flex-shrink-0 border" style={{ backgroundColor: pickerMatches.berger.shade.hex }} />
                           <div className="min-w-0 flex-grow leading-tight">
                             <span className="text-[7.5px] font-display font-bold uppercase text-zinc-600 tracking-wider block">Berger Paints</span>
-                            <span className="font-serif text-[11.5px] font-bold text-zinc-800 block truncate">{pickerMatches.berger.shade.name}</span>
+                            <span className="text-[10px] sm:text-[11px] font-sans font-bold uppercase tracking-widest text-zinc-800 block truncate">{pickerMatches.berger.shade.name}</span>
                             <span className="text-[7.5px] font-mono text-zinc-600 block">{pickerMatches.berger.shade.shadeCode}</span>
                           </div>
                           <span className="text-[9px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded ml-auto leading-none shrink-0">
@@ -1247,7 +1247,7 @@ export default function AIPhotoStudio({
                           <div className="w-8 h-8 rounded-md flex-shrink-0 border" style={{ backgroundColor: pickerMatches.mrf.shade.hex }} />
                           <div className="min-w-0 flex-grow leading-tight">
                             <span className="text-[7.5px] font-display font-bold uppercase text-zinc-600 tracking-wider block">MRF Vapocure</span>
-                            <span className="font-serif text-[11.5px] font-bold text-zinc-800 block truncate">{pickerMatches.mrf.shade.name}</span>
+                            <span className="text-[10px] sm:text-[11px] font-sans font-bold uppercase tracking-widest text-zinc-800 block truncate">{pickerMatches.mrf.shade.name}</span>
                             <span className="text-[7.5px] font-mono text-zinc-600 block">{pickerMatches.mrf.shade.shadeCode}</span>
                           </div>
                           <span className="text-[9px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded ml-auto leading-none shrink-0">

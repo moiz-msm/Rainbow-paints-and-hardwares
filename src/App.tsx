@@ -3,10 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { Suspense, useState, useEffect } from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import { MotionConfig } from 'framer-motion';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -45,6 +44,8 @@ const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
 const AccountSettingsPage = lazy(() => import('./pages/AccountSettingsPage'));
 const LocationSEOPage = lazy(() => import('./pages/LocationSEOPage'));
 const TrackOrderPage = lazy(() => import('./pages/TrackOrderPage'));
+const BlogPage = lazy(() => import('./pages/BlogPage'));
+const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 // Wrap Outlet in AnimatePresence with location key to trigger animations on route change
@@ -81,6 +82,10 @@ function AnimatedRoutes() {
         <Route path="/calculator" element={<CalculatorPage />} />
         <Route path="/track-order" element={<TrackOrderPage />} />
         
+        {/* Blog */}
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:slug" element={<BlogPostPage />} />
+        
         {/* E-Commerce Flow */}
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/payment" element={<PaymentPage />} />
@@ -106,19 +111,9 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
   return (
     <HelmetProvider>
       <AuthProvider>
-        <MotionConfig reducedMotion={isMobile ? "always" : "user"}>
         <Router>
         <NavigationProgress />
         <ScrollToTop />
@@ -140,7 +135,6 @@ export default function App() {
           <ProductAssistant />
         </Suspense>
       </Router>
-      </MotionConfig>
     </AuthProvider>
     </HelmetProvider>
   );

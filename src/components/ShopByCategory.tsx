@@ -66,7 +66,7 @@ export default function ShopByCategory() {
                 <span className="text-gold group-hover:scale-110 transition-transform duration-300">
                   <category.icon className="w-6 h-6 sm:w-7 sm:h-7" strokeWidth={1.5} />
                 </span>
-                <span className="text-ivory font-serif font-medium text-xs sm:text-sm whitespace-nowrap uppercase tracking-wider transition-colors duration-300 group-hover:text-gold block mt-0.5">
+                <span className="text-gold font-serif font-medium text-xs sm:text-sm whitespace-nowrap uppercase tracking-wider transition-colors duration-300 block mt-0.5">
                   {category.name}
                 </span>
               </Link>

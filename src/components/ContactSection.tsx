@@ -21,7 +21,7 @@ export default function ContactSection() {
             <div className="space-y-4 sm:space-y-6">
               {[
                 { icon: MapPin, title: "Store Location", content: <a href="https://maps.app.goo.gl/hYrT1Cedf5yVoyEf7" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors block">Rainbow Paints and Hardwares<br/>54 Cox Street, Kattoor<br/>Coimbatore, 641009</a> },
-                { icon: Phone, title: "Contact Details", content: <a href="tel:+918072442930" className="text-ivory hover:text-gold block transition-colors text-xs sm:text-sm font-medium tracking-tight">+91 80724 42930</a> },
+                { icon: Phone, title: "Contact Details", content: <a href="tel:+918072442930" className="text-gold hover:text-gold block transition-colors text-xs sm:text-sm font-medium tracking-tight">+91 80724 42930</a> },
                 { icon: Mail, title: "Email Us", content: <a href="mailto:rainbow_paint@hotmail.com" className="text-gold hover:text-gold transition-colors font-light tracking-wide text-[9px] sm:text-[10px]">rainbow_paint@hotmail.com</a> },
               ].map((item, idx) => (
                 <div key={idx} className="flex gap-3 sm:gap-4 items-center">

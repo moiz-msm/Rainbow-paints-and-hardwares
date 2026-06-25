@@ -447,24 +447,25 @@ export default function ProductDetailPage() {
             <div className="mb-8 w-full">
               <div className="grid grid-cols-4 gap-1.5 sm:gap-3 lg:gap-4">
                 {[
-                  { icon: ShieldCheck, title: "Authorized distributors", sub: "for featured products" },
-                  { icon: Tags, title: "Same Price as In-Store", sub: "no online extra charge" },
-                  { icon: Truck, title: "Doorstep delivery", sub: "skip the trip, we deliver" },
-                  { icon: Award, title: "20+ yrs trusted", sub: "msme/gst certified" }
+                  { icon: ShieldCheck, line1: "Authorized", line2: "distributors", sub: "for featured products" },
+                  { icon: Tags, line1: "Same Price", line2: "as In-Store", sub: "no online extra charge" },
+                  { icon: Truck, line1: "Doorstep", line2: "delivery", sub: "skip the trip, we deliver" },
+                  { icon: Award, line1: "20+ yrs", line2: "trusted", sub: "msme/gst certified" }
                 ].map((item, idx) => {
                   const Icon = item.icon;
                   return (
-                  <div key={idx} className="flex flex-col items-center justify-start sm:justify-center text-center p-2 sm:p-3 md:p-4 rounded-[10px] sm:rounded-2xl border border-gold/20 bg-gradient-to-b from-white/5 to-gold/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group hover:shadow-[0_15px_40px_-5px_rgba(184,151,90,0.15)] hover:border-gold/40 hover:-translate-y-1">
-                    <div className="w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 mb-1.5 sm:mb-2 rounded-lg sm:rounded-[14px] bg-white/10 shadow-[0_4px_15px_rgba(184,151,90,0.1)] flex items-center justify-center border border-gold/10 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+                  <div key={idx} className="flex flex-col items-center justify-start sm:justify-center text-center p-2 sm:p-3 md:p-4 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group hover:-translate-y-1">
+                    <div className="w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 mb-1.5 sm:mb-2 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                       <span className="text-gold drop-shadow-[0_2px_5px_rgba(184,151,90,0.2)]">
-                        <Icon className="w-3.5 h-3.5 sm:w-5 sm:h-5 md:w-6 md:h-6" strokeWidth={1.5} />
+                        <Icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8" strokeWidth={1.5} />
                       </span>
                     </div>
-                    <div className="flex flex-col gap-0.5 sm:gap-1 items-center">
-                      <p className="text-[7.5px] sm:text-[10px] md:text-xs font-display font-bold text-ivory uppercase tracking-tight sm:tracking-widest leading-[1.1] sm:leading-tight group-hover:text-gold transition-colors">
-                        {item.title}
+                    <div className="flex flex-col gap-0.5 sm:gap-1 items-center overflow-hidden">
+                      <p className="text-[7.5px] sm:text-[10px] md:text-xs font-display font-bold text-gold uppercase tracking-tight sm:tracking-widest leading-[1.2] sm:leading-tight transition-colors text-center w-full">
+                        <span className="block">{item.line1}</span>
+                        <span className="block">{item.line2}</span>
                       </p>
-                      <p className="text-[6.5px] sm:text-[9px] md:text-[10px] text-ivory/60 font-sans tracking-tight sm:tracking-wide leading-tight max-w-[150px]">
+                      <p className="text-[6.5px] sm:text-[9px] md:text-[10px] text-zinc-500 font-sans tracking-tight sm:tracking-wide leading-tight max-w-[150px] mt-1">
                         {item.sub}
                       </p>
                     </div>
