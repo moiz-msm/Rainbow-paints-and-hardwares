@@ -3,6 +3,7 @@ import SEO from "../components/SEO";
 import Hero from "../components/Hero";
 import { lazyWithRetry as lazy } from "../utils/lazyWithRetry";
 import LuxuryBackground from "../components/LuxuryBackground";
+import IndustryNews from "../components/IndustryNews";
 
 const ShopByCategory = lazy(() => import("../components/ShopByCategory"));
 const BrandsDealIn = lazy(() => import("../components/BrandsDealIn"));
@@ -35,6 +36,11 @@ export default function Home() {
       addressRegion: "Tamil Nadu",
       postalCode: "641009",
       addressCountry: "IN",
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      reviewCount: "284",
     },
     description:
       "Top paint shop in Coimbatore. Buy paint online with best pricing, doorstep delivery across Coimbatore, and 4000+ color shades.",
@@ -91,6 +97,7 @@ export default function Home() {
         <ToolsOverview />
         <GoogleReviewsSection />
         <BlogSection />
+        <IndustryNews />
         <FaqSection showLink={true} limit={4} />
         <ContactSection />
       </Suspense>

@@ -5,12 +5,13 @@ import SEO from '../components/SEO';
 import LuxuryBackground from '../components/LuxuryBackground';
 import { blogPosts } from '../data/blogPosts';
 import { Calendar, Bookmark, PlayCircle, ArrowRight } from 'lucide-react';
+import IndustryNews from '../components/IndustryNews';
 
 export default function BlogPage() {
   return (
     <>
       <LuxuryBackground />
-      <main className="min-h-screen pb-20 relative z-10 pt-32">
+      <main className="min-h-screen relative z-10 pt-32">
         <SEO 
           title="Rainbow Paints Blog | Painting Guides & Tips in Coimbatore"
           description="Expert advice on exterior paints, interior colors, waterproofing, and painting costs in Coimbatore. Read the latest articles from Rainbow Paints."
@@ -41,7 +42,7 @@ export default function BlogPage() {
           </div>
         </div>
 
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {blogPosts.map((post, idx) => (
               <motion.article 
@@ -89,6 +90,8 @@ export default function BlogPage() {
             ))}
           </div>
         </div>
+        
+        <IndustryNews />
       </main>
     </>
   );

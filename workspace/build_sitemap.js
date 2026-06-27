@@ -7,6 +7,34 @@ function escapeXML(str) {
 
 async function generate() {
   let productUrls = '';
+  let shadeUrls = '';
+  
+  try {
+    const shadesDir = path.join(process.cwd(), 'src', 'data', 'shades');
+    if (fs.existsSync(shadesDir)) {
+      const files = fs.readdirSync(shadesDir);
+      for (const file of files) {
+        if (file.endsWith('.json')) {
+          const shadeData = JSON.parse(fs.readFileSync(path.join(shadesDir, file), 'utf8'));
+          shadeData.forEach((shade) => {
+            const combined = `${shade.name}-${shade.shadeCode}`;
+            const slug = escapeXML(combined.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''));
+            if (slug) {
+              shadeUrls += `
+  <url>
+    <loc>https://rainbowpaint.in/color/${slug}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>`;
+            }
+          });
+        }
+      }
+    }
+  } catch (err) {
+    console.error("Failed to process shades:", err);
+  }
+
   try {
     const configPath = path.join(process.cwd(), 'firebase-applet-config.json');
     if (fs.existsSync(configPath)) {
@@ -140,7 +168,7 @@ async function generate() {
     <loc>https://rainbowpaint.in/shipping-policy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-  </url>${productUrls}
+  </url>${productUrls}${shadeUrls}
 </urlset>`;
 
   fs.writeFileSync(path.join(process.cwd(), 'public', 'sitemap.xml'), sitemap);

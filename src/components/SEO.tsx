@@ -19,7 +19,7 @@ export interface SEOProps {
 export default function SEO({
   title = "Rainbow Paints & Hardwares | Buy Paint Online",
   description = "Buy paint online from top India leading brands. Best pricing, doorstep delivery, and 4000+ color shades.",
-  keywords = "Asian Paints, Berger Paints, MRF Paints, Dr Fixit, interior wall paint, exterior wall paint, waterproofing, pu and epoxy, industrial paints, colour visualizer, paint cost calculator, faq, blog, buy paint online, wall paint, home colors",
+  keywords = "Asian Paints, Berger Paints, MRF Paints, Dr Fixit, interior wall paint, exterior wall paint, waterproofing, pu and epoxy, industrial paints, colour visualizer, paint cost calculator, faq, blog, buy paint online, wall paint, home colors, paint store near me, Asian paints dealer coimbatore, Berger dealer near me, Paint dealer near me, best paint shop in coimbatore",
   url = "https://rainbowpaint.in",
   image = "/hero-bg.webp",
   schema,

@@ -124,6 +124,22 @@ export const shadeService = {
   },
 
   /**
+   * Generates a URL-friendly slug for a shade
+   */
+  generateSlug(shade: Shade): string {
+    const combined = `${shade.name}-${shade.shadeCode}`;
+    return combined.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  },
+
+  /**
+   * Get a single shade by slug
+   */
+  async getShadeBySlug(slug: string): Promise<Shade | undefined> {
+    const all = await this.getShades({ brand: 'all', limit: 30000 });
+    return all.shades.find(s => this.generateSlug(s) === slug);
+  },
+
+  /**
    * Get a single shade by code
    */
   async getShadeByCode(code: string): Promise<Shade | undefined> {

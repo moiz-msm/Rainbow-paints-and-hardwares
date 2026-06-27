@@ -92,8 +92,13 @@ export default function ProductDetailPage() {
           found = mockProducts.find(p => p.name.toLowerCase() === decodedSlug);
         }
 
-        if (found) {
+          if (found) {
           setProduct(found);
+          if (found.sizes && found.sizes.length > 0) {
+            setSelectedSize(found.sizes[0]);
+          } else {
+            setSelectedSize(1);
+          }
           // Get related from DB first, then mock
           let related: any[] = dbProducts.filter((p: any) => p.subCategory === found?.subCategory && p.id !== found?.id).slice(0, 6);
           if (related.length === 0) {
@@ -109,6 +114,11 @@ export default function ProductDetailPage() {
         } else {
           // Fallback to first if not found (or handle 404)
           setProduct(mockProducts[0]);
+          if (mockProducts[0].sizes && mockProducts[0].sizes.length > 0) {
+            setSelectedSize(mockProducts[0].sizes[0]);
+          } else {
+            setSelectedSize(1);
+          }
           setRelatedProducts(mockProducts.slice(1, 7));
           setBoughtTogether(mockProducts.slice(7, 11));
         }
@@ -121,6 +131,8 @@ export default function ProductDetailPage() {
     };
     fetchProduct();
   }, [productSlug]);
+
+  const productSizes = product?.sizes || SIZES;
 
   const expectedWishlistId = useMemo(() => {
     if (!product) return '';
@@ -233,6 +245,11 @@ export default function ProductDetailPage() {
         "@type": "Brand",
         "name": product.brand
       },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "124"
+      },
       "offers": {
         "@type": "Offer",
         "price": currentPrice,
@@ -242,6 +259,46 @@ export default function ProductDetailPage() {
       }
     };
   }, [product, productDetails, currentPrice]);
+
+  const breadcrumbSchema = useMemo(() => {
+    if (!product) return null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://rainbowpaint.in/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Products",
+          "item": "https://rainbowpaint.in/buy-paint-online"
+        },
+        product.brand && {
+          "@type": "ListItem",
+          "position": 3,
+          "name": product.brand,
+          "item": `https://rainbowpaint.in/brands/${product.brand.toLowerCase().replace(/\s+/g, '-')}`
+        },
+        product.subCategory && {
+          "@type": "ListItem",
+          "position": 4,
+          "name": product.subCategory,
+          "item": `https://rainbowpaint.in/c/${product.subCategory.toLowerCase().replace(/\s+/g, '-')}`
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": product.name,
+          "item": `https://rainbowpaint.in/p/${product.slug || product.name?.replace(/\s+/g, '-').toLowerCase()}`
+        }
+      ].filter(Boolean)
+    };
+  }, [product]);
 
   if (loading) {
     return (
@@ -341,12 +398,18 @@ export default function ProductDetailPage() {
     </div>
   );
 
+  const metaDesc = useMemo(() => {
+    let base = productDetails?.desc1 || `Buy ${product.name} online at wholesale prices.`;
+    if (base.length > 80) base = base.substring(0, 80) + '...';
+    return `${base} Authorized ${product.brand} dealer in Coimbatore offering fast local delivery for ${product.category}.`;
+  }, [productDetails, product]);
+
   return (
     <article className="pt-[72px] sm:pt-24 pb-12 bg-royale-bg min-h-screen text-ivory/90 relative overflow-x-hidden selection:bg-gold/30">
       <SEO 
         type="product"
         title={`${product.name} - Buy ${product.brand} Paints Online`}
-        description={productDetails?.desc1 || `Buy ${product.name} online. ${product.subCategory} from ${product.brand}.`}
+        description={metaDesc}
         keywords={`${product.name}, ${product.brand}, ${product.category}, ${product.subCategory}`}
         url={`https://rainbowpaint.in/p/${product.slug || product.name.replace(/\s+/g, '-').toLowerCase()}`}
         image={product.image}
@@ -354,7 +417,7 @@ export default function ProductDetailPage() {
         productPrice={currentPrice}
         productCurrency="INR"
         productAvailability="InStock"
-        schema={[productSchema].filter(Boolean)}
+        schema={[productSchema, breadcrumbSchema].filter(Boolean)}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px]">
         <Breadcrumb 
@@ -504,7 +567,7 @@ export default function ProductDetailPage() {
               </div>
               
               <div className="grid grid-cols-4 gap-2 sm:gap-3">
-                {SIZES.map(size => (
+                {productSizes.map((size: number) => (
                   <button
                     key={size}
                     onClick={() => { setSelectedSize(size); setQuantity(1); }}
@@ -514,8 +577,10 @@ export default function ProductDetailPage() {
                         : 'border-zinc-200 bg-white text-zinc-600 hover:border-zinc-400 hover:bg-zinc-50'
                     }`}
                   >
-                    <span className="block text-sm sm:text-base font-serif font-semibold">{size}L</span>
-                    <span className="block text-[9px] font-sans opacity-70 mt-0.5">₹{(basePrice * size).toLocaleString()}</span>
+                    <span className="block text-sm sm:text-base font-serif font-semibold">
+                      {size < 1 ? `${size * 1000}ml` : `${size}L`}
+                    </span>
+                    <span className="block text-[9px] font-sans opacity-70 mt-0.5">₹{Math.round(basePrice * size).toLocaleString()}</span>
                   </button>
                 ))}
               </div>

@@ -43,7 +43,7 @@ export default function AboutPage() {
         <div className="max-w-3xl space-y-8 text-ivory/80 leading-relaxed font-sans text-sm sm:text-base">
           <div className="space-y-4">
             <p>
-              What started as a local paint store has grown into a trusted name with 3 branches across Coimbatore, serving industries, contractors, painting professionals, and homeowners with quality products and dependable service. Over the years, we have proudly become authorized dealers of leading brands like Berger Paints and Asian Paints, offering genuine products at competitive prices.
+              What started as a local paint store has grown into a trusted name with 3 branches across Coimbatore, serving industries, contractors, painting professionals, and homeowners with quality products and dependable service. If you've been searching for a reliable <strong>paint store near me</strong> or the best <strong>paint dealer near me</strong>, you've found your answer. Over the years, we have proudly become authorized <strong>Asian Paints dealer Coimbatore</strong> and a trusted <strong>Berger dealer near me</strong>, offering genuine products at competitive wholesale prices.
             </p>
             <p>
               At Rainbow Paints & Hardware, we believe buying paint should be simple and reliable. For years, we have been delivering paints directly to our customers’ doorsteps, helping contractors, businesses, and homeowners get materials quickly and hassle-free.

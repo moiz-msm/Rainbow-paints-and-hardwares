@@ -27,6 +27,7 @@ const AddedToCartBanner = lazy(() => import('./components/AddedToCartBanner'));
 // Lazy load heavy pages
 const ProductsPage = lazy(() => import('./pages/ProductsPage'));
 const ProductDetailPage = lazy(() => import('./pages/ProductDetailPage'));
+const ColorDetailsPage = lazy(() => import('./pages/ColorDetailsPage'));
 const VisualizerPage = lazy(() => import('./pages/VisualizerPage'));
 const CalculatorPage = lazy(() => import('./pages/CalculatorPage'));
 const FaqPage = lazy(() => import('./pages/FaqPage'));
@@ -76,6 +77,7 @@ function AnimatedRoutes() {
         
         {/* Local SEO Routs */}
         <Route path="/store/:locationSlug" element={<LocationSEOPage />} />
+        <Route path="/color/:shadeSlug" element={<ColorDetailsPage />} />
 
         {/* Tools */}
         <Route path="/visualizer" element={<VisualizerPage />} />

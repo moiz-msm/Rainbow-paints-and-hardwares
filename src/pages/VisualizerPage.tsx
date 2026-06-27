@@ -29,7 +29,7 @@ export default function VisualizerPage() {
     <div className="pt-20 pb-12 bg-royale-bg min-h-screen">
       <SEO 
         title="Color Visualizer | Preview Paint Colors | Rainbow Paints & Hardwares"
-        description="Virtually paint your room with our advanced Color Visualizer. Preview thousands of paint shades from top brands before you buy."
+        description="Virtually paint your room with our 2D Color Visualizer. Buy premium paint online from Rainbow Paints, Coimbatore's authorized dealer for top brands offering fast local delivery."
       />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
         <div className="flex flex-col items-center justify-center text-center max-w-3xl mx-auto gap-4">

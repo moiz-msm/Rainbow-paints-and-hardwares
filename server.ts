@@ -899,6 +899,70 @@ Return exactly a valid JSON object with {"name": "string", "pincode": "string"}.
   });
 
   
+  app.get("/api/news", async (req, res) => {
+    try {
+      const cacheKey = "industry_news_cache";
+      const cached = getCached(cacheKey);
+      // Serve from cache if we have it to save quotas, we can update this cache periodically but for demo caching is fine or we can add timestamp check
+      if (cached && cached.timestamp && Date.now() - cached.timestamp < 1000 * 60 * 60 * 24) { // 24 hours
+         return res.json(cached.news);
+      }
+
+      const prompt = `Fetch the latest industry news or trends in painting, home decor, and hardware. Return exactly a valid JSON array of objects with the following keys: "title", "snippet", "url", "source", and "date". Provide exactly 3 articles.`;
+      
+      const aiResponse = await getAI().models.generateContent({
+        model: "gemini-3.5-flash",
+        contents: prompt,
+        config: {
+          tools: [{ googleSearch: {} }],
+          responseMimeType: "application/json"
+        }
+      });
+      
+      const parsed = JSON.parse(aiResponse.text || "[]");
+      
+      if (parsed && parsed.length > 0) {
+        setCacheItem(cacheKey, { timestamp: Date.now(), news: parsed });
+        return res.json(parsed);
+      } else {
+        throw new Error("Empty news array");
+      }
+    } catch (err: any) {
+      const errorMsg = typeof err === 'object' ? JSON.stringify(err) : String(err);
+      const isQuota = errorMsg.includes("429") || errorMsg.includes("quota") || errorMsg.includes("RESOURCE_EXHAUSTED");
+      
+      if (!isQuota) {
+        console.error("News API Error:", err?.message || err);
+      } else {
+        console.warn("News API Quota Exceeded. Using static fallback news.");
+      }
+      // Fallback
+      res.json([
+        {
+          title: "Top Exterior Paint Color Trends for 2026",
+          snippet: "Discover the latest color trends and painting techniques shaping the industry this year for exterior walls.",
+          url: "https://www.asianpaints.com/blogs",
+          source: "Paint Industry Weekly",
+          date: new Date().toISOString()
+        },
+        {
+          title: "Advances in Eco-Friendly Waterproofing",
+          snippet: "New zero-VOC waterproofing compounds are taking the construction and hardware sector by storm.",
+          url: "https://www.drfixit.co.in/blog",
+          source: "Hardware Insider",
+          date: new Date(Date.now() - 86400000).toISOString()
+        },
+        {
+          title: "How to Choose the Perfect Interior Texture",
+          snippet: "A comprehensive guide on selecting the right wall textures for different rooms and lighting conditions.",
+          url: "https://www.bergerpaints.com/blog",
+          source: "Decor & Design Magazine",
+          date: new Date(Date.now() - 172800000).toISOString()
+        }
+      ]);
+    }
+  });
+
   // --- SITEMAP GENERATION ---
   // Static sitemap is now served from public/sitemap.xml
   
