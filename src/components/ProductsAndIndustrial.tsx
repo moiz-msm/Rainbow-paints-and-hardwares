@@ -65,7 +65,7 @@ export default function ProductsAndIndustrial() {
 
   return (
     <section
-      className="py-12 sm:py-20 lg:py-24 border-t border-gold/10 bg-transparent relative overflow-hidden"
+      className="py-12 sm:py-20 lg:py-24 border-t border-gold/10 bg-gradient-to-b from-royale-surface to-royale-accent/30 relative overflow-hidden"
       id="products-industrial"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -76,20 +76,21 @@ export default function ProductsAndIndustrial() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             whileHover={{ y: -5 }}
-            className="h-full relative rounded-xl overflow-hidden border border-zinc-200 bg-white p-4 sm:p-6 flex flex-col justify-between hover-gold-glow shadow-sm"
+            className="group h-full relative rounded-2xl overflow-hidden border border-white/20 bg-gradient-to-br from-[#FFF5E5] to-[#FCE8D5] p-5 sm:p-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-all"
           >
-            {/* Background Glow */}
-            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gold/5 rounded-full blur-[40px] -mr-32 -mt-32 group-hover:bg-gold/10 transition-colors duration-700" />
+            <div className="absolute -bottom-6 -right-6 w-32 h-32 opacity-20 group-hover:opacity-30 group-hover:scale-110 transition-all duration-500 flex items-center justify-center pointer-events-none">
+              <span className="text-8xl drop-shadow-xl saturate-150 blur-[1px]">📏</span>
+            </div>
 
             <div className="relative z-10 flex flex-col items-start text-left mb-6">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white shadow-sm border border-zinc-200 flex items-center justify-center mb-4 border border-zinc-200">
-                <Package className="w-5 h-5 sm:w-6 sm:h-6 text-gold" />
+              <div className="w-10 h-10 bg-white/90 rounded-full flex items-center justify-center shrink-0 shadow-sm mb-4">
+                <Package className="w-5 h-5 text-[#9C661C]" />
               </div>
-              <h2 className="text-xl sm:text-2xl font-serif font-medium mb-3 uppercase tracking-tight leading-tight text-zinc-900">
+              <h2 className="text-xl sm:text-2xl font-serif font-medium mb-3 uppercase tracking-tight leading-tight text-[#593910]">
                 Request site{" "}
-                <span className="italic text-gradient font-light">visit.</span>
+                <span className="italic opacity-80 font-light">visit.</span>
               </h2>
-              <p className="text-gold text-[10px] sm:text-xs mb-4 max-w-sm italic font-light">
+              <p className="text-[#7A5016] text-[10px] sm:text-[11px] mb-4 max-w-sm italic font-light leading-relaxed">
                 Free visit - free consultation - free measurement - free quote -
                 free paint sample - by experts on your doorstep - no obligation,
                 no cost.
@@ -102,7 +103,7 @@ export default function ProductsAndIndustrial() {
             >
               <div className="grid sm:grid-cols-2 gap-3">
                 <div className="space-y-1 sm:space-y-1.5">
-                  <label className="text-[8px] sm:text-[9px] font-semibold uppercase tracking-widest text-gold ml-1">
+                  <label className="text-[8px] sm:text-[9px] font-semibold uppercase tracking-widest text-[#9C661C] ml-1">
                     Full Name
                   </label>
                   <input
@@ -111,12 +112,12 @@ export default function ProductsAndIndustrial() {
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
                     }
-                    className="w-full bg-zinc-50 border border-zinc-200 rounded-lg sm:rounded-xl px-3 py-2.5 focus:outline-none focus:border-gold/50 transition-colors text-zinc-800 text-[10px] sm:text-xs placeholder:text-zinc-600 font-medium"
+                    className="w-full bg-white/60 border border-white/40 rounded-lg sm:rounded-xl px-3 py-2.5 focus:outline-none focus:border-[#9C661C]/50 focus:bg-white/90 transition-colors text-[#593910] text-[10px] sm:text-xs placeholder:text-[#593910]/50 font-medium"
                     placeholder="John Doe"
                   />
                 </div>
                 <div className="space-y-1 sm:space-y-1.5">
-                  <label className="text-[8px] sm:text-[9px] font-semibold uppercase tracking-widest text-gold ml-1">
+                  <label className="text-[8px] sm:text-[9px] font-semibold uppercase tracking-widest text-[#9C661C] ml-1">
                     Approx Sq Ft Area
                   </label>
                   <input
@@ -125,13 +126,13 @@ export default function ProductsAndIndustrial() {
                     onChange={(e) =>
                       setFormData({ ...formData, area: e.target.value })
                     }
-                    className="w-full bg-zinc-50 border border-zinc-200 rounded-lg sm:rounded-xl px-3 py-2.5 focus:outline-none focus:border-gold/50 transition-colors text-zinc-800 text-[10px] sm:text-xs placeholder:text-zinc-600 font-medium"
+                    className="w-full bg-white/60 border border-white/40 rounded-lg sm:rounded-xl px-3 py-2.5 focus:outline-none focus:border-[#9C661C]/50 focus:bg-white/90 transition-colors text-[#593910] text-[10px] sm:text-xs placeholder:text-[#593910]/50 font-medium"
                     placeholder="e.g. 1500"
                   />
                 </div>
               </div>
               <div className="space-y-1 sm:space-y-1.5">
-                <label className="text-[8px] sm:text-[9px] font-semibold uppercase tracking-widest text-gold ml-1">
+                <label className="text-[8px] sm:text-[9px] font-semibold uppercase tracking-widest text-[#9C661C] ml-1">
                   Pin Code
                 </label>
                 <input
@@ -140,7 +141,7 @@ export default function ProductsAndIndustrial() {
                   onChange={(e) =>
                     setFormData({ ...formData, pinCode: e.target.value })
                   }
-                  className="w-full bg-zinc-50 border border-zinc-200 rounded-lg sm:rounded-xl px-3 py-2.5 focus:outline-none focus:border-gold/50 transition-colors text-zinc-800 text-[10px] sm:text-xs placeholder:text-zinc-600 font-medium"
+                  className="w-full bg-white/60 border border-white/40 rounded-lg sm:rounded-xl px-3 py-2.5 focus:outline-none focus:border-[#9C661C]/50 focus:bg-white/90 transition-colors text-[#593910] text-[10px] sm:text-xs placeholder:text-[#593910]/50 font-medium"
                   placeholder="641001"
                 />
               </div>
@@ -159,23 +160,23 @@ export default function ProductsAndIndustrial() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             whileHover={{ y: -5 }}
-            className="h-full glass-panel p-4 sm:p-6 rounded-xl border border-gold/20 bg-royale-surface/40 overflow-hidden relative shadow-md flex flex-col justify-between hover-gold-glow"
+            className="group h-full relative rounded-2xl overflow-hidden border border-white/20 bg-gradient-to-br from-[#E2EFFF] to-[#C0DCFC] p-5 sm:p-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-all"
           >
-            {/* Subtle gradient glow */}
-            <div className="absolute -top-32 -right-32 w-64 h-64 bg-gold/5 blur-[40px] rounded-full pointer-events-none" />
-            <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-blue-500/5 blur-[40px] rounded-full pointer-events-none" />
+            <div className="absolute -bottom-6 -right-6 w-32 h-32 opacity-20 group-hover:opacity-30 group-hover:scale-110 transition-all duration-500 flex items-center justify-center pointer-events-none">
+              <span className="text-8xl drop-shadow-xl saturate-150 blur-[1px]">🏭</span>
+            </div>
 
             <div className="relative z-10 mb-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-50 border border-zinc-200 border border-black/20 text-ivory text-[8px] sm:text-[10px] font-medium uppercase tracking-[0.3em] mb-5">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/60 border border-white/40 text-[#102A4C] text-[8px] sm:text-[10px] font-medium uppercase tracking-[0.3em] mb-5">
                 <span className="text-xs">🏭</span> Industrial Partners
               </div>
 
-              <h2 className="text-xl sm:text-2xl font-serif font-medium mb-3 uppercase tracking-tight leading-tight text-ivory">
+              <h2 className="text-xl sm:text-2xl font-serif font-medium mb-3 uppercase tracking-tight leading-tight text-[#102A4C]">
                 Empowering{" "}
-                <span className="text-gradient italic">Industries</span>
+                <span className="italic opacity-80 font-light">Industries</span>
               </h2>
 
-              <p className="text-gold font-sans font-light leading-relaxed text-[11px] sm:text-xs mb-6 max-w-sm">
+              <p className="text-[#1C4173] font-sans font-light leading-relaxed text-[11px] sm:text-xs mb-6 max-w-sm">
                 We continue to support and deliver specialized industrial
                 coatings to all kinds of industries. Our robust, heavy-duty
                 paints ensure lasting protection and peak performance for your
@@ -183,31 +184,31 @@ export default function ProductsAndIndustrial() {
               </p>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6">
-                <div className="bg-white shadow-sm border border-zinc-200 rounded-xl p-3 flex flex-col items-center justify-center text-center">
-                  <h3 className="text-lg font-serif text-gold mb-1">20+</h3>
-                  <p className="text-[8px] font-display uppercase tracking-wider text-ivory/80">
+                <div className="bg-white/60 shadow-sm border border-white/40 rounded-xl p-3 flex flex-col items-center justify-center text-center">
+                  <h3 className="text-lg font-serif text-[#2C62AA] mb-1">20+</h3>
+                  <p className="text-[8px] font-display uppercase tracking-wider text-[#1C4173]">
                     years service
                   </p>
                 </div>
-                <div className="bg-white shadow-sm border border-zinc-200 rounded-xl p-3 flex flex-col items-center justify-center text-center">
-                  <h3 className="text-lg font-serif text-gold mb-1">100+</h3>
-                  <p className="text-[8px] font-display uppercase tracking-wider text-ivory/80">
+                <div className="bg-white/60 shadow-sm border border-white/40 rounded-xl p-3 flex flex-col items-center justify-center text-center">
+                  <h3 className="text-lg font-serif text-[#2C62AA] mb-1">100+</h3>
+                  <p className="text-[8px] font-display uppercase tracking-wider text-[#1C4173]">
                     industries
                   </p>
                 </div>
-                <div className="bg-white shadow-sm border border-zinc-200 rounded-xl p-3 flex flex-col items-center justify-center text-center">
-                  <h3 className="text-lg font-serif text-gold mb-1 text-[13px] sm:text-[15px]">
+                <div className="bg-white/60 shadow-sm border border-white/40 rounded-xl p-3 flex flex-col items-center justify-center text-center">
+                  <h3 className="text-lg font-serif text-[#2C62AA] mb-1 text-[13px] sm:text-[15px]">
                     On-Site
                   </h3>
-                  <p className="text-[8px] font-display uppercase tracking-wider text-ivory/80">
+                  <p className="text-[8px] font-display uppercase tracking-wider text-[#1C4173]">
                     consultation
                   </p>
                 </div>
-                <div className="bg-white shadow-sm border border-zinc-200 rounded-xl p-3 flex flex-col items-center justify-center text-center">
-                  <h3 className="text-lg font-serif text-gold mb-1 text-[13px] sm:text-[15px]">
+                <div className="bg-white/60 shadow-sm border border-white/40 rounded-xl p-3 flex flex-col items-center justify-center text-center">
+                  <h3 className="text-lg font-serif text-[#2C62AA] mb-1 text-[13px] sm:text-[15px]">
                     On-Site
                   </h3>
-                  <p className="text-[8px] font-display uppercase tracking-wider text-ivory/80">
+                  <p className="text-[8px] font-display uppercase tracking-wider text-[#1C4173]">
                     delivery
                   </p>
                 </div>
@@ -225,7 +226,7 @@ export default function ProductsAndIndustrial() {
               </a>
               <a
                 href="mailto:rainbow_paint@hotmail.com?subject=Industrial%20Coatings%20Enquiry"
-                className="bg-transparent hover:bg-black/5 text-ivory border border-black/20 py-2.5 px-4 rounded-xl font-display font-medium transition-all tracking-widest text-[9px] sm:text-[10px] uppercase flex justify-center items-center gap-2 flex-1"
+                className="bg-white/60 hover:bg-white/80 text-[#102A4C] border border-white/40 py-2.5 px-4 rounded-xl font-display font-medium transition-all tracking-widest text-[9px] sm:text-[10px] uppercase flex justify-center items-center gap-2 flex-1"
               >
                 <span className="text-xs sm:text-sm">✉️</span> Email
               </a>

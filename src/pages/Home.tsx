@@ -6,7 +6,6 @@ import LuxuryBackground from "../components/LuxuryBackground";
 import IndustryNews from "../components/IndustryNews";
 
 const ShopByCategory = lazy(() => import("../components/ShopByCategory"));
-const BrandsDealIn = lazy(() => import("../components/BrandsDealIn"));
 const ShopByBrand = lazy(() => import("../components/ShopByBrand"));
 const ProductsAndIndustrial = lazy(
   () => import("../components/ProductsAndIndustrial"),
@@ -79,6 +78,51 @@ export default function Home() {
     ],
   };
 
+  const siteNavigationSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Quick Links",
+    "description": "Important links and tools of Rainbow Paints & Hardwares",
+    "itemListElement": [
+      {
+        "@type": "SiteNavigationElement",
+        "position": 1,
+        "name": "Buy Paint Online",
+        "url": "https://rainbowpaint.in/buy-paint-online"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 2,
+        "name": "Paint Cost Calculator",
+        "url": "https://rainbowpaint.in/calculator"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 3,
+        "name": "AI Color Visualizer",
+        "url": "https://rainbowpaint.in/visualizer"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 4,
+        "name": "Compare Paints",
+        "url": "https://rainbowpaint.in/compare-paints"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 5,
+        "name": "Paint Industry Blog",
+        "url": "https://rainbowpaint.in/blog"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 6,
+        "name": "About Our Paint Shop",
+        "url": "https://rainbowpaint.in/about"
+      }
+    ]
+  };
+
   return (
     <>
       <LuxuryBackground />
@@ -86,15 +130,14 @@ export default function Home() {
         title="Rainbow Paints & Hardwares | Best Paint Shop in Coimbatore"
         description="Buy paint online from the top paint shop in Coimbatore. Rainbow Paints & Hardwares offers best pricing, local doorstep delivery, and 4000+ color shades."
         url="https://rainbowpaint.in/"
-        schema={[storeSchema, websiteSchema]}
+        schema={[storeSchema, websiteSchema, siteNavigationSchema]}
       />
       <Hero />
       <Suspense fallback={<div className="h-20 w-full bg-royale-bg"></div>}>
-        <ShopByCategory />
-        <ShopByBrand />
-        <BrandsDealIn />
-        <ProductsAndIndustrial />
         <ToolsOverview />
+        <ShopByBrand />
+        <ShopByCategory />
+        <ProductsAndIndustrial />
         <GoogleReviewsSection />
         <BlogSection />
         <IndustryNews />

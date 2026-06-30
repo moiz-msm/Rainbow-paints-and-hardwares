@@ -115,25 +115,12 @@ export default function ProductsPage() {
         type="category"
       />
       
-      {/* Category Header */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px] mb-8">
-        <Breadcrumb 
-          className="text-ivory/60"
-          items={[
-            { label: 'Home', href: '/' },
-            { label: pageTitle }
-          ]}
-        />
-
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-ivory tracking-tight uppercase">
-          {pageTitle}
-        </h1>
-        <p className="text-ivory/60 mt-3 font-light max-w-2xl text-sm sm:text-base leading-relaxed">
-          {pageDescription}
-        </p>
-      </div>
-
-      <ProductsSection initialCategory={initialCategory} initialBrand={initialBrand} />
+      <ProductsSection 
+        initialCategory={initialCategory} 
+        initialBrand={initialBrand}
+        pageTitle={pageTitle}
+        pageDescription={pageDescription}
+      />
     </div>
   );
 }

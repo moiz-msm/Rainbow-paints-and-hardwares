@@ -47,7 +47,7 @@ export default function IndustryNews() {
   }
 
   return (
-    <section className="py-16 sm:py-24 border-t border-gold/10 relative z-10 bg-royale-surface">
+    <section className="py-16 sm:py-24 border-t border-gold/10 relative z-10 bg-gradient-to-b from-royale-surface to-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-3 mb-10">
           <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center">

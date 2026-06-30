@@ -29,6 +29,27 @@ export default function GoogleReviewsSection() {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeftState, setScrollLeftState] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [canScroll, setCanScroll] = useState(false);
+
+  useEffect(() => {
+    const checkScroll = () => {
+      if (scrollContainerRef.current) {
+        setCanScroll(scrollContainerRef.current.scrollWidth > scrollContainerRef.current.clientWidth);
+      }
+    };
+    checkScroll();
+    window.addEventListener('resize', checkScroll);
+    return () => window.removeEventListener('resize', checkScroll);
+  }, [reviews]);
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const { scrollLeft, scrollWidth, clientWidth } = e.currentTarget;
+    if (scrollWidth > clientWidth) {
+      const progress = scrollLeft / (scrollWidth - clientWidth);
+      setScrollProgress(progress);
+    }
+  };
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!scrollContainerRef.current) return;
@@ -134,7 +155,7 @@ export default function GoogleReviewsSection() {
   };
 
   return (
-    <section id="google-reviews" className="py-12 sm:py-20 lg:py-24 border-t border-gold/10 bg-transparent relative overflow-hidden">
+    <section id="google-reviews" className="py-12 sm:py-20 lg:py-24 border-t border-gold/10 bg-gradient-to-b from-royale-accent/30 to-white/60 relative overflow-hidden">
       {/* Hide scrollbar helper styles */}
       <style>{`
         .no-scrollbar::-webkit-scrollbar {
@@ -157,7 +178,7 @@ export default function GoogleReviewsSection() {
             <h2 className="text-xl sm:text-2xl font-serif font-medium mb-3 uppercase tracking-tight leading-tight text-center">
               Google <span className="text-gradient italic">Reviews</span>
             </h2>
-            <p className="text-gold text-[10px] sm:text-xs font-sans font-light text-center">
+            <p className="text-ivory/80 text-[10px] sm:text-xs font-sans font-light text-center">
               Discover why painters, structural engineers, and elite homeowners trust Rainbow Paint and Hardwares for pristine products.
             </p>
           </div>
@@ -211,6 +232,7 @@ export default function GoogleReviewsSection() {
 
               <div 
                 ref={scrollContainerRef}
+                onScroll={handleScroll}
                 onMouseDown={handleMouseDown}
                 onMouseLeave={handleMouseLeave}
                 onMouseUp={handleMouseUp}
@@ -281,6 +303,16 @@ export default function GoogleReviewsSection() {
                   </div>
                 ))}
               </div>
+            </div>
+          )}
+
+          {/* Scroll Indicator */}
+          {canScroll && !isLoadingLive && (
+            <div className="w-24 h-1 bg-zinc-200/60 rounded-full mx-auto mt-6 overflow-hidden relative">
+              <div 
+                className="absolute top-0 left-0 h-full bg-[#1A365D] rounded-full w-1/3 transition-transform duration-100 ease-out"
+                style={{ transform: `translateX(${scrollProgress * 200}%)` }} 
+              />
             </div>
           )}
         </div>

@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useDeferredValue, memo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Copy, RefreshCcw, Search, Heart, Clock, X, ChevronDown, Plus, Minus, Palette, Maximize2, Minimize2, Share2 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { Sparkles, Copy, RefreshCcw, Search, Heart, Clock, X, ChevronDown, Plus, Minus, Palette, Maximize2, Minimize2, Share2, Info, Eye } from 'lucide-react';
+import { useNavigate, Link } from 'react-router-dom';
 
 import { shadeService, Shade } from '../services/shadeService';
 import AIPhotoStudio from './AIPhotoStudio';
@@ -52,6 +52,14 @@ const ShadeCard = memo(({ shade, onSelect, textColor, isFavorite, onToggleFavori
         >
           <Share2 className="w-3 h-3" />
         </button>
+        <Link
+          to={`/color/${shadeService.generateSlug(shade)}`}
+          onClick={(e) => e.stopPropagation()}
+          className="absolute bottom-1.5 right-1.5 z-20 p-1.5 rounded-full bg-black/20 hover:bg-black/45 text-white transition-all transform hover:scale-110 backdrop-blur-xs select-none cursor-pointer opacity-0 group-hover:opacity-100 flex items-center justify-center"
+          title="View Color Details & Buy"
+        >
+          <Info className="w-3.5 h-3.5" />
+        </Link>
     </div>
     <div className="bg-[#faf9f6] p-1.5 sm:p-2.5 text-center flex flex-col justify-center items-center gap-0.5 border-t border-zinc-100 shrink-0">
        <p className="text-[8px] sm:text-[9.5px] md:text-[10px] text-ivory font-bold truncate w-full px-0.5">{shade.name}</p>
@@ -1221,6 +1229,13 @@ export default function VisualizerSection() {
                           <><Copy className="w-2.5 h-2.5 shrink-0 text-gold" /> Copy</>
                         )}
                       </button>
+                      <Link
+                        to={`/color/${shadeService.generateSlug(activeShade)}`}
+                        className="px-2 py-1 rounded-md text-[8.5px] font-display uppercase tracking-wider font-semibold transition-all flex items-center justify-center gap-1 border border-gold bg-gradient-gold text-white hover:opacity-95 shadow-xs w-full text-center"
+                        title="View complete details and purchase options for this color"
+                      >
+                        <Eye className="w-2.5 h-2.5 shrink-0" /> Buy & Details
+                      </Link>
                     </div>
                   )}
                 </div>

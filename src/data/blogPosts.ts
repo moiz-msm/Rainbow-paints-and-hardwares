@@ -14,6 +14,25 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    "id": "glossary-of-finishes",
+    "slug": "understanding-paint-finishes-glossary",
+    "title": "Understanding Paint Finishes: A Complete Glossary",
+    "excerpt": "Confused about matt, sheen, and gloss? Learn the differences between paint finishes and find out which one is best suited for your next project.",
+    "author": "Rainbow Paints Expert",
+    "date": "June 29, 2026",
+    "category": "Buying Guide",
+    "readTime": "4 min read",
+    "image": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=800",
+    "seoKeywords": [
+      "Paint Finishes",
+      "Matt vs Gloss",
+      "Soft Sheen",
+      "High Sheen",
+      "Paint Glossary"
+    ],
+    "content": "## The Ultimate Guide to Paint Finishes\n\nChoosing the right paint finish is just as important as picking the perfect color. The finish (or sheen) determines how much light the paint reflects, which affects both the appearance and the durability of your walls. Here is a complete glossary of finishes to help you make the right choice.\n\n### 1. Matt Finish\nZero reflectivity velvety flat texture. It completely absorbs light without reflection, absorbing glare and conceals all minor wall dents, sheet waves, and plaster marks.\n\n**Best for:** Premium aesthetics & hiding flaws\n\n**Products:** Royale Matt Emulsion, Apcolite Premium Emulsion, Apcolite Advanced Emulsion, Tractor Emulsion, Tractor Sparc Emulsion\n\n### 2. Low Sheen / Soft Sheen\nBeautiful, low intensity pearlescent glow. It reflects just enough light to illuminate a room nicely while offering outstanding wipe washability and water splash defense.\n\n**Best for:** Bedrooms, children rooms & kitchen margins\n\n**Products:** Royale Luxury Emulsion, Royale Health Shield\n\n### 3. High Sheen\nBright, rich reflective gloss. Offers supreme metallic shine that bounce light into darker spaces, providing incredible smooth sliding touch and premium status styling.\n\n**Best for:** Modern living lounges & accent panels\n\n**Products:** Royale Glitz, Royale Shyne Luxury Emulsion, Tractor Emulsion Shyne\n\n### 4. Ultra Sheen / Silk\nHighly luxurious reflective, slick smooth silk sheen. Moisture resistant, ultra-slippery scrub proof coating that withstands humidity, wet scrubbing & steam easily.\n\n**Best for:** Master drawings, modular spaces & ceilings\n\n**Products:** Royale Aspira"
+  },
+  {
     "id": "1",
     "slug": "best-exterior-paints-coimbatore-weather",
     "title": "Best Exterior Paints for Coimbatore Weather: Sun & Monsoons",

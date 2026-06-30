@@ -182,57 +182,57 @@ export default function ColorDetailsPage() {
           {/* Color Display */}
           <div className="space-y-6">
             <div
-              className="w-full aspect-square md:aspect-[4/3] rounded-2xl shadow-2xl relative border border-white/10"
+              className="w-full aspect-square md:aspect-[4/3] rounded-2xl shadow-2xl relative border border-zinc-200/50"
               style={{ backgroundColor: shade.hex }}
             >
               <div className="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent rounded-2xl opacity-50 mix-blend-overlay"></div>
             </div>
 
             <div className="flex gap-4">
-              <div className="flex-1 bg-white/5 border border-white/10 rounded-xl p-4">
-                <p className="text-zinc-400 text-sm mb-1 uppercase tracking-wider">
+              <div className="flex-1 bg-royale-surface border border-royale-accent rounded-xl p-4">
+                <p className="text-ivory/60 text-sm mb-1 uppercase tracking-wider">
                   HEX
                 </p>
-                <p className="font-mono text-lg">{shade.hex}</p>
+                <p className="font-mono text-lg text-ivory">{shade.hex}</p>
               </div>
-              <div className="flex-1 bg-white/5 border border-white/10 rounded-xl p-4">
-                <p className="text-zinc-400 text-sm mb-1 uppercase tracking-wider">
+              <div className="flex-1 bg-royale-surface border border-royale-accent rounded-xl p-4">
+                <p className="text-ivory/60 text-sm mb-1 uppercase tracking-wider">
                   RGB
                 </p>
-                <p className="font-mono text-lg">{shade.rgb}</p>
+                <p className="font-mono text-lg text-ivory">{shade.rgb}</p>
               </div>
             </div>
           </div>
 
           {/* Color Info */}
           <div>
-            <div className="mb-2 inline-flex items-center space-x-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-medium text-gold uppercase tracking-wider">
+            <div className="mb-2 inline-flex items-center space-x-2 px-3 py-1 bg-royale-surface border border-royale-accent rounded-full text-xs font-medium text-gold uppercase tracking-wider">
               <Droplet size={12} className="mr-1" />
               {shade.brand}
             </div>
-            <h1 className="text-4xl md:text-5xl font-display font-medium text-white mb-2 tracking-tight">
+            <h1 className="text-4xl md:text-5xl font-display font-semibold text-ivory mb-2 tracking-tight">
               {shade.name}
             </h1>
-            <p className="text-2xl font-mono text-zinc-400 mb-8">
+            <p className="text-2xl font-mono text-ivory/70 mb-8">
               Code: {shade.shadeCode}
             </p>
 
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 mb-8">
-              <h2 className="text-xl font-serif text-white mb-4 border-b border-white/10 pb-4">
+            <div className="bg-royale-surface border border-royale-accent rounded-2xl p-6 mb-8">
+              <h2 className="text-xl font-serif text-ivory mb-4 border-b border-royale-accent pb-4">
                 Color Details
               </h2>
               <ul className="space-y-4">
                 <li className="flex justify-between items-center">
-                  <span className="text-zinc-400">Brand</span>
-                  <span className="font-medium">{shade.brand}</span>
+                  <span className="text-ivory/60">Brand</span>
+                  <span className="font-semibold text-ivory">{shade.brand}</span>
                 </li>
                 <li className="flex justify-between items-center">
-                  <span className="text-zinc-400">Color Family</span>
-                  <span className="font-medium capitalize">{shade.family}</span>
+                  <span className="text-ivory/60">Color Family</span>
+                  <span className="font-semibold text-ivory capitalize">{shade.family}</span>
                 </li>
                 <li className="flex justify-between items-center">
-                  <span className="text-zinc-400">Recommended Finish</span>
-                  <span className="font-medium">{shade.finish}</span>
+                  <span className="text-ivory/60">Recommended Finish</span>
+                  <span className="font-semibold text-ivory">{shade.finish}</span>
                 </li>
               </ul>
             </div>
@@ -240,25 +240,25 @@ export default function ColorDetailsPage() {
             <div className="space-y-4">
               <Link
                 to="/buy-paint-online"
-                className="w-full flex items-center justify-center space-x-2 bg-gradient-gold hover:opacity-90 text-white px-6 py-4 rounded-xl font-bold uppercase transition"
+                className="w-full flex items-center justify-center space-x-2 bg-gradient-gold hover:opacity-90 text-white px-6 py-4 rounded-xl font-bold uppercase transition shadow-sm"
               >
                 <Store size={20} />
                 <span>Buy Paints In This Shade</span>
               </Link>
               <Link
                 to={`/visualizer?color=${shade.hex.replace("#", "")}`}
-                className="w-full flex items-center justify-center space-x-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white px-6 py-4 rounded-xl font-medium transition"
+                className="w-full flex items-center justify-center space-x-2 bg-royale-surface hover:bg-royale-accent/60 border border-royale-accent text-ivory px-6 py-4 rounded-xl font-semibold transition"
               >
                 <span>View in Visualizer</span>
               </Link>
             </div>
 
-            <div className="mt-8 pt-8 border-t border-white/10">
-              <h3 className="text-lg font-serif mb-4 flex items-center text-zinc-300">
+            <div className="mt-8 pt-8 border-t border-royale-accent">
+              <h3 className="text-lg font-serif mb-4 flex items-center text-ivory">
                 <CheckCircle2 className="text-gold mr-2" size={18} />
                 Available at Rainbow Paints, Coimbatore
               </h3>
-              <p className="text-zinc-400 text-sm leading-relaxed">
+              <p className="text-ivory/70 text-sm leading-relaxed">
                 This exact shade ({shade.shadeCode}) can be tinted on-demand
                 using our fully automated tinting machines. Visit our store at
                 Kattoor, Coimbatore or order online for fast local delivery.
@@ -269,8 +269,8 @@ export default function ColorDetailsPage() {
 
         {/* Similar Shades */}
         {similarShades.length > 0 && (
-          <div className="mt-16 pt-16 border-t border-white/5">
-            <h2 className="text-2xl font-display mb-8">
+          <div className="mt-16 pt-16 border-t border-royale-accent">
+            <h2 className="text-2xl font-display font-medium text-ivory mb-8">
               Similar Shades in {shade.brand}
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -281,13 +281,13 @@ export default function ColorDetailsPage() {
                   className="group"
                 >
                   <div
-                    className="w-full aspect-square rounded-xl shadow-lg border border-white/10 mb-3 transition-transform group-hover:-translate-y-1"
+                    className="w-full aspect-square rounded-xl shadow-md border border-royale-accent mb-3 transition-transform group-hover:-translate-y-1"
                     style={{ backgroundColor: s.hex }}
                   />
-                  <p className="text-sm font-medium text-white group-hover:text-gold transition truncate">
+                  <p className="text-sm font-semibold text-ivory group-hover:text-gold transition truncate">
                     {s.name}
                   </p>
-                  <p className="text-xs font-mono text-zinc-400">
+                  <p className="text-xs font-mono text-ivory/60">
                     {s.shadeCode}
                   </p>
                 </Link>

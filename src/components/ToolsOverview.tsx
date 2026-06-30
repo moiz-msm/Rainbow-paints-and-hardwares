@@ -1,50 +1,91 @@
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Palette, Calculator, ArrowRight } from "lucide-react";
+import { Palette, Calculator, ArrowRight, Sparkles, Scale } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const tools = [
   {
-    title: "Color Visualizer",
-    desc: "See how any shade looks on your walls before you pick up a brush.",
-    icon: Palette,
+    title: "Colour Visualizer",
+    desc: "See colours on your walls before you buy.",
+    icon: Sparkles,
     link: "/visualizer",
-    color: "from-purple-500 to-indigo-600",
-    emoji: "🎨",
-    actionText: "Visualize",
+    actionText: "Try Now",
+    bgClass: "bg-gradient-to-br from-[#DFE5D9] to-[#C2CEB7]",
+    textClass: "text-[#1F2E22]",
+    descClass: "text-[#2D4432]",
+    iconColor: "text-[#4A644D]",
+    emoji: "🛋️",
   },
   {
     title: "Paint Cost Calculator",
-    desc: "Calculate the exact paint quantity and budget for your project.",
+    desc: "Enter your room size and get exact paint quantity & cost.",
     icon: Calculator,
     link: "/calculator",
-    color: "from-blue-500 to-cyan-600",
-    emoji: "🧮",
-    actionText: "Calculate",
+    actionText: "Calculate Now",
+    bgClass: "bg-gradient-to-br from-[#E2EFFF] to-[#C0DCFC]",
+    textClass: "text-[#102A4C]",
+    descClass: "text-[#1C4173]",
+    iconColor: "text-[#2C62AA]",
+    emoji: "📐",
+  },
+  {
+    title: "Compare Paints",
+    desc: "Compare premium interior and exterior emulsion paints side-by-side.",
+    icon: Scale,
+    link: "/compare-paints",
+    actionText: "Compare Now",
+    bgClass: "bg-gradient-to-br from-[#FCEAF1] to-[#F3D1DF]",
+    textClass: "text-[#4A1728]",
+    descClass: "text-[#6B243B]",
+    iconColor: "text-[#9E395A]",
+    emoji: "⚖️",
   },
 ];
 
 export default function ToolsOverview() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [canScroll, setCanScroll] = useState(false);
+
+  useEffect(() => {
+    const checkScroll = () => {
+      if (scrollRef.current) {
+        setCanScroll(scrollRef.current.scrollWidth > scrollRef.current.clientWidth);
+      }
+    };
+    checkScroll();
+    window.addEventListener('resize', checkScroll);
+    return () => window.removeEventListener('resize', checkScroll);
+  }, []);
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const { scrollLeft, scrollWidth, clientWidth } = e.currentTarget;
+    if (scrollWidth > clientWidth) {
+      const progress = scrollLeft / (scrollWidth - clientWidth);
+      setScrollProgress(progress);
+    }
+  };
+
   return (
     <section
       id="tools"
-      className="py-12 sm:py-20 lg:py-24 border-t border-gold/10 relative overflow-hidden bg-transparent"
+      className="py-12 sm:py-20 lg:py-24 border-t border-gold/10 relative overflow-hidden bg-gradient-to-b from-transparent to-royale-surface"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-4 border-b border-zinc-200 pb-4 flex flex-col items-center text-center">
-          <span className="text-[8px] sm:text-[9px] font-display font-medium text-gold/80 uppercase tracking-[0.4em] mb-2 block">
-            Digital Tools
-          </span>
-          <h2 className="text-xl sm:text-2xl font-serif font-medium mb-3 uppercase tracking-tight leading-tight text-center">
-            Smart <span className="text-gradient italic">Resources</span>
+        <div className="mb-8 flex flex-col items-center text-center">
+          <h2 className="text-xl sm:text-2xl font-serif font-medium mb-3 tracking-tight leading-tight text-center text-[#1A365D]">
+            Everything You Need, <span className="text-gradient italic">All in One Place</span>
           </h2>
-          <p className="text-[10px] sm:text-xs text-gold max-w-xl mx-auto font-sans font-light leading-relaxed">
-            Powerful tools designed to simplify your home transformation
-            journey.
+          <p className="text-[10px] sm:text-xs text-[#1A365D]/70 max-w-xl mx-auto font-sans font-light leading-relaxed">
+            Smart tools to help you choose, calculate and order with confidence.
           </p>
         </div>
 
-        <div className="flex md:grid md:grid-cols-2 gap-3 sm:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory px-4 md:px-0 -mx-4 md:mx-0 no-scrollbar pb-2 md:pb-0 max-w-3xl mx-auto">
+        <div 
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="flex md:grid md:grid-cols-3 gap-4 sm:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory px-4 md:px-0 -mx-4 md:mx-0 no-scrollbar pb-2 md:pb-0 max-w-5xl mx-auto"
+        >
           {tools.map((tool, idx) => (
             <motion.div
               key={tool.title}
@@ -52,7 +93,7 @@ export default function ToolsOverview() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="flex-none w-[200px] md:w-auto snap-center"
+              className="flex-none w-[260px] md:w-auto snap-center"
             >
               {tool.link.startsWith("#") ? (
                 <a
@@ -62,77 +103,78 @@ export default function ToolsOverview() {
                     const el = document.querySelector(tool.link);
                     el?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="group relative flex flex-col justify-end min-h-[180px] sm:min-h-[200px] rounded-xl overflow-hidden border border-zinc-200 bg-royale-surface/50 hover-gold-glow"
+                  className={`group relative flex flex-col justify-between min-h-[180px] sm:min-h-[220px] rounded-2xl overflow-hidden border border-white/20 shadow-sm hover:shadow-md transition-all ${tool.bgClass}`}
                 >
-                  <div className="absolute inset-0 flex items-center justify-end pr-4 sm:pr-8 pointer-events-none opacity-20 group-hover:scale-110 transition-transform duration-700">
-                    <span className="text-[100px] sm:text-[120px] blur-[1px] scale-110 saturate-150 drop-shadow-xl">
-                      {tool.emoji}
-                    </span>
-                  </div>
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-r from-royale-bg via-royale-bg/90 to-transparent`}
-                  />
-                  <div className="p-4 sm:p-6 flex flex-col flex-grow relative z-10 w-full h-full">
-                    <div
-                      className={`w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br ${tool.color} flex items-center justify-center mb-3 shadow-md`}
-                    >
-                      <tool.icon className="w-4 h-4 sm:w-5 sm:h-5 text-ivory" />
-                    </div>
-                    <div className="mt-auto">
-                      <h3 className="text-sm sm:text-lg font-medium font-serif mb-1 sm:mb-2 text-ivory tracking-wider uppercase leading-tight">
-                        {tool.title}
-                      </h3>
-                      <p className="text-gold text-[10px] sm:text-xs leading-relaxed mb-4 group-hover:text-gold transition-colors max-w-[70%]">
-                        {tool.desc}
-                      </p>
-                      <div className="flex items-center gap-1 sm:gap-2 text-[8px] sm:text-[10px] font-bold text-gold uppercase tracking-widest group-hover:gap-2 sm:group-hover:gap-3 transition-all">
-                        {tool.actionText}{" "}
-                        <ArrowRight className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-gold" />
+                  <div className="p-5 sm:p-6 flex flex-col h-full relative z-10">
+                    <div className="flex justify-between items-start mb-8">
+                      <div className="max-w-[70%]">
+                        <h3 className={`text-sm sm:text-base font-medium font-serif mb-1 sm:mb-2 uppercase tracking-wider leading-tight ${tool.textClass}`}>
+                          {tool.title}
+                        </h3>
+                        <p className={`text-[10px] sm:text-[11px] leading-relaxed ${tool.descClass}`}>
+                          {tool.desc}
+                        </p>
+                      </div>
+                      <div className="w-10 h-10 bg-white/90 rounded-full flex items-center justify-center shrink-0 shadow-sm">
+                        <tool.icon className={`w-4 h-4 ${tool.iconColor}`} />
                       </div>
                     </div>
+                    
+                    <div className="mt-auto">
+                      <div className={`flex items-center gap-1 sm:gap-2 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest group-hover:gap-2 sm:group-hover:gap-3 transition-all ${tool.textClass}`}>
+                        {tool.actionText} <ArrowRight className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="absolute -bottom-6 -right-6 w-32 h-32 opacity-20 group-hover:opacity-30 group-hover:scale-110 transition-all duration-500 flex items-center justify-center">
+                    <span className="text-8xl drop-shadow-xl saturate-150 blur-[1px]">{tool.emoji}</span>
                   </div>
                 </a>
               ) : (
                 <Link
                   to={tool.link}
-                  className="group relative flex flex-col justify-end min-h-[180px] sm:min-h-[200px] rounded-xl overflow-hidden border border-zinc-200 bg-royale-surface/50 hover-gold-glow"
+                  className={`group relative flex flex-col justify-between min-h-[180px] sm:min-h-[220px] rounded-2xl overflow-hidden border border-white/20 shadow-sm hover:shadow-md transition-all ${tool.bgClass}`}
                 >
-                  {/* Background Emoji with Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-end pr-4 sm:pr-8 pointer-events-none opacity-20 group-hover:scale-110 transition-transform duration-700">
-                    <span className="text-[100px] sm:text-[120px] blur-[1px] scale-110 saturate-150 drop-shadow-xl">
-                      {tool.emoji}
-                    </span>
-                  </div>
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-r from-royale-bg via-royale-bg/90 to-transparent`}
-                  />
-
-                  {/* Content */}
-                  <div className="p-4 sm:p-6 flex flex-col flex-grow relative z-10 w-full h-full">
-                    <div
-                      className={`w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br ${tool.color} flex items-center justify-center mb-3 shadow-md`}
-                    >
-                      <tool.icon className="w-4 h-4 sm:w-5 sm:h-5 text-ivory" />
-                    </div>
-                    <div className="mt-auto">
-                      <h3 className="text-sm sm:text-lg font-medium font-serif mb-1 sm:mb-2 text-ivory tracking-wider uppercase leading-tight">
-                        {tool.title}
-                      </h3>
-                      <p className="text-gold text-[10px] sm:text-xs leading-relaxed mb-4 group-hover:text-gold transition-colors max-w-[70%]">
-                        {tool.desc}
-                      </p>
-
-                      <div className="flex items-center gap-1 sm:gap-2 text-[8px] sm:text-[10px] font-bold text-gold uppercase tracking-widest group-hover:gap-2 sm:group-hover:gap-3 transition-all">
-                        {tool.actionText}{" "}
-                        <ArrowRight className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-gold" />
+                  <div className="p-5 sm:p-6 flex flex-col h-full relative z-10">
+                    <div className="flex justify-between items-start mb-8">
+                      <div className="max-w-[70%]">
+                        <h3 className={`text-sm sm:text-base font-medium font-serif mb-1 sm:mb-2 uppercase tracking-wider leading-tight ${tool.textClass}`}>
+                          {tool.title}
+                        </h3>
+                        <p className={`text-[10px] sm:text-[11px] leading-relaxed ${tool.descClass}`}>
+                          {tool.desc}
+                        </p>
+                      </div>
+                      <div className="w-10 h-10 bg-white/90 rounded-full flex items-center justify-center shrink-0 shadow-sm">
+                        <tool.icon className={`w-4 h-4 ${tool.iconColor}`} />
                       </div>
                     </div>
+                    
+                    <div className="mt-auto">
+                      <div className={`flex items-center gap-1 sm:gap-2 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest group-hover:gap-2 sm:group-hover:gap-3 transition-all ${tool.textClass}`}>
+                        {tool.actionText} <ArrowRight className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="absolute -bottom-6 -right-6 w-32 h-32 opacity-20 group-hover:opacity-30 group-hover:scale-110 transition-all duration-500 flex items-center justify-center">
+                    <span className="text-8xl drop-shadow-xl saturate-150 blur-[1px]">{tool.emoji}</span>
                   </div>
                 </Link>
               )}
             </motion.div>
           ))}
         </div>
+
+        {canScroll && (
+          <div className="w-24 h-1 bg-zinc-200/60 rounded-full mx-auto mt-6 overflow-hidden relative md:hidden">
+            <div 
+              className="absolute top-0 left-0 h-full bg-[#1A365D] rounded-full w-1/3 transition-transform duration-100 ease-out"
+              style={{ transform: `translateX(${scrollProgress * 200}%)` }} 
+            />
+          </div>
+        )}
       </div>
     </section>
   );

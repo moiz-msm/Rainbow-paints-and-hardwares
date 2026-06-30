@@ -79,7 +79,7 @@ export default function FaqSection({
   const displayFaqs = limit ? faqs.slice(0, limit) : faqs;
 
   return (
-    <section id="faqs" className="py-12 sm:py-20 lg:py-24 border-t border-gold/10 relative overflow-hidden">
+    <section id="faqs" className="py-12 sm:py-20 lg:py-24 border-t border-gold/10 relative overflow-hidden bg-gradient-to-b from-transparent to-royale-surface">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[500px] bg-blue-600/5 blur-[40px] rounded-full pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

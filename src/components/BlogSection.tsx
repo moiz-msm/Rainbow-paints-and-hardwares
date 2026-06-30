@@ -8,7 +8,7 @@ export default function BlogSection() {
   const recentPosts = blogPosts.slice(0, 3);
   
   return (
-    <section id="blog" className="py-12 sm:py-20 lg:py-24 border-t border-gold/10 relative overflow-hidden bg-transparent">
+    <section id="blog" className="py-12 sm:py-20 lg:py-24 border-t border-gold/10 relative overflow-hidden bg-gradient-to-b from-white/60 to-royale-surface">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center text-center gap-4 mb-6">
           <div className="max-w-xl">

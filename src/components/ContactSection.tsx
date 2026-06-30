@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="py-12 sm:py-20 lg:py-24 border-t border-gold/10 relative bg-transparent">
+    <section id="contact" className="py-12 sm:py-20 lg:py-24 border-t border-gold/10 relative bg-gradient-to-b from-royale-surface to-transparent">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
           

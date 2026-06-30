@@ -118,8 +118,9 @@ export default function Footer() {
             <ul className="space-y-3">
               <li><Link to="/about" className="text-sm font-light text-ivory/70 hover:text-gold transition-colors flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-gold/30"></span>About Us</Link></li>
               <li><Link to="/buy-paint-online" className="text-sm font-light text-ivory/70 hover:text-gold transition-colors flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-gold/30"></span>Products</Link></li>
-              <li><Link to="/visualizer" className="text-sm font-light text-ivory/70 hover:text-gold transition-colors flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-gold/30"></span>Visualizer</Link></li>
+              <li><Link to="/visualizer" className="text-sm font-light text-ivory/70 hover:text-gold transition-colors flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-gold/30"></span>Colors & Visualizer</Link></li>
               <li><Link to="/calculator" className="text-sm font-light text-ivory/70 hover:text-gold transition-colors flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-gold/30"></span>Estimator</Link></li>
+              <li><Link to="/compare-paints" className="text-sm font-light text-ivory/70 hover:text-gold transition-colors flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-gold/30"></span>Compare Paints</Link></li>
               <li><Link to="/blog" className="text-sm font-light text-ivory/70 hover:text-gold transition-colors flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-gold/30"></span>Blog & Guides</Link></li>
               <li><Link to="/faqs" className="text-sm font-light text-ivory/70 hover:text-gold transition-colors flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-gold/30"></span>FAQs</Link></li>
             </ul>

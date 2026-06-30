@@ -45,6 +45,7 @@ const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
 const AccountSettingsPage = lazy(() => import('./pages/AccountSettingsPage'));
 const LocationSEOPage = lazy(() => import('./pages/LocationSEOPage'));
 const TrackOrderPage = lazy(() => import('./pages/TrackOrderPage'));
+const ComparePaintsPage = lazy(() => import('./pages/ComparePaintsPage'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
@@ -82,6 +83,7 @@ function AnimatedRoutes() {
         {/* Tools */}
         <Route path="/visualizer" element={<VisualizerPage />} />
         <Route path="/calculator" element={<CalculatorPage />} />
+        <Route path="/compare-paints" element={<ComparePaintsPage />} />
         <Route path="/track-order" element={<TrackOrderPage />} />
         
         {/* Blog */}

@@ -1,19 +1,64 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, Home, Sun, Droplets, TreePine, Shield, Paintbrush } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const categories = [
-  { name: 'Interior Wall', slug: 'interior-wall', icon: Home },
-  { name: 'Exterior Wall', slug: 'exterior-wall', icon: Sun },
-  { name: 'Waterproofing', slug: 'waterproofing', icon: Droplets },
-  { name: 'Wood Finishes', slug: 'wood-finishes', icon: TreePine },
-  { name: 'Metals & Grills', slug: 'metals-and-grills', icon: Shield },
-  { name: 'Primer', slug: 'primer', icon: Paintbrush }
+  { 
+    name: 'Interior Paints', 
+    slug: 'interior-wall', 
+    image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&q=80' 
+  },
+  { 
+    name: 'Exterior Paints', 
+    slug: 'exterior-wall', 
+    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500&q=80' 
+  },
+  { 
+    name: 'Primers', 
+    slug: 'primer', 
+    image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=500&q=80' 
+  },
+  { 
+    name: 'Waterproofing', 
+    slug: 'waterproofing', 
+    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500&q=80' 
+  },
+  { 
+    name: 'Wood Finishes', 
+    slug: 'wood-finishes', 
+    image: 'https://images.unsplash.com/photo-1517705008128-361805f42e86?w=500&q=80' 
+  },
+  { 
+    name: 'Painting Tools', 
+    slug: 'tools', 
+    image: 'https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?w=500&q=80' 
+  }
 ];
 
 export default function ShopByCategory() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [canScroll, setCanScroll] = useState(false);
+
+  React.useEffect(() => {
+    const checkScroll = () => {
+      if (scrollRef.current) {
+        setCanScroll(scrollRef.current.scrollWidth > scrollRef.current.clientWidth);
+      }
+    };
+    checkScroll();
+    window.addEventListener('resize', checkScroll);
+    return () => window.removeEventListener('resize', checkScroll);
+  }, []);
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const { scrollLeft, scrollWidth, clientWidth } = e.currentTarget;
+    if (scrollWidth > clientWidth) {
+      const progress = scrollLeft / (scrollWidth - clientWidth);
+      setScrollProgress(progress);
+    }
+  };
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -24,24 +69,24 @@ export default function ShopByCategory() {
   };
 
   return (
-    <section className="py-12 sm:py-20 lg:py-24 border-t border-gold/10 overflow-hidden bg-transparent">
+    <section className="py-8 sm:py-12 border-t border-gold/10 overflow-hidden bg-gradient-to-b from-white/60 to-royale-surface">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
       >
-        <header className="mb-4 flex flex-col items-center text-center">
-          <h2 className="text-xl sm:text-2xl font-serif font-medium mb-3 uppercase tracking-tight leading-tight text-center">
-            Shop by <span className="text-gradient italic">Category</span>
+        <div className="mb-8 flex flex-col items-center text-center">
+          <h2 className="text-xl sm:text-2xl font-serif font-medium mb-3 tracking-tight leading-tight text-center text-[#1A365D]">
+            Shop By <span className="text-gradient italic">Category</span>
           </h2>
-        </header>
+        </div>
         
         <div className="relative mt-2 flex items-center group">
           <button 
             onClick={() => scroll('left')}
-            className="absolute -left-2 sm:-left-4 z-10 w-8 h-8 rounded-full bg-white/[0.02] border border-zinc-200 text-ivory flex items-center justify-center hover:bg-white/[0.05] hover:border-gold/50 hover:text-gold transition-all opacity-0 group-hover:opacity-100 shadow-sm"
+            className="absolute -left-2 sm:-left-4 z-10 w-8 h-8 rounded-full bg-white border border-zinc-200 text-ivory flex items-center justify-center hover:bg-zinc-50 hover:border-gold/50 hover:text-gold transition-all opacity-0 group-hover:opacity-100 shadow-sm"
             aria-label="Scroll left"
           >
             <ChevronLeft size={16} />
@@ -49,7 +94,8 @@ export default function ShopByCategory() {
           
           <div 
             ref={scrollRef}
-            className="flex overflow-x-auto gap-4 sm:gap-6 px-2 py-4 scroll-smooth w-full"
+            onScroll={handleScroll}
+            className="flex overflow-x-auto gap-4 sm:gap-6 lg:gap-8 px-2 py-4 scroll-smooth w-full"
             style={{ msOverflowStyle: 'none', scrollbarWidth: 'none' }}
           >
             <style>{`
@@ -61,12 +107,16 @@ export default function ShopByCategory() {
               <Link 
                 key={category.slug} 
                 to={`/c/${category.slug}`}
-                className="flex-shrink-0 flex items-center justify-center gap-3 p-4 sm:p-5 rounded-xl border border-zinc-200 bg-white/[0.02] hover:border-gold/50 hover:bg-white/[0.05] transition-all duration-300 shadow-sm group hover-gold-glow min-w-[160px]"
+                className="flex-shrink-0 flex flex-col items-center gap-3 w-[100px] sm:w-[120px] lg:w-[140px] group/cat"
               >
-                <span className="text-gold group-hover:scale-110 transition-transform duration-300">
-                  <category.icon className="w-6 h-6 sm:w-7 sm:h-7" strokeWidth={1.5} />
-                </span>
-                <span className="text-gold font-serif font-medium text-xs sm:text-sm whitespace-nowrap uppercase tracking-wider transition-colors duration-300 block mt-0.5">
+                <div className="w-full aspect-square rounded-2xl overflow-hidden shadow-sm border border-ivory/10 group-hover/cat:shadow-md group-hover/cat:border-gold/30 transition-all duration-300">
+                  <img 
+                    src={category.image} 
+                    alt={category.name} 
+                    className="w-full h-full object-cover group-hover/cat:scale-110 transition-transform duration-700 ease-out"
+                  />
+                </div>
+                <span className="text-ivory font-serif font-medium text-[11px] sm:text-xs lg:text-sm text-center leading-tight">
                   {category.name}
                 </span>
               </Link>
@@ -75,12 +125,22 @@ export default function ShopByCategory() {
 
           <button 
             onClick={() => scroll('right')}
-            className="absolute -right-2 sm:-right-4 z-10 w-8 h-8 rounded-full bg-white/[0.02] border border-zinc-200 text-ivory flex items-center justify-center hover:bg-white/[0.05] hover:border-gold/50 hover:text-gold transition-all opacity-0 group-hover:opacity-100 shadow-sm"
+            className="absolute -right-2 sm:-right-4 z-10 w-8 h-8 rounded-full bg-white border border-zinc-200 text-ivory flex items-center justify-center hover:bg-zinc-50 hover:border-gold/50 hover:text-gold transition-all opacity-0 group-hover:opacity-100 shadow-sm"
             aria-label="Scroll right"
           >
             <ChevronRight size={16} />
           </button>
         </div>
+
+        {/* Scroll Indicator */}
+        {canScroll && (
+          <div className="w-24 h-1 bg-zinc-200/60 rounded-full mx-auto mt-6 overflow-hidden relative">
+            <div 
+              className="absolute top-0 left-0 h-full bg-[#1A365D] rounded-full w-1/3 transition-transform duration-100 ease-out"
+              style={{ transform: `translateX(${scrollProgress * 200}%)` }} 
+            />
+          </div>
+        )}
       </motion.div>
     </section>
   );

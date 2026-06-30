@@ -300,6 +300,12 @@ export default function ProductDetailPage() {
     };
   }, [product]);
 
+  const metaDesc = useMemo(() => {
+    let base = productDetails?.desc1 || `Buy ${product?.name} online at wholesale prices.`;
+    if (base.length > 80) base = base.substring(0, 80) + '...';
+    return `${base} Authorized ${product?.brand} dealer in Coimbatore offering fast local delivery for ${product?.category}.`;
+  }, [productDetails, product]);
+
   if (loading) {
     return (
       <div className="pt-24 pb-12 bg-royale-bg min-h-[80vh] flex items-center justify-center">
@@ -397,12 +403,6 @@ export default function ProductDetailPage() {
       </div>
     </div>
   );
-
-  const metaDesc = useMemo(() => {
-    let base = productDetails?.desc1 || `Buy ${product.name} online at wholesale prices.`;
-    if (base.length > 80) base = base.substring(0, 80) + '...';
-    return `${base} Authorized ${product.brand} dealer in Coimbatore offering fast local delivery for ${product.category}.`;
-  }, [productDetails, product]);
 
   return (
     <article className="pt-[72px] sm:pt-24 pb-12 bg-royale-bg min-h-screen text-ivory/90 relative overflow-x-hidden selection:bg-gold/30">
