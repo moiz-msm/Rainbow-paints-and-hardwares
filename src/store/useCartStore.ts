@@ -106,10 +106,17 @@ export const useCartStore = create<CartStore>()(
   )
 );
 
-let currentSessionId = typeof window !== 'undefined' ? localStorage.getItem('cart_session_id') : null;
-if (typeof window !== 'undefined' && !currentSessionId) {
-  currentSessionId = Math.random().toString(36).substring(2, 15);
-  localStorage.setItem('cart_session_id', currentSessionId);
+let currentSessionId = null;
+if (typeof window !== 'undefined') {
+  try {
+    currentSessionId = localStorage.getItem('cart_session_id');
+    if (!currentSessionId) {
+      currentSessionId = Math.random().toString(36).substring(2, 15);
+      localStorage.setItem('cart_session_id', currentSessionId);
+    }
+  } catch (e) {
+    console.warn('localStorage is restricted', e);
+  }
 }
 
 useCartStore.subscribe((state, prevState) => {
