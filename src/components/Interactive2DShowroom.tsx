@@ -135,11 +135,11 @@ export default function Interactive2DShowroom({
         </defs>
       </svg>
 
-      <div className="w-full relative aspect-[600/380] overflow-hidden bg-zinc-50 border-b border-zinc-100">
+      <div className="w-full relative flex items-center justify-center overflow-hidden bg-zinc-50 border-b border-zinc-100">
         {/* main interactive SVG canvas */}
         <svg 
           viewBox="0 0 600 380" 
-          className="w-full h-full transition-all duration-300"
+          className="w-full max-h-[35vh] sm:max-h-[45vh] lg:max-h-[50vh] transition-all duration-300"
           style={{ cursor: 'pointer' }}
         >
           {!isExterior ? (

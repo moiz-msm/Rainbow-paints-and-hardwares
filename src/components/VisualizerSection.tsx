@@ -1137,7 +1137,7 @@ export default function VisualizerSection() {
                     </div>
 
                     {/* SVG 2D Interactive Room Showroom */}
-                    <div id="interactive-2d-showroom" className="lg:sticky lg:top-[142px] sticky top-[102px] sm:top-[126px] z-30 flex flex-col w-[calc(100%+2rem)] -mx-4 sm:mx-0 sm:w-full glass-panel p-0 rounded-none sm:rounded-2xl border-x-0 sm:border-x border-y sm:border-y border-zinc-200 bg-[#faf9f6]/95 backdrop-blur-xl shadow-lg">
+                    <div id="interactive-2d-showroom-wrapper" className="lg:sticky lg:top-[142px] sticky top-[102px] sm:top-[126px] z-30 flex flex-col w-[calc(100%+2rem)] -mx-4 sm:mx-0 sm:w-full glass-panel p-0 rounded-none sm:rounded-2xl border-x-0 sm:border-x border-y sm:border-y border-zinc-200 bg-[#faf9f6]/95 backdrop-blur-xl shadow-lg">
                       <Interactive2DShowroom
                         activeRoom={activeRoom}
                         colors={currentRoomColors}

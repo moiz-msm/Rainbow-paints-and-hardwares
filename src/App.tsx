@@ -123,7 +123,7 @@ export default function App() {
         <ScrollToTop />
         <div className="min-h-screen bg-royale-bg text-ivory selection:bg-gold/50 selection:text-white flex flex-col">
           <Header />
-          <main className="flex-grow pt-[38px] sm:pt-[44px]">
+          <main className="flex-grow pt-[38px]">
             <AnimatedRoutes />
           </main>
           <Footer />

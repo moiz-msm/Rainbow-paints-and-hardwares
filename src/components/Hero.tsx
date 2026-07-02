@@ -6,11 +6,11 @@ import { brandDetails } from '../data';
 
 export default function Hero() {
   return (
-    <section className="relative w-full min-h-[calc(100vh-102px)] sm:min-h-[calc(100vh-132px)] lg:min-h-[calc(100vh-148px)] md:max-h-[820px] lg:max-h-[820px] xl:max-h-[920px] flex flex-col justify-center mt-[64px] sm:mt-[88px] lg:mt-[104px] pb-6 sm:pb-8 md:pb-6 overflow-hidden">
+    <section className="relative w-full min-h-[calc(100vh-102px)] sm:min-h-[calc(100vh-126px)] lg:min-h-[calc(100vh-142px)] md:max-h-[820px] lg:max-h-[820px] xl:max-h-[920px] flex flex-col justify-center mt-[64px] sm:mt-[88px] lg:mt-[104px] pb-6 sm:pb-8 md:pb-6 overflow-hidden">
       {/* Full-Screen Background Image */}
       <div className="absolute inset-0 w-full h-full z-0 overflow-hidden select-none pointer-events-none">
         <img 
-          src="/file_000000005e50720b94b0455c9713cca4.png" 
+          src="/file_000000005e50720b94b0455c9713cca4.webp" 
           alt="Premium Paint Shop Background" 
           className="w-full h-full object-cover object-center"
           referrerPolicy="no-referrer"
@@ -62,7 +62,7 @@ export default function Hero() {
                 className="bg-transparent border border-ivory/20 text-ivory px-4 py-2.5 sm:px-8 sm:py-3 md:px-5 md:py-2.5 xl:px-8 xl:py-4 rounded-full text-[10px] sm:text-xs md:text-[10px] xl:text-xs font-display font-bold flex items-center gap-2 sm:gap-3 transition-all duration-300 hover:bg-ivory/5 hover:border-ivory/40 hover:scale-105 active:scale-95 tracking-[0.15em] uppercase group"
               >
                 Visualize Colours 
-                <Sparkles className="w-3.5 h-3.5 lg:w-4 lg:h-4 group-hover:animate-pulse text-gold" />
+                <Sparkles className="w-3.5 h-3.5 lg:w-4 lg:h-4 group-hover:animate-pulse text-current" />
               </Link>
             </div>
 
