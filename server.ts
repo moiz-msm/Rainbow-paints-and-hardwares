@@ -3,6 +3,7 @@ import path from "path";
 import * as fs from "fs";
 import { GoogleGenAI } from "@google/genai";
 import { Resend } from "resend";
+import { mockProducts, brands, topCategories, subCategories } from "./src/data";
 
 const CACHE_FILE = path.join(process.cwd(), '.ai-cache.json');
 let aiCache: Record<string, any> = {};
@@ -967,7 +968,7 @@ Return exactly a valid JSON object with {"name": "string", "pincode": "string"}.
   // Static sitemap is now served from public/sitemap.xml
   
   async function startDevServer() {
-  const PORT = process.env.PORT || 3000;
+  const PORT = 3000;
   
   // Vite middleware for development
   if (process.env.NODE_ENV !== "production") {

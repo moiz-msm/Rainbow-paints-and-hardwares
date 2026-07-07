@@ -1,126 +1,268 @@
-import React, { useRef, useEffect } from 'react';
-import { motion, animate, useInView } from 'framer-motion';
-import { ArrowRight, PackageOpen, Truck, Tags, Shield, Sparkles } from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Store, Award, MessageCircle, ShieldCheck, ArrowRight, PackageOpen, Truck, Tags, Shield, Sparkles, Mouse, ShoppingBag, Palette, Package, Tag, ShoppingCart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { brandDetails } from '../data';
 
 export default function Hero() {
+
+  const heroBrands = [
+    "Asian Paints",
+    "Berger Paints",
+    "Birla White",
+    "MRF Vapocure",
+    "Dr. Fixit",
+    "Just Spray"
+  ].map(name => brandDetails.find(b => b.name === name)).filter(Boolean);
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  // Track scroll within the 200vh container
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
+  // Calculate the height of the painted area (0% to 100%)
+  const paintHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  // Calculate the top position for the roller (100% to 0%)
+  const paintTop = useTransform(scrollYProgress, [0, 1], ["100%", "0%"]);
+
   return (
-    <section className="relative w-full min-h-[calc(100vh-102px)] sm:min-h-[calc(100vh-126px)] lg:min-h-[calc(100vh-142px)] md:max-h-[820px] lg:max-h-[820px] xl:max-h-[920px] flex flex-col justify-center mt-[64px] sm:mt-[88px] lg:mt-[104px] pb-6 sm:pb-8 md:pb-6 overflow-hidden">
-      {/* Full-Screen Background Image */}
-      <div className="absolute inset-0 w-full h-full z-0 overflow-hidden select-none pointer-events-none">
-        <img 
-          src="/file_000000005e50720b94b0455c9713cca4.webp" 
-          alt="Premium Paint Shop Background" 
-          className="w-full h-full object-cover object-center"
-          referrerPolicy="no-referrer"
-        />
-      </div>
-
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full flex flex-col gap-6 sm:gap-8 md:gap-4 xl:gap-8 flex-1 justify-center">
+    <section ref={containerRef} className="relative w-full h-[200vh] bg-royale-bg">
+      {/* Sticky container that stays in view while scrolling */}
+      <div className="sticky top-0 h-[100vh] min-h-[600px] w-full overflow-hidden flex flex-col justify-center">
         
-        {/* Top Section: Full Width Hero Content */}
-        <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-8 md:gap-6 xl:gap-10 relative w-full md:min-h-0 md:flex-1">
-          
-          {/* Left Content Area */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-full md:w-[70%] lg:w-[60%] flex flex-col gap-4 sm:gap-5 md:gap-3 xl:gap-5 items-start text-left z-20 relative pt-2 md:pt-0"
-          >
-            {/* Trust Badge */}
-            <div className="inline-flex items-center gap-2 px-3 lg:px-4 py-1 md:py-1.5 bg-gradient-to-r from-gold/15 to-transparent rounded-full border border-gold/30">
-              <Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gold" strokeWidth={2} />
-              <span className="text-[9px] sm:text-[10px] font-display font-bold text-gold tracking-[0.2em] uppercase">
-                Est. 2001 • 20+ Years of Trust
-              </span>
-            </div>
+        {/* ================= SCREEN 1 (Background - Shop Paint Online) ================= */}
+        <div className="absolute inset-0 w-full h-full flex flex-col justify-center items-center px-4 sm:px-8 pb-12 pt-[80px]">
+          <div className="absolute inset-0 w-full h-full">
+            <img src="/IMG_20260630_162408.png" alt="Hero Background" className="absolute inset-0 w-full h-full object-cover object-[center_right] opacity-15" />
+            <div className="absolute inset-0 bg-gradient-to-r from-royale-bg via-royale-bg/80 to-transparent" />
+          </div>
+           
+           <div className="max-w-[1400px] w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center z-10 h-full max-h-[800px]">
+              {/* Left Text */}
+              <div className="flex flex-col items-center lg:items-start text-center lg:text-left mt-8 lg:mt-0">
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="inline-flex items-center gap-2 px-4 py-1.5 bg-gold/10 rounded-full border border-gold/30 mb-6 lg:mb-8"
+                  >
+                    <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-gold" />
+                    <span className="text-[10px] sm:text-xs font-sans font-bold text-gold tracking-[0.2em] uppercase">
+                      EST.2001 • 20+ years of trust
+                    </span>
+                  </motion.div>
 
-            {/* Main Headline */}
-            <h1 className="text-[2.25rem] leading-[1.15] sm:text-5xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-[4.25rem] md:leading-[1.1] font-serif font-medium text-ivory tracking-tight">
-              Skip the trip <br className="hidden md:block" />
-              <span className="italic font-light text-gold">we deliver.</span>
-            </h1>
+                  <motion.h1 
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.1 }}
+                    className="text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] xl:text-[6rem] font-serif font-bold text-ivory leading-[1.1] tracking-tight"
+                  >
+                    Skip the trip. <br/>
+                    <span className="italic font-light text-gold">We deliver.</span>
+                  </motion.h1>
 
-            {/* Subtitle */}
-            <p className="text-[11px] sm:text-sm md:text-xs xl:text-sm 2xl:text-base text-ivory/80 font-sans max-w-md leading-relaxed pr-4 mt-0 md:mt-1 xl:mt-2">
-              Buy paints and related products online from top brands for homes, industries and waterproofing solutions from authorised dealers
-            </p>
+                  <motion.p 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="mt-6 text-xs sm:text-sm md:text-base text-ivory/70 font-sans max-w-lg leading-relaxed px-4 lg:px-0"
+                  >
+                    Buy paints and related products online from top brands for homes, industries and waterproofing solutions.
+                  </motion.p>
 
-            {/* Buttons */}
-            <div className="flex flex-wrap items-center gap-2 sm:gap-3 md:gap-2 xl:gap-4 mt-0 sm:mt-1 md:mt-2 w-full">
-              <Link 
-                to="/buy-paint-online" 
-                className="bg-ivory text-white px-4 py-2.5 sm:px-8 sm:py-3 md:px-5 md:py-2.5 xl:px-8 xl:py-4 rounded-full text-[10px] sm:text-xs md:text-[10px] xl:text-xs font-display font-bold flex items-center gap-2 sm:gap-3 transition-all duration-300 hover:bg-ivory/90 hover:scale-105 active:scale-95 shadow-[0_8px_20px_-6px_rgba(26,54,93,0.3)] tracking-[0.15em] uppercase group"
-              >
-                Shop Paints 
-                <ArrowRight className="w-3.5 h-3.5 lg:w-4 lg:h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link 
-                to="/visualizer" 
-                className="bg-transparent border border-ivory/20 text-ivory px-4 py-2.5 sm:px-8 sm:py-3 md:px-5 md:py-2.5 xl:px-8 xl:py-4 rounded-full text-[10px] sm:text-xs md:text-[10px] xl:text-xs font-display font-bold flex items-center gap-2 sm:gap-3 transition-all duration-300 hover:bg-ivory/5 hover:border-ivory/40 hover:scale-105 active:scale-95 tracking-[0.15em] uppercase group"
-              >
-                Visualize Colours 
-                <Sparkles className="w-3.5 h-3.5 lg:w-4 lg:h-4 group-hover:animate-pulse text-current" />
-              </Link>
-            </div>
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                    className="mt-6 sm:mt-10 flex flex-row flex-nowrap items-center justify-center lg:justify-start gap-2 sm:gap-4 w-full"
+                  >
+                    <Link to="/buy-paint-online" className="bg-[#C6A87C] text-white px-2 py-3 sm:px-8 sm:py-4 rounded-full text-[9px] sm:text-xs font-sans font-bold uppercase tracking-wider flex items-center justify-center whitespace-nowrap gap-1.5 sm:gap-3 hover:bg-[#b09265] transition-all duration-300 shadow-lg flex-1 min-w-0">
+                      <ShoppingCart className="w-3.5 h-3.5 sm:w-5 sm:h-5 shrink-0" /> <span className="truncate">Shop Paint</span>
+                    </Link>
+                    <Link to="/visualizer" className="bg-white text-[#C6A87C] px-2 py-3 sm:px-8 sm:py-4 rounded-full text-[9px] sm:text-xs font-sans font-bold uppercase tracking-wider flex items-center justify-center whitespace-nowrap gap-1.5 sm:gap-3 transition-colors duration-300 shadow-lg flex-1 min-w-0" style={{backgroundColor: 'white', color: '#C6A87C'}}>
+                      <Palette className="w-3.5 h-3.5 sm:w-5 sm:h-5 shrink-0" /> <span className="truncate">Visualise Colours</span>
+                    </Link>
+                  </motion.div>
 
-            {/* Trusted Brands */}
-            <div className="mt-1 md:mt-4 xl:mt-6 w-full border-t border-ivory/15 pt-2 md:pt-3 xl:pt-6">
-              <p className="text-[9px] sm:text-[11px] font-display font-medium text-ivory/60 uppercase tracking-widest mb-1 md:mb-2 xl:mb-4">
-                Authorised dealers for
-              </p>
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4 md:gap-4 xl:gap-8">
-                {brandDetails.slice(0, 5).map((brand, idx) => (
-                  <div key={idx} className="h-5 sm:h-6 md:h-6 xl:h-8 flex items-center justify-center grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-500 cursor-help" title={brand.name}>
-                    {brand.logo ? (
-                      <img src={brand.logo} alt={brand.name} className="h-full w-auto object-contain max-w-[60px] sm:max-w-[70px] md:max-w-[60px] xl:max-w-[80px]" />
-                    ) : (
-                      <span className="font-serif text-xs sm:text-sm md:text-xs xl:text-sm font-bold text-ivory">{brand.name}</span>
-                    )}
-                  </div>
-                ))}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.35 }}
+                    className="mt-10 sm:mt-12 grid grid-cols-4 gap-2 sm:gap-4 lg:flex lg:flex-row lg:flex-nowrap lg:items-start lg:justify-start lg:gap-10 w-full max-w-full"
+                  >
+                    <div className="flex flex-col items-center text-center">
+                      <Package className="w-5 h-5 sm:w-6 sm:h-6 text-[#C6A87C] mb-2 sm:mb-3" strokeWidth={1.5} />
+                      <span className="text-[#C6A87C] text-[9px] sm:text-[11px] font-sans font-bold uppercase tracking-widest leading-tight">200+<br/>Products</span>
+                    </div>
+                    
+                    <div className="flex flex-col items-center text-center">
+                      <Palette className="w-5 h-5 sm:w-6 sm:h-6 text-[#C6A87C] mb-2 sm:mb-3" strokeWidth={1.5} />
+                      <span className="text-[#C6A87C] text-[9px] sm:text-[11px] font-sans font-bold uppercase tracking-widest leading-tight">5000+<br/>Shades</span>
+                    </div>
+                    
+                    <div className="flex flex-col items-center text-center">
+                      <Truck className="w-5 h-5 sm:w-6 sm:h-6 text-[#C6A87C] mb-2 sm:mb-3" strokeWidth={1.5} />
+                      <span className="text-[#C6A87C] text-[9px] sm:text-[11px] font-sans font-bold uppercase tracking-widest leading-tight">Pan India<br/>Delivery</span>
+                    </div>
+                    
+                    <div className="flex flex-col items-center text-center">
+                      <Tag className="w-5 h-5 sm:w-6 sm:h-6 text-[#C6A87C] mb-2 sm:mb-3" strokeWidth={1.5} />
+                      <span className="text-[#C6A87C] text-[9px] sm:text-[11px] font-sans font-bold uppercase tracking-widest leading-tight">Best<br/>Pricing</span>
+                    </div>
+                  </motion.div>
+
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                    className="mt-10 lg:mt-12 w-full pt-6 border-t border-ivory/10 flex flex-col items-center lg:items-start"
+                  >
+                    <p className="text-[9px] sm:text-[10px] font-sans font-bold text-ivory/60 uppercase tracking-[0.15em] mb-4">
+                      Authorised dealers for
+                    </p>
+                    <div className="w-full max-w-[300px] sm:max-w-[400px] lg:max-w-lg overflow-hidden relative [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+                      <motion.div 
+                        animate={{ x: ["0%", "-50%"] }}
+                        transition={{ repeat: Infinity, ease: "linear", duration: 20 }}
+                        className="flex items-center w-max gap-8 sm:gap-12 pr-8 sm:pr-12"
+                      >
+                        {[...heroBrands, ...heroBrands].map((brand, idx) => brand && (
+                          <div key={idx} className="h-6 sm:h-8 flex-shrink-0 flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300">
+                             <img src={brand.logo} alt={brand.name} className="max-h-full w-auto object-contain" />
+                          </div>
+                        ))}
+                      </motion.div>
+                    </div>
+                  </motion.div>
+
               </div>
-            </div>
-          </motion.div>
+
+              
+           </div>
+           
+           {/* Scroll Down Indicator */}
+           <motion.div 
+             initial={{ opacity: 0 }}
+             animate={{ opacity: 1 }}
+             transition={{ delay: 1, duration: 1 }}
+             className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60"
+           >
+             <Mouse className="w-5 h-5 sm:w-6 sm:h-6 text-ivory animate-bounce" />
+             <span className="text-[9px] sm:text-[10px] font-sans font-bold text-ivory uppercase tracking-[0.2em]">Scroll</span>
+           </motion.div>
         </div>
 
-        {/* Bottom Bar: Value Propositions */}
+        {/* ================= SCREEN 2 (Painted Foreground - Portfolio/Trust) ================= */}
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="relative z-30 mt-2 lg:mt-0 xl:mt-4 bg-white/85 backdrop-blur-xl border border-ivory/10 rounded-2xl sm:rounded-full p-3 sm:p-4 lg:p-3 xl:p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] w-full"
+          style={{ height: paintHeight }}
+          className="absolute bottom-0 left-0 w-full overflow-hidden bg-ivory shadow-[0_-20px_50px_rgba(0,0,0,0.5)] z-20"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-2 lg:gap-0 md:divide-x divide-ivory/10">
-            {[
-              { icon: Truck, title: "Free Delivery", desc: "On orders above ₹4999 within 10 km" },
-              { icon: Tags, title: "Best Prices", desc: "Direct from authorised dealers. No middlemen." },
-              { icon: PackageOpen, title: "Expert Consultation", desc: "Get professional advice for your perfect finish." },
-              { icon: Shield, title: "100% Authentic", desc: "Original products from trusted brands." }
-            ].map((feature, idx) => {
-              const Icon = feature.icon;
-              return (
-                <div key={idx} className="flex items-start md:items-center lg:items-start gap-2 sm:gap-3 lg:gap-2 xl:gap-4 px-2 md:px-3 lg:px-4 xl:px-6 group">
-                  <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-full border border-gold/20 flex flex-shrink-0 items-center justify-center bg-gold/5 group-hover:bg-gold/10 group-hover:scale-110 transition-all duration-300">
-                    <Icon className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-gold" strokeWidth={1.5} />
-                  </div>
-                  <div className="flex flex-col pt-0.5 md:pt-0 lg:pt-0.5">
-                    <h4 className="text-[9px] sm:text-[12px] md:text-[9px] lg:text-[10px] xl:text-[13px] font-display font-bold text-ivory uppercase tracking-widest leading-tight">
-                      {feature.title}
-                    </h4>
-                    <p className="text-[8px] sm:text-[11px] md:text-[8px] lg:text-[9px] xl:text-[11px] text-ivory/60 font-sans mt-0.5 lg:mt-1 leading-snug md:pr-1 lg:pr-2">
-                      {feature.desc}
-                    </p>
-                  </div>
+          {/* Inner content must be full height so it doesn't get squished */}
+          <div className="absolute bottom-0 left-0 h-[100vh] min-h-[600px] w-full flex flex-col justify-center items-center px-4 sm:px-8 bg-ivory pb-12 pt-[80px]">
+             
+             <div className="max-w-[1400px] w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center h-full max-h-[800px]">
+                
+                {/* Left Side: Trust & Stats */}
+                <div className="flex flex-col items-center lg:items-start text-center lg:text-left mt-8 lg:mt-0">
+                   <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] font-serif font-bold text-royale-bg leading-[1.1] mb-6 tracking-tight">
+                     20+ Years <br className="hidden lg:block" />
+                     <span className="italic font-light text-gold">Of Trust</span>
+                   </h2>
+
+                   <p className="text-royale-bg/70 font-sans text-xs sm:text-sm md:text-base leading-relaxed mb-8 lg:mb-10 max-w-md px-4 lg:px-0">
+                     Established in 2001, Rainbow Paint & Hardwares has been Coimbatore's trusted paint store, offering top brands and complete painting solutions for homes and industries.
+                   </p>
+
+                   {/* Features */}
+                   <div className="flex flex-row items-center justify-between sm:justify-start gap-3 sm:gap-6 lg:gap-8 w-full overflow-x-auto no-scrollbar pb-2">
+                     {[
+                       { icon: Store, title: "3 Branches" },
+                       { icon: Award, title: "10+ Top Brands" },
+                       { icon: MessageCircle, title: "Expert Advice" },
+                       { icon: ShieldCheck, title: "Reliable Service" }
+                     ].map((feat, idx) => (
+                       <div key={idx} className="flex flex-row items-center gap-2 shrink-0">
+                          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-royale-bg/5 border border-royale-bg/10 flex items-center justify-center">
+                             <feat.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gold" />
+                          </div>
+                          <span className="text-royale-bg text-[9px] sm:text-[11px] font-sans font-bold uppercase tracking-widest whitespace-nowrap">{feat.title}</span>
+                       </div>
+                     ))}
+                   </div>
+
+                   {/* Get Quote Banner */}
+                   <div className="mt-6 sm:mt-8 w-full max-w-sm sm:max-w-md">
+                     <div className="bg-royale-bg/5 border border-royale-bg/10 rounded-2xl p-4 flex flex-row items-center justify-between hover:bg-royale-bg/10 transition-colors shadow-sm">
+                        <div className="flex flex-col text-left">
+                           <span className="text-royale-bg font-serif font-bold text-sm sm:text-base">Bulk or B2B Requirement?</span>
+                           <span className="text-royale-bg/70 font-sans text-[10px] sm:text-xs">Get wholesale pricing for your project</span>
+                        </div>
+                        <Link to="/contact" className="shrink-0 bg-gold text-ivory px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-[10px] sm:text-xs font-sans font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-[#b09265] transition-colors shadow-lg">
+                           <MessageCircle className="w-3 h-3 sm:w-4 sm:h-4" /> Get Quote
+                        </Link>
+                     </div>
+                   </div>
                 </div>
-              );
-            })}
+
+                {/* Right Side: Authorised Brands Grid (Hidden on small mobile if tight) */}
+                <div className="hidden md:flex flex-col bg-royale-bg/5 rounded-[2rem] p-8 lg:p-12 border border-royale-bg/10 w-full max-w-xl mx-auto lg:ml-auto">
+                   <h3 className="text-xs sm:text-sm font-sans font-bold text-gold uppercase tracking-[0.2em] mb-10 text-center">
+                     Authorised Dealers For
+                   </h3>
+                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 lg:gap-12 items-center justify-items-center">
+                     {heroBrands.slice(0, 6).map((brand, idx) => brand && (
+                       <div key={idx} className="h-10 lg:h-14 w-full flex items-center justify-center opacity-70 hover:opacity-100 hover:scale-110 transition-all duration-300">
+                         <img src={brand.logo} alt={brand.name} className="max-h-full max-w-full object-contain filter brightness-0 invert" />
+                       </div>
+                     ))}
+                   </div>
+                </div>
+
+             </div>
           </div>
+        </motion.div>
+
+        {/* ================= ROLLER (OUTSIDE OF OVERFLOW HIDDEN) ================= */}
+        <motion.div 
+          style={{ top: paintTop }}
+          className="absolute left-1/2 -translate-x-1/2 -translate-y-[25px] sm:-translate-y-[35px] w-[260px] sm:w-[340px] md:w-[400px] h-[160px] sm:h-[220px] pointer-events-none z-30 drop-shadow-2xl"
+        >
+           <svg width="100%" height="100%" viewBox="0 0 340 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="12" stdDeviation="10" floodColor="#000" floodOpacity="0.4"/>
+                </filter>
+                <linearGradient id="rollerGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#1A365D"/>
+                  <stop offset="30%" stopColor="#2A4A7F"/>
+                  <stop offset="70%" stopColor="#1A365D"/>
+                  <stop offset="100%" stopColor="#0D1E36"/>
+                </linearGradient>
+                <linearGradient id="metalGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stopColor="#FFFFFF"/>
+                  <stop offset="50%" stopColor="#9E9E9E"/>
+                  <stop offset="100%" stopColor="#616161"/>
+                </linearGradient>
+                <linearGradient id="handleGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stopColor="#E0E0E0"/>
+                  <stop offset="100%" stopColor="#757575"/>
+                </linearGradient>
+              </defs>
+
+              <path d="M290 40 H 315 V 120 H 160 V 150" stroke="url(#metalGrad)" strokeWidth="12" strokeLinecap="round" strokeLinejoin="round" fill="none" filter="url(#shadow)" />
+              <rect x="145" y="150" width="30" height="70" rx="15" fill="url(#handleGrad)" filter="url(#shadow)" />
+              
+              <rect x="30" y="10" width="260" height="60" rx="12" fill="url(#rollerGrad)" filter="url(#shadow)" />
+              
+              <rect x="22" y="20" width="8" height="40" rx="4" fill="#0D1E36" />
+              <rect x="290" y="20" width="8" height="40" rx="4" fill="#0D1E36" />
+           </svg>
         </motion.div>
       </div>
     </section>
   );
 }
-

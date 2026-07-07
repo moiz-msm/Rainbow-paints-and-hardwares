@@ -49,7 +49,13 @@ export default function IndustryNews() {
   return (
     <section className="py-16 sm:py-24 border-t border-gold/10 relative z-10 bg-gradient-to-b from-royale-surface to-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-3 mb-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="flex items-center gap-3 mb-10"
+        >
           <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center">
             <Newspaper className="w-5 h-5 text-gold" />
           </div>
@@ -61,7 +67,7 @@ export default function IndustryNews() {
               Latest updates from the world of painting and hardware.
             </p>
           </div>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {news.map((article, idx) => (

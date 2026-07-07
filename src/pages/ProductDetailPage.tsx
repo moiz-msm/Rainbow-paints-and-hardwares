@@ -61,16 +61,32 @@ export default function ProductDetailPage() {
            );
   }, [product]);
 
+  const hasShades = useMemo(() => {
+    return !!(product && product.shades && product.shades.length > 0);
+  }, [product]);
+
   useEffect(() => {
-    if (isPaint && product) {
-      const def = DEFAULT_WHITES[product.brand] || DEFAULT_WHITES.default;
-      setSelectedShade({
-        id: `default-${product.brand}-${def.code}`,
-        name: def.name,
-        shadeCode: def.code,
-        hex: def.hex,
-        brand: product.brand
-      });
+    if (product) {
+      if (product.shades && product.shades.length > 0) {
+        setSelectedShade({
+          id: `custom-shade-${product.id}-${product.shades[0].code}`,
+          name: product.shades[0].name,
+          shadeCode: product.shades[0].code,
+          hex: product.shades[0].hex,
+          brand: product.brand
+        });
+      } else if (isPaint) {
+        const def = DEFAULT_WHITES[product.brand] || DEFAULT_WHITES.default;
+        setSelectedShade({
+          id: `default-${product.brand}-${def.code}`,
+          name: def.name,
+          shadeCode: def.code,
+          hex: def.hex,
+          brand: product.brand
+        });
+      } else {
+        setSelectedShade(null);
+      }
     }
   }, [isPaint, product]);
 
@@ -79,17 +95,111 @@ export default function ProductDetailPage() {
       setLoading(true);
       window.scrollTo(0, 0);
       try {
-        const decodedSlug = productSlug?.replace(/-/g, ' ').toLowerCase();
+        const normalizeStr = (str: string) => str.toLowerCase().replace(/[^a-z0-9]/g, '');
+        const targetSlugNormalized = productSlug ? normalizeStr(productSlug) : '';
         let found: any = null;
 
         // 1. Fetch from Firebase and find a case-insensitive match
         const snapshot = await getDocs(collection(db, 'products'));
-        const dbProducts = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        found = dbProducts.find((p: any) => p.name?.toLowerCase() === decodedSlug);
+        const removedNames = [
+          'Tractor Sparc Emulsion',
+          'Tractor Uno Acrylic Distemper',
+          'Tractor Emulsion Shyne',
+          'Apcolite Premium Satin Emulsion',
+          'Apcolite Advanced Emulsion',
+          'Apex Advanced',
+          'Floor Epoxy Coating',
+          'Food Grade Epoxy',
+          'MIO Coatings'
+        ].map(n => n.toLowerCase());
+
+        const blacklistedIds = ['FtYxbQJggWPGiFQmCZqU', 'cfC16vcJc7Y6SuG8I0io', 'urWWhE0zkeCmRzBcTHqw', 'KQsvJ6kbraBWrRqaiLPB'];
+
+        let dbProducts = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+          .filter((p: any) => !removedNames.includes(p.name?.toLowerCase()) && !blacklistedIds.includes(p.id));
+          
+        const accurateImageNames = [
+          "royale glitz reserve",
+          "apcolite all protek shyne",
+          "royale health shield",
+          "apex tile guard matt",
+          "apex ultima stretch",
+          "weathercoat glow"
+        ];
+        
+        const accurateImagesMap: Record<string, string> = {
+          "royale glitz reserve": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/royale-glitz-reserv-new-packshot.png",
+          "apcolite all protek shyne": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-apcolite-all-protek-shyne-packshot-asian-paints.png",
+          "royale health shield": "https://5.imimg.com/data5/SELLER/Default/2023/7/326440889/MP/SF/RA/22649264/asian-paints-royale-health-shield-500x500.jpg",
+          "apex tile guard matt": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/exterior-walls-apex-tile-guard.png",
+          "apex ultima stretch": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/ultima-stretch-packshot-asian-paints.png",
+          "weathercoat glow": "https://5.imimg.com/data5/SELLER/Default/2021/7/OI/YW/AW/102796245/berger-weathercoat-glow-exterior-emulsion.jpg"
+        };
+        
+        dbProducts = dbProducts.map((p: any) => {
+          const key = p.name ? p.name.trim().toLowerCase() : '';
+          let updatedP = { ...p };
+          
+          if (accurateImageNames.includes(key)) {
+            updatedP.image = accurateImagesMap[key];
+          }
+
+          let subs = updatedP.subCategory ? [updatedP.subCategory] : [];
+
+          subs = subs.map((sub: string) => {
+            if (sub === "Primer") return "Undercoats";
+            if (sub === "Color Oxides" || sub === "Colour Oxide") {
+              return key.includes("gorila") ? "Wood Finishes" : sub;
+            }
+            if (sub === "Abrasives & Sandpapers" || sub === "Abrasives and Sandpapers") return "Painting Tools";
+            return sub;
+          });
+
+          if (key.includes("putty") || key.includes("white cement")) {
+            subs = ["Undercoats"];
+          }
+
+          if (key.includes("2 in 1") || key.includes("2-in-1") || key.includes("two in one")) {
+             subs.push("Interior Wall", "Exterior Wall");
+          }
+          if (key.includes("exterior primer")) {
+             subs.push("Exterior Wall", "Undercoats");
+          }
+
+          updatedP.subCategories = Array.from(new Set(subs));
+          if (updatedP.subCategories.length > 0) {
+            updatedP.subCategory = updatedP.subCategories[0];
+          }
+          
+          return updatedP;
+        }).filter((p: any) => !p.subCategories.includes("Color Oxides") && !p.subCategories.includes("Colour Oxide"));
+
+        found = dbProducts.find((p: any) => p.name && normalizeStr(p.name) === targetSlugNormalized);
 
         // 2. Fallback to mock data if not in Firebase
         if (!found) {
-          found = mockProducts.find(p => p.name.toLowerCase() === decodedSlug);
+          let processedMockProducts = mockProducts.map(p => {
+            let updatedP = { ...p };
+            const key = p.name ? p.name.trim().toLowerCase() : '';
+            let subs = updatedP.subCategory ? [updatedP.subCategory] : [];
+            subs = subs.map((sub: string) => {
+              if (sub === "Primer") return "Undercoats";
+              if (sub === "Color Oxides" || sub === "Colour Oxide") return key.includes("gorila") ? "Wood Finishes" : sub;
+              if (sub === "Abrasives & Sandpapers" || sub === "Abrasives and Sandpapers") return "Painting Tools";
+              return sub;
+            });
+            if (key.includes("putty") || key.includes("white cement")) subs = ["Undercoats"];
+            if (key.includes("2 in 1") || key.includes("2-in-1") || key.includes("two in one")) subs.push("Interior Wall", "Exterior Wall");
+            if (key.includes("exterior primer")) subs.push("Exterior Wall", "Undercoats");
+            
+            (updatedP as any).subCategories = Array.from(new Set(subs));
+            if ((updatedP as any).subCategories.length > 0) updatedP.subCategory = (updatedP as any).subCategories[0];
+            return updatedP;
+          });
+          found = processedMockProducts.find(p => p.name && normalizeStr(p.name) === targetSlugNormalized);
+          if (found && (found as any).subCategories && ((found as any).subCategories.includes("Color Oxides") || (found as any).subCategories.includes("Colour Oxide"))) {
+             found = undefined;
+          }
         }
 
           if (found) {
@@ -153,7 +263,7 @@ export default function ProductDetailPage() {
         productId: product.id,
         name: product.name,
         brand: product.brand,
-        image: product.image,
+        image: displayImage || product.image,
         price: product.price,
         size: selectedSize,
         shadeName: selectedShade ? selectedShade.name : 'White',
@@ -228,10 +338,34 @@ export default function ProductDetailPage() {
   const basePrice = product ? parsePrice(product.price) : 850;
   
   let discountFactor = 1;
-  if (selectedSize === 4) discountFactor = 0.96;
-  if (selectedSize === 10) discountFactor = 0.92;
-  if (selectedSize === 20) discountFactor = 0.88;
-  const currentPrice = Math.round(basePrice * selectedSize * discountFactor);
+  if (product?.unit === 'kg') {
+    if (selectedSize === 5) discountFactor = 0.94;
+    if (selectedSize === 20) discountFactor = 0.53;
+    if (selectedSize === 25) discountFactor = 0.8;
+    if (selectedSize === 40) discountFactor = 0.472;
+    if (selectedSize === 50) discountFactor = 0.628;
+  } else {
+    if (selectedSize === 4) discountFactor = 0.96;
+    if (selectedSize === 10) discountFactor = 0.92;
+    if (selectedSize === 20) discountFactor = 0.88;
+  }
+  
+  const selectedShadeObj = useMemo(() => {
+    if (!product || !product.shades || !selectedShade) return null;
+    return product.shades.find((s: any) => s.code === selectedShade.shadeCode);
+  }, [product, selectedShade]);
+
+  const displayImage = useMemo(() => {
+    return selectedShadeObj?.image || product?.image;
+  }, [product, selectedShadeObj]);
+
+  const currentPrice = useMemo(() => {
+    if (!product) return 850;
+    if (selectedShadeObj && selectedShadeObj.price) {
+      return parsePrice(selectedShadeObj.price);
+    }
+    return Math.round(basePrice * selectedSize * discountFactor);
+  }, [product, selectedShadeObj, basePrice, selectedSize, discountFactor]);
 
   const productSchema = useMemo(() => {
     if (!product) return null;
@@ -322,10 +456,10 @@ export default function ProductDetailPage() {
       productId: product.id,
       name: product.name,
       brand: product.brand,
-      image: product.image,
+      image: displayImage || product.image,
       size: selectedSize,
       quantity,
-      unitPrice: basePrice,
+      unitPrice: currentPrice / selectedSize,
       shade: selectedShade ? {
         name: selectedShade.name,
         code: selectedShade.shadeCode,
@@ -460,8 +594,9 @@ export default function ProductDetailPage() {
               </button>
 
               <motion.img 
-                src={product.image} 
+                src={displayImage || product.image} 
                 alt={product.name}
+                referrerPolicy="no-referrer"
                 className={`w-full h-full object-contain p-8 lg:p-12 transition-transform duration-200 ${isZoomed ? 'scale-150 opacity-0' : 'scale-100 opacity-100'}`}
               />
               
@@ -469,7 +604,7 @@ export default function ProductDetailPage() {
               <div 
                 className={`absolute inset-0 bg-white bg-no-repeat pointer-events-none transition-opacity duration-200 ${isZoomed ? 'opacity-100' : 'opacity-0'}`}
                 style={{
-                  backgroundImage: `url(${product.image})`,
+                  backgroundImage: `url(${displayImage || product.image})`,
                   backgroundPosition: `${mousePosition.x}% ${mousePosition.y}%`,
                   backgroundSize: '150%',
                 }}
@@ -487,11 +622,11 @@ export default function ProductDetailPage() {
             <div className="mb-2 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="text-gold font-display text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-semibold">{product.brand}</span>
-                {product.subCategory && (
-                  <span className={`text-[8px] md:text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-widest border transition-colors ${getCategoryBadgeStyle(product.subCategory)}`} title={product.subCategory}>
-                    {product.subCategory}
+                {((product as any).subCategories || (product.subCategory ? [product.subCategory] : [])).map((sub: string, index: number) => (
+                  <span key={index} className={`text-[8px] md:text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-widest border transition-colors ${getCategoryBadgeStyle(sub)}`} title={sub}>
+                    {sub}
                   </span>
-                )}
+                ))}
               </div>
             </div>
             
@@ -542,8 +677,63 @@ export default function ProductDetailPage() {
               <DeliveryEstimator />
             </div>
 
-            {/* Shade Selector */}
-            {isPaint && (
+            {/* Custom Embedded Shades Selector */}
+            {hasShades && product.shades && (
+              <div className="mb-8">
+                <div className="flex items-center justify-between mb-3">
+                  <h2 className="text-[11px] text-zinc-400 font-display uppercase tracking-widest font-semibold flex items-center gap-1.5">
+                    <Info className="w-3.5 h-3.5 text-gold"/> Select Color / Shade
+                  </h2>
+                  {selectedShade && (
+                    <span className="text-[10px] bg-gold/10 text-gold px-2.5 py-0.5 rounded-full font-semibold">
+                      {selectedShade.name} ({selectedShade.shadeCode})
+                    </span>
+                  )}
+                </div>
+                <div className="bg-royale-surface border border-zinc-200/20 p-4 rounded-xl">
+                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
+                    {product.shades.map((shade: any) => {
+                      const isSelected = selectedShade?.shadeCode === shade.code;
+                      return (
+                        <button
+                          key={shade.code}
+                          onClick={() => {
+                            setSelectedShade({
+                              id: `custom-shade-${product.id}-${shade.code}`,
+                              name: shade.name,
+                              shadeCode: shade.code,
+                              hex: shade.hex,
+                              brand: product.brand
+                            });
+                          }}
+                          className={`flex flex-col items-center gap-1.5 p-2 rounded-xl border transition-all ${
+                            isSelected 
+                              ? 'border-gold bg-gold/5 shadow-sm ring-1 ring-gold/20' 
+                              : 'border-zinc-200/10 hover:border-zinc-200/30 bg-zinc-800/20'
+                          }`}
+                          title={`${shade.name} (${shade.code})`}
+                        >
+                          <div 
+                            className="w-8 h-8 rounded-full border border-white/10 shadow-inner relative flex items-center justify-center shrink-0"
+                            style={{ backgroundColor: shade.hex }}
+                          >
+                            {isSelected && (
+                              <div className="w-2.5 h-2.5 rounded-full bg-white shadow-sm ring-1 ring-black/20" />
+                            )}
+                          </div>
+                          <span className="text-[9px] font-medium text-ivory/80 text-center truncate w-full leading-tight">
+                            {shade.name}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Standard Shade Selector */}
+            {!hasShades && isPaint && (
               <div className="mb-8">
                 <div className="flex items-center justify-between mb-3">
                   <h2 className="text-[11px] text-zinc-800 font-display uppercase tracking-widest font-semibold flex items-center gap-1.5">
@@ -578,9 +768,17 @@ export default function ProductDetailPage() {
                     }`}
                   >
                     <span className="block text-sm sm:text-base font-serif font-semibold">
-                      {size < 1 ? `${size * 1000}ml` : `${size}L`}
+                      {size < 1 
+                        ? `${size * 1000}ml` 
+                        : `${size}${product.unit || 'L'}`}
                     </span>
-                    <span className="block text-[9px] font-sans opacity-70 mt-0.5">₹{Math.round(basePrice * size).toLocaleString()}</span>
+                    <span className="block text-[9px] font-sans opacity-70 mt-0.5">
+                      ₹{Math.round(basePrice * size * (
+                        product?.unit === 'kg' 
+                          ? (size === 5 ? 0.94 : size === 20 ? 0.53 : size === 25 ? 0.8 : size === 40 ? 0.472 : size === 50 ? 0.628 : 1)
+                          : (size === 4 ? 0.96 : size === 10 ? 0.92 : size === 20 ? 0.88 : 1)
+                      )).toLocaleString()}
+                    </span>
                   </button>
                 ))}
               </div>

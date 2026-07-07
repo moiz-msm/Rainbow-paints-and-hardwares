@@ -16,7 +16,8 @@ export const lazyWithRetry = <T extends ComponentType<any>>(
       if (!pageHasAlreadyBeenForceRefreshed) {
         // Assume that the error is due to a new deployment, so reload the page
         window.sessionStorage.setItem('page-has-been-force-refreshed', 'true');
-        return window.location.reload() as unknown as Promise<{ default: T }>;
+        window.location.reload();
+        return new Promise<{ default: T }>(() => {});
       }
       // The page has already been reloaded, so throw the error
       throw error;

@@ -7,12 +7,12 @@ const categories = [
   { 
     name: 'Interior Paints', 
     slug: 'interior-wall', 
-    image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&q=80' 
+    image: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?w=500&q=80' 
   },
   { 
     name: 'Exterior Paints', 
     slug: 'exterior-wall', 
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500&q=80' 
+    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500&q=80' 
   },
   { 
     name: 'Primers', 
@@ -22,12 +22,12 @@ const categories = [
   { 
     name: 'Waterproofing', 
     slug: 'waterproofing', 
-    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500&q=80' 
+    image: 'https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=500&q=80' 
   },
   { 
     name: 'Wood Finishes', 
     slug: 'wood-finishes', 
-    image: 'https://images.unsplash.com/photo-1517705008128-361805f42e86?w=500&q=80' 
+    image: 'https://images.unsplash.com/photo-1550684376-efcbd6e3f031?w=500&q=80' 
   },
   { 
     name: 'Painting Tools', 
@@ -77,11 +77,17 @@ export default function ShopByCategory() {
         transition={{ duration: 0.6 }}
         className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
       >
-        <div className="mb-8 flex flex-col items-center text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mb-8 flex flex-col items-center text-center"
+        >
           <h2 className="text-xl sm:text-2xl font-serif font-medium mb-3 tracking-tight leading-tight text-center text-[#1A365D]">
             Shop By <span className="text-gradient italic">Category</span>
           </h2>
-        </div>
+        </motion.div>
         
         <div className="relative mt-2 flex items-center group">
           <button 

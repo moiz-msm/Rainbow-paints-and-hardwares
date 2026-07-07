@@ -2,6 +2,8 @@ import React, { Suspense } from "react";
 import SEO from "../components/SEO";
 import Hero from "../components/Hero";
 import { lazyWithRetry as lazy } from "../utils/lazyWithRetry";
+import { FadeInUp } from "../components/FadeInUp";
+
 import LuxuryBackground from "../components/LuxuryBackground";
 import IndustryNews from "../components/IndustryNews";
 
@@ -134,15 +136,15 @@ export default function Home() {
       />
       <Hero />
       <Suspense fallback={<div className="h-20 w-full bg-royale-bg"></div>}>
-        <ToolsOverview />
-        <ShopByBrand />
-        <ShopByCategory />
-        <ProductsAndIndustrial />
-        <GoogleReviewsSection />
-        <BlogSection />
-        <IndustryNews />
-        <FaqSection showLink={true} limit={4} />
-        <ContactSection />
+        <FadeInUp><ToolsOverview /></FadeInUp>
+        <FadeInUp><ShopByBrand /></FadeInUp>
+        <FadeInUp><ShopByCategory /></FadeInUp>
+        <FadeInUp><ProductsAndIndustrial /></FadeInUp>
+        <FadeInUp><GoogleReviewsSection /></FadeInUp>
+        <FadeInUp><BlogSection /></FadeInUp>
+        <FadeInUp><IndustryNews /></FadeInUp>
+        <FadeInUp><FaqSection showLink={true} limit={4} /></FadeInUp>
+        <FadeInUp><ContactSection /></FadeInUp>
       </Suspense>
     </>
   );

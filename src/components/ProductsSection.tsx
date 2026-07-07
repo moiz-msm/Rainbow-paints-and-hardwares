@@ -392,6 +392,16 @@ const AddToCartModal = ({
   onClose: () => void;
 }) => {
   const [selectedSize, setSelectedSize] = useState(1);
+  const productSizes = product.sizes && product.sizes.length > 0 ? product.sizes : SIZES;
+  
+  useEffect(() => {
+    if (product.sizes && product.sizes.length > 0) {
+      setSelectedSize(product.sizes[0]);
+    } else {
+      setSelectedSize(1);
+    }
+  }, [product.sizes]);
+
   const [selectedShade, setSelectedShade] = useState<Shade | any>(null);
   const [quantity, setQuantity] = useState(1);
   const [justAdded, setJustAdded] = useState(false);
@@ -432,11 +442,19 @@ const AddToCartModal = ({
 
   const totalPrice = useMemo(() => {
     let discountFactor = 1;
-    if (selectedSize === 4) discountFactor = 0.96;
-    if (selectedSize === 10) discountFactor = 0.92;
-    if (selectedSize === 20) discountFactor = 0.88;
+    if (product.unit === 'kg') {
+      if (selectedSize === 5) discountFactor = 0.94;
+      if (selectedSize === 20) discountFactor = 0.53;
+      if (selectedSize === 25) discountFactor = 0.8;
+      if (selectedSize === 40) discountFactor = 0.472;
+      if (selectedSize === 50) discountFactor = 0.628;
+    } else {
+      if (selectedSize === 4) discountFactor = 0.96;
+      if (selectedSize === 10) discountFactor = 0.92;
+      if (selectedSize === 20) discountFactor = 0.88;
+    }
     return Math.round(unitPrice * selectedSize * discountFactor);
-  }, [unitPrice, selectedSize]);
+  }, [unitPrice, selectedSize, product.unit]);
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -499,6 +517,7 @@ const AddToCartModal = ({
                 <img
                   src={product.image}
                   alt={product.name}
+                  referrerPolicy="no-referrer"
                   className="w-full h-full object-contain mix-blend-multiply"
                 />
               ) : (
@@ -560,7 +579,7 @@ const AddToCartModal = ({
               Select Size
             </h3>
             <div className="flex items-center gap-2 flex-wrap">
-              {[1, 4, 10, 20].map((size) => (
+              {productSizes.map((size: number) => (
                 <button
                   key={size}
                   onClick={() => {
@@ -573,7 +592,7 @@ const AddToCartModal = ({
                       : "bg-white border-zinc-200 text-zinc-600 hover:border-gold/50 hover:text-gold"
                   }`}
                 >
-                  {size}L
+                  {size < 1 ? `${size * 1000}ml` : `${size}${product.unit || 'L'}`}
                 </button>
               ))}
             </div>
@@ -583,7 +602,7 @@ const AddToCartModal = ({
             <div className="flex justify-between items-end mb-4 bg-zinc-50 rounded-xl p-3 border border-zinc-100">
               <div>
                 <p className="text-[10px] text-gold font-bold uppercase">
-                  {selectedSize}L pack {quantity > 1 ? `x ${quantity}` : ""}
+                  {selectedSize < 1 ? `${selectedSize * 1000}ml pack` : `${selectedSize}${product.unit || 'L'} pack`} {quantity > 1 ? `x ${quantity}` : ""}
                 </p>
                 <p className="text-xl font-bold text-zinc-900 leading-none mt-1.5 mb-0.5">
                   ₹{totalPrice.toLocaleString()}
@@ -594,7 +613,7 @@ const AddToCartModal = ({
                 {selectedSize > 1 && (
                   <p className="text-[10px] text-zinc-600 mt-1.5 uppercase tracking-wider">
                     ₹{Math.round(totalPrice / selectedSize).toLocaleString()} /
-                    Liter
+                    {product.unit === 'kg' ? ' Kg' : ' Liter'}
                   </p>
                 )}
               </div>
@@ -756,6 +775,7 @@ const ProductCard = memo(({ product }: { product: any }) => {
             <img
               src={product.image}
               alt={product.name}
+              referrerPolicy="no-referrer"
               className="w-full h-32 sm:h-40 object-contain object-center group-hover:scale-105 transition-transform duration-500 mix-blend-multiply block"
               loading="lazy"
             />
@@ -773,14 +793,15 @@ const ProductCard = memo(({ product }: { product: any }) => {
             <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-gold">
               {product.brand}
             </p>
-            {product.subCategory && (
+            {((product as any).subCategories || (product.subCategory ? [product.subCategory] : [])).map((sub: string, index: number) => (
               <span
-                className={`text-[7px] sm:text-[8px] font-bold px-1.5 py-0.5 rounded uppercase tracking-widest truncate shrink-0 max-w-[110px] border transition-colors ${getCategoryBadgeStyle(product.subCategory)}`}
-                title={product.subCategory}
+                key={index}
+                className={`text-[7px] sm:text-[8px] font-bold px-1.5 py-0.5 rounded uppercase tracking-widest truncate shrink-0 max-w-[110px] border transition-colors ${getCategoryBadgeStyle(sub)}`}
+                title={sub}
               >
-                {product.subCategory}
+                {sub}
               </span>
-            )}
+            ))}
           </div>
           <h3 className="text-xs sm:text-[13px] font-bold text-ivory leading-tight mb-2 line-clamp-2">
             {product.name}
@@ -965,11 +986,91 @@ export default function ProductsSection({
       const key = p.name ? p.name.trim().toLowerCase() : p.id?.toString();
       map.set(key, p);
     });
+    const blacklistedIds = ['FtYxbQJggWPGiFQmCZqU', 'cfC16vcJc7Y6SuG8I0io', 'urWWhE0zkeCmRzBcTHqw', 'KQsvJ6kbraBWrRqaiLPB'];
+
     dbProducts.forEach((p) => {
+      if (blacklistedIds.includes(p.id)) return;
       const key = p.name ? p.name.trim().toLowerCase() : p.id?.toString();
-      map.set(key, p);
+      // Retain accurate images for specific products from mock data
+      const accurateImageNames = [
+        "royale glitz reserve",
+        "apcolite all protek shyne",
+        "royale health shield",
+        "apex tile guard matt",
+        "apex ultima stretch",
+        "weathercoat glow"
+      ];
+      
+      const accurateImagesMap: Record<string, string> = {
+        "royale glitz reserve": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/royale-glitz-reserv-new-packshot.png",
+        "apcolite all protek shyne": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-apcolite-all-protek-shyne-packshot-asian-paints.png",
+        "royale health shield": "https://5.imimg.com/data5/SELLER/Default/2023/7/326440889/MP/SF/RA/22649264/asian-paints-royale-health-shield-500x500.jpg",
+        "apex tile guard matt": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/exterior-walls-apex-tile-guard.png",
+        "apex ultima stretch": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/ultima-stretch-packshot-asian-paints.png",
+        "weathercoat glow": "https://5.imimg.com/data5/SELLER/Default/2021/7/OI/YW/AW/102796245/berger-weathercoat-glow-exterior-emulsion.jpg"
+      };
+
+      let mergedProduct = { ...p };
+      if (accurateImageNames.includes(key)) {
+        mergedProduct.image = accurateImagesMap[key];
+      }
+      map.set(key, mergedProduct);
     });
-    return Array.from(map.values());
+    
+    const removedNames = [
+      'Tractor Sparc Emulsion',
+      'Tractor Uno Acrylic Distemper',
+      'Tractor Emulsion Shyne',
+      'Apcolite Premium Satin Emulsion',
+      'Apcolite Advanced Emulsion',
+      'Apex Advanced',
+      'Floor Epoxy Coating',
+      'Food Grade Epoxy',
+      'MIO Coatings'
+    ].map(n => n.toLowerCase());
+
+    const finalProducts = Array.from(map.values()).filter(p => !removedNames.includes(p.name?.toLowerCase()));
+
+    // Process categories updates based on latest requirements
+    let updatedProducts = finalProducts.map(p => {
+      let updatedP = { ...p };
+      const nameLower = updatedP.name?.toLowerCase() || '';
+      
+      let subs = updatedP.subCategory ? [updatedP.subCategory] : [];
+
+      subs = subs.map(sub => {
+        if (sub === "Primer") return "Undercoats";
+        if (sub === "Color Oxides" || sub === "Colour Oxide") {
+          return nameLower.includes("gorila") ? "Wood Finishes" : sub;
+        }
+        if (sub === "Abrasives & Sandpapers" || sub === "Abrasives and Sandpapers") return "Painting Tools";
+        return sub;
+      });
+
+      if (nameLower.includes("putty") || nameLower.includes("white cement")) {
+        subs = ["Undercoats"];
+      }
+
+      if (nameLower.includes("2 in 1") || nameLower.includes("2-in-1") || nameLower.includes("two in one")) {
+         subs.push("Interior Wall", "Exterior Wall");
+      }
+      if (nameLower.includes("exterior primer")) {
+         subs.push("Exterior Wall", "Undercoats");
+      }
+
+      updatedP.subCategories = Array.from(new Set(subs));
+      if (updatedP.subCategories.length > 0) {
+        updatedP.subCategory = updatedP.subCategories[0];
+      }
+      
+      return updatedP;
+    });
+    
+    // Filter out remaining color oxides
+    updatedProducts = updatedProducts.filter(p => !p.subCategories.includes("Color Oxides") && !p.subCategories.includes("Colour Oxide"));
+
+    return updatedProducts;
+
   }, [dbProducts]);
   const availableBrands = useMemo(() => {
     const fromProducts = Array.from(
@@ -986,9 +1087,10 @@ export default function ProductsSection({
     productList.forEach((p) => {
       if (p.topCategory) {
         if (!map[p.topCategory]) map[p.topCategory] = new Set();
-        if (p.subCategory) {
-          map[p.topCategory].add(p.subCategory);
-        }
+        let subs = (p as any).subCategories || (p.subCategory ? [p.subCategory] : []);
+        subs.forEach((sub: string) => {
+          map[p.topCategory!].add(sub);
+        });
       }
     });
 
@@ -1008,34 +1110,60 @@ export default function ProductsSection({
   const categoryBubblesData = useMemo(() => {
     const defaultImages: Record<string, string> = {
       "Interior Wall":
-        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&q=80",
+        "https://images.unsplash.com/photo-1600607686527-6fb886090705?w=500&q=80",
       "Exterior Wall":
-        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500&q=80",
+        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500&q=80",
       Primer:
         "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=500&q=80",
       Waterproofing:
-        "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500&q=80",
+        "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=500&q=80",
       "Wood Finishes":
-        "https://images.unsplash.com/photo-1517705008128-361805f42e86?w=500&q=80",
+        "https://images.unsplash.com/photo-1550684376-efcbd6e3f031?w=500&q=80",
       Tools:
         "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?w=500&q=80",
+      "PU Coatings": 
+        "https://images.unsplash.com/photo-1622396481328-9b1b78cdd9fd?w=500&q=80",
+      "Epoxy Coatings": 
+        "https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=500&q=80",
+      "Metals and Grills": 
+        "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?w=500&q=80",
+      "Synthetic Enamels": 
+        "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=500&q=80",
+      "Industrial": 
+        "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=500&q=80",
     };
+
+    const fallbackImages = [
+      "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=500&q=80",
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500&q=80",
+      "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=500&q=80",
+      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=500&q=80",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&q=80",
+      "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=500&q=80",
+      "https://images.unsplash.com/photo-1554995207-c18c203602cb?w=500&q=80"
+    ];
 
     // Extract unique subcategories
     const uniqueSubs = new Set<string>();
     productList.forEach((p) => {
-      if (p.subCategory) uniqueSubs.add(p.subCategory);
+      let subs = (p as any).subCategories || (p.subCategory ? [p.subCategory] : []);
+      subs.forEach((sub: string) => uniqueSubs.add(sub));
     });
 
     return Array.from(uniqueSubs)
       .sort()
-      .map((name) => ({
-        name,
-        slug: name.toLowerCase().replace(/\s+/g, "-"),
-        image:
-          defaultImages[name] ||
-          "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=500&q=80",
-      }));
+      .map((name) => {
+        let image = defaultImages[name];
+        if (!image) {
+          const hash = name.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+          image = fallbackImages[hash % fallbackImages.length];
+        }
+        return {
+          name,
+          slug: name.toLowerCase().replace(/\s+/g, "-"),
+          image,
+        };
+      });
   }, [productList]);
 
   const totalSubCategories = useMemo(
@@ -1054,12 +1182,13 @@ export default function ProductsSection({
   };
 
   const filtered = productList.filter((p) => {
+    const pSubs: string[] = (p as any).subCategories || (p.subCategory ? [p.subCategory] : []);
     const matchCat =
       activeCategoryFilter === "All Categories" ||
       (activeCategoryFilter.startsWith("All ") &&
         p.topCategory === activeCategoryFilter.replace("All ", "")) ||
-      (p.subCategory &&
-        p.subCategory.toLowerCase() === activeCategoryFilter.toLowerCase());
+      pSubs.some(sub => sub.toLowerCase() === activeCategoryFilter.toLowerCase());
+
     const matchBrand =
       activeBrand === "All Brands" ||
       p.brand.toLowerCase() === activeBrand.toLowerCase();
@@ -1069,7 +1198,7 @@ export default function ProductsSection({
     const matchSearch =
       searchQuery === "" ||
       (p.name && p.name.toLowerCase().includes(searchLower)) ||
-      (p.subCategory && p.subCategory.toLowerCase().includes(searchLower)) ||
+      pSubs.some(sub => sub.toLowerCase().includes(searchLower)) ||
       (p.properties &&
         p.properties.some((prop: string) =>
           prop.toLowerCase().includes(searchLower),
@@ -1138,7 +1267,11 @@ export default function ProductsSection({
       {/* Header and Sort By Inline */}
       <div className="max-w-[1400px] lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4 mt-2 relative z-50">
         <div className="flex flex-col gap-3">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-ivory tracking-tight uppercase leading-none">
               {pageTitle || "All Products"}
             </h1>
@@ -1146,7 +1279,7 @@ export default function ProductsSection({
               {pageDescription ||
                 "Explore our wide range of premium paints and hardware."}
             </p>
-          </div>
+          </motion.div>
 
           {/* Page Trust Indicators & Badges */}
           <div className="border-t border-b border-zinc-100/10 py-1 sm:py-1.5">

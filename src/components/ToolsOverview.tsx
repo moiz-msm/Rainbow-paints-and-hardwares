@@ -72,14 +72,20 @@ export default function ToolsOverview() {
       className="py-12 sm:py-20 lg:py-24 border-t border-gold/10 relative overflow-hidden bg-gradient-to-b from-transparent to-royale-surface"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8 flex flex-col items-center text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mb-8 flex flex-col items-center text-center"
+        >
           <h2 className="text-xl sm:text-2xl font-serif font-medium mb-3 tracking-tight leading-tight text-center text-[#1A365D]">
             Everything You Need, <span className="text-gradient italic">All in One Place</span>
           </h2>
           <p className="text-[10px] sm:text-xs text-[#1A365D]/70 max-w-xl mx-auto font-sans font-light leading-relaxed">
             Smart tools to help you choose, calculate and order with confidence.
           </p>
-        </div>
+        </motion.div>
 
         <div 
           ref={scrollRef}

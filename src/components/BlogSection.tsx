@@ -10,12 +10,18 @@ export default function BlogSection() {
   return (
     <section id="blog" className="py-12 sm:py-20 lg:py-24 border-t border-gold/10 relative overflow-hidden bg-gradient-to-b from-white/60 to-royale-surface">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center text-center gap-4 mb-6">
+        <motion.div 
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="flex flex-col items-center text-center gap-4 mb-6"
+        >
           <div className="max-w-xl">
             <h2 className="text-xl sm:text-2xl font-serif font-medium mb-3 uppercase tracking-tight leading-tight text-center text-ivory">Rainbow Paint <span className="text-gradient italic">Blog</span></h2>
             <p className="text-gold text-[10px] sm:text-xs font-sans font-light text-center">Expert advice, design inspiration, and technical guides from the pros at Rainbow Paints.</p>
           </div>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
           {recentPosts.map((post, idx) => (

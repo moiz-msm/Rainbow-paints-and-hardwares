@@ -33,21 +33,39 @@ export default function ProductSearchInput() {
     });
     
     // Check categories
-    [...topCategories, ...subCategories["Home Paint"], ...subCategories.Industrial].forEach(c => {
+    const allCatList = [...topCategories];
+    Object.values(subCategories).forEach(subList => {
+      allCatList.push(...subList);
+    });
+    allCatList.forEach(c => {
       if (c.toLowerCase().includes(query)) suggestionsSet.add(c);
     });
 
     // Check products
-    mockProducts.forEach(p => {
+    const removedNames = [
+      'Tractor Sparc Emulsion',
+      'Tractor Uno Acrylic Distemper',
+      'Tractor Emulsion Shyne',
+      'Apcolite Premium Satin Emulsion',
+      'Apcolite Advanced Emulsion',
+      'Floor Epoxy Coating',
+      'Food Grade Epoxy',
+      'MIO Coatings'
+    ].map(n => n.toLowerCase());
+
+    mockProducts.filter(p => !removedNames.includes(p.name?.toLowerCase())).forEach(p => {
       if (p.name.toLowerCase().includes(query)) suggestionsSet.add(p.name);
       if (p.properties) {
         p.properties.forEach((prop: string) => {
           if (prop.toLowerCase().includes(query)) suggestionsSet.add(prop);
         });
       }
-      if (p.subCategory && p.subCategory.toLowerCase().includes(query)) {
-        suggestionsSet.add(p.subCategory);
-      }
+      let pSubs: string[] = (p as any).subCategories || (p.subCategory ? [p.subCategory] : []);
+      pSubs.forEach(sub => {
+        if (sub.toLowerCase().includes(query)) {
+          suggestionsSet.add(sub);
+        }
+      });
     });
 
     return Array.from(suggestionsSet).slice(0, 8); // top 8 suggestions

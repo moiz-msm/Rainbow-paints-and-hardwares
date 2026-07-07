@@ -103,6 +103,33 @@ export default function ProductsAdmin() {
     downloadExcel(flattenedData, "Products_Export");
   };
 
+  const handleUpdateImages = async () => {
+    setStatusMsg("Updating images...");
+    try {
+      const batch = writeBatch(db);
+      let count = 0;
+      products.forEach((docData) => {
+        const mock = mockProducts.find(p => p.name === docData.name);
+        if (mock && mock.image && mock.image !== docData.image) {
+          const prodRef = doc(db, "products", docData.id);
+          batch.update(prodRef, { image: mock.image });
+          count++;
+        }
+      });
+      if (count > 0) {
+        await batch.commit();
+        setStatusMsg(`Updated ${count} product images.`);
+      } else {
+        setStatusMsg("All images are up to date.");
+      }
+      setTimeout(() => setStatusMsg(""), 3000);
+    } catch (e) {
+      console.error(e);
+      setStatusMsg("Error updating images");
+      setTimeout(() => setStatusMsg(""), 3000);
+    }
+  };
+
   const handleSeedData = async () => {
     setStatusMsg("Seeding products...");
     try {
@@ -220,6 +247,14 @@ export default function ProductsAdmin() {
               className="px-4 py-2.5 bg-blue-50 text-blue-700 font-semibold text-sm rounded-xl hover:bg-blue-100 flex items-center justify-center gap-2 transition-colors border border-blue-100"
             >
               <Database className="w-4 h-4" /> Seed Initial Data
+            </button>
+          )}
+          {products.length > 0 && (
+            <button
+              onClick={handleUpdateImages}
+              className="px-4 py-2.5 bg-orange-50 text-orange-700 font-semibold text-sm rounded-xl hover:bg-orange-100 flex items-center justify-center gap-2 transition-colors border border-orange-100"
+            >
+              <Database className="w-4 h-4" /> Update Missing Images
             </button>
           )}
           <button

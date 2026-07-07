@@ -14,7 +14,8 @@ import {
   AlertTriangle, 
   Sparkles, 
   Navigation, 
-  ChevronDown 
+  ChevronDown,
+  Phone
 } from 'lucide-react';
 import { useUserAddresses } from '../hooks/useUserAddresses';
 import { useDebounce } from '../hooks/useDebounce';
@@ -305,6 +306,26 @@ export default function CheckoutPage() {
     });
 
     navigate('/payment');
+  };
+
+  const handleWhatsAppOrder = () => {
+    const phoneNumber = "918072442930";
+    let message = "Hello, I would like to place an order:\n\n";
+    
+    items.forEach((item, index) => {
+      message += `${index + 1}. *${item.name}* (${item.brand})\n`;
+      if (item.shade) {
+        message += `   Shade: ${item.shade.name} ${item.shade.code ? `(${item.shade.code})` : ''}\n`;
+      }
+      message += `   Size: ${item.size}L | Qty: ${item.quantity}\n`;
+      message += `   Price: ₹${(item.unitPrice * item.size * item.quantity).toLocaleString()}\n\n`;
+    });
+    
+    message += `*Grand Total (incl. GST & Delivery): ₹${grandTotal.toLocaleString()}*\n\n`;
+    message += "Please let me know the payment details and delivery time.";
+    
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   return (
@@ -830,9 +851,18 @@ export default function CheckoutPage() {
                   type="submit" 
                   form="checkout-form"
                   disabled={!isDirectServiceable}
-                  className="w-full flex items-center justify-center py-4 bg-gradient-gold text-white rounded-xl font-bold text-lg hover:opacity-90 shadow-lg shadow-gold/20 transition-all outline-none disabled:bg-zinc-300 disabled:text-zinc-600 disabled:shadow-none disabled:cursor-not-allowed"
+                  className="w-full flex items-center justify-center py-4 bg-gradient-gold text-white rounded-xl font-bold text-lg hover:opacity-90 shadow-lg shadow-gold/20 transition-all outline-none disabled:bg-zinc-300 disabled:text-zinc-600 disabled:shadow-none disabled:cursor-not-allowed mb-3"
                 >
                   {isDirectServiceable ? 'Proceed to Payment' : 'Auto Checkout Blocked'}
+                </button>
+
+                <button 
+                  type="button"
+                  onClick={handleWhatsAppOrder}
+                  className="w-full flex items-center justify-center gap-2 py-4 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white rounded-xl font-bold text-lg shadow-lg shadow-green-500/25 transition-all outline-none focus:ring-2 focus:ring-green-500/50"
+                >
+                  <Phone className="w-5 h-5 fill-current" />
+                  Place Order via WhatsApp
                 </button>
                 
                 <div className="mt-4 flex items-center justify-center gap-2 text-xs text-zinc-600">

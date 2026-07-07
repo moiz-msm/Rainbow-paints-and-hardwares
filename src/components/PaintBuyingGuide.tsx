@@ -826,9 +826,9 @@ export default function PaintBuyingGuide() {
                 products: [
                   "Royale Matt Emulsion",
                   "Apcolite Premium Emulsion",
-                  "Apcolite Advanced Emulsion",
+                  
                   "Tractor Emulsion",
-                  "Tractor Sparc Emulsion",
+                  
                 ],
               },
               {
@@ -844,7 +844,7 @@ export default function PaintBuyingGuide() {
                 products: [
                   "Royale Glitz",
                   "Royale Shyne Luxury Emulsion",
-                  "Tractor Emulsion Shyne",
+                  
                 ],
               },
               {

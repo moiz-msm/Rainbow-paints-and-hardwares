@@ -7,14 +7,20 @@ export default function BrandsDealIn() {
   return (
     <section id="brands" className="py-12 sm:py-20 lg:py-24 border-t border-gold/10 overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <header className="mb-4 flex flex-col items-center text-center">
+        <motion.header 
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mb-4 flex flex-col items-center text-center"
+        >
           <h2 className="text-xl sm:text-2xl font-serif font-medium mb-3 uppercase tracking-tight leading-tight text-center">
             Featured <span className="text-gradient italic">Brands</span>
           </h2>
           <p className="text-[10px] sm:text-xs text-gold max-w-xl mx-auto font-sans font-light leading-relaxed">
             Authorised Dealers and Distributors
           </p>
-        </header>
+        </motion.header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {brandDetails.map((brand, idx) => (
