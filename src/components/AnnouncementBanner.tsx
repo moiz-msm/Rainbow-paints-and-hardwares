@@ -297,13 +297,13 @@ export default function AnnouncementBanner() {
                       <ShoppingCart className="w-5 h-5" />
                     </div>
                     <div className="flex-1">
-                      <span className="text-[9px] font-bold uppercase tracking-wider text-teal-600 font-display block mb-0.5">Step 5 — Checkout</span>
-                      <h4 className="text-xs font-bold text-[#0B1021]">Secure Checkout & Quick Fulfilment</h4>
+                      <span className="text-[9px] font-bold uppercase tracking-wider text-teal-600 font-display block mb-0.5">Step 5 — Place Order</span>
+                      <h4 className="text-xs font-bold text-[#0B1021]">Order via WhatsApp & Quick Fulfilment</h4>
                       <p className="text-[11px] text-[#0B1021]/70 leading-relaxed mt-1 hidden sm:block">
-                        Add chosen paints to your cart, fill in delivery details, and checkout securely. Authorised local dealers dispatch original stock instantly.
+                        Add chosen paints to your cart, then click 'Place Order via WhatsApp'. Our team will confirm and dispatch original stock instantly.
                       </p>
                       <p className="text-[11px] text-[#0B1021]/70 leading-relaxed mt-1 sm:hidden">
-                        Add to cart, fill in delivery address, and checkout securely. Local authorised dealers dispatch original paints immediately.
+                        Add to cart and click 'Order via WhatsApp'. Our local authorised dealers dispatch original paints immediately.
                       </p>
                       <button 
                         onClick={() => { setIsModalOpen(false); toggleCart(); }}

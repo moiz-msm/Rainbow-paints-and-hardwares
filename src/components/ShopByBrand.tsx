@@ -100,7 +100,7 @@ export default function ShopByBrand() {
             ))}
             
             <Link 
-              to="/brands"
+              to="/buy-paint-online"
               className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-ivory/10 shadow-[0_4px_15px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_25px_rgb(0,0,0,0.06)] hover:border-gold/30 hover:-translate-y-1 transition-all duration-300 group/brand"
             >
               <span className="text-gold font-display font-bold text-[9px] sm:text-[11px] uppercase tracking-widest text-center mt-1">

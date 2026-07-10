@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShoppingCart, X, Plus, Minus, Trash2, Phone, ShieldCheck, Award, Truck } from 'lucide-react';
+import { ShoppingCart, X, Plus, Minus, Trash2, Phone, ShieldCheck, Award, Truck, Lock } from 'lucide-react';
 import { useCartStore } from '../store/useCartStore';
 
 import { useNavigate } from 'react-router-dom';
@@ -152,13 +152,11 @@ export default function CartDrawer() {
                   <span className="text-xl font-bold text-ivory">₹{total.toLocaleString()}</span>
                 </div>
                 <button 
-                  onClick={() => {
-                    toggleCart();
-                    navigate('/checkout');
-                  }}
-                  className="w-full mb-3 flex items-center justify-center gap-2 py-3.5 bg-gradient-gold hover:opacity-90 text-white rounded-xl font-bold transition-all outline-none shadow-lg shadow-gold/20"
+                  disabled
+                  className="w-full mb-3 flex flex-col items-center justify-center py-2 bg-zinc-200 text-zinc-500 rounded-xl font-bold cursor-not-allowed shadow-none border border-zinc-300"
                 >
-                  Proceed to Checkout
+                  <span className="flex items-center gap-2"><Lock className="w-4 h-4" /> Online Checkout Coming Soon</span>
+                  <span className="text-[9px] font-normal mt-0.5">Please place orders via WhatsApp below</span>
                 </button>
                 <button 
                   onClick={handleWhatsAppOrder}

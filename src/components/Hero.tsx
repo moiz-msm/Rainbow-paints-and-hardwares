@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { brandDetails } from '../data';
 
 export default function Hero() {
-
   const heroBrands = [
     "Asian Paints",
     "Berger Paints",
@@ -28,29 +27,38 @@ export default function Hero() {
   // Calculate the top position for the roller (100% to 0%)
   const paintTop = useTransform(scrollYProgress, [0, 1], ["100%", "0%"]);
 
+  // Animations for Screen 2
+  const y1 = useTransform(scrollYProgress, [0.1, 0.4], [150, 0]);
+
+  const y2 = useTransform(scrollYProgress, [0.2, 0.5], [150, 0]);
+
+  const y3 = useTransform(scrollYProgress, [0.3, 0.6], [150, 0]);
+
+  const y4 = useTransform(scrollYProgress, [0.4, 0.7], [150, 0]);
+
   return (
     <section ref={containerRef} className="relative w-full h-[200vh] bg-royale-bg">
       {/* Sticky container that stays in view while scrolling */}
-      <div className="sticky top-0 h-[100vh] min-h-[600px] w-full overflow-hidden flex flex-col justify-center">
+      <div className="sticky top-0 h-[100dvh] min-h-[500px] sm:min-h-[600px] w-full overflow-hidden flex flex-col justify-center">
         
         {/* ================= SCREEN 1 (Background - Shop Paint Online) ================= */}
-        <div className="absolute inset-0 w-full h-full flex flex-col justify-center items-center px-4 sm:px-8 pb-12 pt-[80px]">
+        <div className="absolute inset-0 w-full h-full flex flex-col justify-center items-center px-4 sm:px-8 pb-8 pt-[100px] sm:pt-[120px] lg:pt-[140px] xl:pt-[160px]">
           <div className="absolute inset-0 w-full h-full">
             <img src="/IMG_20260630_162408.png" alt="Hero Background" className="absolute inset-0 w-full h-full object-cover object-[center_right] opacity-15" />
             <div className="absolute inset-0 bg-gradient-to-r from-royale-bg via-royale-bg/80 to-transparent" />
           </div>
            
-           <div className="max-w-[1400px] w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center z-10 h-full max-h-[800px]">
+           <div className="max-w-[1400px] w-full grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-center content-center z-10 h-full overflow-y-auto no-scrollbar py-2 lg:py-4">
               {/* Left Text */}
-              <div className="flex flex-col items-center lg:items-start text-center lg:text-left mt-8 lg:mt-0">
+              <div className="flex flex-col items-center lg:items-start text-center lg:text-left my-auto">
                   <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="inline-flex items-center gap-2 px-4 py-1.5 bg-gold/10 rounded-full border border-gold/30 mb-6 lg:mb-8"
+                    className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-gold/10 rounded-full border border-gold/30 mb-4 sm:mb-6"
                   >
                     <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-gold" />
-                    <span className="text-[10px] sm:text-xs font-sans font-bold text-gold tracking-[0.2em] uppercase">
+                    <span className="text-[9px] sm:text-[10px] md:text-xs font-sans font-bold text-gold tracking-[0.15em] sm:tracking-[0.2em] uppercase">
                       EST.2001 • 20+ years of trust
                     </span>
                   </motion.div>
@@ -59,7 +67,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.1 }}
-                    className="text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] xl:text-[6rem] font-serif font-bold text-ivory leading-[1.1] tracking-tight"
+                    className="text-[2.2rem] leading-[1.05] sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-serif font-bold text-ivory tracking-tight"
                   >
                     Skip the trip. <br/>
                     <span className="italic font-light text-gold">We deliver.</span>
@@ -69,7 +77,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="mt-6 text-xs sm:text-sm md:text-base text-ivory/70 font-sans max-w-lg leading-relaxed px-4 lg:px-0"
+                    className="mt-3 sm:mt-4 lg:mt-5 text-[11px] sm:text-xs md:text-sm lg:text-base text-ivory/70 font-sans max-w-sm lg:max-w-lg leading-relaxed px-4 lg:px-0"
                   >
                     Buy paints and related products online from top brands for homes, industries and waterproofing solutions.
                   </motion.p>
@@ -78,13 +86,13 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.3 }}
-                    className="mt-6 sm:mt-10 flex flex-row flex-nowrap items-center justify-center lg:justify-start gap-2 sm:gap-4 w-full"
+                    className="mt-5 sm:mt-6 lg:mt-6 flex flex-row flex-nowrap items-center justify-center lg:justify-start gap-2 sm:gap-4 w-full max-w-[280px] sm:max-w-none mx-auto lg:mx-0"
                   >
-                    <Link to="/buy-paint-online" className="bg-[#C6A87C] text-white px-2 py-3 sm:px-8 sm:py-4 rounded-full text-[9px] sm:text-xs font-sans font-bold uppercase tracking-wider flex items-center justify-center whitespace-nowrap gap-1.5 sm:gap-3 hover:bg-[#b09265] transition-all duration-300 shadow-lg flex-1 min-w-0">
-                      <ShoppingCart className="w-3.5 h-3.5 sm:w-5 sm:h-5 shrink-0" /> <span className="truncate">Shop Paint</span>
+                    <Link to="/buy-paint-online" className="bg-[#C6A87C] text-white px-3 py-2.5 sm:px-6 sm:py-3.5 lg:px-8 lg:py-4 rounded-full text-[9px] sm:text-[10px] lg:text-xs font-sans font-bold uppercase tracking-wider flex items-center justify-center whitespace-nowrap gap-1.5 sm:gap-2 hover:bg-[#b09265] transition-all duration-300 shadow-lg flex-1">
+                      <ShoppingCart className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 shrink-0" /> <span className="truncate">Shop Paint</span>
                     </Link>
-                    <Link to="/visualizer" className="bg-white text-[#C6A87C] px-2 py-3 sm:px-8 sm:py-4 rounded-full text-[9px] sm:text-xs font-sans font-bold uppercase tracking-wider flex items-center justify-center whitespace-nowrap gap-1.5 sm:gap-3 transition-colors duration-300 shadow-lg flex-1 min-w-0" style={{backgroundColor: 'white', color: '#C6A87C'}}>
-                      <Palette className="w-3.5 h-3.5 sm:w-5 sm:h-5 shrink-0" /> <span className="truncate">Visualise Colours</span>
+                    <Link to="/visualizer" className="bg-white text-[#C6A87C] px-3 py-2.5 sm:px-6 sm:py-3.5 lg:px-8 lg:py-4 rounded-full text-[9px] sm:text-[10px] lg:text-xs font-sans font-bold uppercase tracking-wider flex items-center justify-center whitespace-nowrap gap-1.5 sm:gap-2 transition-colors duration-300 shadow-lg flex-1" style={{backgroundColor: 'white', color: '#C6A87C'}}>
+                      <Palette className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 shrink-0" /> <span className="truncate">Visualise</span>
                     </Link>
                   </motion.div>
 
@@ -92,26 +100,26 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.35 }}
-                    className="mt-10 sm:mt-12 grid grid-cols-4 gap-2 sm:gap-4 lg:flex lg:flex-row lg:flex-nowrap lg:items-start lg:justify-start lg:gap-10 w-full max-w-full"
+                    className="mt-6 sm:mt-8 lg:mt-8 grid grid-cols-4 gap-2 sm:gap-4 lg:flex lg:flex-row lg:flex-nowrap lg:items-start lg:justify-start lg:gap-8 w-full max-w-full"
                   >
                     <div className="flex flex-col items-center text-center">
-                      <Package className="w-5 h-5 sm:w-6 sm:h-6 text-[#C6A87C] mb-2 sm:mb-3" strokeWidth={1.5} />
-                      <span className="text-[#C6A87C] text-[9px] sm:text-[11px] font-sans font-bold uppercase tracking-widest leading-tight">200+<br/>Products</span>
+                      <Package className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#C6A87C] mb-1 sm:mb-2" strokeWidth={1.5} />
+                      <span className="text-[#C6A87C] text-[8px] sm:text-[9px] lg:text-[11px] font-sans font-bold uppercase tracking-widest leading-tight">200+<br/>Products</span>
                     </div>
                     
                     <div className="flex flex-col items-center text-center">
-                      <Palette className="w-5 h-5 sm:w-6 sm:h-6 text-[#C6A87C] mb-2 sm:mb-3" strokeWidth={1.5} />
-                      <span className="text-[#C6A87C] text-[9px] sm:text-[11px] font-sans font-bold uppercase tracking-widest leading-tight">5000+<br/>Shades</span>
+                      <Palette className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#C6A87C] mb-1 sm:mb-2" strokeWidth={1.5} />
+                      <span className="text-[#C6A87C] text-[8px] sm:text-[9px] lg:text-[11px] font-sans font-bold uppercase tracking-widest leading-tight">5000+<br/>Shades</span>
                     </div>
                     
                     <div className="flex flex-col items-center text-center">
-                      <Truck className="w-5 h-5 sm:w-6 sm:h-6 text-[#C6A87C] mb-2 sm:mb-3" strokeWidth={1.5} />
-                      <span className="text-[#C6A87C] text-[9px] sm:text-[11px] font-sans font-bold uppercase tracking-widest leading-tight">Pan India<br/>Delivery</span>
+                      <Truck className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#C6A87C] mb-1 sm:mb-2" strokeWidth={1.5} />
+                      <span className="text-[#C6A87C] text-[8px] sm:text-[9px] lg:text-[11px] font-sans font-bold uppercase tracking-widest leading-tight">Pan India<br/>Delivery</span>
                     </div>
                     
                     <div className="flex flex-col items-center text-center">
-                      <Tag className="w-5 h-5 sm:w-6 sm:h-6 text-[#C6A87C] mb-2 sm:mb-3" strokeWidth={1.5} />
-                      <span className="text-[#C6A87C] text-[9px] sm:text-[11px] font-sans font-bold uppercase tracking-widest leading-tight">Best<br/>Pricing</span>
+                      <Tag className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#C6A87C] mb-1 sm:mb-2" strokeWidth={1.5} />
+                      <span className="text-[#C6A87C] text-[8px] sm:text-[9px] lg:text-[11px] font-sans font-bold uppercase tracking-widest leading-tight">Best<br/>Pricing</span>
                     </div>
                   </motion.div>
 
@@ -119,19 +127,19 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
-                    className="mt-10 lg:mt-12 w-full pt-6 border-t border-ivory/10 flex flex-col items-center lg:items-start"
+                    className="mt-6 sm:mt-8 lg:mt-8 w-full pt-4 sm:pt-6 lg:pt-8 border-t border-ivory/10 flex flex-col items-center lg:items-start shrink-0"
                   >
-                    <p className="text-[9px] sm:text-[10px] font-sans font-bold text-ivory/60 uppercase tracking-[0.15em] mb-4">
+                    <p className="text-[8px] sm:text-[9px] lg:text-[10px] font-sans font-bold text-ivory/60 uppercase tracking-[0.15em] mb-3 sm:mb-4">
                       Authorised dealers for
                     </p>
-                    <div className="w-full max-w-[300px] sm:max-w-[400px] lg:max-w-lg overflow-hidden relative [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+                    <div className="w-full max-w-[280px] sm:max-w-[360px] lg:max-w-lg overflow-hidden relative [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
                       <motion.div 
                         animate={{ x: ["0%", "-50%"] }}
                         transition={{ repeat: Infinity, ease: "linear", duration: 20 }}
-                        className="flex items-center w-max gap-8 sm:gap-12 pr-8 sm:pr-12"
+                        className="flex items-center w-max gap-6 sm:gap-10 lg:gap-12 pr-6 sm:pr-10 lg:pr-12"
                       >
                         {[...heroBrands, ...heroBrands].map((brand, idx) => brand && (
-                          <div key={idx} className="h-6 sm:h-8 flex-shrink-0 flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300">
+                          <div key={idx} className="h-5 sm:h-6 lg:h-8 flex-shrink-0 flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300">
                              <img src={brand.logo} alt={brand.name} className="max-h-full w-auto object-contain" />
                           </div>
                         ))}
@@ -162,64 +170,72 @@ export default function Hero() {
           className="absolute bottom-0 left-0 w-full overflow-hidden bg-ivory shadow-[0_-20px_50px_rgba(0,0,0,0.5)] z-20"
         >
           {/* Inner content must be full height so it doesn't get squished */}
-          <div className="absolute bottom-0 left-0 h-[100vh] min-h-[600px] w-full flex flex-col justify-center items-center px-4 sm:px-8 bg-ivory pb-12 pt-[80px]">
+          <div className="absolute bottom-0 left-0 h-[100dvh] min-h-[500px] sm:min-h-[600px] w-full flex flex-col justify-center items-center px-4 sm:px-8 bg-ivory pb-8 pt-[100px] sm:pt-[120px] lg:pt-[140px] xl:pt-[160px]">
              
-             <div className="max-w-[1400px] w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center h-full max-h-[800px]">
+             <div className="max-w-[1400px] w-full grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-center content-center h-full overflow-y-auto no-scrollbar py-2 lg:py-4">
                 
                 {/* Left Side: Trust & Stats */}
-                <div className="flex flex-col items-center lg:items-start text-center lg:text-left mt-8 lg:mt-0">
-                   <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] font-serif font-bold text-royale-bg leading-[1.1] mb-6 tracking-tight">
-                     20+ Years <br className="hidden lg:block" />
-                     <span className="italic font-light text-gold">Of Trust</span>
-                   </h2>
+                <div className="flex flex-col items-center lg:items-start text-center lg:text-left my-auto">
+                   <div className="overflow-hidden w-full flex justify-center lg:justify-start mb-4 sm:mb-6">
+                     <motion.h2 style={{ y: y1 }} className="text-[2.2rem] sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-serif font-bold text-royale-bg leading-[1.05] sm:leading-[1.1] tracking-tight">
+                       20+ Years <br className="hidden lg:block" />
+                       <span className="italic font-light text-gold">Of Trust</span>
+                     </motion.h2>
+                   </div>
 
-                   <p className="text-royale-bg/70 font-sans text-xs sm:text-sm md:text-base leading-relaxed mb-8 lg:mb-10 max-w-md px-4 lg:px-0">
-                     Established in 2001, Rainbow Paint & Hardwares has been Coimbatore's trusted paint store, offering top brands and complete painting solutions for homes and industries.
-                   </p>
+                   <div className="overflow-hidden w-full flex justify-center lg:justify-start mb-4 sm:mb-5 lg:mb-6 px-4 lg:px-0">
+                     <motion.p style={{ y: y2 }} className="text-royale-bg/70 font-sans text-[11px] sm:text-xs md:text-sm lg:text-base leading-relaxed max-w-sm lg:max-w-md">
+                       Established in 2001, Rainbow Paint & Hardwares has been Coimbatore's trusted paint store, offering top brands and complete painting solutions for homes and industries.
+                     </motion.p>
+                   </div>
 
                    {/* Features */}
-                   <div className="flex flex-row items-center justify-between sm:justify-start gap-3 sm:gap-6 lg:gap-8 w-full overflow-x-auto no-scrollbar pb-2">
+                   <div className="overflow-hidden w-full flex justify-center lg:justify-start pb-2">
+                     <motion.div style={{ y: y3 }} className="grid grid-cols-4 gap-2 sm:gap-4 lg:flex lg:flex-row lg:flex-nowrap lg:items-start lg:justify-start lg:gap-6 xl:gap-8 w-full max-w-full">
                      {[
-                       { icon: Store, title: "3 Branches" },
-                       { icon: Award, title: "10+ Top Brands" },
-                       { icon: MessageCircle, title: "Expert Advice" },
-                       { icon: ShieldCheck, title: "Reliable Service" }
+                       { icon: Store, title: "3\nBranches" },
+                       { icon: Award, title: "10+\nTop Brands" },
+                       { icon: MessageCircle, title: "Expert\nAdvice" },
+                       { icon: ShieldCheck, title: "Reliable\nService" }
                      ].map((feat, idx) => (
-                       <div key={idx} className="flex flex-row items-center gap-2 shrink-0">
-                          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-royale-bg/5 border border-royale-bg/10 flex items-center justify-center">
-                             <feat.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gold" />
-                          </div>
-                          <span className="text-royale-bg text-[9px] sm:text-[11px] font-sans font-bold uppercase tracking-widest whitespace-nowrap">{feat.title}</span>
+                       <div key={idx} className="flex flex-col items-center text-center">
+                          <feat.icon className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-gold mb-1 sm:mb-2" strokeWidth={1.5} />
+                          <span className="text-royale-bg text-[8px] sm:text-[9px] lg:text-[11px] font-sans font-bold uppercase tracking-widest leading-tight whitespace-pre-line">{feat.title}</span>
                        </div>
                      ))}
+                     </motion.div>
                    </div>
 
                    {/* Get Quote Banner */}
-                   <div className="mt-6 sm:mt-8 w-full max-w-sm sm:max-w-md">
-                     <div className="bg-royale-bg/5 border border-royale-bg/10 rounded-2xl p-4 flex flex-row items-center justify-between hover:bg-royale-bg/10 transition-colors shadow-sm">
+                   <div className="overflow-hidden w-full max-w-[280px] sm:max-w-md mt-4 sm:mt-6 pb-2 mx-auto lg:mx-0">
+                     <motion.div style={{ y: y4 }} className="w-full">
+                       <div className="bg-royale-bg/5 border border-royale-bg/10 rounded-2xl p-3 sm:p-4 flex flex-row items-center justify-between hover:bg-royale-bg/10 transition-colors shadow-sm">
                         <div className="flex flex-col text-left">
-                           <span className="text-royale-bg font-serif font-bold text-sm sm:text-base">Bulk or B2B Requirement?</span>
-                           <span className="text-royale-bg/70 font-sans text-[10px] sm:text-xs">Get wholesale pricing for your project</span>
+                           <span className="text-royale-bg font-serif font-bold text-[11px] sm:text-sm lg:text-base">Bulk or B2B Requirement?</span>
+                           <span className="text-royale-bg/70 font-sans text-[8px] sm:text-[9px] md:text-xs">Get wholesale pricing for your project</span>
                         </div>
-                        <Link to="/contact" className="shrink-0 bg-gold text-ivory px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-[10px] sm:text-xs font-sans font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-[#b09265] transition-colors shadow-lg">
-                           <MessageCircle className="w-3 h-3 sm:w-4 sm:h-4" /> Get Quote
-                        </Link>
+                        <a href="https://wa.me/918072442930?text=Hello%2C%20I%20have%20a%20bulk%2FB2B%20requirement%20for%20my%20project%20and%20would%20like%20to%20get%20a%20quote." target="_blank" rel="noopener noreferrer" className="shrink-0 bg-gold text-ivory px-2 py-2 sm:px-4 sm:py-2.5 lg:px-5 lg:py-2.5 rounded-full text-[8px] sm:text-[9px] md:text-xs font-sans font-bold uppercase tracking-wider flex items-center justify-center gap-1 sm:gap-1.5 hover:bg-[#b09265] transition-colors shadow-lg ml-2">
+                           <MessageCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4" /> Get Quote
+                        </a>
                      </div>
+                     </motion.div>
                    </div>
                 </div>
 
-                {/* Right Side: Authorised Brands Grid (Hidden on small mobile if tight) */}
-                <div className="hidden md:flex flex-col bg-royale-bg/5 rounded-[2rem] p-8 lg:p-12 border border-royale-bg/10 w-full max-w-xl mx-auto lg:ml-auto">
-                   <h3 className="text-xs sm:text-sm font-sans font-bold text-gold uppercase tracking-[0.2em] mb-10 text-center">
+                {/* Right Side: Authorised Brands Grid */}
+                <div className="overflow-hidden w-full max-w-sm sm:max-w-xl mx-auto lg:ml-auto pb-4 my-auto">
+                  <motion.div style={{ y: y3 }} className="flex flex-col bg-royale-bg/5 rounded-2xl md:rounded-[2rem] p-4 sm:p-6 md:p-8 lg:p-10 border border-royale-bg/10 w-full">
+                     <h3 className="text-[8px] sm:text-[9px] md:text-[11px] font-sans font-bold text-gold uppercase tracking-[0.2em] mb-4 sm:mb-6 md:mb-8 text-center">
                      Authorised Dealers For
                    </h3>
-                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 lg:gap-12 items-center justify-items-center">
+                   <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8 items-center justify-items-center">
                      {heroBrands.slice(0, 6).map((brand, idx) => brand && (
-                       <div key={idx} className="h-10 lg:h-14 w-full flex items-center justify-center opacity-70 hover:opacity-100 hover:scale-110 transition-all duration-300">
-                         <img src={brand.logo} alt={brand.name} className="max-h-full max-w-full object-contain filter brightness-0 invert" />
+                       <div key={idx} className="h-4 sm:h-5 md:h-8 lg:h-12 w-full flex items-center justify-center grayscale hover:grayscale-0 opacity-70 hover:opacity-100 hover:scale-110 transition-all duration-300">
+                         <img src={brand.logo} alt={brand.name} className="max-h-full max-w-full object-contain" />
                        </div>
                      ))}
                    </div>
+                  </motion.div>
                 </div>
 
              </div>
@@ -266,3 +282,4 @@ export default function Hero() {
     </section>
   );
 }
+

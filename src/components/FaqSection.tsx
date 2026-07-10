@@ -31,6 +31,16 @@ export const faqs = [
       "Luxury paints (like Royale) have a higher resin content, offering better washability, smoother finish, and better coverage per liter compared to economy paints (like Tractor Emulsion).",
   },
   {
+    question: "How do I choose the right finish (matte, satin, gloss) for my rooms?",
+    answer:
+      "Matte finishes hide wall imperfections well and are great for ceilings and low-traffic areas. Satin or silk finishes offer a soft sheen and are easy to clean, making them ideal for living rooms. Gloss finishes are highly durable and best for doors, trims, and wooden surfaces."
+  },
+  {
+    question: "How can I estimate the amount of paint required for my house?",
+    answer:
+      "You can use the Paint Calculator on our website to get a rough estimate based on your room dimensions. For a precise estimate, you can request a free site visit by our technical experts."
+  },
+  {
     question: "Is the online price same as the in-store price?",
     answer:
       "Yes! We offer the exact same competitive pricing online as we do in our physical branches. There are no extra 'online convenience' charges.",
@@ -41,9 +51,19 @@ export const faqs = [
       "As authorized distributors for Asian Paints and Berger Paints for over 20 years, every product we ship is 100% genuine, factory-sealed, and sourced directly from the manufacturers.",
   },
   {
-    question: "How does doorstep delivery work for paint orders?",
+    question: "What are the delivery timelines for different areas within Coimbatore?",
     answer:
-      "Once you place an order, our logistics team picks up the materials from our nearest branch and delivers them to your doorstep across Coimbatore. Most local deliveries are completed within 24-48 hours.",
+      "Most local deliveries within Coimbatore city limits are completed within 24-48 hours. For surrounding areas like Pollachi, Mettupalayam, or Tirupur, delivery may take 2-3 business days.",
+  },
+  {
+    question: "Is same-day delivery available in Coimbatore?",
+    answer:
+      "Yes, same-day delivery is available for orders placed before 12 PM for in-stock items delivered within a 10km radius of our Kattoor branch. Please contact us via WhatsApp to confirm same-day eligibility."
+  },
+  {
+    question: "Are there any delivery charges for orders within Coimbatore?",
+    answer:
+      "We offer free delivery within Coimbatore for all orders above ₹5,000. For orders below this amount, a nominal delivery fee is calculated at checkout based on your exact location and volumetric weight."
   },
   {
     question: "Can I get expert advice if I'm buying online?",
@@ -51,19 +71,24 @@ export const faqs = [
       "Absolutely. You can use our 'Request Visit' feature for a site inspection or reach out to us via WhatsApp. Our technical team is always ready to guide you on product selection and quantity requirements.",
   },
   {
+    question: "What is your return and exchange policy for unused paint?",
+    answer:
+      "We accept returns and exchanges on unopened, standard white or factory-packed base paints within 7 days of purchase. The product must be in its original, sealed condition along with the original invoice."
+  },
+  {
+    question: "Can I return customized (tinted) paint colors?",
+    answer:
+      "Unfortunately, we cannot accept returns or exchanges for customized, machine-tinted paint shades since they are specifically mixed to your order. We highly recommend testing a small sample before ordering bulk quantities."
+  },
+  {
+    question: "Do you offer wholesale accounts or discounts for contractors and painters?",
+    answer:
+      "Yes, we offer special B2B pricing, credit facilities, and volume discounts for registered painting contractors, builders, and architects. Please contact our store directly to set up a trade account."
+  },
+  {
     question: "Where can I find an authorized Asian Paints or Berger Paints dealer in Coimbatore?",
     answer:
       "Rainbow Paints & Hardwares is a certified and trusted dealer for both Asian Paints and Berger Paints in Coimbatore. We offer the complete range of interior, exterior, waterproofing, and wood finish products from top brands."
-  },
-  {
-    question: "What is the best paint for exterior walls to protect from rain?",
-    answer:
-      "For severe weather conditions, we highly recommend Asian Paints Apex Ultima Protek or Berger WeatherCoat Long Life. These provide excellent waterproofing and anti-algal protection for exterior walls."
-  },
-  {
-    question: "Can I buy wall putty, primer, and painting tools online?",
-    answer:
-      "Yes, our online store features a full range of painting accessories including wall putty, primers, rollers, brushes, and masking tapes. Everything you need for a complete painting job can be delivered to your door in Coimbatore."
   }
 ];
 

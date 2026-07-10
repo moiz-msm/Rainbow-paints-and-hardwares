@@ -172,6 +172,10 @@ export default function Footer() {
             <Link to="/store/coimbatore">Best paint shop in Coimbatore</Link>
             <Link to="/c/interior-paints">Interior wall paint shop</Link>
             <Link to="/c/exterior-paints">Exterior house paint Coimbatore</Link>
+            <Link to="/c/metals-and-grills">Metals and grills paint</Link>
+            <Link to="/c/pu-coatings">PU Coatings Coimbatore</Link>
+            <Link to="/c/epoxy-coatings">Epoxy Coatings Coimbatore</Link>
+            <Link to="/c/synthetic-enamels">Synthetic Enamels</Link>
           </div>
         </div>
 

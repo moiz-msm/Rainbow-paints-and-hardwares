@@ -4,13 +4,13 @@ import { ChevronRight } from 'lucide-react';
 import ProductsSection from '../components/ProductsSection';
 import SEO from '../components/SEO';
 import Breadcrumb from '../components/Breadcrumb';
-import { brands } from '../data';
+import { brands, subCategories } from '../data';
 
 export default function ProductsPage() {
   const { categorySlug, brandSlug } = useParams<{ categorySlug?: string, brandSlug?: string }>();
 
   // Optional: Convert slug to a display format (e.g., 'interior-paints' -> 'Interior Paints')
-  const initialCategory = categorySlug ? categorySlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : undefined;
+  let initialCategory = categorySlug ? categorySlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : undefined; if(categorySlug) { const allSubs = Object.values(subCategories).flat(); const exactCat = allSubs.find(c => c.toLowerCase().replace(/\s+/g, '-') === categorySlug); if(exactCat) initialCategory = exactCat; }
   let initialBrand = brandSlug ? brandSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : undefined;
   
   if (brandSlug) {
@@ -82,26 +82,18 @@ export default function ProductsPage() {
     };
   }, [pageTitle, pageDescription, categorySlug, brandSlug]);
 
-  const breadcrumbSchema = useMemo(() => {
-    return {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://rainbowpaint.in/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": pageTitle,
-          "item": `https://rainbowpaint.in${categorySlug ? '/c/' + categorySlug : brandSlug ? '/brands/' + brandSlug : '/buy-paint-online'}`
-        }
-      ]
-    };
-  }, [pageTitle, categorySlug, brandSlug]);
+  const breadcrumbItems = useMemo(() => {
+    const items: { label: string; href?: string }[] = [{ label: 'Home', href: '/' }];
+    
+    if (categorySlug || brandSlug) {
+      items.push({ label: 'Products', href: '/buy-paint-online' });
+      items.push({ label: pageTitle });
+    } else {
+      items.push({ label: 'Products' });
+    }
+    
+    return items;
+  }, [categorySlug, brandSlug, pageTitle]);
 
   const currentUrl = `https://rainbowpaint.in${categorySlug ? '/c/' + categorySlug : brandSlug ? '/brands/' + brandSlug : '/buy-paint-online'}`;
 
@@ -111,10 +103,14 @@ export default function ProductsPage() {
         title={`${pageTitle} | Buy Paints Online`}
         description={pageDescription}
         url={currentUrl}
-        schema={[collectionSchema, breadcrumbSchema, serviceSchema]}
+        schema={[collectionSchema, serviceSchema]}
         type="category"
       />
       
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
+        <Breadcrumb items={breadcrumbItems} className="text-ivory/60 mb-6" />
+      </div>
+
       <ProductsSection 
         initialCategory={initialCategory} 
         initialBrand={initialBrand}

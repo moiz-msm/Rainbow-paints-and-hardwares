@@ -51,6 +51,22 @@ export default function FaqPage() {
       },
       {
         "@type": "Question",
+        "name": "How do I choose the right finish (matte, satin, gloss) for my rooms?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Matte finishes hide wall imperfections well and are great for ceilings and low-traffic areas. Satin or silk finishes offer a soft sheen and are easy to clean, making them ideal for living rooms. Gloss finishes are highly durable and best for doors, trims, and wooden surfaces."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I estimate the amount of paint required for my house?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can use the Paint Calculator on our website to get a rough estimate based on your room dimensions. For a precise estimate, you can request a free site visit by our technical experts."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "Is the online price same as the in-store price?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -67,10 +83,26 @@ export default function FaqPage() {
       },
       {
         "@type": "Question",
-        "name": "How does doorstep delivery work for paint orders?",
+        "name": "What are the delivery timelines for different areas within Coimbatore?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Once you place an order, our logistics team picks up the materials from our nearest branch and delivers them to your doorstep across Coimbatore. Most local deliveries are completed within 24-48 hours."
+          "text": "Most local deliveries within Coimbatore city limits are completed within 24-48 hours. For surrounding areas like Pollachi, Mettupalayam, or Tirupur, delivery may take 2-3 business days."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is same-day delivery available in Coimbatore?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, same-day delivery is available for orders placed before 12 PM for in-stock items delivered within a 10km radius of our Kattoor branch. Please contact us via WhatsApp to confirm same-day eligibility."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are there any delivery charges for orders within Coimbatore?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We offer free delivery within Coimbatore for all orders above ₹5,000. For orders below this amount, a nominal delivery fee is calculated at checkout based on your exact location and volumetric weight."
         }
       },
       {
@@ -83,26 +115,34 @@ export default function FaqPage() {
       },
       {
         "@type": "Question",
+        "name": "What is your return and exchange policy for unused paint?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We accept returns and exchanges on unopened, standard white or factory-packed base paints within 7 days of purchase. The product must be in its original, sealed condition along with the original invoice."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I return customized (tinted) paint colors?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Unfortunately, we cannot accept returns or exchanges for customized, machine-tinted paint shades since they are specifically mixed to your order. We highly recommend testing a small sample before ordering bulk quantities."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer wholesale accounts or discounts for contractors and painters?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we offer special B2B pricing, credit facilities, and volume discounts for registered painting contractors, builders, and architects. Please contact our store directly to set up a trade account."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "Where can I find an authorized Asian Paints or Berger Paints dealer in Coimbatore?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Rainbow Paints & Hardwares is a certified and trusted dealer for both Asian Paints and Berger Paints in Coimbatore. We offer the complete range of interior, exterior, waterproofing, and wood finish products from top brands."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is the best paint for exterior walls to protect from rain?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "For severe weather conditions, we highly recommend Asian Paints Apex Ultima Protek or Berger WeatherCoat Long Life. These provide excellent waterproofing and anti-algal protection for exterior walls."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I buy wall putty, primer, and painting tools online?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, our online store features a full range of painting accessories including wall putty, primers, rollers, brushes, and masking tapes. Everything you need for a complete painting job can be delivered to your door in Coimbatore."
         }
       }
     ]

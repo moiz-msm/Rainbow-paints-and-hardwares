@@ -84,19 +84,9 @@ export default function AddedToCartBanner() {
                   closeBanner();
                   toggleCart();
                 }}
-                className="flex-1 md:flex-initial px-4 py-2.5 rounded-xl border border-zinc-700 hover:border-zinc-500 bg-zinc-900/50 hover:bg-zinc-800 text-zinc-200 hover:text-white text-xs font-semibold uppercase tracking-wider transition-all duration-200 cursor-pointer text-center"
-              >
-                View Cart
-              </button>
-              
-              <button
-                onClick={() => {
-                  closeBanner();
-                  navigate('/checkout');
-                }}
                 className="flex-1 md:flex-initial px-5 py-2.5 rounded-xl bg-gradient-gold hover:opacity-90 text-white font-semibold text-xs uppercase tracking-wider transition-all duration-200 shadow-lg shadow-gold/10 hover:shadow-gold/20 flex items-center justify-center gap-1.5 cursor-pointer text-center"
               >
-                Checkout <ArrowRight className="w-3.5 h-3.5" />
+                View Cart & Order <ArrowRight className="w-3.5 h-3.5" />
               </button>
 
               <button

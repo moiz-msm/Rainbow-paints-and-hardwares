@@ -4,36 +4,18 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const categories = [
-  { 
-    name: 'Interior Paints', 
-    slug: 'interior-wall', 
-    image: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?w=500&q=80' 
-  },
-  { 
-    name: 'Exterior Paints', 
-    slug: 'exterior-wall', 
-    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500&q=80' 
-  },
-  { 
-    name: 'Primers', 
-    slug: 'primer', 
-    image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=500&q=80' 
-  },
-  { 
-    name: 'Waterproofing', 
-    slug: 'waterproofing', 
-    image: 'https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=500&q=80' 
-  },
-  { 
-    name: 'Wood Finishes', 
-    slug: 'wood-finishes', 
-    image: 'https://images.unsplash.com/photo-1550684376-efcbd6e3f031?w=500&q=80' 
-  },
-  { 
-    name: 'Painting Tools', 
-    slug: 'tools', 
-    image: 'https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?w=500&q=80' 
-  }
+  { name: 'Interior Wall', slug: 'interior-wall', image: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?w=500&q=80' },
+  { name: 'Exterior Wall', slug: 'exterior-wall', image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500&q=80' },
+  { name: 'Undercoats', slug: 'undercoats', image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=500&q=80' },
+  { name: 'Waterproofing', slug: 'waterproofing', image: 'https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=500&q=80' },
+  { name: 'Wood Finishes', slug: 'wood-finishes', image: 'https://images.unsplash.com/photo-1550684376-efcbd6e3f031?w=500&q=80' },
+  { name: 'Metals and Grills', slug: 'metals-and-grills', image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=500&q=80' },
+  { name: 'Painting Tools', slug: 'painting-tools', image: 'https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?w=500&q=80' },
+  { name: 'Thinners & Solvents', slug: 'thinners-&-solvents', image: 'https://plus.unsplash.com/premium_photo-1664303847960-586318f59035?w=500&q=80' },
+  { name: 'Tile Adhesives', slug: 'tile-adhesives', image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=500&q=80' },
+  { name: 'PU Coatings', slug: 'pu-coatings', image: 'https://images.unsplash.com/photo-1563906267088-b029e7101114?w=500&q=80' },
+  { name: 'Epoxy Coatings', slug: 'epoxy-coatings', image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=500&q=80' },
+  { name: 'Synthetic Enamels', slug: 'synthetic-enamels', image: 'https://images.unsplash.com/photo-1416339684178-3a239570f315?w=500&q=80' }
 ];
 
 export default function ShopByCategory() {
@@ -122,11 +104,24 @@ export default function ShopByCategory() {
                     className="w-full h-full object-cover group-hover/cat:scale-110 transition-transform duration-700 ease-out"
                   />
                 </div>
-                <span className="text-ivory font-serif font-medium text-[11px] sm:text-xs lg:text-sm text-center leading-tight">
+                <span className="font-serif font-medium text-[11px] sm:text-xs lg:text-sm text-center leading-tight text-ivory">
                   {category.name}
                 </span>
               </Link>
             ))}
+            <Link 
+              to="/buy-paint-online"
+              className="flex-shrink-0 flex flex-col items-center gap-3 w-[100px] sm:w-[120px] lg:w-[140px] group/cat"
+            >
+              <div className="w-full aspect-square rounded-2xl bg-white border border-ivory/10 shadow-[0_4px_15px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_25px_rgb(0,0,0,0.06)] hover:border-gold/30 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center p-3 sm:p-4">
+                <span className="text-gold font-display font-bold text-[9px] sm:text-[11px] uppercase tracking-widest text-center mt-1">
+                  View All<br />Categories
+                </span>
+              </div>
+              <span className="text-transparent font-serif font-medium text-[11px] sm:text-xs lg:text-sm text-center leading-tight">
+                All
+              </span>
+            </Link>
           </div>
 
           <button 

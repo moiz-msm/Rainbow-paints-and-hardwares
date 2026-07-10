@@ -1124,11 +1124,11 @@ export default function ProductsSection({
       "PU Coatings": 
         "https://images.unsplash.com/photo-1622396481328-9b1b78cdd9fd?w=500&q=80",
       "Epoxy Coatings": 
-        "https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=500&q=80",
-      "Metals and Grills": 
-        "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?w=500&q=80",
-      "Synthetic Enamels": 
         "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=500&q=80",
+      "Metals and Grills": 
+        "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=500&q=80",
+      "Synthetic Enamels": 
+        "https://images.unsplash.com/photo-1416339684178-3a239570f315?w=500&q=80",
       "Industrial": 
         "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=500&q=80",
     };
@@ -1137,7 +1137,7 @@ export default function ProductsSection({
       "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=500&q=80",
       "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500&q=80",
       "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=500&q=80",
-      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=500&q=80",
+      "https://images.unsplash.com/photo-1563906267088-b029e7101114?w=500&q=80",
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&q=80",
       "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=500&q=80",
       "https://images.unsplash.com/photo-1554995207-c18c203602cb?w=500&q=80"

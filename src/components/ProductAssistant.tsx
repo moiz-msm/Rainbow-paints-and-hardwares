@@ -24,20 +24,10 @@ export default function ProductAssistant() {
   const [showHelperBubble, setShowHelperBubble] = useState(true);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Auto-hide helper bubble after 6 seconds
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowHelperBubble(false);
-    }, 6000);
-    return () => clearTimeout(timer);
-  }, []);
-
   // Track scroll position to hide/show the floating button when hero is visible
   useEffect(() => {
     let ticking = false;
     const handleScroll = () => {
-      // Instantly dismiss any bouncing tooltip when scrolling begins
-      setShowHelperBubble(false);
       setIsScrolling(true);
 
       if (scrollTimeoutRef.current) {

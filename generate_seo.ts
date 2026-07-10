@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { mockProducts, brands, subCategories } from './src/data';
+import { blogPosts } from './src/data/blogPosts';
 
 const APP_URL = 'https://rainbowpaint.in';
 
@@ -28,16 +29,20 @@ function generateSitemap() {
      urls.push(`/brands/${brand.toLowerCase().replace(/\s+/g, '-')}`);
   });
 
+  // Add blog routes
+  blogPosts.forEach(post => {
+     urls.push(`/blog/${post.slug}`);
+  });
+
   // Add product routes
   mockProducts.forEach((product: any) => {
      const slug = product.slug || product.name.replace(/\s+/g, '-').toLowerCase();
      urls.push(`/p/${slug}`);
   });
 
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map(url => `  <url>
-    <loc>${APP_URL}${url}</loc>
+    <loc>${APP_URL}${url.replace(/&/g, '&amp;')}</loc>
     <changefreq>daily</changefreq>
     <priority>${url === '/' ? '1.0' : '0.8'}</priority>
   </url>`).join('\n')}
@@ -62,7 +67,7 @@ ${mockProducts.map((p: any) => {
       <g:id>${p.id}</g:id>
       <g:title>${(p.name || '').replace(/&/g, '&amp;')}</g:title>
       <g:description>${(p.name || '').replace(/&/g, '&amp;')} by ${(p.brand || '').replace(/&/g, '&amp;')} - ${(p.category || '').replace(/&/g, '&amp;')} &gt; ${(p.subCategory || '').replace(/&/g, '&amp;')}</g:description>
-      <g:link>${pUrl}</g:link>
+      <g:link>${pUrl.replace(/&/g, '&amp;')}</g:link>
       <g:image_link>${p.image ? (p.image.startsWith('http') ? p.image : APP_URL + p.image) : ''}</g:image_link>
       <g:condition>new</g:condition>
       <g:availability>${p.inStock ? 'in_stock' : 'out_of_stock'}</g:availability>
