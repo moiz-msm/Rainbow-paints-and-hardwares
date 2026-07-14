@@ -4,7 +4,7 @@
  */
 
 import React, { Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Outlet, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -52,8 +52,11 @@ const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 // Wrap Outlet in AnimatePresence with location key to trigger animations on route change
 function PageLayout() {
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+  
   return (
-    <div className="w-full flex-grow flex flex-col animate-in fade-in duration-300">
+    <div className={`w-full flex-grow flex flex-col animate-in fade-in duration-300 ${isHome ? '' : 'pt-8 sm:pt-10 lg:pt-12'}`}>
       <Suspense fallback={<div className="min-h-[50vh] flex items-center justify-center"><div className="w-8 h-8 border-4 border-gold border-t-transparent rounded-full animate-spin"></div></div>}>
         <Outlet />
       </Suspense>

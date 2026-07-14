@@ -70,7 +70,13 @@ export default function Header() {
   return (
     <div className="fixed top-0 inset-x-0 z-[80] flex flex-col w-full">
       <AnnouncementBanner />
-      <header className={`w-full transition-all duration-300 transform-gpu will-change-transform py-2 sm:py-3 ${isMobileMenuOpen ? 'bg-royale-bg border-b border-zinc-200' : isScrolled ? 'glass-header' : 'bg-transparent'}`}>
+      <header className={`w-full transition-all duration-300 transform-gpu will-change-transform py-2 sm:py-3 ${
+        isMobileMenuOpen 
+          ? 'bg-royale-bg border-b border-zinc-200' 
+          : (isScrolled || location.pathname !== '/') 
+            ? 'glass-header border-b border-royale-accent' 
+            : 'bg-transparent'
+      }`}>
         <div className="max-w-[1400px] lg:max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="flex flex-col w-full">
           <div className="flex justify-between items-center w-full">

@@ -39,68 +39,69 @@ export default function Hero() {
   return (
     <section ref={containerRef} className="relative w-full h-[200vh] bg-royale-bg">
       {/* Sticky container that stays in view while scrolling */}
-      <div className="sticky top-0 h-[100dvh] min-h-[500px] sm:min-h-[600px] w-full overflow-hidden flex flex-col justify-center">
+      <div className="sticky top-0 h-[100dvh] min-h-[480px] sm:min-h-[550px] w-full overflow-hidden flex flex-col justify-center">
         
         {/* ================= SCREEN 1 (Background - Shop Paint Online) ================= */}
-        <div className="absolute inset-0 w-full h-full flex flex-col justify-center items-center px-4 sm:px-8 pb-8 pt-[100px] sm:pt-[120px] lg:pt-[140px] xl:pt-[160px]">
+        <div className="absolute inset-0 w-full h-full flex flex-col justify-center items-center px-4 sm:px-8 pb-4 sm:pb-6 pt-[80px] sm:pt-[95px] lg:pt-[105px] xl:pt-[115px]">
           <div className="absolute inset-0 w-full h-full">
-            <img src="/IMG_20260630_162408.png" alt="Hero Background" className="absolute inset-0 w-full h-full object-cover object-[center_right] opacity-15" />
-            <div className="absolute inset-0 bg-gradient-to-r from-royale-bg via-royale-bg/80 to-transparent" />
+            <img src="/IMG_20260630_162408.png" alt="Hero Background" className="absolute inset-0 w-full h-full object-cover object-center" />
+            {/* Elegant light cream/beige gradient matching the brand palette that preserves the original image on the right while ensuring high legibility for the text on the left */}
+            <div className="absolute inset-0 bg-gradient-to-b from-royale-bg/95 via-royale-bg/80 to-royale-bg/40 lg:bg-gradient-to-r lg:from-royale-bg lg:via-royale-bg/75 lg:to-transparent" />
           </div>
            
            <div className="max-w-[1400px] w-full grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-center content-center z-10 h-full overflow-y-auto no-scrollbar py-2 lg:py-4">
               {/* Left Text */}
-              <div className="flex flex-col items-center lg:items-start text-center lg:text-left my-auto">
+              <div className="flex flex-col items-center lg:items-start text-center lg:text-left my-auto max-w-xl">
                   <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-gold/10 rounded-full border border-gold/30 mb-4 sm:mb-6"
+                    className="inline-flex items-center gap-2 px-3 py-1 sm:px-4 sm:py-1.5 bg-gold/10 rounded-full border border-gold/30 mb-2 sm:mb-4"
                   >
                     <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-gold" />
                     <span className="text-[9px] sm:text-[10px] md:text-xs font-sans font-bold text-gold tracking-[0.15em] sm:tracking-[0.2em] uppercase">
                       EST.2001 • 20+ years of trust
                     </span>
                   </motion.div>
-
+ 
                   <motion.h1 
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.1 }}
-                    className="text-[2.2rem] leading-[1.05] sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-serif font-bold text-ivory tracking-tight"
+                    className="text-3xl sm:text-4xl md:text-5xl xl:text-5xl 2xl:text-6xl font-serif font-bold text-ivory tracking-tight leading-[1.1]"
                   >
                     Skip the trip. <br/>
                     <span className="italic font-light text-gold">We deliver.</span>
                   </motion.h1>
-
+ 
                   <motion.p 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="mt-3 sm:mt-4 lg:mt-5 text-[11px] sm:text-xs md:text-sm lg:text-base text-ivory/70 font-sans max-w-sm lg:max-w-lg leading-relaxed px-4 lg:px-0"
+                    className="mt-2 sm:mt-3 text-[11px] sm:text-xs md:text-sm lg:text-base text-ivory/70 font-sans max-w-sm lg:max-w-lg leading-relaxed px-4 lg:px-0"
                   >
                     Buy paints and related products online from top brands for homes, industries and waterproofing solutions.
                   </motion.p>
-
+ 
                   <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.3 }}
-                    className="mt-5 sm:mt-6 lg:mt-6 flex flex-row flex-nowrap items-center justify-center lg:justify-start gap-2 sm:gap-4 w-full max-w-[280px] sm:max-w-none mx-auto lg:mx-0"
+                    className="mt-3 sm:mt-4 lg:mt-5 flex flex-row flex-nowrap items-center justify-center lg:justify-start gap-2 sm:gap-4 w-full max-w-[280px] sm:max-w-none mx-auto lg:mx-0"
                   >
-                    <Link to="/buy-paint-online" className="bg-[#C6A87C] text-white px-3 py-2.5 sm:px-6 sm:py-3.5 lg:px-8 lg:py-4 rounded-full text-[9px] sm:text-[10px] lg:text-xs font-sans font-bold uppercase tracking-wider flex items-center justify-center whitespace-nowrap gap-1.5 sm:gap-2 hover:bg-[#b09265] transition-all duration-300 shadow-lg flex-1">
+                    <Link to="/buy-paint-online" className="bg-[#C6A87C] text-white px-3 py-2 sm:px-5 sm:py-3 lg:px-6 lg:py-3 xl:px-8 xl:py-3.5 rounded-full text-[9px] sm:text-[10px] lg:text-xs font-sans font-bold uppercase tracking-wider flex items-center justify-center whitespace-nowrap gap-1.5 sm:gap-2 hover:bg-[#b09265] transition-all duration-300 shadow-lg flex-1">
                       <ShoppingCart className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 shrink-0" /> <span className="truncate">Shop Paint</span>
                     </Link>
-                    <Link to="/visualizer" className="bg-white text-[#C6A87C] px-3 py-2.5 sm:px-6 sm:py-3.5 lg:px-8 lg:py-4 rounded-full text-[9px] sm:text-[10px] lg:text-xs font-sans font-bold uppercase tracking-wider flex items-center justify-center whitespace-nowrap gap-1.5 sm:gap-2 transition-colors duration-300 shadow-lg flex-1" style={{backgroundColor: 'white', color: '#C6A87C'}}>
+                    <Link to="/visualizer" className="bg-white text-[#C6A87C] px-3 py-2 sm:px-5 sm:py-3 lg:px-6 lg:py-3 xl:px-8 xl:py-3.5 rounded-full text-[9px] sm:text-[10px] lg:text-xs font-sans font-bold uppercase tracking-wider flex items-center justify-center whitespace-nowrap gap-1.5 sm:gap-2 transition-colors duration-300 shadow-lg flex-1" style={{backgroundColor: 'white', color: '#C6A87C'}}>
                       <Palette className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 shrink-0" /> <span className="truncate">Visualise</span>
                     </Link>
                   </motion.div>
-
+ 
                   <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.35 }}
-                    className="mt-6 sm:mt-8 lg:mt-8 grid grid-cols-4 gap-2 sm:gap-4 lg:flex lg:flex-row lg:flex-nowrap lg:items-start lg:justify-start lg:gap-8 w-full max-w-full"
+                    className="mt-4 sm:mt-5 grid grid-cols-4 gap-2 sm:gap-4 lg:flex lg:flex-row lg:flex-nowrap lg:items-start lg:justify-start lg:gap-8 w-full max-w-full"
                   >
                     <div className="flex flex-col items-center text-center">
                       <Package className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#C6A87C] mb-1 sm:mb-2" strokeWidth={1.5} />
@@ -127,7 +128,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
-                    className="mt-6 sm:mt-8 lg:mt-8 w-full pt-4 sm:pt-6 lg:pt-8 border-t border-ivory/10 flex flex-col items-center lg:items-start shrink-0"
+                    className="mt-4 sm:mt-5 w-full pt-3 sm:pt-4 border-t border-ivory/10 flex flex-col items-center lg:items-start shrink-0"
                   >
                     <p className="text-[8px] sm:text-[9px] lg:text-[10px] font-sans font-bold text-ivory/60 uppercase tracking-[0.15em] mb-3 sm:mb-4">
                       Authorised dealers for
@@ -170,27 +171,27 @@ export default function Hero() {
           className="absolute bottom-0 left-0 w-full overflow-hidden bg-ivory shadow-[0_-20px_50px_rgba(0,0,0,0.5)] z-20"
         >
           {/* Inner content must be full height so it doesn't get squished */}
-          <div className="absolute bottom-0 left-0 h-[100dvh] min-h-[500px] sm:min-h-[600px] w-full flex flex-col justify-center items-center px-4 sm:px-8 bg-ivory pb-8 pt-[100px] sm:pt-[120px] lg:pt-[140px] xl:pt-[160px]">
+          <div className="absolute bottom-0 left-0 h-[100dvh] min-h-[480px] sm:min-h-[550px] w-full flex flex-col justify-center items-center px-4 sm:px-8 bg-ivory pb-4 sm:pb-6 pt-[80px] sm:pt-[95px] lg:pt-[105px] xl:pt-[115px]">
              
              <div className="max-w-[1400px] w-full grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-center content-center h-full overflow-y-auto no-scrollbar py-2 lg:py-4">
                 
                 {/* Left Side: Trust & Stats */}
                 <div className="flex flex-col items-center lg:items-start text-center lg:text-left my-auto">
-                   <div className="overflow-hidden w-full flex justify-center lg:justify-start mb-4 sm:mb-6">
-                     <motion.h2 style={{ y: y1 }} className="text-[2.2rem] sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-serif font-bold text-royale-bg leading-[1.05] sm:leading-[1.1] tracking-tight">
+                   <div className="overflow-hidden w-full flex justify-center lg:justify-start mb-2 sm:mb-4">
+                     <motion.h2 style={{ y: y1 }} className="text-3xl sm:text-4xl md:text-5xl xl:text-5xl 2xl:text-6xl font-serif font-bold text-royale-bg leading-[1.1] tracking-tight">
                        20+ Years <br className="hidden lg:block" />
                        <span className="italic font-light text-gold">Of Trust</span>
                      </motion.h2>
                    </div>
 
-                   <div className="overflow-hidden w-full flex justify-center lg:justify-start mb-4 sm:mb-5 lg:mb-6 px-4 lg:px-0">
+                   <div className="overflow-hidden w-full flex justify-center lg:justify-start mb-3 sm:mb-4 px-4 lg:px-0">
                      <motion.p style={{ y: y2 }} className="text-royale-bg/70 font-sans text-[11px] sm:text-xs md:text-sm lg:text-base leading-relaxed max-w-sm lg:max-w-md">
                        Established in 2001, Rainbow Paint & Hardwares has been Coimbatore's trusted paint store, offering top brands and complete painting solutions for homes and industries.
                      </motion.p>
                    </div>
 
                    {/* Features */}
-                   <div className="overflow-hidden w-full flex justify-center lg:justify-start pb-2">
+                   <div className="overflow-hidden w-full flex justify-center lg:justify-start pb-1.5">
                      <motion.div style={{ y: y3 }} className="grid grid-cols-4 gap-2 sm:gap-4 lg:flex lg:flex-row lg:flex-nowrap lg:items-start lg:justify-start lg:gap-6 xl:gap-8 w-full max-w-full">
                      {[
                        { icon: Store, title: "3\nBranches" },
@@ -207,7 +208,7 @@ export default function Hero() {
                    </div>
 
                    {/* Get Quote Banner */}
-                   <div className="overflow-hidden w-full max-w-[280px] sm:max-w-md mt-4 sm:mt-6 pb-2 mx-auto lg:mx-0">
+                   <div className="overflow-hidden w-full max-w-[280px] sm:max-w-md mt-3 sm:mt-4 pb-1.5 mx-auto lg:mx-0">
                      <motion.div style={{ y: y4 }} className="w-full">
                        <div className="bg-royale-bg/5 border border-royale-bg/10 rounded-2xl p-3 sm:p-4 flex flex-row items-center justify-between hover:bg-royale-bg/10 transition-colors shadow-sm">
                         <div className="flex flex-col text-left">
@@ -224,8 +225,8 @@ export default function Hero() {
 
                 {/* Right Side: Authorised Brands Grid */}
                 <div className="overflow-hidden w-full max-w-sm sm:max-w-xl mx-auto lg:ml-auto pb-4 my-auto">
-                  <motion.div style={{ y: y3 }} className="flex flex-col bg-royale-bg/5 rounded-2xl md:rounded-[2rem] p-4 sm:p-6 md:p-8 lg:p-10 border border-royale-bg/10 w-full">
-                     <h3 className="text-[8px] sm:text-[9px] md:text-[11px] font-sans font-bold text-gold uppercase tracking-[0.2em] mb-4 sm:mb-6 md:mb-8 text-center">
+                  <motion.div style={{ y: y3 }} className="flex flex-col bg-royale-bg/5 rounded-2xl md:rounded-[2rem] p-4 sm:p-5 md:p-6 lg:p-8 border border-royale-bg/10 w-full">
+                     <h3 className="text-[8px] sm:text-[9px] md:text-[11px] font-sans font-bold text-gold uppercase tracking-[0.2em] mb-3 sm:mb-4 md:mb-5 text-center">
                      Authorised Dealers For
                    </h3>
                    <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8 items-center justify-items-center">
