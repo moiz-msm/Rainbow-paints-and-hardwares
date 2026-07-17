@@ -595,7 +595,8 @@ export default function ProductDetailPage() {
 
               <motion.img 
                 src={displayImage || product.image} 
-                alt={product.name}
+                alt={`${product.name} by ${product.brand} - ${product.category}`}
+                title={`${product.name} - ${product.brand} Paint`}
                 referrerPolicy="no-referrer"
                 className={`w-full h-full object-contain p-8 lg:p-12 transition-transform duration-200 ${isZoomed ? 'scale-150 opacity-0' : 'scale-100 opacity-100'}`}
               />

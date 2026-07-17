@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import AuthProvider from './components/AuthProvider';
 import NavigationProgress from './components/NavigationProgress';
+import GlobalLoader from './components/GlobalLoader';
 import Home from './pages/Home';
 import { lazyWithRetry as lazy } from './utils/lazyWithRetry';
 
@@ -122,6 +123,7 @@ export default function App() {
     <HelmetProvider>
       <AuthProvider>
         <Router>
+        <GlobalLoader />
         <NavigationProgress />
         <ScrollToTop />
         <div className="min-h-screen bg-royale-bg text-ivory selection:bg-gold/50 selection:text-white flex flex-col">

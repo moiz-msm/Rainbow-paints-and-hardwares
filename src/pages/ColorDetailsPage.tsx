@@ -52,12 +52,15 @@ export default function ColorDetailsPage() {
     ? `${shade.brand} ${shade.name}, shade code ${shade.shadeCode}. See harmonious pairings and the closest matching shades in other paint brands. Available at Rainbow Paints & Hardwares, Coimbatore.`
     : "Explore a wide variety of paint shades from top brands.";
 
+  const shadeImageUrl = shade ? `https://placehold.co/1200x630/${shade.hex.replace('#', '')}/${shade.hex.replace('#', '')}.png?text=%20` : undefined;
+
   const productSchema = useMemo(() => {
     if (!shade) return null;
     return {
       "@context": "https://schema.org",
       "@type": "Product",
       name: `${shade.name} ${shade.shadeCode}`,
+      image: shadeImageUrl,
       description: seoDescription,
       brand: {
         "@type": "Brand",
@@ -81,7 +84,7 @@ export default function ColorDetailsPage() {
         },
       },
     };
-  }, [shade, seoDescription]);
+  }, [shade, seoDescription, shadeImageUrl]);
 
   const breadcrumbSchema = useMemo(() => {
     if (!shade) return null;
@@ -147,6 +150,15 @@ export default function ColorDetailsPage() {
       <Helmet>
         <title>{seoTitle}</title>
         <meta name="description" content={seoDescription} />
+        <meta property="og:title" content={seoTitle} />
+        <meta property="og:description" content={seoDescription} />
+        {shadeImageUrl && <meta property="og:image" content={shadeImageUrl} />}
+        <meta property="og:url" content={`https://rainbowpaint.in/color/${shadeSlug}`} />
+        <meta property="og:type" content="product" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={seoTitle} />
+        <meta name="twitter:description" content={seoDescription} />
+        {shadeImageUrl && <meta name="twitter:image" content={shadeImageUrl} />}
         <link
           rel="canonical"
           href={`https://rainbowpaint.in/color/${shadeSlug}`}
@@ -182,10 +194,19 @@ export default function ColorDetailsPage() {
           {/* Color Display */}
           <div className="space-y-6">
             <div
-              className="w-full aspect-square md:aspect-[4/3] rounded-2xl shadow-2xl relative border border-zinc-200/50"
+              className="w-full aspect-square md:aspect-[4/3] rounded-2xl shadow-2xl relative border border-zinc-200/50 overflow-hidden"
               style={{ backgroundColor: shade.hex }}
             >
-              <div className="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent rounded-2xl opacity-50 mix-blend-overlay"></div>
+              {/* Image specifically for Google Images crawler to pick up the shade color visually */}
+              {shadeImageUrl && (
+                <img 
+                  src={shadeImageUrl} 
+                  alt={`${shade.name} ${shade.shadeCode} - ${shade.brand} Color Shade`} 
+                  className="absolute inset-0 w-full h-full object-cover opacity-0"
+                  loading="eager"
+                />
+              )}
+              <div className="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent rounded-2xl opacity-50 mix-blend-overlay pointer-events-none"></div>
             </div>
 
             <div className="flex gap-4">

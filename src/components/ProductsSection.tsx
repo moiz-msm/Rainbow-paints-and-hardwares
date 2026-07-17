@@ -774,7 +774,8 @@ const ProductCard = memo(({ product }: { product: any }) => {
           {product.image ? (
             <img
               src={product.image}
-              alt={product.name}
+              alt={`${product.name} by ${product.brand} - ${product.category}`}
+              title={`${product.name} - Buy online at wholesale price`}
               referrerPolicy="no-referrer"
               className="w-full h-32 sm:h-40 object-contain object-center group-hover:scale-105 transition-transform duration-500 mix-blend-multiply block"
               loading="lazy"
