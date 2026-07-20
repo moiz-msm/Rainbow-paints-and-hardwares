@@ -166,7 +166,7 @@ const ShadeSelector = ({
               </div>
             </button>
             <Link
-              to={`/color/${shadeService.generateSlug(shade)}`}
+              to={shadeService.getShadeUrl(shade)}
               onClick={(e) => e.stopPropagation()}
               className="p-2.5 rounded-lg border border-zinc-200 hover:border-gold hover:text-gold bg-white text-zinc-400 transition-colors flex items-center justify-center shrink-0"
               title="View Color Details & Buy Options"
@@ -252,7 +252,7 @@ export const InlineShadePicker = ({
           )}
           {currentShade && currentShade.shadeCode && (
             <Link
-              to={`/color/${shadeService.generateSlug(currentShade)}`}
+              to={shadeService.getShadeUrl(currentShade)}
               className="text-[9.5px] text-gold hover:underline flex items-center gap-0.5 ml-1 select-none font-semibold shrink-0"
               title="View full shade details"
             >
@@ -360,7 +360,7 @@ export const InlineShadePicker = ({
                         </div>
                       </button>
                       <Link
-                        to={`/color/${shadeService.generateSlug(shade)}`}
+                        to={shadeService.getShadeUrl(shade)}
                         onClick={(e) => e.stopPropagation()}
                         className="p-2 text-zinc-400 hover:text-gold transition-colors shrink-0"
                         title="View Color Details & Buy Options"

@@ -26,6 +26,7 @@ export default function BlogPostPage() {
           title={`${post.title} | Rainbow Paints`}
           description={post.excerpt}
           keywords={post.seoKeywords.join(", ")}
+          image={post.image}
           schema={{
             "@context": "https://schema.org",
             "@type": "BlogPosting",

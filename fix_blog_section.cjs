@@ -1,4 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+const fs = require('fs');
+let content = fs.readFileSync('src/components/BlogSection.tsx', 'utf-8');
+
+const injection = `import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Calendar, Bookmark, PlayCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -73,7 +76,7 @@ export default function BlogSection() {
                 transition={{ delay: Math.min(idx * 0.1, 0.5) }}
                 className="group cursor-pointer shrink-0 w-[285px] sm:w-[320px] md:w-[360px] snap-start"
               >
-                <Link to={`/blog/${post.slug}`} className="block">
+                <Link to={\`/blog/\${post.slug}\`} className="block">
                   <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-3 border border-zinc-200/20 bg-royale-surface shadow-lg">
                     <img 
                       src={post.image} 
@@ -116,3 +119,6 @@ export default function BlogSection() {
     </section>
   );
 }
+`;
+
+fs.writeFileSync('src/components/BlogSection.tsx', injection);

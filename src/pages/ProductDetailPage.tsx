@@ -373,7 +373,7 @@ export default function ProductDetailPage() {
       "@context": "https://schema.org",
       "@type": "Product",
       "name": product.name,
-      "image": product.image,
+      "image": displayImage || product.image,
       "description": productDetails?.desc1 || `Buy ${product.name} online. ${product.subCategory} from ${product.brand}.`,
       "brand": {
         "@type": "Brand",
@@ -392,7 +392,41 @@ export default function ProductDetailPage() {
         "url": `https://rainbowpaint.in/p/${product.slug || product.name?.replace(/\s+/g, '-').toLowerCase()}`
       }
     };
-  }, [product, productDetails, currentPrice]);
+  }, [product, productDetails, currentPrice, displayImage]);
+
+  const faqSchema = useMemo(() => {
+    if (!product) return null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": `What is the price of ${product.name}?`,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": `The price of ${product.name} starts from ₹${Math.round(basePrice * discountFactor)} for a 1-liter pack at Rainbow Paints & Hardwares.`
+          }
+        },
+        {
+          "@type": "Question",
+          "name": `Who manufactures ${product.name}?`,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": `${product.name} is manufactured by ${product.brand}, a leading paint brand in India.`
+          }
+        },
+        {
+          "@type": "Question",
+          "name": `What category does ${product.name} fall under?`,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": `${product.name} belongs to the ${product.category} category and is ideal for ${product.subCategory} applications.`
+          }
+        }
+      ]
+    };
+  }, [product, basePrice, discountFactor]);
 
   const breadcrumbSchema = useMemo(() => {
     if (!product) return null;
@@ -546,12 +580,12 @@ export default function ProductDetailPage() {
         description={metaDesc}
         keywords={`${product.name}, ${product.brand}, ${product.category}, ${product.subCategory}`}
         url={`https://rainbowpaint.in/p/${product.slug || product.name.replace(/\s+/g, '-').toLowerCase()}`}
-        image={product.image}
+        image={displayImage || product.image}
         productBrand={product.brand}
         productPrice={currentPrice}
         productCurrency="INR"
         productAvailability="InStock"
-        schema={[productSchema, breadcrumbSchema].filter(Boolean)}
+        schema={[productSchema, breadcrumbSchema, faqSchema].filter(Boolean)}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px]">
         <Breadcrumb 
@@ -841,6 +875,31 @@ export default function ProductDetailPage() {
               {renderExtraDetails('mobile')}
             </div>
             
+          </div>
+        </div>
+
+        {/* Product FAQs for AEO */}
+        <div className="mt-16 pt-16 border-t border-zinc-200/50">
+          <h2 className="text-2xl font-serif text-ivory mb-8">Frequently Asked Questions about <span className="text-gradient italic">{product.name}</span></h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-royale-surface border border-zinc-200/50 rounded-2xl p-6 hover:border-gold/30 transition-colors">
+              <h3 className="font-medium text-ivory mb-3 text-sm">What is the price of {product.name}?</h3>
+              <p className="text-ivory/70 text-xs leading-relaxed font-light">
+                The price of {product.name} starts from ₹{Math.round(basePrice * discountFactor)} for a 1-liter pack at Rainbow Paints & Hardwares. Price varies based on the pack size and selected shade.
+              </p>
+            </div>
+            <div className="bg-royale-surface border border-zinc-200/50 rounded-2xl p-6 hover:border-gold/30 transition-colors">
+              <h3 className="font-medium text-ivory mb-3 text-sm">Who manufactures {product.name}?</h3>
+              <p className="text-ivory/70 text-xs leading-relaxed font-light">
+                {product.name} is manufactured by {product.brand}, a leading paint brand in India, known for its high-quality finishes and durability.
+              </p>
+            </div>
+            <div className="bg-royale-surface border border-zinc-200/50 rounded-2xl p-6 hover:border-gold/30 transition-colors md:col-span-2">
+              <h3 className="font-medium text-ivory mb-3 text-sm">What category does {product.name} fall under?</h3>
+              <p className="text-ivory/70 text-xs leading-relaxed font-light">
+                {product.name} belongs to the {product.category} category and is ideal for {product.subCategory} applications. It offers excellent coverage and a long-lasting finish.
+              </p>
+            </div>
           </div>
         </div>
 

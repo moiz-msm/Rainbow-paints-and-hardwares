@@ -131,6 +131,13 @@ export const shadeService = {
     return combined.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
   },
 
+  getShadeUrl(shade: Shade): string {
+    const brandSlug = shade.brand.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    const familySlug = shade.family.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    const shadeSlug = this.generateSlug(shade);
+    return `/color/${brandSlug}/${familySlug}/${shadeSlug}`;
+  },
+
   /**
    * Get a single shade by slug
    */

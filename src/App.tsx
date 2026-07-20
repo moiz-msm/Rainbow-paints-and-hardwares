@@ -82,6 +82,7 @@ function AnimatedRoutes() {
         
         {/* Local SEO Routs */}
         <Route path="/store/:locationSlug" element={<LocationSEOPage />} />
+        <Route path="/color/:brandSlug/:familySlug/:shadeSlug" element={<ColorDetailsPage />} />
         <Route path="/color/:shadeSlug" element={<ColorDetailsPage />} />
 
         {/* Tools */}

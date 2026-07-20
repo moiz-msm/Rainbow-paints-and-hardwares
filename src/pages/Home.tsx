@@ -23,7 +23,7 @@ const GoogleReviewsSection = lazy(
 export default function Home() {
   const storeSchema = {
     "@context": "https://schema.org",
-    "@type": ["HomeAndConstructionBusiness", "PaintStore", "Organization"],
+    "@type": ["LocalBusiness", "HomeAndConstructionBusiness", "PaintStore", "Organization"],
     name: "Rainbow Paints & Hardwares",
     image: "/hero-bg.webp",
     "@id": "https://rainbowpaint.in/#organization",
@@ -38,6 +38,37 @@ export default function Home() {
       postalCode: "641009",
       addressCountry: "IN",
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 11.0168,
+      longitude: 76.9558,
+    },
+    areaServed: [
+      {
+        "@type": "City",
+        name: "Coimbatore",
+      },
+      {
+        "@type": "City",
+        name: "RS Puram",
+      },
+      {
+        "@type": "City",
+        name: "Gandhipuram",
+      },
+      {
+        "@type": "City",
+        name: "Saibaba Colony",
+      },
+      {
+        "@type": "City",
+        name: "Peelamedu",
+      },
+      {
+        "@type": "City",
+        name: "Saravanampatti",
+      },
+    ],
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.8",
@@ -125,6 +156,37 @@ export default function Home() {
     ]
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the best paint store in Coimbatore?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Rainbow Paints & Hardwares is a leading authorized dealer for Asian Paints and Berger Paints in Coimbatore, offering over 4000+ shades, wholesale pricing, and expert guidance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I buy Asian Paints online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, you can buy genuine Asian Paints and Berger Paints online at wholesale prices through the Rainbow Paints & Hardwares website with delivery across Coimbatore and nearby areas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you provide on-site wall inspection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we offer free site visits and moisture check inspections using digital moisture meters to ensure your walls are ready for painting and to recommend the right waterproofing solutions if needed."
+        }
+      }
+    ]
+  };
+
   return (
     <>
       <LuxuryBackground />
@@ -132,7 +194,7 @@ export default function Home() {
         title="Rainbow Paints & Hardwares | Best Paint Shop in Coimbatore"
         description="Buy paint online from the top paint shop in Coimbatore. Rainbow Paints & Hardwares offers best pricing, local doorstep delivery, and 4000+ color shades."
         url="https://rainbowpaint.in/"
-        schema={[storeSchema, websiteSchema, siteNavigationSchema]}
+        schema={[storeSchema, websiteSchema, siteNavigationSchema, faqSchema]}
       />
       <Hero />
       <Suspense fallback={<div className="h-20 w-full bg-royale-bg"></div>}>

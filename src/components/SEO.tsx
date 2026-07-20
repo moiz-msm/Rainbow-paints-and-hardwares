@@ -31,7 +31,7 @@ export default function SEO({
 }: SEOProps) {
   const absoluteImage = image?.startsWith("http")
     ? image
-    : `${url}${image?.startsWith("/") ? "" : "/"}${image}`;
+    : `https://rainbowpaint.in${image?.startsWith("/") ? "" : "/"}${image}`;
 
   return (
     <Helmet>

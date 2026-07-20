@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { useParams, Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import SEO from "../components/SEO";
 import { shadeService, Shade } from "../services/shadeService";
 import {
   ArrowLeft,
@@ -11,7 +11,8 @@ import {
 } from "lucide-react";
 
 export default function ColorDetailsPage() {
-  const { shadeSlug } = useParams<{ shadeSlug: string }>();
+  const { brandSlug, familySlug, shadeSlug } = useParams<{ brandSlug?: string; familySlug?: string; shadeSlug: string }>();
+  const navigate = useNavigate();
   const [shade, setShade] = useState<Shade | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -22,6 +23,10 @@ export default function ColorDetailsPage() {
         const found = await shadeService.getShadeBySlug(shadeSlug);
         if (found) {
           setShade(found);
+          const properUrl = shadeService.getShadeUrl(found);
+          if (window.location.pathname !== properUrl) {
+            navigate(properUrl, { replace: true });
+          }
         } else {
           setShade(null);
         }
@@ -29,7 +34,7 @@ export default function ColorDetailsPage() {
       setLoading(false);
     }
     loadShade();
-  }, [shadeSlug]);
+  }, [shadeSlug, navigate]);
 
   // Determine complementary and similar colors (mock logic or simple family filtering could be used)
   const [similarShades, setSimilarShades] = useState<Shade[]>([]);
@@ -88,6 +93,7 @@ export default function ColorDetailsPage() {
 
   const breadcrumbSchema = useMemo(() => {
     if (!shade) return null;
+    const properUrl = `https://rainbowpaint.in${shadeService.getShadeUrl(shade)}`;
     return {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
@@ -96,29 +102,69 @@ export default function ColorDetailsPage() {
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://rainbowpaint.in/",
+          item: "https://rainbowpaint.in",
         },
         {
           "@type": "ListItem",
           position: 2,
-          name: "Visualizer",
+          name: "Colors",
           item: "https://rainbowpaint.in/visualizer",
         },
         {
           "@type": "ListItem",
           position: 3,
-          name: `${shade.brand} Colors`,
-          item: `https://rainbowpaint.in/visualizer?brand=${shade.brand.toLowerCase()}`,
+          name: shade.brand,
+          item: `https://rainbowpaint.in/brands/${shade.brand.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
         },
         {
           "@type": "ListItem",
           position: 4,
+          name: shade.family || "Colors",
+          item: "https://rainbowpaint.in/visualizer", // We don't have a family-specific page yet, so link back to visualizer
+        },
+        {
+          "@type": "ListItem",
+          position: 5,
           name: `${shade.name} ${shade.shadeCode}`,
-          item: `https://rainbowpaint.in/color/${shadeSlug}`,
+          item: properUrl,
         },
       ],
     };
-  }, [shade, shadeSlug]);
+  }, [shade]);
+
+  const faqSchema = useMemo(() => {
+    if (!shade) return null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": `What is the shade code for ${shade.name}?`,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": `The shade code for ${shade.name} by ${shade.brand} is ${shade.shadeCode}.`
+          }
+        },
+        {
+          "@type": "Question",
+          "name": `What is the HEX code for ${shade.name}?`,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": `The HEX color code for ${shade.name} is ${shade.hex}, and its RGB value is RGB(${shade.rgb}).`
+          }
+        },
+        {
+          "@type": "Question",
+          "name": `Where can I buy ${shade.brand} ${shade.name} paint?`,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": `You can buy ${shade.brand} paint in the shade ${shade.name} (${shade.shadeCode}) online or in-store at Rainbow Paints & Hardwares in Coimbatore.`
+          }
+        }
+      ]
+    };
+  }, [shade]);
 
   if (loading) {
     return (
@@ -147,47 +193,26 @@ export default function ColorDetailsPage() {
 
   return (
     <article className="pt-24 pb-12 bg-royale-bg min-h-screen text-ivory relative">
-      <Helmet>
-        <title>{seoTitle}</title>
-        <meta name="description" content={seoDescription} />
-        <meta property="og:title" content={seoTitle} />
-        <meta property="og:description" content={seoDescription} />
-        {shadeImageUrl && <meta property="og:image" content={shadeImageUrl} />}
-        <meta property="og:url" content={`https://rainbowpaint.in/color/${shadeSlug}`} />
-        <meta property="og:type" content="product" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={seoTitle} />
-        <meta name="twitter:description" content={seoDescription} />
-        {shadeImageUrl && <meta name="twitter:image" content={shadeImageUrl} />}
-        <link
-          rel="canonical"
-          href={`https://rainbowpaint.in/color/${shadeSlug}`}
-        />
-        {productSchema && (
-          <script type="application/ld+json">
-            {JSON.stringify(productSchema)}
-          </script>
-        )}
-        {breadcrumbSchema && (
-          <script type="application/ld+json">
-            {JSON.stringify(breadcrumbSchema)}
-          </script>
-        )}
-      </Helmet>
+      <SEO 
+        title={seoTitle}
+        description={seoDescription}
+        image={shadeImageUrl}
+        url={`https://rainbowpaint.in${shadeService.getShadeUrl(shade)}`}
+        type="product"
+        schema={[productSchema, breadcrumbSchema, faqSchema].filter(Boolean)}
+      />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center text-sm text-ivory/60 mb-8 space-x-2">
-          <Link to="/" className="hover:text-gold transition">
-            Home
-          </Link>
-          <ChevronRight size={14} />
-          <Link to="/visualizer" className="hover:text-gold transition">
-            Colors
-          </Link>
-          <ChevronRight size={14} />
-          <span className="text-ivory font-medium">{shade.brand}</span>
-          <ChevronRight size={14} />
-          <span className="text-gold font-medium">{shade.name}</span>
+        <div className="flex flex-wrap items-center text-xs sm:text-sm text-ivory/60 mb-8 space-x-1 sm:space-x-2">
+          <Link to="/" className="hover:text-gold transition whitespace-nowrap">Home</Link>
+          <ChevronRight size={14} className="flex-shrink-0" />
+          <Link to="/visualizer" className="hover:text-gold transition whitespace-nowrap">Colors</Link>
+          <ChevronRight size={14} className="flex-shrink-0" />
+          <Link to={`/brands/${shade.brand.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="hover:text-gold transition whitespace-nowrap">{shade.brand}</Link>
+          <ChevronRight size={14} className="flex-shrink-0" />
+          <span className="text-ivory font-medium whitespace-nowrap">{shade.family || "Colors"}</span>
+          <ChevronRight size={14} className="flex-shrink-0" />
+          <span className="text-gold font-medium whitespace-nowrap">{shade.name} {shade.shadeCode}</span>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">
@@ -288,6 +313,33 @@ export default function ColorDetailsPage() {
           </div>
         </div>
 
+        {/* Color FAQs for AEO */}
+        <div className="mt-16 pt-16 border-t border-royale-accent">
+          <h2 className="text-2xl font-display font-medium text-ivory mb-8">
+            Frequently Asked Questions about <span className="text-gradient italic">{shade.name}</span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-royale-surface border border-royale-accent rounded-2xl p-6 hover:border-gold/30 transition-colors">
+              <h3 className="font-medium text-ivory mb-3 text-sm">What is the shade code for {shade.name}?</h3>
+              <p className="text-ivory/70 text-xs leading-relaxed font-light">
+                The shade code for {shade.name} by {shade.brand} is {shade.shadeCode}. You can use this code to order the exact color for interior or exterior wall paints.
+              </p>
+            </div>
+            <div className="bg-royale-surface border border-royale-accent rounded-2xl p-6 hover:border-gold/30 transition-colors">
+              <h3 className="font-medium text-ivory mb-3 text-sm">What is the HEX code for {shade.name}?</h3>
+              <p className="text-ivory/70 text-xs leading-relaxed font-light">
+                The HEX color code for {shade.name} is {shade.hex}, and its RGB value is RGB({shade.rgb}). This is useful for matching colors in digital designs or interior planning software.
+              </p>
+            </div>
+            <div className="bg-royale-surface border border-royale-accent rounded-2xl p-6 hover:border-gold/30 transition-colors md:col-span-2">
+              <h3 className="font-medium text-ivory mb-3 text-sm">Where can I buy {shade.brand} {shade.name} paint?</h3>
+              <p className="text-ivory/70 text-xs leading-relaxed font-light">
+                You can buy {shade.brand} paint in the shade {shade.name} ({shade.shadeCode}) online or in-store at Rainbow Paints & Hardwares in Coimbatore. We use precision tinting machines to ensure exact color matching.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Similar Shades */}
         {similarShades.length > 0 && (
           <div className="mt-16 pt-16 border-t border-royale-accent">
@@ -298,7 +350,7 @@ export default function ColorDetailsPage() {
               {similarShades.map((s) => (
                 <Link
                   key={s.id}
-                  to={`/color/${shadeService.generateSlug(s)}`}
+                  to={shadeService.getShadeUrl(s)}
                   className="group"
                 >
                   <div

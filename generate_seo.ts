@@ -34,6 +34,44 @@ function generateSitemap() {
      urls.push(`/blog/${post.slug}`);
   });
 
+  
+  // Add shade routes
+  const asianShades = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src/data/shades/asian-paints.json'), 'utf-8'));
+  const bergerShades = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src/data/shades/berger-paints.json'), 'utf-8'));
+  const mrfShades = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src/data/shades/mrf-paints.json'), 'utf-8'));
+  
+  const allShades = [...asianShades, ...bergerShades, ...mrfShades];
+  allShades.forEach((shade) => {
+    const brandSlug = shade.brand.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    const familySlug = shade.family.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    const shadeSlug = `${shade.name}-${shade.shadeCode}`.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    urls.push(`/color/${brandSlug}/${familySlug}/${shadeSlug}`);
+  });
+
+  
+  
+  // Add hyperlocal location routes
+  const neighborhoods = [
+    'coimbatore',
+    'rs-puram-coimbatore',
+    'gandhipuram-coimbatore',
+    'peelamedu-coimbatore',
+    'saibaba-colony-coimbatore',
+    'ramanathapuram-coimbatore',
+    'saravanampatti-coimbatore',
+    'thudiyalur-coimbatore',
+    'vadavalli-coimbatore',
+    'singanallur-coimbatore',
+    'kovaipudur-coimbatore',
+    'pollachi',
+    'mettupalayam',
+    'tiruppur'
+  ];
+  neighborhoods.forEach(hood => {
+    urls.push(`/store/${hood}`);
+  });
+
+
   // Add product routes
   mockProducts.forEach((product: any) => {
      const slug = product.slug || product.name.replace(/\s+/g, '-').toLowerCase();

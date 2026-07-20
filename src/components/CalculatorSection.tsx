@@ -1174,7 +1174,7 @@ export default function CalculatorSection() {
                             </label>
                             {selectedShade && selectedShade.shadeCode && (
                               <Link
-                                to={`/color/${shadeService.generateSlug(selectedShade)}`}
+                                to={shadeService.getShadeUrl(selectedShade)}
                                 className="text-[10px] text-gold hover:underline font-semibold shrink-0"
                                 title={`View detailed color details for ${selectedShade.name}`}
                               >
@@ -1251,7 +1251,7 @@ export default function CalculatorSection() {
                                       )}
                                     </button>
                                     <Link
-                                      to={`/color/${shadeService.generateSlug(shade)}`}
+                                      to={shadeService.getShadeUrl(shade)}
                                       onClick={(e) => e.stopPropagation()}
                                       className="p-2 text-zinc-400 hover:text-gold transition-colors shrink-0"
                                       title="View Color Details & Buy Options"

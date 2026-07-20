@@ -1437,7 +1437,7 @@ export default function AIPhotoStudio({
                             {pickerMatches.asian.similarity}% Match
                           </span>
                           <Link
-                            to={`/color/${shadeService.generateSlug(pickerMatches.asian.shade)}`}
+                            to={shadeService.getShadeUrl(pickerMatches.asian.shade)}
                             className="p-1 text-zinc-400 hover:text-gold transition-colors shrink-0"
                             title="View full shade details"
                           >
@@ -1487,7 +1487,7 @@ export default function AIPhotoStudio({
                             {pickerMatches.berger.similarity}% Match
                           </span>
                           <Link
-                            to={`/color/${shadeService.generateSlug(pickerMatches.berger.shade)}`}
+                            to={shadeService.getShadeUrl(pickerMatches.berger.shade)}
                             className="p-1 text-zinc-400 hover:text-gold transition-colors shrink-0"
                             title="View full shade details"
                           >
@@ -1537,7 +1537,7 @@ export default function AIPhotoStudio({
                             {pickerMatches.mrf.similarity}% Match
                           </span>
                           <Link
-                            to={`/color/${shadeService.generateSlug(pickerMatches.mrf.shade)}`}
+                            to={shadeService.getShadeUrl(pickerMatches.mrf.shade)}
                             className="p-1 text-zinc-400 hover:text-gold transition-colors shrink-0"
                             title="View full shade details"
                           >
