@@ -25,31 +25,31 @@ export default defineConfig(({mode}) => {
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
-              if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom')) {
+              if (id.includes('/node_modules/react/') || id.includes('/node_modules/react-dom/') || id.includes('/node_modules/react-router-dom/') || id.includes('/node_modules/react-router/')) {
                 return 'vendor-react';
               }
-              if (id.includes('three') || id.includes('@react-three')) {
+              if (id.includes('/node_modules/three/') || id.includes('/node_modules/@react-three/')) {
                 return 'vendor-three';
               }
-              if (id.includes('framer-motion') || id.includes('motion')) {
+              if (id.includes('/node_modules/framer-motion/') || id.includes('/node_modules/motion/')) {
                 return 'vendor-motion';
               }
-              if (id.includes('firebase')) {
+              if (id.includes('/node_modules/firebase/') || id.includes('/node_modules/@firebase/')) {
                 return 'vendor-firebase';
               }
-              if (id.includes('lucide-react')) {
+              if (id.includes('/node_modules/lucide-react/')) {
                 return 'vendor-lucide';
               }
-              if (id.includes('jspdf') || id.includes('jspdf-autotable')) {
+              if (id.includes('/node_modules/jspdf/') || id.includes('/node_modules/jspdf-autotable/')) {
                 return 'vendor-jspdf';
               }
-              if (id.includes('html2canvas')) {
+              if (id.includes('/node_modules/html2canvas/')) {
                 return 'vendor-html2canvas';
               }
-              if (id.includes('xlsx')) {
+              if (id.includes('/node_modules/xlsx/')) {
                 return 'vendor-xlsx';
               }
-              if (id.includes('recharts')) {
+              if (id.includes('/node_modules/recharts/')) {
                 return 'vendor-recharts';
               }
               return 'vendor';
