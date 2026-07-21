@@ -1,13 +1,8 @@
 {
-  "functions": {
-    "api/**/*": {
-      "includeFiles": "src/data/shades/*.json"
-    }
-  },
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/api/index"
+      "destination": "/api/$1"
     },
     {
       "source": "/(.*)",
