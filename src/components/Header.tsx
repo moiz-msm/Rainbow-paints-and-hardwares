@@ -90,6 +90,7 @@ export default function Header() {
                   referrerPolicy="no-referrer"
                   fetchPriority="high"
                   loading="eager"
+                  decoding="async"
                   width="100"
                   height="80"
                   className="w-auto h-12 sm:h-16 lg:h-20 object-contain rounded-lg shrink-0" 

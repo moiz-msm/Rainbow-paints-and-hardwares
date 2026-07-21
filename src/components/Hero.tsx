@@ -44,7 +44,7 @@ export default function Hero() {
         {/* ================= SCREEN 1 (Background - Shop Paint Online) ================= */}
         <div className="absolute inset-0 w-full h-full flex flex-col justify-center items-center px-4 sm:px-8 pb-4 sm:pb-6 pt-[80px] sm:pt-[95px] lg:pt-[105px] xl:pt-[115px]">
           <div className="absolute inset-0 w-full h-full">
-            <img src="/IMG_20260630_162408.webp" fetchPriority="high" alt="Hero Background" className="absolute inset-0 w-full h-full object-cover object-center" />
+            <img src="/IMG_20260630_162408.webp" fetchPriority="high" decoding="async" alt="Hero Background" className="absolute inset-0 w-full h-full object-cover object-center" />
             {/* Elegant light cream/beige gradient matching the brand palette that preserves the original image on the right while ensuring high legibility for the text on the left */}
             <div className="absolute inset-0 bg-gradient-to-b from-royale-bg/95 via-royale-bg/80 to-royale-bg/40 lg:bg-gradient-to-r lg:from-royale-bg lg:via-royale-bg/75 lg:to-transparent" />
           </div>
@@ -143,10 +143,10 @@ export default function Hero() {
                           <div key={idx} className="h-5 sm:h-6 lg:h-8 flex-shrink-0 flex items-center justify-center hover:scale-110 transition-all duration-300">
                              {brand.name === 'Berger Paints' ? (
                                <div className="bg-white/95 px-2 py-1 rounded h-full flex items-center justify-center">
-                                 <img src={brand.logo} alt={brand.name} className="max-h-full w-auto object-contain" />
+                                 <img src={brand.logo} alt={brand.name} loading="lazy" decoding="async" className="max-h-full w-auto object-contain" />
                                </div>
                              ) : (
-                               <img src={brand.logo} alt={brand.name} className="max-h-full w-auto object-contain" />
+                               <img src={brand.logo} alt={brand.name} loading="lazy" decoding="async" className="max-h-full w-auto object-contain" />
                              )}
                           </div>
                         ))}
@@ -240,10 +240,10 @@ export default function Hero() {
                        <div key={idx} className="h-4 sm:h-5 md:h-8 lg:h-12 w-full flex items-center justify-center hover:scale-110 transition-all duration-300">
                          {brand.name === 'Berger Paints' ? (
                            <div className="bg-white/95 px-2 py-1 rounded h-full w-full flex items-center justify-center">
-                             <img src={brand.logo} alt={brand.name} className="max-h-full max-w-full object-contain" />
+                             <img src={brand.logo} alt={brand.name} loading="lazy" decoding="async" className="max-h-full max-w-full object-contain" />
                            </div>
                          ) : (
-                           <img src={brand.logo} alt={brand.name} className="max-h-full max-w-full object-contain" />
+                           <img src={brand.logo} alt={brand.name} loading="lazy" decoding="async" className="max-h-full max-w-full object-contain" />
                          )}
                        </div>
                      ))}

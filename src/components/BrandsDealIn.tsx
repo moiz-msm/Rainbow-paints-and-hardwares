@@ -40,6 +40,7 @@ export default function BrandsDealIn() {
                       src={brand.logo} 
                       alt={`${brand.name} logo`} 
                       loading="lazy"
+                      decoding="async"
                       className="h-8 w-8 sm:h-10 sm:w-10 object-contain bg-white rounded-md p-1 shrink-0" 
                     />
                   )}

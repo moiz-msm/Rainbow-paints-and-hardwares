@@ -5,7 +5,6 @@ import { lazyWithRetry as lazy } from "../utils/lazyWithRetry";
 import { FadeInUp } from "../components/FadeInUp";
 
 import LuxuryBackground from "../components/LuxuryBackground";
-import IndustryNews from "../components/IndustryNews";
 
 const ShopByCategory = lazy(() => import("../components/ShopByCategory"));
 const ShopByBrand = lazy(() => import("../components/ShopByBrand"));
@@ -19,6 +18,7 @@ const ToolsOverview = lazy(() => import("../components/ToolsOverview"));
 const GoogleReviewsSection = lazy(
   () => import("../components/GoogleReviewsSection"),
 );
+const IndustryNews = lazy(() => import("../components/IndustryNews"));
 
 export default function Home() {
   const storeSchema = {
