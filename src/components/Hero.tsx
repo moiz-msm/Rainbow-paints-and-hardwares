@@ -23,9 +23,9 @@ export default function Hero() {
   });
 
   // Calculate the height of the painted area (0% to 100%)
-  const paintHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const clipPath = useTransform(scrollYProgress, [0, 1], ["inset(100% 0 0 0)", "inset(0% 0 0 0)"]);
   // Calculate the top position for the roller (100% to 0%)
-  const paintTop = useTransform(scrollYProgress, [0, 1], ["100%", "0%"]);
+  const paintY = useTransform(scrollYProgress, [0, 1], ["100vh", "0vh"]);
 
   // Animations for Screen 2
   const y1 = useTransform(scrollYProgress, [0.1, 0.4], [150, 0]);
@@ -44,7 +44,7 @@ export default function Hero() {
         {/* ================= SCREEN 1 (Background - Shop Paint Online) ================= */}
         <div className="absolute inset-0 w-full h-full flex flex-col justify-center items-center px-4 sm:px-8 pb-4 sm:pb-6 pt-[80px] sm:pt-[95px] lg:pt-[105px] xl:pt-[115px]">
           <div className="absolute inset-0 w-full h-full">
-            <img src="/IMG_20260630_162408.png" alt="Hero Background" className="absolute inset-0 w-full h-full object-cover object-center" />
+            <img src="/IMG_20260630_162408.webp" fetchPriority="high" alt="Hero Background" className="absolute inset-0 w-full h-full object-cover object-center" />
             {/* Elegant light cream/beige gradient matching the brand palette that preserves the original image on the right while ensuring high legibility for the text on the left */}
             <div className="absolute inset-0 bg-gradient-to-b from-royale-bg/95 via-royale-bg/80 to-royale-bg/40 lg:bg-gradient-to-r lg:from-royale-bg lg:via-royale-bg/75 lg:to-transparent" />
           </div>
@@ -140,8 +140,14 @@ export default function Hero() {
                         className="flex items-center w-max gap-6 sm:gap-10 lg:gap-12 pr-6 sm:pr-10 lg:pr-12"
                       >
                         {[...heroBrands, ...heroBrands].map((brand, idx) => brand && (
-                          <div key={idx} className="h-5 sm:h-6 lg:h-8 flex-shrink-0 flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300">
-                             <img src={brand.logo} alt={brand.name} className="max-h-full w-auto object-contain" />
+                          <div key={idx} className="h-5 sm:h-6 lg:h-8 flex-shrink-0 flex items-center justify-center hover:scale-110 transition-all duration-300">
+                             {brand.name === 'Berger Paints' ? (
+                               <div className="bg-white/95 px-2 py-1 rounded h-full flex items-center justify-center">
+                                 <img src={brand.logo} alt={brand.name} className="max-h-full w-auto object-contain" />
+                               </div>
+                             ) : (
+                               <img src={brand.logo} alt={brand.name} className="max-h-full w-auto object-contain" />
+                             )}
                           </div>
                         ))}
                       </motion.div>
@@ -167,11 +173,11 @@ export default function Hero() {
 
         {/* ================= SCREEN 2 (Painted Foreground - Portfolio/Trust) ================= */}
         <motion.div 
-          style={{ height: paintHeight }}
-          className="absolute bottom-0 left-0 w-full overflow-hidden bg-ivory shadow-[0_-20px_50px_rgba(0,0,0,0.5)] z-20"
+          style={{ clipPath }}
+          className="absolute top-0 left-0 w-full h-full overflow-hidden bg-ivory shadow-[0_-20px_50px_rgba(0,0,0,0.5)] z-20"
         >
           {/* Inner content must be full height so it doesn't get squished */}
-          <div className="absolute bottom-0 left-0 h-[100dvh] min-h-[480px] sm:min-h-[550px] w-full flex flex-col justify-center items-center px-4 sm:px-8 bg-ivory pb-4 sm:pb-6 pt-[80px] sm:pt-[95px] lg:pt-[105px] xl:pt-[115px]">
+          <div className="h-full w-full flex flex-col justify-center items-center px-4 sm:px-8 bg-ivory pb-4 sm:pb-6 pt-[80px] sm:pt-[95px] lg:pt-[105px] xl:pt-[115px]">
              
              <div className="max-w-[1400px] w-full grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-center content-center h-full overflow-y-auto no-scrollbar py-2 lg:py-4">
                 
@@ -231,8 +237,14 @@ export default function Hero() {
                    </h3>
                    <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8 items-center justify-items-center">
                      {heroBrands.slice(0, 6).map((brand, idx) => brand && (
-                       <div key={idx} className="h-4 sm:h-5 md:h-8 lg:h-12 w-full flex items-center justify-center grayscale hover:grayscale-0 opacity-70 hover:opacity-100 hover:scale-110 transition-all duration-300">
-                         <img src={brand.logo} alt={brand.name} className="max-h-full max-w-full object-contain" />
+                       <div key={idx} className="h-4 sm:h-5 md:h-8 lg:h-12 w-full flex items-center justify-center hover:scale-110 transition-all duration-300">
+                         {brand.name === 'Berger Paints' ? (
+                           <div className="bg-white/95 px-2 py-1 rounded h-full w-full flex items-center justify-center">
+                             <img src={brand.logo} alt={brand.name} className="max-h-full max-w-full object-contain" />
+                           </div>
+                         ) : (
+                           <img src={brand.logo} alt={brand.name} className="max-h-full max-w-full object-contain" />
+                         )}
                        </div>
                      ))}
                    </div>
@@ -245,7 +257,7 @@ export default function Hero() {
 
         {/* ================= ROLLER (OUTSIDE OF OVERFLOW HIDDEN) ================= */}
         <motion.div 
-          style={{ top: paintTop }}
+          style={{ y: paintY, top: 0 }}
           className="absolute left-1/2 -translate-x-1/2 -translate-y-[25px] sm:-translate-y-[35px] w-[260px] sm:w-[340px] md:w-[400px] h-[160px] sm:h-[220px] pointer-events-none z-30 drop-shadow-2xl"
         >
            <svg width="100%" height="100%" viewBox="0 0 340 220" fill="none" xmlns="http://www.w3.org/2000/svg">

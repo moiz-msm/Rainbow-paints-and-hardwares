@@ -68,7 +68,7 @@ export default function ProductsPage() {
         "name": "Coimbatore"
       },
       "description": `Fast local doorstep delivery of ${pageTitle.toLowerCase()} across Coimbatore.`,
-      "url": `https://rainbowpaint.in${categorySlug ? '/c/' + categorySlug : brandSlug ? '/brands/' + brandSlug : '/buy-paint-online'}`
+      "url": `https://www.rainbowpaint.in${categorySlug ? '/c/' + categorySlug : brandSlug ? '/brands/' + brandSlug : '/buy-paint-online'}`
     };
   }, [pageTitle, categorySlug, brandSlug]);
 
@@ -78,7 +78,7 @@ export default function ProductsPage() {
       "@type": "CollectionPage",
       "name": pageTitle,
       "description": pageDescription,
-      "url": `https://rainbowpaint.in${categorySlug ? '/c/' + categorySlug : brandSlug ? '/brands/' + brandSlug : '/buy-paint-online'}`
+      "url": `https://www.rainbowpaint.in${categorySlug ? '/c/' + categorySlug : brandSlug ? '/brands/' + brandSlug : '/buy-paint-online'}`
     };
   }, [pageTitle, pageDescription, categorySlug, brandSlug]);
 
@@ -95,7 +95,7 @@ export default function ProductsPage() {
     return items;
   }, [categorySlug, brandSlug, pageTitle]);
 
-  const currentUrl = `https://rainbowpaint.in${categorySlug ? '/c/' + categorySlug : brandSlug ? '/brands/' + brandSlug : '/buy-paint-online'}`;
+  const currentUrl = `https://www.rainbowpaint.in${categorySlug ? '/c/' + categorySlug : brandSlug ? '/brands/' + brandSlug : '/buy-paint-online'}`;
 
   return (
     <div className="pt-20 sm:pt-24 pb-12 bg-royale-bg min-h-screen relative">

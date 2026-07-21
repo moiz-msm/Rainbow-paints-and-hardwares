@@ -1014,6 +1014,11 @@ export default function ProductsSection({
       let mergedProduct = { ...p };
       if (accurateImageNames.includes(key)) {
         mergedProduct.image = accurateImagesMap[key];
+      } else {
+        const existingMock = map.get(key);
+        if (existingMock && (!mergedProduct.image || mergedProduct.image === "")) {
+          mergedProduct.image = existingMock.image;
+        }
       }
       map.set(key, mergedProduct);
     });

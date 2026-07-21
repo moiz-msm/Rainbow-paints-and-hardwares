@@ -103,7 +103,8 @@ const BRANDS = [
   { id: 'all', label: 'All' },
   { id: 'asian', label: 'Asian Paints' },
   { id: 'berger', label: 'Berger Paints' },
-  { id: 'mrf', label: 'MRF Vapocure' }
+  { id: 'mrf', label: 'MRF Vapocure' },
+  { id: 'ral', label: 'RAL Classic' }
 ];
 
 const FAMILIES = [
@@ -595,7 +596,7 @@ export default function VisualizerSection() {
 
     const target = hexToRgb(customColorMatch);
 
-    const findBestForBrand = (brandId: 'asian' | 'berger' | 'mrf') => {
+    const findBestForBrand = (brandId: 'asian' | 'berger' | 'mrf' | 'ral') => {
       let minDistance = Infinity;
       let closest: Shade | null = null;
       
@@ -603,6 +604,7 @@ export default function VisualizerSection() {
         if (brandId === 'asian' && !shade.brand.toLowerCase().includes('asian')) continue;
         if (brandId === 'berger' && !shade.brand.toLowerCase().includes('berger')) continue;
         if (brandId === 'mrf' && !shade.brand.toLowerCase().includes('mrf')) continue;
+        if (brandId === 'ral' && !shade.brand.toLowerCase().includes('ral')) continue;
 
         const sRGB = hexToRgb(shade.hex);
         const dist = Math.sqrt(
@@ -624,7 +626,8 @@ export default function VisualizerSection() {
     return {
       asian: findBestForBrand('asian'),
       berger: findBestForBrand('berger'),
-      mrf: findBestForBrand('mrf')
+      mrf: findBestForBrand('mrf'),
+      ral: findBestForBrand('ral')
     };
   }, [customColorMatch, allPool]);
 
@@ -2045,6 +2048,38 @@ export default function VisualizerSection() {
                               ) : (
                                 <div className="bg-white border border-dashed border-zinc-200 rounded-xl p-3 text-center text-[9px] text-ivory/60">
                                   Fetching MRF formula...
+                                </div>
+                              )
+                            )}
+
+                            {/* RAL Classic Equivalent */}
+                            {(!activeShade || !activeShade.brand.toLowerCase().includes('ral')) && (
+                              matchedShades.ral ? (
+                                <button
+                                  onClick={() => handleShadeSelect(matchedShades.ral!.shade, true)}
+                                  className={`text-left bg-white border rounded-xl overflow-hidden shadow-xs flex flex-col relative transition-all duration-350 hover:-translate-y-0.5 ${activeShade?.id === matchedShades.ral.shade.id ? 'border-gold ring-1 ring-gold/35 shadow-[0_4px_10px_rgba(200,165,100,0.15)]' : 'border-zinc-200/80 hover:border-gold/30'}`}
+                                >
+                                  <div className="h-2 w-full" style={{ backgroundColor: matchedShades.ral.shade.hex }} />
+                                  <div className="p-2 flex flex-col justify-between flex-grow w-full">
+                                    <div>
+                                      <h3 className="text-[10px] sm:text-[11px] font-sans font-bold uppercase tracking-widest text-ivory truncate mb-0.5">
+                                        {matchedShades.ral.shade.name}
+                                      </h3>
+                                      <p className="text-[7.5px] font-mono text-ivory/60 capitalize truncate">
+                                        {matchedShades.ral.shade.shadeCode}
+                                      </p>
+                                    </div>
+                                    <div className="flex justify-between items-center text-[7.5px] mt-1.5 border-t border-zinc-50 pt-1 w-full">
+                                      <span className="font-medium text-[7px] text-ivory/60 uppercase">RAL Classic</span>
+                                      <span className="font-bold text-emerald-700 bg-emerald-50 px-1 rounded">
+                                        {matchedShades.ral.similarity}%
+                                      </span>
+                                    </div>
+                                  </div>
+                                </button>
+                              ) : (
+                                <div className="bg-white border border-dashed border-zinc-200 rounded-xl p-3 text-center text-[9px] text-ivory/60">
+                                  Fetching RAL formula...
                                 </div>
                               )
                             )}

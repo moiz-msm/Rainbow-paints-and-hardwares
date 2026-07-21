@@ -26,8 +26,8 @@ export default function Home() {
     "@type": ["LocalBusiness", "HomeAndConstructionBusiness", "PaintStore", "Organization"],
     name: "Rainbow Paints & Hardwares",
     image: "/hero-bg.webp",
-    "@id": "https://rainbowpaint.in/#organization",
-    url: "https://rainbowpaint.in",
+    "@id": "https://www.rainbowpaint.in/#organization",
+    url: "https://www.rainbowpaint.in",
     telephone: "+918072442930",
     priceRange: "INR",
     address: {
@@ -86,8 +86,8 @@ export default function Home() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "https://rainbowpaint.in/#website",
-    url: "https://rainbowpaint.in/",
+    "@id": "https://www.rainbowpaint.in/#website",
+    url: "https://www.rainbowpaint.in/",
     name: "Rainbow Paints & Hardwares",
     alternateName: [
       "Rainbow Paint and Hardwares",
@@ -96,7 +96,7 @@ export default function Home() {
     ],
     description: "Buy paint online from top India leading brands.",
     publisher: {
-      "@id": "https://rainbowpaint.in/#organization",
+      "@id": "https://www.rainbowpaint.in/#organization",
     },
     potentialAction: [
       {
@@ -104,7 +104,7 @@ export default function Home() {
         target: {
           "@type": "EntryPoint",
           urlTemplate:
-            "https://rainbowpaint.in/buy-paint-online?q={search_term_string}",
+            "https://www.rainbowpaint.in/buy-paint-online?q={search_term_string}",
         },
         "query-input": "required name=search_term_string",
       },
@@ -121,37 +121,37 @@ export default function Home() {
         "@type": "SiteNavigationElement",
         "position": 1,
         "name": "Buy Paint Online",
-        "url": "https://rainbowpaint.in/buy-paint-online"
+        "url": "https://www.rainbowpaint.in/buy-paint-online"
       },
       {
         "@type": "SiteNavigationElement",
         "position": 2,
         "name": "Paint Cost Calculator",
-        "url": "https://rainbowpaint.in/calculator"
+        "url": "https://www.rainbowpaint.in/calculator"
       },
       {
         "@type": "SiteNavigationElement",
         "position": 3,
         "name": "AI Color Visualizer",
-        "url": "https://rainbowpaint.in/visualizer"
+        "url": "https://www.rainbowpaint.in/visualizer"
       },
       {
         "@type": "SiteNavigationElement",
         "position": 4,
         "name": "Compare Paints",
-        "url": "https://rainbowpaint.in/compare-paints"
+        "url": "https://www.rainbowpaint.in/compare-paints"
       },
       {
         "@type": "SiteNavigationElement",
         "position": 5,
         "name": "Paint Industry Blog",
-        "url": "https://rainbowpaint.in/blog"
+        "url": "https://www.rainbowpaint.in/blog"
       },
       {
         "@type": "SiteNavigationElement",
         "position": 6,
         "name": "About Our Paint Shop",
-        "url": "https://rainbowpaint.in/about"
+        "url": "https://www.rainbowpaint.in/about"
       }
     ]
   };
@@ -193,7 +193,7 @@ export default function Home() {
       <SEO
         title="Rainbow Paints & Hardwares | Best Paint Shop in Coimbatore"
         description="Buy paint online from the top paint shop in Coimbatore. Rainbow Paints & Hardwares offers best pricing, local doorstep delivery, and 4000+ color shades."
-        url="https://rainbowpaint.in/"
+        url="https://www.rainbowpaint.in/"
         schema={[storeSchema, websiteSchema, siteNavigationSchema, faqSchema]}
       />
       <Hero />

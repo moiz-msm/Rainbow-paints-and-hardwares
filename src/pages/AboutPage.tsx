@@ -11,7 +11,7 @@ export default function AboutPage() {
       "name": "Rainbow Paints & Hardware",
       "foundingDate": "2001",
       "description": "Trusted destination for paints, coatings, hardware, and expert painting solutions in Coimbatore since 2001.",
-      "url": "https://rainbowpaint.in",
+      "url": "https://www.rainbowpaint.in",
       "logo": "/mascot.webp"
     }
   };
@@ -21,7 +21,7 @@ export default function AboutPage() {
       <SEO 
         title="About Us | Rainbow Paints & Hardwares" 
         description="Learn about Rainbow Paints & Hardwares, Coimbatore's trusted destination for paints and hardware since 2001."
-        url="https://rainbowpaint.in/about"
+        url="https://www.rainbowpaint.in/about"
         schema={aboutSchema}
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

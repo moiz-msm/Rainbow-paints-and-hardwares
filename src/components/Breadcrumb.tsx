@@ -53,7 +53,7 @@ export default function Breadcrumb({ items, className = 'text-zinc-600' }: Bread
       "@type": "ListItem",
       "position": index + 1,
       "name": item.label,
-      "item": item.href ? `https://rainbowpaint.in${item.href}` : `https://rainbowpaint.in${location.pathname}`
+      "item": item.href ? `https://www.rainbowpaint.in${item.href}` : `https://www.rainbowpaint.in${location.pathname}`
     }))
   };
 

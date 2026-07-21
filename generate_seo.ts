@@ -3,7 +3,7 @@ import path from 'path';
 import { mockProducts, brands, subCategories } from './src/data';
 import { blogPosts } from './src/data/blogPosts';
 
-const APP_URL = 'https://rainbowpaint.in';
+const APP_URL = 'https://www.rainbowpaint.in';
 
 function generateSitemap() {
   const urls = [
@@ -39,8 +39,12 @@ function generateSitemap() {
   const asianShades = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src/data/shades/asian-paints.json'), 'utf-8'));
   const bergerShades = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src/data/shades/berger-paints.json'), 'utf-8'));
   const mrfShades = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src/data/shades/mrf-paints.json'), 'utf-8'));
+  let ralShades = [];
+  try {
+    ralShades = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src/data/shades/ral-classic.json'), 'utf-8'));
+  } catch(e) {}
   
-  const allShades = [...asianShades, ...bergerShades, ...mrfShades];
+  const allShades = [...asianShades, ...bergerShades, ...mrfShades, ...ralShades];
   allShades.forEach((shade) => {
     const brandSlug = shade.brand.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
     const familySlug = shade.family.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');

@@ -153,7 +153,7 @@ export default function FaqPage() {
       <SEO 
         title="Frequently Asked Questions | Rainbow Paints & Hardwares"
         description="Have questions about ordering paint online? Check out our FAQ for information on shipping, returns, color matching, and more."
-        url="https://rainbowpaint.in/faqs"
+        url="https://www.rainbowpaint.in/faqs"
         schema={faqSchema}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">

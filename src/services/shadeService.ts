@@ -20,6 +20,7 @@ export interface Shade {
 let asianShades: Shade[] = [];
 let bergerShades: Shade[] = [];
 let mrfShades: Shade[] = [];
+let ralShades: Shade[] = [];
 
 /**
  * Lazy loads brand data
@@ -63,6 +64,18 @@ async function loadBrandData(brand: string): Promise<Shade[]> {
     return mrfShades;
   }
   
+  if (brand.toLowerCase() === 'ral' || brand.toLowerCase() === 'ral classic') {
+    if (ralShades.length === 0) {
+      const data = await import('../data/shades/ral-classic.json');
+      const unique = new Map<string, Shade>();
+      data.default.forEach((s: Shade) => {
+        if (!unique.has(s.id)) unique.set(s.id, s);
+      });
+      ralShades = Array.from(unique.values());
+    }
+    return ralShades;
+  }
+
   return [];
 }
 
@@ -83,12 +96,13 @@ export const shadeService = {
     
     // Load required brands
     if (brand === 'all') {
-      const [asian, berger, mrf] = await Promise.all([
+      const [asian, berger, mrf, ral] = await Promise.all([
         loadBrandData('asian'),
         loadBrandData('berger'),
-        loadBrandData('mrf')
+        loadBrandData('mrf'),
+        loadBrandData('ral')
       ]);
-      pool = [...asian, ...berger, ...mrf];
+      pool = [...asian, ...berger, ...mrf, ...ral];
     } else {
       pool = await loadBrandData(brand);
     }

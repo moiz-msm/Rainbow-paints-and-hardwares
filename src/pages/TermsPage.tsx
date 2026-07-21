@@ -7,7 +7,7 @@ export default function TermsPage() {
       <SEO 
         title="Terms & Conditions | Rainbow Paints & Hardwares"
         description="Read the Terms and Conditions for using Rainbow Paints & Hardwares website and services."
-        url="https://rainbowpaint.in/terms"
+        url="https://www.rainbowpaint.in/terms"
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <div className="bg-royale-surface rounded-2xl shadow-sm p-8 md:p-12">

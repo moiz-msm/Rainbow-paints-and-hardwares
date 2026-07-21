@@ -7,7 +7,7 @@ export default function PrivacyPolicyPage() {
       <SEO 
         title="Privacy Policy | Rainbow Paints & Hardwares"
         description="Read our Privacy Policy to understand how Rainbow Paints & Hardwares collects and protects your personal data."
-        url="https://rainbowpaint.in/privacy"
+        url="https://www.rainbowpaint.in/privacy"
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <div className="bg-royale-surface rounded-2xl shadow-sm p-8 md:p-12">

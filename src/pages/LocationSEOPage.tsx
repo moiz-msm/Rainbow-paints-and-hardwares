@@ -12,9 +12,9 @@ export default function LocationSEOPage() {
       "@context": "https://schema.org",
       "@type": ["LocalBusiness", "HomeAndConstructionBusiness", "PaintStore"],
       "name": `Rainbow Paints & Hardwares - Serving ${locationName}`,
-      "image": "https://rainbowpaint.in/store-front.webp",
-      "@id": `https://rainbowpaint.in/store/${locationSlug}`,
-      "url": `https://rainbowpaint.in/store/${locationSlug}`,
+      "image": "https://www.rainbowpaint.in/store-front.webp",
+      "@id": `https://www.rainbowpaint.in/store/${locationSlug}`,
+      "url": `https://www.rainbowpaint.in/store/${locationSlug}`,
       "telephone": "+91 94432 30510",
       "address": {
         "@type": "PostalAddress",
@@ -66,7 +66,7 @@ export default function LocationSEOPage() {
         "name": locationName
       },
       "description": `Fast local doorstep delivery of premium paints and hardware across ${locationName}, Coimbatore.`,
-      "url": `https://rainbowpaint.in/store/${locationSlug}`
+      "url": `https://www.rainbowpaint.in/store/${locationSlug}`
     };
   }, [locationName, locationSlug]);
 
@@ -79,13 +79,13 @@ export default function LocationSEOPage() {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://rainbowpaint.in/"
+          "item": "https://www.rainbowpaint.in/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": `Paint Dealer in ${locationName}`,
-          "item": `https://rainbowpaint.in/store/${locationSlug}`
+          "item": `https://www.rainbowpaint.in/store/${locationSlug}`
         }
       ]
     };
@@ -121,7 +121,7 @@ export default function LocationSEOPage() {
       <SEO 
         title={`Premium Paint Dealer in ${locationName} | Rainbow Paints`}
         description={`Looking for a paint store near me? Rainbow Paints is your trusted paint dealer in ${locationName}. Buy paints online with fast local delivery.`}
-        url={`https://rainbowpaint.in/store/${locationSlug}`}
+        url={`https://www.rainbowpaint.in/store/${locationSlug}`}
         schema={[localBusinessSchema, serviceSchema, breadcrumbSchema, faqSchema]}
       />
       <div className="max-w-7xl mx-auto px-4 py-12 text-center">

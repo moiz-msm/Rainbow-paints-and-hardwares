@@ -67,7 +67,7 @@ export default function AbandonedCartsAdmin() {
   
   const handleRemind = (email?: string) => {
     if (email) {
-      window.location.href = `mailto:${email}?subject=You left items in your cart at Rainbow Paints&body=Hi there,%0A%0AWe noticed you left some items in your cart. Complete your checkout today and get 10%25 off your order with code RECOVER10!%0A%0AVisit https://rainbowpaint.in to checkout.`;
+      window.location.href = `mailto:${email}?subject=You left items in your cart at Rainbow Paints&body=Hi there,%0A%0AWe noticed you left some items in your cart. Complete your checkout today and get 10%25 off your order with code RECOVER10!%0A%0AVisit https://www.rainbowpaint.in to checkout.`;
     } else {
       alert("No email found for this user.");
     }

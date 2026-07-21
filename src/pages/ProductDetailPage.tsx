@@ -142,6 +142,11 @@ export default function ProductDetailPage() {
           
           if (accurateImageNames.includes(key)) {
             updatedP.image = accurateImagesMap[key];
+          } else {
+            const mockProductFallback = mockProducts.find(mp => mp.name && mp.name.trim().toLowerCase() === key);
+            if (mockProductFallback && (!updatedP.image || updatedP.image === '')) {
+              updatedP.image = mockProductFallback.image;
+            }
           }
 
           let subs = updatedP.subCategory ? [updatedP.subCategory] : [];
@@ -389,7 +394,7 @@ export default function ProductDetailPage() {
         "price": currentPrice,
         "priceCurrency": "INR",
         "availability": "https://schema.org/InStock",
-        "url": `https://rainbowpaint.in/p/${product.slug || product.name?.replace(/\s+/g, '-').toLowerCase()}`
+        "url": `https://www.rainbowpaint.in/p/${product.slug || product.name?.replace(/\s+/g, '-').toLowerCase()}`
       }
     };
   }, [product, productDetails, currentPrice, displayImage]);
@@ -438,41 +443,39 @@ export default function ProductDetailPage() {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://rainbowpaint.in/"
+          "item": "https://www.rainbowpaint.in/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Products",
-          "item": "https://rainbowpaint.in/buy-paint-online"
+          "item": "https://www.rainbowpaint.in/buy-paint-online"
         },
         product.brand && {
           "@type": "ListItem",
           "position": 3,
           "name": product.brand,
-          "item": `https://rainbowpaint.in/brands/${product.brand.toLowerCase().replace(/\s+/g, '-')}`
+          "item": `https://www.rainbowpaint.in/brands/${product.brand.toLowerCase().replace(/\s+/g, '-')}`
         },
         product.subCategory && {
           "@type": "ListItem",
           "position": 4,
           "name": product.subCategory,
-          "item": `https://rainbowpaint.in/c/${product.subCategory.toLowerCase().replace(/\s+/g, '-')}`
+          "item": `https://www.rainbowpaint.in/c/${product.subCategory.toLowerCase().replace(/\s+/g, '-')}`
         },
         {
           "@type": "ListItem",
           "position": 5,
           "name": product.name,
-          "item": `https://rainbowpaint.in/p/${product.slug || product.name?.replace(/\s+/g, '-').toLowerCase()}`
+          "item": `https://www.rainbowpaint.in/p/${product.slug || product.name?.replace(/\s+/g, '-').toLowerCase()}`
         }
       ].filter(Boolean)
     };
   }, [product]);
 
   const metaDesc = useMemo(() => {
-    let base = productDetails?.desc1 || `Buy ${product?.name} online at wholesale prices.`;
-    if (base.length > 80) base = base.substring(0, 80) + '...';
-    return `${base} Authorized ${product?.brand} dealer in Coimbatore offering fast local delivery for ${product?.category}.`;
-  }, [productDetails, product]);
+    return `Buy ${product?.name} by ${product?.brand} online at wholesale prices. ${product?.category} with fast local delivery in Coimbatore.`;
+  }, [product]);
 
   if (loading) {
     return (
@@ -576,10 +579,10 @@ export default function ProductDetailPage() {
     <article className="pt-[72px] sm:pt-24 pb-12 bg-royale-bg min-h-screen text-ivory/90 relative overflow-x-hidden selection:bg-gold/30">
       <SEO 
         type="product"
-        title={`${product.name} - Buy ${product.brand} Paints Online`}
+        title={`${product.name} by ${product.brand} - Buy Online | Wholesale Price`}
         description={metaDesc}
         keywords={`${product.name}, ${product.brand}, ${product.category}, ${product.subCategory}`}
-        url={`https://rainbowpaint.in/p/${product.slug || product.name.replace(/\s+/g, '-').toLowerCase()}`}
+        url={`https://www.rainbowpaint.in/p/${product.slug || product.name.replace(/\s+/g, '-').toLowerCase()}`}
         image={displayImage || product.image}
         productBrand={product.brand}
         productPrice={currentPrice}

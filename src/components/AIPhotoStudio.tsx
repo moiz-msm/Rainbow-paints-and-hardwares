@@ -285,6 +285,7 @@ export default function AIPhotoStudio({
       asian: findBestForBrand("asian"),
       berger: findBestForBrand("berger"),
       mrf: findBestForBrand("mrf"),
+      ral: findBestForBrand("ral"),
     };
   }, [pickedPixelColor, poolToUse]);
 
@@ -1548,6 +1549,56 @@ export default function AIPhotoStudio({
                     ) : (
                       <div className="bg-white border border-dashed border-zinc-200 rounded-xl p-3 text-center text-[10px] text-zinc-600">
                         Fetching MRF match...
+                      </div>
+                    )}
+                    
+                    {/* RAL Classic Match */}
+                    {pickerMatches.ral ? (
+                      <div
+                        className={`bg-white p-2.5 rounded-xl border flex items-center justify-between gap-1 transition-all duration-300 hover:-translate-y-0.5 ${activeShade?.id === pickerMatches.ral.shade.id ? "border-gold ring-1 ring-gold/30 shadow-[0_4px_10px_rgba(200,165,100,0.1)]" : "border-zinc-200/80 hover:border-gold/30"}`}
+                      >
+                        <button
+                          type="button"
+                          onClick={() =>
+                            onSelectShade &&
+                            onSelectShade(pickerMatches.ral!.shade)
+                          }
+                          className="flex-1 flex items-center gap-2.5 min-w-0 text-left"
+                        >
+                          <div
+                            className="w-8 h-8 rounded-md flex-shrink-0 border"
+                            style={{
+                              backgroundColor: pickerMatches.ral.shade.hex,
+                            }}
+                          />
+                          <div className="min-w-0 flex-grow leading-tight">
+                            <span className="text-[7.5px] font-display font-bold uppercase text-zinc-600 tracking-wider block">
+                              RAL Classic
+                            </span>
+                            <span className="text-[10px] sm:text-[11px] font-sans font-bold uppercase tracking-widest text-zinc-800 block truncate">
+                              {pickerMatches.ral.shade.name}
+                            </span>
+                            <span className="text-[7.5px] font-mono text-zinc-600 block">
+                              {pickerMatches.ral.shade.shadeCode}
+                            </span>
+                          </div>
+                        </button>
+                        <div className="flex flex-col items-end gap-1.5 shrink-0">
+                          <span className="text-[8px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded leading-none shrink-0">
+                            {pickerMatches.ral.similarity}% Match
+                          </span>
+                          <Link
+                            to={shadeService.getShadeUrl(pickerMatches.ral.shade)}
+                            className="p-1 text-zinc-400 hover:text-gold transition-colors shrink-0"
+                            title="View full shade details"
+                          >
+                            <Info className="w-3.5 h-3.5" />
+                          </Link>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="bg-white border border-dashed border-zinc-200 rounded-xl p-3 text-center text-[10px] text-zinc-600">
+                        Fetching RAL match...
                       </div>
                     )}
                   </div>

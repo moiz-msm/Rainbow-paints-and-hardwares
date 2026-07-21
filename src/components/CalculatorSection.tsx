@@ -593,7 +593,7 @@ export default function CalculatorSection() {
             className="glass-panel p-5 sm:p-8 rounded-2xl border-zinc-200 bg-royale-surface/40 flex flex-col gap-5 sm:gap-6"
           >
             <h2 className="font-serif text-lg sm:text-xl text-gold border-b border-zinc-200 pb-3 uppercase tracking-widest flex items-center gap-2">
-              <Calculator className="w-5 h-5" /> Cost Estimator
+              <Calculator className="w-5 h-5" /> Painting Price Calculator
             </h2>
 
             <div className="space-y-2">

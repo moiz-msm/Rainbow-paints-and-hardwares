@@ -7,7 +7,7 @@ export default function RefundPolicyPage() {
       <SEO 
         title="Refund Policy | Rainbow Paints & Hardwares"
         description="Learn about our refund, cancellation, and return policies for paint and hardware products at Rainbow Paints & Hardwares."
-        url="https://rainbowpaint.in/refund-policy"
+        url="https://www.rainbowpaint.in/refund-policy"
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <div className="bg-royale-surface rounded-2xl shadow-sm p-8 md:p-12">

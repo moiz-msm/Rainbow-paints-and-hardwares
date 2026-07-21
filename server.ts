@@ -3,7 +3,19 @@ import path from "path";
 import * as fs from "fs";
 import { GoogleGenAI } from "@google/genai";
 import { Resend } from "resend";
+
 import { mockProducts, brands, topCategories, subCategories } from "./src/data";
+
+let allShades: any[] = [];
+try {
+  const asianShades = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src/data/shades/asian-paints.json'), 'utf-8'));
+  const bergerShades = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src/data/shades/berger-paints.json'), 'utf-8'));
+  const mrfShades = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src/data/shades/mrf-paints.json'), 'utf-8'));
+  allShades = [...asianShades, ...bergerShades, ...mrfShades];
+} catch(e) {
+  console.log("Error loading shades in server:", e);
+}
+
 
 const CACHE_FILE = path.join(process.cwd(), '.ai-cache.json');
 let aiCache: Record<string, any> = {};
@@ -43,10 +55,12 @@ function getAI(): GoogleGenAI {
   return aiClient;
 }
 
+import compression from "compression";
+
 export const app = express();
-  
-  app.use(express.json({ limit: '10mb' }));
-  app.use(express.urlencoded({ limit: '10mb', extended: true }));
+app.use(compression());
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
   // API routes
   app.post("/api/chat", async (req, res) => {
@@ -996,7 +1010,60 @@ Return exactly a valid JSON object with {"name": "string", "pincode": "string"}.
     }));
     app.get('*', (req, res) => {
       res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-      res.sendFile(path.join(distPath, 'index.html'));
+      try {
+        let html = fs.readFileSync(path.join(distPath, 'index.html'), 'utf-8');
+        const url = req.path;
+        let title = "Rainbow Paints & Hardwares | Best Paint Shop in Coimbatore";
+        let desc = "Buy paint online from the top paint shop in Coimbatore. Rainbow Paints & Hardwares offers best pricing, doorstep delivery in Coimbatore, and 4000+ color shades.";
+        let img = "https://www.rainbowpaint.in/IMG_20260630_162408.webp";
+
+        if (url.startsWith('/p/')) {
+          const slug = decodeURIComponent(url.split('/')[2]);
+          const product = mockProducts.find(p => ((p as any).slug || p.name.replace(/\s+/g, '-').toLowerCase()) === slug);
+          if (product) {
+            title = `${product.name} | ${product.brand} | Buy Online at Best Price in Coimbatore`;
+            desc = `Buy ${product.name} online. ${product.subCategory} from ${product.brand}.`;
+            let finalImage = product.image;
+            
+            const key = product.name ? product.name.trim().toLowerCase() : '';
+            const accurateImagesMap = {
+              "royale glitz reserve": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/royale-glitz-reserv-new-packshot.png",
+              "apcolite all protek shyne": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-apcolite-all-protek-shyne-packshot-asian-paints.png",
+              "royale health shield": "https://5.imimg.com/data5/SELLER/Default/2023/7/326440889/MP/SF/RA/22649264/asian-paints-royale-health-shield-500x500.jpg",
+              "apex tile guard matt": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/exterior-walls-apex-tile-guard.png",
+              "apex ultima stretch": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/ultima-stretch-packshot-asian-paints.png",
+              "weathercoat glow": "https://5.imimg.com/data5/SELLER/Default/2021/7/OI/YW/AW/102796245/berger-weathercoat-glow-exterior-emulsion.jpg"
+            };
+            if (accurateImagesMap[key]) {
+               finalImage = accurateImagesMap[key];
+            }
+            
+            img = finalImage ? (finalImage.startsWith('http') ? finalImage : `https://www.rainbowpaint.in${finalImage}`) : img;
+          }
+        } else if (url.startsWith('/color/')) {
+           const parts = url.split('/');
+           const shadeSlug = parts[parts.length - 1]; // last part
+           const shade = allShades.find(s => `${s.name}-${s.shadeCode}`.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') === shadeSlug);
+           if (shade) {
+             title = `${shade.name} ${shade.shadeCode} | ${shade.brand} ${shade.family || 'Colors'} | Rainbow Paints`;
+             desc = `${shade.brand} ${shade.name} ${shade.shadeCode}. See harmonious pairings and the closest matching shades in other paint brands. Available at Rainbow Paints & Hardwares, Coimbatore.`;
+             img = `https://placehold.co/1200x630/${shade.hex.replace('#', '')}/${shade.hex.replace('#', '')}.png?text=%20`;
+           }
+        }
+
+        html = html.replace(/<title>.*?<\/title>/g, `<title>${title}</title>`);
+        html = html.replace(/<meta\s+name="description"\s+content="[^"]*"/g, `<meta name="description" content="${desc}"`);
+        html = html.replace(/<meta\s+property="og:title"\s+content="[^"]*"/g, `<meta property="og:title" content="${title}"`);
+        html = html.replace(/<meta\s+property="og:description"\s+content="[^"]*"/g, `<meta property="og:description" content="${desc}"`);
+        html = html.replace(/<meta\s+property="og:image"\s+content="[^"]*"/g, `<meta property="og:image" content="${img}"`);
+        html = html.replace(/<meta\s+property="twitter:title"\s+content="[^"]*"/g, `<meta property="twitter:title" content="${title}"`);
+        html = html.replace(/<meta\s+property="twitter:description"\s+content="[^"]*"/g, `<meta property="twitter:description" content="${desc}"`);
+        html = html.replace(/<meta\s+property="twitter:image"\s+content="[^"]*"/g, `<meta property="twitter:image" content="${img}"`);
+
+        res.send(html);
+      } catch (e) {
+        res.sendFile(path.join(distPath, 'index.html'));
+      }
     });
   }
 

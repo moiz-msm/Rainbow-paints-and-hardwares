@@ -7,7 +7,7 @@ export default function ShippingPolicyPage() {
       <SEO 
         title="Shipping & Delivery Policy | Rainbow Paints & Hardwares"
         description="Learn about our shipping rates, delivery times, and local delivery zones in Coimbatore at Rainbow Paints & Hardwares."
-        url="https://rainbowpaint.in/shipping-policy"
+        url="https://www.rainbowpaint.in/shipping-policy"
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <div className="bg-royale-surface rounded-2xl shadow-sm p-8 md:p-12">
