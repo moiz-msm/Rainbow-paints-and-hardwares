@@ -101,6 +101,8 @@ export default function ShopByCategory() {
                   <img 
                     src={category.image} 
                     alt={category.name} 
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover/cat:scale-110 transition-transform duration-700 ease-out"
                   />
                 </div>
