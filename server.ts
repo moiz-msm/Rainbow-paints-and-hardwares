@@ -943,7 +943,14 @@ Return exactly a valid JSON object with {"name": "string", "pincode": "string"}.
         throw new Error("Empty news array");
       }
     } catch (err: any) {
-      console.log("News API: Using static fallback news due to fetch failure.");
+      const errorMsg = typeof err === 'object' ? JSON.stringify(err) : String(err);
+      const isQuota = errorMsg.includes("429") || errorMsg.includes("quota") || errorMsg.includes("RESOURCE_EXHAUSTED");
+      
+      if (!isQuota) {
+        console.error("News API Error:", err?.message || err);
+      } else {
+        console.warn("News API Quota Exceeded. Using static fallback news.");
+      }
       // Fallback
       res.json([
         {

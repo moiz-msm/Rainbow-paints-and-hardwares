@@ -25,43 +25,17 @@ export default defineConfig(({mode}) => {
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
-              if (id.includes('/node_modules/react/') || id.includes('/node_modules/react-dom/') || id.includes('/node_modules/react-router-dom/') || id.includes('/node_modules/react-router/')) {
+              if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom')) {
                 return 'vendor-react';
               }
-              if (id.includes('/node_modules/three/') || id.includes('/node_modules/@react-three/')) {
+              if (id.includes('three') || id.includes('@react-three')) {
                 return 'vendor-three';
               }
-              if (id.includes('/node_modules/framer-motion/') || id.includes('/node_modules/motion/')) {
+              if (id.includes('framer-motion') || id.includes('motion')) {
                 return 'vendor-motion';
               }
-              if (id.includes('/node_modules/firebase/') || id.includes('/node_modules/@firebase/')) {
+              if (id.includes('firebase')) {
                 return 'vendor-firebase';
-              }
-              if (id.includes('/node_modules/lucide-react/')) {
-                return 'vendor-lucide';
-              }
-              if (id.includes('/node_modules/jspdf/') || id.includes('/node_modules/jspdf-autotable/')) {
-                return 'vendor-jspdf';
-              }
-              if (id.includes('/node_modules/html2canvas/')) {
-                return 'vendor-html2canvas';
-              }
-              if (id.includes('/node_modules/xlsx/')) {
-                return 'vendor-xlsx';
-              }
-              if (id.includes('/node_modules/recharts/')) {
-                return 'vendor-recharts';
-              }
-              if (id.includes('/node_modules/date-fns/')) {
-                return 'vendor-date-fns';
-              }
-              if (id.includes('/node_modules/zustand/')) {
-                return 'vendor-zustand';
-              }
-              // Catch-all for remaining node_modules, splitting them by package name to avoid one massive chunk
-              const match = id.match(/\/node_modules\/([^/]+)/);
-              if (match) {
-                return `vendor-${match[1].replace('@', '')}`;
               }
               return 'vendor';
             }
@@ -71,7 +45,7 @@ export default defineConfig(({mode}) => {
     },
     server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
-      // Do not modify—file watching is disabled to prevent flickering during agent edits.
+      // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
       hmr: process.env.DISABLE_HMR !== 'true',
       // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
