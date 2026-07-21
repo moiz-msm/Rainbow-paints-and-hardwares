@@ -17,7 +17,9 @@ try {
 }
 
 
-const CACHE_FILE = path.join(process.cwd(), '.ai-cache.json');
+const CACHE_FILE = process.env.VERCEL === "1" 
+  ? path.join('/tmp', '.ai-cache.json')
+  : path.join(process.cwd(), '.ai-cache.json');
 let aiCache: Record<string, any> = {};
 try {
   if (fs.existsSync(CACHE_FILE)) {
