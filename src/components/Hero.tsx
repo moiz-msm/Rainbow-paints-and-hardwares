@@ -46,7 +46,7 @@ export default function Hero() {
           <div className="absolute inset-0 w-full h-full">
             <img src="/IMG_20260630_162408.webp" fetchPriority="high" alt="Hero Background" className="absolute inset-0 w-full h-full object-cover object-center" />
             {/* Elegant light cream/beige gradient matching the brand palette that preserves the original image on the right while ensuring high legibility for the text on the left */}
-            <div className="absolute inset-0 bg-gradient-to-b from-royale-bg/95 via-royale-bg/80 to-royale-bg/40 lg:bg-gradient-to-r lg:from-royale-bg lg:via-royale-bg/75 lg:to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#fdfbf7]/80 via-[#fdfbf7]/50 to-transparent lg:bg-gradient-to-r lg:from-[#fdfbf7]/90 lg:via-[#fdfbf7]/40 lg:to-transparent pointer-events-none" />
           </div>
            
            <div className="max-w-[1400px] w-full grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-center content-center z-10 h-full overflow-y-auto no-scrollbar py-2 lg:py-4">
