@@ -1,1 +1,0 @@
-sed -i 's/<div id="interactive-2d-showroom-wrapper" className="lg:sticky lg:top-\[142px\] sticky top-\[102px\] sm:top-\[126px\]/<div id="interactive-2d-showroom-wrapper" className="sticky top-[102px] sm:top-[126px] lg:static/' src/components/VisualizerSection.tsx
