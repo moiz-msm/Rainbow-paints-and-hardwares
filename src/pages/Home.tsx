@@ -5,6 +5,7 @@ import { lazyWithRetry as lazy } from "../utils/lazyWithRetry";
 import { FadeInUp } from "../components/FadeInUp";
 
 import LuxuryBackground from "../components/LuxuryBackground";
+import LazySection from "../components/LazySection";
 
 const ShopByCategory = lazy(() => import("../components/ShopByCategory"));
 const ShopByBrand = lazy(() => import("../components/ShopByBrand"));
@@ -197,17 +198,57 @@ export default function Home() {
         schema={[storeSchema, websiteSchema, siteNavigationSchema, faqSchema]}
       />
       <Hero />
-      <Suspense fallback={<div className="h-20 w-full bg-royale-bg"></div>}>
+      <Suspense fallback={<div className="h-10 w-full bg-royale-bg"></div>}>
         <FadeInUp><ToolsOverview /></FadeInUp>
-        <FadeInUp><ShopByBrand /></FadeInUp>
-        <FadeInUp><ShopByCategory /></FadeInUp>
-        <FadeInUp><ProductsAndIndustrial /></FadeInUp>
-        <FadeInUp><GoogleReviewsSection /></FadeInUp>
-        <FadeInUp><BlogSection /></FadeInUp>
-        <FadeInUp><IndustryNews /></FadeInUp>
-        <FadeInUp><FaqSection showLink={true} limit={4} /></FadeInUp>
-        <FadeInUp><ContactSection /></FadeInUp>
       </Suspense>
+
+      <LazySection className="py-1">
+        <Suspense fallback={null}>
+          <FadeInUp><ShopByBrand /></FadeInUp>
+        </Suspense>
+      </LazySection>
+
+      <LazySection className="py-1">
+        <Suspense fallback={null}>
+          <FadeInUp><ShopByCategory /></FadeInUp>
+        </Suspense>
+      </LazySection>
+
+      <LazySection className="py-1">
+        <Suspense fallback={null}>
+          <FadeInUp><ProductsAndIndustrial /></FadeInUp>
+        </Suspense>
+      </LazySection>
+
+      <LazySection className="py-1">
+        <Suspense fallback={null}>
+          <FadeInUp><GoogleReviewsSection /></FadeInUp>
+        </Suspense>
+      </LazySection>
+
+      <LazySection className="py-1">
+        <Suspense fallback={null}>
+          <FadeInUp><BlogSection /></FadeInUp>
+        </Suspense>
+      </LazySection>
+
+      <LazySection className="py-1">
+        <Suspense fallback={null}>
+          <FadeInUp><IndustryNews /></FadeInUp>
+        </Suspense>
+      </LazySection>
+
+      <LazySection className="py-1">
+        <Suspense fallback={null}>
+          <FadeInUp><FaqSection showLink={true} limit={4} /></FadeInUp>
+        </Suspense>
+      </LazySection>
+
+      <LazySection className="py-1">
+        <Suspense fallback={null}>
+          <FadeInUp><ContactSection /></FadeInUp>
+        </Suspense>
+      </LazySection>
     </>
   );
 }

@@ -119,6 +119,37 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
+  const [loadOverlays, setLoadOverlays] = React.useState(false);
+
+  React.useEffect(() => {
+    let loaded = false;
+    const loadNow = () => {
+      if (loaded) return;
+      loaded = true;
+      setLoadOverlays(true);
+      cleanup();
+    };
+
+    const cleanup = () => {
+      window.removeEventListener('scroll', loadNow);
+      window.removeEventListener('mousemove', loadNow);
+      window.removeEventListener('touchstart', loadNow);
+      window.removeEventListener('keydown', loadNow);
+    };
+
+    window.addEventListener('scroll', loadNow, { passive: true });
+    window.addEventListener('mousemove', loadNow, { passive: true });
+    window.addEventListener('touchstart', loadNow, { passive: true });
+    window.addEventListener('keydown', loadNow, { passive: true });
+
+    const timer = setTimeout(loadNow, 3500);
+
+    return () => {
+      cleanup();
+      clearTimeout(timer);
+    };
+  }, []);
+
   return (
     <HelmetProvider>
       <AuthProvider>
@@ -132,16 +163,18 @@ export default function App() {
           </main>
           <Footer />
         </div>
-        <Suspense fallback={null}>
-          <OfferPopup />
-          <CartDrawer />
-          <WishlistDrawer />
-          <WishlistToastContainer />
-          <AdminNotificationToast />
-          <AddedToCartBanner />
-          <AuthModal />
-          <ProductAssistant />
-        </Suspense>
+        {loadOverlays && (
+          <Suspense fallback={null}>
+            <OfferPopup />
+            <CartDrawer />
+            <WishlistDrawer />
+            <WishlistToastContainer />
+            <AdminNotificationToast />
+            <AddedToCartBanner />
+            <AuthModal />
+            <ProductAssistant />
+          </Suspense>
+        )}
       </Router>
     </AuthProvider>
     </HelmetProvider>
