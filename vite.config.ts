@@ -52,6 +52,17 @@ export default defineConfig(({mode}) => {
               if (id.includes('/node_modules/recharts/')) {
                 return 'vendor-recharts';
               }
+              if (id.includes('/node_modules/date-fns/')) {
+                return 'vendor-date-fns';
+              }
+              if (id.includes('/node_modules/zustand/')) {
+                return 'vendor-zustand';
+              }
+              // Catch-all for remaining node_modules, splitting them by package name to avoid one massive chunk
+              const match = id.match(/\/node_modules\/([^/]+)/);
+              if (match) {
+                return `vendor-${match[1].replace('@', '')}`;
+              }
               return 'vendor';
             }
           }
