@@ -943,7 +943,7 @@ Return exactly a valid JSON object with {"name": "string", "pincode": "string"}.
         throw new Error("Empty news array");
       }
     } catch (err: any) {
-      console.warn("News API Error (Using static fallback news):", err?.message || err);
+      console.log("News API: Using static fallback news due to fetch failure.");
       // Fallback
       res.json([
         {
