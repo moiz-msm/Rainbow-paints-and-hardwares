@@ -2555,7 +2555,7 @@ export const mockProducts = [
       "Fills Surface Porosity on Concrete walls"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1572224419992-698b6a3b2b8e?auto=format&fit=crop&q=80&w=600"
+    "image": "https://bergerpaints.com.sg/wp-content/uploads/2024/02/water_based-Sealer.png"
   },
   {
     "id": 4009,
@@ -2578,7 +2578,7 @@ export const mockProducts = [
       "Prevents paint patchiness and color variations"
     ],
     "popular": true,
-    "image": "https://m.media-amazon.com/images/I/61CQJQ-iQtL._SL1080_.jpg"
+    "image": "https://m.media-amazon.com/images/I/61AHShwUXoL.jpg_BO30,255,255,255_UF750,750_SR1910,1000,0,C_QL100_.jpg"
   },
   {
     "id": 4010,
@@ -2601,7 +2601,7 @@ export const mockProducts = [
       "Guarantees a permanent rust/damp seal under topcoats"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1563212068-0a75fcc6a72e?auto=format&fit=crop&q=80&w=600"
+    "image": "https://i.ytimg.com/vi/RBjK5vMhOqw/sddefault.jpg"
   },
   {
     "id": 4012,
@@ -2625,7 +2625,7 @@ export const mockProducts = [
       "Perfect for gates, metal window grilles, and wooden doors"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=600"
+    "image": "https://m.media-amazon.com/images/I/71V+3PeIOIL._AC_UF1000,1000_QL80_.jpg"
   },
   {
     "id": 4014,
@@ -2647,7 +2647,7 @@ export const mockProducts = [
       "Resists Mild Chemical Splashes and Heavy Impact"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1572224419992-698b6a3b2b8e?auto=format&fit=crop&q=80&w=600"
+    "image": "https://youconstruct.in/wp-content/uploads/2025/01/21iBQ0Lj6YL.jpg"
   },
   {
     "id": 4015,
@@ -2670,7 +2670,7 @@ export const mockProducts = [
       "Single-Pack Easy Cold Brush Application"
     ],
     "popular": true,
-    "image": "https://m.media-amazon.com/images/I/61CQJQ-iQtL._SL1080_.jpg"
+    "image": "https://5.imimg.com/data5/SELLER/Default/2023/9/346440914/LA/MQ/KL/138991556/berger-dampstop-duo.jpeg"
   },
   {
     "id": 4016,
@@ -2693,7 +2693,7 @@ export const mockProducts = [
       "Perfect for structural repair mortar, bathroom screeds, and roof seals"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1563212068-0a75fcc6a72e?auto=format&fit=crop&q=80&w=600"
+    "image": "https://content.jdmagicbox.com/quickquotes/images_main/berger-home-shield-construction-chemical-377205466-9opi6.jpg?impolicy=queryparam&im=Resize=(360,360),aspect=fit"
   },
   {
     "id": 4017,
@@ -2716,7 +2716,7 @@ export const mockProducts = [
       "Outstanding peeling resistance and high bonding strength"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?auto=format&fit=crop&q=80&w=600"
+    "image": "https://paintpoint.pk/wp-content/uploads/2023/06/Berger-Paints-Shell-Black-Bituman.png"
   },
   {
     "id": 4018,
@@ -2739,7 +2739,7 @@ export const mockProducts = [
       "Chemical and salt resistant breathable coating"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=600"
+    "image": "https://image.makewebcdn.com/makeweb/r_409x409/M1sidwdt1/Beger/Beger_Shield_2in1_Sheen.jpg?v=202405291424"
   },
   {
     "id": 4019,
@@ -2787,7 +2787,7 @@ export const mockProducts = [
       "Professional trade choice for industrial fabrication, grills, & structures"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1572224419992-698b6a3b2b8e?auto=format&fit=crop&q=80&w=600"
+    "image": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3818474593267350109"
   },
   {
     "id": 4021,
@@ -2811,7 +2811,7 @@ export const mockProducts = [
       "Inhibits wood moisture rot and tannin staining"
     ],
     "popular": false,
-    "image": "https://m.media-amazon.com/images/I/61CQJQ-iQtL._SL1080_.jpg"
+    "image": "https://5.imimg.com/data5/ANDROID/Default/2022/8/KE/HN/WB/127601061/product-jpeg.jpg"
   },
   {
     "id": 4022,
@@ -2833,7 +2833,7 @@ export const mockProducts = [
       "Re-usable and easy to wash with water or thinners"
     ],
     "popular": true,
-    "image": "https://images.unsplash.com/photo-1563212068-0a75fcc6a72e?auto=format&fit=crop&q=80&w=600"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-10/ipaint glow in dark kit.png?format=webp&width=640&quality=75"
   },
   {
     "id": 4023,
@@ -2853,7 +2853,7 @@ export const mockProducts = [
       "Outstanding speed and coverage on large exterior/interior walls"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?auto=format&fit=crop&q=80&w=600"
+    "image": "https://spng.pngfind.com/pngs/s/71-716416_home-decor-paint-roller-tools-paint-color-home.png"
   },
   {
     "id": 4024,
@@ -2874,7 +2874,7 @@ export const mockProducts = [
       "Prevents hollow sounds and cracking after dry cures"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=600"
+    "image": "https://images.jdmagicbox.com/quickquotes/images_main/tile-adhesive-2219993490-4lob7xqz.jpg"
   },
   {
     "id": 4025,
@@ -2895,7 +2895,7 @@ export const mockProducts = [
       "Maintains vibrant, color-fast, non-cracking grout lines"
     ],
     "popular": true,
-    "image": "https://images.unsplash.com/photo-1572224419992-698b6a3b2b8e?auto=format&fit=crop&q=80&w=600"
+    "image": "https://cpimg.tistatic.com/08869313/b/4/WATERPROOFING-Flexogum.jpg"
   },
   {
     "id": 4026,
@@ -2915,7 +2915,7 @@ export const mockProducts = [
       "Outstanding UV stable adhesion, never yellows or cracks"
     ],
     "popular": true,
-    "image": "https://m.media-amazon.com/images/I/61CQJQ-iQtL._SL1080_.jpg"
+    "image": "https://narandasandsons.com/wp-content/uploads/2025/10/48-1.png"
   },
   {
     "id": 4027,
@@ -2935,7 +2935,7 @@ export const mockProducts = [
       "Fungus-proof formula, perfect for clean-room and sanitary seals"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1563212068-0a75fcc6a72e?auto=format&fit=crop&q=80&w=600"
+    "image": "https://www.sealantsupplies.co.uk/wp-content/uploads/2021/03/Arbo_Sil_LM-1.jpg.webp"
   },
   {
     "id": 4028,
@@ -2956,7 +2956,7 @@ export const mockProducts = [
       "Excellent hard-wearing anti-abrasion protection layer"
     ],
     "popular": true,
-    "image": "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?auto=format&fit=crop&q=80&w=600"
+    "image": "https://m.media-amazon.com/images/I/71tQvmQILTL._AC_UF1000,1000_QL80_.jpg"
   },
   {
     "id": 4029,
@@ -2977,7 +2977,7 @@ export const mockProducts = [
       "Optimal flexibility adapts to seasonal timber contractions"
     ],
     "popular": true,
-    "image": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=600"
+    "image": "https://images.bergerpaints.com/2023-10/imperia_grande_clear_2.png?format=webp&width=1080&quality=75"
   },
   {
     "id": 4030,
@@ -2998,7 +2998,7 @@ export const mockProducts = [
       "Outstanding sanding ease for swift professional operations"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1572224419992-698b6a3b2b8e?auto=format&fit=crop&q=80&w=600"
+    "image": "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=999128590447715"
   },
   {
     "id": 4031,
@@ -3019,7 +3019,7 @@ export const mockProducts = [
       "Can be topcoated with Epoxy, PU, or Chlorinated Rubber paints"
     ],
     "popular": true,
-    "image": "https://m.media-amazon.com/images/I/61CQJQ-iQtL._SL1080_.jpg"
+    "image": "https://ik.imagekit.io/fepy/cdn/catalog/product/f/l/floor_guard_epoxy_top_coat-5lt_1__2_13.png"
   },
   {
     "id": 4032,
@@ -3040,7 +3040,7 @@ export const mockProducts = [
       "Excellent chemical resistance on structural steel and tanks"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1563212068-0a75fcc6a72e?auto=format&fit=crop&q=80&w=600"
+    "image": "https://bergerpaints.com.sg/wp-content/uploads/2024/02/Protective-image-tile-3.png"
   },
   {
     "id": 4033,
@@ -3061,7 +3061,7 @@ export const mockProducts = [
       "Outstanding solvent and chemical resistance profile"
     ],
     "popular": true,
-    "image": "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?auto=format&fit=crop&q=80&w=600"
+    "image": "https://ae-pic-a1.aliexpress-media.com/kf/S9fa56423132245c89f27cecf1a72e415Y.jpg"
   },
   {
     "id": 4034,
@@ -3082,7 +3082,7 @@ export const mockProducts = [
       "Highly recommended for fertilizer, pulp, and steel plants"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=600"
+    "image": "https://imgv2-1-f.scribdassets.com/img/document/709702223/original/5cfdb3741a/1?v=1"
   },
   {
     "id": 4035,
@@ -3103,7 +3103,7 @@ export const mockProducts = [
       "Approved for interior linings of chemical storage tanks"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1572224419992-698b6a3b2b8e?auto=format&fit=crop&q=80&w=600"
+    "image": "https://ae-pic-a1.aliexpress-media.com/kf/Se7769ee65fc84fde8106a8da7a3c0ebdW.jpg"
   },
   {
     "id": 4036,
@@ -3124,7 +3124,7 @@ export const mockProducts = [
       "Perfect for pharmaceutical, chemical, and food processing plants"
     ],
     "popular": false,
-    "image": "https://m.media-amazon.com/images/I/61CQJQ-iQtL._SL1080_.jpg"
+    "image": "https://5.imimg.com/data5/SELLER/Default/2023/12/370360330/YI/PZ/NM/43416417/protectmastic-bpl-smoke-gray-250x250.jpg"
   },
   {
     "id": 4037,
@@ -3145,7 +3145,7 @@ export const mockProducts = [
       "Outstanding resistance to marine, industrial, and salty air"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1563212068-0a75fcc6a72e?auto=format&fit=crop&q=80&w=600"
+    "image": "https://lntsufin.com/storage/mediafiles/catalog/live/16045-913/original/16045-913_image_0.jpeg"
   },
   {
     "id": 4038,
@@ -3166,7 +3166,7 @@ export const mockProducts = [
       "Tough, highly flexible coal tar pitch and epoxy resin blend"
     ],
     "popular": true,
-    "image": "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?auto=format&fit=crop&q=80&w=600"
+    "image": "https://img2.exportersindia.com/product_images/bc-small/150x150/2023/11/10999454/berger-epoxy-paint-1663995196-6555327.jpg"
   },
   {
     "id": 4039,
@@ -3187,7 +3187,7 @@ export const mockProducts = [
       "Perfect exterior protection for chemical tanks, pipelines, & bridges"
     ],
     "popular": true,
-    "image": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=600"
+    "image": "https://narandasandsons.com/wp-content/uploads/2025/10/2.png"
   },
   {
     "id": 4040,
@@ -3208,7 +3208,7 @@ export const mockProducts = [
       "Widely specified for harbor jetties, sluice gates, and water treatment plants"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1572224419992-698b6a3b2b8e?auto=format&fit=crop&q=80&w=600"
+    "image": "https://cpimg.tistatic.com/10881538/b/4/Berger-Epilux-78-HBTL-Paint..jpg"
   },
   {
     "id": 4041,
@@ -3229,7 +3229,7 @@ export const mockProducts = [
       "Excellent resistance to chemicals, oils, detergents, and water"
     ],
     "popular": true,
-    "image": "https://m.media-amazon.com/images/I/61CQJQ-iQtL._SL1080_.jpg"
+    "image": "https://tiimg.tistatic.com/fp/1/009/515/epilux-78-hbtl-light-grey-white-442.jpg"
   },
   {
     "id": 4042,
@@ -3251,7 +3251,7 @@ export const mockProducts = [
       "Ideal for chimneys, boiler vents, exhausts, and steel furnace doors"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1563212068-0a75fcc6a72e?auto=format&fit=crop&q=80&w=600"
+    "image": "https://www.rashmienterprisesbhilai.com/images/berger.jpg"
   },
   {
     "id": 4043,
@@ -3295,7 +3295,7 @@ export const mockProducts = [
       "Ensures high build foundation and excellent topcoat adhesion"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?auto=format&fit=crop&q=80&w=600"
+    "image": "https://newguardcoatings.com/cdn/shop/files/Guard_FES_2.png?v=1769662480&width=533"
   },
   {
     "id": 4045,

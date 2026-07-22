@@ -98,8 +98,20 @@ export default function SEO({
       <link rel="apple-touch-icon" href="/mascot.webp" />
       <link rel="canonical" href={url} />
 
+      {type === "product" && image && (
+        <link rel="preload" as="image" href={absoluteImage} fetchPriority="high" />
+      )}
+
       {schema && (
-        <script type="application/ld+json">{JSON.stringify(schema)}</script>
+        Array.isArray(schema) ? (
+          schema.filter(Boolean).map((s, idx) => (
+            <script key={idx} type="application/ld+json">
+              {JSON.stringify(s)}
+            </script>
+          ))
+        ) : (
+          <script type="application/ld+json">{JSON.stringify(schema)}</script>
+        )
       )}
     </Helmet>
   );

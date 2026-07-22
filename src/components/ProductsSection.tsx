@@ -1016,7 +1016,7 @@ export default function ProductsSection({
         mergedProduct.image = accurateImagesMap[key];
       } else {
         const existingMock = map.get(key);
-        if (existingMock && (!mergedProduct.image || mergedProduct.image === "")) {
+        if (existingMock && (!mergedProduct.image || mergedProduct.image === "" || existingMock.brand === "Berger Paints")) {
           mergedProduct.image = existingMock.image;
         }
       }

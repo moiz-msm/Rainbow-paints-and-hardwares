@@ -56,19 +56,21 @@ export default function ColorDetailsPage() {
 
   const shadeImageUrl = shade ? `https://placehold.co/1200x630/${shade.hex.replace('#', '')}/${shade.hex.replace('#', '')}.png?text=%20` : undefined;
 
-  const productSchema = useMemo(() => {
+  const webPageSchema = useMemo(() => {
     if (!shade) return null;
+    const shadeUrl = `https://www.rainbowpaint.in/color/${shade.shadeCode}`;
     return {
       "@context": "https://schema.org",
-      "@type": "Product",
-      name: `${shade.name} ${shade.shadeCode}`,
-      image: shadeImageUrl,
-      description: seoDescription,
-      brand: {
-        "@type": "Brand",
-        name: shade.brand,
-      },
-      category: "Paint Color",
+      "@type": "WebPage",
+      "name": `${shade.name} ${shade.shadeCode} - ${shade.brand} Colour Palette`,
+      "image": shadeImageUrl ? [shadeImageUrl] : [],
+      "description": seoDescription,
+      "url": shadeUrl,
+      "mainEntity": {
+        "@type": "CreativeWork",
+        "name": `${shade.name} ${shade.shadeCode}`,
+        "description": `${shade.brand} color shade ${shade.name} (${shade.shadeCode}). Hex code: ${shade.hex}, RGB: ${shade.rgb}.`
+      }
     };
   }, [shade, seoDescription, shadeImageUrl]);
 
@@ -347,8 +349,8 @@ export default function ColorDetailsPage() {
         description={seoDescription}
         image={shadeImageUrl}
         url={`https://www.rainbowpaint.in${shadeService.getShadeUrl(shade)}`}
-        type="product"
-        schema={[productSchema, breadcrumbSchema, faqSchema].filter(Boolean)}
+        type="website"
+        schema={[webPageSchema, breadcrumbSchema, faqSchema].filter(Boolean)}
       />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
