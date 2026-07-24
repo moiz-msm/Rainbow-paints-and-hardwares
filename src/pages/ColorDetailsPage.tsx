@@ -66,6 +66,19 @@ export default function ColorDetailsPage() {
       "image": shadeImageUrl ? [shadeImageUrl] : [],
       "description": seoDescription,
       "url": shadeUrl,
+      "publisher": {
+        "@type": ["LocalBusiness", "PaintStore", "Organization"],
+        "@id": "https://www.rainbowpaint.in/#organization",
+        "name": "Rainbow Paints & Hardwares",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "54 Cox Street, Kattoor",
+          "addressLocality": "Coimbatore",
+          "addressRegion": "Tamil Nadu",
+          "postalCode": "641009",
+          "addressCountry": "IN"
+        }
+      },
       "mainEntity": {
         "@type": "CreativeWork",
         "name": `${shade.name} ${shade.shadeCode}`,

@@ -15,13 +15,13 @@ export default function LocationSEOPage() {
       "image": "https://www.rainbowpaint.in/store-front.webp",
       "@id": `https://www.rainbowpaint.in/store/${locationSlug}`,
       "url": `https://www.rainbowpaint.in/store/${locationSlug}`,
-      "telephone": "+91 94432 30510",
+      "telephone": "+918072442930",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "364, Dr Nanjappa Rd",
+        "streetAddress": "54 Cox Street, Kattoor",
         "addressLocality": "Coimbatore",
         "addressRegion": "Tamil Nadu",
-        "postalCode": "641018",
+        "postalCode": "641009",
         "addressCountry": "IN"
       },
       "geo": {
@@ -50,14 +50,15 @@ export default function LocationSEOPage() {
       "name": `Paint Delivery & Supply in ${locationName}`,
       "serviceType": "Paint and Hardware Supply",
       "provider": {
-        "@type": ["LocalBusiness", "HomeAndConstructionBusiness", "PaintStore"],
+        "@type": ["LocalBusiness", "HomeAndConstructionBusiness", "PaintStore", "Organization"],
+        "@id": "https://www.rainbowpaint.in/#organization",
         "name": "Rainbow Paints & Hardwares",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "364, Dr Nanjappa Rd",
+          "streetAddress": "54 Cox Street, Kattoor",
           "addressLocality": "Coimbatore",
           "addressRegion": "Tamil Nadu",
-          "postalCode": "641018",
+          "postalCode": "641009",
           "addressCountry": "IN"
         }
       },

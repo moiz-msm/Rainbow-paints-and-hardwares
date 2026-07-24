@@ -52,14 +52,15 @@ export default function ProductsPage() {
       "name": `${pageTitle} Delivery & Supply`,
       "serviceType": "Paint and Hardware Supply",
       "provider": {
-        "@type": "HomeAndConstructionBusiness",
+        "@type": ["LocalBusiness", "PaintStore", "HomeAndConstructionBusiness", "Organization"],
+        "@id": "https://www.rainbowpaint.in/#organization",
         "name": "Rainbow Paints & Hardwares",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "364, Dr Nanjappa Rd",
+          "streetAddress": "54 Cox Street, Kattoor",
           "addressLocality": "Coimbatore",
           "addressRegion": "Tamil Nadu",
-          "postalCode": "641018",
+          "postalCode": "641009",
           "addressCountry": "IN"
         }
       },

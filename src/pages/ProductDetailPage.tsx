@@ -408,8 +408,17 @@ export default function ProductDetailPage() {
         "availability": "https://schema.org/InStock",
         "url": productUrl,
         "seller": {
-          "@type": "Organization",
-          "name": "Rainbow Paints & Hardwares"
+          "@type": ["LocalBusiness", "PaintStore", "Organization"],
+          "@id": "https://www.rainbowpaint.in/#organization",
+          "name": "Rainbow Paints & Hardwares",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "54 Cox Street, Kattoor",
+            "addressLocality": "Coimbatore",
+            "addressRegion": "Tamil Nadu",
+            "postalCode": "641009",
+            "addressCountry": "IN"
+          }
         },
         "hasMerchantReturnPolicy": {
           "@type": "MerchantReturnPolicy",

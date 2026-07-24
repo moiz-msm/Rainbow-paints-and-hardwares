@@ -9,12 +9,60 @@ export interface SEOProps {
   image?: string;
   schema?: object | object[];
   type?: "website" | "product" | "category" | "article";
+  disableLocalStoreSchema?: boolean;
   // Product specific
   productBrand?: string;
   productPrice?: number;
   productCurrency?: string;
   productAvailability?: "InStock" | "OutOfStock";
 }
+
+export const globalLocalStoreSchema = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "HomeAndConstructionBusiness", "PaintStore", "Organization"],
+  "@id": "https://www.rainbowpaint.in/#organization",
+  "name": "Rainbow Paints & Hardwares",
+  "image": "https://www.rainbowpaint.in/hero-bg.webp",
+  "url": "https://www.rainbowpaint.in",
+  "telephone": "+918072442930",
+  "email": "rainbow_paint@hotmail.com",
+  "priceRange": "INR",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "54 Cox Street, Kattoor",
+    "addressLocality": "Coimbatore",
+    "addressRegion": "Tamil Nadu",
+    "postalCode": "641009",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 11.0168,
+    "longitude": 76.9558
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Coimbatore" },
+    { "@type": "City", "name": "RS Puram" },
+    { "@type": "City", "name": "Gandhipuram" },
+    { "@type": "City", "name": "Saibaba Colony" },
+    { "@type": "City", "name": "Peelamedu" },
+    { "@type": "City", "name": "Saravanampatti" },
+    { "@type": "City", "name": "Kattoor" }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "284"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "08:30",
+      "closes": "20:30"
+    }
+  ]
+};
 
 export default function SEO({
   title = "Rainbow Paints & Hardwares | Buy Paint Online",
@@ -24,6 +72,7 @@ export default function SEO({
   image = "/hero-bg.webp",
   schema,
   type = "website",
+  disableLocalStoreSchema = false,
   productBrand,
   productPrice,
   productCurrency = "INR",
@@ -32,6 +81,31 @@ export default function SEO({
   const absoluteImage = image?.startsWith("http")
     ? image
     : `https://www.rainbowpaint.in${image?.startsWith("/") ? "" : "/"}${image}`;
+
+  const allSchemas = React.useMemo(() => {
+    const rawList: object[] = [];
+    if (schema) {
+      if (Array.isArray(schema)) {
+        rawList.push(...schema.filter(Boolean));
+      } else {
+        rawList.push(schema);
+      }
+    }
+
+    const hasLocalStore = rawList.some((s: any) => {
+      if (!s) return false;
+      if (s["@id"] === "https://www.rainbowpaint.in/#organization") return true;
+      const t = s["@type"];
+      if (t === "LocalBusiness" || t === "PaintStore" || t === "HomeAndConstructionBusiness") return true;
+      if (Array.isArray(t) && (t.includes("LocalBusiness") || t.includes("PaintStore"))) return true;
+      return false;
+    });
+
+    if (!hasLocalStore && !disableLocalStoreSchema) {
+      return [globalLocalStoreSchema, ...rawList];
+    }
+    return rawList;
+  }, [schema, disableLocalStoreSchema]);
 
   return (
     <Helmet>
@@ -102,16 +176,12 @@ export default function SEO({
         <link rel="preload" as="image" href={absoluteImage} fetchPriority="high" />
       )}
 
-      {schema && (
-        Array.isArray(schema) ? (
-          schema.filter(Boolean).map((s, idx) => (
-            <script key={idx} type="application/ld+json">
-              {JSON.stringify(s)}
-            </script>
-          ))
-        ) : (
-          <script type="application/ld+json">{JSON.stringify(schema)}</script>
-        )
+      {allSchemas.length > 0 && (
+        allSchemas.map((s, idx) => (
+          <script key={idx} type="application/ld+json">
+            {JSON.stringify(s)}
+          </script>
+        ))
       )}
     </Helmet>
   );
