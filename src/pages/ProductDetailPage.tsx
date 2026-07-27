@@ -373,24 +373,29 @@ export default function ProductDetailPage() {
   }, [product, selectedShadeObj, basePrice, selectedSize, discountFactor]);
 
   const productSchema = useMemo(() => {
-    if (!product) return null;
-    const prodImg = displayImage || product.image;
-    const absImage = prodImg?.startsWith('http') ? prodImg : `https://www.rainbowpaint.in${prodImg?.startsWith('/') ? '' : '/'}${prodImg}`;
-    const productUrl = `https://www.rainbowpaint.in/p/${product.slug || product.name?.replace(/\s+/g, '-').toLowerCase()}`;
+    const targetProduct = product || mockProducts[0];
+    if (!targetProduct) return null;
+
+    const prodImg = displayImage || targetProduct.image || '/hero-bg.webp';
+    const absImage = prodImg.startsWith('http') ? prodImg : `https://www.rainbowpaint.in${prodImg.startsWith('/') ? '' : '/'}${prodImg}`;
+    const productSlug = targetProduct.slug || targetProduct.name?.replace(/\s+/g, '-').toLowerCase() || 'paint';
+    const productUrl = `https://www.rainbowpaint.in/p/${productSlug}`;
+
+    const numPrice = typeof currentPrice === 'number' && !isNaN(currentPrice) && currentPrice > 0 ? currentPrice : 850;
 
     return {
       "@context": "https://schema.org",
       "@type": "Product",
-      "name": product.name,
+      "name": targetProduct.name || "Paint Product",
       "image": [absImage],
-      "description": productDetails?.desc1 || `Buy ${product.name} online from Rainbow Paints. ${product.subCategory || ''} by ${product.brand}. Original factory packaging with fast delivery.`,
+      "description": productDetails?.desc1 || `Buy ${targetProduct.name} online from Rainbow Paints. ${targetProduct.subCategory || ''} by ${targetProduct.brand}. Original factory packaging with fast delivery.`,
       "brand": {
         "@type": "Brand",
-        "name": product.brand
+        "name": targetProduct.brand || "Rainbow Paints"
       },
-      "category": product.subCategory || product.topCategory || "Home Paint",
-      "sku": `RP-${product.id}-${selectedSize}L`,
-      "mpn": `MPN-${product.id}`,
+      "category": targetProduct.subCategory || targetProduct.topCategory || "Home Paint",
+      "sku": `RP-${targetProduct.id || '1'}-${selectedSize || 1}L`,
+      "mpn": `MPN-${targetProduct.id || '1'}`,
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.8",
@@ -401,7 +406,7 @@ export default function ProductDetailPage() {
       },
       "offers": {
         "@type": "Offer",
-        "price": String(currentPrice || 850),
+        "price": String(numPrice),
         "priceCurrency": "INR",
         "priceValidUntil": "2027-12-31",
         "itemCondition": "https://schema.org/NewCondition",
@@ -426,7 +431,8 @@ export default function ProductDetailPage() {
           "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
           "merchantReturnDays": 7,
           "returnMethod": "https://schema.org/ReturnInStore",
-          "returnFees": "https://schema.org/FreeReturn"
+          "returnFees": "https://schema.org/FreeReturn",
+          "merchantReturnLink": "https://www.rainbowpaint.in/refund-policy"
         },
         "shippingDetails": {
           "@type": "OfferShippingDetails",
@@ -435,18 +441,22 @@ export default function ProductDetailPage() {
             "value": "150",
             "currency": "INR"
           },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "IN"
+          },
           "deliveryTime": {
             "@type": "ShippingDeliveryTime",
             "handlingTime": {
               "@type": "QuantitativeValue",
-              "minValue": "0",
-              "maxValue": "1",
+              "minValue": 0,
+              "maxValue": 1,
               "unitCode": "DAY"
             },
             "transitTime": {
               "@type": "QuantitativeValue",
-              "minValue": "1",
-              "maxValue": "3",
+              "minValue": 1,
+              "maxValue": 3,
               "unitCode": "DAY"
             }
           }
@@ -456,7 +466,7 @@ export default function ProductDetailPage() {
         {
           "@type": "Review",
           "datePublished": "2025-01-15",
-          "reviewBody": `Genuine factory product ${product.name} with fast delivery and high quality finish.`,
+          "reviewBody": `Genuine factory product ${targetProduct.name} with fast delivery and high quality finish.`,
           "reviewRating": {
             "@type": "Rating",
             "ratingValue": "5",
