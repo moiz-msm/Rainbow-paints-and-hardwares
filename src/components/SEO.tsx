@@ -10,6 +10,7 @@ export interface SEOProps {
   schema?: object | object[];
   type?: "website" | "product" | "category" | "article";
   disableLocalStoreSchema?: boolean;
+  noindex?: boolean;
   // Product specific
   productBrand?: string;
   productPrice?: number;
@@ -73,6 +74,7 @@ export default function SEO({
   schema,
   type = "website",
   disableLocalStoreSchema = false,
+  noindex = false,
   productBrand,
   productPrice,
   productCurrency = "INR",
@@ -81,6 +83,29 @@ export default function SEO({
   const absoluteImage = image?.startsWith("http")
     ? image
     : `https://www.rainbowpaint.in${image?.startsWith("/") ? "" : "/"}${image}`;
+
+  const canonicalUrl = React.useMemo(() => {
+    let targetPath = url;
+
+    if (!targetPath || targetPath === "https://www.rainbowpaint.in" || targetPath === "https://www.rainbowpaint.in/" || targetPath.startsWith("/")) {
+      if (typeof window !== "undefined" && window.location?.pathname) {
+        targetPath = `https://www.rainbowpaint.in${window.location.pathname}`;
+      } else if (targetPath?.startsWith("/")) {
+        targetPath = `https://www.rainbowpaint.in${targetPath}`;
+      } else {
+        targetPath = "https://www.rainbowpaint.in";
+      }
+    }
+
+    try {
+      const parsed = new URL(targetPath, "https://www.rainbowpaint.in");
+      let cleanedPath = parsed.pathname.replace(/\/+$/, "");
+      if (cleanedPath === "") return "https://www.rainbowpaint.in";
+      return `https://www.rainbowpaint.in${cleanedPath}`;
+    } catch {
+      return targetPath.replace(/\/+$/, "");
+    }
+  }, [url]);
 
   const allSchemas = React.useMemo(() => {
     const rawList: object[] = [];
@@ -217,6 +242,12 @@ export default function SEO({
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
 
+      {noindex ? (
+        <meta name="robots" content="noindex, nofollow" />
+      ) : (
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      )}
+
       {/* Open Graph Tags */}
       <meta
         property="og:type"
@@ -225,7 +256,7 @@ export default function SEO({
       <meta property="og:site_name" content="Rainbow Paints & Hardwares" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:url" content={url} />
+      <meta property="og:url" content={canonicalUrl} />
       <meta property="og:image" content={absoluteImage} />
 
       {/* Product Specific Open Graph */}
@@ -274,7 +305,7 @@ export default function SEO({
       <link rel="icon" type="image/webp" href="/mascot.webp" />
       <link rel="shortcut icon" type="image/webp" href="/mascot.webp" />
       <link rel="apple-touch-icon" href="/mascot.webp" />
-      <link rel="canonical" href={url} />
+      <link rel="canonical" href={canonicalUrl} />
 
       {type === "product" && image && (
         <link rel="preload" as="image" href={absoluteImage} fetchPriority="high" />

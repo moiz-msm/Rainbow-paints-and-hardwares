@@ -5,6 +5,7 @@ import { linkWithPopup, GoogleAuthProvider, linkWithPhoneNumber, RecaptchaVerifi
 import { motion } from 'framer-motion';
 import { User, Phone, CheckCircle2, Shield, AlertCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 export default function AccountSettingsPage() {
   const { user } = useAuthStore();
@@ -154,6 +155,7 @@ export default function AccountSettingsPage() {
 
   return (
     <div className="bg-zinc-50 min-h-screen py-12">
+      <SEO title="Account Settings | Rainbow Paints" noindex={true} />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-3 mb-8">
           <Shield className="w-8 h-8 text-gold" />

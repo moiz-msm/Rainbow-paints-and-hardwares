@@ -18,6 +18,7 @@ import {
   Phone
 } from 'lucide-react';
 import { useUserAddresses } from '../hooks/useUserAddresses';
+import SEO from '../components/SEO';
 import { useDebounce } from '../hooks/useDebounce';
 import GoogleReviewsSection from '../components/GoogleReviewsSection';
 import { analytics } from '../lib/firebase';
@@ -330,6 +331,7 @@ export default function CheckoutPage() {
 
   return (
     <div className="bg-royale-bg min-h-screen pt-24 pb-12">
+      <SEO title="Checkout | Rainbow Paints" noindex={true} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <Breadcrumb 

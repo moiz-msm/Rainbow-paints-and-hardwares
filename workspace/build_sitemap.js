@@ -22,7 +22,7 @@ async function generate() {
             if (slug) {
               shadeUrls += `
   <url>
-    <loc>https://rainbowpaint.in/color/${slug}</loc>
+    <loc>https://www.rainbowpaint.in/color/${slug}</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>`;
@@ -53,7 +53,7 @@ async function generate() {
               if (slug) {
                 productUrls += `
   <url>
-    <loc>https://rainbowpaint.in/p/${slug}</loc>
+    <loc>https://www.rainbowpaint.in/p/${slug}</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>`;
@@ -70,102 +70,112 @@ async function generate() {
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://rainbowpaint.in/</loc>
+    <loc>https://www.rainbowpaint.in</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://rainbowpaint.in/about</loc>
+    <loc>https://www.rainbowpaint.in/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rainbowpaint.in/faqs</loc>
+    <loc>https://www.rainbowpaint.in/faqs</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rainbowpaint.in/buy-paint-online</loc>
+    <loc>https://www.rainbowpaint.in/buy-paint-online</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://rainbowpaint.in/c/interior-wall</loc>
+    <loc>https://www.rainbowpaint.in/c/interior-wall</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rainbowpaint.in/c/exterior-wall</loc>
+    <loc>https://www.rainbowpaint.in/c/exterior-wall</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rainbowpaint.in/c/waterproofing</loc>
+    <loc>https://www.rainbowpaint.in/c/waterproofing</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rainbowpaint.in/c/wood-finishes</loc>
+    <loc>https://www.rainbowpaint.in/c/wood-finishes</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rainbowpaint.in/c/metals-and-grills</loc>
+    <loc>https://www.rainbowpaint.in/c/metals-and-grills</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rainbowpaint.in/c/primer</loc>
+    <loc>https://www.rainbowpaint.in/c/primer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rainbowpaint.in/visualizer</loc>
+    <loc>https://www.rainbowpaint.in/visualizer</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rainbowpaint.in/calculator</loc>
+    <loc>https://www.rainbowpaint.in/calculator</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rainbowpaint.in/brands/asian-paints</loc>
+    <loc>https://www.rainbowpaint.in/compare-paints</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rainbowpaint.in/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rainbowpaint.in/brands/berger-paints</loc>
+    <loc>https://www.rainbowpaint.in/brands/asian-paints</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rainbowpaint.in/brands/dr-fixit</loc>
+    <loc>https://www.rainbowpaint.in/brands/berger-paints</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rainbowpaint.in/brands/mrf-vapocure</loc>
+    <loc>https://www.rainbowpaint.in/brands/dr-fixit</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rainbowpaint.in/terms</loc>
+    <loc>https://www.rainbowpaint.in/brands/mrf-vapocure</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rainbowpaint.in/terms</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://rainbowpaint.in/privacy</loc>
+    <loc>https://www.rainbowpaint.in/privacy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://rainbowpaint.in/refund-policy</loc>
+    <loc>https://www.rainbowpaint.in/refund-policy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://rainbowpaint.in/shipping-policy</loc>
+    <loc>https://www.rainbowpaint.in/shipping-policy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>${productUrls}${shadeUrls}

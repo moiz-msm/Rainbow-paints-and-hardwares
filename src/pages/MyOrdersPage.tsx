@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useOrderStore } from '../store/useOrderStore';
 import { Package, ChevronRight, Download } from 'lucide-react';
 import { generateInvoice } from '../utils/invoiceGenerator';
+import SEO from '../components/SEO';
 
 export default function MyOrdersPage() {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ export default function MyOrdersPage() {
 
   return (
     <div className="bg-royale-bg min-h-screen pt-24 pb-12">
+      <SEO title="My Orders | Rainbow Paints" noindex={true} />
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <h1 className="text-3xl font-bold text-gray-900 mb-8 flex items-center gap-3">

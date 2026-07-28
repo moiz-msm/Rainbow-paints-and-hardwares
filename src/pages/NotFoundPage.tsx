@@ -9,6 +9,7 @@ export default function NotFoundPage() {
       <SEO 
         title="404 - Page Not Found"
         description="The page you are looking for does not exist."
+        noindex={true}
       />
       
       <div className="w-20 h-20 bg-red-500/10 rounded-full flex items-center justify-center mb-6">

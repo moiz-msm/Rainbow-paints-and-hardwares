@@ -194,7 +194,7 @@ export default function Home() {
       <SEO
         title="Rainbow Paints & Hardwares | Best Paint Shop in Coimbatore"
         description="Buy paint online from the top paint shop in Coimbatore. Rainbow Paints & Hardwares offers best pricing, local doorstep delivery, and 4000+ color shades."
-        url="https://www.rainbowpaint.in/"
+        url="https://www.rainbowpaint.in"
         schema={[storeSchema, websiteSchema, siteNavigationSchema, faqSchema]}
       />
       <Hero />

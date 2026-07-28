@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { CheckCircle2, Download, Package, ArrowRight, Eye, RefreshCw } from 'lucide-react';
 import { useOrderStore, Order } from '../store/useOrderStore';
 import { generateInvoice } from '../utils/invoiceGenerator';
+import SEO from '../components/SEO';
 
 export default function OrderSuccessPage() {
   const navigate = useNavigate();
@@ -35,6 +36,7 @@ export default function OrderSuccessPage() {
 
   return (
     <div className="bg-royale-bg min-h-screen pt-24 pb-12">
+      <SEO title="Order Confirmed | Rainbow Paints" noindex={true} />
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         
         <div className="bg-royale-surface rounded-3xl shadow-sm p-8 md:p-12 text-center mb-8">

@@ -16,12 +16,13 @@ export default function BlogPage() {
           title="Rainbow Paints Blog | Painting Guides & Tips in Coimbatore"
           description="Expert advice on exterior paints, interior colors, waterproofing, and painting costs in Coimbatore. Read the latest articles from Rainbow Paints."
           keywords={["Paint Blog Coimbatore", "Painting Tips", "Waterproofing Guide", "Interior Color Trends", "Exterior Paint Ideas"].join(", ")}
+          url="https://www.rainbowpaint.in/blog"
           schema={{
             "@context": "https://schema.org",
             "@type": "Blog",
             "name": "Rainbow Paints Blog",
             "description": "Expert advice on exterior paints, interior colors, waterproofing, and painting costs in Coimbatore.",
-            "url": "https://rainbowpaints.in/blog",
+            "url": "https://www.rainbowpaint.in/blog",
             "publisher": {
               "@type": "Organization",
               "name": "Rainbow Paints and Hardwares"

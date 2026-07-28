@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { auth, db } from '../lib/firebase';
 import { signOut } from 'firebase/auth';
+import SEO from '../components/SEO';
 import { collection, onSnapshot, query, where, doc, getDoc } from 'firebase/firestore';
 import StatsAdmin from '../components/admin/StatsAdmin';
 import OrdersAdmin from '../components/admin/OrdersAdmin';
@@ -136,6 +137,7 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-zinc-50 flex flex-col md:flex-row pt-[90px] md:pt-[98px]">
+      <SEO title="Admin Portal | Rainbow Paints" noindex={true} />
       
       {/* Mobile Header */}
       <div className="md:hidden bg-white border-b border-zinc-200 px-4 py-3 flex items-center justify-between z-20 fixed top-[118px] left-0 right-0">

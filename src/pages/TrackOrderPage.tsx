@@ -90,6 +90,7 @@ export default function TrackOrderPage() {
       <SEO 
         title="Track Order - Rainbow Paint and Hardwares" 
         description="Track your order status and shipping updates." 
+        url="https://www.rainbowpaint.in/track-order"
       />
       
       <div className="max-w-2xl mx-auto mt-16 sm:mt-24">

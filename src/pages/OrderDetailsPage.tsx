@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useOrderStore } from '../store/useOrderStore';
 import { Package, Download, ChevronLeft, MapPin, CreditCard, HelpCircle } from 'lucide-react';
 import { generateInvoice } from '../utils/invoiceGenerator';
+import SEO from '../components/SEO';
 
 export default function OrderDetailsPage() {
   const { id } = useParams();
@@ -14,6 +15,7 @@ export default function OrderDetailsPage() {
   if (!order) {
     return (
       <div className="bg-royale-bg min-h-screen pt-24 pb-12 flex flex-col items-center justify-center">
+        <SEO title="Order Not Found | Rainbow Paints" noindex={true} />
         <h1 className="text-2xl font-bold text-gray-900 mb-4">Order not found</h1>
         <button onClick={() => navigate('/my-orders')} className="text-blue-600 hover:text-blue-800 font-semibold flex items-center gap-2">
           <ChevronLeft className="w-5 h-5" /> Back to My Orders
@@ -35,6 +37,7 @@ export default function OrderDetailsPage() {
 
   return (
     <div className="bg-royale-bg min-h-screen pt-24 pb-12">
+      <SEO title={`Order #${order.id} | Rainbow Paints`} noindex={true} />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <button onClick={() => navigate('/my-orders')} className="text-zinc-600 hover:text-gray-900 font-semibold flex items-center gap-2 mb-6">

@@ -27,6 +27,7 @@ export default function BlogPostPage() {
           description={post.excerpt}
           keywords={post.seoKeywords.join(", ")}
           image={post.image}
+          url={`https://www.rainbowpaint.in/blog/${post.slug}`}
           schema={{
             "@context": "https://schema.org",
             "@type": "BlogPosting",
@@ -42,7 +43,7 @@ export default function BlogPostPage() {
               "name": "Rainbow Paints and Hardwares"
             },
             "datePublished": new Date(post.date).toISOString(),
-            "url": `https://rainbowpaints.in/blog/${post.slug}`
+            "url": `https://www.rainbowpaint.in/blog/${post.slug}`
           }}
         />
 

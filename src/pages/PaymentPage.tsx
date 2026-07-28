@@ -16,6 +16,7 @@ import {
   Loader2
 } from 'lucide-react';
 import Breadcrumb from '../components/Breadcrumb';
+import SEO from '../components/SEO';
 
 export default function PaymentPage() {
   const navigate = useNavigate();
@@ -102,6 +103,7 @@ export default function PaymentPage() {
 
   return (
     <div className="bg-royale-bg min-h-screen pt-24 pb-12 relative overflow-hidden">
+      <SEO title="Payment Gateway | Rainbow Paints" noindex={true} />
       
       {/* Background radial elements */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gold/5 blur-[120px] pointer-events-none" />

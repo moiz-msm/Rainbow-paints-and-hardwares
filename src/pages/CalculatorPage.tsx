@@ -23,6 +23,7 @@ export default function CalculatorPage() {
       <SEO
         title="Paint Cost Calculator & Estimator | Asian Paints | Rainbow Paints"
         description="Use our free home painting price calculator to estimate paint quantity and cost. Calculate exact Asian Paints & Berger costs for interior and exterior painting."
+        url="https://www.rainbowpaint.in/calculator"
         schema={calculatorSchema}
       />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">

@@ -18,7 +18,7 @@ import {
   Coins,
   Calculator,
 } from "lucide-react";
-import { Helmet } from "react-helmet-async";
+import SEO from "../components/SEO";
 
 interface PaintModel {
   id: string;
@@ -414,13 +414,11 @@ export default function ComparePaintsPage() {
 
   return (
     <div className="min-h-screen bg-[#FDFCFB] pt-28 pb-20">
-      <Helmet>
-        <title>Compare Premium Paints | Rainbow Paint and Hardwares</title>
-        <meta
-          name="description"
-          content="Compare premium interior and exterior emulsion wall paints side-by-side. Analyze sheen, washability, durability, and key features to find the perfect paint for your home."
-        />
-      </Helmet>
+      <SEO
+        title="Compare Premium Paints | Rainbow Paint and Hardwares"
+        description="Compare premium interior and exterior emulsion wall paints side-by-side. Analyze sheen, washability, durability, and key features to find the perfect paint for your home."
+        url="https://www.rainbowpaint.in/compare-paints"
+      />
 
       {/* Hero Section */}
       <div className="max-w-[1400px] lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 text-center">
