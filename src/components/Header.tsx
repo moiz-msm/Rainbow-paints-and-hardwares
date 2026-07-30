@@ -60,7 +60,6 @@ export default function Header() {
     { name: 'Colors & Visualizer', href: '/visualizer' },
     { name: 'Calculator', href: '/calculator' },
     { name: 'Compare', href: '/compare-paints' },
-    { name: 'Track Order', href: '/track-order' },
     { name: 'Blog', href: '/blog' },
     { name: 'FAQs', href: '/#faqs' },
     { name: 'About Us', href: '/about' },

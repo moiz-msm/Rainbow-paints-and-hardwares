@@ -30,7 +30,7 @@ export default function FaqPage() {
         "name": "Can I get customized colors that are not in the standard catalog?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Absolutely! We use computerized color tinting machines from Asian Paints and Berger which can generate over 4000+ shades instantly in our store while you wait."
+          "text": "Absolutely! You can buy from 5000+ custom color shades mixed using computerized color tinting machines from Asian Paints and Berger instantly in our store while you wait."
         }
       },
       {

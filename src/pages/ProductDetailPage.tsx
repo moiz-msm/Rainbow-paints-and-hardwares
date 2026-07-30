@@ -286,53 +286,381 @@ export default function ProductDetailPage() {
     setMousePosition({ x, y });
   };
 
+const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
+
+  "royale shyne luxury emulsion": {
+    finish: "Radiant High Sheen",
+    dryingTime: "30 Mins (Touch Dry)",
+    coverage: "140 - 150 sq.ft/L (2 coats)",
+    washability: "Superb Scrub Resistance (Easy Cleaning)",
+    base: "Acrylic Water Based",
+    coats: "2 Coats",
+    vocLevel: "Ultra-Low VOC",
+    warranty: "8 Years Performance Warranty",
+    desc1: "Royale Shyne Luxury Emulsion provides a higher radiant sheen compared to standard luxury emulsions, offering a premium glowing effect on interior walls.",
+    desc2: "It incorporates Teflon™ surface protector which creates a tough film that resists everyday stains, ensuring walls look freshly painted for a longer time."
+  },
+  "royale matt emulsion": {
+    finish: "Luxurious Perfect Matt",
+    dryingTime: "30 Mins (Touch Dry)",
+    coverage: "140 - 150 sq.ft/L (2 coats)",
+    washability: "High Washability",
+    base: "Acrylic Water Based",
+    coats: "2 Coats",
+    vocLevel: "Ultra-Low VOC",
+    warranty: "8 Years Performance Warranty",
+    desc1: "Royale Matt Emulsion provides a luxurious dead-flat matt finish that elegantly diffuses light, making it the perfect choice for hiding surface undulations and flaws on walls.",
+    desc2: "Despite its matt finish, it retains the signature Teflon™ surface protector, allowing for easy cleaning of stubborn stains without compromising the paint film."
+  },
+  "royale health shield": {
+    finish: "Soft Sheen",
+    dryingTime: "30 Mins (Touch Dry)",
+    coverage: "140 - 150 sq.ft/L (2 coats)",
+    washability: "Highly Washable",
+    base: "Acrylic Water Based",
+    coats: "2 Coats",
+    vocLevel: "Ultra-Low VOC / Asthma Friendly",
+    warranty: "8 Years Performance Warranty",
+    desc1: "Royale Health Shield is a revolutionary indoor paint equipped with Silver Ion Technology that kills 99% of infection-causing bacteria on painted surfaces.",
+    desc2: "It also contains indoor air purifying technology that neutralizes formaldehyde, earning it certification as an Asthma and Allergy Friendly paint."
+  },
+  "ace exterior emulsion": {
+    finish: "Smooth Matt",
+    dryingTime: "30 Mins (Touch Dry)",
+    coverage: "50 - 60 sq.ft/L (2 coats)",
+    washability: "Standard Water Resistance",
+    base: "Acrylic Co-polymer",
+    coats: "2 Coats",
+    vocLevel: "Standard VOC",
+    warranty: "4 Years Performance Warranty",
+    desc1: "Asian Paints Ace Exterior Emulsion is a high-quality water-based exterior paint that serves as a perfect, durable upgrade from traditional cement paint.",
+    desc2: "It offers excellent resistance to chalking, cracking, and fading in dry weather conditions, keeping your home's exterior looking clean and colorful."
+  },
+  "301 lw+ super": {
+    finish: "Liquid Admixture",
+    dryingTime: "Sets with cement",
+    coverage: "200ml per 50kg cement bag",
+    washability: "100% Integral Waterproofing",
+    base: "Polymer based liquid",
+    coats: "Mixed directly in concrete/mortar",
+    vocLevel: "Zero VOC",
+    warranty: "Lifetime Structural Protection",
+    desc1: "Dr. Fixit 301 LW+ Super is a specialized integral waterproofing compound mixed directly into cement and concrete. It improves the workability and cohesion of the mortar.",
+    desc2: "By reducing water demand and shrinking capillaries in the concrete, it drastically minimizes permeability, stopping water from entering your structural walls and slabs."
+  },
+  "dr. fixit roofseal": {
+    finish: "Thick Elastomeric Film",
+    dryingTime: "4-6 Hours (Between coats)",
+    coverage: "10 sq.ft/L (For 3-coat system)",
+    washability: "100% Water & UV Resistance",
+    base: "Advanced Polyurethane (PU) Acrylic",
+    coats: "1 Coat Primer + 2 Coats Roofseal",
+    vocLevel: "Low VOC / Eco-Friendly",
+    warranty: "10 Years Waterproofing Warranty",
+    desc1: "Dr. Fixit Roofseal is a premium liquid-applied waterproofing membrane specially designed for flat building roofs and terraces subjected to heavy rainfall.",
+    desc2: "It forms a tough, highly elastic seamless coating that bridges cracks up to 2mm, effectively blocking severe water leakage while offering high UV resistance to cool the roof."
+  },
+
+  "royale glitz": {
+    finish: "Ultra Sheen & Perfect Crème",
+    dryingTime: "30 Mins (Touch Dry) / 4 Hours (Recoat)",
+    coverage: "140 - 150 sq.ft/L (2 coats)",
+    washability: "Excellent Washability (Teflon™ Surface Protector)",
+    base: "100% Acrylic Water Based",
+    coats: "2 Coats over 1 Coat Royale Basecoat",
+    vocLevel: "Low VOC & Anti-Bacterial",
+    warranty: "8 Years Performance Warranty",
+    desc1: "Royale Glitz by Asian Paints is a luxury interior emulsion offering a stunning ultra-sheen finish and Teflon™ Surface Protector, which prevents stains from penetrating the paint film.",
+    desc2: "Engineered with anti-bacterial properties and crack-bridging technology to ensure your walls remain vibrant, flawless, and deeply luxurious for years."
+  },
+  "royale luxury emulsion": {
+    finish: "Soft Sheen",
+    dryingTime: "30 Mins (Touch Dry)",
+    coverage: "140 - 150 sq.ft/L (2 coats)",
+    washability: "High Washability & Scrub Resistance",
+    base: "Acrylic Water Based",
+    coats: "2 Coats over 1 Coat Primer",
+    vocLevel: "Low VOC (Green Assure Certified)",
+    warranty: "8 Years Performance Warranty",
+    desc1: "Royale Luxury Emulsion by Asian Paints is India's most preferred luxury interior paint. It provides a soft, elegant sheen that elevates your home's aesthetic.",
+    desc2: "Infused with Teflon™ surface protector, this high-performance emulsion prevents stains from sticking and allows effortless cleaning without damaging the vibrant color."
+  },
+  "apcolite premium emulsion": {
+    finish: "Rich Matt Finish",
+    dryingTime: "30 Mins (Touch Dry)",
+    coverage: "110 - 120 sq.ft/L (2 coats)",
+    washability: "Good Washability",
+    base: "Acrylic Water Based",
+    coats: "2 Coats",
+    vocLevel: "Low VOC",
+    warranty: "5 Years Anti-Stain & Color Warranty",
+    desc1: "Apcolite Premium Emulsion by Asian Paints offers a rich and smooth matt finish that seamlessly hides wall imperfections and unevenness.",
+    desc2: "Formulated with advanced anti-fungal properties to protect walls from mold and mildew, making it a highly reliable and durable choice for modern homes."
+  },
+  "tractor emulsion": {
+    finish: "Smooth Matt",
+    dryingTime: "30 Mins (Touch Dry)",
+    coverage: "100 - 110 sq.ft/L (2 coats)",
+    washability: "Moderate Cleaning Resistance",
+    base: "Water Based Co-polymer",
+    coats: "2 Coats",
+    vocLevel: "Low VOC / Lead Free",
+    warranty: "4 Years Performance Warranty",
+    desc1: "Tractor Emulsion by Asian Paints provides a smooth matt finish and acts as a smart upgrade from traditional distemper. It offers excellent value and durability.",
+    desc2: "With over 1200+ distinct shades available, it delivers superior coverage and significantly reduces maintenance costs over the paint's lifespan compared to distemper."
+  },
+  "royale aspira": {
+    finish: "Soft Sheen & Perfect Flawlessness",
+    dryingTime: "30 Mins (Touch Dry)",
+    coverage: "130 - 150 sq.ft/L (2 coats)",
+    washability: "Unmatched Washability (Water Beading Tech)",
+    base: "Acrylic Water Based",
+    coats: "2 Coats",
+    vocLevel: "Ultra-Low VOC / Flame Spread Resistance",
+    warranty: "8 Years Performance Warranty",
+    desc1: "Royale Aspira is the international gold standard in luxury paints by Asian Paints. It is the first interior emulsion to feature exclusive Water Beading Technology.",
+    desc2: "It imparts exceptional crack-bridging abilities (up to 400%), exceptional stain resistance, and is certified for flame spread resistance, ensuring maximum safety and beauty."
+  },
+  "apex ultima protek": {
+    finish: "Rich Soft Sheen",
+    dryingTime: "30 Mins (Touch Dry)",
+    coverage: "55 - 65 sq.ft/L (2 coats)",
+    washability: "100% Weatherproof & Rain Washable",
+    base: "Polyurethane (PU) Acrylic",
+    coats: "2 Coats Topcoat over 1 Coat Basecoat",
+    vocLevel: "Low VOC",
+    warranty: "10 Years Performance & Waterproofing Warranty",
+    desc1: "Apex Ultima Protek by Asian Paints is a highly advanced exterior painting system featuring a unique lamination guard. It provides comprehensive protection against the harshest weather.",
+    desc2: "Offers robust structural protection against structural cracks (up to 2mm), dampness, algae, and UV-fading. Certified with a 10-year durability and waterproofing warranty."
+  },
+  "weathercoat long life 10": {
+    finish: "Rich Sheen",
+    dryingTime: "30-45 Mins (Touch Dry)",
+    coverage: "50 - 60 sq.ft/L (2 coats)",
+    washability: "100% Rain Washable & Dust Resistant",
+    base: "PU & Silicon Emulsion",
+    coats: "2 Coats",
+    vocLevel: "Green Pro Certified",
+    warranty: "10 Years Performance Warranty",
+    desc1: "Berger Weathercoat Long Life 10 is an ultra-premium exterior emulsion utilizing advanced PU and Silicon technology to provide unparalleled weather resistance.",
+    desc2: "It acts as a formidable barrier against heavy rainfall, extreme heat, and severe fungal attacks. Accompanied by a solid 10-year official warranty against flaking and fading."
+  },
+  "birla white wallcare putty": {
+    finish: "Ultra-White Smooth Base",
+    dryingTime: "3-4 Hours (Hard Dry)",
+    coverage: "15 - 20 sq.ft/kg (2 coats at 1.5mm)",
+    washability: "Water Resistant Base",
+    base: "White Cement & Polymeric Additives",
+    coats: "2 Coats",
+    vocLevel: "Zero VOC & Eco-Friendly",
+    warranty: "5 Years Anti-Flaking Guarantee",
+    desc1: "Birla White WallCare Putty is India's most trusted white cement-based putty, fortified with extra HP polymers. It creates an exceptionally smooth, bright canvas for your topcoat.",
+    desc2: "Its excellent water resistance prevents wall dampness and efflorescence, ensuring the longevity and vibrancy of expensive topcoat paints."
+  },
+  "silk glamor high sheen": {
+    finish: "Crystal Reflective High Sheen",
+    dryingTime: "30-45 Mins (Touch Dry)",
+    coverage: "120 - 140 sq.ft/L (2 coats)",
+    washability: "High Washability",
+    base: "100% Acrylic Emulsion",
+    coats: "2 Coats",
+    vocLevel: "Low VOC / Odorless",
+    warranty: "6 Years Performance Warranty",
+    desc1: "Berger Silk Glamor High Sheen is a luxury interior emulsion formulated with highly durable crystal reflective technology to produce an unmatched glowing finish.",
+    desc2: "Free of added lead, mercury, and chromium. The advanced acrylic emulsion guarantees a vibrant aesthetic appeal and robust protection against household stains."
+  }
+};
+
+
   const productDetails = useMemo(() => {
+
     if (!product) return null;
     
-    const isInterior = product.subCategory?.includes('Interior');
-    const isExterior = product.subCategory?.includes('Exterior');
-    const isWood = product.subCategory?.includes('Wood') || product.topCategory?.includes('Wood');
-    const isWaterproofing = product.subCategory?.includes('Waterproofing') || product.topCategory?.includes('Waterproofing');
+    const nameLower = (product.name || "").toLowerCase();
     
-    let finish = "Smooth & Matte";
-    let dryingTime = "30-45 Minutes";
-    let coverage = "120-140 sq.ft/L (2 coats)";
-    let washability = "Medium";
-    let base = "Water Based";
-    let warranty = isExterior ? "7-10 Years" : "As per brand terms";
+    // Check factual database first
+    const exactFactual = PRODUCT_FACTUAL_SPECS[nameLower];
+    if (exactFactual) {
+      return exactFactual;
+    }
     
+    const brandLower = (product.brand || "").toLowerCase();
+    const subCatLower = (product.subCategory || "").toLowerCase();
+    const topCatLower = (product.topCategory || "").toLowerCase();
     const propsString = (product.properties?.join(" ") || "").toLowerCase();
-    const nameString = (product.name || "").toLowerCase();
-    
-    if (propsString.includes('sheen') || nameString.includes('shyne') || nameString.includes('glamor') || nameString.includes('glitz') || nameString.includes('luxury')) finish = "Rich Sheen";
-    if (propsString.includes('gloss') || nameString.includes('enamel')) finish = "High Gloss";
-    if (propsString.includes('silk') || nameString.includes('satin')) finish = "Smooth Satin";
-    
-    if (isExterior) {
-       washability = "Excellent / Weatherproof";
-       coverage = "50-60 sq.ft/L (2 coats)";
-    }
-    if (isWood) {
-       dryingTime = "2-4 Hours";
-       base = "Solvent / PU Based";
-       washability = "High";
-    }
-    if (isWaterproofing) {
-       finish = "Protective Film";
-       washability = "Excellent";
-       coverage = "Depends on porosity";
-    }
-    
-    if (nameString.includes('enamel') || nameString.includes('pu') || nameString.includes('epoxy')) {
-       base = "Solvent Based";
-       dryingTime = "4-6 Hours";
-    }
-    
-    // We don't have brandDetails imported here, so we will generate a matching description
-    const desc1 = product.description || `Discover the ultimate finish and durability with ${product.name}, a premium offering from ${product.brand}. This ${product.subCategory || 'high-quality paint'} is engineered for both professional contractors and DIY enthusiasts, delivering exceptional coverage and long-lasting protection for your spaces.`;
-    const desc2 = `Enhance your living space with this advanced formula that resists fading and stands up to daily wear and tear. Application is smooth, leaving a luxurious texture that revitalizes surfaces.`;
 
-    return { finish, dryingTime, coverage, washability, base, warranty, desc1, desc2 };
+    // Specific category flags
+    const isInterior = subCatLower.includes('interior') || topCatLower.includes('interior');
+    const isExterior = subCatLower.includes('exterior') || topCatLower.includes('exterior');
+    const isWood = subCatLower.includes('wood') || topCatLower.includes('wood') || brandLower.includes('mrf') || brandLower.includes('sheenlac');
+    const isWaterproofing = subCatLower.includes('waterproofing') || topCatLower.includes('waterproofing') || brandLower.includes('dr. fixit') || nameLower.includes('smartcare') || nameLower.includes('roofseal') || nameLower.includes('damp');
+    const isPutty = nameLower.includes('putty') || nameLower.includes('white cement') || brandLower.includes('birla white');
+    const isPrimer = subCatLower.includes('undercoats') || nameLower.includes('primer') || nameLower.includes('undercoat');
+    const isSpray = nameLower.includes('spray') || brandLower.includes('just spray') || nameLower.includes('js1');
+    const isEnamel = nameLower.includes('enamel') || nameLower.includes('gloss');
+    const isIndustrial = topCatLower.includes('industrial') || subCatLower.includes('epoxy') || subCatLower.includes('pu coatings');
+
+    // 1. Finish
+    let finish = "Smooth & Matte Finish";
+    if (nameLower.includes('aspira') || nameLower.includes('glitz') || nameLower.includes('silk') || propsString.includes('sheen')) finish = "Rich Pearl Sheen";
+    else if (nameLower.includes('shyne') || nameLower.includes('satin')) finish = "Soft Satin Sheen";
+    else if (isEnamel || propsString.includes('gloss') || nameLower.includes('high gloss')) finish = "High Mirror Gloss";
+    else if (nameLower.includes('matt') || nameLower.includes('velvet')) finish = "Velvet Matt Finish";
+    else if (isWaterproofing) finish = "Fibre-Reinforced Protective Film";
+    else if (isWood) finish = "Crystal Clear Gloss / Satin Wood Finish";
+    else if (isPutty) finish = "Ultra-White Smooth Base";
+    else if (isPrimer) finish = "Matte Sealer Base";
+    else if (isSpray) finish = "Uniform Quick-Dry Spray Finish";
+
+    // 2. Drying Time
+    let dryingTime = "30 Mins (Touch Dry) / 4 Hours (Recoat)";
+    if (isWood || isEnamel || isIndustrial) dryingTime = "1-2 Hours (Touch Dry) / 8 Hours (Hard Dry)";
+    else if (isSpray) dryingTime = "10-15 Minutes (Quick Dry)";
+    else if (isPutty) dryingTime = "2-4 Hours (Hard Dry)";
+    else if (isWaterproofing) dryingTime = "2-4 Hours per coat / 24 Hours Full Cure";
+
+    // 3. Coverage
+    let coverage = "130 - 150 sq.ft/L (2 coats)";
+    if (isExterior) coverage = "55 - 65 sq.ft/L (2 coats)";
+    else if (nameLower.includes('royale') || nameLower.includes('silk')) coverage = "140 - 160 sq.ft/L (2 coats)";
+    else if (nameLower.includes('tractor')) coverage = "110 - 130 sq.ft/L (2 coats)";
+    else if (isPrimer) coverage = "100 - 120 sq.ft/L (1 coat)";
+    else if (isPutty) coverage = "15 - 20 sq.ft/kg (2 coats at 1.5mm thickness)";
+    else if (isWaterproofing) {
+      if (nameLower.includes('lw+') || nameLower.includes('lw super')) coverage = "200ml per 50kg cement bag";
+      else coverage = "10 - 15 sq.ft/L (3-coat waterproofing membrane)";
+    } else if (isWood) coverage = "80 - 100 sq.ft/L (2 coats)";
+    else if (isSpray) coverage = "15 - 25 sq.ft per 400ml aerosol can";
+
+    // 4. Washability & Scrub
+    let washability = "High Stain Washable & Scrub Resistant";
+    if (nameLower.includes('royale') || nameLower.includes('silk')) washability = "Heavy Scrub Resistance (Teflon / Nano-Clean)";
+    else if (isExterior) washability = "100% Weatherproof & Rain Washable";
+    else if (isWaterproofing) washability = "100% Hydrostatic Waterproof Membrane";
+    else if (isWood || isEnamel) washability = "Scratch & Stain Resistant";
+    else if (nameLower.includes('tractor')) washability = "Moderate Cleaning Resistance";
+    else if (isPutty || isPrimer) washability = "Moisture & Alkali Resistant Base";
+
+    // 5. Application Base & Diluent
+    let base = "100% Acrylic Water Based";
+    if (isWood || isEnamel || isIndustrial) base = "Solvent / Polyurethane (PU) Based";
+    else if (isWaterproofing) base = "Polymer Modified Acrylic / SBR Hybrid";
+    else if (isPutty) base = "White Cement & Re-dispersible Polymer Powder";
+    else if (isSpray) base = "Aerosol Fast-Dry Solvent Base";
+
+    // 6. Recommended Coats
+    let coats = "2 Coats over 1 Coat Primer";
+    if (isWaterproofing) coats = "Self-Priming + 2 Waterproof Topcoats";
+    else if (isPutty) coats = "2 Coats (1.5mm total thickness)";
+    else if (isPrimer) coats = "1 Uniform Sealing Coat";
+    else if (isSpray) coats = "2-3 Thin Uniform Mist Coats";
+    else if (isWood) coats = "2-3 Coats over PU Sealer";
+
+    // 7. VOC & Eco Level
+    let vocLevel = "Low VOC & Odorless";
+    if (nameLower.includes('royale') || nameLower.includes('silk')) vocLevel = "Ultra-Low VOC & Anti-Bacterial (Green Certified)";
+    else if (isPutty || isWaterproofing) vocLevel = "Zero VOC & Eco-Friendly";
+    else if (isWood || isEnamel || isSpray) vocLevel = "Low VOC Commercial Standard";
+
+    // 8. Exact Factual Warranty
+    let warranty = "100% Genuine Manufacturer Guarantee";
+    if (nameLower.includes('royale') || nameLower.includes('aspira') || nameLower.includes('glitz') || nameLower.includes('lustre') || nameLower.includes('shyne')) {
+      warranty = "8 Years Performance Warranty";
+    } else if (nameLower.includes('duralife') || nameLower.includes('protek duralife')) {
+      warranty = "15 Years Performance & Waterproofing Warranty";
+    } else if (nameLower.includes('protek') || nameLower.includes('weathercoat long life') || nameLower.includes('damp proof 10') || nameLower.includes('raincoat 10')) {
+      warranty = "10 Years Performance & Waterproofing Warranty";
+    } else if (nameLower.includes('ultima') || nameLower.includes('stretch') || nameLower.includes('roofseal') || nameLower.includes('damp proof')) {
+      warranty = "7 to 8 Years Weather & Performance Warranty";
+    } else if (nameLower.includes('silk') || nameLower.includes('silk glamor')) {
+      warranty = "6 to 8 Years Performance Warranty";
+    } else if (nameLower.includes('apex') || nameLower.includes('weathercoat') || nameLower.includes('all guard')) {
+      warranty = "5 Years Weather & Anti-Algal Warranty";
+    } else if (nameLower.includes('apcolite') || nameLower.includes('premium emulsion')) {
+      warranty = "5 Years Anti-Stain & Color Warranty";
+    } else if (nameLower.includes('bison') || nameLower.includes('walmasta')) {
+      warranty = "3 Years Performance Warranty";
+    } else if (nameLower.includes('duralife')) {
+      warranty = "15 Years Performance Warranty";
+    } else if (nameLower.includes('ultima protek')) {
+      warranty = "12 Years Performance Warranty";
+    } else if (nameLower.includes('ultima') && !nameLower.includes('protek')) {
+      warranty = "8 Years Performance Warranty";
+    } else if (nameLower.includes('apex')) {
+      warranty = "6 Years Performance Warranty";
+    } else if (nameLower.includes('ace sparc')) {
+      warranty = "2 Years Performance Warranty";
+    } else if (nameLower.includes('ace') || nameLower.includes('tractor')) {
+      warranty = "4 Years Performance Warranty";
+    } else if (nameLower.includes('nilaya')) {
+      warranty = "3 Years Performance Warranty";
+    } else if (nameLower.includes('royale')) {
+      warranty = "8 Years Performance Warranty";
+    } else if (nameLower.includes('damp proof xtreme') || nameLower.includes('damp proof ultra')) {
+      warranty = "12 Years Waterproofing Warranty";
+    } else if (nameLower.includes('damp proof')) {
+      warranty = "10 Years Waterproofing Warranty";
+    } else if (nameLower.includes('damp sheath exterior')) {
+      warranty = "5 Years Waterproofing Warranty";
+    } else if (nameLower.includes('hydroloc') || nameLower.includes('damp block 2k')) {
+      warranty = "3 Years Waterproofing Warranty";
+    } else if (nameLower.includes('lw+') || nameLower.includes('lw super')) {
+      warranty = "Structural Concrete Admixture Protection";
+    } else if (brandLower.includes('birla white') || isPutty) {
+      warranty = "5 Years Anti-Flaking Guarantee";
+    } else if (isWood || brandLower.includes('mrf')) {
+      warranty = "5 Years High Abrasion Protection";
+    } else if (isPrimer) {
+      warranty = "Base Prep Guarantee";
+    } else if (brandLower.includes('berger')) {
+      if (nameLower.includes('long life 10')) warranty = "10 Years Performance Warranty";
+      else if (nameLower.includes('silk glamor')) warranty = "6 Years Performance Warranty";
+      else warranty = "5 Years Performance Warranty";
+    } else {
+      const propWarranty = product.properties?.find((p: string) => p.toLowerCase().includes('warranty'));
+      if (propWarranty) {
+        warranty = propWarranty;
+      } else if (isExterior) {
+        warranty = "5 Years Weather Protection Warranty";
+      } else if (isInterior) {
+        warranty = "5 Years Washability & Color Warranty";
+      } else if (isWaterproofing) {
+        warranty = "5 Years Waterproofing Warranty";
+      }
+    }
+
+    // 9. Factual Descriptions (desc1 and desc2)
+    let desc1 = product.description;
+    let desc2 = "";
+
+    if (!desc1 || desc1.length < 50) {
+      if (isWaterproofing) {
+        desc1 = `${product.name} by ${product.brand} is a specialized high-performance waterproofing treatment engineered to seal structural pores, prevent moisture ingress, and block efflorescence salt petre on concrete roofs, internal walls, and parapets.`;
+        desc2 = `Suitable for both direct outdoor weather exposure and wet indoor areas. When applied according to manufacturer guidelines, it provides up to ${warranty} of total leak protection, ensuring your home stays dry and structurally sound.`;
+      } else if (isExterior) {
+        desc1 = `${product.name} by ${product.brand} is an advanced exterior wall paint formulated with UV-resistant pigments and anti-algal bio-packs. Designed specifically for tropical climates in Coimbatore and Tamil Nadu, it effectively combats heavy monsoon rain, fungal growth, and intense summer sun.`;
+        desc2 = `Backed by an official ${warranty}, this formula maintains vibrant color retention and resists dirt pickup, keeping outdoor facades looking fresh and immaculate year after year.`;
+      } else if (isInterior) {
+        desc1 = `${product.name} by ${product.brand} is a premium interior wall emulsion created for homeowners who demand exceptional smoothness, rich color coverage, and effortless wall maintenance. It forms a durable protective shield that repels everyday household stains.`;
+        desc2 = `Featuring ${vocLevel} properties and a refined ${finish}, this paint enhances indoor aesthetic ambiance while allowing easy cleaning without color fading or water mark formation.`;
+      } else if (isWood) {
+        desc1 = `${product.name} by ${product.brand} is a heavy-duty polyurethane wood finish engineered to highlight the natural beauty of timber while shielding it from scratches, water spills, termite attack, and direct UV discoloration.`;
+        desc2 = `Delivers a ${finish} on teak wood doors, window frames, dining tables, and interior furniture with an durable ${warranty} against cracking or yellowing over time.`;
+      } else if (isPutty || isPrimer) {
+        desc1 = `${product.name} by ${product.brand} is an essential undercoat surface preparation product designed to seal masonry porosity, equalize wall absorption, and provide a perfectly smooth, white canvas for topcoat paint adhesion.`;
+        desc2 = `Prevents topcoat paint flaking and alkaline dampness patches, maximizing coverage efficiency and increasing overall paint life by up to 40%.`;
+      } else if (isSpray) {
+        desc1 = `${product.name} by ${product.brand} is a fast-drying aerosol spray paint providing smooth, uniform coverage on metals, plastics, wood, appliances, and automotive surfaces without needing complex spray gear.`;
+        desc2 = `Equipped with an ergonomic precision spray nozzle that resists clogging and delivers rapid touch-dry results in just 10-15 minutes.`;
+      } else {
+        desc1 = `${product.name} by ${product.brand} is a high-grade product engineered for durability, consistent performance, and reliable application in home improvement and industrial project applications.`;
+        desc2 = `Stocked and sold directly by authorized distributor Rainbow Paints & Hardwares in Coimbatore with 100% genuine quality assurance and wholesale pricing.`;
+      }
+    } else {
+      desc2 = `Engineered by ${product.brand} for optimal performance, ${product.name} offers an estimated coverage of ${coverage} with a ${finish}. Available for immediate local pick-up or same-day express delivery in Coimbatore through authorized distributor Rainbow Paints & Hardwares.`;
+    }
+
+    return { finish, dryingTime, coverage, washability, base, coats, vocLevel, warranty, desc1, desc2 };
   }, [product]);
 
   const parsePrice = (priceVal: any) => {
@@ -381,7 +709,121 @@ export default function ProductDetailPage() {
     const productSlug = targetProduct.slug || targetProduct.name?.replace(/\s+/g, '-').toLowerCase() || 'paint';
     const productUrl = `https://www.rainbowpaint.in/p/${productSlug}`;
 
-    const numPrice = typeof currentPrice === 'number' && !isNaN(currentPrice) && currentPrice > 0 ? currentPrice : 850;
+    const sizes = targetProduct.sizes || SIZES;
+    const unitSymbol = targetProduct.unit === 'kg' ? 'kg' : 'L';
+    const unitCode = targetProduct.unit === 'kg' ? 'KGM' : 'LTR';
+
+    const sellerObj = {
+      "@type": ["LocalBusiness", "PaintStore", "Organization"],
+      "@id": "https://www.rainbowpaint.in/#organization",
+      "name": "Rainbow Paints & Hardwares",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "54 Cox Street, Kattoor",
+        "addressLocality": "Coimbatore",
+        "addressRegion": "Tamil Nadu",
+        "postalCode": "641009",
+        "addressCountry": "IN"
+      }
+    };
+
+    const merchantReturnPolicy = {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "IN",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 7,
+      "returnMethod": "https://schema.org/ReturnInStore",
+      "returnFees": "https://schema.org/FreeReturn",
+      "merchantReturnLink": "https://www.rainbowpaint.in/refund-policy"
+    };
+
+    const shippingDetails = {
+      "@type": "OfferShippingDetails",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": "150",
+        "currency": "INR"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "IN"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 1,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 1,
+          "maxValue": 3,
+          "unitCode": "DAY"
+        }
+      }
+    };
+
+    // Calculate variant offer schemas for every size (1L, 4L, 10L, 20L / 1kg, 5kg, 20kg, 25kg, 40kg, 50kg)
+    const variationOffers = sizes.map((sizeVal: number) => {
+      let sizeDiscount = 1;
+      if (targetProduct.unit === 'kg') {
+        if (sizeVal === 5) sizeDiscount = 0.94;
+        if (sizeVal === 20) sizeDiscount = 0.53;
+        if (sizeVal === 25) sizeDiscount = 0.8;
+        if (sizeVal === 40) sizeDiscount = 0.472;
+        if (sizeVal === 50) sizeDiscount = 0.628;
+      } else {
+        if (sizeVal === 4) sizeDiscount = 0.96;
+        if (sizeVal === 10) sizeDiscount = 0.92;
+        if (sizeVal === 20) sizeDiscount = 0.88;
+      }
+      const vPrice = Math.round(basePrice * sizeVal * sizeDiscount);
+      return {
+        "@type": "Offer",
+        "name": `${targetProduct.name} - ${sizeVal}${unitSymbol} Pack`,
+        "sku": `RP-${targetProduct.id || '1'}-${sizeVal}${unitSymbol}`,
+        "mpn": `MPN-${targetProduct.id || '1'}-${sizeVal}${unitSymbol}`,
+        "price": String(vPrice),
+        "priceCurrency": "INR",
+        "priceValidUntil": "2027-12-31",
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock",
+        "url": `${productUrl}?size=${sizeVal}`,
+        "eligibleQuantity": {
+          "@type": "QuantitativeValue",
+          "value": sizeVal,
+          "unitCode": unitCode
+        },
+        "seller": sellerObj,
+        "hasMerchantReturnPolicy": merchantReturnPolicy,
+        "shippingDetails": shippingDetails
+      };
+    });
+
+    const prices = variationOffers.map((o: any) => parseFloat(o.price));
+    const lowPrice = Math.min(...prices);
+    const highPrice = Math.max(...prices);
+
+    // Product Variants array (ProductGroup model)
+    const variants = sizes.map((sizeVal: number, idx: number) => {
+      const offer = variationOffers[idx];
+      return {
+        "@type": "Product",
+        "@id": `${productUrl}#variant-${sizeVal}${unitSymbol}`,
+        "name": `${targetProduct.name} (${sizeVal}${unitSymbol} Container)`,
+        "sku": `RP-${targetProduct.id || '1'}-${sizeVal}${unitSymbol}`,
+        "image": [absImage],
+        "size": `${sizeVal} ${unitSymbol}`,
+        "weight": {
+          "@type": "QuantitativeValue",
+          "value": sizeVal,
+          "unitCode": unitCode
+        },
+        "offers": offer
+      };
+    });
 
     return {
       "@context": "https://schema.org",
@@ -394,8 +836,9 @@ export default function ProductDetailPage() {
         "name": targetProduct.brand || "Rainbow Paints"
       },
       "category": targetProduct.subCategory || targetProduct.topCategory || "Home Paint",
-      "sku": `RP-${targetProduct.id || '1'}-${selectedSize || 1}L`,
+      "sku": `RP-${targetProduct.id || '1'}-${selectedSize || 1}${unitSymbol}`,
       "mpn": `MPN-${targetProduct.id || '1'}`,
+      "hasVariant": variants,
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.8",
@@ -405,62 +848,12 @@ export default function ProductDetailPage() {
         "reviewCount": "124"
       },
       "offers": {
-        "@type": "Offer",
-        "price": String(numPrice),
+        "@type": "AggregateOffer",
+        "lowPrice": String(lowPrice),
+        "highPrice": String(highPrice),
         "priceCurrency": "INR",
-        "priceValidUntil": "2027-12-31",
-        "itemCondition": "https://schema.org/NewCondition",
-        "availability": "https://schema.org/InStock",
-        "url": productUrl,
-        "seller": {
-          "@type": ["LocalBusiness", "PaintStore", "Organization"],
-          "@id": "https://www.rainbowpaint.in/#organization",
-          "name": "Rainbow Paints & Hardwares",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "54 Cox Street, Kattoor",
-            "addressLocality": "Coimbatore",
-            "addressRegion": "Tamil Nadu",
-            "postalCode": "641009",
-            "addressCountry": "IN"
-          }
-        },
-        "hasMerchantReturnPolicy": {
-          "@type": "MerchantReturnPolicy",
-          "applicableCountry": "IN",
-          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-          "merchantReturnDays": 7,
-          "returnMethod": "https://schema.org/ReturnInStore",
-          "returnFees": "https://schema.org/FreeReturn",
-          "merchantReturnLink": "https://www.rainbowpaint.in/refund-policy"
-        },
-        "shippingDetails": {
-          "@type": "OfferShippingDetails",
-          "shippingRate": {
-            "@type": "MonetaryAmount",
-            "value": "150",
-            "currency": "INR"
-          },
-          "shippingDestination": {
-            "@type": "DefinedRegion",
-            "addressCountry": "IN"
-          },
-          "deliveryTime": {
-            "@type": "ShippingDeliveryTime",
-            "handlingTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 0,
-              "maxValue": 1,
-              "unitCode": "DAY"
-            },
-            "transitTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 1,
-              "maxValue": 3,
-              "unitCode": "DAY"
-            }
-          }
-        }
+        "offerCount": variationOffers.length,
+        "offers": variationOffers
       },
       "review": [
         {
@@ -480,7 +873,7 @@ export default function ProductDetailPage() {
         }
       ]
     };
-  }, [product, productDetails, currentPrice, displayImage, selectedSize]);
+  }, [product, productDetails, basePrice, displayImage, selectedSize]);
 
   const faqSchema = useMemo(() => {
     if (!product) return null;
@@ -560,9 +953,21 @@ export default function ProductDetailPage() {
     return `Buy ${product?.name} by ${product?.brand} online at wholesale prices. ${product?.category} with fast local delivery in Coimbatore.`;
   }, [product]);
 
+  const fallbackTitle = useMemo(() => {
+    if (!productSlug) return "Buy Paint Online | Rainbow Paints";
+    const name = productSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+    return `${name} - Buy Online | Wholesale Price`;
+  }, [productSlug]);
+
   if (loading) {
     return (
       <div className="pt-24 pb-12 bg-royale-bg min-h-[80vh] flex items-center justify-center">
+        <SEO 
+          type="product"
+          title={fallbackTitle}
+          description={`Buy ${fallbackTitle.replace(' - Buy Online | Wholesale Price', '')} online at wholesale prices with fast local delivery in Coimbatore.`}
+          url={`https://www.rainbowpaint.in/p/${productSlug}`}
+        />
         <div className="w-8 h-8 border-2 border-gold border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
@@ -643,13 +1048,31 @@ export default function ProductDetailPage() {
               </div>
             )}
             {activeTab === 'specs' && productDetails && (
-              <div className="grid grid-cols-2 gap-y-4 gap-x-6 text-xs">
-                <div><span className="block text-zinc-600 mb-1">Finish</span> <span className="text-zinc-800 font-medium">{productDetails.finish}</span></div>
-                <div><span className="block text-zinc-600 mb-1">Drying Time</span> <span className="text-zinc-800 font-medium">{productDetails.dryingTime}</span></div>
-                <div><span className="block text-zinc-600 mb-1">Coverage</span> <span className="text-zinc-800 font-medium">{productDetails.coverage}</span></div>
-                <div><span className="block text-zinc-600 mb-1">Washability</span> <span className="text-zinc-800 font-medium">{productDetails.washability}</span></div>
-                <div><span className="block text-zinc-600 mb-1">Application Base</span> <span className="text-zinc-800 font-medium">{productDetails.base}</span></div>
-                <div><span className="block text-zinc-600 mb-1">Warranty</span> <span className="text-zinc-800 font-medium">{productDetails.warranty}</span></div>
+              <div className="space-y-6">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-y-4 gap-x-6 text-xs bg-zinc-50 p-4 sm:p-5 rounded-xl border border-zinc-200">
+                  <div><span className="block text-zinc-600 mb-1 font-medium">Brand</span> <span className="text-zinc-900 font-bold">{product.brand}</span></div>
+                  <div><span className="block text-zinc-600 mb-1 font-medium">Category</span> <span className="text-zinc-900 font-bold">{product.subCategory || product.category}</span></div>
+                  <div><span className="block text-zinc-600 mb-1 font-medium">Finish Sheen</span> <span className="text-zinc-800 font-semibold">{productDetails.finish}</span></div>
+                  <div><span className="block text-zinc-600 mb-1 font-medium">Drying / Recoat Time</span> <span className="text-zinc-800 font-semibold">{productDetails.dryingTime}</span></div>
+                  <div><span className="block text-zinc-600 mb-1 font-medium">Coverage Capacity</span> <span className="text-zinc-800 font-semibold">{productDetails.coverage}</span></div>
+                  <div><span className="block text-zinc-600 mb-1 font-medium">Washability & Scrub</span> <span className="text-zinc-800 font-semibold">{productDetails.washability}</span></div>
+                  <div><span className="block text-zinc-600 mb-1 font-medium">Application Base</span> <span className="text-zinc-800 font-semibold">{productDetails.base}</span></div>
+                  <div><span className="block text-zinc-600 mb-1 font-medium">Recommended Coats</span> <span className="text-zinc-800 font-semibold">{productDetails.coats}</span></div>
+                  <div><span className="block text-zinc-600 mb-1 font-medium">VOC / Eco Standard</span> <span className="text-zinc-800 font-semibold">{productDetails.vocLevel}</span></div>
+                  <div><span className="block text-zinc-600 mb-1 font-medium">Official Warranty</span> <span className="text-gold font-bold">{productDetails.warranty}</span></div>
+                  <div><span className="block text-zinc-600 mb-1 font-medium">Authorized Local Dealer</span> <span className="text-zinc-900 font-semibold">Rainbow Paints, Coimbatore</span></div>
+                  <div><span className="block text-zinc-600 mb-1 font-medium">Color Customization</span> <span className="text-zinc-900 font-semibold">Buy from 5000+ custom shades</span></div>
+                </div>
+
+                {/* AI Summary Fact Sheet Card for AI Crawlers & Shoppers */}
+                <div className="bg-white p-5 rounded-xl border border-gold/40 shadow-sm">
+                  <div className="flex items-center gap-2 text-gold font-display text-xs uppercase font-bold tracking-wider mb-2">
+                    <Award className="w-4 h-4 text-gold" /> Product Specifications & Local Availability
+                  </div>
+                  <p className="text-xs text-zinc-700 leading-relaxed font-sans">
+                    <strong className="text-zinc-900 font-semibold">{product.name}</strong> by <strong className="text-zinc-900 font-semibold">{product.brand}</strong> is stocked & sold by authorized dealer <strong className="text-zinc-900 font-semibold">Rainbow Paints & Hardwares</strong> (54 Cox Street, Kattoor, Coimbatore 641009). Offers an estimated coverage of <strong className="text-zinc-900 font-semibold">{productDetails.coverage}</strong> with <strong className="text-zinc-900 font-semibold">{productDetails.dryingTime}</strong> touch-dry time. Protected under <strong className="text-zinc-900 font-semibold">{productDetails.warranty}</strong> with <strong className="text-zinc-900 font-semibold">same-day local express delivery in Coimbatore</strong> and buy from 5000+ custom color shades.
+                  </p>
+                </div>
               </div>
             )}
           </motion.div>
@@ -980,15 +1403,15 @@ export default function ProductDetailPage() {
               </p>
             </div>
             <div className="bg-royale-surface border border-zinc-200/50 rounded-2xl p-6 hover:border-gold/30 transition-colors">
-              <h3 className="font-medium text-ivory mb-3 text-sm">Who manufactures {product.name}?</h3>
+              <h3 className="font-medium text-ivory mb-3 text-sm">What warranty comes with {product.name}?</h3>
               <p className="text-ivory/70 text-xs leading-relaxed font-light">
-                {product.name} is manufactured by {product.brand}, a leading paint brand in India, known for its high-quality finishes and durability.
+                {product.name} comes with an official <strong className="text-gold font-medium">{productDetails?.warranty}</strong> provided by {product.brand} when applied over the recommended primer/undercoat system on sound surfaces.
               </p>
             </div>
             <div className="bg-royale-surface border border-zinc-200/50 rounded-2xl p-6 hover:border-gold/30 transition-colors md:col-span-2">
-              <h3 className="font-medium text-ivory mb-3 text-sm">What category does {product.name} fall under?</h3>
+              <h3 className="font-medium text-ivory mb-3 text-sm">What category does {product.name} fall under and what is its coverage?</h3>
               <p className="text-ivory/70 text-xs leading-relaxed font-light">
-                {product.name} belongs to the {product.category} category and is ideal for {product.subCategory} applications. It offers excellent coverage and a long-lasting finish.
+                {product.name} by {product.brand} belongs to the {product.subCategory || product.category} category. It offers an estimated coverage capacity of {productDetails?.coverage} with a {productDetails?.finish} and a touch-dry time of {productDetails?.dryingTime}.
               </p>
             </div>
           </div>
@@ -998,16 +1421,16 @@ export default function ProductDetailPage() {
         {boughtTogether.length > 0 && (
           <div className="mt-20 pt-16 border-t border-zinc-200/50">
             <h2 className="text-2xl font-serif text-ivory mb-8">Customers buy these <span className="text-gradient italic">Together</span></h2>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
               {boughtTogether.map(rp => (
-                <Link to={`/p/${rp.name.replace(/\s+/g, '-').toLowerCase()}`} key={rp.id} className="group flex items-center bg-royale-surface border border-zinc-200 hover:border-gold/30 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_8px_30px_rgba(184,151,90,0.1)] p-3">
-                  <div className="relative bg-white w-20 h-20 shrink-0 rounded-xl flex items-center justify-center p-2">
+                <Link to={`/p/${rp.name.replace(/\s+/g, '-').toLowerCase()}`} key={rp.id} className="group flex flex-col bg-royale-surface border border-zinc-200 hover:border-gold/30 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_8px_30px_rgba(184,151,90,0.1)]">
+                  <div className="relative bg-white aspect-[4/3] p-4 sm:p-6 flex items-center justify-center">
                     <img src={rp.image} alt={rp.name} loading="lazy" decoding="async" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
                   </div>
-                  <div className="pl-4 flex flex-col flex-1">
+                  <div className="p-4 sm:p-5 flex flex-col flex-1">
                     <span className="text-[9px] uppercase tracking-wider text-gold font-display font-bold mb-1">{rp.brand}</span>
-                    <h3 className="text-xs font-medium text-ivory mb-1 leading-tight line-clamp-2">{rp.name}</h3>
-                    <span className="text-sm font-display text-ivory mt-auto font-semibold">₹{rp.price || 850}</span>
+                    <h3 className="text-sm font-medium text-ivory mb-2 leading-tight line-clamp-2">{rp.name}</h3>
+                    <span className="text-lg font-display text-ivory mt-auto">{rp.price}</span>
                   </div>
                 </Link>
               ))}

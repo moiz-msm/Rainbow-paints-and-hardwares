@@ -47,6 +47,14 @@ const slides: Slide[] = [
     badge: "",
     actionType: 'modal',
     target: 'buying-guide',
+  },
+  {
+    id: 4,
+    title: "🌈 Buy from 5000+ custom color shades online",
+    subtext: "",
+    badge: "",
+    actionType: 'route',
+    target: '/visualizer',
   }
 ];
 

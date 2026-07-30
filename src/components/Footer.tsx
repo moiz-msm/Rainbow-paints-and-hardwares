@@ -62,7 +62,7 @@ export default function Footer() {
               <span className="text-[7px] uppercase tracking-[0.35em] text-gold/60 font-medium mt-1.5">PAINT AND HARDWARES</span>
             </Link>
             <p className="text-ivory/60 text-xs font-light leading-relaxed mb-6">
-              Your trusted partner for premium paints, hardware, and expert color advice in Coimbatore since 2004.
+              Your trusted partner for premium paints, hardware, and expert color advice in Coimbatore since 2001.
             </p>
             
             <div className="w-full mb-6">
@@ -158,25 +158,6 @@ export default function Footer() {
                 <a href="mailto:rainbow_paint@hotmail.com" className="text-sm font-light text-ivory/70 hover:text-gold transition-colors break-all">rainbow_paint@hotmail.com</a>
               </li>
             </ul>
-          </div>
-        </div>
-
-        <div className="sr-only">
-          <h3 className="text-ivory font-serif text-lg mb-4">Popular Searches in Coimbatore</h3>
-          <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-zinc-500">
-            <Link to="/store/coimbatore" className="hover:text-gold transition">Paint store near me</Link>
-            <Link to="/store/rs-puram-coimbatore" className="hover:text-gold transition">Paint Shop in RS Puram</Link>
-            <Link to="/store/gandhipuram-coimbatore" className="hover:text-gold transition">Gandhipuram Paint Dealer</Link>
-            <Link to="/store/saravanampatti-coimbatore" className="hover:text-gold transition">Saravanampatti Paint Store</Link>
-            <Link to="/store/saibaba-colony-coimbatore" className="hover:text-gold transition">Saibaba Colony Paints</Link>
-            <Link to="/brands/asian-paints" className="hover:text-gold transition">Asian Paints dealer Coimbatore</Link>
-            <Link to="/brands/berger-paints" className="hover:text-gold transition">Berger dealer near me</Link>
-            <Link to="/brands/dr-fixit" className="hover:text-gold transition">Dr Fixit dealer in Coimbatore</Link>
-            <Link to="/brands/mrf-vapocure" className="hover:text-gold transition">MRF Vapocure Paint dealer</Link>
-            <Link to="/c/interior-paints" className="hover:text-gold transition">Interior wall paint shop</Link>
-            <Link to="/c/exterior-paints" className="hover:text-gold transition">Exterior house paint Coimbatore</Link>
-            <Link to="/c/pu-coatings" className="hover:text-gold transition">PU Coatings Coimbatore</Link>
-            <Link to="/c/epoxy-coatings" className="hover:text-gold transition">Epoxy Coatings Coimbatore</Link>
           </div>
         </div>
 

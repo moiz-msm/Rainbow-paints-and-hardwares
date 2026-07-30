@@ -330,9 +330,17 @@ export default function ColorDetailsPage() {
   const char = getShadeCharacteristics(shade);
   const recommended = shade ? getRecommendedProducts(shade.brand) : [];
 
+  const fallbackTitle = (shadeSlug || "Color").replace(/-/g, ' ').toUpperCase();
+
   if (loading) {
     return (
       <div className="pt-24 pb-12 bg-royale-bg min-h-screen flex items-center justify-center">
+        <SEO 
+          type="product"
+          title={`${fallbackTitle} - Paint Color Shade | Buy Online`}
+          description={`Explore ${fallbackTitle} paint color shade. Get matching products and buy online at wholesale prices.`}
+          url={`https://www.rainbowpaint.in/color/${shadeSlug || ''}`}
+        />
         <div className="w-12 h-12 border-4 border-gold border-t-transparent rounded-full animate-spin"></div>
       </div>
     );

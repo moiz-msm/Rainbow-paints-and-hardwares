@@ -28,6 +28,21 @@ export const globalLocalStoreSchema = {
   "telephone": "+918072442930",
   "email": "rainbow_paint@hotmail.com",
   "priceRange": "INR",
+  "vatID": "33AAFFR4759L1ZS",
+  "taxID": "33AAFFR4759L1ZS",
+  "sameAs": [
+    "https://maps.google.com/?q=Rainbow+Paints+and+Hardwares+54+Cox+Street+Kattoor+Coimbatore",
+    "https://www.instagram.com/rainbow_paint_and_hardwares",
+    "https://www.facebook.com/share/1EGQ9xt3Vc/",
+    "https://youtube.com/@rainbowpaintandhardwares"
+  ],
+  "knowsAbout": [
+    "Asian Paints Royale",
+    "Berger Silk Emulsion",
+    "Dr. Fixit Waterproofing",
+    "MRF Vapocure Wood Finishes",
+    "Buy from 5000+ Custom Color Shades"
+  ],
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "54 Cox Street, Kattoor",
@@ -248,6 +263,12 @@ export default function SEO({
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
       )}
 
+      {/* Geo Location Tags */}
+      <meta name="geo.region" content="IN-TN" />
+      <meta name="geo.placename" content="Coimbatore" />
+      <meta name="geo.position" content="11.0168;76.9558" />
+      <meta name="ICBM" content="11.0168, 76.9558" />
+
       {/* Open Graph Tags */}
       <meta
         property="og:type"
@@ -313,9 +334,7 @@ export default function SEO({
 
       {allSchemas.length > 0 && (
         allSchemas.map((s, idx) => (
-          <script key={idx} type="application/ld+json">
-            {JSON.stringify(s)}
-          </script>
+          <script key={idx} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
         ))
       )}
     </Helmet>

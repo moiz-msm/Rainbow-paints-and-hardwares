@@ -89,7 +89,7 @@ const ALL_PAINTS: PaintModel[] = [
     sheenText: "Soft Sheen",
     washability: 8,
     durability: 8,
-    warrantyYears: 5,
+    warrantyYears: 8,
     coverage: "140 - 150 sq.ft/L",
     stainResistance: "High",
     vocEmissions: "Low VOC",

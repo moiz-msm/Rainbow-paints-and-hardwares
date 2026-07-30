@@ -18,7 +18,7 @@ export const faqs = [
     question:
       "Can I get customized colors that are not in the standard catalog?",
     answer:
-      "Absolutely! We use computerized color tinting machines from Asian Paints and Berger which can generate over 4000+ shades instantly in our store while you wait.",
+      "Absolutely! You can buy from 5000+ custom color shades mixed using computerized color tinting machines from Asian Paints and Berger instantly in our store while you wait.",
   },
   {
     question: "Is waterproofing necessary before painting?",

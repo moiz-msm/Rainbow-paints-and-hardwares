@@ -79,8 +79,10 @@ export default function Home() {
       "Top paint shop in Coimbatore. Buy paint online with best pricing, doorstep delivery across Coimbatore, and 4000+ color shades.",
     logo: "/mascot.webp",
     sameAs: [
-      "https://www.facebook.com/rainbowpaints",
-      "https://www.instagram.com/rainbowpaints",
+      "https://maps.google.com/?q=Rainbow+Paints+and+Hardwares+54+Cox+Street+Kattoor+Coimbatore",
+      "https://www.instagram.com/rainbow_paint_and_hardwares",
+      "https://www.facebook.com/share/1EGQ9xt3Vc/",
+      "https://youtube.com/@rainbowpaintandhardwares"
     ],
   };
 

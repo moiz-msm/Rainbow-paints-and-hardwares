@@ -132,7 +132,7 @@ const PAINT_PROFILES: Record<number, PaintProfile> = {
     price: 780,
     sheenLevel: "Soft Sheen",
     washability: "Excellent (8/10)",
-    warranty: "5 Years",
+    warranty: "8 Years",
     coverage: "140 - 160 sq.ft/L (2 coats)",
     stainResistance: "Advanced Teflon™ Barrier",
     airQuality: "Low VOC, Anti-Bacterial",

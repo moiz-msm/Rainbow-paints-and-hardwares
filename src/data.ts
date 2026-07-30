@@ -1183,7 +1183,7 @@ export const mockProducts = [
     "properties": [
       "Perfect Crème Finish in Ultra Sheen",
       "Teflon Surface Protector",
-      "8 Years Warranty"
+      "8 Years Performance Warranty"
     ],
     "popular": true,
     "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/royale-glitz-new-packshot.png"
@@ -1200,7 +1200,7 @@ export const mockProducts = [
       "Excellent Stain Resistance (Teflon™)",
       "Anti-Bacterial & Low VOC (Eco-Friendly)",
       "High Scrub Resistance & Highly Washable",
-      "5 Years Performance Warranty*"
+      "8 Years Performance Warranty"
     ],
     "popular": true,
     "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-royale-luxury-emulsion-asian-paints.png"
@@ -1232,7 +1232,7 @@ export const mockProducts = [
     "properties": [
       "Water Beading Technology",
       "Luxury with Teflon™",
-      "8 Years Warranty"
+      "8 Years Performance Warranty"
     ],
     "popular": true,
     "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-royale-aspira-luxury-emulsion-asian-paints.png"
@@ -1249,7 +1249,7 @@ export const mockProducts = [
       "Excellent Stain Resistance with Teflon™",
       "Clean Air & Ultra-Low VOC",
       "Superb Scrub Resistance (Easy Cleaning)",
-      "6 Years Performance Warranty*"
+      "8 Years Performance Warranty"
     ],
     "popular": true,
     "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-royale-shyne-luxury-emulsion-asian-paints.png"
@@ -1266,7 +1266,7 @@ export const mockProducts = [
       "Excellent Light Diffusion (Hides Wall Flaws)",
       "Super Stain Resistance (Teflon™)",
       "High Washability & Smooth Feel",
-      "5 Years Performance Warranty*"
+      "8 Years Performance Warranty"
     ],
     "popular": false,
     "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-royale-matt-asian-paints.png"
@@ -1283,7 +1283,7 @@ export const mockProducts = [
       "Neutralizes Formaldehyde (Purifies Indoor Air)",
       "Exquisite Soft Sheen Surface",
       "Highly Washable & Asthma Friendly approved",
-      "5 Years Performance Warranty*"
+      "8 Years Performance Warranty"
     ],
     "popular": true,
     "image": "https://5.imimg.com/data5/SELLER/Default/2023/7/326440889/MP/SF/RA/22649264/asian-paints-royale-health-shield-500x500.jpg"
