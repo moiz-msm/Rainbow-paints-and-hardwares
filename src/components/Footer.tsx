@@ -161,6 +161,29 @@ export default function Footer() {
           </div>
         </div>
 
+        <div className="pt-8 border-t border-gold/5 mt-8">
+          <h4 className="text-gold/60 font-display text-[10px] uppercase tracking-[0.2em] mb-4 text-center">
+            Locations & Top Searches
+          </h4>
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-[10px] text-ivory/40 uppercase tracking-widest font-light">
+            <Link to="/store/coimbatore" className="hover:text-gold transition">Paint Store Near Me</Link>
+            <span className="opacity-30">&bull;</span>
+            <Link to="/store/rs-puram-coimbatore" className="hover:text-gold transition">RS Puram</Link>
+            <span className="opacity-30">&bull;</span>
+            <Link to="/store/gandhipuram-coimbatore" className="hover:text-gold transition">Gandhipuram</Link>
+            <span className="opacity-30">&bull;</span>
+            <Link to="/store/peelamedu-coimbatore" className="hover:text-gold transition">Peelamedu</Link>
+            <span className="opacity-30">&bull;</span>
+            <Link to="/store/saibaba-colony-coimbatore" className="hover:text-gold transition">Saibaba Colony</Link>
+            <span className="opacity-30">&bull;</span>
+            <Link to="/brands/asian-paints" className="hover:text-gold transition">Asian Paints Dealer</Link>
+            <span className="opacity-30">&bull;</span>
+            <Link to="/brands/berger-paints" className="hover:text-gold transition">Berger Paints</Link>
+            <span className="opacity-30">&bull;</span>
+            <Link to="/brands/dr-fixit" className="hover:text-gold transition">Dr Fixit Waterproofing</Link>
+          </div>
+        </div>
+
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-6 mt-6 border-t border-gold/5">
           <p className="text-gold/40 text-[10px] font-display tracking-[0.1em] uppercase text-center md:text-left">
             © {new Date().getFullYear()} Rainbow Paints & Hardwares. All rights reserved.

@@ -806,25 +806,6 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
     const lowPrice = Math.min(...prices);
     const highPrice = Math.max(...prices);
 
-    // Product Variants array (ProductGroup model)
-    const variants = sizes.map((sizeVal: number, idx: number) => {
-      const offer = variationOffers[idx];
-      return {
-        "@type": "Product",
-        "@id": `${productUrl}#variant-${sizeVal}${unitSymbol}`,
-        "name": `${targetProduct.name} (${sizeVal}${unitSymbol} Container)`,
-        "sku": `RP-${targetProduct.id || '1'}-${sizeVal}${unitSymbol}`,
-        "image": [absImage],
-        "size": `${sizeVal} ${unitSymbol}`,
-        "weight": {
-          "@type": "QuantitativeValue",
-          "value": sizeVal,
-          "unitCode": unitCode
-        },
-        "offers": offer
-      };
-    });
-
     return {
       "@context": "https://schema.org",
       "@type": "Product",
@@ -836,9 +817,8 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
         "name": targetProduct.brand || "Rainbow Paints"
       },
       "category": targetProduct.subCategory || targetProduct.topCategory || "Home Paint",
-      "sku": `RP-${targetProduct.id || '1'}-${selectedSize || 1}${unitSymbol}`,
+      "sku": `RP-${targetProduct.id || '1'}-${selectedSize || sizes[0] || 1}${unitSymbol}`,
       "mpn": `MPN-${targetProduct.id || '1'}`,
-      "hasVariant": variants,
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.8",

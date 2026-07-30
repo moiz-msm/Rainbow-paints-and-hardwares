@@ -1062,40 +1062,7 @@ Return exactly a valid JSON object with {"name": "string", "pincode": "string"}.
         html = html.replace(/<meta\s+property="twitter:description"\s+content="[^"]*"/g, `<meta property="twitter:description" content="${desc}"`);
         html = html.replace(/<meta\s+property="twitter:image"\s+content="[^"]*"/g, `<meta property="twitter:image" content="${img}"`);
         
-        let schemaObj = null;
-        if (url.startsWith('/p/')) {
-          const slug = decodeURIComponent(url.split('/')[2]);
-          const product = mockProducts.find(p => ((p as any).slug || p.name.replace(/\s+/g, '-').toLowerCase()) === slug);
-          if (product) {
-            schemaObj = {
-              "@context": "https://schema.org",
-              "@type": "Product",
-              "name": product.name,
-              "image": [img],
-              "description": desc,
-              "sku": `RP-${product.id || '1'}`,
-              "brand": {
-                "@type": "Brand",
-                "name": product.brand || "Rainbow Paints"
-              },
-              "offers": {
-                "@type": "Offer",
-                "price": String(product.price ? parseFloat(product.price.toString().replace(/[^0-9.]/g, '')) : 850),
-                "priceCurrency": "INR",
-                "availability": "https://schema.org/InStock",
-                "url": `https://www.rainbowpaint.in/p/${slug}`,
-                "seller": {
-                  "@type": "LocalBusiness",
-                  "name": "Rainbow Paints & Hardwares"
-                }
-              }
-            };
-          }
-        }
-        
-        if (schemaObj) {
-          html = html.replace('</head>', `<script type="application/ld+json">${JSON.stringify(schemaObj)}</script></head>`);
-        }
+
         
         res.send(html);
       } catch (e) {
