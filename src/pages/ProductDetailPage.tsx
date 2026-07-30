@@ -802,13 +802,20 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
       };
     });
 
-    const prices = variationOffers.map((o: any) => parseFloat(o.price));
-    const lowPrice = Math.min(...prices);
-    const highPrice = Math.max(...prices);
+    const variants = sizes.map((sizeVal: number, idx: number) => {
+      const offer = variationOffers[idx];
+      return {
+        "@type": "Product",
+        "sku": `RP-${targetProduct.id || '1'}-${sizeVal}${unitSymbol}`,
+        "name": targetProduct.name,
+        "image": [absImage],
+        "size": `${sizeVal} ${unitSymbol}`,
+        "offers": offer
+      };
+    });
 
-    return {
+    const baseSchema = {
       "@context": "https://schema.org",
-      "@type": "Product",
       "name": targetProduct.name || "Paint Product",
       "image": [absImage],
       "description": productDetails?.desc1 || `Buy ${targetProduct.name} online from Rainbow Paints. ${targetProduct.subCategory || ''} by ${targetProduct.brand}. Original factory packaging with fast delivery.`,
@@ -817,8 +824,6 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
         "name": targetProduct.brand || "Rainbow Paints"
       },
       "category": targetProduct.subCategory || targetProduct.topCategory || "Home Paint",
-      "sku": `RP-${targetProduct.id || '1'}-${selectedSize || sizes[0] || 1}${unitSymbol}`,
-      "mpn": `MPN-${targetProduct.id || '1'}`,
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.8",
@@ -826,14 +831,6 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
         "worstRating": "1",
         "ratingCount": "124",
         "reviewCount": "124"
-      },
-      "offers": {
-        "@type": "AggregateOffer",
-        "lowPrice": String(lowPrice),
-        "highPrice": String(highPrice),
-        "priceCurrency": "INR",
-        "offerCount": variationOffers.length,
-        "offers": variationOffers
       },
       "review": [
         {
@@ -853,6 +850,24 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
         }
       ]
     };
+
+    if (sizes.length > 1) {
+      return {
+        ...baseSchema,
+        "@type": "ProductGroup",
+        "productGroupID": `RP-PG-${targetProduct.id || '1'}`,
+        "variesBy": ["https://schema.org/size"],
+        "hasVariant": variants
+      };
+    } else {
+      return {
+        ...baseSchema,
+        "@type": "Product",
+        "sku": `RP-${targetProduct.id || '1'}-${sizes[0] || 1}${unitSymbol}`,
+        "mpn": `MPN-${targetProduct.id || '1'}`,
+        "offers": variationOffers[0]
+      };
+    }
   }, [product, productDetails, basePrice, displayImage, selectedSize]);
 
   const faqSchema = useMemo(() => {
