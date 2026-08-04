@@ -765,7 +765,7 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
       }
     };
 
-    // Calculate variant offer schemas for every size (1L, 4L, 10L, 20L / 1kg, 5kg, 20kg, 25kg, 40kg, 50kg)
+    // Calculate variant offer schemas for every size
     const variationOffers = sizes.map((sizeVal: number) => {
       let sizeDiscount = 1;
       if (targetProduct.unit === 'kg') {
@@ -788,29 +788,13 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
         "price": String(vPrice),
         "priceCurrency": "INR",
         "priceValidUntil": "2027-12-31",
+        "validFrom": "2025-01-01T00:00:00.000Z",
         "itemCondition": "https://schema.org/NewCondition",
         "availability": "https://schema.org/InStock",
         "url": `${productUrl}?size=${sizeVal}`,
-        "eligibleQuantity": {
-          "@type": "QuantitativeValue",
-          "value": sizeVal,
-          "unitCode": unitCode
-        },
         "seller": sellerObj,
         "hasMerchantReturnPolicy": merchantReturnPolicy,
         "shippingDetails": shippingDetails
-      };
-    });
-
-    const variants = sizes.map((sizeVal: number, idx: number) => {
-      const offer = variationOffers[idx];
-      return {
-        "@type": "Product",
-        "sku": `RP-${targetProduct.id || '1'}-${sizeVal}${unitSymbol}`,
-        "name": targetProduct.name,
-        "image": [absImage],
-        "size": `${sizeVal} ${unitSymbol}`,
-        "offers": offer
       };
     });
 
@@ -850,6 +834,24 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
         }
       ]
     };
+
+    const variants = sizes.map((sizeVal: number, idx: number) => {
+      const offer = variationOffers[idx];
+      return {
+        "@type": "Product",
+        "sku": `RP-${targetProduct.id || '1'}-${sizeVal}${unitSymbol}`,
+        "mpn": `MPN-${targetProduct.id || '1'}-${sizeVal}${unitSymbol}`,
+        "name": targetProduct.name,
+        "image": [absImage],
+        "size": `${sizeVal} ${unitSymbol}`,
+        "description": baseSchema.description,
+        "brand": baseSchema.brand,
+        "category": baseSchema.category,
+        "aggregateRating": baseSchema.aggregateRating,
+        "review": baseSchema.review,
+        "offers": offer
+      };
+    });
 
     if (sizes.length > 1) {
       return {
