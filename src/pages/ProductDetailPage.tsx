@@ -854,12 +854,20 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
     });
 
     if (sizes.length > 1) {
+      const allPrices = variationOffers.map((o: any) => Number(o.price));
       return {
         ...baseSchema,
         "@type": "ProductGroup",
         "productGroupID": `RP-PG-${targetProduct.id || '1'}`,
         "variesBy": ["https://schema.org/size"],
-        "hasVariant": variants
+        "hasVariant": variants,
+        "offers": {
+          "@type": "AggregateOffer",
+          "offerCount": sizes.length,
+          "lowPrice": String(Math.min(...allPrices)),
+          "highPrice": String(Math.max(...allPrices)),
+          "priceCurrency": "INR"
+        }
       };
     } else {
       return {

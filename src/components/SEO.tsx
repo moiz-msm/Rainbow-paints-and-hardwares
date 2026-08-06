@@ -146,7 +146,7 @@ export default function SEO({
     }
 
     if (type === "product") {
-      const hasProductSchema = rawList.some((s: any) => s && (s["@type"] === "Product" || (Array.isArray(s["@type"]) && s["@type"].includes("Product"))));
+      const hasProductSchema = rawList.some((s: any) => s && (s["@type"] === "Product" || s["@type"] === "ProductGroup" || (Array.isArray(s["@type"]) && (s["@type"].includes("Product") || s["@type"].includes("ProductGroup")))));
       if (!hasProductSchema) {
         const safePrice = typeof productPrice === 'number' && !isNaN(productPrice) && productPrice > 0 ? productPrice : 850;
         const autoProductSchema = {
@@ -173,6 +173,7 @@ export default function SEO({
             "price": String(safePrice),
             "priceCurrency": productCurrency || "INR",
             "priceValidUntil": "2027-12-31",
+            "validFrom": "2025-01-01T00:00:00.000Z",
             "itemCondition": "https://schema.org/NewCondition",
             "availability": productAvailability === "InStock" ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
             "url": url,

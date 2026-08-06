@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Store, Award, MessageCircle, ShieldCheck, ArrowRight, PackageOpen, Truck, Tags, Shield, Sparkles, Mouse, ShoppingBag, Palette, Package, Tag, ShoppingCart } from 'lucide-react';
+import { Store, Award, MessageCircle, ShieldCheck, ArrowRight, PackageOpen, Truck, Tags, Shield, Sparkles, Mouse, ShoppingBag, Palette, Package, Tag, ShoppingCart, Phone, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { brandDetails } from '../data';
 
@@ -210,6 +210,18 @@ export default function Hero() {
                           <span className="text-royale-bg text-[8px] sm:text-[9px] lg:text-[11px] font-sans font-bold uppercase tracking-widest leading-tight whitespace-pre-line">{feat.title}</span>
                        </div>
                      ))}
+                     </motion.div>
+                   </div>
+
+                   {/* CTAs: Contact & Location */}
+                   <div className="overflow-hidden w-full max-w-[280px] sm:max-w-md mt-4 sm:mt-5 pb-1.5 mx-auto lg:mx-0">
+                     <motion.div style={{ y: y4 }} className="flex gap-3 sm:gap-4 w-full">
+                       <a href="tel:+918072442930" className="flex-1 bg-royale-bg text-ivory px-3 py-2.5 sm:px-4 sm:py-3 lg:px-5 lg:py-3.5 rounded-full text-[9px] sm:text-[10px] md:text-xs font-sans font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 sm:gap-2 hover:bg-royale-bg/90 transition-all duration-300 shadow-lg text-center border border-royale-bg/20">
+                         <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-4 lg:h-4 shrink-0" /> Call Now
+                       </a>
+                       <a href="https://maps.app.goo.gl/hYrT1Cedf5yVoyEf7" target="_blank" rel="noopener noreferrer" className="flex-1 bg-ivory text-royale-bg border-2 border-royale-bg px-3 py-2.5 sm:px-4 sm:py-3 lg:px-5 lg:py-3.5 rounded-full text-[9px] sm:text-[10px] md:text-xs font-sans font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 sm:gap-2 hover:bg-royale-bg/5 transition-all duration-300 shadow-lg text-center">
+                         <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-4 lg:h-4 shrink-0" /> Location
+                       </a>
                      </motion.div>
                    </div>
 

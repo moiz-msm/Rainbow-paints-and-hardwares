@@ -1092,11 +1092,11 @@ export default function VisualizerSection() {
           </button>
         </div>
 
-        <div id="visualizer-container" className="flex flex-col gap-5 lg:gap-6 relative w-full">
+        <div id="visualizer-container" className="flex flex-col lg:flex-row gap-5 lg:gap-6 relative w-full items-start">
           
           {/* Workspace Area: 3D Rooms OR AI Space (Collapsible) */}
           {!isWorkspaceCollapsed && (
-            <div className="transition-all duration-500 ease-in-out flex flex-col gap-4 w-full">
+            <div className="transition-all duration-500 ease-in-out flex flex-col gap-4 w-full lg:w-[58%] lg:sticky lg:top-[110px] z-30">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -1159,14 +1159,14 @@ export default function VisualizerSection() {
           )}
 
           {/* Controls Area / Sidebar Panel */}
-          <div className="transition-all duration-500 ease-in-out w-full glass-panel rounded-2xl border border-zinc-200 bg-white/95 backdrop-blur-xl flex flex-col shadow-lg overflow-hidden mt-2">
+          <div className={`transition-all duration-500 ease-in-out w-full glass-panel rounded-2xl border border-zinc-200 bg-white/95 backdrop-blur-xl flex flex-col shadow-lg overflow-hidden mt-2 lg:mt-0 ${isWorkspaceCollapsed ? 'lg:w-full' : 'lg:w-[42%]'}`}>
             {/* Control Tabs */}
             <div className="flex items-center gap-2 border-b border-zinc-200/50 p-2 sm:p-3 bg-zinc-50/50 overflow-x-auto hide-scrollbar shrink-0">
               <button onClick={() => setActiveControlTab('explore')} className={`px-4 py-2 font-display font-semibold uppercase tracking-widest text-[10px] rounded-lg transition-all flex items-center gap-2 shrink-0 ${activeControlTab === 'explore' ? 'bg-white text-gold shadow-sm border border-zinc-200 scale-100' : 'text-ivory/60 hover:bg-white/50 border border-transparent'}`}><Search className="w-3.5 h-3.5" /> Explore Catalog</button>
               <button onClick={() => setActiveControlTab('palette')} className={`px-4 py-2 font-display font-semibold uppercase tracking-widest text-[10px] rounded-lg transition-all flex items-center gap-2 shrink-0 ${activeControlTab === 'palette' ? 'bg-white text-gold shadow-sm border border-zinc-200 scale-100' : 'text-ivory/60 hover:bg-white/50 border border-transparent'}`}><Palette className="w-3.5 h-3.5" /> Palette & Save{combination.length > 0 && (<span className="bg-gold text-white text-[8px] px-1.5 py-0.5 rounded-full">{combination.length}</span>)}</button>
               <button onClick={() => setActiveControlTab('ai')} className={`px-4 py-2 font-display font-semibold uppercase tracking-widest text-[10px] rounded-lg transition-all flex items-center gap-2 shrink-0 ${activeControlTab === 'ai' ? 'bg-white text-gold shadow-sm border border-zinc-200 scale-100' : 'text-ivory/60 hover:bg-white/50 border border-transparent'}`}><Sparkles className="w-3.5 h-3.5" /> AI Magic & Match</button>
             </div>
-            <div className="flex flex-col relative w-full h-[600px] overflow-y-auto custom-scrollbar">
+            <div className="flex flex-col relative w-full h-[600px] lg:h-[750px] overflow-y-auto custom-scrollbar">
               {activeControlTab === 'palette' && (
                 <div className="flex flex-col animate-in fade-in duration-300">
 
@@ -1716,7 +1716,17 @@ export default function VisualizerSection() {
                                   <div className="min-w-0">
                                     <span className="text-[8px] font-display font-medium uppercase tracking-widest text-[#cca564] block leading-none mb-1">SELECTED CUSTOM HEX</span>
                                     <div className="flex items-center gap-2">
-                                      <span className="font-mono text-xs font-bold text-ivory uppercase tracking-wide leading-none">{customColorMatch}</span>
+                                      <input
+                                        type="text"
+                                        value={customColorMatch}
+                                        onChange={(e) => {
+                                          let val = e.target.value;
+                                          if (!val.startsWith('#') && val.length > 0) val = '#' + val;
+                                          setCustomColorMatch(val.slice(0, 7));
+                                        }}
+                                        className="font-mono text-xs font-bold text-ivory uppercase tracking-wide leading-none bg-transparent border-b border-ivory/30 focus:border-gold outline-none w-[70px] pb-0.5"
+                                        maxLength={7}
+                                      />
                                       <button
                                         type="button"
                                         onClick={() => colorInputRef.current?.click()}
@@ -2209,7 +2219,7 @@ export default function VisualizerSection() {
               </div>
 
               <div className="flex-grow pb-4 relative overflow-y-auto custom-scrollbar" ref={scrollContainerRef}>
-                <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 gap-1.5 sm:gap-2.5 content-start">
+                <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-2.5 content-start">
                   {shades.slice(0, visibleCount).map((shade) => (
                     <div key={shade.id} className="aspect-[3/4] sm:aspect-[4/5] md:aspect-[3/4] lg:aspect-[4/5]">
                       <ShadeCard 
