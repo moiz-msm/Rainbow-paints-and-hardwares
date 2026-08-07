@@ -783,7 +783,7 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
       return {
         "@type": "Offer",
         "name": `${targetProduct.name} - ${sizeVal}${unitSymbol} Pack`,
-        "sku": `RP-${targetProduct.id || '1'}-${sizeVal}${unitSymbol}`,
+        "sku": `RP-PG-${targetProduct.id || '1'}_rp-${targetProduct.id || '1'}-${String(sizeVal).toLowerCase()}${unitSymbol.toLowerCase()}`,
         "mpn": `MPN-${targetProduct.id || '1'}-${sizeVal}${unitSymbol}`,
         "price": String(vPrice),
         "priceCurrency": "INR",
@@ -839,9 +839,10 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
       const offer = variationOffers[idx];
       return {
         "@type": "Product",
-        "sku": `RP-${targetProduct.id || '1'}-${sizeVal}${unitSymbol}`,
+        "sku": `RP-PG-${targetProduct.id || '1'}_rp-${targetProduct.id || '1'}-${String(sizeVal).toLowerCase()}${unitSymbol.toLowerCase()}`,
         "mpn": `MPN-${targetProduct.id || '1'}-${sizeVal}${unitSymbol}`,
-        "name": targetProduct.name,
+        "name": `${targetProduct.name} - ${sizeVal}${unitSymbol} Pack`,
+        "url": `${productUrl}?size=${sizeVal}`,
         "image": [absImage],
         "size": `${sizeVal} ${unitSymbol}`,
         "description": baseSchema.description,
