@@ -758,8 +758,8 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
         },
         "transitTime": {
           "@type": "QuantitativeValue",
-          "minValue": 1,
-          "maxValue": 3,
+          "minValue": 0,
+          "maxValue": 1,
           "unitCode": "DAY"
         }
       }
@@ -787,6 +787,16 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
         "mpn": `MPN-${targetProduct.id || '1'}-${sizeVal}${unitSymbol}`,
         "price": String(vPrice),
         "priceCurrency": "INR",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": String(vPrice),
+          "priceCurrency": "INR",
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": "1",
+            "unitCode": "C62"
+          }
+        },
         "priceValidUntil": "2027-12-31",
         "validFrom": "2025-01-01T00:00:00.000Z",
         "itemCondition": "https://schema.org/NewCondition",
@@ -844,7 +854,6 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
         "name": `${targetProduct.name} - ${sizeVal}${unitSymbol} Pack`,
         "url": `${productUrl}?size=${sizeVal}`,
         "image": [absImage],
-        "size": `${sizeVal} ${unitSymbol}`,
         "description": baseSchema.description,
         "brand": baseSchema.brand,
         "category": baseSchema.category,
@@ -858,24 +867,22 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
       const allPrices = variationOffers.map((o: any) => Number(o.price));
       return {
         ...baseSchema,
-        "@type": "ProductGroup",
-        "productGroupID": `RP-PG-${targetProduct.id || '1'}`,
-        "variesBy": ["https://schema.org/size"],
-        "hasVariant": variants,
+        "@type": "Product",
+        "sku": `RP-PROD-${targetProduct.id || '1'}`,
         "offers": {
           "@type": "AggregateOffer",
           "offerCount": sizes.length,
           "lowPrice": String(Math.min(...allPrices)),
           "highPrice": String(Math.max(...allPrices)),
-          "priceCurrency": "INR"
+          "priceCurrency": "INR",
+          "offers": variationOffers
         }
       };
     } else {
       return {
         ...baseSchema,
         "@type": "Product",
-        "sku": `RP-${targetProduct.id || '1'}-${sizes[0] || 1}${unitSymbol}`,
-        "mpn": `MPN-${targetProduct.id || '1'}`,
+        "sku": `RP-PROD-${targetProduct.id || '1'}`,
         "offers": variationOffers[0]
       };
     }

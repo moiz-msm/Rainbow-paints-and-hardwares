@@ -101,22 +101,51 @@ function generateFeed() {
     <title>Rainbow Paints Coimbatore</title>
     <link>${APP_URL}</link>
     <description>Premium architectural paints, industrial coatings, and hardware</description>
-${mockProducts.map((p: any) => {
+${mockProducts.flatMap((p: any) => {
   const slug = p.slug || p.name.replace(/\s+/g, '-').toLowerCase();
-  const pUrl = `${APP_URL}/p/${slug}`;
-  const price = p.basePrice || p.sizes?.[0]?.price || 0;
-  return `    <item>
-      <g:id>${p.id}</g:id>
-      <g:title>${(p.name || '').replace(/&/g, '&amp;')}</g:title>
+  
+  const parsePrice = (priceVal: any) => {
+    if (typeof priceVal === 'number') return priceVal;
+    if (typeof priceVal === 'string') return parseFloat(priceVal.replace(/[^0-9.]/g, '')) || 850;
+    return 850;
+  };
+  const basePrice = p.price ? parsePrice(p.price) : 850;
+  const sizes = p.sizes || [1, 4, 10, 20];
+  const unitSymbol = p.unit || 'L';
+
+  return sizes.map((sizeVal: number) => {
+    let sizeDiscount = 1;
+    if (unitSymbol === 'kg') {
+      if (sizeVal === 5) sizeDiscount = 0.94;
+      if (sizeVal === 20) sizeDiscount = 0.53;
+      if (sizeVal === 25) sizeDiscount = 0.8;
+      if (sizeVal === 40) sizeDiscount = 0.472;
+      if (sizeVal === 50) sizeDiscount = 0.628;
+    } else {
+      if (sizeVal === 4) sizeDiscount = 0.96;
+      if (sizeVal === 10) sizeDiscount = 0.92;
+      if (sizeVal === 20) sizeDiscount = 0.88;
+    }
+    const vPrice = Math.round(basePrice * sizeVal * sizeDiscount);
+    const pUrl = `${APP_URL}/p/${slug}?size=${sizeVal}`;
+    const variantId = `RP-PG-${p.id || '1'}_rp-${p.id || '1'}-${String(sizeVal).toLowerCase()}${unitSymbol.toLowerCase()}`;
+    const groupId = `RP-PG-${p.id || '1'}`;
+    const title = `${p.name} - ${sizeVal}${unitSymbol} Pack`;
+    
+    return `    <item>
+      <g:id>${variantId}</g:id>
+      <g:item_group_id>${groupId}</g:item_group_id>
+      <g:title>${(title || '').replace(/&/g, '&amp;')}</g:title>
       <g:description>${(p.name || '').replace(/&/g, '&amp;')} by ${(p.brand || '').replace(/&/g, '&amp;')} - ${(p.category || '').replace(/&/g, '&amp;')} &gt; ${(p.subCategory || '').replace(/&/g, '&amp;')}</g:description>
       <g:link>${pUrl.replace(/&/g, '&amp;')}</g:link>
       <g:image_link>${p.image ? (p.image.startsWith('http') ? p.image : APP_URL + p.image) : ''}</g:image_link>
       <g:condition>new</g:condition>
-      <g:availability>${p.inStock ? 'in_stock' : 'out_of_stock'}</g:availability>
-      <g:price>${price} INR</g:price>
+      <g:availability>${p.inStock !== false ? 'in_stock' : 'out_of_stock'}</g:availability>
+      <g:price>${vPrice}.00 INR</g:price>
       <g:brand>${(p.brand || '').replace(/&/g, '&amp;')}</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
     </item>`;
+  });
 }).join('\n')}
   </channel>
 </rss>`;

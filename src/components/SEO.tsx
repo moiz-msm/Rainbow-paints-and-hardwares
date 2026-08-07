@@ -220,8 +220,8 @@ export default function SEO({
                 },
                 "transitTime": {
                   "@type": "QuantitativeValue",
-                  "minValue": 1,
-                  "maxValue": 3,
+                  "minValue": 0,
+                  "maxValue": 1,
                   "unitCode": "DAY"
                 }
               }
