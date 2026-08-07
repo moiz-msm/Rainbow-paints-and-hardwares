@@ -748,11 +748,13 @@ const ProductCard = memo(({ product }: { product: any }) => {
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
-        onClick={() =>
-          navigate(`/p/${product.name.replace(/\s+/g, "-").toLowerCase()}`)
-        }
-        className="group relative rounded-2xl bg-white border border-zinc-200 overflow-hidden flex flex-col transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-zinc-300 hover:-translate-y-1 cursor-pointer h-full"
+        className="group relative rounded-2xl bg-white border border-zinc-200 overflow-hidden flex flex-col transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-zinc-300 hover:-translate-y-1 h-full"
       >
+        <Link 
+          to={`/p/${product.slug || product.name.replace(/\s+/g, "-").toLowerCase()}`}
+          className="absolute inset-0 z-10"
+          title={`${product.name} - Buy online`}
+        />
         {product.popular && (
           <div className="absolute top-0 left-0 z-20">
             <span className="bg-gradient-gold text-white text-[8px] font-bold px-1.5 py-0.5 rounded-br-lg shadow-sm uppercase tracking-widest inline-block">
@@ -820,21 +822,20 @@ const ProductCard = memo(({ product }: { product: any }) => {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-2 mt-auto">
-              <button
+            <div className="grid grid-cols-2 gap-2 mt-auto relative z-20">
+              <Link
+                to={`/p/${product.slug || product.name.replace(/\s+/g, "-").toLowerCase()}`}
                 onClick={(e) => {
                   e.stopPropagation();
-                  navigate(
-                    `/p/${product.name.replace(/\s+/g, "-").toLowerCase()}`,
-                  );
                 }}
-                className="py-1.5 sm:py-2.5 rounded-lg text-[10px] sm:text-xs font-bold text-ivory/60 bg-zinc-100 hover:bg-zinc-200 hover:text-ivory transition-colors uppercase tracking-widest text-center"
+                className="flex items-center justify-center py-1.5 sm:py-2.5 rounded-lg text-[10px] sm:text-xs font-bold text-ivory/60 bg-zinc-100 hover:bg-zinc-200 hover:text-ivory transition-colors uppercase tracking-widest text-center"
               >
                 Details
-              </button>
+              </Link>
               <button
                 onClick={(e) => {
                   e.stopPropagation();
+                  e.preventDefault();
                   setShowAddModal(true);
                 }}
                 className="flex items-center justify-center gap-1.5 py-1.5 sm:py-2.5 rounded-lg text-[10px] sm:text-xs font-bold text-white bg-gradient-gold hover:opacity-90 transition-all shadow-sm shadow-gold/20 uppercase tracking-widest text-center"
