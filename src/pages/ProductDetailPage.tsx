@@ -753,13 +753,13 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
         "handlingTime": {
           "@type": "QuantitativeValue",
           "minValue": 0,
-          "maxValue": 0,
+          "maxValue": 1,
           "unitCode": "DAY"
         },
         "transitTime": {
           "@type": "QuantitativeValue",
-          "minValue": 0,
-          "maxValue": 0,
+          "minValue": 1,
+          "maxValue": 3,
           "unitCode": "DAY"
         }
       }
@@ -785,15 +785,15 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
         "name": `${targetProduct.name} - ${sizeVal}${unitSymbol} Pack`,
         "sku": `RP-PG-${targetProduct.id || '1'}_rp-${targetProduct.id || '1'}-${String(sizeVal).toLowerCase()}${unitSymbol.toLowerCase()}`,
         "mpn": `MPN-${targetProduct.id || '1'}-${sizeVal}${unitSymbol}`,
-        "price": vPrice,
+        "price": String(vPrice),
         "priceCurrency": "INR",
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
-          "price": vPrice,
+          "price": String(vPrice),
           "priceCurrency": "INR",
           "referenceQuantity": {
             "@type": "QuantitativeValue",
-            "value": 1,
+            "value": "1",
             "unitCode": "C62"
           }
         },
@@ -820,11 +820,11 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
       "category": targetProduct.subCategory || targetProduct.topCategory || "Home Paint",
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": 4.8,
-        "bestRating": 5,
-        "worstRating": 1,
-        "ratingCount": 124,
-        "reviewCount": 124
+        "ratingValue": "4.8",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "124",
+        "reviewCount": "124"
       },
       "review": [
         {
@@ -833,9 +833,9 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
           "reviewBody": `Genuine factory product ${targetProduct.name} with fast delivery and high quality finish.`,
           "reviewRating": {
             "@type": "Rating",
-            "ratingValue": 5,
-            "bestRating": 5,
-            "worstRating": 1
+            "ratingValue": "5",
+            "bestRating": "5",
+            "worstRating": "1"
           },
           "author": {
             "@type": "Person",
@@ -864,25 +864,27 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
     });
 
     if (sizes.length > 1) {
-      const allPrices = variationOffers.map((o: any) => o.price);
+      const allPrices = variationOffers.map((o: any) => Number(o.price));
       return {
         ...baseSchema,
-        "@type": "Product",
-        "sku": `RP-PROD-${targetProduct.id || '1'}`,
+        "@type": "ProductGroup",
+        "productGroupID": `RP-PG-${targetProduct.id || '1'}`,
+        "variesBy": ["https://schema.org/size"],
+        "hasVariant": variants,
         "offers": {
           "@type": "AggregateOffer",
           "offerCount": sizes.length,
-          "lowPrice": Math.min(...allPrices),
-          "highPrice": Math.max(...allPrices),
-          "priceCurrency": "INR",
-          "offers": variationOffers
+          "lowPrice": String(Math.min(...allPrices)),
+          "highPrice": String(Math.max(...allPrices)),
+          "priceCurrency": "INR"
         }
       };
     } else {
       return {
         ...baseSchema,
         "@type": "Product",
-        "sku": `RP-PROD-${targetProduct.id || '1'}`,
+        "sku": `RP-${targetProduct.id || '1'}-${sizes[0] || 1}${unitSymbol}`,
+        "mpn": `MPN-${targetProduct.id || '1'}`,
         "offers": variationOffers[0]
       };
     }
@@ -1209,7 +1211,7 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
                 {[
                   { icon: ShieldCheck, line1: "Authorized", line2: "distributors", sub: "for featured products" },
                   { icon: Tags, line1: "Same Price", line2: "as In-Store", sub: "no online extra charge" },
-                  { icon: Truck, line1: "Same-Day", line2: "delivery", sub: "express local shipping" },
+                  { icon: Truck, line1: "Doorstep", line2: "delivery", sub: "skip the trip, we deliver" },
                   { icon: Award, line1: "20+ yrs", line2: "trusted", sub: "msme/gst certified" }
                 ].map((item, idx) => {
                   const Icon = item.icon;
