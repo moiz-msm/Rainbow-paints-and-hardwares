@@ -787,16 +787,6 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
         "mpn": `MPN-${targetProduct.id || '1'}-${sizeVal}${unitSymbol}`,
         "price": String(vPrice),
         "priceCurrency": "INR",
-        "priceSpecification": {
-          "@type": "UnitPriceSpecification",
-          "price": String(vPrice),
-          "priceCurrency": "INR",
-          "referenceQuantity": {
-            "@type": "QuantitativeValue",
-            "value": "1",
-            "unitCode": "C62"
-          }
-        },
         "priceValidUntil": "2027-12-31",
         "validFrom": "2025-01-01T00:00:00.000Z",
         "itemCondition": "https://schema.org/NewCondition",
@@ -854,6 +844,7 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
         "name": `${targetProduct.name} - ${sizeVal}${unitSymbol} Pack`,
         "url": `${productUrl}?size=${sizeVal}`,
         "image": [absImage],
+        "size": `${sizeVal} ${unitSymbol}`,
         "description": baseSchema.description,
         "brand": baseSchema.brand,
         "category": baseSchema.category,
