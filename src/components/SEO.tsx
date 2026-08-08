@@ -67,7 +67,7 @@ export const globalLocalStoreSchema = {
   ],
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "4.8",
+    "ratingValue": 4.8,
     "reviewCount": "284"
   },
   "openingHoursSpecification": [
@@ -162,15 +162,15 @@ export default function SEO({
           "sku": "RP-PROD-GENERIC",
           "aggregateRating": {
             "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "bestRating": "5",
-            "worstRating": "1",
-            "ratingCount": "124",
-            "reviewCount": "124"
+            "ratingValue": 4.8,
+            "bestRating": 5,
+            "worstRating": 1,
+            "ratingCount": 124,
+            "reviewCount": 124
           },
           "offers": {
             "@type": "Offer",
-            "price": String(safePrice),
+            "price": safePrice,
             "priceCurrency": productCurrency || "INR",
             "priceValidUntil": "2027-12-31",
             "validFrom": "2025-01-01T00:00:00.000Z",
@@ -215,13 +215,13 @@ export default function SEO({
                 "handlingTime": {
                   "@type": "QuantitativeValue",
                   "minValue": 0,
-                  "maxValue": 1,
+                  "maxValue": 0,
                   "unitCode": "DAY"
                 },
                 "transitTime": {
                   "@type": "QuantitativeValue",
                   "minValue": 0,
-                  "maxValue": 1,
+                  "maxValue": 0,
                   "unitCode": "DAY"
                 }
               }
@@ -234,9 +234,9 @@ export default function SEO({
               "reviewBody": "Genuine factory paint product with high durability and fast delivery in Coimbatore.",
               "reviewRating": {
                 "@type": "Rating",
-                "ratingValue": "5",
-                "bestRating": "5",
-                "worstRating": "1"
+                "ratingValue": 5,
+                "bestRating": 5,
+                "worstRating": 1
               },
               "author": {
                 "@type": "Person",
