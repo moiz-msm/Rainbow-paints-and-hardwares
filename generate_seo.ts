@@ -116,6 +116,14 @@ ${mockProducts.map((p: any) => {
       <g:price>${price} INR</g:price>
       <g:brand>${(p.brand || '').replace(/&/g, '&amp;')}</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>`;
 }).join('\n')}
   </channel>

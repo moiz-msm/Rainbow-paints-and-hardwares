@@ -15,6 +15,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>1003</g:id>
@@ -27,6 +35,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>1004</g:id>
@@ -39,6 +55,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>1005</g:id>
@@ -51,6 +75,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>1006</g:id>
@@ -63,6 +95,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>1007</g:id>
@@ -75,6 +115,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>1008</g:id>
@@ -87,6 +135,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>1009</g:id>
@@ -99,6 +155,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>1001</g:id>
@@ -111,6 +175,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>10</g:id>
@@ -123,6 +195,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>100</g:id>
@@ -135,6 +215,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>58</g:id>
@@ -147,6 +235,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>57</g:id>
@@ -159,6 +255,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>11</g:id>
@@ -171,6 +275,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>47</g:id>
@@ -183,6 +295,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>59</g:id>
@@ -195,6 +315,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>233</g:id>
@@ -207,6 +335,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>61</g:id>
@@ -219,6 +355,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>54</g:id>
@@ -231,6 +375,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>55</g:id>
@@ -243,6 +395,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>12</g:id>
@@ -255,6 +415,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>62</g:id>
@@ -267,6 +435,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>63</g:id>
@@ -279,6 +455,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>65</g:id>
@@ -291,6 +475,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>64</g:id>
@@ -303,6 +495,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>49</g:id>
@@ -315,6 +515,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>36</g:id>
@@ -327,6 +535,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>56</g:id>
@@ -339,6 +555,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>610</g:id>
@@ -351,6 +575,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>66</g:id>
@@ -363,6 +595,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>46</g:id>
@@ -375,6 +615,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>196</g:id>
@@ -387,6 +635,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>33</g:id>
@@ -399,6 +655,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>67</g:id>
@@ -411,6 +675,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>68</g:id>
@@ -423,6 +695,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>107</g:id>
@@ -435,6 +715,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>69</g:id>
@@ -447,6 +735,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>70</g:id>
@@ -459,6 +755,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>71</g:id>
@@ -471,6 +775,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>72</g:id>
@@ -483,6 +795,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>73</g:id>
@@ -495,6 +815,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>74</g:id>
@@ -507,6 +835,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>75</g:id>
@@ -519,6 +855,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>76</g:id>
@@ -531,6 +875,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>77</g:id>
@@ -543,6 +895,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>45</g:id>
@@ -555,6 +915,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>78</g:id>
@@ -567,6 +935,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>79</g:id>
@@ -579,6 +955,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>80</g:id>
@@ -591,6 +975,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>81</g:id>
@@ -603,6 +995,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>82</g:id>
@@ -615,6 +1015,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>83</g:id>
@@ -627,6 +1035,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>84</g:id>
@@ -639,6 +1055,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>85</g:id>
@@ -651,6 +1075,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>86</g:id>
@@ -663,6 +1095,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Dr. Fixit</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>1</g:id>
@@ -675,6 +1115,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3</g:id>
@@ -687,6 +1135,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5</g:id>
@@ -699,6 +1155,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>6</g:id>
@@ -711,6 +1175,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>7</g:id>
@@ -723,6 +1195,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>50</g:id>
@@ -735,6 +1215,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>51</g:id>
@@ -747,6 +1235,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>52</g:id>
@@ -759,6 +1255,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>53</g:id>
@@ -771,6 +1275,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>14</g:id>
@@ -783,6 +1295,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>60</g:id>
@@ -795,6 +1315,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>17</g:id>
@@ -807,6 +1335,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>21</g:id>
@@ -819,6 +1355,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>24</g:id>
@@ -831,6 +1375,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>26</g:id>
@@ -843,6 +1395,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>27</g:id>
@@ -855,6 +1415,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>29</g:id>
@@ -867,6 +1435,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>30</g:id>
@@ -879,6 +1455,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>31</g:id>
@@ -891,6 +1475,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>32</g:id>
@@ -903,6 +1495,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>35</g:id>
@@ -915,6 +1515,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>37</g:id>
@@ -927,6 +1535,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>38</g:id>
@@ -939,6 +1555,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>39</g:id>
@@ -951,6 +1575,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Asian Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>40</g:id>
@@ -963,6 +1595,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>41</g:id>
@@ -975,6 +1615,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>43</g:id>
@@ -987,6 +1635,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>1044</g:id>
@@ -999,6 +1655,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Birla White</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>1045</g:id>
@@ -1011,6 +1675,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Birla White</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>2001</g:id>
@@ -1023,6 +1695,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Just Spray</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>2002</g:id>
@@ -1035,6 +1715,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Just Spray</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>2003</g:id>
@@ -1047,6 +1735,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Just Spray</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3001</g:id>
@@ -1059,6 +1755,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Local</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3002</g:id>
@@ -1071,6 +1775,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Local</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3003</g:id>
@@ -1083,6 +1795,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Sheenlac</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3004</g:id>
@@ -1095,6 +1815,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Sheenlac</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3005</g:id>
@@ -1107,6 +1835,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Sheenlac</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3006</g:id>
@@ -1119,6 +1855,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Sheenlac</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3007</g:id>
@@ -1131,6 +1875,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Sheenlac</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3010</g:id>
@@ -1143,6 +1895,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Sheenlac</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3008</g:id>
@@ -1155,6 +1915,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Local</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3009</g:id>
@@ -1167,6 +1935,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Ajax</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3010</g:id>
@@ -1179,6 +1955,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Ajax</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3011</g:id>
@@ -1191,6 +1975,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Ajax</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3012</g:id>
@@ -1203,6 +1995,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Ajax</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3013</g:id>
@@ -1215,6 +2015,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Local</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3014</g:id>
@@ -1227,6 +2035,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Jaya</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3015</g:id>
@@ -1239,6 +2055,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Bawa</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3016</g:id>
@@ -1251,6 +2075,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Bawa</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3017</g:id>
@@ -1263,6 +2095,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Bawa</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3018</g:id>
@@ -1275,6 +2115,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Bawa</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3019</g:id>
@@ -1287,6 +2135,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Local</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3020</g:id>
@@ -1299,6 +2155,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Local</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3021</g:id>
@@ -1311,6 +2175,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Local</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3022</g:id>
@@ -1323,6 +2195,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Local</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3023</g:id>
@@ -1335,6 +2215,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Local</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3024</g:id>
@@ -1347,6 +2235,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Local</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3025</g:id>
@@ -1359,6 +2255,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Local</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3026</g:id>
@@ -1371,6 +2275,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Local</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3027</g:id>
@@ -1383,6 +2295,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Gorila</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3028</g:id>
@@ -1395,6 +2315,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Local</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>3029</g:id>
@@ -1407,6 +2335,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Local</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4008</g:id>
@@ -1419,6 +2355,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4009</g:id>
@@ -1431,6 +2375,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4010</g:id>
@@ -1443,6 +2395,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4012</g:id>
@@ -1455,6 +2415,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4014</g:id>
@@ -1467,6 +2435,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4015</g:id>
@@ -1479,6 +2455,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4016</g:id>
@@ -1491,6 +2475,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4017</g:id>
@@ -1503,6 +2495,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4018</g:id>
@@ -1515,6 +2515,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4019</g:id>
@@ -1527,6 +2535,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4020</g:id>
@@ -1539,6 +2555,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4021</g:id>
@@ -1551,6 +2575,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4022</g:id>
@@ -1563,6 +2595,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4023</g:id>
@@ -1575,6 +2615,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4024</g:id>
@@ -1587,6 +2635,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4025</g:id>
@@ -1599,6 +2655,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4026</g:id>
@@ -1611,6 +2675,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4027</g:id>
@@ -1623,6 +2695,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4028</g:id>
@@ -1635,6 +2715,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4029</g:id>
@@ -1647,6 +2735,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4030</g:id>
@@ -1659,6 +2755,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4031</g:id>
@@ -1671,6 +2775,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4032</g:id>
@@ -1683,6 +2795,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4033</g:id>
@@ -1695,6 +2815,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4034</g:id>
@@ -1707,6 +2835,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4035</g:id>
@@ -1719,6 +2855,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4036</g:id>
@@ -1731,6 +2875,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4037</g:id>
@@ -1743,6 +2895,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4038</g:id>
@@ -1755,6 +2915,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4039</g:id>
@@ -1767,6 +2935,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4040</g:id>
@@ -1779,6 +2955,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4041</g:id>
@@ -1791,6 +2975,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4042</g:id>
@@ -1803,6 +2995,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4043</g:id>
@@ -1815,6 +3015,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4044</g:id>
@@ -1827,6 +3035,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>4045</g:id>
@@ -1839,6 +3055,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5001</g:id>
@@ -1851,6 +3075,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5002</g:id>
@@ -1863,6 +3095,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5003</g:id>
@@ -1875,6 +3115,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5004</g:id>
@@ -1887,6 +3135,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5005</g:id>
@@ -1899,6 +3155,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5006</g:id>
@@ -1911,6 +3175,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5035</g:id>
@@ -1923,6 +3195,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5036</g:id>
@@ -1935,6 +3215,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5037</g:id>
@@ -1947,6 +3235,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5038</g:id>
@@ -1959,6 +3255,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5039</g:id>
@@ -1971,6 +3275,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5040</g:id>
@@ -1983,6 +3295,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5041</g:id>
@@ -1995,6 +3315,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5042</g:id>
@@ -2007,6 +3335,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5043</g:id>
@@ -2019,6 +3355,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5044</g:id>
@@ -2031,6 +3375,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5045</g:id>
@@ -2043,6 +3395,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5046</g:id>
@@ -2055,6 +3415,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5047</g:id>
@@ -2067,6 +3435,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5048</g:id>
@@ -2079,6 +3455,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5049</g:id>
@@ -2091,6 +3475,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5050</g:id>
@@ -2103,6 +3495,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5051</g:id>
@@ -2115,6 +3515,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5052</g:id>
@@ -2127,6 +3535,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5053</g:id>
@@ -2139,6 +3555,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5054</g:id>
@@ -2151,6 +3575,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5055</g:id>
@@ -2163,6 +3595,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5056</g:id>
@@ -2175,6 +3615,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5057</g:id>
@@ -2187,6 +3635,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5058</g:id>
@@ -2199,6 +3655,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5059</g:id>
@@ -2211,6 +3675,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5060</g:id>
@@ -2223,6 +3695,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5061</g:id>
@@ -2235,6 +3715,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5062</g:id>
@@ -2247,6 +3735,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5063</g:id>
@@ -2259,6 +3755,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5064</g:id>
@@ -2271,6 +3775,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5065</g:id>
@@ -2283,6 +3795,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5066</g:id>
@@ -2295,6 +3815,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5067</g:id>
@@ -2307,6 +3835,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5068</g:id>
@@ -2319,6 +3855,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5069</g:id>
@@ -2331,6 +3875,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5070</g:id>
@@ -2343,6 +3895,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5071</g:id>
@@ -2355,6 +3915,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5072</g:id>
@@ -2367,6 +3935,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5073</g:id>
@@ -2379,6 +3955,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5074</g:id>
@@ -2391,6 +3975,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5075</g:id>
@@ -2403,6 +3995,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5076</g:id>
@@ -2415,6 +4015,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5077</g:id>
@@ -2427,6 +4035,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5078</g:id>
@@ -2439,6 +4055,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5079</g:id>
@@ -2451,6 +4075,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5080</g:id>
@@ -2463,6 +4095,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5081</g:id>
@@ -2475,6 +4115,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5082</g:id>
@@ -2487,6 +4135,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5083</g:id>
@@ -2499,6 +4155,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5084</g:id>
@@ -2511,6 +4175,14 @@
       <g:price>0 INR</g:price>
       <g:brand>Berger Paints</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5007</g:id>
@@ -2523,6 +4195,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5008</g:id>
@@ -2535,6 +4215,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5009</g:id>
@@ -2547,6 +4235,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5010</g:id>
@@ -2559,6 +4255,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5011</g:id>
@@ -2571,6 +4275,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5012</g:id>
@@ -2583,6 +4295,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5013</g:id>
@@ -2595,6 +4315,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5014</g:id>
@@ -2607,6 +4335,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5015</g:id>
@@ -2619,6 +4355,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5016</g:id>
@@ -2631,6 +4375,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
     <item>
       <g:id>5017</g:id>
@@ -2643,6 +4395,14 @@
       <g:price>0 INR</g:price>
       <g:brand>MRF Vapocure</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>150 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
     </item>
   </channel>
 </rss>

@@ -215,13 +215,13 @@ export default function SEO({
                 "handlingTime": {
                   "@type": "QuantitativeValue",
                   "minValue": 0,
-                  "maxValue": 1,
+                  "maxValue": 0,
                   "unitCode": "DAY"
                 },
                 "transitTime": {
                   "@type": "QuantitativeValue",
-                  "minValue": 1,
-                  "maxValue": 3,
+                  "minValue": 0,
+                  "maxValue": 0,
                   "unitCode": "DAY"
                 }
               }

@@ -753,13 +753,13 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
         "handlingTime": {
           "@type": "QuantitativeValue",
           "minValue": 0,
-          "maxValue": 1,
+          "maxValue": 0,
           "unitCode": "DAY"
         },
         "transitTime": {
           "@type": "QuantitativeValue",
-          "minValue": 1,
-          "maxValue": 3,
+          "minValue": 0,
+          "maxValue": 0,
           "unitCode": "DAY"
         }
       }
@@ -858,17 +858,10 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
       const allPrices = variationOffers.map((o: any) => Number(o.price));
       return {
         ...baseSchema,
-        "@type": "ProductGroup",
-        "productGroupID": `RP-PG-${targetProduct.id || '1'}`,
-        "variesBy": ["https://schema.org/size"],
-        "hasVariant": variants,
-        "offers": {
-          "@type": "AggregateOffer",
-          "offerCount": sizes.length,
-          "lowPrice": String(Math.min(...allPrices)),
-          "highPrice": String(Math.max(...allPrices)),
-          "priceCurrency": "INR"
-        }
+        "@type": "Product",
+        "sku": `RP-PG-${targetProduct.id || '1'}`,
+        "mpn": `MPN-${targetProduct.id || '1'}`,
+        "offers": variationOffers
       };
     } else {
       return {
