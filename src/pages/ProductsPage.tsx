@@ -83,6 +83,20 @@ export default function ProductsPage() {
     };
   }, [pageTitle, pageDescription, categorySlug, brandSlug]);
 
+  
+  const breadcrumbSchema = useMemo(() => {
+    return {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": breadcrumbItems.map((item, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": item.label,
+        "item": item.href ? "https://www.rainbowpaint.in" + item.href : undefined
+      }))
+    };
+  }, [breadcrumbItems]);
+
   const breadcrumbItems = useMemo(() => {
     const items: { label: string; href?: string }[] = [{ label: 'Home', href: '/' }];
     
@@ -104,7 +118,7 @@ export default function ProductsPage() {
         title={`${pageTitle} | Buy Paints Online`}
         description={pageDescription}
         url={currentUrl}
-        schema={[collectionSchema, serviceSchema]}
+        schema={[collectionSchema, serviceSchema, breadcrumbSchema]}
         type="category"
       />
       

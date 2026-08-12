@@ -8,6 +8,7 @@ import LuxuryBackground from "../components/LuxuryBackground";
 import LazySection from "../components/LazySection";
 
 const ShopByCategory = lazy(() => import("../components/ShopByCategory"));
+const PaintingServicesOverview = lazy(() => import("../components/PaintingServicesOverview"));
 const ShopByBrand = lazy(() => import("../components/ShopByBrand"));
 const ProductsAndIndustrial = lazy(
   () => import("../components/ProductsAndIndustrial"),
@@ -213,6 +214,12 @@ export default function Home() {
       <LazySection className="py-1">
         <Suspense fallback={null}>
           <FadeInUp><ShopByCategory /></FadeInUp>
+        </Suspense>
+      </LazySection>
+
+      <LazySection className="py-1">
+        <Suspense fallback={null}>
+          <FadeInUp><PaintingServicesOverview /></FadeInUp>
         </Suspense>
       </LazySection>
 

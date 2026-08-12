@@ -14,7 +14,8 @@ function generateSitemap() {
     '/visualizer',
     '/calculator',
     '/compare-paints',
-    '/blog'
+    '/blog',
+    '/painting-services'
   ];
 
   // Add category routes
@@ -73,6 +74,7 @@ function generateSitemap() {
   ];
   neighborhoods.forEach(hood => {
     urls.push(`/store/${hood}`);
+    urls.push(`/painting-services/${hood}`);
   });
 
 
@@ -104,7 +106,12 @@ function generateFeed() {
 ${mockProducts.map((p: any) => {
   const slug = p.slug || p.name.replace(/\s+/g, '-').toLowerCase();
   const pUrl = `${APP_URL}/p/${slug}`;
-  const price = p.basePrice || p.sizes?.[0]?.price || 0;
+  const parsePrice = (priceStr: string | undefined): number => {
+    if (!priceStr) return 0;
+    const num = parseFloat(priceStr.replace(/[^0-9.]/g, ''));
+    return isNaN(num) ? 0 : num;
+  };
+  const price = p.basePrice || p.sizes?.[0]?.price || parsePrice(p.price) || 0;
   return `    <item>
       <g:id>${p.id}</g:id>
       <g:title>${(p.name || '').replace(/&/g, '&amp;')}</g:title>

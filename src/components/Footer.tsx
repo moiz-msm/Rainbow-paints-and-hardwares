@@ -117,6 +117,7 @@ export default function Footer() {
             <h3 className="text-gold font-display font-medium tracking-[0.15em] text-xs uppercase mb-6">Quick Links</h3>
             <ul className="space-y-3">
               <li><Link to="/about" className="text-sm font-light text-ivory/70 hover:text-gold transition-colors flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-gold/30"></span>About Us</Link></li>
+              <li><Link to="/painting-services" className="text-sm font-light text-ivory/70 hover:text-gold transition-colors flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-gold/30"></span>Painting Services</Link></li>
               <li><Link to="/buy-paint-online" className="text-sm font-light text-ivory/70 hover:text-gold transition-colors flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-gold/30"></span>Products</Link></li>
               <li><Link to="/visualizer" className="text-sm font-light text-ivory/70 hover:text-gold transition-colors flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-gold/30"></span>Colors & Visualizer</Link></li>
               <li><Link to="/calculator" className="text-sm font-light text-ivory/70 hover:text-gold transition-colors flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-gold/30"></span>Estimator</Link></li>

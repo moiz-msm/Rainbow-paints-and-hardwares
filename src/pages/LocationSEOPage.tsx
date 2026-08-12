@@ -207,7 +207,7 @@ export default function LocationSEOPage() {
             Authorized Asian Paints & Berger Dealer in Coimbatore
           </div>
           <h1 className="text-3xl sm:text-5xl font-bold font-serif text-ivory mb-4 leading-tight">
-            Premium Paint Store & Dealer in <span className="text-gold">{locationName}</span>
+            Paint Store & Dealer in <span className="text-gold">{locationName}</span>
           </h1>
           <p className="text-zinc-600 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto font-sans">
             Looking for an <strong className="text-ivory font-semibold">authorized paint shop near me in {locationName}</strong>? Rainbow Paints & Hardwares provides 100% genuine Asian Paints, Berger Paints, Dr. Fixit waterproofing, and MRF wood finishes with <strong className="text-ivory font-semibold">same-day local delivery</strong> across {locationName} and Coimbatore.

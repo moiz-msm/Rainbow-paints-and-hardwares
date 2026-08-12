@@ -44,6 +44,12 @@ const ShippingPolicyPage = lazy(() => import('./pages/ShippingPolicyPage'));
 const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
 const AccountSettingsPage = lazy(() => import('./pages/AccountSettingsPage'));
 const LocationSEOPage = lazy(() => import('./pages/LocationSEOPage'));
+const PaintingServiceSEOPage = lazy(() => import('./pages/PaintingServiceSEOPage'));
+const InteriorPaintingPage = lazy(() => import('./pages/InteriorPaintingPage'));
+const ExteriorPaintingPage = lazy(() => import('./pages/ExteriorPaintingPage'));
+const WaterproofingPage = lazy(() => import('./pages/WaterproofingPage'));
+const WoodPaintingPage = lazy(() => import('./pages/WoodPaintingPage'));
+const IndustrialFlooringPage = lazy(() => import('./pages/IndustrialFlooringPage'));
 const TrackOrderPage = lazy(() => import('./pages/TrackOrderPage'));
 const ComparePaintsPage = lazy(() => import('./pages/ComparePaintsPage'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
@@ -81,6 +87,18 @@ function AnimatedRoutes() {
         
         {/* Local SEO Routs */}
         <Route path="/store/:locationSlug" element={<LocationSEOPage />} />
+        <Route path="/painting-services" element={<PaintingServiceSEOPage />} />
+        <Route path="/painting-services/:locationSlug" element={<PaintingServiceSEOPage />} />
+        <Route path="/services/interior-wall-painting" element={<InteriorPaintingPage />} />
+        <Route path="/services/interior-wall-painting/:locationSlug" element={<InteriorPaintingPage />} />
+        <Route path="/services/exterior-wall-painting" element={<ExteriorPaintingPage />} />
+        <Route path="/services/exterior-wall-painting/:locationSlug" element={<ExteriorPaintingPage />} />
+        <Route path="/services/waterproofing" element={<WaterproofingPage />} />
+        <Route path="/services/waterproofing/:locationSlug" element={<WaterproofingPage />} />
+        <Route path="/services/wood-metal-painting" element={<WoodPaintingPage />} />
+        <Route path="/services/wood-metal-painting/:locationSlug" element={<WoodPaintingPage />} />
+        <Route path="/services/industrial-flooring" element={<IndustrialFlooringPage />} />
+        <Route path="/services/industrial-flooring/:locationSlug" element={<IndustrialFlooringPage />} />
         <Route path="/color/:brandSlug/:familySlug/:shadeSlug" element={<ColorDetailsPage />} />
         <Route path="/color/:shadeSlug" element={<ColorDetailsPage />} />
 

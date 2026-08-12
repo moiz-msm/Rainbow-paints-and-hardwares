@@ -4,7 +4,9 @@ export const subCategories: Record<string, string[]> = {
   "Home Paint": [
     "All Home Paint",
     "Interior Wall",
+    "Interior Texture",
     "Exterior Wall",
+    "Exterior Texture",
     "Undercoats",
     "Waterproofing",
     "Wood Finishes",
@@ -146,6 +148,223 @@ export const brandDetails: BrandDetail[] = [
 
 export const mockProducts = [
   {
+    "id": 1023,
+    "name": "Apex Ezytex",
+    "description": "Apex Ezytex is a modified acrylic, dolomite-based product used to create innovative trowel-based patterns for interior and exterior walls. It hides fine cracks and features an anti-algal formula.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Exterior Texture",
+    "price": "₹ 60.00",
+    "properties": [
+      "Dolomite Based",
+      "Innovative Patterns",
+      "Anti-Algal Formula"
+    ],
+    "sizes": [25],
+    "unit": "kg",
+    "popular": false,
+    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/Apex-ezytex-new-packshot.png"
+  },
+  {
+    "id": 1020,
+    "name": "Apex Createx Scratch Finish",
+    "description": "Apex Createx Scratch Finish is an intermediate texture coating that provides a unique scratched pattern. It offers superior adhesion and is designed to hide fine cracks and protect exterior walls.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Exterior Texture",
+    "price": "₹ 106.25",
+    "properties": [
+      "Scratched Pattern",
+      "Superior Adhesion",
+      "Hides Fine Cracks"
+    ],
+    "sizes": [25],
+    "unit": "kg",
+    "popular": false,
+    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/Apex-Createx-Sack.png"
+  },
+  {
+    "id": 1021,
+    "name": "Apex Createx Roller Finish",
+    "description": "Apex Createx Roller Finish is a high-quality exterior texture that creates a distinctive rolled pattern. It acts as an intermediate finish, offering excellent protection, hiding surface undulations, and ensuring long-lasting durability.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Exterior Texture",
+    "price": "₹ 179.25",
+    "properties": [
+      "Rolled Pattern",
+      "Hides Undulations",
+      "Long Lasting Durability"
+    ],
+    "sizes": [20],
+    "unit": "kg",
+    "popular": false,
+    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/Apex-Createx-Sack.png"
+  },
+  {
+    "id": 1022,
+    "name": "Apex Createx Dholpur",
+    "description": "Apex Createx Dholpur gives your exterior walls the timeless and premium look of Dholpur stone. It is a highly durable intermediate texture that masks fine cracks and provides excellent weather resistance.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Exterior Texture",
+    "price": "₹ 142.50",
+    "properties": [
+      "Premium Dholpur Look",
+      "Weather Resistance",
+      "Highly Durable"
+    ],
+    "sizes": [5, 25],
+    "unit": "kg",
+    "popular": false,
+    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/Apex-Createx-Sack.png"
+  },
+  {
+    "id": 1016,
+    "name": "Apex Duracast Swirl Tex",
+    "description": "A premium textured finish designed with a unique engraved swirl pattern. It provides style and strength, ensuring long-term protection for your exterior walls.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Exterior Texture",
+    "price": "₹ 55.00",
+    "properties": [
+      "Engraved Swirl Pattern",
+      "Superior Adhesion",
+      "Hides Fine Cracks"
+    ],
+    "sizes": [25],
+    "unit": "kg",
+    "popular": false,
+    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/Apex_Duracast_Swirltex.png"
+  },
+  {
+    "id": 1017,
+    "name": "Apex Duracast Cross Tex",
+    "description": "A high-performance silica-based acrylic texture that creates striking trowel-based cross patterns. It adds depth and dimension while protecting surfaces from harsh weather.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Exterior Texture",
+    "price": "₹ 55.00",
+    "properties": [
+      "Striking Trowel Patterns",
+      "Weather Resistant",
+      "High Durability"
+    ],
+    "sizes": [25],
+    "unit": "kg",
+    "popular": false,
+    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/Apex_Duracast_Crosstex.png"
+  },
+  {
+    "id": 1018,
+    "name": "Apex Duracast Dholpur Tex",
+    "description": "Inspired by classic Dholpur stone, this acrylic-modified resin texture delivers a rugged stone-brick brushing effect, elevating the architectural appeal of any building.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Exterior Texture",
+    "price": "₹ 67.25",
+    "properties": [
+      "Dholpur Stone Finish",
+      "Modified Acrylic Resin",
+      "Architectural Appeal"
+    ],
+    "sizes": [25],
+    "unit": "kg",
+    "popular": false,
+    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/Apex_Duracast_Dholpurtex.png"
+  },
+  {
+    "id": 1019,
+    "name": "Apex Duracast Fine Tex",
+    "description": "A modified acrylic, water-based exterior texture offering a subtle yet distinctive finish. It enhances topcoat adhesion and can be styled into Cane Weave, Honeycomb, or Ripple patterns.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Exterior Texture",
+    "price": "₹ 133.96",
+    "properties": [
+      "Subtle Fine Texture",
+      "Versatile Styling",
+      "Enhances Topcoat"
+    ],
+    "sizes": [5, 20],
+    "unit": "kg",
+    "popular": false,
+    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/Apex_Duracast_Finetex.png"
+  },
+  {
+    "id": 1011,
+    "name": "Royale Play Safari",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Wall",
+    "price": "₹ 365.00",
+    "properties": [
+      "Special Effects Paint",
+      "Metallic & Non-Metallic Tones",
+      "Desert Safari Inspired Finish"
+    ],
+    "sizes": [1, 5],
+    "popular": false,
+    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/royale-play-safari-packshot-asian-paints.png"
+  },
+  {
+    "id": 1012,
+    "name": "Apex Duracast Pebble Tex",
+    "description": "An acrylic, water-based texture finish that creates a unique bubble or headcut pattern via spray application. It combines aesthetic appeal with robust weather performance.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Exterior Texture",
+    "price": "₹ 50.67",
+    "properties": [
+      "Bubble/Headcut Pattern",
+      "Spray Application",
+      "Robust Performance"
+    ],
+    "sizes": [5, 30],
+    "unit": "kg",
+    "popular": false,
+    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/Apex_Duracast_Pebbletex.png"
+  },
+  
+  
+  
+  
+  
+  {
+    "id": 9009,
+    "name": "Royale Play Stucco",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Wall",
+    "price": "₹ 175.80",
+    "properties": [
+      "Marble-like Finish",
+      "Highly Durable",
+      "Special Effects Paint"
+    ],
+    "sizes": [1, 5],
+    "popular": false,
+    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/royale-play-stucco-packshot-asian-paints.png"
+  },
+  {
+    "id": 1010,
+    "name": "Apex Duracast Rough Tex",
+    "description": "Designed to give buildings a unique, bold look, Rough Tex withstands harsh weather conditions, offering long-lasting protection and character to exterior masonry.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Exterior Texture",
+    "price": "₹ 57.50",
+    "properties": [
+      "Bold Unique Look",
+      "Harsh Weather Protection",
+      "Long Lasting"
+    ],
+    "sizes": [25],
+    "unit": "kg",
+    "popular": false,
+    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/Roughtex-packshot.png"
+  },
+  {
     "id": 1002,
     "name": "Royale Glitz Reserve",
     "brand": "Asian Paints",
@@ -206,7 +425,7 @@ export const mockProducts = [
       20
     ],
     "popular": false,
-    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-apcolite-premium-emulsion-asian-paints.png"
+    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-apcolite-all-protek-matt-packshot-asian-paints.png"
   },
   {
     "id": 1005,
@@ -2038,7 +2257,7 @@ export const mockProducts = [
     "image": "https://images.unsplash.com/photo-1572224419992-698b6a3b2b8e?auto=format&fit=crop&q=80&w=600"
   },
   {
-    "id": 3010,
+    "id": 9010,
     "name": "Ajax Red Dry Emery Sandpaper",
     "brand": "Ajax",
     "topCategory": "Home Paint",
@@ -3719,7 +3938,7 @@ export const mockProducts = [
     "name": "GlamArt Italian Collection Diamond",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Texture",
     "price": "₹ 538.00",
     "sizes": [
       1,
@@ -3741,7 +3960,7 @@ export const mockProducts = [
     "name": "GlamArt Italian Collection Velluto",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Texture",
     "price": "₹ 365.00",
     "sizes": [
       1,
@@ -3763,7 +3982,7 @@ export const mockProducts = [
     "name": "GlamArt Italian Collection Panama",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Texture",
     "price": "₹ 383.00",
     "sizes": [
       1,
@@ -3785,7 +4004,7 @@ export const mockProducts = [
     "name": "GlamArt Italian Collection Decorative Primer",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Texture",
     "price": "₹ 516.00",
     "sizes": [
       1,
@@ -3807,7 +4026,7 @@ export const mockProducts = [
     "name": "GlamArt Italian Collection Soffio",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Texture",
     "price": "₹ 490.00",
     "sizes": [
       1,
@@ -3829,7 +4048,7 @@ export const mockProducts = [
     "name": "GlamArt Italian Collection Damasco",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Texture",
     "price": "₹ 436.00",
     "sizes": [
       1,
@@ -3851,7 +4070,7 @@ export const mockProducts = [
     "name": "Silk Glamart Metallica",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Texture",
     "price": "₹ 450.00",
     "sizes": [
       1,
@@ -3873,7 +4092,7 @@ export const mockProducts = [
     "name": "Silk GlamArt Non Metallic",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Texture",
     "price": "₹ 542.00",
     "sizes": [
       1,
@@ -3895,7 +4114,7 @@ export const mockProducts = [
     "name": "Silk GlamArt Metallica for Designs",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Texture",
     "price": "₹ 544.00",
     "sizes": [
       1,
@@ -3917,7 +4136,7 @@ export const mockProducts = [
     "name": "Silk GlamArt Stucco",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Texture",
     "price": "₹ 450.00",
     "sizes": [
       1,
@@ -3939,7 +4158,7 @@ export const mockProducts = [
     "name": "Silk GlamArt Vintage",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Texture",
     "price": "₹ 383.00",
     "sizes": [
       1,
@@ -3961,7 +4180,7 @@ export const mockProducts = [
     "name": "Silk Glamart Stones & Tones",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Texture",
     "price": "₹ 418.00",
     "sizes": [
       1,
@@ -4005,7 +4224,7 @@ export const mockProducts = [
     "name": "Silk Metallics",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Texture",
     "price": "₹ 440.00",
     "sizes": [
       1,
@@ -4291,7 +4510,7 @@ export const mockProducts = [
     "name": "Florentina Vintage",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Texture",
     "price": "₹ 481.00",
     "sizes": [
       1,
@@ -4313,7 +4532,7 @@ export const mockProducts = [
     "name": "Florentina Sandstone",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Texture",
     "price": "₹ 487.00",
     "sizes": [
       1,
@@ -4335,7 +4554,7 @@ export const mockProducts = [
     "name": "Florentina Glitteratti",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Texture",
     "price": "₹ 353.00",
     "sizes": [
       1,
@@ -4357,7 +4576,7 @@ export const mockProducts = [
     "name": "Solitaire Granite",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Texture",
     "price": "₹ 421.00",
     "sizes": [
       1,
@@ -4379,7 +4598,7 @@ export const mockProducts = [
     "name": "Solitaire Stone",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Texture",
     "price": "₹ 465.00",
     "sizes": [
       1,
@@ -4401,7 +4620,7 @@ export const mockProducts = [
     "name": "Ruff & Tuff Pearl",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Texture",
     "price": "₹ 386.00",
     "sizes": [
       1,
@@ -4423,7 +4642,7 @@ export const mockProducts = [
     "name": "Ruff & Tuff Scratch",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Texture",
     "price": "₹ 534.00",
     "sizes": [
       1,
@@ -4445,7 +4664,7 @@ export const mockProducts = [
     "name": "Ruff & Tuff Decora Rollercast",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Texture",
     "price": "₹ 375.00",
     "sizes": [
       1,
@@ -4467,7 +4686,7 @@ export const mockProducts = [
     "name": "Ruff & Tuff Decora Rollercoat",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Texture",
     "price": "₹ 496.00",
     "sizes": [
       1,
@@ -4489,7 +4708,7 @@ export const mockProducts = [
     "name": "Ruff & Tuff Decora Dholpur Stone",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Texture",
     "price": "₹ 535.00",
     "sizes": [
       1,
@@ -4792,5 +5011,3479 @@ export const mockProducts = [
     ],
     "popular": true,
     "image": "https://5.imimg.com/data5/SELLER/Default/2023/1/FU/YJ/AM/2220962/industrial-thinner-500x500.png"
+  },
+
+  {
+    "id": 1024,
+    "name": "Ultima Allura Concordia",
+    "description": "Crafted when some of the hardest and strongest materials come together. Composite material that is a mixture of coarse particles - Crushed stone, sand, gravel & sometimes concrete.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Exterior Texture",
+    "price": "₹ 149.00",
+    "properties": [
+      "Stone Aggregates",
+      "High Strength",
+      "Luxury Finish"
+    ],
+    "sizes": [30],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": 124,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/allura-concordia-chit-pack.png",
+    "slug": "ultima allura concordia"
+  },
+  {
+    "id": 1025,
+    "name": "Ultima Allura Reserva",
+    "description": "Inspired by the elegance of natural materials, gives distinct finish to the exterior walls. Mined and crafted for this very purpose, they have a distinct visual appearance of their own.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Exterior Texture",
+    "price": "₹ 147.00",
+    "properties": [
+      "Natural Material Look",
+      "Distinct Finish",
+      "Luxury Finish"
+    ],
+    "sizes": [30],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": 124,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/allura-reserva-chit-pack1.png",
+    "slug": "ultima allura reserva"
+  },
+  {
+    "id": 1026,
+    "name": "Ultima Allura Meraki",
+    "description": "A blend of carefully selected sands and unfired clays mixed with pigments and minerals. Inspired by cladding materials – adding finishing touches.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Exterior Texture",
+    "price": "₹ 187.00",
+    "properties": [
+      "Cladding Inspired",
+      "Pigment Mixed",
+      "Luxury Finish"
+    ],
+    "sizes": [30],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": 124,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/allura-meraki-chit-pack.png",
+    "slug": "ultima allura meraki"
+  },
+  {
+    "id": 1027,
+    "name": "Ultima Allura Venezio",
+    "description": "Taking inspiration from the beauty of Italian architecture, this captures the essence of rustic Italian exteriors and gives a fine grain textured finish.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Exterior Texture",
+    "price": "₹ 300.00",
+    "properties": [
+      "Italian Architecture",
+      "Rustic Exterior",
+      "Fine Grained Texture"
+    ],
+    "sizes": [30],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": 124,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/textures/others/apex-ultima-allura-venezio-packshot-asian-paints.png",
+    "slug": "ultima allura venezio"
+  },
+  {
+    "id": 1028,
+    "name": "Ultima Allura Torino",
+    "description": "Imported from Italy and made with selected marble chips, it is a water-based product with a textured finish.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Exterior Texture",
+    "price": "₹ 346.00",
+    "properties": [
+      "Italian Marble Chips",
+      "Water-based",
+      "Luxury Finish"
+    ],
+    "sizes": [30],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": 124,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/textures/others/apex-ultima-allura-torino-packshot-asian-paints.png",
+    "slug": "ultima allura torino"
+  },
+  {
+    "id": 1029,
+    "name": "Ultima Allura Clara",
+    "description": "High Performance protective coat crafted for enriching finish and boosting durability. Protective coat for Allura Concordia, Reserva and Meraki.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Exterior Texture",
+    "price": "₹ 572.00",
+    "properties": [
+      "High Performance",
+      "Enriching Finish",
+      "Protective Coat"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": 124,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/exterior-walls-apex-ultima-clara.png",
+    "slug": "ultima allura clara"
+  },
+
+  {
+    "id": 1030,
+    "name": "Royale Play Mineral",
+    "description": "Mineral is a textured finish made with four types of sand, inspired by natural stone. Each wall is uniquely crafted, making it ideal for homes, offices, and pub",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 216.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1, 5],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/6A10_mineral.png",
+    "slug": "royale-play-mineral"
+  },
+  {
+    "id": 1031,
+    "name": "Royale Play Ironic",
+    "description": "Rustic Effect insipired by Iron rust",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 6160.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/5408_Ironic.png",
+    "slug": "royale-play-ironic"
+  },
+  {
+    "id": 1032,
+    "name": "Royale Play Selena",
+    "description": "Selena brings the raw beauty of stone indoors, with layered sand textures that feel as grounded as they look—each finish uniquely crafted.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 184.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1, 5],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/1C18_Selena.png",
+    "slug": "royale-play-selena"
+  },
+  {
+    "id": 1033,
+    "name": "Wall To Floor Waterproof Top Coat",
+    "description": "Wall to Floor is a seamless PU + epoxy system for waterproof coverage across surfaces, adding modern elegance to interiors.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 4583.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/6A36_Top-Coat-B.png",
+    "slug": "wall-to-floor-waterproof-top-coat"
+  },
+  {
+    "id": 1034,
+    "name": "Epoxy Binder Clear",
+    "description": "Elegant. Modern. Versatile. The Wall to Floor multi-layer waterproof system offers seamless, continuous coverage across horizontal and vertical surfaces. Adding a dash of luxury to all modern interiors.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 3547.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/6756_epoxy-binder.png",
+    "slug": "epoxy-binder-clear"
+  },
+  {
+    "id": 1035,
+    "name": "Royale Play Zaffiano Top Coat",
+    "description": "A rich smoky finish with the visuals of softness of burnished leather. Designed to add warmth & glow to interiors, it is ideal for feature walls, lounges, lobbies or residences seeking an artisanal touch.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 6500.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/1C17_Zaffiano-Top-coat.png",
+    "slug": "royale-play-zaffiano-top-coat"
+  },
+  {
+    "id": 1036,
+    "name": "Metal Powder",
+    "description": "Metal Powder Epoxy Base Coat is a two-component decorative coating for indoor walls and technical surfaces. It contains additives for smooth application.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 13024.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/6754_Metallo-Fuso.png",
+    "slug": "metal-powder"
+  },
+  {
+    "id": 1037,
+    "name": "Royale Play Marmorino",
+    "description": "Designer Plaster for all you walls",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 249.20",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1, 5],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/5410_Marmorino.png",
+    "slug": "royale-play-marmorino"
+  },
+  {
+    "id": 1038,
+    "name": "Royale Play Verderame",
+    "description": "Copper rust effect for your interiors",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 6179.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/5499_Verderame.png",
+    "slug": "royale-play-verderame"
+  },
+  {
+    "id": 1039,
+    "name": "Royale Play Lithos",
+    "description": "Lithos gives textured wall finishes inspired by real stone that transform spaces like never before",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 175.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1, 5],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/1A58_Lithos.png",
+    "slug": "royale-play-lithos"
+  },
+  {
+    "id": 1040,
+    "name": "Royale Play Mica",
+    "description": "This finish adds subtle mica flakes to the Lithos finish. Its dynamic play of light adds a dash of glimmer to your walls. Understated yet luxurious, this finish is elegant and works well with every décor.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 4800.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/6A11_Lithos-Mica.png",
+    "slug": "royale-play-mica"
+  },
+  {
+    "id": 1041,
+    "name": "Wall To Floor Ath",
+    "description": "Elegant. Modern. Versatile. The Wall to Floor multi-layer waterproof system offers seamless, continuous coverage across horizontal and vertical surfaces. Adding a dash of luxury to all modern interiors.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 2311.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/5607_W2F.png",
+    "slug": "wall-to-floor-ath"
+  },
+  {
+    "id": 1042,
+    "name": "Ap Image Transfer Paint",
+    "description": "An acrylic emulsion that brings your ideas to life. Use it with stencil designs and Calcecruda mineral coating to personalize your space.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 6250.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/6A26_Image-Transfer-Paint.png",
+    "slug": "ap-image-transfer-paint"
+  },
+  {
+    "id": 1043,
+    "name": "Wall To Floor Pri",
+    "description": "Elegant. Modern. Versatile. The Wall to Floor multi-layer waterproof system offers seamless, continuous coverage across horizontal and vertical surfaces. Adding a dash of luxury to all modern interiors.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 3468.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Gloss"
+    ],
+    "sizes": [1],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/5606_W2F-Primer.png",
+    "slug": "wall-to-floor-pri"
+  },
+  {
+    "id": 1044,
+    "name": "Royale Play Mineral Sealer",
+    "description": "Elegant. Modern. Versatile. The Wall to Floor multi-layer PU + epoxy waterproof system offers seamless, continuous coverage across horizontal and vertical surfaces. Adding a dash of luxury to all modern interiors.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 4353.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Sheen"
+    ],
+    "sizes": [1],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/6A35_Mineral-Sealer.png",
+    "slug": "royale-play-mineral-sealer"
+  },
+  {
+    "id": 1045,
+    "name": "Royale Play Dune",
+    "description": "Africa, a continent of vibrant colours, deserts, and sand dunes, is the inspiration. With metallic pigments this evokes a sub-saharan theme.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 354.40",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Sheen"
+    ],
+    "sizes": [1, 5],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/royale-play-dune-packshot-asian-paints.png",
+    "slug": "royale-play-dune"
+  },
+  {
+    "id": 1046,
+    "name": "Royale Play Metallics",
+    "description": "Pick from a large variety of textures available for different conditions and give your wall the perfect look.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 363.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Sheen"
+    ],
+    "sizes": [1, 5],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/royale-play-metalics-packshot-asian-paints.png",
+    "slug": "royale-play-metallics"
+  },
+  {
+    "id": 1047,
+    "name": "Royale Play Infinitex",
+    "description": "Inspired by the various elements of nature, this is a range of designer interior textures that provides texture paint designs for walls",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 192.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Metallic Lustre"
+    ],
+    "sizes": [1, 5],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/textures/others/royale-play-infinitex-packshot-asian-paints.png",
+    "slug": "royale-play-infinitex"
+  },
+  
+  {
+    "id": 1049,
+    "name": "Royale Play Pro",
+    "description": "Provides protective against stains & is water repellent",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 256.60",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1, 5],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/5449_Protective-Coat.png",
+    "slug": "royale-play-pro"
+  },
+  {
+    "id": 1050,
+    "name": "Royale Play Calcecruda",
+    "description": "Bring comfort home with Calcecruda - a micro-porous mineral decorative coating with strong natural connotations.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 133.80",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1, 5],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/5497_Calcecrudda.png",
+    "slug": "royale-play-calcecruda"
+  },
+  {
+    "id": 1051,
+    "name": "Royale Play  velour",
+    "description": "Velour Classique reimagines velvet with a soft pearl-opaque look and rich texture. Its metallic shades add a stylish, premium finish to interiors.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 2050.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/6A31_Velour.png",
+    "slug": "royale-play-velour"
+  },
+  {
+    "id": 1052,
+    "name": "Royale Play Zaffiano Base Coat",
+    "description": "A rich smoky finish with the visuals of softness of burnished leather. Designed to add warmth & glow to interiors, it is ideal for feature walls, lounges, lobbies or residences seeking an artisanal touch.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 5500.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/1C16_Zaffiano-base-Coat.png",
+    "slug": "royale-play-zaffiano-base-coat"
+  },
+  {
+    "id": 1053,
+    "name": "Royale Play Marmofresco",
+    "description": "Worn and raw, this rustic finish captures the patina of aged lime—perfect for heritage-inspired interiors, boutique resorts, or homes seeking subtle nostalgia.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 184.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1, 5],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/1C07_Marmofresco.png",
+    "slug": "royale-play-marmofresco"
+  },
+  {
+    "id": 1054,
+    "name": "Metal Powder Epoxy Base Coat",
+    "description": "Metal Powder Epoxy Base Coat is a decorative indoor coating made of epoxy resins, aggregates, and additives for smooth application.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 3800.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/6A33_Epoxy-Base-Coat.png",
+    "slug": "metal-powder-epoxy-base-coat"
+  },
+  {
+    "id": 1055,
+    "name": "Royale Play Teodorico",
+    "description": "Lime base luxury fininsh for modern walls",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 249.60",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1, 5],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/5409_Teoderico.png",
+    "slug": "royale-play-teodorico"
+  },
+  {
+    "id": 1056,
+    "name": "Archi Argilla",
+    "description": "Inspired by the earth and its colours this mineral designer plaster coat is ideal for lending a trendy, chic, rustic, look to modern interiors.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 433.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1, 5],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/6A25_Argilla.png",
+    "slug": "archi-argilla"
+  },
+  {
+    "id": 1057,
+    "name": "Royale Play Archi Concrete",
+    "description": "Archi Concrete provide an industrial finish for interiror spaces",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 133.80",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1, 5],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/5614_Archi-Concrete.png",
+    "slug": "royale-play-archi-concrete"
+  },
+  {
+    "id": 1058,
+    "name": "Wall To Floor Clear",
+    "description": "Elegant. Modern. Versatile. The Wall to Floor multi-layer waterproof system offers seamless, continuous coverage across horizontal and vertical surfaces. Adding a dash of luxury to all modern interiors.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 5055.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/5607_W2F.png",
+    "slug": "wall-to-floor-clear"
+  },
+  {
+    "id": 1059,
+    "name": "Wall To Floor Base Coat",
+    "description": "Elegant. Modern. Versatile. The Wall to Floor multi-layer waterproof system offers seamless, continuous coverage across horizontal and vertical surfaces. Adding a dash of luxury to all modern interiors.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 297.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1, 5],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/5603_W2F-Rasal.png",
+    "slug": "wall-to-floor-base-coat"
+  },
+  {
+    "id": 1060,
+    "name": "Wall To Floor Waterproof",
+    "description": "Elegant. Modern. Versatile. The Wall to Floor multi-layer PU + epoxy waterproof system offers seamless, continuous coverage across horizontal and vertical surfaces. Adding a dash of luxury to all modern interiors.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 132.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1, 5],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/6A34_wall2floor.png",
+    "slug": "wall-to-floor-waterproof"
+  },
+  {
+    "id": 1061,
+    "name": "Royale Play Opaco Matt",
+    "description": "Add comfort and elegance with this designer plaster made of matte metallics and quartz. It creates rich chromatic and tactile effects across walls for a premium",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 2050.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/6A32_Opaco-Matt.png",
+    "slug": "royale-play-opaco-matt"
+  },
+  {
+    "id": 1062,
+    "name": "Royale Play Stucco Mirror",
+    "description": "Stucco Mirror is a mineral plaster that creates glossy, high-end finishes with soft, vibrant tones using pure slaked lime and special additives.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 195.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1, 5],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/6A41_Stucco-Mirror.png",
+    "slug": "royale-play-stucco-mirror"
+  },
+  
+  {
+    "id": 1064,
+    "name": "Royale Play Special Effects",
+    "description": "This water-based special effects paint offers one of the largest variety of effects for interior walls to choose from.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 222.20",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1, 5],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/royale-play-special-effect-packshot-asian-paints.png",
+    "slug": "royale-play-special-effects"
+  },
+  {
+    "id": 1065,
+    "name": "Royale Play Antico",
+    "description": "Inspired by Italian interior finishes, Antico’s metallic textured paints lend an ageless quality to any room.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Interior Texture",
+    "price": "₹ 2820.00",
+    "properties": [
+      "Special Effects",
+      "Easy Application",
+      "Environment Friendly"
+    ],
+    "sizes": [1],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/royale-play-antico-packshot-asian-paints.png",
+    "slug": "royale-play-antico"
+  },
+
+  
+  {
+    "id": 1101,
+    "name": "SmartCare Damp Block 2k - Prime",
+    "description": "Exceptional waterproofing for interior walls and bathrooms due to a two-component, high performance coating.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 155.00",
+    "properties": [
+      "12 Years Waterproofing Warranty",
+      "Surface Temperature Reduction",
+      "Anti-efflorescence"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/smartcare-damp-block-2k-prime-asian-paints.png",
+    "slug": "smartcare-damp-block-2k-prime"
+  },
+  {
+    "id": 1102,
+    "name": "SmartCare Tile Coat",
+    "description": "Clear waterproofing coating for terraces with tiles",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 300.00",
+    "properties": [
+      "5 years waterproofing warranty",
+      "Excellent Adhesion",
+      "High Elongation"
+    ],
+    "sizes": [1, 4],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/tile-coat-packshot.png",
+    "slug": "smartcare-tile-coat"
+  },
+  {
+    "id": 1103,
+    "name": "SmartCare Infinia",
+    "description": "Give your terrace the superior waterproofing with this PUD reinforced liquid applied waterproof coating",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 625.00",
+    "properties": [
+      "5 years warranty",
+      "Crack bridging ability",
+      "Top coat coverage increase up to 10%"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/SmartCare-Infinia.png",
+    "slug": "smartcare-infinia"
+  },
+  {
+    "id": 1104,
+    "name": "SmartCare Damp Proof",
+    "description": "Give your terrace the superior waterproofing with this glass fiber reinforced elastomeric liquid membrane.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 392.00",
+    "properties": [
+      "Upto 10 years Warranty",
+      "Surface Heat Reduction",
+      "Crack Bridging"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/SC-dampproof.png",
+    "slug": "smartcare-damp-proof"
+  },
+  {
+    "id": 1105,
+    "name": "SmartCare Damp Block 2k",
+    "description": "Exceptional waterproofing for interior walls and bathrooms due to a two-component, high performance coating.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 169.00",
+    "properties": [
+      "Food Grade Certified",
+      "2 years Warranty",
+      "Microbial"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/smartcare-dampblock-2k-asian-paints-new.png",
+    "slug": "smartcare-damp-block-2k"
+  },
+  {
+    "id": 1106,
+    "name": "SmartCare Damp Proof Ultra",
+    "description": "Give your home the ultimate waterproofing with this innovative fiber reinforced elastomeric liquid.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 512.00",
+    "properties": [
+      "Strong Bonding Agent",
+      "Reduces Cracking and Shrinkage",
+      "Excellent mortar modifier"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/Damp-Proof-Ultra-Updated.png",
+    "slug": "smartcare-damp-proof-ultra"
+  },
+  {
+    "id": 1107,
+    "name": "SmartCare Tile Adhesive",
+    "description": "Expertly fix natural stones, large ceramic on interior and exterior surfaces with this heavy duty adhesive.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 53.00",
+    "properties": [
+      "Superior Technology",
+      "Weather and Chemical Resistance",
+      "Flexibilty"
+    ],
+    "sizes": [20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/smartcare-stone-heavy-tile-adhesive-asian-paints.png",
+    "slug": "smartcare-tile-adhesive"
+  },
+  
+
+  {
+    "id": 1120,
+    "name": "Putty Boost",
+    "description": "Integral compound to enhance workability and performance of wall putty testagain.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 176.00",
+    "properties": [
+      "SELF CURING",
+      "EXCELLENT ADHESION",
+      "SMOOTH FINISH"
+    ],
+    "sizes": [1, 5, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/smartcare-putty-boost-asian-paints.png",
+    "slug": "putty-boost"
+  },
+  {
+    "id": 1121,
+    "name": "Crack Nil",
+    "description": "A white cement based polymer modified powder material used for filling cracks in plastered surface.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 80.00",
+    "properties": [
+      "5 years warranty",
+      "Crack bridging ability",
+      "Top coat coverage increase up to 10%"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/smartcare-cracknil-asian-paints.png",
+    "slug": "crack-nil"
+  },
+  {
+    "id": 1122,
+    "name": "SmartCare Block Joining Mortar",
+    "description": "The perfect solution for fixing of AAC blocks, concrete blocks and fly ash bricks.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 26.00",
+    "properties": [
+      "12 Years Waterproofing Warranty",
+      "Surface Temperature Reduction",
+      "Anti-efflorescence"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/smartcare-block-joining-mortar-asian-paints.png",
+    "slug": "smartcare-block-joining-mortar"
+  },
+  {
+    "id": 1123,
+    "name": "Ultra Block 2k",
+    "description": "Two component acrylic polymer modified high performance coating system.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 197.00",
+    "properties": [
+      "Reduced Shrinkage",
+      "Reduces Cracking",
+      "Mortar Modifier"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/smartcare-ultrablock2K-asian-paints.png",
+    "slug": "ultra-block-2k"
+  },
+  
+  {
+    "id": 1125,
+    "name": "Damp Proof Advanced",
+    "description": "Give unmatched waterproofing and superior whiteness to your Terraces & Exterior walls. Its excellent water resistance property keeps your terrace leakage free.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 401.00",
+    "properties": [
+      "3 years Warranty",
+      "Anti-Efflorescence",
+      "Anti-carbonation"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/DP-Advanced-Packshot.png",
+    "slug": "damp-proof-advanced"
+  },
+  {
+    "id": 1126,
+    "name": "SmartCare Cemboost 200",
+    "description": "A revolutionary waterproofing compound that waterproofs your walls from the inside test.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 127.00",
+    "properties": [
+      "Grainy Texture",
+      "Ease of use",
+      "Excellent Paintability"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/cemboost.png",
+    "slug": "smartcare-cemboost-200"
+  },
+  {
+    "id": 1127,
+    "name": "SmartCare Vitalia Neo",
+    "description": "An integral waterproofing compound that waterproofs the structure at the time of construction itself.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 131.00",
+    "properties": [
+      "Crack Filing",
+      "High Flexibility",
+      "Mechanical Strength"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/smartcare-vitalia-neo-asian-paints.png",
+    "slug": "smartcare-vitalia-neo"
+  },
+  {
+    "id": 1128,
+    "name": "Tile Adhesive For Tile-on-tile Application",
+    "description": "Replace your existing tiles with new ones the hassle-free way using the SmartCare Tile Adhesive.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 48.00",
+    "properties": [
+      "Easy Application",
+      "Excellent Adhesion",
+      "Ready-to-Use"
+    ],
+    "sizes": [1, 5, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/smartcare-tile-on-tile-adhesive-asian-paints.png",
+    "slug": "tile-adhesive-for-tile-on-tile-application"
+  },
+  {
+    "id": 1129,
+    "name": "SmartCare Waterproofing Putty",
+    "description": "Waterproof Putty to protect your walls from dampness and provide long lasting beauty for your walls",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 54.00",
+    "properties": [
+      "Waterproofing",
+      "High Performance",
+      "Protection"
+    ],
+    "sizes": [1, 5, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/smartcare-waterproofing-putty-asian-paints-new.png",
+    "slug": "smartcare-waterproofing-putty"
+  },
+  {
+    "id": 1130,
+    "name": "SmartCare Ezy White Tile Adhesive",
+    "description": "Confidently fix your marbles and white tiles in interior and exterior surfaces using this ready-to-mix, white adhesive.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 207.00",
+    "properties": [
+      "5 years waterproofing warranty",
+      "Excellent Adhesion",
+      "High Elongation"
+    ],
+    "sizes": [1, 5, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/smartcare-ezy-white-tile-adhesive-asian-paints.png",
+    "slug": "smartcare-ezy-white-tile-adhesive"
+  },
+  {
+    "id": 1131,
+    "name": "SmartCare Hydroloc Xtreme",
+    "description": "Pre-putty waterproofing coating against dampness and efflorescence.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 590.00",
+    "properties": [
+      "Reduced Shrinkage",
+      "Reduces Cracking",
+      "Mortar Modifier"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/Smartcare-Hydfroloc-Xtreme.png",
+    "slug": "smartcare-hydroloc-xtreme"
+  },
+  {
+    "id": 1132,
+    "name": "SmartCare Damp Sheath Interior Advanced",
+    "description": "A specially formulated interior waterproofing primer to prevent surface dampness.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 270.00",
+    "properties": [
+      "3 years waterproofing warranty",
+      "7X more water resistant",
+      "Upto 15% increase in top coat coverage"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/Damp-sheath-interior-advanced-packshot.png",
+    "slug": "smartcare-damp-sheath-interior-advanced"
+  },
+  {
+    "id": 1133,
+    "name": "SmartCare Akrylmax",
+    "description": "An easily paintable acrylic based joint filling sealant perfect for those cracks on doors, windows and switchboard.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 555.00",
+    "properties": [
+      "Water-resistant",
+      "Anti-fungal",
+      "Mold-resistant"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/smartcare-akrylmax-asian-paints.png",
+    "slug": "smartcare-akrylmax"
+  },
+  {
+    "id": 1134,
+    "name": "Xtremoseal Neutral",
+    "description": "One component odourless silicone sealant, designed for sealing and waterproofing gaps and joints in Metal, Glass, Wood, Masonry surfaces etc.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 1500.00",
+    "properties": [
+      "Waterproofing",
+      "High Performance",
+      "Protection"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/Xtremoseal-Neutral-packshott.png",
+    "slug": "xtremoseal-neutral"
+  },
+  {
+    "id": 1150,
+    "name": "Marvelloplast S500",
+    "description": "Asian Paints Marvelloplast Super 500 is an advanced gypsum plaster for levelling undulations on interior walls.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 18.00",
+    "properties": [
+      "5 years warranty",
+      "Crack bridging ability",
+      "Top coat coverage increase up to 10%"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/marvelloplast-asian-paints.png",
+    "slug": "marvelloplast-s500"
+  },
+  {
+    "id": 1151,
+    "name": "SmartCare Damp Sheath Interior",
+    "description": "A specially formulated interior waterproofing primer to prevent surface dampness.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 270.00",
+    "properties": [
+      "Strong Bonding Agent",
+      "Reduces Cracking and Shrinkage",
+      "Excellent mortar modifier"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/SC-damp-sheath-interior-new.png",
+    "slug": "smartcare-damp-sheath-interior"
+  },
+  {
+    "id": 1152,
+    "name": "SmartCare Roof Tapes",
+    "description": "Made of advanced rubber with durable elasticity, this tape is perfect for waterproofing construction joints in buildings.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 932.00",
+    "properties": [
+      "Adhesion",
+      "Flexibility",
+      "Hybrid Technology"
+    ],
+    "sizes": [1],
+    "unit": "pc",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/smartcare-roof-tapes-asian-paints.png",
+    "slug": "smartcare-roof-tapes"
+  },
+  {
+    "id": 1153,
+    "name": "SmartCare Epoxy Triblock",
+    "description": "Food grade certified waterproofing solutions for cementitious water tanks.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 679.00",
+    "properties": [
+      "Grainy Texture",
+      "Ease of use",
+      "Excellent Paintability"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/smartcare-epoxy-triblock-asian-paints.png",
+    "slug": "smartcare-epoxy-triblock"
+  },
+  {
+    "id": 1154,
+    "name": "SmartCare Hybrid Pu Sealant",
+    "description": "An effective rubber-type seal for dynamic structural joints and cracks on interiors as well as exteriors surfaces.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 1047.00",
+    "properties": [
+      "Easy to remove stains",
+      "Long lasting beauty of tiles"
+    ],
+    "sizes": [1],
+    "unit": "pc",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/smartcare-pu-sealant-asian-paints.png",
+    "slug": "smartcare-hybrid-pu-sealant"
+  },
+  {
+    "id": 1155,
+    "name": "SmartCare Tile Grout - Cement Based",
+    "description": "Ensure zero leakages from tile joints in an affordable way with this economical solution.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 112.00",
+    "properties": [
+      "Water Impermeability",
+      "Compressive Strength",
+      "Workability"
+    ],
+    "sizes": [1, 5, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/smartcare-tile-grout-cement-based-asian-paints.png",
+    "slug": "smartcare-tile-grout-cement-based"
+  },
+  {
+    "id": 1156,
+    "name": "SmartCare Tile Grout - Epoxy Based",
+    "description": "An exceptional epoxy-based tile grout with 26 shades that match the tiles at home.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 932.00",
+    "properties": [
+      "Water Resistance",
+      "Effloroscence Resistant",
+      "Vibrant White Whiteness"
+    ],
+    "sizes": [1, 5, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/smartcare-tile-grout-epoxy-based-asian-paints.png",
+    "slug": "smartcare-tile-grout-epoxy-based"
+  },
+  {
+    "id": 1157,
+    "name": "SmartCare White Multipurpose Tile Adhesive",
+    "description": "Confidently fix your glass mosaic tiles in interior and exterior surfaces using this ready-to-mix, white adhesive.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 59.00",
+    "properties": [
+      "Water-resistant",
+      "Anti-fungal",
+      "Mold-resistant"
+    ],
+    "sizes": [1, 5, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/asian-paints-smart-care-white-multipurpose-tile-adhesives-new.png",
+    "slug": "smartcare-white-multipurpose-tile-adhesive"
+  },
+  {
+    "id": 1158,
+    "name": "Tile Bonder",
+    "description": "A free-flowing powder which can be used as an additive for cement paste for enhancing its workability and notch-ability for machan or leveling bed application.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 67.00",
+    "properties": [
+      "Improves compressive strength of cement tile grout",
+      "Gives a glossy finish to the grout",
+      "Enhances water resistance of cement tile grout"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/tile-bonder.webp",
+    "slug": "tile-bonder"
+  },
+  {
+    "id": 1159,
+    "name": "SmartCare Crack Seal Advanced",
+    "description": "A smart solution to fix cracks on exterior and interior surfaces. Its innovative crack bridging ability ensures those do not reoccur anytime soon.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 730.00",
+    "properties": [
+      "Water-resistant",
+      "Anti-fungal",
+      "Non-corrosive"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/advance_crack_seal.png",
+    "slug": "smartcare-crack-seal-advanced"
+  },
+  {
+    "id": 1160,
+    "name": "Epoxy Tile Grout 2 Component  Ready Shades",
+    "description": "A two-component epoxy resin-based ready shades grout specifically designed for application in ceramic tiles, vitrified tiles and stone joints where a hygienic and sterile condition is required.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ NaN",
+    "properties": [
+      "Water-resistant",
+      "UV resistant",
+      "Anti-fungal"
+    ],
+    "sizes": [1, 5, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/tile-grout-2K.webp",
+    "slug": "epoxy-tile-grout-2-component-ready-shades"
+  },
+  {
+    "id": 1161,
+    "name": "Akrylmax Prime",
+    "description": "An easily paintable acrylic based joint filling sealant perfect for those cracks on doors, windows and switchboard.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 614.00",
+    "properties": [
+      "Upto 25 years Warranty",
+      "Surface Heat Reduction",
+      "Superior Crack Bridging"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/Akrylmax-prime-packshott.png",
+    "slug": "akrylmax-prime"
+  },
+  {
+    "id": 1162,
+    "name": "SmartCare Damp Proof Xtreme",
+    "description": "Waterproofing coating for terraces and exterior walls",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 460.00",
+    "properties": [
+      "5 years warranty",
+      "Crack bridging ability",
+      "Top coat coverage increase up to 10%"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/SC-dampproof-xtreme-new.png",
+    "slug": "smartcare-damp-proof-xtreme"
+  },
+  {
+    "id": 1163,
+    "name": "Damp Proof Play",
+    "description": "A single component elastomeric liquid with waterproofing properties for decorative terrace application on a horizontal surface",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 605.00",
+    "properties": [
+      "3 years Warranty",
+      "Anti-Efflorescence",
+      "Anti-carbonation"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/dampproofplay-resized-new.png",
+    "slug": "damp-proof-play"
+  },
+  {
+    "id": 1164,
+    "name": "SmartCare Repairmax 200",
+    "description": "Strengthen your floors, beams and other cement surfaces using this high-performance binder. Additionally, it can waterproof toilets, bathrooms and small terraces.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 242.00",
+    "properties": [
+      "5 years warranty",
+      "Crack bridging ability",
+      "Top coat coverage increase up to 10%"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/repairmax.png",
+    "slug": "smartcare-repairmax-200"
+  },
+  {
+    "id": 1165,
+    "name": "SmartCare Crack Seal",
+    "description": "A smart solution to fix cracks on exterior and interior surfaces. Its innovative crack bridging ability ensures those do not reoccur anytime soon.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 1092.00",
+    "properties": [
+      "Upto 12 years Warranty",
+      "Surface Heat Reduction",
+      "Superior Technology"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/smartcare-crack-seal-asian-paints.png",
+    "slug": "smartcare-crack-seal"
+  },
+  {
+    "id": 1166,
+    "name": "SmartCare Repair Polymer",
+    "description": "Strengthen your floors, beams and other cement surfaces using this high-performance binder. Additionally, it can waterproof toilets, bathrooms and small terraces.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 265.00",
+    "properties": [
+      "Easy application",
+      "Excellent Adhesion",
+      "Ready to use"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/smartcare-repair-polymer-asian-paints.png",
+    "slug": "smartcare-repair-polymer"
+  },
+  {
+    "id": 1167,
+    "name": "SmartCare Tile Grout - Epoxy Based 3k",
+    "description": "An exceptional epoxy-based tile grout with 10 shades that match the tiles at home.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 2182.00",
+    "properties": [
+      "3 years Warranty",
+      "Anti-Efflorescence",
+      "Anti-carbonation"
+    ],
+    "sizes": [1, 5, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/smartcare-tile-grout-epoxy-3k-asian-paints.png",
+    "slug": "smartcare-tile-grout-epoxy-based-3k"
+  },
+  {
+    "id": 1168,
+    "name": "Xtremoseal Gp",
+    "description": "One component silicone sealant, designed for sealing and waterproofing gaps and joints in Metal, Glass, Wood, Masonry surfaces etc.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 1357.00",
+    "properties": [
+      "Water-resistant",
+      "Anti-fungal",
+      "Non-corrosive"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/XTREMOSEAL-GP-packshott.png",
+    "slug": "xtremoseal-gp"
+  },
+  {
+    "id": 1169,
+    "name": "SmartCare Tile Cleaner",
+    "description": "A high quality active cleaner for daily maintenance of tiles, bath tubs, wash basins and common cementitious tile grout stains.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 205.00",
+    "properties": [
+      "Enhances the notching ability of the cement mixture",
+      "Improves workability of the cement",
+      "Provides excellent slag resistance"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/smartcare-tile-cleaner-asian-paints.png",
+    "slug": "smartcare-tile-cleaner"
+  },
+  {
+    "id": 1170,
+    "name": "Tile Adhesive For Normal Application",
+    "description": "A sturdy cement tile adhesive that extends the life of tiled floors and walls of bathrooms, interiors as well as exteriors.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Waterproofing",
+    "price": "₹ 28.00",
+    "properties": [
+      "Long life",
+      "Water Resistance",
+      "Chemical Resistance"
+    ],
+    "sizes": [1, 5, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/smartcare-tile-adhesive-normal-application-asian-paints.png",
+    "slug": "tile-adhesive-for-normal-application"
+  },
+
+  
+  {
+    "id": 1181,
+    "name": "WoodTech Insignia",
+    "description": "A polyurethane based texture coating, which offers excellent aesthetic and smooth finish for interior décor.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 3409.00",
+    "properties": [
+      "High customisation",
+      "Smooth finish",
+      "450+ shades"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-insignia-asian-paints.png",
+    "slug": "woodtech-insignia"
+  },
+  {
+    "id": 1182,
+    "name": "WoodTech Insignia- Classic Series",
+    "description": "A polyurethane based texture coating, which offers excellent aesthetic and smooth finish Effects for interior décor.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 4658.00",
+    "properties": [
+      "High customisation",
+      "Smooth finish",
+      "1600+ shades"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/Woodtech-Insignia-packshot.png",
+    "slug": "woodtech-insignia-classic-series"
+  },
+  {
+    "id": 1183,
+    "name": "WoodTech Polyester Gold",
+    "description": "A paraffined based clear coating, which offers best in class Gloss, excellent hardness and long lasting finish to wooden furniture",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 1098.00",
+    "properties": [
+      "Mirror like Finish",
+      "Excellent Hardness",
+      "Durability"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-polyester-gold-asian-paints-new.png",
+    "slug": "woodtech-polyester-gold"
+  },
+  {
+    "id": 1184,
+    "name": "WoodTech Epoxy Insulator Neo",
+    "description": "Base coat which acts as a barrier to prevent oil from wood from damaging the coating",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 1133.00",
+    "properties": [
+      "Universal undercoat",
+      "Polyester Compatible",
+      "Prevents damage from oil"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/Woodtech-Epoxy-Insulator-Neo.png",
+    "slug": "woodtech-epoxy-insulator-neo"
+  },
+  {
+    "id": 1185,
+    "name": "WoodTech Insignia- Chrome Series",
+    "description": "WoodTech Insignia Chrome series is acrylic Based super fine special effect paint, which transforms wooden furniture into luxurious & unique masterpiece.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 6999.00",
+    "properties": [
+      "High customisation",
+      "Smooth finish",
+      "4 shades"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/Woodtech-Insignia-Chrome.png",
+    "slug": "woodtech-insignia-chrome-series"
+  },
+  {
+    "id": 1186,
+    "name": "WoodTech Polyester Vfm",
+    "description": "Paraffin based wood coating that brings unparalleled glossy surface finish",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 676.00",
+    "properties": [
+      "High Film strength",
+      "Water like clarity",
+      "High Gloss"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/Woodtech-Polyester-UL-Wood-Coating.png",
+    "slug": "woodtech-polyester-vfm"
+  },
+  {
+    "id": 1187,
+    "name": "WoodTech Emporio Acrylic Pu",
+    "description": "An acrylic based clear coating, which offers best in class, long lasting non-yellowing water white clear film.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 1781.00",
+    "properties": [
+      "Solvent based",
+      "Excellent long-lasting durability",
+      "Non-yellowing"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-emporio-pu-asian-paints.png",
+    "slug": "woodtech-emporio-acrylic-pu"
+  },
+  {
+    "id": 1188,
+    "name": "WoodTech Insignia- Metallics Series",
+    "description": "Asian Paints WoodTech Insignia Metallic series is acrylic Based fine metallic special effect paint, which transforms wooden furniture into luxurious & unique masterpiece.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 3699.00",
+    "properties": [
+      "High customisation",
+      "Smooth finish",
+      "8 shades"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/Woodtech-Insignia-Metallic.png",
+    "slug": "woodtech-insignia-metallics-series"
+  },
+  {
+    "id": 1189,
+    "name": "WoodTech Emporio Regal Pu Clear",
+    "description": "An acrylic based clear coating, which offers excellent weather resistance, light-fastness and UV protection",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 1018.00",
+    "properties": [
+      "Superior Stain Resistance",
+      "Superior Water Resistance",
+      "Superior Scratch Resistance"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-emporio-regal-asian-paints.png",
+    "slug": "woodtech-emporio-regal-pu-clear"
+  },
+  {
+    "id": 1190,
+    "name": "WoodTech River Resin",
+    "description": "WoodTech Resin River is an epoxy based clear coating, which offers long lasting gloss, excellent film hardness and UV protection",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 1250.00",
+    "properties": [
+      "High customisation",
+      "Smooth finish",
+      "10+ shades"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/Woodtech-Resin-River.png",
+    "slug": "woodtech-river-resin"
+  },
+  {
+    "id": 1191,
+    "name": "WoodTech Emporio Regal Pu White",
+    "description": "An acrylic based clear coating, which offers excellent weather resistance, light-fastness and UV protection",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 1498.00",
+    "properties": [
+      "Superior Stain Resistance",
+      "Superior Water Resistance",
+      "Superior Scratch Resistance"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-emporio-regal-asian-paints.png",
+    "slug": "woodtech-emporio-regal-pu-white"
+  },
+  {
+    "id": 1192,
+    "name": "WoodTech Pu Palette Metal - Metallics",
+    "description": "2500+ Shades | Anti corrosionproperties  | Anti yellowing | All weather resistance",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 1262.00",
+    "properties": [
+      "Anti Corrosion",
+      "All Weather resistant",
+      "for Exteriors &amp; Interiors"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/Woodtech-PU-Palette-Metal.png",
+    "slug": "woodtech-pu-palette-metal-metallics"
+  },
+  {
+    "id": 1193,
+    "name": "WoodTech Emporio Gold Pu Clear",
+    "description": "A two-pack polyurethane clear coating, which offers excellent weather resistance, fungal resistance and UV protection",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 1042.00",
+    "properties": [
+      "Superior Durability",
+      "Fungal Resistance",
+      "High Cross Linking Density"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-emporio-gold-asian-paints.png",
+    "slug": "woodtech-emporio-gold-pu-clear"
+  },
+  {
+    "id": 1194,
+    "name": "WoodTech Pu Palette - Interior Satin",
+    "description": "3500+ Shades | Anti yellowing | Satin & glossy variants",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 1238.00",
+    "properties": [
+      "3500 + Shades",
+      "Anti - yellwoing",
+      "Anti - scratch"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/Woodtech-PU-Palette.png",
+    "slug": "woodtech-pu-palette-interior-satin"
+  },
+  {
+    "id": 1195,
+    "name": "WoodTech Emporio Gold Pu White",
+    "description": "A two-pack polyurethane clear coating, which offers excellent weather resistance, fungal resistance and UV protection",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 1533.00",
+    "properties": [
+      "Superior Durability",
+      "Fungal Resistance",
+      "High Cross Linking Density"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-emporio-gold-asian-paints.png",
+    "slug": "woodtech-emporio-gold-pu-white"
+  },
+  {
+    "id": 1196,
+    "name": "WoodTech Emporio Pu Palette",
+    "description": "An acrylic based opaque coating, which offers excellent stain resistance, better hardness and long-lasting durability.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 1748.00",
+    "properties": [
+      "Stain Resistance",
+      "High durability",
+      "Quick Drying"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-emporio-pu-palette-asian-paints.png",
+    "slug": "woodtech-emporio-pu-palette"
+  },
+  {
+    "id": 1197,
+    "name": "WoodTech Emporio Pu Clear",
+    "description": "An acrylic based clear coating, which offers excellent weather resistance, light-fastness and UV protection.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 1919.00",
+    "properties": [
+      "Weather resistance",
+      "Light fastness",
+      "UV protection"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-emporio-pu-asian-paints-old.png",
+    "slug": "woodtech-emporio-pu-clear"
+  },
+  {
+    "id": 1198,
+    "name": "WoodTech Emporio Pu White",
+    "description": "An acrylic based opaque coating, which offers excellent stain resistance, better hardness and long-lasting durability.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 1815.00",
+    "properties": [
+      "Weather resistance",
+      "Light fastness",
+      "UV protection"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-emporio-pu-asian-paints.png",
+    "slug": "woodtech-emporio-pu-white"
+  },
+  {
+    "id": 1199,
+    "name": "WoodTech Emporio Pu Black",
+    "description": "An acrylic based opaque coating, which offers excellent stain resistance, better hardness and long-lasting durability.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 2035.00",
+    "properties": [
+      "Weather resistance",
+      "Light fastness",
+      "UV protection"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-emporio-pu-asian-paints-old.png",
+    "slug": "woodtech-emporio-pu-black"
+  },
+  {
+    "id": 1200,
+    "name": "WoodTech Pu Palette Interior",
+    "description": "An acrylic based opaque coating, which offers excellent stain resistance, better hardness and long-lasting durability.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 1199.00",
+    "properties": [
+      "650+ Shades",
+      "Resists Cracking",
+      "Superior Resistance"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-pu-palette-interiors-asian-paints.png",
+    "slug": "woodtech-pu-palette-interior"
+  },
+  {
+    "id": 1201,
+    "name": "WoodTech Pu Palette Exterior",
+    "description": "An acrylic based clear coating, which offers excellent weather resistance, light-fastness and UV protection.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 1402.00",
+    "properties": [
+      "650+ Shades",
+      "Exterior Durability",
+      "Superior Resistance"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-pu-palette-exteriors-asian-paints.png",
+    "slug": "woodtech-pu-palette-exterior"
+  },
+  {
+    "id": 1202,
+    "name": "WoodTech Pu Palette Metallic",
+    "description": "An acrylic based opaque coating, which offers excellent stain resistance, better hardness and long-lasting durability.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 1899.00",
+    "properties": [
+      "Stain Resistance",
+      "High durability",
+      "Quick Drying"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-wood-stain-for-interiors-asian-paints.png",
+    "slug": "woodtech-pu-palette-metallic"
+  },
+  {
+    "id": 1203,
+    "name": "WoodTech Aquadur Pu Interior Matt",
+    "description": "A low smell and healthsafe (low VOC) water based polyurethane clear coating, which offers smooth finish and good hardness.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 1644.00",
+    "properties": [
+      "Low Smell",
+      "Health safe",
+      "Child safe"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-aquadur-pu-interior-asian-paints.png",
+    "slug": "woodtech-aquadur-pu-interior-matt"
+  },
+  {
+    "id": 1204,
+    "name": "WoodTech Aquadur Pu Interior Gloss",
+    "description": "A low smell and healthsafe (low VOC) water based polyurethane clear coating, which offers smooth finish and good hardness.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 1644.00",
+    "properties": [
+      "Low Smell",
+      "Health safe",
+      "Child safe"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-aquadur-pu-interior-asian-paints.png",
+    "slug": "woodtech-aquadur-pu-interior-gloss"
+  },
+  {
+    "id": 1205,
+    "name": "WoodTech Aquadur Pu Exterior Matt",
+    "description": "A low smell and healthsafe (low VOC) water based polyurethane clear coating, which offers smooth finish and good hardness.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 1705.00",
+    "properties": [
+      "Low Smell",
+      "Health safe",
+      "Child safe"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-aquadur-pu-exterior-asian-paints.png",
+    "slug": "woodtech-aquadur-pu-exterior-matt"
+  },
+  {
+    "id": 1206,
+    "name": "WoodTech Aquadur Pu Exterior Gloss",
+    "description": "A low smell and healthsafe (low VOC) water based polyurethane clear coating, which offers smooth finish and good hardness.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 1705.00",
+    "properties": [
+      "Low Smell",
+      "Health safe",
+      "Child safe"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-aquadur-pu-exterior-asian-paints.png",
+    "slug": "woodtech-aquadur-pu-exterior-gloss"
+  },
+  {
+    "id": 1207,
+    "name": "WoodTech Aquadur 2k Pu For Interior",
+    "description": "A low smell and healthsafe (low VOC) water based polyurethane clear coating, which offers smooth finish and good hardness.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 1962.00",
+    "properties": [
+      "Smooth finish",
+      "Good hardness",
+      "Virtually odourless"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-aquadur-2k-pu-for-interior-asian-paints.png",
+    "slug": "woodtech-aquadur-2k-pu-for-interior"
+  },
+  {
+    "id": 1208,
+    "name": "WoodTech Aquadur 2k Pu Parquet",
+    "description": "A low smell and healthsafe (low VOC) water based Polyurethane clear coating for interior flooring, which offers smooth finish, hardness and excellent abrasion resistance",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 4079.00",
+    "properties": [
+      "Easy application",
+      "Low VOC Odour",
+      "Quick dying"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-aquadur-2k-pu-parquet-asian-paints.png",
+    "slug": "woodtech-aquadur-2k-pu-parquet"
+  },
+  {
+    "id": 1209,
+    "name": "WoodTech Pu Luxury Wood Finish For Interior",
+    "description": "An acrylic based clear coating, which offers excellent stain resistance, better hardness and long-lasting durability.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 1022.00",
+    "properties": [
+      "Solvent finish",
+      "High Durability",
+      "Stain resistance"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-pu-luxury-wood-finish-for-interior-asian-paints.png",
+    "slug": "woodtech-pu-luxury-wood-finish-for-interior"
+  },
+  {
+    "id": 1210,
+    "name": "WoodTech Pu Luxury Wood Finish For Exterior",
+    "description": "An acrylic based clear coating, which offers excellent weather resistance, light-fastness and UV protection.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 1135.00",
+    "properties": [
+      "High Durability",
+      "Stain resistance",
+      "Weather resistance"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-pu-luxury-wood-finish-for-exterior-asian-paints.png",
+    "slug": "woodtech-pu-luxury-wood-finish-for-exterior"
+  },
+  {
+    "id": 1211,
+    "name": "WoodTech Epoxy Insulator",
+    "description": "A universal undercoat that protects all kind of wood coatings from impurities and resins present in wood & veneers.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 1385.00",
+    "properties": [
+      "Universal undercoat",
+      "For all kinds of wood",
+      "Can be used in exterior"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-epoxy-insulator-asian-paints.png",
+    "slug": "woodtech-epoxy-insulator"
+  },
+  {
+    "id": 1212,
+    "name": "WoodTech Wood Stains Interior",
+    "description": "A solvent based dye, which offers excellent transparent shades, better durability and uniform finish.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 527.00",
+    "properties": [
+      "Transparent shades",
+      "Uniform finish",
+      "Better durability"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-wood-stain-for-interiors-asian-paints.png",
+    "slug": "woodtech-wood-stains-interior"
+  },
+  {
+    "id": 1213,
+    "name": "WoodTech Ingenio Pu",
+    "description": "Asian Paints WoodTech Ingenio PU is 2K acrylic based polyurethane clear coating which offers excellent weather resistance, light fastness, and UV protection.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 1159.00",
+    "properties": [
+      "Quick Drying Time",
+      "Superior Durability",
+      "German Technology"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-ingenio-packshot-asain-paints.png",
+    "slug": "woodtech-ingenio-pu"
+  },
+  {
+    "id": 1214,
+    "name": "WoodTech Nc Sanding Sealer",
+    "description": "High performance Nitro Cellulose based sealer",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 385.00",
+    "properties": [
+      "Quick Drying Time",
+      "Superior Durability",
+      "German Technology"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-sanding-sealer-packshot-asian-paints.png",
+    "slug": "woodtech-nc-sanding-sealer"
+  },
+  {
+    "id": 1215,
+    "name": "WoodTech Filler",
+    "description": "Universal undercoat for dent/grain filling",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 451.00",
+    "properties": [
+      "Quick Drying Time",
+      "Superior Durability",
+      "German Technology"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-filler-packshot-asian-paints.png",
+    "slug": "woodtech-filler"
+  },
+  {
+    "id": 1216,
+    "name": "WoodTech Wood Stains Exterior",
+    "description": "A water based pigmented dies, which offers excellent shades, better durability and uniform finish.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 920.00",
+    "properties": [
+      "Easy Application",
+      "Durable",
+      "Low VOC &amp; Odour"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-wood-stains-for-exterior-asian-paints-.png",
+    "slug": "woodtech-wood-stains-exterior"
+  },
+  {
+    "id": 1217,
+    "name": "WoodTech Melamyne Gold Clear",
+    "description": "Clear, acid-cured coating with smooth finish and high hardness. Non-yellowing formula preserves furniture’s natural beauty for long-lasting clarity.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 555.00",
+    "properties": [
+      "Good Hardness",
+      "Value for Money",
+      "Non Yellowing"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/WT-Melamyne-Gold.png",
+    "slug": "woodtech-melamyne-gold-clear"
+  },
+  {
+    "id": 1218,
+    "name": "WoodTech Melamyne",
+    "description": "Solvent-based, acid-cured clear coat with smooth finish and good hardness—ideal for enhancing and protecting interior wood surfaces.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 483.00",
+    "properties": [
+      "Good Hardness",
+      "Value for Money",
+      "Reliable"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/WT-Melamyne-Wood.png",
+    "slug": "woodtech-melamyne"
+  },
+  {
+    "id": 1219,
+    "name": "WoodTech Touchwood Interior & Exterior 1kpu",
+    "description": "Single component Polyurethane modified clear coating, which offers good smooth finish for both Interior & Exterior wooden surface.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 488.00",
+    "properties": [
+      "Smooth Finish",
+      "Interior &amp; Exterior",
+      "Good Gloss"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-touchwood-packshot-asian-paints.png",
+    "slug": "woodtech-touchwood-interior-exterior-1kpu"
+  },
+  {
+    "id": 1220,
+    "name": "WoodTech Touchwood 1kpu Interior Shades",
+    "description": "Single component Polyurethane modified clear coating, which offers good smooth finish in different shades",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 434.00",
+    "properties": [
+      "Smooth Finish",
+      "Interior &amp; Exterior",
+      "Good Gloss"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-1K-PU-shades-for-interior-packshot-asian-paints.png",
+    "slug": "woodtech-touchwood-1kpu-interior-shades"
+  },
+  {
+    "id": 1221,
+    "name": "WoodTech Termishield",
+    "description": "A herbal oil based clear additive, which offers excellent protection from termites and borers.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 460.00",
+    "properties": [
+      "Anti Termite Solution",
+      "Herbal Product"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/woodtech-termishield-asian-paints.png",
+    "slug": "woodtech-termishield"
+  },
+
+  {
+    "id": 1250,
+    "name": "SmartCare High Performance Red Oxide Metal Primer",
+    "description": "Choose this easy to use primer for all metal surfaces. It doesn't require any dilution and offers superior rust protection.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 300.00",
+    "properties": [
+      "Supreme rust protection",
+      "Ready to use primer",
+      "Excellent adhesion property"
+    ],
+    "sizes": [1, 4, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/metals-high-performance-redoxide-metal-primer-asian-paints.png",
+    "slug": "smartcare-high-performance-red-oxide-metal-primer"
+  },
+  {
+    "id": 1251,
+    "name": "Decoprime Premium Metal Primer",
+    "description": "Serves as a good quality metal primer due to its corrosion resistance ability. This easy to apply primer is ideal for household use.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 300.00",
+    "properties": [
+      "Good corrosion resistance",
+      "Good adherent coating",
+      "Saves money in long run"
+    ],
+    "sizes": [1, 4, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/metals-decoprime-premium-metal-primer-asian-paints.png",
+    "slug": "decoprime-premium-metal-primer"
+  },
+  {
+    "id": 1252,
+    "name": "Apcolite Premium Gloss Enamel",
+    "description": "Get that shiny new look on metal surfaces by using this enamel. Its tough film is highly resistant to household stains.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Synthetic Enamels",
+    "price": "₹ 300.00",
+    "properties": [
+      "High Coverage",
+      "Superior Hiding",
+      "Stain Guard"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/metals-apcolite-premium-gloss-enamel-asian-paints.png",
+    "slug": "apcolite-premium-gloss-enamel"
+  },
+  {
+    "id": 1253,
+    "name": "Apcolite Rustshield Pu Enamel",
+    "description": "An Anti – Rust PU Enamel with quick drying capabilities and 4 years Rust protection warranty.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Synthetic Enamels",
+    "price": "₹ 300.00",
+    "properties": [
+      "No Primer Required",
+      "Quick Drying",
+      "4 Years Warranty"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/Apcolite_RustShield-packshot.png",
+    "slug": "apcolite-rustshield-pu-enamel"
+  },
+  {
+    "id": 1254,
+    "name": "Apcolite Advanced Pu Enamel",
+    "description": "Excellent finish and long lasting gloss for doors and windows which makes them look timeless. With its non yellowing property, shades look vibrant for a long.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Synthetic Enamels",
+    "price": "₹ 300.00",
+    "properties": [
+      "Enamel",
+      "High gloss",
+      "Non-yellowing"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/Apcolite-advanced-PU-Enamel.png",
+    "slug": "apcolite-advanced-pu-enamel"
+  },
+  {
+    "id": 1255,
+    "name": "Apcolite Premium Satin Enamel",
+    "description": "A paint that is rich and sophisticated, yet a dependable solution that provides stain resistance and satin smooth finish.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Synthetic Enamels",
+    "price": "₹ 300.00",
+    "properties": [
+      "Soft Sheen Finish",
+      "Anti Fungal Shield",
+      "2 Years Warranty"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/metals-apcolite-premium-satin-enamel-asian-paints.png",
+    "slug": "apcolite-premium-satin-enamel"
+  },
+  {
+    "id": 1256,
+    "name": "Apcolite Advanced 2-pack Epoxy Finish",
+    "description": "It provides ultimate rust protection and corrosion resistance for metal surfaces exposed to atmospheric land and marine conditions.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Synthetic Enamels",
+    "price": "₹ 300.00",
+    "properties": [
+      "Rust Protection",
+      "Water &amp; Mild Chemical Resistance",
+      "5 Years Warranty"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/metals-apcolite-2pack-epoxy-finish-asian-paints.png",
+    "slug": "apcolite-advanced-2-pack-epoxy-finish"
+  },
+  {
+    "id": 1257,
+    "name": "Tractor Sparc Enamel",
+    "description": "A product that imparts a long lasting glossy finish to wood, metal and masonry surfaces. Tractor Sparc Enamel gives you a durable finish at an economical price",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Synthetic Enamels",
+    "price": "₹ 300.00",
+    "properties": [
+      "Glossy Finish",
+      "Long Lasting",
+      "Economical"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/pis-sheets/AP-Tractor-Sparc-Enamel-Packaging.png",
+    "slug": "tractor-sparc-enamel"
+  },
+  {
+    "id": 1258,
+    "name": "Tractor Enamel",
+    "description": "An economical choice for your household, this enamel can be used on multiple surfaces - be it wood, metal or masonry surfaces.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Synthetic Enamels",
+    "price": "₹ 300.00",
+    "properties": [
+      "Glossy Finish",
+      "Affordable",
+      "Durable"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/metals-tractor-enamel-asian-paints.png",
+    "slug": "tractor-enamel"
+  },
+  {
+    "id": 1259,
+    "name": "Apcolite Insect Shield Enamel",
+    "description": "Now Hidden corners of your home won’t hide insects anymore. Make your home insect free with Apcolite Insectshield Enamel.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Synthetic Enamels",
+    "price": "₹ 300.00",
+    "properties": [
+      "Long term protection against insects",
+      "800+ shades",
+      "Effective against cockroaches"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/Apcolite-Insect-Shield-Updated-packshot.png",
+    "slug": "apcolite-insect-shield-enamel"
+  },
+  {
+    "id": 1260,
+    "name": "Apcolite Suprema Premium Gloss Enamel",
+    "description": "Serving as a protective armour around the painted surface, this enamel imparts a shiny new look to multiple surfaces",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Synthetic Enamels",
+    "price": "₹ 300.00",
+    "properties": [
+      "IS 2933 Certified",
+      "Extremely tough and durable",
+      "High resistance to stains"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/apcolite-suprema.png",
+    "slug": "apcolite-suprema-premium-gloss-enamel"
+  },
+  {
+    "id": 1261,
+    "name": "Suprema Advanced Premium Gloss Enamel",
+    "description": "A topcoat paint which is highly washable and provides superior resistance to household stains",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Synthetic Enamels",
+    "price": "₹ 300.00",
+    "properties": [
+      "IS 2932 Certified",
+      "High Gloss Finish",
+      "Faster Drying Time"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/pis-sheets/Apcolite_Suprema_Advanced_20Ltr.png",
+    "slug": "suprema-advanced-premium-gloss-enamel"
+  },
+  {
+    "id": 1262,
+    "name": "3 Mangoes Black Board Paint",
+    "description": "A paint which exhibits good flow and levelling performance offering superior resistance to slippage of chalk during writing.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Synthetic Enamels",
+    "price": "₹ 300.00",
+    "properties": [
+      "Suitable for use as Black Board",
+      "Good flow and superior leveling"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/mangoes-blackboard-paint.png",
+    "slug": "3-mangoes-black-board-paint"
+  },
+  {
+    "id": 1263,
+    "name": "Apcolite Aluminium Paint",
+    "description": "Excellent durability, high corrosion resistance and brilliant lustre finish are the attributes which best define Apco Aluminium Paint",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Synthetic Enamels",
+    "price": "₹ 300.00",
+    "properties": [
+      "Excellent durability",
+      "Corrosion Resistance",
+      "Fast Drying"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/apcolite-aluminium-paint.png",
+    "slug": "apcolite-aluminium-paint"
+  },
+  {
+    "id": 1264,
+    "name": "3 Mangoes Aluminium Paint",
+    "description": "A paint which is fast drying and has excellent adhesion when applied on steel structures, wagons, oil tanks and ferrous metal substrates",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Synthetic Enamels",
+    "price": "₹ 300.00",
+    "properties": [
+      "Brilliant Lustre Finish",
+      "Corrosion Resistance",
+      "High Coverage"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/mangoes-aluminium-paint.png",
+    "slug": "3-mangoes-aluminium-paint"
+  },
+  {
+    "id": 1265,
+    "name": "Apcolite Clear Synthetic Varnish",
+    "description": "Recommended as a finishing varnish for interior wood applications, this product can also be mixed with synthetic enamels for gloss enhancement",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Wood Finishes",
+    "price": "₹ 300.00",
+    "properties": [
+      "Gloss Retention",
+      "Finishing varnish for wood",
+      "Good durability"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/clear-synthtic-varnish.png",
+    "slug": "apcolite-clear-synthetic-varnish"
+  },
+  {
+    "id": 9011,
+    "name": "Royale Wall Base Coat",
+    "description": "Create the perfect base coat that primes for a smooth finish, better paint adhesion, and added moisture protection.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "Special acrylic binders",
+      "Adhesion",
+      "Whiteness and smoothness"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-undercoats-royale-wall-basecoat-asian-paints.png",
+    "slug": "royale-wall-base-coat"
+  },
+  {
+    "id": 9012,
+    "name": "TruCare Interior Wall Primer - Water thinnable",
+    "description": "A true hero product when it comes to water-based wall finishes. It proves to be an effective primer for luxury finishes of top coats.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "SUPERIOR WHITENESS",
+      "ALKALI RESISTANCE",
+      "MOISTURE RESISTANCE"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/0360.png",
+    "slug": "trucare-interior-wall-primer-water-thinnable"
+  },
+  {
+    "id": 9013,
+    "name": "TruCare Interior Wall Primer - Solvent Thinnable",
+    "description": "Let your walls stand out! All you need for an everlasting paint is aprimer with good sealing properties.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "OPACITY AND WHITENESS",
+      "ALKALI RESISTANCE",
+      "GOOD SEALING PROPERTIES"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/0359_undercoats.png",
+    "slug": "trucare-interior-wall-primer-solvent-thinnable"
+  },
+  {
+    "id": 9014,
+    "name": "TruCare Sparc Ultraa Interior Primer- Water Thinnable",
+    "description": "Upgraded performance with great whiteness and topcoat adhesion for a wonderful wall with a superior finish",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "BETTER OPACITY AND WHITENESS",
+      "BETTER TOPCOAT ADHESION",
+      "ECONIMICAL PRICE POINT"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/TRUCARE_SPARC-ULTRAA-INTERIOR.png",
+    "slug": "trucare-sparc-ultraa-interior-primer-water-thinnable"
+  },
+  {
+    "id": 9015,
+    "name": "TruCare Sparc Interior Primer-water Thinnable",
+    "description": "Provides good whiteness, a smooth surface and great adhesion to the topcoat for smooth interior walls",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "OPACITY AND WHITENESS",
+      "BETTER TOPCOAT ADHESION",
+      "ECONOMICAL PRICE POINT"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/sparc_interior.png",
+    "slug": "trucare-sparc-interior-primer-water-thinnable"
+  },
+  {
+    "id": 9016,
+    "name": "SmartCare Terrace Tile Primer",
+    "description": "Lock in durability with our eco-friendly primer that waterproofs terrace tiles and keeps them strong for the long haul.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "Adhesion",
+      "Flexibility",
+      "Hybrid Technology"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/smartcare-terrace-tile-primer-asian-paints.png",
+    "slug": "smartcare-terrace-tile-primer"
+  },
+  {
+    "id": 9017,
+    "name": "SmartCare Primero",
+    "description": "Make your paint job last with our water-based primer that adds extra durability and moisture resistance to your exterior walls.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "Applicable on multiple surfaces",
+      "Excellent sealing property",
+      "Higher top coat coverage"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/exterior-walls-smartcare-primero-advanced-asian-paints.png",
+    "slug": "smartcare-primero"
+  },
+  {
+    "id": 9018,
+    "name": "TruCare Exterior Wall Primer",
+    "description": "Prime your walls the right way with our water-based primer that locks in paint better and gives your exterior walls a smooth, even base.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "Opacity and whiteness",
+      "Better topcoat adhesio",
+      "Resists peeling"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/exterior-walls-trucare-exterior-wall-primer-advanced-asian-paints.png",
+    "slug": "trucare-exterior-wall-primer"
+  },
+  {
+    "id": 9019,
+    "name": "TruCare Exterior Wall Primer Advanced",
+    "description": "The perfect balance between whiteness, surface adhesion and topcoat finish to enusre all round satistaction with the surface finish",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "BETTER OPACITY AND WHITENESS",
+      "BETTER TOPCOAT ADHESION",
+      "ECONIMICAL PRICE POINT"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/5633-new1.png",
+    "slug": "trucare-exterior-wall-primer-advanced"
+  },
+  {
+    "id": 9020,
+    "name": "TruCare Sparc Ultraa Exterior Primer",
+    "description": "Upgraded performance with great whiteness and topcoat adhesion for a wonderful wall with a superior finish",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "BETTER OPACITY AND WHITENESS",
+      "BETTER TOPCOAT ADHESION",
+      "ECONIMICAL PRICE POINT"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/6A51-new1.png",
+    "slug": "trucare-sparc-ultraa-exterior-primer"
+  },
+  {
+    "id": 9021,
+    "name": "TruCare Sparc Exterior Primer",
+    "description": "Provides good whiteness, a smooth surface and great adhesion to the topcoat for smooth exterior walls",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "OPACITY AND WHITENESS",
+      "BETTER TOPCOAT ADHESION",
+      "ECONOMICAL PRICE POINT"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/6A24-new1.png",
+    "slug": "trucare-sparc-exterior-primer"
+  },
+  {
+    "id": 9022,
+    "name": "TruCare Grey 1-pack Epoxy Primer",
+    "description": "Say goodbye to rust with this primer that promises supreme protection against rust that is 50 times stronger than ordinary metal primer.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "Primer with anti-corrosion properties",
+      "Ready to use primer",
+      "Excellent adhesion property"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/metals-trucare-grey-1-pack-epoxy-primer-asian-paints.png",
+    "slug": "trucare-grey-1-pack-epoxy-primer"
+  },
+  {
+    "id": 9023,
+    "name": "Apcolite Advanced 2-pack Epoxy Primer Grey",
+    "description": "Give a perfect anti-rust finish to your metal surfaces with this primer, while enhancing adhesion and protects the metal.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "Has overcoating property",
+      "Excellent adhesion property",
+      "Dual coat system with high performance"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/metals-apcolite-advanced-2pack-epoxy-primer-grey-asian-paints.png",
+    "slug": "apcolite-advanced-2-pack-epoxy-primer-grey"
+  },
+  {
+    "id": 9024,
+    "name": "TruCare Yellow Metal Primer",
+    "description": "Say bye to rust and corrosion, with our metal primer that gives a lasting defence and improved paint adhesion.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "Excellent adhesion property",
+      "Supreme rust protection",
+      "Free of hazardous material of chrome"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/1087.png",
+    "slug": "trucare-yellow-metal-primer"
+  },
+  {
+    "id": 9025,
+    "name": "TruCare Wood Primer",
+    "description": "Tackles wood's natural porosity to provide a pristine, workable surface",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "Made Especially for Wood",
+      "Good Sealing",
+      "Topcoat Adherance"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/0007.png",
+    "slug": "trucare-wood-primer"
+  },
+  {
+    "id": 9026,
+    "name": "TruCare Red Oxide Metal Primer",
+    "description": "Give your metal surfaces the right protection with this primer, which will provide a good coverage, equal levelling, and good adhesion to your surfaces.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "Excellent opacity",
+      "Offers good coverage",
+      "Good adhesion on all metal surfaces"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/metals-trucare-red-oxide-metal-primer-asian-paints.png",
+    "slug": "trucare-red-oxide-metal-primer"
+  },
+  {
+    "id": 9027,
+    "name": "TruCare Sparc Red Oxide Primer",
+    "description": "Great surface adhesion with metals to ensure a resilient topcoat finish at an economical price point",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "Good corrosion resistance",
+      "Good adherent coating",
+      "Economical Pricing"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/6793.png",
+    "slug": "trucare-sparc-red-oxide-primer"
+  },
+  {
+    "id": 9028,
+    "name": "TruCare Knifing Paste Filler",
+    "description": "Create beautiful walls with this filler that smooths out cracks and dents, leaving you with a perfect wall finish.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "Easy Cutting",
+      "Hard Dry Feature",
+      "Can be thinned"
+    ],
+    "sizes": [1, 5, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/metals-trucare-knifing-paste-filler-asian-paints.png",
+    "slug": "trucare-knifing-paste-filler"
+  },
+  {
+    "id": 9029,
+    "name": "Damp Sheath Exterior",
+    "description": "Keep moisture out with our damp-proof coating that protects your exterior walls and keeps your paint looking fresh.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "5 years warranty",
+      "Crack bridging ability",
+      "Top coat coverage increase up to 10%"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/sc-Dampsheath-exterior-new.png",
+    "slug": "damp-sheath-exterior"
+  },
+  {
+    "id": 9030,
+    "name": "Acrylic Wall Putty",
+    "description": "Perfect your finish with our water-based putty that fills imperfections and leaves a smooth, white base for your topcoat.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "No primer required",
+      "Cost effective",
+      "Time saving system"
+    ],
+    "sizes": [1, 5, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-undercoats-trucare-acrylic-wall-putty-asian-paints.png",
+    "slug": "acrylic-wall-putty"
+  },
+  {
+    "id": 9031,
+    "name": "TruCare Wall Putty",
+    "description": "Perfect the art of smooth walls, with our putty which will fill cracks and gaps, ensuring a perfect surface inside and out.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "Smooth finish",
+      "Good workability",
+      "Excellent strength"
+    ],
+    "sizes": [1, 5, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/exterior-walls-trucare-wall-putty-asian-paints.png",
+    "slug": "trucare-wall-putty"
+  },
+  {
+    "id": 9032,
+    "name": "TruCare Filling Putty",
+    "description": "Smooth out every bump with our white cement-based putty giving your walls a flawless base coat for painting.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "Excellent levelling",
+      "Abrasion Resistance",
+      "Built-up thickness upto 10 mm"
+    ],
+    "sizes": [1, 5, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/exterior-walls-trucare-filling-Putty-asian-paints.png",
+    "slug": "trucare-filling-putty"
+  },
+  {
+    "id": 9033,
+    "name": "TruCare Powder Acrylic Putty",
+    "description": "Provides an ultra smooth, glossy, marble-like finish to ensure the smoothest and shiniest topcoat finish",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "Smooth Finish",
+      "Good Workability and Mixing",
+      "Catwrs to both Filling and Finish"
+    ],
+    "sizes": [1, 5, 20],
+    "unit": "kg",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/6A46.png",
+    "slug": "trucare-powder-acrylic-putty"
+  },
+  {
+    "id": 9034,
+    "name": "SmartCare Damp Sheath Exterior Advanced",
+    "description": "Keep your exteriors water-tight with this high-performance coating that lasts longer and provides good adhesion.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "5 years warranty",
+      "Crack bridging ability",
+      "Top coat coverage increase up to 10%"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/smartcare-damp-sheath-exterior-advanced-asian-paints.png",
+    "slug": "smartcare-damp-sheath-exterior-advanced"
+  },
+  {
+    "id": 9035,
+    "name": "Damp Secure",
+    "description": "Protect your walls the secure way with our primer that offers 3 years of waterproofing warranty. Designed for exterior vertical walls, it locks in paint better while providing a strong, protective base against dampness.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "Better Whiteness &amp; Coverage",
+      "3 Years Waterproofing warranty",
+      "Superior Topcoat Performance"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/Damp-secure.png",
+    "slug": "damp-secure"
+  },
+  {
+    "id": 9036,
+    "name": "Decoprime Interior Wall Primer Advanced - Water Thinnable",
+    "description": "An essential undercoat for paints! This paint provides superior hiding and superior whiteness before you apply your final paint.",
+    "brand": "Asian Paints",
+    "topCategory": "Home Paint",
+    "subCategory": "Undercoats",
+    "price": "₹ 150.00",
+    "properties": [
+      "OPACITY AND WHITENESS",
+      "ALKALI RESISTANCE",
+      "GOOD SEALING PROPERTIES"
+    ],
+    "sizes": [1, 4, 10, 20],
+    "unit": "L",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": Math.floor(Math.random() * 200) + 50,
+    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/metals-decoprime-premium-metal-primer-asian-paints.png",
+    "slug": "decoprime-interior-wall-primer-advanced-water-thinnable"
   }
 ];

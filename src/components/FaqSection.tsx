@@ -92,16 +92,77 @@ export const faqs = [
   }
 ];
 
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export function FaqAccordion({ items }: { items: FaqItem[] }) {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  return (
+    <div className="space-y-3">
+      {items.map((faq, idx) => (
+        <motion.div
+          key={idx}
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: idx * 0.05 }}
+          className={`glass-panel rounded-xl border transition-all duration-300 hover-gold-glow ${
+            activeIndex === idx
+              ? "border-gold/40 bg-white shadow-sm border-zinc-200"
+              : "border-zinc-200 bg-white hover:border-black/10"
+          }`}
+        >
+          <button
+            onClick={() => setActiveIndex(activeIndex === idx ? null : idx)}
+            className="w-full px-4 py-3 sm:px-5 sm:py-4 flex items-center justify-between text-left gap-3"
+          >
+            <span className="font-semibold text-xs sm:text-sm text-ivory tracking-wide">
+              {faq.question}
+            </span>
+            <ChevronDown
+              className={`w-4 h-4 text-gold shrink-0 transition-transform duration-300 ${
+                activeIndex === idx ? "rotate-180 text-gold" : ""
+              }`}
+            />
+          </button>
+          <AnimatePresence>
+            {activeIndex === idx && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                className="overflow-hidden"
+              >
+                <div className="px-4 pb-3 sm:pb-4 text-xs text-ivory/80 leading-relaxed border-t border-zinc-200 pt-3 font-light">
+                  {faq.answer}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
 export default function FaqSection({
   showLink = false,
   limit,
+  customFaqs,
+  title,
+  subtitle,
 }: {
   showLink?: boolean;
   limit?: number;
+  customFaqs?: FaqItem[];
+  title?: React.ReactNode;
+  subtitle?: string;
 }) {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
-  const displayFaqs = limit ? faqs.slice(0, limit) : faqs;
+  const displayFaqs = customFaqs || (limit ? faqs.slice(0, limit) : faqs);
 
   return (
     <section id="faqs" className="py-12 sm:py-20 lg:py-24 border-t border-gold/10 relative overflow-hidden bg-gradient-to-b from-transparent to-royale-surface">
@@ -112,7 +173,7 @@ export default function FaqSection({
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white shadow-sm border border-zinc-200 mb-4">
             <HelpCircle className="w-3 h-3 text-gold" />
@@ -121,54 +182,19 @@ export default function FaqSection({
             </span>
           </div>
           <h2 className="text-xl sm:text-2xl font-serif font-medium mb-3 uppercase tracking-tight leading-tight text-center">
-            Frequently Asked{" "}
-            <span className="text-gradient italic">Questions</span>
+            {title || (
+              <>
+                Frequently Asked{" "}
+                <span className="text-gradient italic">Questions</span>
+              </>
+            )}
           </h2>
           <p className="text-gold max-w-lg mx-auto text-[10px] sm:text-xs font-sans font-light leading-relaxed italic mb-6">
-            Everything you need to know about our products, services, and expert
-            advice.
+            {subtitle || "Everything you need to know about our products, services, and expert advice."}
           </p>
         </motion.div>
 
-        <div className="space-y-3">
-          {displayFaqs.map((faq, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className={`glass-panel rounded-xl border transition-all duration-300 hover-gold-glow ${activeIndex === idx ? "border-gold/40 bg-white shadow-sm border border-zinc-200" : "border-zinc-200 hover:border-black/10"}`}
-            >
-              <button
-                onClick={() => setActiveIndex(activeIndex === idx ? null : idx)}
-                className="w-full px-4 py-3 sm:px-5 sm:py-4 flex items-center justify-between text-left"
-              >
-                <span className="font-medium text-[11px] sm:text-xs text-ivory tracking-wide">
-                  {faq.question}
-                </span>
-                <ChevronDown
-                  className={`w-4 h-4 text-gold transition-transform duration-300 ${activeIndex === idx ? "rotate-180 text-gold" : ""}`}
-                />
-              </button>
-              <AnimatePresence>
-                {activeIndex === idx && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="px-4 pb-3 sm:pb-4 text-[10px] sm:text-[11px] text-ivory/80 leading-relaxed border-t border-zinc-200 pt-3 font-light italic">
-                      {faq.answer}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
-        </div>
+        <FaqAccordion items={displayFaqs} />
 
         {showLink && (
           <motion.div

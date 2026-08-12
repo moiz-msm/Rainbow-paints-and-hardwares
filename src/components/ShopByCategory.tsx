@@ -66,9 +66,12 @@ export default function ShopByCategory() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-8 flex flex-col items-center text-center"
         >
-          <h2 className="text-xl sm:text-2xl font-serif font-medium mb-3 tracking-tight leading-tight text-center text-[#1A365D]">
+          <h2 className="text-xl sm:text-2xl font-serif font-medium mb-2 tracking-tight leading-tight text-center text-[#1A365D]">
             Shop By <span className="text-gradient italic">Category</span>
           </h2>
+          <p className="text-[10px] sm:text-xs text-[#1A365D]/70 max-w-xl mx-auto font-sans font-light leading-relaxed">
+            Wall painting, industrial, waterproofing, wood and hardwares.
+          </p>
         </motion.div>
         
         <div className="relative mt-2 flex items-center group">
@@ -97,7 +100,7 @@ export default function ShopByCategory() {
                 to={`/c/${category.slug}`}
                 className="flex-shrink-0 flex flex-col items-center gap-3 w-[100px] sm:w-[120px] lg:w-[140px] group/cat"
               >
-                <div className="w-full aspect-square rounded-2xl overflow-hidden shadow-sm border border-ivory/10 group-hover/cat:shadow-md group-hover/cat:border-gold/30 transition-all duration-300">
+                <div className="w-full aspect-square rounded-2xl overflow-hidden shadow-sm border border-zinc-200/50 group-hover/cat:shadow-md group-hover/cat:border-gold/30 transition-all duration-300 relative bg-white">
                   <img 
                     src={category.image} 
                     alt={category.name} 
@@ -105,8 +108,9 @@ export default function ShopByCategory() {
                     decoding="async"
                     className="w-full h-full object-cover group-hover/cat:scale-110 transition-transform duration-700 ease-out"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A365D]/60 to-transparent opacity-0 group-hover/cat:opacity-100 transition-opacity duration-300"></div>
                 </div>
-                <span className="font-serif font-medium text-[11px] sm:text-xs lg:text-sm text-center leading-tight text-ivory">
+                <span className="font-serif font-medium text-[11px] sm:text-xs lg:text-sm text-center leading-tight text-[#1A365D]">
                   {category.name}
                 </span>
               </Link>

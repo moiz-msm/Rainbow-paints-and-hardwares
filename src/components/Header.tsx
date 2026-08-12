@@ -57,6 +57,7 @@ export default function Header() {
 
   const navLinks = [
     { name: 'Shop', href: '/buy-paint-online' },
+    { name: 'Painting Services', href: '/painting-services' },
     { name: 'Colors & Visualizer', href: '/visualizer' },
     { name: 'Calculator', href: '/calculator' },
     { name: 'Compare', href: '/compare-paints' },

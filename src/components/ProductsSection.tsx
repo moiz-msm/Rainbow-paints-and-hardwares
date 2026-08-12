@@ -988,7 +988,7 @@ export default function ProductsSection({
       const key = p.name ? p.name.trim().toLowerCase() : p.id?.toString();
       map.set(key, p);
     });
-    const blacklistedIds = ['FtYxbQJggWPGiFQmCZqU', 'cfC16vcJc7Y6SuG8I0io', 'urWWhE0zkeCmRzBcTHqw', 'KQsvJ6kbraBWrRqaiLPB'];
+    const blacklistedIds = ['FtYxbQJggWPGiFQmCZqU', 'cfC16vcJc7Y6SuG8I0io', 'urWWhE0zkeCmRzBcTHqw', 'KQsvJ6kbraBWrRqaiLPB', 'mcHNBwzpaibtkqkGeMkE'];
 
     dbProducts.forEach((p) => {
       if (blacklistedIds.includes(p.id)) return;
@@ -1055,16 +1055,45 @@ export default function ProductsSection({
       });
 
       if (nameLower.includes("putty") || nameLower.includes("white cement")) {
-        subs = ["Undercoats"];
+        subs.push("Undercoats");
       }
-
       if (nameLower.includes("2 in 1") || nameLower.includes("2-in-1") || nameLower.includes("two in one")) {
          subs.push("Interior Wall", "Exterior Wall");
       }
       if (nameLower.includes("exterior primer")) {
          subs.push("Exterior Wall", "Undercoats");
       }
-
+      if (nameLower.includes("interior primer")) {
+         subs.push("Interior Wall", "Undercoats");
+      }
+      if (nameLower.includes("damp sheath exterior") || nameLower === "damp sheath exterior") {
+         subs.push("Exterior Wall", "Undercoats", "Waterproofing");
+      }
+      if (nameLower.includes("damp sheath interior")) {
+         subs.push("Interior Wall", "Undercoats", "Waterproofing");
+      }
+      if (nameLower.includes("tile adhesive") || nameLower.includes("tile bonder") || nameLower.includes("grout")) {
+         subs.push("Tile Adhesives", "Waterproofing");
+      }
+      if (nameLower.includes("damp proof") || nameLower.includes("waterproof")) {
+         subs.push("Waterproofing");
+      }
+      if (nameLower.includes("wood primer") || nameLower.includes("wood filler")) {
+         subs.push("Undercoats", "Wood Finishes");
+      }
+      if (nameLower.includes("woodtech") || nameLower.includes("trucare wood") || nameLower.includes("touchwood")) {
+         subs.push("Wood Finishes");
+      }
+      if (nameLower.includes("enamel")) {
+         subs.push("Synthetic Enamels", "Metals and Grills", "Wood Finishes");
+      }
+      if (nameLower.includes("metal primer") || nameLower.includes("epoxy finish")) {
+         subs.push("Undercoats", "Metals and Grills");
+      }
+      if (nameLower.includes("aluminium paint") || nameLower.includes("black board paint")) {
+         subs.push("Metals and Grills", "Synthetic Enamels");
+      }
+      
       updatedP.subCategories = Array.from(new Set(subs));
       if (updatedP.subCategories.length > 0) {
         updatedP.subCategory = updatedP.subCategories[0];
