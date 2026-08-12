@@ -56,6 +56,18 @@ function generateSitemap() {
   
   
   // Add hyperlocal location routes
+  
+  const serviceRoutes = [
+    '/services/interior-wall-painting',
+    '/services/exterior-wall-painting',
+    '/services/waterproofing',
+    '/services/wood-metal-painting',
+    '/services/industrial-flooring'
+  ];
+  serviceRoutes.forEach(route => {
+    urls.push(route);
+  });
+  
   const neighborhoods = [
     'coimbatore',
     'rs-puram-coimbatore',
@@ -75,6 +87,9 @@ function generateSitemap() {
   neighborhoods.forEach(hood => {
     urls.push(`/store/${hood}`);
     urls.push(`/painting-services/${hood}`);
+    serviceRoutes.forEach(route => {
+      urls.push(`${route}/${hood}`);
+    });
   });
 
 
