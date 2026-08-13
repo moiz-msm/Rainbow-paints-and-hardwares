@@ -209,8 +209,7 @@ export default function SEO({
               "shippingDestination": {
                 "@type": "DefinedRegion",
                 "addressCountry": "IN",
-                "addressRegion": "TN",
-                "addressLocality": "Coimbatore"
+                "addressRegion": "TN"
               },
               "deliveryTime": {
                 "@type": "ShippingDeliveryTime",

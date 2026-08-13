@@ -747,8 +747,7 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
       "shippingDestination": {
         "@type": "DefinedRegion",
         "addressCountry": "IN",
-        "addressRegion": "TN",
-        "addressLocality": "Coimbatore"
+        "addressRegion": "TN"
       },
       "deliveryTime": {
         "@type": "ShippingDeliveryTime",
