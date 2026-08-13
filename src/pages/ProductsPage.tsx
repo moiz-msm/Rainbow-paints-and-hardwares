@@ -175,7 +175,7 @@ export default function ProductsPage() {
     };
   }, [breadcrumbItems]);
 
-  const schemas = [collectionSchema, serviceSchema, breadcrumbSchema];
+  const schemas: object[] = [collectionSchema, serviceSchema, breadcrumbSchema];
   if (faqSchema) schemas.push(faqSchema);
 
   const currentUrl = `https://www.rainbowpaint.in${categorySlug ? '/c/' + categorySlug : brandSlug ? '/brands/' + brandSlug : '/buy-paint-online'}`;

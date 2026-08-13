@@ -754,13 +754,13 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
           "@type": "QuantitativeValue",
           "minValue": 0,
           "maxValue": 0,
-          "unitCode": "DAY"
+          "unitCode": "d"
         },
         "transitTime": {
           "@type": "QuantitativeValue",
           "minValue": 0,
           "maxValue": 0,
-          "unitCode": "DAY"
+          "unitCode": "d"
         }
       }
     };
@@ -855,20 +855,12 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
     });
 
     if (sizes.length > 1) {
-      const allPrices = variationOffers.map((o: any) => Number(o.price));
       return {
         ...baseSchema,
-        "@type": "Product",
-        "sku": `RP-PG-${targetProduct.id || '1'}`,
-        "mpn": `MPN-${targetProduct.id || '1'}`,
-        "offers": {
-          "@type": "AggregateOffer",
-          "priceCurrency": "INR",
-          "lowPrice": Math.min(...allPrices),
-          "highPrice": Math.max(...allPrices),
-          "offerCount": variationOffers.length,
-          "offers": variationOffers
-        }
+        "@type": "ProductGroup",
+        "productGroupID": `RP-PG-${targetProduct.id || '1'}`,
+        "variesBy": ["https://schema.org/size"],
+        "hasVariant": variants
       };
     } else {
       return {
