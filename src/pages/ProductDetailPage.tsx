@@ -746,8 +746,7 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
       },
       "shippingDestination": {
         "@type": "DefinedRegion",
-        "addressCountry": "IN",
-        "addressRegion": "TN"
+        "addressCountry": "IN"
       },
       "deliveryTime": {
         "@type": "ShippingDeliveryTime",
@@ -760,7 +759,7 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
         "transitTime": {
           "@type": "QuantitativeValue",
           "minValue": 0,
-          "maxValue": 1,
+          "maxValue": 0,
           "unitCode": "DAY"
         }
       }

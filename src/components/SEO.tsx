@@ -208,8 +208,7 @@ export default function SEO({
               },
               "shippingDestination": {
                 "@type": "DefinedRegion",
-                "addressCountry": "IN",
-                "addressRegion": "TN"
+                "addressCountry": "IN"
               },
               "deliveryTime": {
                 "@type": "ShippingDeliveryTime",
@@ -222,7 +221,7 @@ export default function SEO({
                 "transitTime": {
                   "@type": "QuantitativeValue",
                   "minValue": 0,
-                  "maxValue": 1,
+                  "maxValue": 0,
                   "unitCode": "DAY"
                 }
               }
