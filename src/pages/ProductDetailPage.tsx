@@ -848,8 +848,6 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
         "description": baseSchema.description,
         "brand": baseSchema.brand,
         "category": baseSchema.category,
-        "aggregateRating": baseSchema.aggregateRating,
-        "review": baseSchema.review,
         "offers": offer
       };
     });

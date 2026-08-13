@@ -216,13 +216,13 @@ export default function SEO({
                   "@type": "QuantitativeValue",
                   "minValue": 0,
                   "maxValue": 0,
-                  "unitCode": "DAY"
+                  "unitCode": "d"
                 },
                 "transitTime": {
                   "@type": "QuantitativeValue",
                   "minValue": 0,
                   "maxValue": 0,
-                  "unitCode": "DAY"
+                  "unitCode": "d"
                 }
               }
             }
