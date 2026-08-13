@@ -7,6 +7,7 @@ import ServiceInfo from '../components/ServiceInfo';
 import LeadCaptureForm from '../components/LeadCaptureForm';
 import { FaqAccordion } from '../components/FaqSection';
 import TrustStats from '../components/TrustStats';
+import PaintingServiceSeoBlock from '../components/PaintingServiceSeoBlock';
 
 export default function WaterproofingPage() {
   const { locationSlug } = useParams<{ locationSlug: string }>();
@@ -31,8 +32,8 @@ export default function WaterproofingPage() {
   return (
     <div className="min-h-screen bg-royale-bg">
       <SEO 
-        title={`Waterproofing Home Painting & Leak Proofing in ${locationName} | Stop Leaks Fast`}
-        description={`Professional waterproofing home painting & leak proofing in ${locationName}. Terrace leakage repair, bathroom seepage treatment using Dr. Fixit and Asian Paints Damp Proof.`}
+        title={`Terrace & Roof Waterproofing in ${locationName} | Leak & Seepage Repair`}
+        description={`Stop roof leaks and wall seepage! Professional waterproofing contractors in ${locationName}. We specialize in terrace leakage repair, bathroom seepage, and damp proofing using Dr. Fixit & Asian Paints SmartCare. Book a free inspection.`}
       />
       <div className="pt-24 lg:pt-32 pb-16 lg:pb-24 relative overflow-hidden border-b border-royale-accent/40 bg-royale-surface">
         <div className="absolute inset-0">
@@ -123,6 +124,7 @@ export default function WaterproofingPage() {
         </div>
       </div>
 
+      <PaintingServiceSeoBlock />
       <div className={`fixed bottom-0 left-0 w-full bg-white border-t border-royale-accent/30 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] p-4 lg:hidden z-50 transition-transform duration-300 ${showStickyCTA ? 'translate-y-0' : 'translate-y-full'}`}>
         <div className="flex gap-3 max-w-7xl mx-auto">
           <a 

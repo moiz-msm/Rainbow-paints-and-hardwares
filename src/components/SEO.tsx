@@ -203,7 +203,7 @@ export default function SEO({
               "@type": "OfferShippingDetails",
               "shippingRate": {
                 "@type": "MonetaryAmount",
-                "value": "150",
+                "value": "0",
                 "currency": "INR"
               },
               "shippingDestination": {

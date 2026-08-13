@@ -10,7 +10,7 @@ const services = [
     icon: Brush,
     link: '/services/interior-wall-painting',
     color: 'bg-emerald-50 text-emerald-600 border-emerald-100',
-    image: 'https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=600&q=80',
   },
   {
     title: 'Exterior Wall Painting',
@@ -18,7 +18,7 @@ const services = [
     icon: ShieldCheck,
     link: '/services/exterior-wall-painting',
     color: 'bg-blue-50 text-blue-600 border-blue-100',
-    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80',
   },
   {
     title: 'Wood & Metal Painting',
@@ -26,7 +26,7 @@ const services = [
     icon: PenTool,
     link: '/services/wood-metal-painting',
     color: 'bg-amber-50 text-amber-600 border-amber-100',
-    image: 'https://images.unsplash.com/photo-1533227268428-f9ed0900f4f4?auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1506806732259-39c2d0268443?auto=format&fit=crop&w=600&q=80',
   },
   {
     title: 'Waterproofing Services',
@@ -34,7 +34,7 @@ const services = [
     icon: Droplet,
     link: '/services/waterproofing',
     color: 'bg-cyan-50 text-cyan-600 border-cyan-100',
-    image: 'https://images.unsplash.com/photo-1513584684374-8bab748fbf90?auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1520699697851-3dc68aa3a474?auto=format&fit=crop&w=600&q=80',
   },
   {
     title: 'Industrial Flooring',
@@ -42,7 +42,7 @@ const services = [
     icon: Factory,
     link: '/services/industrial-flooring',
     color: 'bg-zinc-50 text-zinc-600 border-zinc-100',
-    image: 'https://images.unsplash.com/photo-1580983554442-9f37c35a6390?auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80',
   },
 ];
 
@@ -124,7 +124,7 @@ export default function PaintingServicesOverview() {
           <div 
             ref={scrollRef}
             onScroll={handleScroll}
-            className="flex overflow-x-auto gap-4 sm:gap-6 lg:gap-8 px-2 py-4 scroll-smooth w-full"
+            className="flex overflow-x-auto gap-4 sm:gap-6 lg:gap-8 px-4 py-8 scroll-smooth w-full snap-x snap-mandatory"
             style={{ msOverflowStyle: 'none', scrollbarWidth: 'none' }}
           >
             <style>{`
@@ -138,9 +138,9 @@ export default function PaintingServicesOverview() {
                 <Link 
                   key={index} 
                   to={service.link}
-                  className="flex-shrink-0 flex flex-col items-center gap-3 w-[100px] sm:w-[120px] lg:w-[140px] group/cat"
+                  className="snap-start flex-shrink-0 flex flex-col items-center gap-3 w-[120px] sm:w-[140px] lg:w-[160px] group/cat"
                 >
-                  <div className="w-full aspect-square rounded-2xl overflow-hidden shadow-sm border border-zinc-200/50 group-hover/cat:shadow-md group-hover/cat:border-gold/30 transition-all duration-300 relative bg-white">
+                  <div className="w-full aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_4px_15px_rgb(0,0,0,0.03)] border border-ivory/10 group-hover/cat:shadow-[0_8px_25px_rgb(0,0,0,0.08)] group-hover/cat:border-gold/40 transition-all duration-500 relative bg-white group-hover/cat:-translate-y-1">
                     <img 
                       src={service.image} 
                       alt={service.title} 
@@ -148,9 +148,11 @@ export default function PaintingServicesOverview() {
                       decoding="async"
                       className="w-full h-full object-cover group-hover/cat:scale-110 transition-transform duration-700 ease-out"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A365D]/60 to-transparent opacity-0 group-hover/cat:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A365D]/80 via-transparent to-transparent opacity-0 group-hover/cat:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                       <ArrowRight className="w-5 h-5 text-white ml-auto -translate-x-2 opacity-0 group-hover/cat:opacity-100 group-hover/cat:translate-x-0 transition-all duration-300" />
+                    </div>
                   </div>
-                  <span className="font-serif font-medium text-[11px] sm:text-xs lg:text-sm text-center leading-tight text-[#1A365D]">
+                  <span className="font-serif font-medium text-[11px] sm:text-xs lg:text-sm text-center leading-tight text-[#1A365D] group-hover/cat:text-gold transition-colors line-clamp-2 mt-1">
                     {service.title}
                   </span>
                 </Link>
@@ -159,13 +161,17 @@ export default function PaintingServicesOverview() {
             
             <Link 
               to="/painting-services"
-              className="flex-shrink-0 flex flex-col items-center gap-3 w-[100px] sm:w-[120px] lg:w-[140px] group/cat"
+              className="snap-start flex-shrink-0 flex flex-col items-center gap-3 w-[120px] sm:w-[140px] lg:w-[160px] group/cat"
             >
-              <div className="w-full aspect-square rounded-2xl bg-white border border-ivory/10 shadow-[0_4px_15px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_25px_rgb(0,0,0,0.06)] hover:border-gold/30 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center p-3 sm:p-4">
-                <span className="text-gold font-display font-bold text-[9px] sm:text-[11px] uppercase tracking-widest text-center mt-1">
+              <div className="w-full aspect-square rounded-2xl sm:rounded-3xl bg-white border border-ivory/10 shadow-[0_4px_15px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_25px_rgb(0,0,0,0.06)] hover:border-gold/30 hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center p-3 sm:p-4 group/all">
+                <div className="w-10 h-10 rounded-full bg-royale-surface flex items-center justify-center mb-3 group-hover/all:bg-gold/10 transition-colors">
+                  <ArrowRight className="w-4 h-4 text-gold" />
+                </div>
+                <span className="text-gold font-display font-bold text-[9px] sm:text-[11px] uppercase tracking-widest text-center leading-relaxed">
                   Explore All<br />Services
                 </span>
               </div>
+
               <span className="text-transparent font-serif font-medium text-[11px] sm:text-xs lg:text-sm text-center leading-tight">
                 All
               </span>

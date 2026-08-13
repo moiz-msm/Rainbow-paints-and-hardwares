@@ -741,7 +741,7 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
       "@type": "OfferShippingDetails",
       "shippingRate": {
         "@type": "MonetaryAmount",
-        "value": "150",
+        "value": "0",
         "currency": "INR"
       },
       "shippingDestination": {
@@ -861,7 +861,14 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
         "@type": "Product",
         "sku": `RP-PG-${targetProduct.id || '1'}`,
         "mpn": `MPN-${targetProduct.id || '1'}`,
-        "offers": variationOffers
+        "offers": {
+          "@type": "AggregateOffer",
+          "priceCurrency": "INR",
+          "lowPrice": Math.min(...allPrices),
+          "highPrice": Math.max(...allPrices),
+          "offerCount": variationOffers.length,
+          "offers": variationOffers
+        }
       };
     } else {
       return {

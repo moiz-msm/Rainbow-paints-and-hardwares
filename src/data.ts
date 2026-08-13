@@ -50,7 +50,7 @@ export interface BrandDetail {
 export const brandDetails: BrandDetail[] = [
   {
     name: "Just Spray",
-    logo: "https://justspray.in/wp-content/uploads/2024/10/JustSpray-logo-a.png",
+    logo: "/justspray-logo.png",
     description:
       "Premium JS1 aerosol spray paint. High-performance quick-drying formula offering professional finish in classic, metallic, fluorescent, and primer variations.",
     tags: ["JS1", "Spray Paint", "Aerosol"],

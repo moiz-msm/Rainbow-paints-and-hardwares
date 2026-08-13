@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from "react";
+import UtilitySeoBlock from "../components/UtilitySeoBlock";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Sparkles,
@@ -1020,6 +1021,8 @@ export default function ComparePaintsPage() {
           </div>
         </div>
       </div>
+      
+      <UtilitySeoBlock page="compare" />
     </div>
   );
 }

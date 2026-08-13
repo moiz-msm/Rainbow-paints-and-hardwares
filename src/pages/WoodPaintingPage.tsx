@@ -7,6 +7,7 @@ import ServiceInfo from '../components/ServiceInfo';
 import LeadCaptureForm from '../components/LeadCaptureForm';
 import { FaqAccordion } from '../components/FaqSection';
 import TrustStats from '../components/TrustStats';
+import PaintingServiceSeoBlock from '../components/PaintingServiceSeoBlock';
 
 export default function WoodPaintingPage() {
   const { locationSlug } = useParams<{ locationSlug: string }>();
@@ -31,8 +32,8 @@ export default function WoodPaintingPage() {
   return (
     <div className="min-h-screen bg-royale-bg">
       <SEO 
-        title={`Wood & Metal Home Painting Services in ${locationName} | PU & Enamel`}
-        description={`Expert wood and metal home painting in ${locationName}. From MRF PU finishes for luxury doors to Apcolite enamel for grills and gates.`}
+        title={`Wood PU Polish & Metal Painting Services in ${locationName}`}
+        description={`Top-rated wood and metal painters in ${locationName}. Revive your doors, windows, and grills with MRF PU finishes, clear coats, and Apcolite synthetic enamels. Flawless finish with mechanized spraying. Get a free estimate!`}
       />
       <div className="pt-24 lg:pt-32 pb-16 lg:pb-24 relative overflow-hidden border-b border-royale-accent/40 bg-royale-surface">
         <div className="absolute inset-0">
@@ -119,6 +120,7 @@ export default function WoodPaintingPage() {
         </div>
       </div>
 
+      <PaintingServiceSeoBlock />
       <div className={`fixed bottom-0 left-0 w-full bg-white border-t border-royale-accent/30 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] p-4 lg:hidden z-50 transition-transform duration-300 ${showStickyCTA ? 'translate-y-0' : 'translate-y-full'}`}>
         <div className="flex gap-3 max-w-7xl mx-auto">
           <a 

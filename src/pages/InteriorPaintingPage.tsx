@@ -7,6 +7,7 @@ import ServiceInfo from '../components/ServiceInfo';
 import LeadCaptureForm from '../components/LeadCaptureForm';
 import { FaqAccordion } from '../components/FaqSection';
 import TrustStats from '../components/TrustStats';
+import PaintingServiceSeoBlock from '../components/PaintingServiceSeoBlock';
 
 export default function InteriorPaintingPage() {
   const { locationSlug } = useParams<{ locationSlug: string }>();
@@ -31,8 +32,8 @@ export default function InteriorPaintingPage() {
   return (
     <div className="min-h-screen bg-royale-bg">
       <SEO 
-        title={`Interior Wall Home Painting Services in ${locationName} | Free Estimate`}
-        description={`Expert interior wall home painting services in ${locationName}. From standard 1BHK repainting to luxury finishes with Asian Paints Royale. Exact laser measured quotes.`}
+        title={`Interior Wall Painters in ${locationName} | Best Home Painting Services`}
+        description={`Looking for the best interior wall painters in ${locationName}? Rainbow Paints offers premium home painting services with Asian Paints Royale, dust-free mechanized tools, and a 1-year warranty. Book a free laser-measured estimate today!`}
       />
       <div className="pt-24 lg:pt-32 pb-16 lg:pb-24 relative overflow-hidden border-b border-royale-accent/40 bg-royale-surface">
         <div className="absolute inset-0">
@@ -130,6 +131,7 @@ export default function InteriorPaintingPage() {
         </div>
       </div>
 
+      <PaintingServiceSeoBlock />
       <div className={`fixed bottom-0 left-0 w-full bg-white border-t border-royale-accent/30 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] p-4 lg:hidden z-50 transition-transform duration-300 ${showStickyCTA ? 'translate-y-0' : 'translate-y-full'}`}>
         <div className="flex gap-3 max-w-7xl mx-auto">
           <a 

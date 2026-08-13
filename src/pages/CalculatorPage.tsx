@@ -1,3 +1,4 @@
+import UtilitySeoBlock from "../components/UtilitySeoBlock";
 import React from "react";
 import CalculatorSection from "../components/CalculatorSection";
 import { Calculator } from "lucide-react";
@@ -44,6 +45,7 @@ export default function CalculatorPage() {
         </div>
       </div>
       <CalculatorSection />
+      <UtilitySeoBlock page="calculator" />
     </div>
   );
 }

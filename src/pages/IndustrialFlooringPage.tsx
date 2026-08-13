@@ -7,6 +7,7 @@ import ServiceInfo from '../components/ServiceInfo';
 import LeadCaptureForm from '../components/LeadCaptureForm';
 import { FaqAccordion } from '../components/FaqSection';
 import TrustStats from '../components/TrustStats';
+import PaintingServiceSeoBlock from '../components/PaintingServiceSeoBlock';
 
 export default function IndustrialFlooringPage() {
   const { locationSlug } = useParams<{ locationSlug: string }>();
@@ -31,8 +32,8 @@ export default function IndustrialFlooringPage() {
   return (
     <div className="min-h-screen bg-royale-bg pb-24">
       <SEO 
-        title={`Industrial & Epoxy Flooring Services in ${locationName} | Free Quote`}
-        description={`Expert industrial flooring services in ${locationName}. Epoxy coatings, PU flooring, and heavy-duty screeds for warehouses, factories, and commercial spaces.`}
+        title={`Industrial Epoxy Flooring Contractors in ${locationName} | PU Floor Coating`}
+        description={`Expert epoxy flooring contractors in ${locationName}. We deliver heavy-duty PU and epoxy coatings for warehouses, factories, parking lots, and commercial spaces. Fast execution and long-lasting durability. Request a site visit today.`}
       />
       
       <div className="pt-24 lg:pt-32 pb-16 lg:pb-24 relative overflow-hidden border-b border-royale-accent/40 bg-royale-surface">
@@ -123,6 +124,7 @@ export default function IndustrialFlooringPage() {
         </div>
       </div>
 
+      <PaintingServiceSeoBlock />
       <div className={`fixed bottom-0 left-0 w-full bg-white border-t border-royale-accent/30 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] p-4 lg:hidden z-50 transition-transform duration-300 ${showStickyCTA ? 'translate-y-0' : 'translate-y-full'}`}>
         <div className="flex gap-3 max-w-7xl mx-auto">
           <a 

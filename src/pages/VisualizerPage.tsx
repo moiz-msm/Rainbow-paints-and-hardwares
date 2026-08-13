@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import VisualizerSection from '../components/VisualizerSection';
+import UtilitySeoBlock from '../components/UtilitySeoBlock';
 import { Sparkles, Info } from 'lucide-react';
 import SEO from '../components/SEO';
 import { analytics, db } from '../lib/firebase';
@@ -49,6 +50,7 @@ export default function VisualizerPage() {
         </div>
       </div>
       <VisualizerSection />
+      <UtilitySeoBlock page="visualizer" />
     </div>
   );
 }

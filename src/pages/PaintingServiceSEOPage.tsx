@@ -7,6 +7,7 @@ import ServiceInfo from '../components/ServiceInfo';
 import LeadCaptureForm from '../components/LeadCaptureForm';
 import { FaqAccordion } from '../components/FaqSection';
 import TrustStats from '../components/TrustStats';
+import PaintingServiceSeoBlock from '../components/PaintingServiceSeoBlock';
 
 export default function PaintingServiceSEOPage() {
   const { locationSlug } = useParams<{ locationSlug: string }>();
@@ -105,8 +106,8 @@ export default function PaintingServiceSEOPage() {
   return (
     <div className="min-h-screen bg-royale-surface pb-24">
       <SEO 
-        title={`Professional Home Painting Services in ${locationName} | Free Estimate`}
-        description={`Hire expert painters in ${locationName}. Hassle-free painting, mechanized dust-free tools, 1-year warranty, and direct wholesale pricing. Book a free site visit.`}
+        title={`Professional Painting Services in ${locationName} | Best Painters Near Me`}
+        description={`Hire top-rated professional painters in ${locationName}. Rainbow Paints provides hassle-free interior, exterior, wood, and waterproofing services. Enjoy mechanized dust-free tools, 1-year warranty, and direct wholesale pricing. Free estimate!`}
         url={`https://www.rainbowpaint.in/painting-services${locationSlug ? `/${locationSlug}` : ''}`}
         schema={[serviceSchema, faqSchema]}
       />
@@ -231,6 +232,7 @@ export default function PaintingServiceSEOPage() {
         ]} />
       </div>
 
+      <PaintingServiceSeoBlock />
       {/* Sticky Bottom CTA for Mobile */}
       <div className={`fixed bottom-0 left-0 w-full bg-white border-t border-royale-accent/30 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] p-4 lg:hidden z-50 transition-transform duration-300 ${showStickyCTA ? 'translate-y-0' : 'translate-y-full'}`}>
         <div className="flex gap-3 max-w-7xl mx-auto">

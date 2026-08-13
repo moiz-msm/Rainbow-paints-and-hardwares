@@ -27,6 +27,7 @@ import { useSearchParams, useNavigate, Link } from "react-router-dom";
 import { useCartStore } from "../store/useCartStore";
 import { shadeService, Shade } from "../services/shadeService";
 import { useDebounce } from "../hooks/useDebounce";
+import CategorySeoBlock from "./CategorySeoBlock";
 
 import { useProductSearchStore } from "../store/useProductSearchStore";
 import { useWishlistStore } from "../store/useWishlistStore";
@@ -1760,6 +1761,8 @@ export default function ProductsSection({
           </div>
         )}
       </div>
+
+      <CategorySeoBlock category={activeCategoryFilter} />
     </section>
   );
 }
