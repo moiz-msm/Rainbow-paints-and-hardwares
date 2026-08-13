@@ -740,26 +740,22 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
     const shippingDetails = {
       "@type": "OfferShippingDetails",
       "shippingRate": {
-        "@type": "DeliveryChargeSpecification",
-        "price": "0",
-        "priceCurrency": "INR",
-        "eligibleTransactionVolume": {
-          "@type": "PriceSpecification",
-          "price": "10000",
-          "priceCurrency": "INR"
-        }
+        "@type": "MonetaryAmount",
+        "value": "0",
+        "currency": "INR"
       },
       "shippingDestination": {
         "@type": "DefinedRegion",
         "addressCountry": "IN",
-        "addressRegion": "Tamil Nadu"
+        "addressRegion": "TN",
+        "addressLocality": "Coimbatore"
       },
       "deliveryTime": {
         "@type": "ShippingDeliveryTime",
         "handlingTime": {
           "@type": "QuantitativeValue",
           "minValue": 0,
-          "maxValue": 1,
+          "maxValue": 0,
           "unitCode": "DAY"
         },
         "transitTime": {
