@@ -5,7 +5,7 @@ import ProductsSection from '../components/ProductsSection';
 import SEO from '../components/SEO';
 import Breadcrumb from '../components/Breadcrumb';
 import CategorySeoBlock from '../components/CategorySeoBlock';
-import { brands, subCategories } from '../data';
+import { mockProducts, brands, subCategories } from '../data';
 
 export default function ProductsPage() {
   const { categorySlug, brandSlug } = useParams<{ categorySlug?: string, brandSlug?: string }>();
@@ -175,8 +175,53 @@ export default function ProductsPage() {
     };
   }, [breadcrumbItems]);
 
+  const itemListSchema = useMemo(() => {
+    let filtered = mockProducts;
+    if (initialCategory) {
+      if (initialCategory === 'Exterior Wall' || initialCategory === 'Exterior Paints') {
+        filtered = filtered.filter((p: any) => p.subCategory === 'Exterior Wall' || p.category === 'Exterior Wall');
+      } else if (initialCategory === 'Interior Wall' || initialCategory === 'Interior Paints') {
+        filtered = filtered.filter((p: any) => p.subCategory === 'Interior Wall' || p.category === 'Interior Wall');
+      } else {
+        filtered = filtered.filter((p: any) => p.subCategory === initialCategory || p.category === initialCategory);
+      }
+    }
+    if (initialBrand) {
+      filtered = filtered.filter((p: any) => p.brand === initialBrand);
+    }
+    
+    // Sort and limit to top 15 products to feature in rich snippet
+    const topProducts = filtered.slice(0, 15);
+    
+    if (topProducts.length === 0) return null;
+
+    return {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": seoTitle,
+      "description": pageDescription,
+      "itemListElement": topProducts.map((p: any, idx) => ({
+        "@type": "ListItem",
+        "position": idx + 1,
+        "item": {
+          "@type": "Product",
+          "name": p.name,
+          "image": p.image ? (p.image.startsWith('http') ? p.image : `https://www.rainbowpaint.in${p.image.startsWith('/') ? '' : '/'}${p.image}`) : undefined,
+          "url": `https://www.rainbowpaint.in/p/${p.slug || p.name.replace(/\s+/g, '-').toLowerCase()}`,
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "INR",
+            "price": String(p.basePrice || (p.sizes && p.sizes[0] ? p.sizes[0] * 850 : 850)),
+            "availability": "https://schema.org/InStock"
+          }
+        }
+      }))
+    };
+  }, [initialCategory, initialBrand, seoTitle, pageDescription]);
+
   const schemas: object[] = [collectionSchema, serviceSchema, breadcrumbSchema];
   if (faqSchema) schemas.push(faqSchema);
+  if (itemListSchema) schemas.push(itemListSchema);
 
   const currentUrl = `https://www.rainbowpaint.in${categorySlug ? '/c/' + categorySlug : brandSlug ? '/brands/' + brandSlug : '/buy-paint-online'}`;
 

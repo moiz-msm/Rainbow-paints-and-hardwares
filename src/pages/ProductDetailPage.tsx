@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { ArrowLeft, Star, ShoppingCart, Heart, Check, ChevronRight, Filter, Ruler, Info, Minus, Plus, ShieldCheck, Tags, Truck, Award } from 'lucide-react';
@@ -33,6 +33,8 @@ const getCategoryBadgeStyle = (category: string) => {
 
 export default function ProductDetailPage() {
   const { productSlug } = useParams<{ productSlug: string }>();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const sizeParam = searchParams.get('size');
   const navigate = useNavigate();
   const addItem = useCartStore((state) => state.addItem);
   const toggleCart = useCartStore((state) => state.toggleCart);
@@ -209,7 +211,10 @@ export default function ProductDetailPage() {
 
           if (found) {
           setProduct(found);
-          if (found.sizes && found.sizes.length > 0) {
+          const parsedSizeParam = sizeParam ? parseInt(sizeParam, 10) : null;
+          if (parsedSizeParam && found.sizes && found.sizes.includes(parsedSizeParam)) {
+            setSelectedSize(parsedSizeParam);
+          } else if (found.sizes && found.sizes.length > 0) {
             setSelectedSize(found.sizes[0]);
           } else {
             setSelectedSize(1);
@@ -229,7 +234,10 @@ export default function ProductDetailPage() {
         } else {
           // Fallback to first if not found (or handle 404)
           setProduct(mockProducts[0]);
-          if (mockProducts[0].sizes && mockProducts[0].sizes.length > 0) {
+          const parsedSizeParam = sizeParam ? parseInt(sizeParam, 10) : null;
+          if (parsedSizeParam && mockProducts[0].sizes && mockProducts[0].sizes.includes(parsedSizeParam)) {
+            setSelectedSize(parsedSizeParam);
+          } else if (mockProducts[0].sizes && mockProducts[0].sizes.length > 0) {
             setSelectedSize(mockProducts[0].sizes[0]);
           } else {
             setSelectedSize(1);
@@ -852,23 +860,13 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
       };
     });
 
-    if (sizes.length > 1) {
-      return {
-        ...baseSchema,
-        "@type": "ProductGroup",
-        "productGroupID": `RP-PG-${targetProduct.id || '1'}`,
-        "variesBy": ["https://schema.org/size"],
-        "hasVariant": variants
-      };
-    } else {
-      return {
-        ...baseSchema,
-        "@type": "Product",
-        "sku": `RP-${targetProduct.id || '1'}-${sizes[0] || 1}${unitSymbol}`,
-        "mpn": `MPN-${targetProduct.id || '1'}`,
-        "offers": variationOffers[0]
-      };
-    }
+    return {
+      ...baseSchema,
+      "@type": "Product",
+      "sku": `RP-${targetProduct.id || '1'}`,
+      "mpn": `MPN-${targetProduct.id || '1'}`,
+      "offers": variationOffers
+    };
   }, [product, productDetails, basePrice, displayImage, selectedSize]);
 
   const faqSchema = useMemo(() => {
@@ -1305,7 +1303,11 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
                 {productSizes.map((size: number) => (
                   <button
                     key={size}
-                    onClick={() => { setSelectedSize(size); setQuantity(1); }}
+                    onClick={() => { 
+                      setSelectedSize(size); 
+                      setQuantity(1); 
+                      setSearchParams({ size: String(size) }, { replace: true }); 
+                    }}
                     className={`py-3 px-2 rounded-xl border text-center transition-all ${
                       selectedSize === size 
                         ? 'border-gold bg-gold/10 text-gold shadow-[0_0_15px_rgba(184,151,90,0.15)] ring-1 ring-gold/30' 

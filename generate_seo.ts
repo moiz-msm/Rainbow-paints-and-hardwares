@@ -118,35 +118,58 @@ function generateFeed() {
     <title>Rainbow Paints Coimbatore</title>
     <link>${APP_URL}</link>
     <description>Premium architectural paints, industrial coatings, and hardware</description>
-${mockProducts.map((p: any) => {
+${mockProducts.flatMap((p: any) => {
   const slug = p.slug || p.name.replace(/\s+/g, '-').toLowerCase();
-  const pUrl = `${APP_URL}/p/${slug}`;
   const parsePrice = (priceStr: string | undefined): number => {
     if (!priceStr) return 0;
     const num = parseFloat(priceStr.replace(/[^0-9.]/g, ''));
     return isNaN(num) ? 0 : num;
   };
-  const price = p.basePrice || p.sizes?.[0]?.price || parsePrice(p.price) || 0;
-  return `    <item>
-      <g:id>${p.id}</g:id>
-      <g:title>${(p.name || '').replace(/&/g, '&amp;')}</g:title>
-      <g:description>${(p.name || '').replace(/&/g, '&amp;')} by ${(p.brand || '').replace(/&/g, '&amp;')} - ${(p.category || '').replace(/&/g, '&amp;')} &gt; ${(p.subCategory || '').replace(/&/g, '&amp;')}</g:description>
+  const basePrice = p.basePrice || parsePrice(p.price) || 850;
+  
+  const sizes = p.sizes && p.sizes.length > 0 ? p.sizes : [1];
+  const unitSymbol = p.unit === 'kg' ? 'kg' : 'L';
+  
+  return sizes.map((sizeVal: number) => {
+    let sizeDiscount = 1;
+    if (p.unit === 'kg') {
+      if (sizeVal === 5) sizeDiscount = 0.94;
+      if (sizeVal === 20) sizeDiscount = 0.53;
+      if (sizeVal === 25) sizeDiscount = 0.8;
+      if (sizeVal === 40) sizeDiscount = 0.472;
+      if (sizeVal === 50) sizeDiscount = 0.628;
+    } else {
+      if (sizeVal === 4) sizeDiscount = 0.96;
+      if (sizeVal === 10) sizeDiscount = 0.92;
+      if (sizeVal === 20) sizeDiscount = 0.88;
+    }
+    const finalPrice = Math.round(basePrice * sizeVal * sizeDiscount);
+    const pUrl = `${APP_URL}/p/${slug}?size=${sizeVal}`;
+    const variantId = `RP-${p.id || '1'}-${String(sizeVal).toLowerCase()}${unitSymbol.toLowerCase()}`;
+    const title = `${p.brand ? p.brand + ' ' : ''}${p.name} - ${sizeVal}${unitSymbol}`.replace(/&/g, '&amp;');
+
+    return `    <item>
+      <g:id>${variantId}</g:id>
+      <g:item_group_id>${p.id}</g:item_group_id>
+      <g:title>${title}</g:title>
+      <g:description>${(p.name || '').replace(/&/g, '&amp;')} by ${(p.brand || '').replace(/&/g, '&amp;')} - ${(p.category || '').replace(/&/g, '&amp;')} &gt; ${(p.subCategory || '').replace(/&/g, '&amp;')}. Available in ${sizeVal}${unitSymbol} size.</g:description>
       <g:link>${pUrl.replace(/&/g, '&amp;')}</g:link>
       <g:image_link>${p.image ? (p.image.startsWith('http') ? p.image : APP_URL + p.image) : ''}</g:image_link>
       <g:condition>new</g:condition>
-      <g:availability>${p.inStock ? 'in_stock' : 'out_of_stock'}</g:availability>
-      <g:price>${price} INR</g:price>
+      <g:availability>in_stock</g:availability>
+      <g:price>${finalPrice}.00 INR</g:price>
       <g:brand>${(p.brand || '').replace(/&/g, '&amp;')}</g:brand>
       <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
       <g:shipping>
         <g:country>IN</g:country>
-        <g:price>150 INR</g:price>
+        <g:price>0 INR</g:price>
         <g:min_handling_time>0</g:min_handling_time>
         <g:max_handling_time>0</g:max_handling_time>
         <g:min_transit_time>0</g:min_transit_time>
         <g:max_transit_time>0</g:max_transit_time>
       </g:shipping>
     </item>`;
+  });
 }).join('\n')}
   </channel>
 </rss>`;
