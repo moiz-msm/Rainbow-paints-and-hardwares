@@ -1,0 +1,150 @@
+export const topCategories = ["All Categories", "Home Paint", "Industrial"];
+
+export const subCategories: Record<string, string[]> = {
+  "Home Paint": [
+    "All Home Paint",
+    "Interior Wall",
+    "Interior Texture",
+    "Exterior Wall",
+    "Exterior Texture",
+    "Undercoats",
+    "Waterproofing",
+    "Wood Finishes",
+    "Metals and Grills",
+    "Painting Tools",
+    "Thinners & Solvents",
+    "Tile Adhesives"
+  ],
+  Industrial: [
+    "All Industrial",
+    "PU Coatings",
+    "Epoxy Coatings",
+    "Synthetic Enamels"
+  ]
+};
+
+export const brands = [
+  "All Brands",
+  "Asian Paints",
+  "Berger Paints",
+  "Birla White",
+  "Dr. Fixit",
+  "MRF Vapocure",
+  "Just Spray",
+  "Sheenlac",
+  "Ajax",
+  "Bawa",
+  "Jaya",
+  "Gorila",
+  "Local"
+];
+
+export interface BrandDetail {
+  name: string;
+  logo: string;
+  description: string;
+  tags: string[];
+  isAuthorised: boolean;
+}
+
+export const brandDetails: BrandDetail[] = [
+  {
+    name: "Just Spray",
+    logo: "/justspray-logo.png",
+    description:
+      "Premium JS1 aerosol spray paint. High-performance quick-drying formula offering professional finish in classic, metallic, fluorescent, and primer variations.",
+    tags: ["JS1", "Spray Paint", "Aerosol"],
+    isAuthorised: true
+  },
+  {
+    name: "Asian Paints",
+    logo: "https://upload.wikimedia.org/wikipedia/en/e/e2/Asian_paints_logo.svg",
+    description:
+      "India's #1 paint brand — Royale luxury emulsions, Apex exterior & Teflon technology trusted by millions of homes.",
+    tags: ["Interior", "Exterior", "Primer"],
+    isAuthorised: true
+  },
+  {
+    name: "Berger Paints",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/3/31/Berger.png",
+    description:
+      "Premium Silk luxury emulsions & WeatherCoat exterior series. Value leader in India's premium paint segment.",
+    tags: ["Silk Range", "Weathercoat", "Distemper"],
+    isAuthorised: true
+  },
+  {
+    name: "Birla White",
+    logo: "https://www.birlawhite.com/logo.svg",
+    description:
+      "India's largest manufacturer of White Cement and WallCare Putty, providing the whitest white cement for beautiful and enduring structures.",
+    tags: ["Putty", "White Cement", "Undercoats"],
+    isAuthorised: true
+  },
+  {
+    name: "Dr. Fixit",
+    logo: "https://www.drfixit.co.in/web/images/web-logo.png",
+    description:
+      "The trusted name in structural waterproofing and construction chemicals for permanent protection against water damage.",
+    tags: ["Waterproofing", "Roofseal", "Bathseal"],
+    isAuthorised: true
+  },
+  {
+    name: "MRF Vapocure",
+    logo: "https://www.mrfpaint.com/wp-content/uploads/2024/11/mrf-logo-1.png",
+    description:
+      "Engineering-grade high-performance polyurethane (PU) wood, metal, wall, and specialty coatings by MRF for ultimate protection and durability.",
+    tags: ["WoodCoat", "MetalCoat", "WallCoat", "Polyurethane"],
+    isAuthorised: true
+  },
+  {
+    name: "Sheenlac",
+    logo: "https://sheenlac.com/wp-content/uploads/2024/05/Sheenlac-WhiteLogo_MenuBar.png",
+    description:
+      "India's wood-finishing pioneer — premium wood coatings, stains, NC thinners, wood polish, and paint removers of exceptional grade.",
+    tags: ["Wood Polish", "NC Thinner", "Stainer", "Paint Remover"],
+    isAuthorised: true
+  },
+  {
+    name: "Ajax",
+    logo: "https://via.placeholder.com/150?text=AJAX",
+    description:
+      "Superior quality abrasive materials — waterproof water emery papers and red dry emery papers for smooth surface preparation.",
+    tags: ["Emery Paper", "Abrasives", "Sanding Paper", "Rolls"],
+    isAuthorised: true
+  },
+  {
+    name: "Bawa",
+    logo: "https://via.placeholder.com/150?text=BAWA",
+    description:
+      "Premium painter-grade paint brushes including Joker, Prince, Touchwood and Snowcem series built for absolute application control.",
+    tags: ["Joker Brush", "Prince Brush", "Touchwood Brush", "Snowcem Brush"],
+    isAuthorised: true
+  },
+  {
+    name: "Jaya",
+    logo: "https://via.placeholder.com/150?text=JAYA",
+    description:
+      "High-density Diamond series painting brushes crafted for even distribution, zero hair loss, and beautiful streak-free coat results.",
+    tags: ["Diamond Brush", "Painting Brushes", "Brushes"],
+    isAuthorised: true
+  },
+  {
+    name: "Gorila",
+    logo: "https://via.placeholder.com/150?text=GORILA",
+    description:
+      "Vibrant high-pigmentation cement color oxide powders. Superior UV stability and perfect shade formulation for all architectural mixes.",
+    tags: ["Cement Oxide", "Oxide Powder", "Color Powder"],
+    isAuthorised: true
+  },
+  {
+    name: "Local",
+    logo: "https://via.placeholder.com/150?text=LOCAL",
+    description:
+      "Distributor-selected general hardware essentials, pure unbranded mineral solvents, rollers, and painting trays of trade quality.",
+    tags: ["Turpentine Oil", "Cotton Waste", "Masking Tape", "Painting Rollers"],
+    isAuthorised: false
+  }
+];
+
+export const mockProducts = [
+  {

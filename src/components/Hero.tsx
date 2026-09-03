@@ -8,10 +8,12 @@ export default function Hero() {
   const heroBrands = [
     "Asian Paints",
     "Berger Paints",
-    "Birla White",
-    "MRF Vapocure",
     "Dr. Fixit",
-    "Just Spray"
+    "MRF Vapocure",
+    "Sheenlac",
+    "Fevicol",
+    "Just Spray",
+    "Birla White"
   ].map(name => brandDetails.find(b => b.name === name)).filter(Boolean);
 
   const containerRef = useRef<HTMLDivElement>(null);

@@ -7,42 +7,32 @@ const services = [
   {
     title: 'Interior Wall Painting',
     description: 'Transform your living spaces with premium Royale finishes.',
-    icon: Brush,
+    image: 'https://img.icons8.com/color/144/living-room.png',
     link: '/services/interior-wall-painting',
-    color: 'bg-emerald-50 text-emerald-600 border-emerald-100',
-    image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=600&q=80',
   },
   {
     title: 'Exterior Wall Painting',
     description: 'Protect your building with Apex and Ultima Protek systems.',
-    icon: ShieldCheck,
+    image: 'https://img.icons8.com/color/144/home.png',
     link: '/services/exterior-wall-painting',
-    color: 'bg-blue-50 text-blue-600 border-blue-100',
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80',
   },
   {
     title: 'Wood & Metal Painting',
     description: 'PU finishes, Melamine polish, and Enamel for doors and grills.',
-    icon: PenTool,
+    image: 'https://img.icons8.com/color/144/wood.png',
     link: '/services/wood-metal-painting',
-    color: 'bg-amber-50 text-amber-600 border-amber-100',
-    image: 'https://images.unsplash.com/photo-1506806732259-39c2d0268443?auto=format&fit=crop&w=600&q=80',
   },
   {
     title: 'Waterproofing Services',
     description: 'Scientific solutions to stop leaks and dampness permanently.',
-    icon: Droplet,
+    image: 'https://img.icons8.com/color/144/water.png',
     link: '/services/waterproofing',
-    color: 'bg-cyan-50 text-cyan-600 border-cyan-100',
-    image: 'https://images.unsplash.com/photo-1520699697851-3dc68aa3a474?auto=format&fit=crop&w=600&q=80',
   },
   {
     title: 'Industrial Flooring',
     description: 'High-performance Epoxy and PU flooring systems for extreme durability.',
-    icon: Factory,
+    image: 'https://img.icons8.com/color/144/factory.png',
     link: '/services/industrial-flooring',
-    color: 'bg-zinc-50 text-zinc-600 border-zinc-100',
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80',
   },
 ];
 
@@ -140,17 +130,15 @@ export default function PaintingServicesOverview() {
                   to={service.link}
                   className="snap-start flex-shrink-0 flex flex-col items-center gap-3 w-[120px] sm:w-[140px] lg:w-[160px] group/cat"
                 >
-                  <div className="w-full aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_4px_15px_rgb(0,0,0,0.03)] border border-ivory/10 group-hover/cat:shadow-[0_8px_25px_rgb(0,0,0,0.08)] group-hover/cat:border-gold/40 transition-all duration-500 relative bg-white group-hover/cat:-translate-y-1">
+                  <div className="w-full aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_4px_15px_rgb(0,0,0,0.03)] border border-ivory/10 group-hover/cat:shadow-[0_8px_25px_rgb(0,0,0,0.08)] group-hover/cat:border-gold/40 transition-all duration-500 relative bg-gradient-to-br from-white to-zinc-50 group-hover/cat:-translate-y-1 flex items-center justify-center p-6">
                     <img 
                       src={service.image} 
                       alt={service.title} 
                       loading="lazy"
                       decoding="async"
-                      className="w-full h-full object-cover group-hover/cat:scale-110 transition-transform duration-700 ease-out"
+                      className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-contain group-hover/cat:scale-110 transition-transform duration-700 ease-out drop-shadow-md"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A365D]/80 via-transparent to-transparent opacity-0 group-hover/cat:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                       <ArrowRight className="w-5 h-5 text-white ml-auto -translate-x-2 opacity-0 group-hover/cat:opacity-100 group-hover/cat:translate-x-0 transition-all duration-300" />
-                    </div>
+                    <div className="absolute inset-0 bg-[#1A365D]/5 opacity-0 group-hover/cat:opacity-100 transition-opacity duration-300"></div>
                   </div>
                   <span className="font-serif font-medium text-[11px] sm:text-xs lg:text-sm text-center leading-tight text-[#1A365D] group-hover/cat:text-gold transition-colors line-clamp-2 mt-1">
                     {service.title}

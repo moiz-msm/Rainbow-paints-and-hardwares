@@ -125,17 +125,32 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.rainbowpaint.in/c/all-adhesives</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rainbowpaint.in/c/wood-adhesives</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rainbowpaint.in/c/synthetic-resin</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rainbowpaint.in/c/contact-adhesives</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.rainbowpaint.in/brands/asian-paints</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.rainbowpaint.in/brands/berger-paints</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.rainbowpaint.in/brands/birla-white</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -150,12 +165,22 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.rainbowpaint.in/brands/sheenlac</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rainbowpaint.in/brands/fevicol</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.rainbowpaint.in/brands/just-spray</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.rainbowpaint.in/brands/sheenlac</loc>
+    <loc>https://www.rainbowpaint.in/brands/birla-white</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -30016,6 +30041,41 @@
   </url>
   <url>
     <loc>https://www.rainbowpaint.in/services/industrial-flooring/tiruppur</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rainbowpaint.in/p/fevicol-hi-per</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rainbowpaint.in/p/fevicol-probond</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rainbowpaint.in/p/fevicol-speedx</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rainbowpaint.in/p/fevicol-sh</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rainbowpaint.in/p/fevicol-marine</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rainbowpaint.in/p/fevicol-sr-998</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rainbowpaint.in/p/fevicol-heatx</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>

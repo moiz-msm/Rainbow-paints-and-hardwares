@@ -80,7 +80,7 @@ export default function ShopByBrand() {
                 display: none;
               }
             `}</style>
-            {brandDetails.map((brand) => (
+            {brandDetails.filter(b => !['Bawa', 'Jaya', 'Gorila', 'Local'].includes(b.name)).map((brand) => (
               <Link 
                 key={brand.name} 
                 to={`/brands/${brand.name.toLowerCase().replace(/\s+/g, '-')}`}

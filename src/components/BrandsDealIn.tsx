@@ -23,7 +23,7 @@ export default function BrandsDealIn() {
         </motion.header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {brandDetails.map((brand, idx) => (
+          {brandDetails.filter(b => !['Bawa', 'Jaya', 'Gorila', 'Local'].includes(b.name)).map((brand, idx) => (
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

@@ -1,4 +1,4 @@
-export const topCategories = ["All Categories", "Home Paint", "Industrial"];
+export const topCategories = ["All Categories", "Home Paint", "Industrial", "Adhesives"];
 
 export const subCategories: Record<string, string[]> = {
   "Home Paint": [
@@ -20,6 +20,12 @@ export const subCategories: Record<string, string[]> = {
     "PU Coatings",
     "Epoxy Coatings",
     "Synthetic Enamels"
+  ],
+  Adhesives: [
+    "All Adhesives",
+    "Wood Adhesives",
+    "Synthetic Resin",
+    "Contact Adhesives"
   ]
 };
 
@@ -27,11 +33,12 @@ export const brands = [
   "All Brands",
   "Asian Paints",
   "Berger Paints",
-  "Birla White",
   "Dr. Fixit",
   "MRF Vapocure",
-  "Just Spray",
   "Sheenlac",
+  "Fevicol",
+  "Just Spray",
+  "Birla White",
   "Ajax",
   "Bawa",
   "Jaya",
@@ -49,14 +56,6 @@ export interface BrandDetail {
 
 export const brandDetails: BrandDetail[] = [
   {
-    name: "Just Spray",
-    logo: "/justspray-logo.png",
-    description:
-      "Premium JS1 aerosol spray paint. High-performance quick-drying formula offering professional finish in classic, metallic, fluorescent, and primer variations.",
-    tags: ["JS1", "Spray Paint", "Aerosol"],
-    isAuthorised: true
-  },
-  {
     name: "Asian Paints",
     logo: "https://upload.wikimedia.org/wikipedia/en/e/e2/Asian_paints_logo.svg",
     description:
@@ -64,6 +63,7 @@ export const brandDetails: BrandDetail[] = [
     tags: ["Interior", "Exterior", "Primer"],
     isAuthorised: true
   },
+
   {
     name: "Berger Paints",
     logo: "https://upload.wikimedia.org/wikipedia/commons/3/31/Berger.png",
@@ -72,14 +72,7 @@ export const brandDetails: BrandDetail[] = [
     tags: ["Silk Range", "Weathercoat", "Distemper"],
     isAuthorised: true
   },
-  {
-    name: "Birla White",
-    logo: "https://www.birlawhite.com/logo.svg",
-    description:
-      "India's largest manufacturer of White Cement and WallCare Putty, providing the whitest white cement for beautiful and enduring structures.",
-    tags: ["Putty", "White Cement", "Undercoats"],
-    isAuthorised: true
-  },
+
   {
     name: "Dr. Fixit",
     logo: "https://www.drfixit.co.in/web/images/web-logo.png",
@@ -88,6 +81,7 @@ export const brandDetails: BrandDetail[] = [
     tags: ["Waterproofing", "Roofseal", "Bathseal"],
     isAuthorised: true
   },
+
   {
     name: "MRF Vapocure",
     logo: "https://www.mrfpaint.com/wp-content/uploads/2024/11/mrf-logo-1.png",
@@ -96,49 +90,82 @@ export const brandDetails: BrandDetail[] = [
     tags: ["WoodCoat", "MetalCoat", "WallCoat", "Polyurethane"],
     isAuthorised: true
   },
+
   {
     name: "Sheenlac",
-    logo: "https://sheenlac.com/wp-content/uploads/2024/05/Sheenlac-WhiteLogo_MenuBar.png",
+    logo: "https://sheenlac.com/assets/images/sheenlac_logo.png",
     description:
       "India's wood-finishing pioneer — premium wood coatings, stains, NC thinners, wood polish, and paint removers of exceptional grade.",
     tags: ["Wood Polish", "NC Thinner", "Stainer", "Paint Remover"],
     isAuthorised: true
   },
+
+  {
+    name: "Fevicol",
+    logo: "https://upload.wikimedia.org/wikipedia/en/0/05/Fevicol_brand_logo.png",
+    description:
+      "India's most trusted adhesive brand. High-performance synthetic resin and contact adhesives for woodworking, laminates, and general purposes.",
+    tags: ["Adhesives", "Wood Glue", "Synthetic Resin", "Pidilite"],
+    isAuthorised: true
+  },
+
+  {
+    name: "Just Spray",
+    logo: "https://justspray.in/wp-content/uploads/2024/10/JustSpray-logo-a-1024x518.png",
+    description:
+      "Premium JS1 aerosol spray paint. High-performance quick-drying formula offering professional finish in classic, metallic, fluorescent, and primer variations.",
+    tags: ["JS1", "Spray Paint", "Aerosol"],
+    isAuthorised: true
+  },
+
+  {
+    name: "Birla White",
+    logo: "https://www.birlawhite.com/logo.svg",
+    description:
+      "India's largest manufacturer of White Cement and WallCare Putty, providing the whitest white cement for beautiful and enduring structures.",
+    tags: ["Putty", "White Cement", "Undercoats"],
+    isAuthorised: true
+  },
+
   {
     name: "Ajax",
-    logo: "https://via.placeholder.com/150?text=AJAX",
+    logo: "https://m.media-amazon.com/images/I/71DPemfY7hL.jpg",
     description:
       "Superior quality abrasive materials — waterproof water emery papers and red dry emery papers for smooth surface preparation.",
     tags: ["Emery Paper", "Abrasives", "Sanding Paper", "Rolls"],
     isAuthorised: true
   },
+
   {
     name: "Bawa",
-    logo: "https://via.placeholder.com/150?text=BAWA",
+    logo: "https://placehold.co/400x400/1976D2/FFFFFF/png?text=Bawa",
     description:
       "Premium painter-grade paint brushes including Joker, Prince, Touchwood and Snowcem series built for absolute application control.",
     tags: ["Joker Brush", "Prince Brush", "Touchwood Brush", "Snowcem Brush"],
     isAuthorised: true
   },
+
   {
     name: "Jaya",
-    logo: "https://via.placeholder.com/150?text=JAYA",
+    logo: "https://placehold.co/400x400/388E3C/FFFFFF/png?text=Jaya",
     description:
       "High-density Diamond series painting brushes crafted for even distribution, zero hair loss, and beautiful streak-free coat results.",
     tags: ["Diamond Brush", "Painting Brushes", "Brushes"],
     isAuthorised: true
   },
+
   {
     name: "Gorila",
-    logo: "https://via.placeholder.com/150?text=GORILA",
+    logo: "https://placehold.co/400x400/795548/FFFFFF/png?text=Gorila",
     description:
       "Vibrant high-pigmentation cement color oxide powders. Superior UV stability and perfect shade formulation for all architectural mixes.",
     tags: ["Cement Oxide", "Oxide Powder", "Color Powder"],
     isAuthorised: true
   },
+
   {
     name: "Local",
-    logo: "https://via.placeholder.com/150?text=LOCAL",
+    logo: "https://placehold.co/400x400/9E9E9E/FFFFFF/png?text=Local",
     description:
       "Distributor-selected general hardware essentials, pure unbranded mineral solvents, rollers, and painting trays of trade quality.",
     tags: ["Turpentine Oil", "Cotton Waste", "Masking Tape", "Painting Rollers"],
@@ -147,6 +174,141 @@ export const brandDetails: BrandDetail[] = [
 ];
 
 export const mockProducts = [
+
+  {
+    "id": 9005,
+    "name": "Fevicol Hi Per",
+    "description": "Fevicol Hi Per is a high performance, waterproof synthetic resin adhesive with advanced Anti-Bubble Technology. Ideal for premium woodworking and boiling water resistance.",
+    "brand": "Fevicol",
+    "topCategory": "Adhesives",
+    "subCategory": "Wood Adhesives",
+    "price": "₹ 420.00",
+    "properties": [
+      "Advanced Anti-Bubble Technology",
+      "Superior Waterproofing (BWR grade)",
+      "High grab and fast setting",
+      "Premium woodworking"
+    ],
+    "sizes": [1, 2, 5, 10, 20, 50],
+    "unit": "kg",
+    "popular": true,
+    "image": "https://m.media-amazon.com/images/I/51MP76opUDL.jpg"
+  },
+  {
+    "id": 9006,
+    "name": "Fevicol Probond",
+    "description": "Fevicol Probond is a specialized adhesive designed for bonding PVC and acrylic laminates to wood and plywood. Ensures zero bubbling and strong permanent bonds for difficult surfaces.",
+    "brand": "Fevicol",
+    "topCategory": "Adhesives",
+    "subCategory": "Wood Adhesives",
+    "price": "₹ 350.00",
+    "properties": [
+      "Bonds PVC/Acrylic to wood",
+      "Zero bubbling guaranteed",
+      "No clamping required",
+      "High temperature resistance"
+    ],
+    "sizes": [1, 2, 5, 10, 20],
+    "unit": "kg",
+    "popular": false,
+    "image": "https://m.media-amazon.com/images/I/51MY-e7aD1L.jpg"
+  },
+  {
+    "id": 9007,
+    "name": "Fevicol Speedx",
+    "description": "Fevicol Speedx is a fast-setting synthetic resin adhesive for rapid woodworking. It grips fast and reduces clamping time, making it ideal for quick furniture manufacturing.",
+    "brand": "Fevicol",
+    "topCategory": "Adhesives",
+    "subCategory": "Wood Adhesives",
+    "price": "₹ 320.00",
+    "properties": [
+      "Fast setting in 2 hours",
+      "High initial grab",
+      "Reduces clamping time",
+      "High strength wood bonding"
+    ],
+    "sizes": [1, 5, 10, 20, 50],
+    "unit": "kg",
+    "popular": false,
+    "image": "https://m.media-amazon.com/images/I/51XQHc4lYLL.jpg"
+  },
+
+  {
+    "id": 9001,
+    "name": "Fevicol SH",
+    "description": "Fevicol SH is a synthetic resin adhesive intended for woodworking and various materials where one of the surfaces to be bonded is porous. SH strongly binds wood, plywood, laminate, veneers, MDF and all types of boards.",
+    "brand": "Fevicol",
+    "topCategory": "Adhesives",
+    "subCategory": "Wood Adhesives",
+    "price": "₹ 290.00",
+    "properties": [
+      "Unsurpassed bonding strength",
+      "Resistant to water and heat",
+      "Economical in long run",
+      "Suitable for woodworking"
+    ],
+    "sizes": [1, 2, 5, 10, 20, 50],
+    "unit": "kg",
+    "popular": true,
+    "image": "https://m.media-amazon.com/images/I/51T6-pkLNNL._SL1000_.jpg"
+  },
+  {
+    "id": 9002,
+    "name": "Fevicol Marine",
+    "description": "Fevicol Marine is a waterproof synthetic resin adhesive tailored for plywood to plywood bonding. Provides excellent water resistance (up to 48 hours of boiling water) and sets in a short time.",
+    "brand": "Fevicol",
+    "topCategory": "Adhesives",
+    "subCategory": "Wood Adhesives",
+    "price": "₹ 380.00",
+    "properties": [
+      "Waterproof Adhesive",
+      "Marine grade",
+      "Termite and Borer resistant",
+      "Fast setting"
+    ],
+    "sizes": [1, 2, 5, 10, 20, 50],
+    "unit": "kg",
+    "popular": true,
+    "image": "https://m.media-amazon.com/images/I/41M-Avc4IoL.jpg"
+  },
+  {
+    "id": 9003,
+    "name": "Fevicol SR 998",
+    "description": "Fevicol SR 998 is a premium quality synthetic rubber based contact adhesive. Provides high initial grab, fast drying and excellent heat resistance. Ideal for vertical lamination.",
+    "brand": "Fevicol",
+    "topCategory": "Adhesives",
+    "subCategory": "Contact Adhesives",
+    "price": "₹ 350.00",
+    "properties": [
+      "High initial grab",
+      "Heat resistant up to 120°C",
+      "Fast drying",
+      "Toluene free"
+    ],
+    "sizes": [1, 5, 25],
+    "unit": "L",
+    "popular": false,
+    "image": "https://m.media-amazon.com/images/I/51uSaM1pXOL.jpg"
+  },
+  {
+    "id": 9004,
+    "name": "Fevicol HeatX",
+    "description": "Fevicol HeatX is a heat resistant contact adhesive. It offers excellent resistance to heat and is very quick to bond, requiring no sustained pressure.",
+    "brand": "Fevicol",
+    "topCategory": "Adhesives",
+    "subCategory": "Contact Adhesives",
+    "price": "₹ 395.00",
+    "properties": [
+      "High heat resistance",
+      "Fast setting",
+      "Ideal for curved surfaces",
+      "High coverage"
+    ],
+    "sizes": [1, 5, 25],
+    "unit": "L",
+    "popular": false,
+    "image": "https://m.media-amazon.com/images/I/61KB34kxuSL.jpg"
+  },
   {
     "id": 1023,
     "name": "Apex Ezytex",
