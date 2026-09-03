@@ -1146,38 +1146,26 @@ export default function ProductsSection({
 
   const categoryBubblesData = useMemo(() => {
     const defaultImages: Record<string, string> = {
-      "Interior Wall":
-        "https://images.unsplash.com/photo-1600607686527-6fb886090705?w=500&q=80",
-      "Exterior Wall":
-        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500&q=80",
-      Primer:
-        "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=500&q=80",
-      Waterproofing:
-        "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=500&q=80",
-      "Wood Finishes":
-        "https://images.unsplash.com/photo-1550684376-efcbd6e3f031?w=500&q=80",
-      Tools:
-        "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?w=500&q=80",
-      "PU Coatings": 
-        "https://images.unsplash.com/photo-1622396481328-9b1b78cdd9fd?w=500&q=80",
-      "Epoxy Coatings": 
-        "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=500&q=80",
-      "Metals and Grills": 
-        "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=500&q=80",
-      "Synthetic Enamels": 
-        "https://images.unsplash.com/photo-1416339684178-3a239570f315?w=500&q=80",
-      "Industrial": 
-        "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=500&q=80",
+      "Interior Wall": "https://img.icons8.com/color/144/living-room.png",
+      "Exterior Wall": "https://img.icons8.com/color/144/home.png",
+      "Undercoats": "https://img.icons8.com/color/144/paint-bucket.png",
+      "Primer": "https://img.icons8.com/color/144/paint-bucket.png",
+      "Waterproofing": "https://img.icons8.com/color/144/water.png",
+      "Wood Finishes": "https://img.icons8.com/color/144/wood.png",
+      "Painting Tools": "https://img.icons8.com/color/144/paint-brush.png",
+      "Tools": "https://img.icons8.com/color/144/paint-brush.png",
+      "Power Tools": "https://img.icons8.com/color/144/drill.png",
+      "PU Coatings": "https://img.icons8.com/color/144/paint.png",
+      "Epoxy Coatings": "https://img.icons8.com/color/144/test-tube.png",
+      "Metals and Grills": "https://img.icons8.com/color/144/metal.png",
+      "Synthetic Enamels": "https://img.icons8.com/color/144/paint-can.png",
+      "Industrial": "https://img.icons8.com/color/144/factory.png",
+      "Tile Adhesives": "https://img.icons8.com/color/144/brick-wall.png",
+      "Thinners & Solvents": "https://img.icons8.com/color/144/flask.png",
     };
 
     const fallbackImages = [
-      "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=500&q=80",
-      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500&q=80",
-      "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=500&q=80",
-      "https://images.unsplash.com/photo-1563906267088-b029e7101114?w=500&q=80",
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&q=80",
-      "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=500&q=80",
-      "https://images.unsplash.com/photo-1554995207-c18c203602cb?w=500&q=80"
+      "https://img.icons8.com/color/144/paint-palette.png",
     ];
 
     // Extract unique subcategories
@@ -1523,7 +1511,7 @@ export default function ProductsSection({
                       alt={cat.name}
                       loading="lazy"
                       decoding="async"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-110"
                     />
                     <div
                       className={`absolute inset-0 transition-opacity duration-300 ${activeCategoryFilter === cat.name || activeCategoryFilter === "All " + cat.name ? "bg-gold/10" : "bg-transparent group-hover:bg-black/5"}`}

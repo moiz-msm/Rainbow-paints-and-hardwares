@@ -507,10 +507,12 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
     const isSpray = nameLower.includes('spray') || brandLower.includes('just spray') || nameLower.includes('js1');
     const isEnamel = nameLower.includes('enamel') || nameLower.includes('gloss');
     const isIndustrial = topCatLower.includes('industrial') || subCatLower.includes('epoxy') || subCatLower.includes('pu coatings');
+    const isPowerTool = topCatLower.includes('power tools') || subCatLower.includes('power tools') || subCatLower.includes('tools') || nameLower.includes('meter') || nameLower.includes('machine') || nameLower.includes('sprayer') || nameLower.includes('washer') || nameLower.includes('sander') || nameLower.includes('mixer');
 
     // 1. Finish
     let finish = "Smooth & Matte Finish";
-    if (nameLower.includes('aspira') || nameLower.includes('glitz') || nameLower.includes('silk') || propsString.includes('sheen')) finish = "Rich Pearl Sheen";
+    if (isPowerTool) finish = "Industrial Grade Equipment";
+    else if (nameLower.includes('aspira') || nameLower.includes('glitz') || nameLower.includes('silk') || propsString.includes('sheen')) finish = "Rich Pearl Sheen";
     else if (nameLower.includes('shyne') || nameLower.includes('satin')) finish = "Soft Satin Sheen";
     else if (isEnamel || propsString.includes('gloss') || nameLower.includes('high gloss')) finish = "High Mirror Gloss";
     else if (nameLower.includes('matt') || nameLower.includes('velvet')) finish = "Velvet Matt Finish";
@@ -522,14 +524,16 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
 
     // 2. Drying Time
     let dryingTime = "30 Mins (Touch Dry) / 4 Hours (Recoat)";
-    if (isWood || isEnamel || isIndustrial) dryingTime = "1-2 Hours (Touch Dry) / 8 Hours (Hard Dry)";
+    if (isPowerTool) dryingTime = "N/A (Ready to Use)";
+    else if (isWood || isEnamel || isIndustrial) dryingTime = "1-2 Hours (Touch Dry) / 8 Hours (Hard Dry)";
     else if (isSpray) dryingTime = "10-15 Minutes (Quick Dry)";
     else if (isPutty) dryingTime = "2-4 Hours (Hard Dry)";
     else if (isWaterproofing) dryingTime = "2-4 Hours per coat / 24 Hours Full Cure";
 
     // 3. Coverage
     let coverage = "130 - 150 sq.ft/L (2 coats)";
-    if (isExterior) coverage = "55 - 65 sq.ft/L (2 coats)";
+    if (isPowerTool) coverage = "N/A (Tool / Equipment)";
+    else if (isExterior) coverage = "55 - 65 sq.ft/L (2 coats)";
     else if (nameLower.includes('royale') || nameLower.includes('silk')) coverage = "140 - 160 sq.ft/L (2 coats)";
     else if (nameLower.includes('tractor')) coverage = "110 - 130 sq.ft/L (2 coats)";
     else if (isPrimer) coverage = "100 - 120 sq.ft/L (1 coat)";
@@ -542,7 +546,8 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
 
     // 4. Washability & Scrub
     let washability = "High Stain Washable & Scrub Resistant";
-    if (nameLower.includes('royale') || nameLower.includes('silk')) washability = "Heavy Scrub Resistance (Teflon / Nano-Clean)";
+    if (isPowerTool) washability = "Heavy Duty Hardware";
+    else if (nameLower.includes('royale') || nameLower.includes('silk')) washability = "Heavy Scrub Resistance (Teflon / Nano-Clean)";
     else if (isExterior) washability = "100% Weatherproof & Rain Washable";
     else if (isWaterproofing) washability = "100% Hydrostatic Waterproof Membrane";
     else if (isWood || isEnamel) washability = "Scratch & Stain Resistant";
@@ -551,14 +556,16 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
 
     // 5. Application Base & Diluent
     let base = "100% Acrylic Water Based";
-    if (isWood || isEnamel || isIndustrial) base = "Solvent / Polyurethane (PU) Based";
+    if (isPowerTool) base = "Electrical / Mechanical";
+    else if (isWood || isEnamel || isIndustrial) base = "Solvent / Polyurethane (PU) Based";
     else if (isWaterproofing) base = "Polymer Modified Acrylic / SBR Hybrid";
     else if (isPutty) base = "White Cement & Re-dispersible Polymer Powder";
     else if (isSpray) base = "Aerosol Fast-Dry Solvent Base";
 
     // 6. Recommended Coats
     let coats = "2 Coats over 1 Coat Primer";
-    if (isWaterproofing) coats = "Self-Priming + 2 Waterproof Topcoats";
+    if (isPowerTool) coats = "N/A";
+    else if (isWaterproofing) coats = "Self-Priming + 2 Waterproof Topcoats";
     else if (isPutty) coats = "2 Coats (1.5mm total thickness)";
     else if (isPrimer) coats = "1 Uniform Sealing Coat";
     else if (isSpray) coats = "2-3 Thin Uniform Mist Coats";
@@ -566,13 +573,16 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
 
     // 7. VOC & Eco Level
     let vocLevel = "Low VOC & Odorless";
-    if (nameLower.includes('royale') || nameLower.includes('silk')) vocLevel = "Ultra-Low VOC & Anti-Bacterial (Green Certified)";
+    if (isPowerTool) vocLevel = "Zero Emissions (CE Certified)";
+    else if (nameLower.includes('royale') || nameLower.includes('silk')) vocLevel = "Ultra-Low VOC & Anti-Bacterial (Green Certified)";
     else if (isPutty || isWaterproofing) vocLevel = "Zero VOC & Eco-Friendly";
     else if (isWood || isEnamel || isSpray) vocLevel = "Low VOC Commercial Standard";
 
     // 8. Exact Factual Warranty
     let warranty = "100% Genuine Manufacturer Guarantee";
-    if (nameLower.includes('royale') || nameLower.includes('aspira') || nameLower.includes('glitz') || nameLower.includes('lustre') || nameLower.includes('shyne')) {
+    if (isPowerTool) {
+      warranty = "6 Months to 1 Year Manufacturer Warranty";
+    } else if (nameLower.includes('royale') || nameLower.includes('aspira') || nameLower.includes('glitz') || nameLower.includes('lustre') || nameLower.includes('shyne')) {
       warranty = "8 Years Performance Warranty";
     } else if (nameLower.includes('duralife') || nameLower.includes('protek duralife')) {
       warranty = "15 Years Performance & Waterproofing Warranty";
@@ -1064,7 +1074,7 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
                     <Award className="w-4 h-4 text-gold" /> Product Specifications & Local Availability
                   </div>
                   <p className="text-xs text-zinc-700 leading-relaxed font-sans">
-                    <strong className="text-zinc-900 font-semibold">{product.name}</strong> by <strong className="text-zinc-900 font-semibold">{product.brand}</strong> is stocked & sold by authorized dealer <strong className="text-zinc-900 font-semibold">Rainbow Paints & Hardwares</strong> (54 Cox Street, Kattoor, Coimbatore 641009). Offers an estimated coverage of <strong className="text-zinc-900 font-semibold">{productDetails.coverage}</strong> with <strong className="text-zinc-900 font-semibold">{productDetails.dryingTime}</strong> touch-dry time. Protected under <strong className="text-zinc-900 font-semibold">{productDetails.warranty}</strong> with <strong className="text-zinc-900 font-semibold">same-day local express delivery in Coimbatore</strong> and buy from 5000+ custom color shades.
+                    <strong className="text-zinc-900 font-semibold">{product.name}</strong> by <strong className="text-zinc-900 font-semibold">{product.brand}</strong> is stocked & sold by authorized dealer <strong className="text-zinc-900 font-semibold">Rainbow Paints & Hardwares</strong> (54 Cox Street, Kattoor, Coimbatore 641009). {product.topCategory?.toLowerCase().includes('power tools') ? `A professional grade tool with a ${productDetails.warranty}.` : `Offers an estimated coverage of <strong className="text-zinc-900 font-semibold">{productDetails.coverage}</strong> with <strong className="text-zinc-900 font-semibold">{productDetails.dryingTime}</strong> touch-dry time.`} Protected under <strong className="text-zinc-900 font-semibold">{productDetails.warranty}</strong> with <strong className="text-zinc-900 font-semibold">same-day local express delivery in Coimbatore</strong> and buy from 5000+ custom color shades.
                   </p>
                 </div>
               </div>
@@ -1407,9 +1417,16 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
               </p>
             </div>
             <div className="bg-royale-surface border border-zinc-200/50 rounded-2xl p-6 hover:border-gold/30 transition-colors md:col-span-2">
-              <h3 className="font-medium text-ivory mb-3 text-sm">What category does {product.name} fall under and what is its coverage?</h3>
+              <h3 className="font-medium text-ivory mb-3 text-sm">
+                {product.topCategory?.toLowerCase().includes('power tools') 
+                  ? `What category does ${product.name} fall under and what is it used for?` 
+                  : `What category does ${product.name} fall under and what is its coverage?`}
+              </h3>
               <p className="text-ivory/70 text-xs leading-relaxed font-light">
-                {product.name} by {product.brand} belongs to the {product.subCategory || product.category} category. It offers an estimated coverage capacity of {productDetails?.coverage} with a {productDetails?.finish} and a touch-dry time of {productDetails?.dryingTime}.
+                {product.topCategory?.toLowerCase().includes('power tools')
+                  ? `${product.name} by ${product.brand} belongs to the ${product.subCategory || product.category} category. It is a high-performance professional equipment designed to improve efficiency, accuracy, and quality for your tasks.`
+                  : `${product.name} by ${product.brand} belongs to the ${product.subCategory || product.category} category. It offers an estimated coverage capacity of ${productDetails?.coverage} with a ${productDetails?.finish} and a touch-dry time of ${productDetails?.dryingTime}.`
+                }
               </p>
             </div>
           </div>

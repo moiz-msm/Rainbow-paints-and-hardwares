@@ -15,7 +15,8 @@ const categories = [
   { name: 'Tile Adhesives', slug: 'tile-adhesives', image: 'https://img.icons8.com/color/144/brick-wall.png' },
   { name: 'PU Coatings', slug: 'pu-coatings', image: 'https://img.icons8.com/color/144/paint.png' },
   { name: 'Epoxy Coatings', slug: 'epoxy-coatings', image: 'https://img.icons8.com/color/144/test-tube.png' },
-  { name: 'Synthetic Enamels', slug: 'synthetic-enamels', image: 'https://img.icons8.com/color/144/paint-can.png' }
+  { name: 'Synthetic Enamels', slug: 'synthetic-enamels', image: 'https://img.icons8.com/color/144/paint-can.png' },
+  { name: 'Power Tools', slug: 'power-tools', image: 'https://img.icons8.com/color/144/drill.png' }
 ];
 
 export default function ShopByCategory() {

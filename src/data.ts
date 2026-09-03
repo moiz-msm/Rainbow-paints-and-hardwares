@@ -1,4 +1,4 @@
-export const topCategories = ["All Categories", "Home Paint", "Industrial", "Adhesives"];
+export const topCategories = ["All Categories", "Home Paint", "Industrial", "Adhesives", "Power Tools"];
 
 export const subCategories: Record<string, string[]> = {
   "Home Paint": [
@@ -14,6 +14,10 @@ export const subCategories: Record<string, string[]> = {
     "Painting Tools",
     "Thinners & Solvents",
     "Tile Adhesives"
+  ],
+  "Power Tools": [
+    "All Power Tools",
+    "Power Tools"
   ],
   Industrial: [
     "All Industrial",
@@ -755,7 +759,7 @@ export const mockProducts = [
       "Liquid Plasticizing Compound"
     ],
     "popular": true,
-    "image": "https://drfixit-stg.s3.ap-south-1.amazonaws.com/assets/images/products/xhdpi/16191738726082a1f0a2d3c.webp"
+    "image": "https://m.media-amazon.com/images/I/31rojOLdl6L.jpg"
   },
   {
     "id": 58,
@@ -8647,5 +8651,217 @@ export const mockProducts = [
     "reviews": Math.floor(Math.random() * 200) + 50,
     "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/metals-decoprime-premium-metal-primer-asian-paints.png",
     "slug": "decoprime-interior-wall-primer-advanced-water-thinnable"
+  }
+,
+  {
+    "id": 9901,
+    "name": "TruCare Laser Distance Meter",
+    "description": "Smart and accurate laser distance meter for quick measurements up to 60 meters. Features area, volume, and Pythagorean measurement with high precision, ideal for quick site surveys before painting.",
+    "brand": "Asian Paints",
+    "topCategory": "Power Tools",
+    "subCategory": "Power Tools",
+    "price": "₹ 2950.00",
+    "properties": [
+      "Range up to 60 meters",
+      "High precision measurement",
+      "Digital LCD display"
+    ],
+    "sizes": [1],
+    "unit": "piece",
+    "isAuthorised": true,
+    "rating": 4.9,
+    "reviews": 124,
+    "image": "https://m.media-amazon.com/images/I/51VlVdMKOIL.jpg",
+    "slug": "trucare-laser-distance-meter"
+  },
+  {
+    "id": 9902,
+    "name": "TruCare Moisture Meter",
+    "description": "Compact pin-type moisture meter to accurately check moisture levels on walls and wood before painting. Essential tool to ensure surfaces are dry enough for long-lasting paint application.",
+    "brand": "Asian Paints",
+    "topCategory": "Power Tools",
+    "subCategory": "Power Tools",
+    "price": "₹ 1450.00",
+    "properties": [
+      "Accurate moisture detection",
+      "Suitable for walls and wood",
+      "Portable and easy to use"
+    ],
+    "sizes": [1],
+    "unit": "piece",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": 98,
+    "image": "https://5.imimg.com/data5/SELLER/Default/2023/12/365465108/MQ/JF/DU/75336779/tes-dig-55187904-3-1000x1000.jpg",
+    "slug": "trucare-moisture-meter"
+  },
+  {
+    "id": 9903,
+    "name": "TruCare Electric Wall Sander",
+    "description": "High-performance electric wall sander (750W) with vacuum dust collection for a dust-free and smooth sanding experience. Reduces effort and saves time significantly.",
+    "brand": "Asian Paints",
+    "topCategory": "Power Tools",
+    "subCategory": "Power Tools",
+    "price": "₹ 8500.00",
+    "properties": [
+      "750W powerful motor",
+      "Integrated dust vacuum",
+      "Professional grade finish"
+    ],
+    "sizes": [1],
+    "unit": "piece",
+    "isAuthorised": true,
+    "rating": 4.9,
+    "reviews": 156,
+    "image": "https://m.media-amazon.com/images/I/71w+b3K0OpL.jpg",
+    "slug": "trucare-electric-wall-sander"
+  },
+  {
+    "id": 9904,
+    "name": "TruCare Paint Sprayer",
+    "description": "750W Electric spray gun for smooth and even application of paint on walls and furniture. Features adjustable nozzles and easy cleanup.",
+    "brand": "Asian Paints",
+    "topCategory": "Power Tools",
+    "subCategory": "Power Tools",
+    "price": "₹ 3200.00",
+    "properties": [
+      "750W Motor",
+      "Uniform paint application",
+      "Adjustable flow control"
+    ],
+    "sizes": [1],
+    "unit": "piece",
+    "isAuthorised": true,
+    "rating": 4.7,
+    "reviews": 75,
+    "image": "https://m.media-amazon.com/images/I/713A1C+PZJL.jpg",
+    "slug": "trucare-paint-sprayer"
+  },
+  {
+    "id": 9905,
+    "name": "TruCare Economy Putty Mixer",
+    "description": "Heavy-duty putty mixer designed for uniform and smooth mixing of wall putty and paint. Ergonomic design for comfortable long-duration usage.",
+    "brand": "Asian Paints",
+    "topCategory": "Power Tools",
+    "subCategory": "Power Tools",
+    "price": "₹ 2800.00",
+    "properties": [
+      "Smooth and quick mixing",
+      "Ergonomic handle",
+      "Durable built"
+    ],
+    "sizes": [1],
+    "unit": "piece",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": 112,
+    "image": "https://m.media-amazon.com/images/I/51aANSb6kTL.jpg",
+    "slug": "trucare-economy-putty-mixer"
+  }
+,
+  {
+    "id": 9911,
+    "name": "Berger Express Painting Sander",
+    "description": "High-performance wall sander machine designed for Berger Express Painting. Features variable speed control and an integrated vacuum for a dust-free and smooth sanding experience.",
+    "brand": "Berger Paints",
+    "topCategory": "Power Tools",
+    "subCategory": "Power Tools",
+    "price": "₹ 7500.00",
+    "properties": [
+      "Integrated dust vacuum",
+      "Variable speed control",
+      "Professional grade finish"
+    ],
+    "sizes": [1],
+    "unit": "piece",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": 115,
+    "image": "https://img2.exportersindia.com/product_images/bc-full/2025/12/14964474/berger-express-painting-sanding-machine-1765169953-8472212.jpeg",
+    "slug": "berger-express-painting-sander"
+  },
+  {
+    "id": 9912,
+    "name": "Berger Moisture Meter",
+    "description": "Accurate digital moisture meter for measuring moisture content in walls, wood, and concrete. Essential for surface preparation before starting any painting or waterproofing work.",
+    "brand": "Berger Paints",
+    "topCategory": "Power Tools",
+    "subCategory": "Power Tools",
+    "price": "₹ 1250.00",
+    "properties": [
+      "Accurate digital display",
+      "Suitable for walls and wood",
+      "Portable and easy to use"
+    ],
+    "sizes": [1],
+    "unit": "piece",
+    "isAuthorised": true,
+    "rating": 4.6,
+    "reviews": 84,
+    "image": "https://m.media-amazon.com/images/S/aplus-media-library-service-media/9d2e5bcf-9ee9-473e-986e-59662c46f886.__CR0,0,300,300_PT0_SX300_V1___.png",
+    "slug": "berger-moisture-meter"
+  },
+  {
+    "id": 9913,
+    "name": "Berger Airless Paint Sprayer",
+    "description": "Professional-grade airless paint sprayer for fast, smooth, and even application of paint on large interior and exterior surfaces. Part of the Express Painting toolkit.",
+    "brand": "Berger Paints",
+    "topCategory": "Power Tools",
+    "subCategory": "Power Tools",
+    "price": "₹ 18500.00",
+    "properties": [
+      "High pressure delivery",
+      "Uniform paint application",
+      "Fast coverage for large areas"
+    ],
+    "sizes": [1],
+    "unit": "piece",
+    "isAuthorised": true,
+    "rating": 4.9,
+    "reviews": 142,
+    "image": "https://5.imimg.com/data5/ANDROID/Default/2022/9/ZM/UO/LI/2303315/product-jpeg-1000x1000.jpg",
+    "slug": "berger-airless-paint-sprayer"
+  },
+  {
+    "id": 9914,
+    "name": "Berger Express Putty Mixer",
+    "description": "Heavy-duty electric putty and paint mixer designed for uniform and fast mixing. Ergonomic handle and powerful motor ensure smooth consistency.",
+    "brand": "Berger Paints",
+    "topCategory": "Power Tools",
+    "subCategory": "Power Tools",
+    "price": "₹ 3100.00",
+    "properties": [
+      "Smooth and quick mixing",
+      "Heavy-duty copper motor",
+      "Ergonomic handle"
+    ],
+    "sizes": [1],
+    "unit": "piece",
+    "isAuthorised": true,
+    "rating": 4.7,
+    "reviews": 92,
+    "image": "https://5.imimg.com/data5/SELLER/Default/2023/11/361878963/ZD/KZ/EA/127283796/berger-multipurpose-mixture-machine-500x500.jpg",
+    "slug": "berger-express-putty-mixer"
+  },
+  {
+    "id": 9915,
+    "name": "Berger High Pressure Washer",
+    "description": "Powerful 120 Bar high-pressure washer for cleaning exterior walls, driveways, and concrete surfaces before painting. Removes dirt, algae, and loose paint easily.",
+    "brand": "Berger Paints",
+    "topCategory": "Power Tools",
+    "subCategory": "Power Tools",
+    "price": "₹ 5400.00",
+    "properties": [
+      "120 Bar pressure",
+      "Removes dirt and algae",
+      "Ideal for surface prep"
+    ],
+    "sizes": [1],
+    "unit": "piece",
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": 210,
+    "image": "https://5.imimg.com/data5/SELLER/Default/2023/11/361872309/JR/UL/VP/127283796/berger-high-pressure-washer-1000x1000.jpg",
+    "slug": "berger-high-pressure-washer"
   }
 ];
