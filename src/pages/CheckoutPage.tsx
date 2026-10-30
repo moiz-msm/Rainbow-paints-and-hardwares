@@ -192,21 +192,32 @@ export default function CheckoutPage() {
     }
   };
 
+  const [detectedViaMaps, setDetectedViaMaps] = useState<string | null>(null);
+
   const handleDetectLocation = async () => {
     setDetecting(true);
-    const triggerAutofill = (pCode: string, name: string) => {
-      setAddress(prev => {
-        const newLine1 = [prev.doorNo, prev.street, name].filter(Boolean).join(', ');
-        return {
-          ...prev,
-          pincode: pCode,
-          line1: newLine1,
-          area: name,
-          city: 'Coimbatore',
-          state: 'Tamil Nadu',
-          name: prev.name || user?.displayName || user?.email?.split('@')[0] || ''
-        };
-      });
+    const triggerAutofill = (store: any) => {
+      const area = store.detectedArea || store.locationName || '';
+      const street = store.detectedStreet || '';
+      const doorNo = store.detectedDoorNo || '';
+      const pCode = store.pincode || '641009';
+      const city = store.detectedCity || 'Coimbatore';
+      const st = store.detectedState || 'Tamil Nadu';
+      const formatted = store.formattedAddress || [doorNo, street, area].filter(Boolean).join(', ') || area;
+
+      setAddress(prev => ({
+        ...prev,
+        doorNo: doorNo || prev.doorNo,
+        street: street || prev.street,
+        pincode: pCode,
+        line1: formatted || prev.line1,
+        area: area,
+        city: city,
+        state: st,
+        name: prev.name || user?.displayName || user?.email?.split('@')[0] || ''
+      }));
+
+      setDetectedViaMaps(store.formattedAddress || `${area}, Coimbatore (${pCode})`);
     };
 
     try {
@@ -221,7 +232,7 @@ export default function CheckoutPage() {
           await updateLocationByCoordinates(latitude, longitude, undefined, totalAfterDiscount);
           
           const storeState = useDeliveryStore.getState();
-          triggerAutofill(storeState.pincode || '641009', storeState.locationName || 'Coimbatore');
+          triggerAutofill(storeState);
           setDetecting(false);
         },
         async (err) => {
@@ -229,7 +240,7 @@ export default function CheckoutPage() {
           alert("Location lookup was blocked. Please enable geolocation permissions or enter your pincode and address fields manually.");
           setDetecting(false);
         },
-        { enableHighAccuracy: true, timeout: 6000 }
+        { enableHighAccuracy: true, timeout: 8000 }
       );
     } catch (err) {
       console.error(err);
@@ -422,10 +433,20 @@ export default function CheckoutPage() {
                     className="px-3.5 py-2 text-xs font-bold text-zinc-700 hover:text-black bg-white hover:bg-zinc-50 border border-zinc-200 hover:border-zinc-300 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shadow-sm disabled:opacity-60"
                   >
                     <Navigation className={`w-3.5 h-3.5 text-gold fill-gold/15 ${detecting ? 'animate-spin' : ''}`} />
-                    {detecting ? 'Locating...' : 'Use Current Location'}
+                    {detecting ? 'Detecting Location...' : 'Detect via Google Maps'}
                   </button>
                 </div>
               </div>
+
+              {detectedViaMaps && (
+                <div className="mb-6 p-3.5 bg-emerald-50/90 border border-emerald-200 text-emerald-900 rounded-xl text-xs flex items-start gap-2.5 shadow-xs">
+                  <MapPin className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <div className="flex-1">
+                    <span className="font-semibold block text-emerald-800">Location accurately detected via Google Maps</span>
+                    <span className="text-zinc-600 mt-0.5 block">{detectedViaMaps}</span>
+                  </div>
+                </div>
+              )}
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">

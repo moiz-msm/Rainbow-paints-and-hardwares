@@ -132,8 +132,8 @@ mockProducts.forEach((product: any) => {
     return {
       "@type": "Offer",
       "name": `${product.name} - ${sizeVal}${unitSymbol} Pack`,
-      "sku": `RP-PG-${product.id || '1'}_rp-${product.id || '1'}-${String(sizeVal).toLowerCase()}${unitSymbol.toLowerCase()}`,
-      "mpn": `MPN-${product.id || '1'}-${sizeVal}${unitSymbol}`,
+      "sku": `RP-PG-${product.id || slug}_rp-${product.id || slug}-${String(sizeVal).toLowerCase()}${unitSymbol.toLowerCase()}`,
+      "mpn": `MPN-${product.id || slug}-${sizeVal}${unitSymbol}`,
       "price": String(vPrice),
       "priceCurrency": "INR",
       "priceValidUntil": "2027-12-31",
@@ -211,6 +211,35 @@ Object.keys(subCategories).forEach(cat => {
     
     generateHtml(`c/${slug}`, title, desc, "https://www.rainbowpaint.in/IMG_20260630_162408.webp", schemaJson);
   });
+});
+
+console.log("Generating static HTML redirects for legacy categories...");
+const legacyRedirects: Record<string, string> = {
+  'c/interior-wall': '/c/interior-paint',
+  'c/exterior-wall': '/c/exterior-paint',
+  'c/undercoats': '/c/primers',
+  'c/metals-and-grills': '/c/enamel-paint',
+  'c/metal-and-grills': '/c/enamel-paint',
+  'c/pu-coatings': '/c/pu-paint',
+  'c/epoxy-coatings': '/c/epoxy-paint'
+};
+
+Object.entries(legacyRedirects).forEach(([oldPath, newUrl]) => {
+  const targetDir = path.join(distPath, oldPath);
+  fs.mkdirSync(targetDir, { recursive: true });
+  const redirectHtml = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <meta http-equiv="refresh" content="0; url=${newUrl}">
+  <link rel="canonical" href="https://www.rainbowpaint.in${newUrl}">
+</head>
+<body>
+  <p>Redirecting to <a href="${newUrl}">${newUrl}</a>...</p>
+</body>
+</html>`;
+  fs.writeFileSync(path.join(targetDir, 'index.html'), redirectHtml);
 });
 
 console.log("Generating static HTML for brands...");

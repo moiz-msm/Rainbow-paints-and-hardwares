@@ -130,7 +130,7 @@ export default function CategorySeoBlock({ category }: CategorySeoBlockProps) {
     'Undercoats': (
       <>
         <h2 className="text-2xl sm:text-3xl font-serif font-medium text-[#1A365D] mb-6">
-          Buy <span className="text-gold">Primers, Putty & Undercoats</span> Online
+          Buy <span className="text-gold">Primers & Undercoats</span> Online
         </h2>
         <p className="mb-4">
           A flawless paint job starts with a perfect foundation. Explore our wide range of <strong>wall putty, exterior primers, and interior base coats</strong> to ensure your topcoat adheres properly and lasts for years. 
@@ -198,7 +198,7 @@ export default function CategorySeoBlock({ category }: CategorySeoBlockProps) {
     'Metals and Grills': (
       <>
         <h2 className="text-2xl sm:text-3xl font-serif font-medium text-[#1A365D] mb-6">
-          Anti-Rust <span className="text-gold">Metal Paints & Grill Finishes</span>
+          Buy <span className="text-gold">Enamel Paint & Metal Grill Finishes</span> Online
         </h2>
         <p className="mb-4">
           Safeguard your iron gates, window grills, and metal structures with high-performance <strong>metal enamels and anti-rust paints</strong>. We offer premium synthetic enamels, epoxy primers, and PU coatings from trusted brands like <strong>MRF Vapocure</strong> and <strong>Berger Paints</strong> to stop corrosion in its tracks.
@@ -249,7 +249,7 @@ export default function CategorySeoBlock({ category }: CategorySeoBlockProps) {
     'PU Coatings': (
       <>
         <h2 className="text-2xl sm:text-3xl font-serif font-medium text-[#1A365D] mb-6">
-          Premium <span className="text-gold">PU Coatings (Polyurethane)</span>
+          Buy <span className="text-gold">PU Paint (Polyurethane Coatings)</span> Online
         </h2>
         <p className="mb-4">
           For the ultimate high-gloss, scratch-resistant finish, explore our comprehensive range of <strong>PU (Polyurethane) Coatings</strong>. Ideal for luxury wooden furniture, premium metal fabrication, and automotive refinishing, PU paints deliver unparalleled durability and a glass-like sheen.
@@ -266,7 +266,7 @@ export default function CategorySeoBlock({ category }: CategorySeoBlockProps) {
     'Epoxy Coatings': (
       <>
         <h2 className="text-2xl sm:text-3xl font-serif font-medium text-[#1A365D] mb-6">
-          Heavy-Duty <span className="text-gold">Epoxy Coatings & Floor Paints</span>
+          Buy <span className="text-gold">Epoxy Paint & Industrial Floor Coatings</span> Online
         </h2>
         <p className="mb-4">
           Protect industrial floors, warehouses, and structural steel with chemical-resistant <strong>epoxy coatings</strong>. Epoxy systems provide a seamless, non-porous, and incredibly tough surface that withstands heavy forklift traffic, oil spills, and severe abrasion.
@@ -317,9 +317,15 @@ export default function CategorySeoBlock({ category }: CategorySeoBlockProps) {
   // Map duplicate names based on exact URL params/filter names
   contentMap['Tools'] = contentMap['Painting Tools'];
   contentMap['Primer'] = contentMap['Undercoats'];
+  contentMap['Primers'] = contentMap['Undercoats'];
   contentMap['Industrial'] = contentMap['Epoxy Coatings'];
   contentMap['Exterior Wall'] = contentMap['Exterior Paints'];
+  contentMap['Exterior Paint'] = contentMap['Exterior Paints'];
   contentMap['Interior Wall'] = contentMap['Interior Paints'];
+  contentMap['Interior Paint'] = contentMap['Interior Paints'];
+  contentMap['Enamel Paint'] = contentMap['Metals and Grills'];
+  contentMap['PU Paint'] = contentMap['PU Coatings'];
+  contentMap['Epoxy Paint'] = contentMap['Epoxy Coatings'];
   contentMap['All Home Paint'] = contentMap['All Categories'];
   contentMap['All Industrial'] = contentMap['All Categories'];
 

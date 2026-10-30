@@ -119,6 +119,8 @@ function AnimatedRoutes() {
         
         {/* Account / Dashboard */}
         <Route path="/settings" element={<AccountSettingsPage />} />
+        <Route path="/account" element={<AccountSettingsPage />} />
+        <Route path="/account-dashboard" element={<AccountSettingsPage />} />
         <Route path="/my-orders" element={<MyOrdersPage />} />
         <Route path="/order/:id" element={<OrderDetailsPage />} />
         <Route path="/admin" element={<AdminDashboard />} />

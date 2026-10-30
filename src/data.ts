@@ -3,14 +3,14 @@ export const topCategories = ["All Categories", "Home Paint", "Industrial", "Adh
 export const subCategories: Record<string, string[]> = {
   "Home Paint": [
     "All Home Paint",
-    "Interior Wall",
+    "Interior Paint",
     "Interior Texture",
-    "Exterior Wall",
+    "Exterior Paint",
     "Exterior Texture",
-    "Undercoats",
+    "Primers",
     "Waterproofing",
     "Wood Finishes",
-    "Metals and Grills",
+    "Enamel Paint",
     "Painting Tools",
     "Thinners & Solvents",
     "Tile Adhesives"
@@ -21,8 +21,8 @@ export const subCategories: Record<string, string[]> = {
   ],
   Industrial: [
     "All Industrial",
-    "PU Coatings",
-    "Epoxy Coatings",
+    "PU Paint",
+    "Epoxy Paint",
     "Synthetic Enamels"
   ],
   Adhesives: [
@@ -127,7 +127,7 @@ export const brandDetails: BrandDetail[] = [
     logo: "https://www.birlawhite.com/logo.svg",
     description:
       "India's largest manufacturer of White Cement and WallCare Putty, providing the whitest white cement for beautiful and enduring structures.",
-    tags: ["Putty", "White Cement", "Undercoats"],
+    tags: ["Putty", "White Cement", "Primers"],
     isAuthorised: true
   },
 
@@ -462,7 +462,7 @@ export const mockProducts = [
     "name": "Royale Play Safari",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 365.00",
     "properties": [
       "Special Effects Paint",
@@ -501,7 +501,7 @@ export const mockProducts = [
     "name": "Royale Play Stucco",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 175.80",
     "properties": [
       "Marble-like Finish",
@@ -535,7 +535,7 @@ export const mockProducts = [
     "name": "Royale Glitz Reserve",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 1100.00",
     "properties": [
       "Ultra Luxury Interior Paint",
@@ -556,7 +556,7 @@ export const mockProducts = [
     "name": "Royale Glitz Ultra Matt",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 1050.00",
     "properties": [
       "Ultra Matt Finish",
@@ -577,7 +577,7 @@ export const mockProducts = [
     "name": "Apcolite All Protek Matt",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 550.00",
     "properties": [
       "Flame Retardant",
@@ -598,7 +598,7 @@ export const mockProducts = [
     "name": "Apcolite All Protek Shyne",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 600.00",
     "properties": [
       "Flame Retardant",
@@ -619,7 +619,7 @@ export const mockProducts = [
     "name": "Apex Ultima Stretch",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Paint",
     "price": "₹ 850.00",
     "properties": [
       "Elastomeric Film",
@@ -640,7 +640,7 @@ export const mockProducts = [
     "name": "Apex Floor Guard",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Paint",
     "price": "₹ 600.00",
     "properties": [
       "Terrace Floor Protection",
@@ -661,7 +661,7 @@ export const mockProducts = [
     "name": "Apex Tile Guard",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Paint",
     "price": "₹ 700.00",
     "properties": [
       "Roof Tile Protection",
@@ -682,7 +682,7 @@ export const mockProducts = [
     "name": "Apex Tile Guard Matt",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Paint",
     "price": "₹ 720.00",
     "properties": [
       "Matt Finish Roof Tile Protection",
@@ -703,7 +703,7 @@ export const mockProducts = [
     "name": "Apex Ultima",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Paint",
     "price": "₹ 550.00",
     "properties": [
       "Anti-Algal Weatherproof",
@@ -1533,7 +1533,7 @@ export const mockProducts = [
     "name": "Apex Ultima Protek Duralife",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Paint",
     "price": "₹ 928.00",
     "properties": [
       "WALLS of S.T.E.E.L",
@@ -1548,7 +1548,7 @@ export const mockProducts = [
     "name": "Apex Ultima Protek",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Paint",
     "price": "₹ 692.00",
     "properties": [
       "Home Lamination powered by Graphene",
@@ -1563,7 +1563,7 @@ export const mockProducts = [
     "name": "Royale Glitz",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 892.00",
     "properties": [
       "Perfect Crème Finish in Ultra Sheen",
@@ -1578,7 +1578,7 @@ export const mockProducts = [
     "name": "Royale Luxury Emulsion",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 780.00",
     "properties": [
       "Smooth Exquisite Soft Sheen",
@@ -1595,7 +1595,7 @@ export const mockProducts = [
     "name": "Apcolite Premium Emulsion",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 450.00",
     "properties": [
       "Rich Flat Matt Finish",
@@ -1612,7 +1612,7 @@ export const mockProducts = [
     "name": "Royale Aspira",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 1011.00",
     "properties": [
       "Water Beading Technology",
@@ -1627,7 +1627,7 @@ export const mockProducts = [
     "name": "Royale Shyne Luxury Emulsion",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 850.00",
     "properties": [
       "High Intensity Lustre Sheen",
@@ -1644,7 +1644,7 @@ export const mockProducts = [
     "name": "Royale Matt Emulsion",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 820.00",
     "properties": [
       "Pure Architectural Flat Matt Finish",
@@ -1661,7 +1661,7 @@ export const mockProducts = [
     "name": "Royale Health Shield",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 1,120.00",
     "properties": [
       "Kills 99.9% Bacteria & Virus (Silver Ion)",
@@ -1678,7 +1678,7 @@ export const mockProducts = [
     "name": "Nilaya Arc Matt",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 1,050.00",
     "properties": [
       "Lime-Based Finish",
@@ -1693,7 +1693,7 @@ export const mockProducts = [
     "name": "Nilaya Arc Pearlescent",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 1,200.00",
     "properties": [
       "Lime-Based Finish",
@@ -1708,7 +1708,7 @@ export const mockProducts = [
     "name": "Apex Dust Proof",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Paint",
     "price": "₹ 426.00",
     "properties": [
       "Nano Block",
@@ -1723,7 +1723,7 @@ export const mockProducts = [
     "name": "RUCA Luxury Emulsion",
     "brand": "MRF Vapocure",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 1,150.00",
     "properties": [
       "Luxury Finish",
@@ -1754,7 +1754,7 @@ export const mockProducts = [
     "name": "Visa Emulsion",
     "brand": "MRF Vapocure",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 290.00",
     "properties": [
       "Value for Money",
@@ -1770,7 +1770,7 @@ export const mockProducts = [
     "name": "AquaFresh PU Exterior",
     "brand": "MRF Vapocure",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Paint",
     "price": "₹ 1,050.00",
     "properties": [
       "Weather Resistant",
@@ -1786,7 +1786,7 @@ export const mockProducts = [
     "name": "Tractor Emulsion",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 210.00",
     "properties": [
       "Smart Choice Economy Matt",
@@ -1803,7 +1803,7 @@ export const mockProducts = [
     "name": "Ace Exterior Emulsion",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Paint",
     "price": "₹ 240.00",
     "properties": [
       "Anti-Algal Performance",
@@ -1818,7 +1818,7 @@ export const mockProducts = [
     "name": "Luxol High Gloss Enamel",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Metals and Grills",
+    "subCategory": "Enamel Paint",
     "price": "₹ 340.00",
     "properties": [
       "High Gloss",
@@ -1848,7 +1848,7 @@ export const mockProducts = [
     "name": "Altura 2-in-1 Acrylic Emulsion",
     "brand": "MRF Vapocure",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 1,450.00",
     "properties": [
       "Two-in-One Performance",
@@ -1863,7 +1863,7 @@ export const mockProducts = [
     "name": "Decoprime Wall Primer",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 180.00",
     "properties": [
       "Undercoat for Walls",
@@ -1893,7 +1893,7 @@ export const mockProducts = [
     "name": "Apcolite Premium Enamel",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Metals and Grills",
+    "subCategory": "Enamel Paint",
     "price": "₹ 290.00",
     "properties": [
       "High Gloss Finish",
@@ -1908,7 +1908,7 @@ export const mockProducts = [
     "name": "Specta PU Enamel",
     "brand": "MRF Vapocure",
     "topCategory": "Home Paint",
-    "subCategory": "Metals and Grills",
+    "subCategory": "Enamel Paint",
     "price": "₹ 360.00",
     "properties": [
       "PU Enamel",
@@ -1923,7 +1923,7 @@ export const mockProducts = [
     "name": "AquaFresh DampGarde",
     "brand": "MRF Vapocure",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 450.00",
     "properties": [
       "Waterproofing Primer",
@@ -1938,7 +1938,7 @@ export const mockProducts = [
     "name": "Epidec Anti-Corrosion Paint",
     "brand": "MRF Vapocure",
     "topCategory": "Industrial",
-    "subCategory": "PU Coatings",
+    "subCategory": "PU Paint",
     "price": "₹ 310.00",
     "properties": [
       "Exceptional Rust Prevention",
@@ -1953,7 +1953,7 @@ export const mockProducts = [
     "name": "Birla White WallCare Putty",
     "brand": "Birla White",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 50.00",
     "sizes": [
       1,
@@ -1977,7 +1977,7 @@ export const mockProducts = [
     "name": "Birla White Cement",
     "brand": "Birla White",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 38.00",
     "sizes": [
       1,
@@ -2001,7 +2001,7 @@ export const mockProducts = [
     "name": "Just Spray JS1 Acrylic Spray Paint - Classic Shades",
     "brand": "Just Spray",
     "topCategory": "Home Paint",
-    "subCategory": "Metals and Grills",
+    "subCategory": "Enamel Paint",
     "price": "₹ 240.00",
     "sizes": [
       0.4
@@ -2064,7 +2064,7 @@ export const mockProducts = [
     "name": "Just Spray JS1 Acrylic Spray Paint - Metallic Shades",
     "brand": "Just Spray",
     "topCategory": "Home Paint",
-    "subCategory": "Metals and Grills",
+    "subCategory": "Enamel Paint",
     "price": "₹ 310.00",
     "sizes": [
       0.4
@@ -2106,7 +2106,7 @@ export const mockProducts = [
     "name": "Just Spray JS1 Acrylic Spray Paint - Fluorescent Shades",
     "brand": "Just Spray",
     "topCategory": "Home Paint",
-    "subCategory": "Metals and Grills",
+    "subCategory": "Enamel Paint",
     "price": "₹ 280.00",
     "sizes": [
       0.4
@@ -2148,7 +2148,7 @@ export const mockProducts = [
     "name": "Professional Putty Blade",
     "brand": "Local",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 35.00",
     "sizes": [
       2,
@@ -2174,7 +2174,7 @@ export const mockProducts = [
     "name": "Heavy Duty Handle Putty Scraper Blade",
     "brand": "Local",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 55.00",
     "sizes": [
       2,
@@ -2924,7 +2924,7 @@ export const mockProducts = [
     "name": "WeatherCoat Exterior Primer",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 160.00",
     "sizes": [
       1,
@@ -2947,7 +2947,7 @@ export const mockProducts = [
     "name": "BP White Primer (Water Based)",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 120.00",
     "sizes": [
       1,
@@ -2970,7 +2970,7 @@ export const mockProducts = [
     "name": "BP Cement Primer (Solvent Based)",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 190.00",
     "sizes": [
       1,
@@ -2993,7 +2993,7 @@ export const mockProducts = [
     "name": "Luxol Satin Finish",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Metals and Grills",
+    "subCategory": "Enamel Paint",
     "price": "₹ 310.00",
     "sizes": [
       0.5,
@@ -3017,7 +3017,7 @@ export const mockProducts = [
     "name": "PU Enamel",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Metals and Grills",
+    "subCategory": "Enamel Paint",
     "price": "₹ 390.00",
     "sizes": [
       0.5,
@@ -3085,7 +3085,7 @@ export const mockProducts = [
     "name": "Home Shield Waterproof Putty",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 45.00",
     "sizes": [
       1,
@@ -3131,7 +3131,7 @@ export const mockProducts = [
     "name": "BP Red Oxide Primer",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 110.00",
     "sizes": [
       0.5,
@@ -3155,7 +3155,7 @@ export const mockProducts = [
     "name": "Luxol Metal Primer",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 160.00",
     "sizes": [
       0.5,
@@ -3179,7 +3179,7 @@ export const mockProducts = [
     "name": "BP White Wood Primer",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 140.00",
     "sizes": [
       0.5,
@@ -3390,7 +3390,7 @@ export const mockProducts = [
     "name": "Protecton Epilux 155 Epoxy Primer",
     "brand": "Berger Paints",
     "topCategory": "Industrial",
-    "subCategory": "Epoxy Coatings",
+    "subCategory": "Epoxy Paint",
     "price": "₹ 340.00",
     "sizes": [
       4,
@@ -3411,7 +3411,7 @@ export const mockProducts = [
     "name": "Protecton Epilux 155 HB Coating",
     "brand": "Berger Paints",
     "topCategory": "Industrial",
-    "subCategory": "Epoxy Coatings",
+    "subCategory": "Epoxy Paint",
     "price": "₹ 380.00",
     "sizes": [
       4,
@@ -3432,7 +3432,7 @@ export const mockProducts = [
     "name": "Protecton Epilux 4 Zinc Rich Primer",
     "brand": "Berger Paints",
     "topCategory": "Industrial",
-    "subCategory": "Epoxy Coatings",
+    "subCategory": "Epoxy Paint",
     "price": "₹ 520.00",
     "sizes": [
       4,
@@ -3453,7 +3453,7 @@ export const mockProducts = [
     "name": "Protecton Epilux 4 HB Epoxy Coating",
     "brand": "Berger Paints",
     "topCategory": "Industrial",
-    "subCategory": "Epoxy Coatings",
+    "subCategory": "Epoxy Paint",
     "price": "₹ 410.00",
     "sizes": [
       4,
@@ -3474,7 +3474,7 @@ export const mockProducts = [
     "name": "Protecton Epilux 610 Epoxy Primer",
     "brand": "Berger Paints",
     "topCategory": "Industrial",
-    "subCategory": "Epoxy Coatings",
+    "subCategory": "Epoxy Paint",
     "price": "₹ 360.00",
     "sizes": [
       4,
@@ -3495,7 +3495,7 @@ export const mockProducts = [
     "name": "Protecton Epilux 610 HB Coating",
     "brand": "Berger Paints",
     "topCategory": "Industrial",
-    "subCategory": "Epoxy Coatings",
+    "subCategory": "Epoxy Paint",
     "price": "₹ 420.00",
     "sizes": [
       4,
@@ -3516,7 +3516,7 @@ export const mockProducts = [
     "name": "Protecton Epilux 4 MIO Coating",
     "brand": "Berger Paints",
     "topCategory": "Industrial",
-    "subCategory": "Epoxy Coatings",
+    "subCategory": "Epoxy Paint",
     "price": "₹ 350.00",
     "sizes": [
       4,
@@ -3537,7 +3537,7 @@ export const mockProducts = [
     "name": "Protecton Epilux 5 Coal Tar Epoxy",
     "brand": "Berger Paints",
     "topCategory": "Industrial",
-    "subCategory": "Epoxy Coatings",
+    "subCategory": "Epoxy Paint",
     "price": "₹ 290.00",
     "sizes": [
       4,
@@ -3558,7 +3558,7 @@ export const mockProducts = [
     "name": "Protecton Bergethane PU Finish",
     "brand": "Berger Paints",
     "topCategory": "Industrial",
-    "subCategory": "PU Coatings",
+    "subCategory": "PU Paint",
     "price": "₹ 480.00",
     "sizes": [
       4,
@@ -3579,7 +3579,7 @@ export const mockProducts = [
     "name": "Protecton Epilux HBTL Coal Tar Epoxy",
     "brand": "Berger Paints",
     "topCategory": "Industrial",
-    "subCategory": "Epoxy Coatings",
+    "subCategory": "Epoxy Paint",
     "price": "₹ 310.00",
     "sizes": [
       4,
@@ -3600,7 +3600,7 @@ export const mockProducts = [
     "name": "Protecton Epilux SLX Self Leveling Epoxy",
     "brand": "Berger Paints",
     "topCategory": "Industrial",
-    "subCategory": "Epoxy Coatings",
+    "subCategory": "Epoxy Paint",
     "price": "₹ 450.00",
     "sizes": [
       15,
@@ -3621,7 +3621,7 @@ export const mockProducts = [
     "name": "Protecton Lumeros Heat Resisting Aluminium Paint",
     "brand": "Berger Paints",
     "topCategory": "Industrial",
-    "subCategory": "PU Coatings",
+    "subCategory": "PU Paint",
     "price": "₹ 460.00",
     "sizes": [
       1,
@@ -3709,7 +3709,7 @@ export const mockProducts = [
     "name": "MRF MetalCoat Polyurethane Finish",
     "brand": "MRF Vapocure",
     "topCategory": "Home Paint",
-    "subCategory": "Metals and Grills",
+    "subCategory": "Enamel Paint",
     "price": "₹ 1,150.00",
     "sizes": [
       1,
@@ -3730,7 +3730,7 @@ export const mockProducts = [
     "name": "MRF AquaFresh Interior Emulsion",
     "brand": "MRF Vapocure",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 680.00",
     "sizes": [
       1,
@@ -3753,7 +3753,7 @@ export const mockProducts = [
     "name": "MRF Zameen Floor Coat",
     "brand": "MRF Vapocure",
     "topCategory": "Industrial",
-    "subCategory": "PU Coatings",
+    "subCategory": "PU Paint",
     "price": "₹ 1,350.00",
     "sizes": [
       1,
@@ -3775,7 +3775,7 @@ export const mockProducts = [
     "name": "MRF GlassCoat specialty PU Finish",
     "brand": "MRF Vapocure",
     "topCategory": "Industrial",
-    "subCategory": "PU Coatings",
+    "subCategory": "PU Paint",
     "price": "₹ 1,650.00",
     "sizes": [
       1,
@@ -3796,7 +3796,7 @@ export const mockProducts = [
     "name": "MRF Campus Shine Exterior Emulsion",
     "brand": "MRF Vapocure",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Paint",
     "price": "₹ 1,280.00",
     "sizes": [
       1,
@@ -3840,7 +3840,7 @@ export const mockProducts = [
     "name": "Silk Glamor Matt",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 488.00",
     "sizes": [
       1,
@@ -3862,7 +3862,7 @@ export const mockProducts = [
     "name": "Silk Glamor High Sheen",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 472.00",
     "sizes": [
       1,
@@ -3884,7 +3884,7 @@ export const mockProducts = [
     "name": "Silk Glamor Soft Sheen",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 405.00",
     "sizes": [
       1,
@@ -3906,7 +3906,7 @@ export const mockProducts = [
     "name": "Silk Glamor Dazzle",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 527.00",
     "sizes": [
       1,
@@ -3928,7 +3928,7 @@ export const mockProducts = [
     "name": "Easy Clean",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 532.00",
     "sizes": [
       1,
@@ -3950,7 +3950,7 @@ export const mockProducts = [
     "name": "Easy Clean Silky Touch",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 378.00",
     "sizes": [
       1,
@@ -3972,7 +3972,7 @@ export const mockProducts = [
     "name": "Easy Clean Fresh",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 385.00",
     "sizes": [
       1,
@@ -3994,7 +3994,7 @@ export const mockProducts = [
     "name": "Rangoli Rich Matt",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 456.00",
     "sizes": [
       1,
@@ -4016,7 +4016,7 @@ export const mockProducts = [
     "name": "Rangoli Total Care",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 371.00",
     "sizes": [
       1,
@@ -4038,7 +4038,7 @@ export const mockProducts = [
     "name": "Bison Glow",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 476.00",
     "sizes": [
       1,
@@ -4060,7 +4060,7 @@ export const mockProducts = [
     "name": "Bison Emulsion",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 453.00",
     "sizes": [
       1,
@@ -4082,7 +4082,7 @@ export const mockProducts = [
     "name": "Bison Lite",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 489.00",
     "sizes": [
       1,
@@ -4368,7 +4368,7 @@ export const mockProducts = [
     "name": "Ceiling White",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 534.00",
     "sizes": [
       1,
@@ -4412,7 +4412,7 @@ export const mockProducts = [
     "name": "Kolor Plus",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 445.00",
     "sizes": [
       1,
@@ -4434,7 +4434,7 @@ export const mockProducts = [
     "name": "Kolor Plus Glow",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Interior Wall",
+    "subCategory": "Interior Paint",
     "price": "₹ 451.00",
     "sizes": [
       1,
@@ -4456,7 +4456,7 @@ export const mockProducts = [
     "name": "Weathercoat Long Life 15",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Paint",
     "price": "₹ 630.00",
     "sizes": [
       1,
@@ -4478,7 +4478,7 @@ export const mockProducts = [
     "name": "Weathercoat Long Life 10",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Paint",
     "price": "₹ 556.00",
     "sizes": [
       1,
@@ -4500,7 +4500,7 @@ export const mockProducts = [
     "name": "Weathercoat Long Life Flexo",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Paint",
     "price": "₹ 480.00",
     "sizes": [
       1,
@@ -4522,7 +4522,7 @@ export const mockProducts = [
     "name": "Weathercoat Anti Dustt Kool",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Paint",
     "price": "₹ 371.00",
     "sizes": [
       1,
@@ -4544,7 +4544,7 @@ export const mockProducts = [
     "name": "Weathercoat Anti Dustt",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Paint",
     "price": "₹ 371.00",
     "sizes": [
       1,
@@ -4566,7 +4566,7 @@ export const mockProducts = [
     "name": "Weathercoat Glow",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Paint",
     "price": "₹ 329.00",
     "sizes": [
       1,
@@ -4588,7 +4588,7 @@ export const mockProducts = [
     "name": "Weathercoat Champ",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Paint",
     "price": "₹ 317.00",
     "sizes": [
       1,
@@ -4610,7 +4610,7 @@ export const mockProducts = [
     "name": "Walmasta Glow",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Paint",
     "price": "₹ 202.10",
     "sizes": [
       1,
@@ -4632,7 +4632,7 @@ export const mockProducts = [
     "name": "Walmasta",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Paint",
     "price": "₹ 188.00",
     "sizes": [
       1,
@@ -4654,7 +4654,7 @@ export const mockProducts = [
     "name": "Walmasta Lite",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Paint",
     "price": "₹ 138.00",
     "sizes": [
       1,
@@ -4896,7 +4896,7 @@ export const mockProducts = [
     "name": "Weathercoat Long Life PU Tile Coat",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Paint",
     "price": "₹ 383.00",
     "sizes": [
       1,
@@ -4918,7 +4918,7 @@ export const mockProducts = [
     "name": "Weathercoat Floor Protector",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Paint",
     "price": "₹ 363.00",
     "sizes": [
       1,
@@ -4961,7 +4961,7 @@ export const mockProducts = [
     "name": "MRF AquaFresh Cool",
     "brand": "MRF Vapocure",
     "topCategory": "Home Paint",
-    "subCategory": "Exterior Wall",
+    "subCategory": "Exterior Paint",
     "price": "₹ 1,320.00",
     "sizes": [
       1,
@@ -4984,7 +4984,7 @@ export const mockProducts = [
     "name": "MRF Acrylic Super Fine Wall Putty",
     "brand": "MRF Vapocure",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 420.00",
     "sizes": [
       1,
@@ -5007,7 +5007,7 @@ export const mockProducts = [
     "name": "MRF Altura Metallic Finish",
     "brand": "MRF Vapocure",
     "topCategory": "Home Paint",
-    "subCategory": "Metals and Grills",
+    "subCategory": "Enamel Paint",
     "price": "₹ 1,450.00",
     "sizes": [
       1,
@@ -5028,7 +5028,7 @@ export const mockProducts = [
     "name": "MRF AquaFresh PU Wall Primer",
     "brand": "MRF Vapocure",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 320.00",
     "sizes": [
       1,
@@ -5051,7 +5051,7 @@ export const mockProducts = [
     "name": "MRF Altura 2-in-1 Wall Primer",
     "brand": "MRF Vapocure",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 350.00",
     "sizes": [
       1,
@@ -5074,7 +5074,7 @@ export const mockProducts = [
     "name": "MRF Sello 2-in-1 Wall Primer",
     "brand": "MRF Vapocure",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 280.00",
     "sizes": [
       1,
@@ -5097,7 +5097,7 @@ export const mockProducts = [
     "name": "MRF Solvent Thinnable Wall Primer",
     "brand": "MRF Vapocure",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 310.00",
     "sizes": [
       1,
@@ -7777,7 +7777,7 @@ export const mockProducts = [
     "description": "Choose this easy to use primer for all metal surfaces. It doesn't require any dilution and offers superior rust protection.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 300.00",
     "properties": [
       "Supreme rust protection",
@@ -7798,7 +7798,7 @@ export const mockProducts = [
     "description": "Serves as a good quality metal primer due to its corrosion resistance ability. This easy to apply primer is ideal for household use.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 300.00",
     "properties": [
       "Good corrosion resistance",
@@ -8112,7 +8112,7 @@ export const mockProducts = [
     "description": "Create the perfect base coat that primes for a smooth finish, better paint adhesion, and added moisture protection.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "Special acrylic binders",
@@ -8133,7 +8133,7 @@ export const mockProducts = [
     "description": "A true hero product when it comes to water-based wall finishes. It proves to be an effective primer for luxury finishes of top coats.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "SUPERIOR WHITENESS",
@@ -8154,7 +8154,7 @@ export const mockProducts = [
     "description": "Let your walls stand out! All you need for an everlasting paint is aprimer with good sealing properties.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "OPACITY AND WHITENESS",
@@ -8175,7 +8175,7 @@ export const mockProducts = [
     "description": "Upgraded performance with great whiteness and topcoat adhesion for a wonderful wall with a superior finish",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "BETTER OPACITY AND WHITENESS",
@@ -8196,7 +8196,7 @@ export const mockProducts = [
     "description": "Provides good whiteness, a smooth surface and great adhesion to the topcoat for smooth interior walls",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "OPACITY AND WHITENESS",
@@ -8217,7 +8217,7 @@ export const mockProducts = [
     "description": "Lock in durability with our eco-friendly primer that waterproofs terrace tiles and keeps them strong for the long haul.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "Adhesion",
@@ -8238,7 +8238,7 @@ export const mockProducts = [
     "description": "Make your paint job last with our water-based primer that adds extra durability and moisture resistance to your exterior walls.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "Applicable on multiple surfaces",
@@ -8259,7 +8259,7 @@ export const mockProducts = [
     "description": "Prime your walls the right way with our water-based primer that locks in paint better and gives your exterior walls a smooth, even base.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "Opacity and whiteness",
@@ -8280,7 +8280,7 @@ export const mockProducts = [
     "description": "The perfect balance between whiteness, surface adhesion and topcoat finish to enusre all round satistaction with the surface finish",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "BETTER OPACITY AND WHITENESS",
@@ -8301,7 +8301,7 @@ export const mockProducts = [
     "description": "Upgraded performance with great whiteness and topcoat adhesion for a wonderful wall with a superior finish",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "BETTER OPACITY AND WHITENESS",
@@ -8322,7 +8322,7 @@ export const mockProducts = [
     "description": "Provides good whiteness, a smooth surface and great adhesion to the topcoat for smooth exterior walls",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "OPACITY AND WHITENESS",
@@ -8343,7 +8343,7 @@ export const mockProducts = [
     "description": "Say goodbye to rust with this primer that promises supreme protection against rust that is 50 times stronger than ordinary metal primer.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "Primer with anti-corrosion properties",
@@ -8364,7 +8364,7 @@ export const mockProducts = [
     "description": "Give a perfect anti-rust finish to your metal surfaces with this primer, while enhancing adhesion and protects the metal.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "Has overcoating property",
@@ -8385,7 +8385,7 @@ export const mockProducts = [
     "description": "Say bye to rust and corrosion, with our metal primer that gives a lasting defence and improved paint adhesion.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "Excellent adhesion property",
@@ -8406,7 +8406,7 @@ export const mockProducts = [
     "description": "Tackles wood's natural porosity to provide a pristine, workable surface",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "Made Especially for Wood",
@@ -8427,7 +8427,7 @@ export const mockProducts = [
     "description": "Give your metal surfaces the right protection with this primer, which will provide a good coverage, equal levelling, and good adhesion to your surfaces.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "Excellent opacity",
@@ -8448,7 +8448,7 @@ export const mockProducts = [
     "description": "Great surface adhesion with metals to ensure a resilient topcoat finish at an economical price point",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "Good corrosion resistance",
@@ -8469,7 +8469,7 @@ export const mockProducts = [
     "description": "Create beautiful walls with this filler that smooths out cracks and dents, leaving you with a perfect wall finish.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "Easy Cutting",
@@ -8490,7 +8490,7 @@ export const mockProducts = [
     "description": "Keep moisture out with our damp-proof coating that protects your exterior walls and keeps your paint looking fresh.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "5 years warranty",
@@ -8511,7 +8511,7 @@ export const mockProducts = [
     "description": "Perfect your finish with our water-based putty that fills imperfections and leaves a smooth, white base for your topcoat.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "No primer required",
@@ -8532,7 +8532,7 @@ export const mockProducts = [
     "description": "Perfect the art of smooth walls, with our putty which will fill cracks and gaps, ensuring a perfect surface inside and out.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "Smooth finish",
@@ -8553,7 +8553,7 @@ export const mockProducts = [
     "description": "Smooth out every bump with our white cement-based putty giving your walls a flawless base coat for painting.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "Excellent levelling",
@@ -8574,7 +8574,7 @@ export const mockProducts = [
     "description": "Provides an ultra smooth, glossy, marble-like finish to ensure the smoothest and shiniest topcoat finish",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "Smooth Finish",
@@ -8595,7 +8595,7 @@ export const mockProducts = [
     "description": "Keep your exteriors water-tight with this high-performance coating that lasts longer and provides good adhesion.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "5 years warranty",
@@ -8616,7 +8616,7 @@ export const mockProducts = [
     "description": "Protect your walls the secure way with our primer that offers 3 years of waterproofing warranty. Designed for exterior vertical walls, it locks in paint better while providing a strong, protective base against dampness.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "Better Whiteness &amp; Coverage",
@@ -8637,7 +8637,7 @@ export const mockProducts = [
     "description": "An essential undercoat for paints! This paint provides superior hiding and superior whiteness before you apply your final paint.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
-    "subCategory": "Undercoats",
+    "subCategory": "Primers",
     "price": "₹ 150.00",
     "properties": [
       "OPACITY AND WHITENESS",

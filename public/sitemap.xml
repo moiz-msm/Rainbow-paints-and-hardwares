@@ -50,7 +50,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.rainbowpaint.in/c/interior-wall</loc>
+    <loc>https://www.rainbowpaint.in/c/interior-paint</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -60,7 +60,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.rainbowpaint.in/c/exterior-wall</loc>
+    <loc>https://www.rainbowpaint.in/c/exterior-paint</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -70,7 +70,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.rainbowpaint.in/c/undercoats</loc>
+    <loc>https://www.rainbowpaint.in/c/primers</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -85,7 +85,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.rainbowpaint.in/c/metals-and-grills</loc>
+    <loc>https://www.rainbowpaint.in/c/enamel-paint</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -120,12 +120,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.rainbowpaint.in/c/pu-coatings</loc>
+    <loc>https://www.rainbowpaint.in/c/pu-paint</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.rainbowpaint.in/c/epoxy-coatings</loc>
+    <loc>https://www.rainbowpaint.in/c/epoxy-paint</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>

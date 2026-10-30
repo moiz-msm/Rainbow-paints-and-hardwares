@@ -10,8 +10,33 @@ import { mockProducts, brands, subCategories } from '../data';
 export default function ProductsPage() {
   const { categorySlug, brandSlug } = useParams<{ categorySlug?: string, brandSlug?: string }>();
 
-  // Optional: Convert slug to a display format (e.g., 'interior-paints' -> 'Interior Paints')
-  let initialCategory = categorySlug ? categorySlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : undefined; if(categorySlug) { const allSubs = Object.values(subCategories).flat(); const exactCat = allSubs.find(c => c.toLowerCase().replace(/\s+/g, '-') === categorySlug); if(exactCat) initialCategory = exactCat; }
+  const slugAliasMap: Record<string, string> = {
+    'interior-paint': 'Interior Paint',
+    'interior-wall': 'Interior Paint',
+    'exterior-paint': 'Exterior Paint',
+    'exterior-wall': 'Exterior Paint',
+    'primers': 'Primers',
+    'undercoats': 'Primers',
+    'enamel-paint': 'Enamel Paint',
+    'metals-and-grills': 'Enamel Paint',
+    'metal-and-grills': 'Enamel Paint',
+    'pu-paint': 'PU Paint',
+    'pu-coatings': 'PU Paint',
+    'epoxy-paint': 'Epoxy Paint',
+    'epoxy-coatings': 'Epoxy Paint'
+  };
+
+  let initialCategory = categorySlug ? categorySlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : undefined; 
+  if (categorySlug) { 
+    const lowerSlug = categorySlug.toLowerCase();
+    if (slugAliasMap[lowerSlug]) {
+      initialCategory = slugAliasMap[lowerSlug];
+    } else {
+      const allSubs = Object.values(subCategories).flat(); 
+      const exactCat = allSubs.find(c => c.toLowerCase().replace(/\s+/g, '-') === categorySlug); 
+      if (exactCat) initialCategory = exactCat;
+    }
+  }
   let initialBrand = brandSlug ? brandSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : undefined;
   
   if (brandSlug) {
@@ -24,17 +49,45 @@ export default function ProductsPage() {
   const pageTitle = initialCategory || initialBrand || 'All Products';
   
   const seoTitle = useMemo(() => {
-    if (initialCategory === 'Exterior Paints' || initialCategory === 'Exterior Wall') return 'Buy Exterior Paint Online | Best Exterior Wall Paints';
-    if (initialCategory === 'Interior Paints' || initialCategory === 'Interior Wall') return 'Buy Interior Paint Online | Premium Emulsion & High Sheen Paints';
+    if (initialCategory === 'Exterior Paint' || initialCategory === 'Exterior Wall' || initialCategory === 'Exterior Paints') {
+      return 'Buy Exterior Paint Online | Best Weatherproof Wall Paints';
+    }
+    if (initialCategory === 'Interior Paint' || initialCategory === 'Interior Wall' || initialCategory === 'Interior Paints') {
+      return 'Buy Interior Paint Online | Premium Emulsion & High Sheen Paints';
+    }
+    if (initialCategory === 'Primers' || initialCategory === 'Undercoats') {
+      return 'Buy Wall & Metal Primers Online | Basecoat & Putty Paints';
+    }
+    if (initialCategory === 'Enamel Paint' || initialCategory === 'Metals and Grills') {
+      return 'Buy Enamel Paint Online | Metal, Wood & Grill Gloss Paints';
+    }
+    if (initialCategory === 'PU Paint' || initialCategory === 'PU Coatings') {
+      return 'Buy PU Paint Online | Polyurethane Wood & Metal Finishes';
+    }
+    if (initialCategory === 'Epoxy Paint' || initialCategory === 'Epoxy Coatings') {
+      return 'Buy Epoxy Paint Online | Industrial & Floor Epoxy Coatings';
+    }
     return `${pageTitle} | Buy Paints Online`;
   }, [initialCategory, pageTitle]);
 
   const pageDescription = useMemo(() => {
-    if (initialCategory === 'Exterior Paints' || initialCategory === 'Exterior Wall') {
+    if (initialCategory === 'Exterior Paint' || initialCategory === 'Exterior Wall' || initialCategory === 'Exterior Paints') {
       return `Buy the best exterior paints online at Rainbow Paints. Shop affordable exterior paint for home and buildings, including Asian Paints Ultima Protek and moisture resistant paint.`;
     }
-    if (initialCategory === 'Interior Paints' || initialCategory === 'Interior Wall') {
+    if (initialCategory === 'Interior Paint' || initialCategory === 'Interior Wall' || initialCategory === 'Interior Paints') {
       return `Buy luxury interior paint online. Explore high sheen paint, easy clean emulsion, and anti mould ceiling paint from top brands like Asian Paints and Berger. Fast delivery!`;
+    }
+    if (initialCategory === 'Primers' || initialCategory === 'Undercoats') {
+      return `Shop top quality primers and undercoats online. Find interior wall primers, exterior primers, and metal primers from Asian Paints and Berger at wholesale prices.`;
+    }
+    if (initialCategory === 'Enamel Paint' || initialCategory === 'Metals and Grills') {
+      return `Buy durable enamel paint online for metal, grills, doors, and wood surfaces. Top high-gloss and satin synthetic enamels with rust protection.`;
+    }
+    if (initialCategory === 'PU Paint' || initialCategory === 'PU Coatings') {
+      return `Buy premium PU paint online. High-performance polyurethane wood finishes, automotive, and industrial grade PU coatings.`;
+    }
+    if (initialCategory === 'Epoxy Paint' || initialCategory === 'Epoxy Coatings') {
+      return `Shop heavy duty epoxy paint online. Perfect for industrial floors, commercial kitchens, chemical resistance, and high-traffic areas.`;
     }
     if (initialBrand) {
       return `Buy ${initialBrand} online at wholesale prices. Authorized ${initialBrand} paint dealer in Coimbatore offering fast local doorstep delivery and genuine products.`;
@@ -97,7 +150,7 @@ export default function ProductsPage() {
   }, [seoTitle, pageDescription, categorySlug, brandSlug]);
 
   const faqSchema = useMemo(() => {
-    if (initialCategory === 'Exterior Paints' || initialCategory === 'Exterior Wall') {
+    if (initialCategory === 'Exterior Paint' || initialCategory === 'Exterior Paints' || initialCategory === 'Exterior Wall') {
       return {
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -122,7 +175,7 @@ export default function ProductsPage() {
       };
     }
     
-    if (initialCategory === 'Interior Paints' || initialCategory === 'Interior Wall') {
+    if (initialCategory === 'Interior Paint' || initialCategory === 'Interior Paints' || initialCategory === 'Interior Wall') {
       return {
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -178,10 +231,18 @@ export default function ProductsPage() {
   const itemListSchema = useMemo(() => {
     let filtered = mockProducts;
     if (initialCategory) {
-      if (initialCategory === 'Exterior Wall' || initialCategory === 'Exterior Paints') {
-        filtered = filtered.filter((p: any) => p.subCategory === 'Exterior Wall' || p.category === 'Exterior Wall');
-      } else if (initialCategory === 'Interior Wall' || initialCategory === 'Interior Paints') {
-        filtered = filtered.filter((p: any) => p.subCategory === 'Interior Wall' || p.category === 'Interior Wall');
+      if (initialCategory === 'Exterior Paint' || initialCategory === 'Exterior Wall' || initialCategory === 'Exterior Paints') {
+        filtered = filtered.filter((p: any) => p.subCategory === 'Exterior Paint' || p.subCategory === 'Exterior Wall' || p.category === 'Exterior Wall');
+      } else if (initialCategory === 'Interior Paint' || initialCategory === 'Interior Wall' || initialCategory === 'Interior Paints') {
+        filtered = filtered.filter((p: any) => p.subCategory === 'Interior Paint' || p.subCategory === 'Interior Wall' || p.category === 'Interior Wall');
+      } else if (initialCategory === 'Primers' || initialCategory === 'Undercoats') {
+        filtered = filtered.filter((p: any) => p.subCategory === 'Primers' || p.subCategory === 'Undercoats');
+      } else if (initialCategory === 'Enamel Paint' || initialCategory === 'Metals and Grills') {
+        filtered = filtered.filter((p: any) => p.subCategory === 'Enamel Paint' || p.subCategory === 'Metals and Grills');
+      } else if (initialCategory === 'PU Paint' || initialCategory === 'PU Coatings') {
+        filtered = filtered.filter((p: any) => p.subCategory === 'PU Paint' || p.subCategory === 'PU Coatings');
+      } else if (initialCategory === 'Epoxy Paint' || initialCategory === 'Epoxy Coatings') {
+        filtered = filtered.filter((p: any) => p.subCategory === 'Epoxy Paint' || p.subCategory === 'Epoxy Coatings');
       } else {
         filtered = filtered.filter((p: any) => p.subCategory === initialCategory || p.category === initialCategory);
       }

@@ -1019,7 +1019,41 @@ Return exactly a valid JSON object with {"name": "string", "pincode": "string"}.
         let desc = "Buy paint online from the top paint shop in Coimbatore. Rainbow Paints & Hardwares offers best pricing, doorstep delivery in Coimbatore, and 4000+ color shades.";
         let img = "https://www.rainbowpaint.in/IMG_20260630_162408.webp";
 
-        if (url.startsWith('/p/')) {
+        const legacyCategoryRedirects: Record<string, string> = {
+          'interior-wall': 'interior-paint',
+          'exterior-wall': 'exterior-paint',
+          'undercoats': 'primers',
+          'metals-and-grills': 'enamel-paint',
+          'metal-and-grills': 'enamel-paint',
+          'pu-coatings': 'pu-paint',
+          'epoxy-coatings': 'epoxy-paint'
+        };
+
+        if (url.startsWith('/c/')) {
+          const catSlug = decodeURIComponent(url.split('/')[2] || '').toLowerCase();
+          if (legacyCategoryRedirects[catSlug]) {
+            return res.redirect(301, `/c/${legacyCategoryRedirects[catSlug]}`);
+          }
+
+          const categoryNamesMap: Record<string, string> = {
+            'interior-paint': 'Interior Paint',
+            'exterior-paint': 'Exterior Paint',
+            'primers': 'Primers',
+            'enamel-paint': 'Enamel Paint',
+            'pu-paint': 'PU Paint',
+            'epoxy-paint': 'Epoxy Paint',
+            'waterproofing': 'Waterproofing',
+            'wood-finishes': 'Wood Finishes',
+            'painting-tools': 'Painting Tools',
+            'thinners-&-solvents': 'Thinners & Solvents',
+            'tile-adhesives': 'Tile Adhesives',
+            'synthetic-enamels': 'Synthetic Enamels',
+            'power-tools': 'Power Tools'
+          };
+          const catName = categoryNamesMap[catSlug] || catSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+          title = `Buy ${catName} Online in Coimbatore | Best Prices at Rainbow Paints`;
+          desc = `Shop premium ${catName.toLowerCase()} online with fast local doorstep delivery across Coimbatore. Authorized distributor offering 100% genuine products and wholesale rates.`;
+        } else if (url.startsWith('/p/')) {
           const slug = decodeURIComponent(url.split('/')[2]);
           const product = mockProducts.find(p => ((p as any).slug || p.name.replace(/\s+/g, '-').toLowerCase()) === slug);
           if (product) {

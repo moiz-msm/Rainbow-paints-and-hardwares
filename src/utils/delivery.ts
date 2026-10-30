@@ -156,10 +156,23 @@ export function findNearestLocalPincode(lat: number, lon: number): string | null
   return null;
 }
 
+export interface DetectedLocationResult {
+  pincode: string | null;
+  name: string | null;
+  area?: string | null;
+  street?: string | null;
+  doorNo?: string | null;
+  city?: string | null;
+  state?: string | null;
+  formattedAddress?: string | null;
+  source?: string | null;
+  attribution?: string | null;
+}
+
 /**
- * OpenStreetMap (OSM) Reverse Geocoder as fallback with localized nearest-neighbor pincode snapping
+ * OpenStreetMap (OSM) / Google Maps Reverse Geocoder with localized nearest-neighbor pincode snapping
  */
-export async function reverseGeocodeLatLng(lat: number, lon: number): Promise<{ pincode: string | null; name: string | null }> {
+export async function reverseGeocodeLatLng(lat: number, lon: number): Promise<DetectedLocationResult> {
   const localPincode = findNearestLocalPincode(lat, lon);
   
   try {
@@ -172,15 +185,31 @@ export async function reverseGeocodeLatLng(lat: number, lon: number): Promise<{ 
     if (!response.ok) throw new Error('Geocoding response failed');
     const data = await response.json();
     
-    const pincode = localPincode || data?.pincode || null;
-    const displayName = data?.name || 'Nearby Area';
+    // High accuracy Google Maps geocode takes precedence, with local fallback
+    const pincode = data?.pincode || localPincode || null;
+    const displayName = data?.name || data?.area || (localPincode ? `${LOCAL_COIMBATORE_PINCODES[localPincode].name}` : 'Coimbatore Area');
     
-    return { pincode, name: displayName };
+    return {
+      pincode,
+      name: displayName,
+      area: data?.area || data?.name || null,
+      street: data?.street || null,
+      doorNo: data?.doorNo || null,
+      city: data?.city || 'Coimbatore',
+      state: data?.state || 'Tamil Nadu',
+      formattedAddress: data?.formattedAddress || displayName,
+      source: data?.source || 'google_maps',
+      attribution: data?.attribution || 'Google Maps'
+    };
   } catch (error) {
     console.error('Failed to reverse geocode:', error);
     return { 
       pincode: localPincode, 
-      name: localPincode ? `${LOCAL_COIMBATORE_PINCODES[localPincode].name}, Coimbatore` : null 
+      name: localPincode ? `${LOCAL_COIMBATORE_PINCODES[localPincode].name}, Coimbatore` : 'Coimbatore Area',
+      city: 'Coimbatore',
+      state: 'Tamil Nadu',
+      formattedAddress: localPincode ? `${LOCAL_COIMBATORE_PINCODES[localPincode].name}, Coimbatore, Tamil Nadu ${localPincode}` : 'Coimbatore, Tamil Nadu',
+      source: 'local'
     };
   }
 }

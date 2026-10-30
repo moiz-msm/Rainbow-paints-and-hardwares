@@ -145,12 +145,12 @@ ${mockProducts.flatMap((p: any) => {
     }
     const finalPrice = Math.round(basePrice * sizeVal * sizeDiscount);
     const pUrl = `${APP_URL}/p/${slug}?size=${sizeVal}`;
-    const variantId = `RP-${p.id || '1'}-${String(sizeVal).toLowerCase()}${unitSymbol.toLowerCase()}`;
+    const variantId = `RP-${p.id || slug}-${String(sizeVal).toLowerCase()}${unitSymbol.toLowerCase()}`;
     const title = `${p.brand ? p.brand + ' ' : ''}${p.name} - ${sizeVal}${unitSymbol}`.replace(/&/g, '&amp;');
 
     return `    <item>
       <g:id>${variantId}</g:id>
-      <g:item_group_id>${p.id}</g:item_group_id>
+      <g:item_group_id>${p.id || slug}</g:item_group_id>
       <g:title>${title}</g:title>
       <g:description>${(p.name || '').replace(/&/g, '&amp;')} by ${(p.brand || '').replace(/&/g, '&amp;')} - ${(p.category || '').replace(/&/g, '&amp;')} &gt; ${(p.subCategory || '').replace(/&/g, '&amp;')}. Available in ${sizeVal}${unitSymbol} size.</g:description>
       <g:link>${pUrl.replace(/&/g, '&amp;')}</g:link>

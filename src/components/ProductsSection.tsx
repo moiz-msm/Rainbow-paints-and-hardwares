@@ -1047,7 +1047,12 @@ export default function ProductsSection({
       let subs = updatedP.subCategory ? [updatedP.subCategory] : [];
 
       subs = subs.map(sub => {
-        if (sub === "Primer") return "Undercoats";
+        if (sub === "Primer" || sub === "Undercoats") return "Primers";
+        if (sub === "Interior Wall") return "Interior Paint";
+        if (sub === "Exterior Wall") return "Exterior Paint";
+        if (sub === "Metals and Grills" || sub === "Metal and Grills") return "Enamel Paint";
+        if (sub === "PU Coatings") return "PU Paint";
+        if (sub === "Epoxy Coatings") return "Epoxy Paint";
         if (sub === "Color Oxides" || sub === "Colour Oxide") {
           return nameLower.includes("gorila") ? "Wood Finishes" : sub;
         }
@@ -1056,22 +1061,22 @@ export default function ProductsSection({
       });
 
       if (nameLower.includes("putty") || nameLower.includes("white cement")) {
-        subs.push("Undercoats");
+        subs.push("Primers");
       }
       if (nameLower.includes("2 in 1") || nameLower.includes("2-in-1") || nameLower.includes("two in one")) {
-         subs.push("Interior Wall", "Exterior Wall");
+         subs.push("Interior Paint", "Exterior Paint");
       }
       if (nameLower.includes("exterior primer")) {
-         subs.push("Exterior Wall", "Undercoats");
+         subs.push("Exterior Paint", "Primers");
       }
       if (nameLower.includes("interior primer")) {
-         subs.push("Interior Wall", "Undercoats");
+         subs.push("Interior Paint", "Primers");
       }
       if (nameLower.includes("damp sheath exterior") || nameLower === "damp sheath exterior") {
-         subs.push("Exterior Wall", "Undercoats", "Waterproofing");
+         subs.push("Exterior Paint", "Primers", "Waterproofing");
       }
       if (nameLower.includes("damp sheath interior")) {
-         subs.push("Interior Wall", "Undercoats", "Waterproofing");
+         subs.push("Interior Paint", "Primers", "Waterproofing");
       }
       if (nameLower.includes("tile adhesive") || nameLower.includes("tile bonder") || nameLower.includes("grout")) {
          subs.push("Tile Adhesives", "Waterproofing");
@@ -1080,19 +1085,19 @@ export default function ProductsSection({
          subs.push("Waterproofing");
       }
       if (nameLower.includes("wood primer") || nameLower.includes("wood filler")) {
-         subs.push("Undercoats", "Wood Finishes");
+         subs.push("Primers", "Wood Finishes");
       }
       if (nameLower.includes("woodtech") || nameLower.includes("trucare wood") || nameLower.includes("touchwood")) {
          subs.push("Wood Finishes");
       }
       if (nameLower.includes("enamel")) {
-         subs.push("Synthetic Enamels", "Metals and Grills", "Wood Finishes");
+         subs.push("Synthetic Enamels", "Enamel Paint", "Wood Finishes");
       }
       if (nameLower.includes("metal primer") || nameLower.includes("epoxy finish")) {
-         subs.push("Undercoats", "Metals and Grills");
+         subs.push("Primers", "Enamel Paint");
       }
       if (nameLower.includes("aluminium paint") || nameLower.includes("black board paint")) {
-         subs.push("Metals and Grills", "Synthetic Enamels");
+         subs.push("Enamel Paint", "Synthetic Enamels");
       }
       
       updatedP.subCategories = Array.from(new Set(subs));
@@ -1133,8 +1138,8 @@ export default function ProductsSection({
 
     // Add default mock categories if map is empty
     if (Object.keys(map).length === 0) {
-      map["Exterior"] = new Set(["Exterior Wall Paints"]);
-      map["Interior"] = new Set(["Interior Wall Paints"]);
+      map["Exterior"] = new Set(["Exterior Paint"]);
+      map["Interior"] = new Set(["Interior Paint"]);
       map["Waterproofing"] = new Set(["Waterproofing Solutions"]);
     }
 
@@ -1146,18 +1151,24 @@ export default function ProductsSection({
 
   const categoryBubblesData = useMemo(() => {
     const defaultImages: Record<string, string> = {
+      "Interior Paint": "https://img.icons8.com/color/144/living-room.png",
       "Interior Wall": "https://img.icons8.com/color/144/living-room.png",
+      "Exterior Paint": "https://img.icons8.com/color/144/home.png",
       "Exterior Wall": "https://img.icons8.com/color/144/home.png",
+      "Primers": "https://img.icons8.com/color/144/paint-bucket.png",
       "Undercoats": "https://img.icons8.com/color/144/paint-bucket.png",
       "Primer": "https://img.icons8.com/color/144/paint-bucket.png",
       "Waterproofing": "https://img.icons8.com/color/144/water.png",
       "Wood Finishes": "https://img.icons8.com/color/144/wood.png",
+      "Enamel Paint": "https://img.icons8.com/color/144/metal.png",
+      "Metals and Grills": "https://img.icons8.com/color/144/metal.png",
+      "PU Paint": "https://img.icons8.com/color/144/paint.png",
+      "PU Coatings": "https://img.icons8.com/color/144/paint.png",
+      "Epoxy Paint": "https://img.icons8.com/color/144/test-tube.png",
+      "Epoxy Coatings": "https://img.icons8.com/color/144/test-tube.png",
       "Painting Tools": "https://img.icons8.com/color/144/paint-brush.png",
       "Tools": "https://img.icons8.com/color/144/paint-brush.png",
       "Power Tools": "https://img.icons8.com/color/144/drill.png",
-      "PU Coatings": "https://img.icons8.com/color/144/paint.png",
-      "Epoxy Coatings": "https://img.icons8.com/color/144/test-tube.png",
-      "Metals and Grills": "https://img.icons8.com/color/144/metal.png",
       "Synthetic Enamels": "https://img.icons8.com/color/144/paint-can.png",
       "Industrial": "https://img.icons8.com/color/144/factory.png",
       "Tile Adhesives": "https://img.icons8.com/color/144/brick-wall.png",

@@ -91,6 +91,13 @@ async function fetchGeocodeByPincode(pincode: string): Promise<{ lat: number; lo
 interface DeliveryState {
   pincode: string | null;
   locationName: string | null;
+  formattedAddress: string | null;
+  detectedArea: string | null;
+  detectedStreet: string | null;
+  detectedDoorNo: string | null;
+  detectedCity: string | null;
+  detectedState: string | null;
+  detectedSource: string | null;
   latitude: number | null;
   longitude: number | null;
   loading: boolean;
@@ -118,6 +125,13 @@ export const useDeliveryStore = create<DeliveryState>()(
     (set, get) => ({
       pincode: null,
       locationName: null,
+      formattedAddress: null,
+      detectedArea: null,
+      detectedStreet: null,
+      detectedDoorNo: null,
+      detectedCity: null,
+      detectedState: null,
+      detectedSource: null,
       latitude: null,
       longitude: null,
       loading: false,
@@ -175,6 +189,13 @@ export const useDeliveryStore = create<DeliveryState>()(
                 longitude,
                 pincode: geoDetails.pincode || '641009',
                 locationName: geoDetails.name || 'Current GPS Location',
+                formattedAddress: geoDetails.formattedAddress || null,
+                detectedArea: geoDetails.area || null,
+                detectedStreet: geoDetails.street || null,
+                detectedDoorNo: geoDetails.doorNo || null,
+                detectedCity: geoDetails.city || 'Coimbatore',
+                detectedState: geoDetails.state || 'Tamil Nadu',
+                detectedSource: geoDetails.source || 'google_maps',
                 distanceKm: roadData.distance,
                 durationText: roadData.durationText,
                 durationMin: roadData.durationMin,
@@ -226,6 +247,13 @@ export const useDeliveryStore = create<DeliveryState>()(
           longitude: lon,
           pincode: geoDetails.pincode || '641001',
           locationName: customName || geoDetails.name || 'Selected Location',
+          formattedAddress: geoDetails.formattedAddress || null,
+          detectedArea: geoDetails.area || null,
+          detectedStreet: geoDetails.street || null,
+          detectedDoorNo: geoDetails.doorNo || null,
+          detectedCity: geoDetails.city || 'Coimbatore',
+          detectedState: geoDetails.state || 'Tamil Nadu',
+          detectedSource: geoDetails.source || 'google_maps',
           distanceKm: roadData.distance,
           durationText: roadData.durationText,
           durationMin: roadData.durationMin,

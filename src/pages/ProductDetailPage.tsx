@@ -154,7 +154,12 @@ export default function ProductDetailPage() {
           let subs = updatedP.subCategory ? [updatedP.subCategory] : [];
 
           subs = subs.map((sub: string) => {
-            if (sub === "Primer") return "Undercoats";
+            if (sub === "Primer" || sub === "Undercoats") return "Primers";
+            if (sub === "Interior Wall") return "Interior Paint";
+            if (sub === "Exterior Wall") return "Exterior Paint";
+            if (sub === "Metals and Grills" || sub === "Metal and Grills") return "Enamel Paint";
+            if (sub === "PU Coatings") return "PU Paint";
+            if (sub === "Epoxy Coatings") return "Epoxy Paint";
             if (sub === "Color Oxides" || sub === "Colour Oxide") {
               return key.includes("gorila") ? "Wood Finishes" : sub;
             }
@@ -163,14 +168,14 @@ export default function ProductDetailPage() {
           });
 
           if (key.includes("putty") || key.includes("white cement")) {
-            subs = ["Undercoats"];
+            subs = ["Primers"];
           }
 
           if (key.includes("2 in 1") || key.includes("2-in-1") || key.includes("two in one")) {
-             subs.push("Interior Wall", "Exterior Wall");
+             subs.push("Interior Paint", "Exterior Paint");
           }
           if (key.includes("exterior primer")) {
-             subs.push("Exterior Wall", "Undercoats");
+             subs.push("Exterior Paint", "Primers");
           }
 
           updatedP.subCategories = Array.from(new Set(subs));
@@ -190,14 +195,19 @@ export default function ProductDetailPage() {
             const key = p.name ? p.name.trim().toLowerCase() : '';
             let subs = updatedP.subCategory ? [updatedP.subCategory] : [];
             subs = subs.map((sub: string) => {
-              if (sub === "Primer") return "Undercoats";
+              if (sub === "Primer" || sub === "Undercoats") return "Primers";
+              if (sub === "Interior Wall") return "Interior Paint";
+              if (sub === "Exterior Wall") return "Exterior Paint";
+              if (sub === "Metals and Grills" || sub === "Metal and Grills") return "Enamel Paint";
+              if (sub === "PU Coatings") return "PU Paint";
+              if (sub === "Epoxy Coatings") return "Epoxy Paint";
               if (sub === "Color Oxides" || sub === "Colour Oxide") return key.includes("gorila") ? "Wood Finishes" : sub;
               if (sub === "Abrasives & Sandpapers" || sub === "Abrasives and Sandpapers") return "Painting Tools";
               return sub;
             });
-            if (key.includes("putty") || key.includes("white cement")) subs = ["Undercoats"];
-            if (key.includes("2 in 1") || key.includes("2-in-1") || key.includes("two in one")) subs.push("Interior Wall", "Exterior Wall");
-            if (key.includes("exterior primer")) subs.push("Exterior Wall", "Undercoats");
+            if (key.includes("putty") || key.includes("white cement")) subs = ["Primers"];
+            if (key.includes("2 in 1") || key.includes("2-in-1") || key.includes("two in one")) subs.push("Interior Paint", "Exterior Paint");
+            if (key.includes("exterior primer")) subs.push("Exterior Paint", "Primers");
             
             (updatedP as any).subCategories = Array.from(new Set(subs));
             if ((updatedP as any).subCategories.length > 0) updatedP.subCategory = (updatedP as any).subCategories[0];
@@ -801,8 +811,8 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
       return {
         "@type": "Offer",
         "name": `${targetProduct.name} - ${sizeVal}${unitSymbol} Pack`,
-        "sku": `RP-PG-${targetProduct.id || '1'}_rp-${targetProduct.id || '1'}-${String(sizeVal).toLowerCase()}${unitSymbol.toLowerCase()}`,
-        "mpn": `MPN-${targetProduct.id || '1'}-${sizeVal}${unitSymbol}`,
+        "sku": `RP-PG-${targetProduct.id || targetProduct.slug || targetProduct.name.replace(/\s+/g, '-').toLowerCase()}_rp-${targetProduct.id || targetProduct.slug || targetProduct.name.replace(/\s+/g, '-').toLowerCase()}-${String(sizeVal).toLowerCase()}${unitSymbol.toLowerCase()}`,
+        "mpn": `MPN-${targetProduct.id || targetProduct.slug || targetProduct.name.replace(/\s+/g, '-').toLowerCase()}-${sizeVal}${unitSymbol}`,
         "price": String(vPrice),
         "priceCurrency": "INR",
         "priceValidUntil": "2027-12-31",
@@ -857,8 +867,8 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
       const offer = variationOffers[idx];
       return {
         "@type": "Product",
-        "sku": `RP-PG-${targetProduct.id || '1'}_rp-${targetProduct.id || '1'}-${String(sizeVal).toLowerCase()}${unitSymbol.toLowerCase()}`,
-        "mpn": `MPN-${targetProduct.id || '1'}-${sizeVal}${unitSymbol}`,
+        "sku": `RP-PG-${targetProduct.id || targetProduct.slug || targetProduct.name.replace(/\s+/g, '-').toLowerCase()}_rp-${targetProduct.id || targetProduct.slug || targetProduct.name.replace(/\s+/g, '-').toLowerCase()}-${String(sizeVal).toLowerCase()}${unitSymbol.toLowerCase()}`,
+        "mpn": `MPN-${targetProduct.id || targetProduct.slug || targetProduct.name.replace(/\s+/g, '-').toLowerCase()}-${sizeVal}${unitSymbol}`,
         "name": `${targetProduct.name} - ${sizeVal}${unitSymbol} Pack`,
         "url": `${productUrl}?size=${sizeVal}`,
         "image": [absImage],

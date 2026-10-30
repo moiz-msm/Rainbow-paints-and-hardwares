@@ -4,17 +4,17 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const categories = [
-  { name: 'Interior Wall', slug: 'interior-wall', image: 'https://img.icons8.com/color/144/living-room.png' },
-  { name: 'Exterior Wall', slug: 'exterior-wall', image: 'https://img.icons8.com/color/144/home.png' },
-  { name: 'Undercoats', slug: 'undercoats', image: 'https://img.icons8.com/color/144/paint-bucket.png' },
+  { name: 'Interior Paint', slug: 'interior-paint', image: 'https://img.icons8.com/color/144/living-room.png' },
+  { name: 'Exterior Paint', slug: 'exterior-paint', image: 'https://img.icons8.com/color/144/home.png' },
+  { name: 'Primers', slug: 'primers', image: 'https://img.icons8.com/color/144/paint-bucket.png' },
   { name: 'Waterproofing', slug: 'waterproofing', image: 'https://img.icons8.com/color/144/water.png' },
   { name: 'Wood Finishes', slug: 'wood-finishes', image: 'https://img.icons8.com/color/144/wood.png' },
-  { name: 'Metals and Grills', slug: 'metals-and-grills', image: 'https://img.icons8.com/color/144/metal.png' },
+  { name: 'Enamel Paint', slug: 'enamel-paint', image: 'https://img.icons8.com/color/144/metal.png' },
   { name: 'Painting Tools', slug: 'painting-tools', image: 'https://img.icons8.com/color/144/paint-brush.png' },
   { name: 'Thinners & Solvents', slug: 'thinners-&-solvents', image: 'https://img.icons8.com/color/144/flask.png' },
   { name: 'Tile Adhesives', slug: 'tile-adhesives', image: 'https://img.icons8.com/color/144/brick-wall.png' },
-  { name: 'PU Coatings', slug: 'pu-coatings', image: 'https://img.icons8.com/color/144/paint.png' },
-  { name: 'Epoxy Coatings', slug: 'epoxy-coatings', image: 'https://img.icons8.com/color/144/test-tube.png' },
+  { name: 'PU Paint', slug: 'pu-paint', image: 'https://img.icons8.com/color/144/paint.png' },
+  { name: 'Epoxy Paint', slug: 'epoxy-paint', image: 'https://img.icons8.com/color/144/test-tube.png' },
   { name: 'Synthetic Enamels', slug: 'synthetic-enamels', image: 'https://img.icons8.com/color/144/paint-can.png' },
   { name: 'Power Tools', slug: 'power-tools', image: 'https://img.icons8.com/color/144/drill.png' }
 ];

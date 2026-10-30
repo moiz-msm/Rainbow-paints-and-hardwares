@@ -150,8 +150,8 @@ export default function Header() {
                         <button onClick={() => { setIsProfileMenuOpen(false); toggleWishlist(); }} className="w-full text-left px-3 py-2 text-xs text-zinc-600 hover:bg-zinc-50 rounded-lg flex items-center gap-2">
                           <Heart className="w-3.5 h-3.5 text-gold" /> My Wishlist
                         </button>
-                        <Link to="/settings" onClick={() => setIsProfileMenuOpen(false)} className="w-full text-left px-3 py-2 text-xs text-zinc-600 hover:bg-zinc-50 rounded-lg flex items-center gap-2">
-                          <Settings className="w-3.5 h-3.5 text-gold" /> Account Settings
+                        <Link to="/account" onClick={() => setIsProfileMenuOpen(false)} className="w-full text-left px-3 py-2 text-xs text-zinc-600 hover:bg-zinc-50 rounded-lg flex items-center gap-2">
+                          <Settings className="w-3.5 h-3.5 text-gold" /> Account Dashboard
                         </Link>
                         <button onClick={() => { auth.signOut(); setIsProfileMenuOpen(false); }} className="w-full text-left px-3 py-2 text-xs text-red-600 hover:bg-red-50 rounded-lg flex items-center gap-2 mt-1 border-t border-zinc-100 pt-2">
                           <LogOut className="w-3.5 h-3.5 text-gold" /> Sign Out
@@ -243,8 +243,8 @@ export default function Header() {
                       <Link to="/my-orders" onClick={() => setIsProfileMenuOpen(false)} className="w-full text-left px-3 py-2 text-xs text-zinc-600 hover:bg-zinc-50 rounded-lg flex items-center gap-2">
                         <ShoppingCart className="w-3.5 h-3.5 text-gold" /> My Orders
                       </Link>
-                      <Link to="/settings" onClick={() => setIsProfileMenuOpen(false)} className="w-full text-left px-3 py-2 text-xs text-zinc-600 hover:bg-zinc-50 rounded-lg flex items-center gap-2">
-                        <Settings className="w-3.5 h-3.5 text-gold" /> Account Settings
+                      <Link to="/account" onClick={() => setIsProfileMenuOpen(false)} className="w-full text-left px-3 py-2 text-xs text-zinc-600 hover:bg-zinc-50 rounded-lg flex items-center gap-2">
+                        <Settings className="w-3.5 h-3.5 text-gold" /> Account Dashboard
                       </Link>
                       <button onClick={() => { auth.signOut(); setIsProfileMenuOpen(false); }} className="w-full text-left px-3 py-2 text-xs text-red-600 hover:bg-red-50 rounded-lg flex items-center gap-2 mt-1 border-t border-zinc-100 pt-2">
                         <LogOut className="w-3.5 h-3.5 text-gold" /> Sign Out
