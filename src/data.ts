@@ -3951,13 +3951,19 @@ export const mockProducts = [
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
     "subCategory": "Interior Paint",
-    "price": "₹ 378.00",
+    "price": "₹ 592.00",
     "sizes": [
       1,
       4,
       10,
       20
     ],
+    "sizePrices": {
+      "1": 592,
+      "4": 2352,
+      "10": 5706,
+      "20": 11120
+    },
     "unit": "L",
     "properties": [
       "Stain-resistant, smooth, washable paint with crack prevention.",

@@ -143,7 +143,9 @@ ${mockProducts.flatMap((p: any) => {
       if (sizeVal === 10) sizeDiscount = 0.92;
       if (sizeVal === 20) sizeDiscount = 0.88;
     }
-    const finalPrice = Math.round(basePrice * sizeVal * sizeDiscount);
+    const finalPrice = p.sizePrices && p.sizePrices[sizeVal]
+      ? p.sizePrices[sizeVal]
+      : Math.round(basePrice * sizeVal * sizeDiscount);
     const pUrl = `${APP_URL}/p/${slug}?size=${sizeVal}`;
     const variantId = `RP-${p.id || slug}-${String(sizeVal).toLowerCase()}${unitSymbol.toLowerCase()}`;
     const title = `${p.brand ? p.brand + ' ' : ''}${p.name} - ${sizeVal}${unitSymbol}`.replace(/&/g, '&amp;');

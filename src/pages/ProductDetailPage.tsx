@@ -725,6 +725,9 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
     if (selectedShadeObj && selectedShadeObj.price) {
       return parsePrice(selectedShadeObj.price);
     }
+    if ((product as any)?.sizePrices && (product as any).sizePrices[selectedSize]) {
+      return (product as any).sizePrices[selectedSize];
+    }
     return Math.round(basePrice * selectedSize * discountFactor);
   }, [product, selectedShadeObj, basePrice, selectedSize, discountFactor]);
 
@@ -807,7 +810,9 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
         if (sizeVal === 10) sizeDiscount = 0.92;
         if (sizeVal === 20) sizeDiscount = 0.88;
       }
-      const vPrice = Math.round(basePrice * sizeVal * sizeDiscount);
+      const vPrice = (targetProduct as any)?.sizePrices && (targetProduct as any).sizePrices[sizeVal]
+        ? (targetProduct as any).sizePrices[sizeVal]
+        : Math.round(basePrice * sizeVal * sizeDiscount);
       return {
         "@type": "Offer",
         "name": `${targetProduct.name} - ${sizeVal}${unitSymbol} Pack`,
@@ -1340,11 +1345,15 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
                         : `${size}${product.unit || 'L'}`}
                     </span>
                     <span className="block text-[9px] font-sans opacity-70 mt-0.5">
-                      ₹{Math.round(basePrice * size * (
-                        product?.unit === 'kg' 
-                          ? (size === 5 ? 0.94 : size === 20 ? 0.53 : size === 25 ? 0.8 : size === 40 ? 0.472 : size === 50 ? 0.628 : 1)
-                          : (size === 4 ? 0.96 : size === 10 ? 0.92 : size === 20 ? 0.88 : 1)
-                      )).toLocaleString()}
+                      ₹{(
+                        (product as any)?.sizePrices && (product as any).sizePrices[size]
+                          ? (product as any).sizePrices[size]
+                          : Math.round(basePrice * size * (
+                              product?.unit === 'kg' 
+                                ? (size === 5 ? 0.94 : size === 20 ? 0.53 : size === 25 ? 0.8 : size === 40 ? 0.472 : size === 50 ? 0.628 : 1)
+                                : (size === 4 ? 0.96 : size === 10 ? 0.92 : size === 20 ? 0.88 : 1)
+                            ))
+                      ).toLocaleString()}
                     </span>
                   </button>
                 ))}

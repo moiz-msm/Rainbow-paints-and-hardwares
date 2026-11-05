@@ -442,6 +442,9 @@ const AddToCartModal = ({
   const unitPrice = parsePrice(product.price);
 
   const totalPrice = useMemo(() => {
+    if ((product as any)?.sizePrices && (product as any).sizePrices[selectedSize]) {
+      return (product as any).sizePrices[selectedSize];
+    }
     let discountFactor = 1;
     if (product.unit === 'kg') {
       if (selectedSize === 5) discountFactor = 0.94;
@@ -455,7 +458,7 @@ const AddToCartModal = ({
       if (selectedSize === 20) discountFactor = 0.88;
     }
     return Math.round(unitPrice * selectedSize * discountFactor);
-  }, [unitPrice, selectedSize, product.unit]);
+  }, [unitPrice, selectedSize, product.unit, (product as any)?.sizePrices]);
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation();

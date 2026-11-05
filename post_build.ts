@@ -128,7 +128,9 @@ mockProducts.forEach((product: any) => {
       if (sizeVal === 10) sizeDiscount = 0.92;
       if (sizeVal === 20) sizeDiscount = 0.88;
     }
-    const vPrice = Math.round(basePrice * sizeVal * sizeDiscount);
+    const vPrice = product.sizePrices && product.sizePrices[sizeVal]
+      ? product.sizePrices[sizeVal]
+      : Math.round(basePrice * sizeVal * sizeDiscount);
     return {
       "@type": "Offer",
       "name": `${product.name} - ${sizeVal}${unitSymbol} Pack`,
