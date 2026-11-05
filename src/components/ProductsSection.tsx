@@ -934,6 +934,12 @@ export default function ProductsSection({
   }, [brandParam]);
 
   useEffect(() => {
+    if (initialCategory) {
+      setActiveCategoryFilter(initialCategory);
+    }
+  }, [initialCategory]);
+
+  useEffect(() => {
     const unsubProducts = onSnapshot(
       collection(db, "products"),
       (snapshot) => {

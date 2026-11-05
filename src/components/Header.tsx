@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ShoppingCart, User, Grid, LogOut, Heart, Settings } from 'lucide-react';
+import { Menu, X, ShoppingCart, User, Grid, LogOut, Heart, Settings, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { useCartStore } from '../store/useCartStore';
 import { useAuthStore } from '../store/useAuthStore';
 import { useWishlistStore } from '../store/useWishlistStore';
+import { useUniversalSearchStore } from '../store/useUniversalSearchStore';
 import { auth } from '../lib/firebase';
-import ProductSearchInput from './ProductSearchInput';
+import SmartSearchBar from './SmartSearchBar';
 import AnnouncementBanner from './AnnouncementBanner';
 
 export default function Header() {
@@ -17,6 +18,7 @@ export default function Header() {
   const { items, toggleCart } = useCartStore();
   const { user, role, openAuthModal } = useAuthStore();
   const { items: wishlistItems, toggleWishlist, addToast } = useWishlistStore();
+  const { openSearch } = useUniversalSearchStore();
 
   const totalItems = items.reduce((acc, item) => acc + item.quantity, 0);
   const totalWishlistItems = wishlistItems.length;
@@ -96,7 +98,7 @@ export default function Header() {
                   className="w-auto h-12 sm:h-16 lg:h-20 object-contain rounded-lg shrink-0" 
                 />
               </div>
-              <div className={`flex flex-col shrink-0 ${showSearch ? 'hidden xl:flex' : 'flex'}`}>
+              <div className="flex flex-col shrink-0">
                 <span className="font-serif font-medium text-[19px] sm:text-xl tracking-[0.1em] sm:tracking-[0.25em] leading-none text-ivory uppercase">RAINBOW</span>
                 <span className="text-[6.5px] sm:text-[7px] uppercase tracking-[0.12em] sm:tracking-[0.4em] text-gold font-display font-medium mt-1 whitespace-nowrap">PAINT AND HARDWARES</span>
               </div>
@@ -121,11 +123,9 @@ export default function Header() {
 
             {/* Desktop Actions */}
             <div className="hidden lg:flex items-center gap-1.5 shrink-0">
-              {showSearch && (
-                <div className="w-40 xl:w-72 mr-2">
-                  <ProductSearchInput />
-                </div>
-              )}
+              <div className={isProductsPage ? "w-56 xl:w-72 mr-1.5" : "w-32 xl:w-56 mr-1.5"}>
+                <SmartSearchBar variant="header" />
+              </div>
               <div className="relative profile-menu-container">
                 <button aria-label={user ? user.displayName || 'Profile' : 'Sign In'} title={user ? user.displayName || 'Profile' : 'Sign In'} onClick={handleProfileClick} className={`p-2 transition-colors rounded-xl flex items-center justify-center text-gold hover:bg-black/5`}>
                   {user ? <span className="text-[10px] uppercase font-bold px-1">{user.displayName?.charAt(0) || 'U'}</span> : <User className="w-5 h-5 text-gold" />}
@@ -216,12 +216,8 @@ export default function Header() {
           </div>
 
           {/* Mobile Actions */}
-          <div className="flex lg:hidden items-center gap-1.5 sm:gap-2 flex-1 justify-end ml-2 min-w-0">
-            {showSearch && (
-              <div className="flex-1 min-w-[70px]">
-                <ProductSearchInput />
-              </div>
-            )}
+          <div className="flex lg:hidden items-center gap-1 sm:gap-2 shrink-0 justify-end ml-auto">
+            <SmartSearchBar variant="compact" />
             <div className="relative shrink-0 profile-menu-container">
               <button aria-label={user ? user.displayName || 'Profile' : 'Sign In'} title={user ? user.displayName || 'Profile' : 'Sign In'} onClick={handleProfileClick} className={`p-1.5 sm:p-2 transition-colors rounded-xl flex items-center justify-center text-gold hover:bg-black/5`}>
                 {user ? <span className="text-[10px] uppercase font-bold px-1">{user.displayName?.charAt(0) || 'U'}</span> : <User className="w-4 h-4 text-gold" />}
@@ -337,6 +333,27 @@ export default function Header() {
               }}
             >
               <nav aria-label="Mobile Navigation" className="flex flex-col gap-1 text-right items-end w-full">
+                <motion.div
+                  className="w-full mb-2"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  <button
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      openSearch();
+                    }}
+                    className="w-full flex items-center justify-between gap-2 p-2.5 rounded-xl bg-white border border-zinc-200 text-zinc-700 hover:border-gold/60 text-xs font-sans shadow-sm cursor-pointer"
+                  >
+                    <span className="flex items-center gap-2 text-zinc-700 font-medium">
+                      <Search className="w-4 h-4 text-gold" />
+                      Search website...
+                    </span>
+                    <span className="text-[10px] font-mono text-gold bg-gold/10 px-1.5 py-0.5 rounded font-bold">
+                      ⌘K
+                    </span>
+                  </button>
+                </motion.div>
                 {navLinks.map((link, idx) => (
                   <motion.div
                     key={link.name}

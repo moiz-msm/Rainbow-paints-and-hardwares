@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useSearchParams, Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 import ProductsSection from '../components/ProductsSection';
 import SEO from '../components/SEO';
@@ -9,6 +9,9 @@ import { mockProducts, brands, subCategories } from '../data';
 
 export default function ProductsPage() {
   const { categorySlug, brandSlug } = useParams<{ categorySlug?: string, brandSlug?: string }>();
+  const [searchParams] = useSearchParams();
+  const queryCategory = searchParams.get('category');
+  const queryBrand = searchParams.get('brand');
 
   const slugAliasMap: Record<string, string> = {
     'interior-paint': 'Interior Paint',
@@ -36,7 +39,17 @@ export default function ProductsPage() {
       const exactCat = allSubs.find(c => c.toLowerCase().replace(/\s+/g, '-') === categorySlug); 
       if (exactCat) initialCategory = exactCat;
     }
+  } else if (queryCategory) {
+    const lowerQuery = queryCategory.toLowerCase();
+    if (slugAliasMap[lowerQuery]) {
+      initialCategory = slugAliasMap[lowerQuery];
+    } else {
+      const allSubs = Object.values(subCategories).flat();
+      const exactCat = allSubs.find(c => c.toLowerCase() === lowerQuery);
+      initialCategory = exactCat || queryCategory;
+    }
   }
+
   let initialBrand = brandSlug ? brandSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : undefined;
   
   if (brandSlug) {
@@ -44,6 +57,9 @@ export default function ProductsPage() {
     if (exactBrand) {
       initialBrand = exactBrand;
     }
+  } else if (queryBrand) {
+    const exactBrand = brands.find(b => b.toLowerCase() === queryBrand.toLowerCase());
+    initialBrand = exactBrand || queryBrand;
   }
 
   const pageTitle = initialCategory || initialBrand || 'All Products';

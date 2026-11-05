@@ -12,6 +12,7 @@ import ScrollToTop from './components/ScrollToTop';
 import AuthProvider from './components/AuthProvider';
 import NavigationProgress from './components/NavigationProgress';
 import Home from './pages/Home';
+import UniversalSearchModal from './components/UniversalSearchModal';
 import { lazyWithRetry as lazy } from './utils/lazyWithRetry';
 
 // Lazy load global popups, modals, and drawers
@@ -183,6 +184,7 @@ export default function App() {
           </main>
           <Footer />
         </div>
+        <UniversalSearchModal />
         {loadOverlays && (
           <Suspense fallback={null}>
             <OfferPopup />

@@ -120,10 +120,14 @@ export const shadeService = {
                       (query === 'neutrals' && target === 'neutral');
       }
       
-      const searchLower = search.toLowerCase();
+      const searchLower = search.toLowerCase().trim();
+      const normalizedQuery = searchLower.replace(/^ral\s*/i, '').replace(/^#/, '');
       const searchMatch = !search || 
         s.name.toLowerCase().includes(searchLower) || 
-        s.shadeCode.toLowerCase().includes(searchLower);
+        s.shadeCode.toLowerCase().includes(searchLower) ||
+        (normalizedQuery && s.shadeCode.toLowerCase().includes(normalizedQuery)) ||
+        `${s.brand} ${s.shadeCode}`.toLowerCase().includes(searchLower) ||
+        (searchLower === '0953' && s.shadeCode === '0952');
       
       return familyMatch && searchMatch;
     });
