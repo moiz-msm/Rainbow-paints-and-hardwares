@@ -123,8 +123,8 @@ export default function Header() {
 
             {/* Desktop Actions */}
             <div className="hidden lg:flex items-center gap-1.5 shrink-0">
-              <div className={isProductsPage ? "w-56 xl:w-72 mr-1.5" : "w-32 xl:w-56 mr-1.5"}>
-                <SmartSearchBar variant="header" />
+              <div className="w-24 xl:w-28 mr-1">
+                <SmartSearchBar variant="header" placeholder="Search..." />
               </div>
               <div className="relative profile-menu-container">
                 <button aria-label={user ? user.displayName || 'Profile' : 'Sign In'} title={user ? user.displayName || 'Profile' : 'Sign In'} onClick={handleProfileClick} className={`p-2 transition-colors rounded-xl flex items-center justify-center text-gold hover:bg-black/5`}>

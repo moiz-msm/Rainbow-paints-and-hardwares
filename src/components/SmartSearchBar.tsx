@@ -101,22 +101,19 @@ export default function SmartSearchBar({
     );
   }
 
-  // Default 'header' variant
+  // Default 'header' variant (compact and clean)
   return (
     <button
       type="button"
       onClick={() => openSearch()}
-      className={`group flex items-center gap-2 px-3 py-1.5 bg-white shadow-sm border border-zinc-200 hover:border-gold/60 rounded-xl text-xs text-zinc-500 hover:text-zinc-800 transition-all cursor-pointer ${className}`}
+      className={`group flex items-center gap-1.5 px-2.5 py-1.5 bg-white shadow-sm border border-zinc-200 hover:border-gold/60 rounded-xl text-xs text-zinc-500 hover:text-zinc-800 transition-all cursor-pointer w-full ${className}`}
       title="Search shades, products, tools, blogs... (⌘K)"
       aria-label="Universal Search"
     >
       <Search className="w-3.5 h-3.5 text-gold shrink-0 group-hover:scale-110 transition-transform" />
-      <span className="truncate flex-1 text-left text-zinc-600 group-hover:text-zinc-700">
-        {placeholder || 'Search shades, paints, tools...'}
+      <span className="truncate flex-1 text-left text-zinc-600 group-hover:text-zinc-700 text-[11px]">
+        {placeholder || 'Search...'}
       </span>
-      <kbd className="hidden xl:inline-block px-1.5 py-0.5 text-[9px] font-mono text-gold bg-gold/10 border border-gold/30 rounded">
-        ⌘K
-      </kbd>
     </button>
   );
 }

@@ -5,7 +5,7 @@ import ProductsSection from '../components/ProductsSection';
 import SEO from '../components/SEO';
 import Breadcrumb from '../components/Breadcrumb';
 import CategorySeoBlock from '../components/CategorySeoBlock';
-import { mockProducts, brands, subCategories } from '../data';
+import { mockProducts, brands, subCategories, brandDetails } from '../data';
 
 export default function ProductsPage() {
   const { categorySlug, brandSlug } = useParams<{ categorySlug?: string, brandSlug?: string }>();
@@ -65,48 +65,131 @@ export default function ProductsPage() {
   const pageTitle = initialCategory || initialBrand || 'All Products';
   
   const seoTitle = useMemo(() => {
-    if (initialCategory === 'Exterior Paint' || initialCategory === 'Exterior Wall' || initialCategory === 'Exterior Paints') {
-      return 'Buy Exterior Paint Online | Best Weatherproof Wall Paints';
+    if (initialBrand) {
+      if (initialBrand === 'Asian Paints') {
+        return 'Asian Paints Authorised Dealer – Royale & Apex | Rainbow';
+      }
+      if (initialBrand === 'Berger Paints') {
+        return 'Berger Paints Dealer – Silk & Weathercoat Paints | Rainbow';
+      }
+      if (initialBrand === 'MRF Vapocure') {
+        return 'MRF Vapocure PU Paints – WoodCoat & MetalCoat | Rainbow';
+      }
+      if (initialBrand === 'Dr. Fixit') {
+        return 'Dr. Fixit Waterproofing – Roof, Terrace & Wall | Rainbow';
+      }
+      if (initialBrand === 'Birla White') {
+        return 'Birla White Cement & WallCare Putty | Rainbow Paints';
+      }
+      if (initialBrand === 'Sheenlac') {
+        return 'Sheenlac Wood Finishes, Polish & NC Thinners | Rainbow';
+      }
+      if (initialBrand === 'Fevicol') {
+        return 'Fevicol Adhesives – Wood Glue & Synthetic Resin | Rainbow';
+      }
+      if (initialBrand === 'Just Spray') {
+        return 'Just Spray JS1 Aerosol Paint – Classic & Metallic | Rainbow';
+      }
+      if (initialBrand === 'Ajax') {
+        return 'Ajax Waterproof Sandpaper & Emery Paper | Rainbow Paints';
+      }
+      if (initialBrand === 'Bawa' || initialBrand === 'Jaya') {
+        return 'Painter-Grade Paint Brushes & Application Tools | Rainbow';
+      }
+      if (initialBrand === 'Gorila') {
+        return 'Gorila Cement Color Oxide Powders | Rainbow Paints';
+      }
+      return `Buy ${initialBrand} Online – Wholesale Paint Dealer | Rainbow`;
     }
+
     if (initialCategory === 'Interior Paint' || initialCategory === 'Interior Wall' || initialCategory === 'Interior Paints') {
-      return 'Buy Interior Paint Online | Premium Emulsion & High Sheen Paints';
+      return 'Interior Wall Paints – Emulsion & Luxury Paints | Rainbow';
     }
-    if (initialCategory === 'Primers' || initialCategory === 'Undercoats') {
-      return 'Buy Wall & Metal Primers Online | Basecoat & Putty Paints';
+    if (initialCategory === 'Exterior Paint' || initialCategory === 'Exterior Wall' || initialCategory === 'Exterior Paints') {
+      return 'Exterior Wall Paints – Weatherproof Emulsions | Rainbow';
+    }
+    if (initialCategory === 'PU Paint' || initialCategory === 'PU Coatings') {
+      return 'PU Wood Coatings – Sealers, Polishes & Finishes | Rainbow';
+    }
+    if (initialCategory === 'Epoxy Paint' || initialCategory === 'Epoxy Coatings') {
+      return 'Industrial Epoxy Paints & Floor Coatings | Rainbow Paints';
+    }
+    if (initialCategory === 'Industrial' || initialCategory === 'Industrial Coatings' || initialCategory === 'Industrial Paints') {
+      return 'Industrial Paints & Protective Coatings | Rainbow Paints';
+    }
+    if (initialCategory === 'Primers' || initialCategory === 'Undercoats' || initialCategory === 'Primer') {
+      return 'Metal Primers – Red Oxide & Anti-Rust Undercoats | Rainbow';
+    }
+    if (initialCategory === 'Waterproofing' || initialCategory === 'Waterproofing Solutions') {
+      return 'Waterproofing Products – Roof, Terrace & Wall | Rainbow';
     }
     if (initialCategory === 'Enamel Paint' || initialCategory === 'Metals and Grills') {
       return 'Buy Enamel Paint Online | Metal, Wood & Grill Gloss Paints';
     }
-    if (initialCategory === 'PU Paint' || initialCategory === 'PU Coatings') {
-      return 'Buy PU Paint Online | Polyurethane Wood & Metal Finishes';
-    }
-    if (initialCategory === 'Epoxy Paint' || initialCategory === 'Epoxy Coatings') {
-      return 'Buy Epoxy Paint Online | Industrial & Floor Epoxy Coatings';
-    }
     return `${pageTitle} | Buy Paints Online`;
-  }, [initialCategory, pageTitle]);
+  }, [initialBrand, initialCategory, pageTitle]);
 
   const pageDescription = useMemo(() => {
-    if (initialCategory === 'Exterior Paint' || initialCategory === 'Exterior Wall' || initialCategory === 'Exterior Paints') {
-      return `Buy the best exterior paints online at Rainbow Paints. Shop affordable exterior paint for home and buildings, including Asian Paints Ultima Protek and moisture resistant paint.`;
+    if (initialBrand) {
+      if (initialBrand === 'Asian Paints') {
+        return 'Authorised Asian Paints dealer in Coimbatore. Buy Royale Glitz, Apex Ultima, primers & 4000+ shades at direct wholesale prices with fast doorstep delivery!';
+      }
+      if (initialBrand === 'Berger Paints') {
+        return 'Authorised Berger Paints dealer. Shop Silk Glamor, Easy Clean, Weathercoat & Bison emulsions at direct wholesale prices with computerized tinting & delivery!';
+      }
+      if (initialBrand === 'MRF Vapocure') {
+        return 'Authorised MRF Vapocure dealer. Buy WoodCoat, MetalCoat, PU finishes & specialty industrial coatings at wholesale prices with genuine product guarantee!';
+      }
+      if (initialBrand === 'Dr. Fixit') {
+        return 'Authorised Dr. Fixit waterproofing dealer. Buy Roofseal, Raincoat, Pidiproof LW+ & bath seal chemicals at wholesale prices with fast doorstep delivery!';
+      }
+      if (initialBrand === 'Birla White') {
+        return 'Authorised Birla White dealer in Coimbatore. Buy WallCare Putty, white cement & primers at wholesale prices for smooth, enduring wall finishes. Order now!';
+      }
+      if (initialBrand === 'Sheenlac') {
+        return 'Authorised Sheenlac dealer. Explore premium wood finishes, stains, NC thinners, wood polishes & paint removers at wholesale rates with fast local delivery!';
+      }
+      if (initialBrand === 'Fevicol') {
+        return 'Authorised Fevicol dealer. Buy Marine, SH Synthetic Resin & contact adhesives for woodworking and laminates at wholesale prices with genuine Pidilite stock!';
+      }
+      if (initialBrand === 'Just Spray') {
+        return 'Authorised Just Spray dealer. Buy JS1 aerosol spray paint cans in classic, metallic & primer variations at wholesale prices with prompt local delivery!';
+      }
+      if (initialBrand === 'Ajax') {
+        return 'Authorised Ajax dealer. Buy waterproof water emery papers, red dry sanding rolls & abrasives at wholesale prices for smooth, professional surface prep!';
+      }
+      if (initialBrand === 'Bawa' || initialBrand === 'Jaya') {
+        return 'Shop professional Bawa & Jaya painting brushes: Joker, Prince & Diamond series. High-density bristle brushes for streak-free painting at wholesale rates!';
+      }
+      if (initialBrand === 'Gorila') {
+        return 'Buy vibrant Gorila cement color oxide powders for flooring, mosaics & architectural mixes. Superior UV stability & high pigmentation at wholesale rates.';
+      }
+      return `Buy genuine ${initialBrand} products online at direct wholesale prices. Authorised dealer in Coimbatore offering fast local delivery and 100% genuine stock.`;
     }
+
     if (initialCategory === 'Interior Paint' || initialCategory === 'Interior Wall' || initialCategory === 'Interior Paints') {
-      return `Buy luxury interior paint online. Explore high sheen paint, easy clean emulsion, and anti mould ceiling paint from top brands like Asian Paints and Berger. Fast delivery!`;
+      return 'Explore interior wall paints for homes & offices. Compare washable emulsions, luxury finishes & stain-resistant paints at wholesale rates from Rainbow Paints.';
     }
-    if (initialCategory === 'Primers' || initialCategory === 'Undercoats') {
-      return `Shop top quality primers and undercoats online. Find interior wall primers, exterior primers, and metal primers from Asian Paints and Berger at wholesale prices.`;
-    }
-    if (initialCategory === 'Enamel Paint' || initialCategory === 'Metals and Grills') {
-      return `Buy durable enamel paint online for metal, grills, doors, and wood surfaces. Top high-gloss and satin synthetic enamels with rust protection.`;
+    if (initialCategory === 'Exterior Paint' || initialCategory === 'Exterior Wall' || initialCategory === 'Exterior Paints') {
+      return 'Discover weatherproof exterior wall paints for long-lasting durability. Compare exterior emulsions & leading brands. Check prices & get fast delivery!';
     }
     if (initialCategory === 'PU Paint' || initialCategory === 'PU Coatings') {
-      return `Buy premium PU paint online. High-performance polyurethane wood finishes, automotive, and industrial grade PU coatings.`;
+      return 'Explore PU wood coatings, sealers, topcoats & polishes for furniture and wooden surfaces. Compare MRF & top brands at wholesale rates from Rainbow Paints.';
     }
     if (initialCategory === 'Epoxy Paint' || initialCategory === 'Epoxy Coatings') {
-      return `Shop heavy duty epoxy paint online. Perfect for industrial floors, commercial kitchens, chemical resistance, and high-traffic areas.`;
+      return 'Heavy-duty epoxy floor paints, primers & chemical-resistant protective coatings for concrete & metal surfaces. Request product specs & wholesale quotes today!';
     }
-    if (initialBrand) {
-      return `Buy ${initialBrand} online at wholesale prices. Authorized ${initialBrand} paint dealer in Coimbatore offering fast local doorstep delivery and genuine products.`;
+    if (initialCategory === 'Industrial' || initialCategory === 'Industrial Coatings' || initialCategory === 'Industrial Paints') {
+      return 'Source industrial paints, metal primers, epoxy & PU coatings for factories, fabricators & workshops. Explore heavy-duty finishes with bulk wholesale pricing!';
+    }
+    if (initialCategory === 'Primers' || initialCategory === 'Undercoats' || initialCategory === 'Primer') {
+      return 'Find anti-rust metal primers for iron & steel: red oxide primers, etch primers & protective undercoats. Compare top brand specs & prices at Rainbow Paints!';
+    }
+    if (initialCategory === 'Waterproofing' || initialCategory === 'Waterproofing Solutions') {
+      return 'Shop waterproofing products for roofs, terraces, bathrooms & exterior walls. Compare Dr. Fixit & SmartCare coatings at wholesale prices from Rainbow Paints.';
+    }
+    if (initialCategory === 'Enamel Paint' || initialCategory === 'Metals and Grills') {
+      return 'Buy durable enamel paint online for metal, grills, doors, and wood surfaces. Top high-gloss and satin synthetic enamels with rust protection.';
     }
     if (initialCategory) {
       return `Shop premium ${initialCategory.toLowerCase()} online. Rainbow Paints is your trusted local paint store in Coimbatore, offering top brands, expert advice, and fast delivery.`;
@@ -215,8 +298,42 @@ export default function ProductsPage() {
         ]
       };
     }
+
+    if (initialBrand) {
+      return {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": `Is Rainbow Paints an authorised dealer for ${initialBrand} in Coimbatore?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `Yes, Rainbow Paints & Hardwares is an authorised dealer and stockist for 100% genuine ${initialBrand} products in Coimbatore, offering manufacturer warranties, factory-direct wholesale pricing, and computerized shade tinting.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `Can I buy ${initialBrand} products online with local doorstep delivery?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `Yes, you can buy genuine ${initialBrand} paints, primers, and coatings online from Rainbow Paints with same-day or fast local delivery across Coimbatore.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `Are computerized color tinting shades available for ${initialBrand}?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `Yes, Rainbow Paints features official automated tinting dispensers for ${initialBrand}, accurately dispensing thousands of shades across luxury emulsions, exterior paints, enamels, and wood finishes.`
+            }
+          }
+        ]
+      };
+    }
+
     return null;
-  }, [initialCategory]);
+  }, [initialCategory, initialBrand]);
   
   const breadcrumbItems = useMemo(() => {
     const items: { label: string; href?: string }[] = [{ label: 'Home', href: '/' }];
@@ -300,6 +417,11 @@ export default function ProductsPage() {
   if (faqSchema) schemas.push(faqSchema);
   if (itemListSchema) schemas.push(itemListSchema);
 
+  const brandDetail = useMemo(() => {
+    if (!initialBrand) return null;
+    return brandDetails.find(b => b.name.toLowerCase() === initialBrand.toLowerCase());
+  }, [initialBrand]);
+
   const currentUrl = `https://www.rainbowpaint.in${categorySlug ? '/c/' + categorySlug : brandSlug ? '/brands/' + brandSlug : '/buy-paint-online'}`;
 
   return (
@@ -308,6 +430,7 @@ export default function ProductsPage() {
         title={seoTitle}
         description={pageDescription}
         url={currentUrl}
+        image={brandDetail?.logo || undefined}
         schema={schemas}
         type="category"
       />
