@@ -237,8 +237,8 @@ export const useOrderStore = create<OrderStore>()(
           if (fetchedOrders.length > 0) {
             set({ orders: fetchedOrders });
           }
-        } catch (err) {
-          console.error("Failed to sync orders with Firestore:", err);
+        } catch (err: any) {
+          console.warn("Firestore orders sync deferred (offline/network):", err?.message || err);
         }
       },
 

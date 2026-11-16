@@ -510,6 +510,21 @@ export default function UniversalSearchModal() {
       list.forEach((sub) => allCatList.push({ name: sub, top }));
     });
 
+    const seenKeys = new Set<string>();
+    const addUniqueItem = (item: {
+      type: 'category' | 'brand';
+      name: string;
+      topCategory?: string;
+      url: string;
+      description?: string;
+    }) => {
+      const uniqueKey = `${item.type}-${item.name}`;
+      if (!seenKeys.has(uniqueKey)) {
+        seenKeys.add(uniqueKey);
+        items.push(item);
+      }
+    };
+
     allCatList.forEach((c) => {
       const matchCat = c.name.toLowerCase().includes(trimmed) || c.top.toLowerCase().includes(trimmed);
       if (matchCat) {
@@ -519,7 +534,7 @@ export default function UniversalSearchModal() {
           .replace(/(^-|-$)/g, '');
 
         // 1. Top-level category across all brands
-        items.push({
+        addUniqueItem({
           type: 'category',
           name: c.name,
           topCategory: c.top,
@@ -541,7 +556,7 @@ export default function UniversalSearchModal() {
         );
 
         brandsForCat.forEach((b) => {
-          items.push({
+          addUniqueItem({
             type: 'category',
             name: `${b} • ${c.name}`,
             topCategory: c.top,
@@ -559,7 +574,7 @@ export default function UniversalSearchModal() {
           .toLowerCase()
           .replace(/[^a-z0-9]+/g, '-')
           .replace(/(^-|-$)/g, '');
-        items.push({
+        addUniqueItem({
           type: 'brand',
           name: b,
           url: `/brands/${slug}`,
@@ -581,7 +596,7 @@ export default function UniversalSearchModal() {
             .toLowerCase()
             .replace(/[^a-z0-9]+/g, '-')
             .replace(/(^-|-$)/g, '');
-          items.push({
+          addUniqueItem({
             type: 'category',
             name: `${b} • ${catName}`,
             url: `/c/${catSlug}?brand=${encodeURIComponent(b)}`,

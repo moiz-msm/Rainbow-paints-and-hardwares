@@ -3513,24 +3513,27 @@ export const mockProducts = [
   },
   {
     "id": 4037,
-    "name": "Protecton Epilux 4 MIO Coating",
+    "name": "Berger Paints Red Oxide Zinc Chromate Metal Primer IS2074",
+    "seoTitle": "Berger Paints Red Oxide Zinc Chromate Metal Primer IS2074",
     "brand": "Berger Paints",
     "topCategory": "Industrial",
-    "subCategory": "Epoxy Paint",
-    "price": "₹ 350.00",
+    "subCategory": "Primers",
+    "price": "₹ 2,834.00",
     "sizes": [
-      4,
       20
     ],
+    "sizePrices": {
+      "20": 2834
+    },
     "unit": "L",
     "properties": [
-      "Epoxy Micaceous Iron Oxide (MIO) Protective Shield",
-      "Overlapping platelike crystal barrier blocks moisture & UV ingress",
-      "Elite intermediate build coat on bridge girders & structural steel",
-      "Outstanding resistance to marine, industrial, and salty air"
+      "Red Oxide Zinc Chromate Anti-Corrosive Metal Primer conforming to IS 2074",
+      "Dual active-passive rust protection for structural steel and iron surfaces",
+      "Excellent adhesion, leveling, and barrier resistance in industrial environments",
+      "Ideal foundation coat for synthetic enamels, alkyd, and industrial topcoats"
     ],
     "popular": false,
-    "image": "https://lntsufin.com/storage/mediafiles/catalog/live/16045-913/original/16045-913_image_0.jpeg"
+    "image": "/assets/aistudio/berger_protection_br_rozc_prim_2074_pq_zinc_chroma_1789721975_19d96e46.png"
   },
   {
     "id": 4038,
@@ -3662,7 +3665,8 @@ export const mockProducts = [
   },
   {
     "id": 4044,
-    "name": "Protecton Grey Oxide Zinc Chromate Primer",
+    "name": "Berger Paints Industrial Bison Zinc Phosphate Grey Primer",
+    "seoTitle": "Berger Paints Industrial Bison Zinc Phosphate Grey Primer",
     "brand": "Berger Paints",
     "topCategory": "Industrial",
     "subCategory": "Synthetic Enamels",
@@ -3674,17 +3678,18 @@ export const mockProducts = [
     ],
     "unit": "L",
     "properties": [
-      "Single-Pack High Corrosion Protective Grey Primer",
-      "Formulated with Zinc Chromate pigments for chemical passivation",
+      "Single-Pack High Corrosion Protective Grey Metal Primer",
+      "Formulated with Zinc Phosphate pigments for active anti-rust protection",
       "Outstanding adhesion on steel sheets and structural trusses",
       "Ensures high build foundation and excellent topcoat adhesion"
     ],
     "popular": false,
-    "image": "https://newguardcoatings.com/cdn/shop/files/Guard_FES_2.png?v=1769662480&width=533"
+    "image": "/assets/aistudio/5a50c524-2a35-4a96-8e39-799a97d1c66a_02114f07.png"
   },
   {
     "id": 4045,
-    "name": "Protecton Yellow Zinc Chromate Primer",
+    "name": "Berger Industrial Zinc Yellow Primer",
+    "seoTitle": "Berger Industrial Zinc Yellow Primer",
     "brand": "Berger Paints",
     "topCategory": "Industrial",
     "subCategory": "Synthetic Enamels",
@@ -3702,7 +3707,7 @@ export const mockProducts = [
       "Superb bonding properties for polyurethane and epoxy coatings"
     ],
     "popular": false,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2022/10/SZ/HL/MS/3923053/iron-oxide-yellow-powder-500x500.jpg"
+    "image": "/assets/aistudio/Berger_Industrial_Zinc_Primer_Drum_2b7eeb0c.png"
   },
   {
     "id": 5001,

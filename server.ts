@@ -1035,30 +1035,115 @@ Return exactly a valid JSON object with {"name": "string", "pincode": "string"}.
             return res.redirect(301, `/c/${legacyCategoryRedirects[catSlug]}`);
           }
 
-          const categoryNamesMap: Record<string, string> = {
-            'interior-paint': 'Interior Paint',
-            'exterior-paint': 'Exterior Paint',
-            'primers': 'Primers',
-            'enamel-paint': 'Enamel Paint',
-            'pu-paint': 'PU Paint',
-            'epoxy-paint': 'Epoxy Paint',
-            'waterproofing': 'Waterproofing',
-            'wood-finishes': 'Wood Finishes',
-            'painting-tools': 'Painting Tools',
-            'thinners-&-solvents': 'Thinners & Solvents',
-            'tile-adhesives': 'Tile Adhesives',
-            'synthetic-enamels': 'Synthetic Enamels',
-            'power-tools': 'Power Tools'
+          const categorySeoMap: Record<string, { title: string; desc: string }> = {
+            'interior-paint': {
+              title: 'Interior Wall Paints in Coimbatore – Washable Emulsions & Luxury | Rainbow',
+              desc: 'Explore interior wall paints in Coimbatore for homes & commercial spaces. Compare washable emulsions, luxury finishes & stain-resistant paints at Rainbow Paints.'
+            },
+            'exterior-paint': {
+              title: 'Exterior Wall Paints in Coimbatore – Weatherproof Emulsions | Rainbow',
+              desc: 'Discover weatherproof exterior wall paints in Coimbatore designed for maximum durability. Compare exterior emulsions from leading brands with fast delivery!'
+            },
+            'pu-paint': {
+              title: 'PU Wood Coatings in Coimbatore – Sealer, Polish & Finish | Rainbow',
+              desc: 'Explore PU wood coatings, sealers, topcoats & polishes in Coimbatore for furniture, doors & wooden surfaces. Compare MRF & top brands at Rainbow Paints.'
+            },
+            'epoxy-paint': {
+              title: 'Industrial Epoxy Paints in Coimbatore – Floor Coatings | Rainbow',
+              desc: 'Industrial epoxy floor paints, primers & chemical-resistant protective systems in Coimbatore for concrete & metal surfaces. Request wholesale quotes today!'
+            },
+            'primers': {
+              title: 'Metal Primers in Coimbatore – Red Oxide & Undercoats | Rainbow',
+              desc: 'Find anti-rust metal primers in Coimbatore for iron & steel: red oxide primers, etch primers & protective undercoats. Compare top brand specs & prices!'
+            },
+            'waterproofing': {
+              title: 'Waterproofing in Coimbatore – Roof, Terrace & Wall Solutions | Rainbow',
+              desc: 'Shop waterproofing products in Coimbatore for roofs, terraces, bathrooms & exterior walls. Compare Dr. Fixit & SmartCare coatings at wholesale rates!'
+            },
+            'enamel-paint': {
+              title: 'Enamel Paint in Coimbatore – Gloss & Satin Metal Paint | Rainbow',
+              desc: 'Buy durable enamel paints in Coimbatore for metal, grills, doors & woodwork. High-gloss & satin synthetic enamels with long-lasting rust protection.'
+            }
           };
-          const catName = categoryNamesMap[catSlug] || catSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-          title = `Buy ${catName} Online in Coimbatore | Best Prices at Rainbow Paints`;
-          desc = `Shop premium ${catName.toLowerCase()} online with fast local doorstep delivery across Coimbatore. Authorized distributor offering 100% genuine products and wholesale rates.`;
+
+          if (categorySeoMap[catSlug]) {
+            title = categorySeoMap[catSlug].title;
+            desc = categorySeoMap[catSlug].desc;
+          } else {
+            const catName = catSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            title = `${catName} in Coimbatore | Buy Paints Online | Rainbow Paints`;
+            desc = `Shop premium ${catName.toLowerCase()} in Coimbatore with fast local doorstep delivery. Authorized distributor offering 100% genuine products and wholesale rates.`;
+          }
+        } else if (url.startsWith('/brands/')) {
+          const brandSlug = decodeURIComponent(url.split('/')[2] || '').toLowerCase();
+          const brandSeoMap: Record<string, { title: string; desc: string }> = {
+            'asian-paints': {
+              title: 'Asian Paints Authorised Dealer in Coimbatore – Royale & Apex | Rainbow',
+              desc: 'Authorised Asian Paints dealer in Coimbatore. Buy Royale Glitz, Apex Ultima, primers & 4000+ shades at direct wholesale prices with fast doorstep delivery!'
+            },
+            'berger-paints': {
+              title: 'Berger Paints Dealer in Coimbatore – Silk & WeatherCoat | Rainbow',
+              desc: 'Authorised Berger Paints dealer in Coimbatore. Shop Silk Glamor, Easy Clean, Weathercoat & Bison emulsions at direct wholesale prices with computerized tinting!'
+            },
+            'mrf-vapocure': {
+              title: 'MRF Vapocure PU Paints in Coimbatore – WoodCoat & MetalCoat | Rainbow',
+              desc: 'Authorised MRF Vapocure dealer in Coimbatore. Buy premium 2K PU WoodCoat, MetalCoat, sealers, thinners & high-durability finishes at wholesale rates!'
+            },
+            'dr-fixit': {
+              title: 'Dr. Fixit Waterproofing in Coimbatore – Roof, Terrace & Wall | Rainbow',
+              desc: 'Authorised Dr. Fixit dealer in Coimbatore. Complete terrace waterproofing, LW+, Crack-X, damp-proof coatings & sealants with direct expert technical advice!'
+            },
+            'birla-white': {
+              title: 'Birla White Cement & WallCare Putty in Coimbatore | Rainbow Paints',
+              desc: 'Authorised Birla White dealer in Coimbatore. Buy WallCare Putty, White Cement & Levelplast at direct wholesale rates with prompt same-day local dispatch!'
+            },
+            'sheenlac': {
+              title: 'Sheenlac Wood Finishes & Polish in Coimbatore | Rainbow Paints',
+              desc: 'Authorised Sheenlac dealer in Coimbatore. Explore premium wood finishes, stains, NC thinners, wood polishes & paint removers at wholesale rates with fast delivery!'
+            },
+            'fevicol': {
+              title: 'Fevicol Adhesives in Coimbatore – Wood Glue & Resin | Rainbow',
+              desc: 'Authorised Fevicol dealer in Coimbatore. Buy Marine, SH Synthetic Resin & contact adhesives for woodworking and laminates at wholesale prices with genuine stock!'
+            },
+            'just-spray': {
+              title: 'Just Spray Aerosol Paint Cans in Coimbatore | Rainbow Paints',
+              desc: 'Authorised Just Spray dealer in Coimbatore. Buy JS1 aerosol spray paint cans in classic, metallic & primer variations at wholesale prices with prompt local delivery!'
+            },
+            'ajax': {
+              title: 'Ajax Waterproof Sandpaper & Emery Paper in Coimbatore | Rainbow',
+              desc: 'Authorised Ajax dealer in Coimbatore. Buy waterproof water emery papers, red dry sanding rolls & abrasives at wholesale prices for smooth surface prep!'
+            },
+            'bawa': {
+              title: 'Paint Brushes & Tools in Coimbatore – Bawa & Jaya | Rainbow',
+              desc: 'Shop professional Bawa & Jaya painting brushes in Coimbatore: Joker, Prince & Diamond series. High-density bristle brushes for streak-free painting!'
+            },
+            'jaya': {
+              title: 'Paint Brushes & Tools in Coimbatore – Bawa & Jaya | Rainbow',
+              desc: 'Shop professional Bawa & Jaya painting brushes in Coimbatore: Joker, Prince & Diamond series. High-density bristle brushes for streak-free painting!'
+            },
+            'gorila': {
+              title: 'Gorila Cement Color Oxide Powders in Coimbatore | Rainbow',
+              desc: 'Buy vibrant Gorila cement color oxide powders in Coimbatore for flooring, mosaics & architectural mixes. Superior UV stability & high pigmentation at wholesale rates.'
+            }
+          };
+
+          if (brandSeoMap[brandSlug]) {
+            title = brandSeoMap[brandSlug].title;
+            desc = brandSeoMap[brandSlug].desc;
+          } else {
+            const brandName = brandSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            title = `Buy ${brandName} in Coimbatore – Wholesale Paint Dealer | Rainbow`;
+            desc = `Buy genuine ${brandName} products in Coimbatore at direct wholesale prices. Authorised dealer offering fast local delivery and 100% genuine stock.`;
+          }
+        } else if (url === '/faqs') {
+          title = 'Painting & Ordering FAQs – Expert Paint Guide | Rainbow Paints';
+          desc = 'Got questions on paint coverage, color tinting, drying times, waterproofing or delivery? Read expert answers from Rainbow Paints & Hardwares in Coimbatore.';
         } else if (url.startsWith('/p/')) {
           const slug = decodeURIComponent(url.split('/')[2]);
           const product = mockProducts.find(p => ((p as any).slug || p.name.replace(/\s+/g, '-').toLowerCase()) === slug);
           if (product) {
-            title = `${product.name} | ${product.brand} | Buy Online at Best Price in Coimbatore`;
-            desc = `Buy ${product.name} online. ${product.subCategory} from ${product.brand}.`;
+            title = `${product.name} | ${product.brand} | Buy Online in Coimbatore | Rainbow Paints`;
+            desc = `Buy ${product.name} online in Coimbatore. Genuine ${product.subCategory} from ${product.brand}. Best wholesale price & fast local delivery.`;
             let finalImage = product.image;
             
             const key = product.name ? product.name.trim().toLowerCase() : '';

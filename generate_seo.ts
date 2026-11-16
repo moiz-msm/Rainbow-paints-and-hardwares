@@ -18,10 +18,12 @@ function generateSitemap() {
     '/painting-services'
   ];
 
-  // Add category routes
+  // Add category routes (filtering out 'All ...' placeholders)
   Object.keys(subCategories).forEach(cat => {
     subCategories[cat].forEach(sub => {
-       urls.push(`/c/${sub.toLowerCase().replace(/\s+/g, '-')}`);
+       if (!sub.startsWith('All ')) {
+         urls.push(`/c/${sub.toLowerCase().replace(/\s+/g, '-')}`);
+       }
     });
   });
 
@@ -35,7 +37,6 @@ function generateSitemap() {
      urls.push(`/blog/${post.slug}`);
   });
 
-  
   // Add shade routes
   const asianShades = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src/data/shades/asian-paints.json'), 'utf-8'));
   const bergerShades = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src/data/shades/berger-paints.json'), 'utf-8'));
@@ -53,10 +54,7 @@ function generateSitemap() {
     urls.push(`/color/${brandSlug}/${familySlug}/${shadeSlug}`);
   });
 
-  
-  
   // Add hyperlocal location routes
-  
   const serviceRoutes = [
     '/services/interior-wall-painting',
     '/services/exterior-wall-painting',
@@ -92,19 +90,31 @@ function generateSitemap() {
     });
   });
 
-
   // Add product routes
   mockProducts.forEach((product: any) => {
      const slug = product.slug || product.name.replace(/\s+/g, '-').toLowerCase();
      urls.push(`/p/${slug}`);
   });
 
+  const getPriorityAndFreq = (url: string): { priority: string; changefreq: string } => {
+    if (url === '/') return { priority: '1.0', changefreq: 'daily' };
+    if (url.startsWith('/c/') || url.startsWith('/brands/')) return { priority: '0.9', changefreq: 'weekly' };
+    if (url.startsWith('/p/')) return { priority: '0.8', changefreq: 'weekly' };
+    if (url.startsWith('/store/') || url.startsWith('/painting-services') || url.startsWith('/services/')) return { priority: '0.8', changefreq: 'weekly' };
+    if (url.startsWith('/blog')) return { priority: '0.7', changefreq: 'monthly' };
+    if (url.startsWith('/color/')) return { priority: '0.4', changefreq: 'monthly' };
+    return { priority: '0.8', changefreq: 'weekly' };
+  };
+
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(url => `  <url>
+${urls.map(url => {
+  const { priority, changefreq } = getPriorityAndFreq(url);
+  return `  <url>
     <loc>${APP_URL}${url.replace(/&/g, '&amp;')}</loc>
-    <changefreq>daily</changefreq>
-    <priority>${url === '/' ? '1.0' : '0.8'}</priority>
-  </url>`).join('\n')}
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+  </url>`;
+}).join('\n')}
 </urlset>`;
 
   fs.writeFileSync(path.join(process.cwd(), 'public', 'sitemap.xml'), sitemap);

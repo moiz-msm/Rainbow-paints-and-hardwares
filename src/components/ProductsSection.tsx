@@ -735,7 +735,7 @@ const ProductCard = memo(({ product }: { product: any }) => {
           brand: product.brand,
           price: product.price,
           image: product.image,
-          size: 1,
+          size: (product.sizes && product.sizes[0]) || 1,
           shadeName: "White",
           shadeCode: "white",
           shadeHex: "#FFFFFF",
@@ -1002,7 +1002,52 @@ export default function ProductsSection({
 
     dbProducts.forEach((p) => {
       if (blacklistedIds.includes(p.id)) return;
-      const key = p.name ? p.name.trim().toLowerCase() : p.id?.toString();
+      let mergedProduct = { ...p };
+      let key = mergedProduct.name ? mergedProduct.name.trim().toLowerCase() : mergedProduct.id?.toString();
+
+      if (key === "protecton epilux 4 mio coating" || key === "berger paints red oxide zinc chromate metal primer is2074") {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "Berger Paints Red Oxide Zinc Chromate Metal Primer IS2074",
+          seoTitle: "Berger Paints Red Oxide Zinc Chromate Metal Primer IS2074",
+          subCategory: "Primers",
+          price: "₹ 2,834.00",
+          sizes: [20],
+          sizePrices: { 20: 2834 },
+          unit: "L",
+          properties: [
+            "Red Oxide Zinc Chromate Anti-Corrosive Metal Primer conforming to IS 2074",
+            "Dual active-passive rust protection for structural steel and iron surfaces",
+            "Excellent adhesion, leveling, and barrier resistance in industrial environments",
+            "Ideal foundation coat for synthetic enamels, alkyd, and industrial topcoats"
+          ],
+          image: "/assets/aistudio/berger_protection_br_rozc_prim_2074_pq_zinc_chroma_1789721975_19d96e46.png"
+        };
+        key = mergedProduct.name.toLowerCase();
+      } else if (key === "protecton yellow zinc chromate primer" || key === "berger industrial zinc yellow primer") {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "Berger Industrial Zinc Yellow Primer",
+          seoTitle: "Berger Industrial Zinc Yellow Primer",
+          image: "/assets/aistudio/Berger_Industrial_Zinc_Primer_Drum_2b7eeb0c.png"
+        };
+        key = mergedProduct.name.toLowerCase();
+      } else if (key === "protecton grey oxide zinc chromate primer" || key === "berger paints industrial bison zinc phosphate grey primer") {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "Berger Paints Industrial Bison Zinc Phosphate Grey Primer",
+          seoTitle: "Berger Paints Industrial Bison Zinc Phosphate Grey Primer",
+          properties: [
+            "Single-Pack High Corrosion Protective Grey Metal Primer",
+            "Formulated with Zinc Phosphate pigments for active anti-rust protection",
+            "Outstanding adhesion on steel sheets and structural trusses",
+            "Ensures high build foundation and excellent topcoat adhesion"
+          ],
+          image: "/assets/aistudio/5a50c524-2a35-4a96-8e39-799a97d1c66a_02114f07.png"
+        };
+        key = mergedProduct.name.toLowerCase();
+      }
+
       // Retain accurate images for specific products from mock data
       const accurateImageNames = [
         "royale glitz reserve",
@@ -1022,7 +1067,6 @@ export default function ProductsSection({
         "weathercoat glow": "https://5.imimg.com/data5/SELLER/Default/2021/7/OI/YW/AW/102796245/berger-weathercoat-glow-exterior-emulsion.jpg"
       };
 
-      let mergedProduct = { ...p };
       if (accurateImageNames.includes(key)) {
         mergedProduct.image = accurateImagesMap[key];
       } else {

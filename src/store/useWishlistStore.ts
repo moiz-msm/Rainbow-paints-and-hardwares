@@ -244,7 +244,7 @@ export const useWishlistStore = create<WishlistStore>()(
           set({ items: finalItems, loading: false });
         } catch (error) {
           set({ loading: false });
-          handleFirestoreError(error, OperationType.LIST, path, userId);
+          console.warn('Firestore Wishlist sync deferred (offline/network):', error instanceof Error ? error.message : error);
         }
       },
 

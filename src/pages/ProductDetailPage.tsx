@@ -139,8 +139,51 @@ export default function ProductDetailPage() {
         };
         
         dbProducts = dbProducts.map((p: any) => {
-          const key = p.name ? p.name.trim().toLowerCase() : '';
           let updatedP = { ...p };
+          let key = updatedP.name ? updatedP.name.trim().toLowerCase() : '';
+
+          if (key === 'protecton epilux 4 mio coating' || key === 'berger paints red oxide zinc chromate metal primer is2074') {
+            updatedP = {
+              ...updatedP,
+              name: 'Berger Paints Red Oxide Zinc Chromate Metal Primer IS2074',
+              seoTitle: 'Berger Paints Red Oxide Zinc Chromate Metal Primer IS2074',
+              subCategory: 'Primers',
+              price: '₹ 2,834.00',
+              sizes: [20],
+              sizePrices: { 20: 2834 },
+              unit: 'L',
+              properties: [
+                'Red Oxide Zinc Chromate Anti-Corrosive Metal Primer conforming to IS 2074',
+                'Dual active-passive rust protection for structural steel and iron surfaces',
+                'Excellent adhesion, leveling, and barrier resistance in industrial environments',
+                'Ideal foundation coat for synthetic enamels, alkyd, and industrial topcoats'
+              ],
+              image: '/assets/aistudio/berger_protection_br_rozc_prim_2074_pq_zinc_chroma_1789721975_19d96e46.png'
+            };
+            key = updatedP.name.toLowerCase();
+          } else if (key === 'protecton yellow zinc chromate primer' || key === 'berger industrial zinc yellow primer') {
+            updatedP = {
+              ...updatedP,
+              name: 'Berger Industrial Zinc Yellow Primer',
+              seoTitle: 'Berger Industrial Zinc Yellow Primer',
+              image: '/assets/aistudio/Berger_Industrial_Zinc_Primer_Drum_2b7eeb0c.png'
+            };
+            key = updatedP.name.toLowerCase();
+          } else if (key === 'protecton grey oxide zinc chromate primer' || key === 'berger paints industrial bison zinc phosphate grey primer') {
+            updatedP = {
+              ...updatedP,
+              name: 'Berger Paints Industrial Bison Zinc Phosphate Grey Primer',
+              seoTitle: 'Berger Paints Industrial Bison Zinc Phosphate Grey Primer',
+              properties: [
+                'Single-Pack High Corrosion Protective Grey Metal Primer',
+                'Formulated with Zinc Phosphate pigments for active anti-rust protection',
+                'Outstanding adhesion on steel sheets and structural trusses',
+                'Ensures high build foundation and excellent topcoat adhesion'
+              ],
+              image: '/assets/aistudio/5a50c524-2a35-4a96-8e39-799a97d1c66a_02114f07.png'
+            };
+            key = updatedP.name.toLowerCase();
+          }
           
           if (accurateImageNames.includes(key)) {
             updatedP.image = accurateImagesMap[key];
@@ -186,7 +229,20 @@ export default function ProductDetailPage() {
           return updatedP;
         }).filter((p: any) => !p.subCategories.includes("Color Oxides") && !p.subCategories.includes("Colour Oxide"));
 
-        found = dbProducts.find((p: any) => p.name && normalizeStr(p.name) === targetSlugNormalized);
+        const effectiveSlugNormalized =
+          targetSlugNormalized === 'protectonepilux4miocoating'
+            ? 'bergerpaintsredoxidezincchromatemetalprimeris2074'
+            : targetSlugNormalized === 'protectonyellowzincchromateprimer'
+            ? 'bergerindustrialzincyellowprimer'
+            : targetSlugNormalized === 'protectongreyoxidezincchromateprimer'
+            ? 'bergerpaintsindustrialbisonzincphosphategreyprimer'
+            : targetSlugNormalized;
+
+        found = dbProducts.find(
+          (p: any) =>
+            (p.name && normalizeStr(p.name) === effectiveSlugNormalized) ||
+            (p.slug && normalizeStr(p.slug) === effectiveSlugNormalized)
+        );
 
         // 2. Fallback to mock data if not in Firebase
         if (!found) {
@@ -213,7 +269,11 @@ export default function ProductDetailPage() {
             if ((updatedP as any).subCategories.length > 0) updatedP.subCategory = (updatedP as any).subCategories[0];
             return updatedP;
           });
-          found = processedMockProducts.find(p => p.name && normalizeStr(p.name) === targetSlugNormalized);
+          found = processedMockProducts.find(
+            p =>
+              (p.name && normalizeStr(p.name) === effectiveSlugNormalized) ||
+              ((p as any).slug && normalizeStr((p as any).slug) === effectiveSlugNormalized)
+          );
           if (found && (found as any).subCategories && ((found as any).subCategories.includes("Color Oxides") || (found as any).subCategories.includes("Colour Oxide"))) {
              found = undefined;
           }
@@ -486,6 +546,42 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
     warranty: "6 Years Performance Warranty",
     desc1: "Berger Silk Glamor High Sheen is a luxury interior emulsion formulated with highly durable crystal reflective technology to produce an unmatched glowing finish.",
     desc2: "Free of added lead, mercury, and chromium. The advanced acrylic emulsion guarantees a vibrant aesthetic appeal and robust protection against household stains."
+  },
+  "berger paints red oxide zinc chromate metal primer is2074": {
+    finish: "Smooth Matt",
+    dryingTime: "1 - 2 Hours (Surface Dry) / 8 Hours (Hard Dry)",
+    coverage: "100 - 120 sq.ft/L (1 coat)",
+    washability: "High Anti-Corrosive Moisture & Salt Barrier",
+    base: "Modified Alkyd Solvent Based (IS 2074)",
+    coats: "1 - 2 Uniform Priming Coats",
+    vocLevel: "Industrial Protective Primer Standard",
+    warranty: "IS 2074 Certified Anti-Rust Protection",
+    desc1: "Berger Paints Red Oxide Zinc Chromate Metal Primer IS2074 is a high-performance single-pack anti-corrosive metal primer conforming to IS 2074 specifications, formulated with red iron oxide and zinc chromate pigments for superior rust inhibition.",
+    desc2: "Designed for structural steel, mild steel fabrications, grills, pipelines, and industrial machinery, it provides a tough, high-adhesion foundation coat ready for synthetic enamel and industrial topcoats."
+  },
+  "berger industrial zinc yellow primer": {
+    finish: "Smooth Matt",
+    dryingTime: "1 - 2 Hours (Touch Dry) / 8 Hours (Hard Dry)",
+    coverage: "100 - 120 sq.ft/L (1 coat)",
+    washability: "High Anti-Corrosive Passivation Barrier",
+    base: "Solvent Based Zinc Chromate Alkyd",
+    coats: "1 - 2 Uniform Priming Coats",
+    vocLevel: "Industrial Protective Primer Standard",
+    warranty: "5 Years Anti-Corrosion Performance",
+    desc1: "Berger Industrial Zinc Yellow Primer (Protecton BP Syn Zinc Primer Yellow) is a single-pack passivating yellow zinc chromate metal primer engineered for ferrous and non-ferrous surfaces including aluminum, galvanized iron, and structural steel.",
+    desc2: "Provides a chemical rust-inhibitive passivation barrier and superior intercoat adhesion for industrial synthetic enamels, polyurethane, and epoxy protective systems."
+  },
+  "berger paints industrial bison zinc phosphate grey primer": {
+    finish: "Smooth Matt",
+    dryingTime: "1 - 2 Hours (Touch Dry) / 8 Hours (Hard Dry)",
+    coverage: "100 - 120 sq.ft/L (1 coat)",
+    washability: "High Anti-Corrosive Moisture & Salt Barrier",
+    base: "Solvent Based Zinc Phosphate Alkyd",
+    coats: "1 - 2 Uniform Priming Coats",
+    vocLevel: "Industrial Protective Primer Standard",
+    warranty: "5 Years Anti-Corrosion Performance",
+    desc1: "Berger Paints Industrial Bison Zinc Phosphate Grey Primer (Protecton Bison Z/P Primer Grey VA5 633) is a high-corrosion protective grey metal primer formulated with zinc phosphate anti-corrosive pigments.",
+    desc2: "Designed for structural steel, mild steel sheets, trusses, and industrial fabrication, it provides a high-build matte undercoat with strong adhesion for synthetic enamels and protective topcoats."
   }
 };
 
@@ -894,6 +990,27 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
     };
   }, [product, productDetails, basePrice, displayImage, selectedSize]);
 
+  const startingPackInfo = useMemo(() => {
+    const firstSize = productSizes[0] || 1;
+    const sizeLabel = firstSize < 1 ? `${firstSize * 1000}ml` : `${firstSize}${product?.unit === 'kg' ? 'kg' : 'L'}`;
+    if ((product as any)?.sizePrices && (product as any).sizePrices[firstSize]) {
+      return { sizeLabel, price: (product as any).sizePrices[firstSize] };
+    }
+    let factor = 1;
+    if (product?.unit === 'kg') {
+      if (firstSize === 5) factor = 0.94;
+      if (firstSize === 20) factor = 0.53;
+      if (firstSize === 25) factor = 0.8;
+      if (firstSize === 40) factor = 0.472;
+      if (firstSize === 50) factor = 0.628;
+    } else {
+      if (firstSize === 4) factor = 0.96;
+      if (firstSize === 10) factor = 0.92;
+      if (firstSize === 20) factor = 0.88;
+    }
+    return { sizeLabel, price: Math.round(basePrice * firstSize * factor) };
+  }, [product, productSizes, basePrice]);
+
   const faqSchema = useMemo(() => {
     if (!product) return null;
     return {
@@ -905,7 +1022,7 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
           "name": `What is the price of ${product.name}?`,
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": `The price of ${product.name} starts from ₹${Math.round(basePrice * discountFactor)} for a 1-liter pack at Rainbow Paints & Hardwares.`
+            "text": `The price of ${product.name} starts from ₹${startingPackInfo.price.toLocaleString()} for a ${startingPackInfo.sizeLabel} pack at Rainbow Paints & Hardwares.`
           }
         },
         {
@@ -969,11 +1086,30 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
   }, [product]);
 
   const metaDesc = useMemo(() => {
-    return `Buy ${product?.name} by ${product?.brand} online at wholesale prices. ${product?.category} with fast local delivery in Coimbatore.`;
+    const categoryLabel = product?.subCategory || product?.category || product?.topCategory || 'Quality paint';
+    return `Buy ${product?.name} by ${product?.brand} online at wholesale prices. ${categoryLabel} with fast local delivery in Coimbatore.`;
   }, [product]);
 
   const fallbackTitle = useMemo(() => {
     if (!productSlug) return "Buy Paint Online | Rainbow Paints";
+    if (
+      productSlug === 'berger-paints-red-oxide-zinc-chromate-metal-primer-is2074' ||
+      productSlug === 'protecton-epilux-4-mio-coating'
+    ) {
+      return "Berger Paints Red Oxide Zinc Chromate Metal Primer IS2074";
+    }
+    if (
+      productSlug === 'berger-industrial-zinc-yellow-primer' ||
+      productSlug === 'protecton-yellow-zinc-chromate-primer'
+    ) {
+      return "Berger Industrial Zinc Yellow Primer";
+    }
+    if (
+      productSlug === 'berger-paints-industrial-bison-zinc-phosphate-grey-primer' ||
+      productSlug === 'protecton-grey-oxide-zinc-chromate-primer'
+    ) {
+      return "Berger Paints Industrial Bison Zinc Phosphate Grey Primer";
+    }
     const name = productSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     return `${name} - Buy Online | Wholesale Price`;
   }, [productSlug]);
@@ -1104,9 +1240,9 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
     <article className="pt-[72px] sm:pt-24 pb-12 bg-royale-bg min-h-screen text-ivory/90 relative overflow-x-hidden selection:bg-gold/30">
       <SEO 
         type="product"
-        title={`${product.name} by ${product.brand} - Buy Online | Wholesale Price`}
+        title={product.seoTitle || `${product.name} by ${product.brand} - Buy Online | Wholesale Price`}
         description={metaDesc}
-        keywords={`${product.name}, ${product.brand}, ${product.category}, ${product.subCategory}`}
+        keywords={`${product.name}, ${product.brand}, ${product.category || product.topCategory}, ${product.subCategory}`}
         url={`https://www.rainbowpaint.in/p/${product.slug || product.name.replace(/\s+/g, '-').toLowerCase()}`}
         image={displayImage || product.image}
         productBrand={product.brand}
@@ -1426,7 +1562,7 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
             <div className="bg-royale-surface border border-zinc-200/50 rounded-2xl p-6 hover:border-gold/30 transition-colors">
               <h3 className="font-medium text-ivory mb-3 text-sm">What is the price of {product.name}?</h3>
               <p className="text-ivory/70 text-xs leading-relaxed font-light">
-                The price of {product.name} starts from ₹{Math.round(basePrice * discountFactor)} for a 1-liter pack at Rainbow Paints & Hardwares. Price varies based on the pack size and selected shade.
+                The price of {product.name} starts from ₹{startingPackInfo.price.toLocaleString()} for a {startingPackInfo.sizeLabel} pack at Rainbow Paints & Hardwares. Price varies based on the pack size and selected shade.
               </p>
             </div>
             <div className="bg-royale-surface border border-zinc-200/50 rounded-2xl p-6 hover:border-gold/30 transition-colors">
