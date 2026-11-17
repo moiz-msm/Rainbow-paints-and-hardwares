@@ -1,84 +1,46 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, MessageCircle, Send, MapPin, Compass, Navigation, ExternalLink, Sparkles, ShoppingBag } from 'lucide-react';
+import { X, MessageCircle, Send, MapPin } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import { useCartStore } from '../store/useCartStore';
-import { useDeliveryStore } from '../store/useDeliveryStore';
-import { useAuthStore } from '../store/useAuthStore';
 import { mockProducts } from '../data';
-
-interface GroundingLink {
-  title: string;
-  uri: string;
-}
 
 interface Message {
   id: string;
   text: string;
   sender: 'mascot' | 'user';
   timestamp: Date;
-  grounding?: GroundingLink[];
-  contextPill?: string;
 }
 
-interface ChatPart {
-  role: 'user' | 'model';
-  parts: { text: string }[];
-}
+const SUGGESTED_PROMPTS = [
+  "Where is your Coimbatore store located?",
+  "Do you offer doorstep delivery?",
+  "Which paint brands do you sell?",
+  "How can I calculate paint quantity?"
+];
 
 export default function ProductAssistant() {
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const location = useLocation();
-  const [isHeroVisible, setIsHeroVisible] = useState(location.pathname === '/');
   const [isScrolling, setIsScrolling] = useState(false);
-  const [showHelperBubble, setShowHelperBubble] = useState(true);
-  const [isLocating, setIsLocating] = useState(false);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const { items: cartItems } = useCartStore();
-  const deliveryStore = useDeliveryStore();
-  const { user } = useAuthStore();
-
-  // Find active product if currently on a product detail page
-  const productSlug = location.pathname.startsWith('/p/') 
-    ? location.pathname.replace('/p/', '').split('/')[0] 
-    : null;
-  const currentProduct = productSlug ? mockProducts.find(p => p.slug === productSlug) : null;
-
-  // Track scroll position to hide/show the floating button when hero is visible
   useEffect(() => {
-    let ticking = false;
     const handleScroll = () => {
       setIsScrolling(true);
-
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
       scrollTimeoutRef.current = setTimeout(() => {
         setIsScrolling(false);
       }, 1000);
-
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          if (location.pathname === '/') {
-            setIsHeroVisible(window.scrollY < 300);
-          } else {
-            setIsHeroVisible(false);
-          }
-          ticking = false;
-        });
-        ticking = true;
-      }
     };
-    
-    handleScroll();
+
     window.addEventListener('scroll', handleScroll, { passive: true });
-    
     const handleOpenChat = () => setIsOpen(true);
     window.addEventListener('open-hero-chat', handleOpenChat);
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('open-hero-chat', handleOpenChat);
@@ -91,7 +53,7 @@ export default function ProductAssistant() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 'initial',
-      text: "Hello! I'm **Rani**, your Rainbow Paints expert consultant in Coimbatore. I'm context-aware and powered by Google Maps intelligence—ask me about paint recommendations, real-time Coimbatore delivery times, store locations, or surface preparation!",
+      text: "Hello! Welcome to **Rainbow Paints & Hardwares**. How can I help you today? Ask me about paint products, brands, pricing, store location, or delivery!",
       sender: 'mascot',
       timestamp: new Date()
     }
@@ -101,14 +63,12 @@ export default function ProductAssistant() {
 
   const whatsappNumber = "918072442930";
 
-  // Auto scroll to bottom
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [messages, isTyping]);
 
-  // Click outside to close
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
@@ -120,197 +80,93 @@ export default function ProductAssistant() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isOpen]);
 
-  const buildContextPayload = () => {
-    const cartTotal = cartItems.reduce((sum, item) => sum + (item.unitPrice * (item.size || 1) * item.quantity), 0);
-    
-    return {
-      page: location.pathname,
-      product: currentProduct ? {
-        name: currentProduct.name,
-        brand: currentProduct.brand,
-        price: currentProduct.price,
-        topCategory: currentProduct.topCategory,
-        subCategory: currentProduct.subCategory,
-        description: currentProduct.description
-      } : null,
-      cart: {
-        itemsCount: cartItems.length,
-        total: cartTotal,
-        items: cartItems.map(it => ({
-          name: it.name,
-          quantity: it.quantity,
-          size: it.size,
-          unitPrice: it.unitPrice
-        }))
-      },
-      customerLocation: deliveryStore.locationName ? {
-        name: deliveryStore.locationName,
-        pincode: deliveryStore.pincode,
-        distanceKm: deliveryStore.distanceKm,
-        durationText: deliveryStore.durationText,
-        address: deliveryStore.formattedAddress || deliveryStore.locationName,
-        coords: deliveryStore.latitude && deliveryStore.longitude ? {
-          lat: deliveryStore.latitude,
-          lon: deliveryStore.longitude
-        } : null
-      } : null,
-      userName: user?.displayName || user?.email?.split('@')[0] || null
-    };
-  };
+  const getSimpleResponse = (text: string): string => {
+    const input = text.toLowerCase().trim();
 
-  const getLocalResponse = (text: string): string => {
-    const input = text.toLowerCase();
-    
-    if (currentProduct && (input.includes('this') || input.includes('coat') || input.includes('primer') || input.includes('price') || input.includes('deliver'))) {
-      return `For **${currentProduct.name}** (${currentProduct.brand}), we have complete stock at our Ganapathy store. We deliver across Coimbatore usually within 2 to 4 hours. You can also calculate exact requirements on our Paint Calculator!`;
+    if (/^(hi|hello|hey|good morning|good afternoon|good evening|namaste)\b/.test(input)) {
+      return "Hello! Welcome to **Rainbow Paints & Hardwares**. How can I assist you with your painting needs today?";
     }
 
-    if (input.includes("location") || input.includes("where") || input.includes("address") || input.includes("store")) {
-      return "Rainbow Paints is located at **54 Cox Street, Ganapathy, Coimbatore - 641009**, near the Central Bus Stand and Gandhipuram. We provide direct doorstep delivery across all Coimbatore zones!";
+    if (input.includes("location") || input.includes("where") || input.includes("address") || input.includes("store") || input.includes("shop")) {
+      return "Our store is located at **54 Cox Street, Kattoor, Coimbatore - 641009**, Tamil Nadu. We are open Monday to Saturday, 9:00 AM – 8:30 PM. You can also order directly online for doorstep delivery!";
     }
 
     if (input.includes("deliver") || input.includes("shipping") || input.includes("time") || input.includes("eta")) {
-      const loc = deliveryStore.locationName || "your area in Coimbatore";
-      return `We deliver right to ${loc}! Typical delivery time is 2 to 4 hours via our direct store dispatch with real-time route tracking.`;
-    }
-    
-    if (input.includes("genuine") || input.includes("original") || input.includes("authent")) {
-      return "Rainbow Paints has been an authorized distributor for Asian Paints, Berger Paints, and Dr. Fixit since 2001. Every bucket is 100% genuine, factory-tinted, and sealed.";
+      return "We offer fast doorstep delivery across **Coimbatore** (typically 2 to 4 hours for local orders) as well as **Pan-India dispatch** for industrial coatings, primers, and bulk orders.";
     }
 
-    return "I'm Rani from Rainbow Paints! Ask me about wall paints, primers, waterproofing, or check doorstep delivery across Coimbatore. How can I help with your project?";
+    if (input.includes("brand") || input.includes("asian") || input.includes("berger") || input.includes("fixit") || input.includes("mrf") || input.includes("sheenlac") || input.includes("birla") || input.includes("fevicol")) {
+      return "We are authorized dealers since 2001 for **Asian Paints, Berger Paints, Dr. Fixit, MRF Vapocure, Sheenlac, Fevicol, Birla White, and Just Spray**. Every product is 100% genuine and factory-sealed.";
+    }
+
+    if (input.includes("calculat") || input.includes("quantity") || input.includes("how much") || input.includes("lit") || input.includes("coverage")) {
+      return "You can estimate exact paint litres and primer requirements using our **Paint Calculator** page! As a quick rule of thumb, interior emulsions cover around **110–130 sq.ft per litre for 2 coats**.";
+    }
+
+    if (input.includes("waterproof") || input.includes("damp") || input.includes("leak") || input.includes("terrace")) {
+      return "For waterproofing and dampness issues, we carry **Dr. Fixit** and **Berger/Asian Paints Waterproofing** solutions (Roofseal, Damp Proof, Crack-X, and LW+). You can also book a free digital moisture inspection via our **Painting Services** page.";
+    }
+
+    if (input.includes("primer") || input.includes("red oxide") || input.includes("zinc") || input.includes("metal") || input.includes("industrial")) {
+      return "We stock interior wall primers, exterior primers, and industrial metal primers including **Berger Paints Red Oxide Zinc Chromate Metal Primer IS2074**, **Berger Industrial Zinc Yellow Primer**, and **Bison Zinc Phosphate Grey Primer**. Browse **Shop** or use Search to view sizes and pricing.";
+    }
+
+    if (input.includes("price") || input.includes("cost") || input.includes("rate") || input.includes("bulk") || input.includes("wholesale") || input.includes("quote")) {
+      return "We offer competitive in-store & wholesale pricing with no extra online markup. For **bulk or B2B project quotes**, message us directly on WhatsApp at **+91 80724 42930**.";
+    }
+
+    if (input.includes("contact") || input.includes("phone") || input.includes("call") || input.includes("whatsapp") || input.includes("hour") || input.includes("open")) {
+      return "You can reach us at **+91 80724 42930** (Call or WhatsApp) during store hours (Mon–Sat, 9:00 AM – 8:30 PM), or tap the WhatsApp button below to chat with our team directly.";
+    }
+
+    if (input.includes("genuine") || input.includes("original") || input.includes("authent")) {
+      return "Rainbow Paints & Hardwares has been an authorized paint distributor since **2001**. Every bucket is 100% genuine and factory-tinted.";
+    }
+
+    // Check if the user mentioned a specific product name
+    const matchedProduct = mockProducts.find((p) => {
+      const nameLower = p.name.toLowerCase();
+      return input.length >= 4 && (nameLower.includes(input) || input.split(/\s+/).filter(w => w.length > 3).every(w => nameLower.includes(w)));
+    });
+
+    if (matchedProduct) {
+      return `Yes, **${matchedProduct.name}** (${matchedProduct.brand}) is available starting at **${matchedProduct.price}**. You can find it in our Shop or Search bar for pack sizes and details!`;
+    }
+
+    return "Thanks for reaching out to **Rainbow Paints & Hardwares**! You can ask me about our **store location, delivery, paint brands, waterproofing, primers, or bulk pricing**, or click **WhatsApp** below to speak with our store team directly.";
   };
 
-  const processChatMessage = async (text: string) => {
-    const contextPill = currentProduct 
-      ? `Viewing: ${currentProduct.name}`
-      : deliveryStore.locationName
-      ? `Location: ${deliveryStore.locationName}`
-      : undefined;
-
+  const processChatMessage = (text: string) => {
     const userMsg: Message = {
       id: Date.now().toString(),
-      text: text,
+      text,
       sender: 'user',
-      timestamp: new Date(),
-      contextPill
+      timestamp: new Date()
     };
-    
+
     setMessages(prev => [...prev, userMsg]);
     setIsTyping(true);
 
-    try {
-      // Keep up to last 8 messages for multi-turn conversation
-      const relevantMsgs = messages
-        .filter(m => m.id !== 'initial')
-        .slice(-8);
-
-      const history: ChatPart[] = relevantMsgs.concat(userMsg).map(msg => ({
-        role: msg.sender === 'user' ? 'user' : 'model',
-        parts: [{ text: msg.text }]
-      }));
-
-      const contextPayload = buildContextPayload();
-
-      const response = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ 
-          message: text, 
-          history,
-          context: contextPayload
-        }),
-      });
-
-      if (!response.ok) {
-        const localResponse = getLocalResponse(text);
-        const botMsg: Message = {
-          id: (Date.now() + 1).toString(),
-          text: localResponse,
-          sender: 'mascot',
-          timestamp: new Date()
-        };
-        setMessages(prev => [...prev, botMsg]);
-        return;
-      }
-
-      const data = await response.json();
-      
+    setTimeout(() => {
+      const replyText = getSimpleResponse(text);
       const botMsg: Message = {
         id: (Date.now() + 1).toString(),
-        text: data.text || getLocalResponse(text),
-        sender: 'mascot',
-        timestamp: new Date(),
-        grounding: data.grounding && Array.isArray(data.grounding) && data.grounding.length > 0 
-          ? data.grounding 
-          : undefined
-      };
-      
-      setMessages(prev => [...prev, botMsg]);
-    } catch (error: any) {
-      console.error("Chat Error:", error);
-      const errorMsg: Message = {
-        id: (Date.now() + 1).toString(),
-        text: getLocalResponse(text),
+        text: replyText,
         sender: 'mascot',
         timestamp: new Date()
       };
-      setMessages(prev => [...prev, errorMsg]);
-    } finally {
+      setMessages(prev => [...prev, botMsg]);
       setIsTyping(false);
-    }
+    }, 300);
   };
 
-  const handleDetectLocationInChat = async () => {
-    setIsLocating(true);
-    try {
-      await deliveryStore.trackUserLocation(true);
-      const updatedState = useDeliveryStore.getState();
-      const locText = updatedState.formattedAddress || `${updatedState.locationName || 'Coimbatore Area'} (${updatedState.pincode || '641009'})`;
-      await processChatMessage(`I'm located at ${locText}. Can you check delivery availability, road distance, and ETA from your Ganapathy store using Google Maps?`);
-    } catch (err) {
-      console.warn("Location detection in chat failed:", err);
-    } finally {
-      setIsLocating(false);
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputValue.trim() || isTyping) return;
 
     const userText = inputValue.trim();
     setInputValue("");
-    await processChatMessage(userText);
-  };
-
-  // Quick contextual prompts based on user's active page
-  const getSuggestedPrompts = () => {
-    if (currentProduct) {
-      return [
-        `Can you deliver ${currentProduct.name} to my location?`,
-        `How many coats of ${currentProduct.name} are recommended?`,
-        `What primer matches this best?`
-      ];
-    }
-    if (location.pathname === '/checkout' || location.pathname === '/cart') {
-      return [
-        "Detect my delivery address with Google Maps",
-        "What is the estimated delivery time for my order?",
-        "What payment options do you support?"
-      ];
-    }
-    if (location.pathname === '/calculator') {
-      return [
-        "How much paint do I need for a 2 BHK apartment?",
-        "What is the average coverage per liter for interior emulsion?"
-      ];
-    }
-    return [
-      "Where is your Coimbatore store located?",
-      "Detect my location for delivery",
-      "Which paint is best for exterior rainy walls?"
-    ];
+    processChatMessage(userText);
   };
 
   return (
@@ -323,7 +179,7 @@ export default function ProductAssistant() {
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="mb-4 w-[300px] xs:w-[340px] sm:w-[420px] md:w-[460px] bg-white border border-zinc-200 rounded-[2rem] shadow-2xl overflow-hidden flex flex-col h-[55vh] sm:h-[65vh] min-h-[440px] max-h-[720px]"
+            className="mb-4 w-[300px] xs:w-[340px] sm:w-[400px] md:w-[430px] bg-white border border-zinc-200 rounded-[2rem] shadow-2xl overflow-hidden flex flex-col h-[52vh] sm:h-[60vh] min-h-[420px] max-h-[680px]"
           >
             {/* Header */}
             <div className="bg-zinc-50/90 backdrop-blur-sm p-4 sm:p-5 border-b border-zinc-100 flex items-center gap-3">
@@ -336,64 +192,23 @@ export default function ProductAssistant() {
                 />
               </div>
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2">
-                  <h2 className="text-zinc-900 font-serif font-bold text-xs sm:text-sm tracking-wide">Rainbow Assistant</h2>
-                  <span className="px-1.5 py-0.5 rounded text-[9px] font-semibold bg-amber-50 text-gold border border-amber-200/60 uppercase">
-                    AI + Maps
-                  </span>
-                </div>
+                <h2 className="text-zinc-900 font-serif font-bold text-xs sm:text-sm tracking-wide">Rainbow Support</h2>
                 <div className="flex items-center gap-1.5 mt-0.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                   <span className="text-[10px] text-zinc-500 truncate">
-                    {deliveryStore.locationName 
-                      ? `📍 ${deliveryStore.locationName}` 
-                      : 'Context-Aware • Coimbatore, TN'}
+                    Paint Store Help • Coimbatore, TN
                   </span>
                 </div>
               </div>
-              
-              <button
-                type="button"
-                onClick={handleDetectLocationInChat}
-                disabled={isLocating}
-                title="Detect location with Google Maps"
-                className="p-2 text-zinc-600 hover:text-zinc-900 bg-white hover:bg-zinc-100 border border-zinc-200 rounded-xl transition-all shadow-xs flex items-center gap-1 text-[11px] font-medium disabled:opacity-50"
-              >
-                <Compass className={`w-3.5 h-3.5 text-red-500 ${isLocating ? 'animate-spin' : ''}`} />
-                <span className="hidden sm:inline">{isLocating ? 'Locating...' : 'My Location'}</span>
-              </button>
 
               <button 
                 onClick={() => setIsOpen(false)}
                 className="p-1.5 sm:p-2 hover:bg-zinc-200 rounded-full transition-all text-zinc-500 hover:text-zinc-900"
+                aria-label="Close chat"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
-
-            {/* Context Notice Bar (if viewing product or in checkout) */}
-            {(currentProduct || deliveryStore.locationName) && (
-              <div className="bg-amber-50/70 border-b border-amber-100/80 px-4 py-2 text-[11px] text-amber-900 flex items-center justify-between gap-2 overflow-hidden">
-                <div className="flex items-center gap-1.5 truncate">
-                  {currentProduct ? (
-                    <>
-                      <Sparkles className="w-3.5 h-3.5 text-gold shrink-0" />
-                      <span className="truncate">Viewing: <strong>{currentProduct.name}</strong> ({currentProduct.brand})</span>
-                    </>
-                  ) : (
-                    <>
-                      <MapPin className="w-3.5 h-3.5 text-red-500 shrink-0" />
-                      <span className="truncate">Google Maps: <strong>{deliveryStore.locationName}</strong></span>
-                    </>
-                  )}
-                </div>
-                {deliveryStore.distanceKm && (
-                  <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-100/70 px-2 py-0.5 rounded-full shrink-0">
-                    ~{deliveryStore.distanceKm} km ({deliveryStore.durationText || 'same-day'})
-                  </span>
-                )}
-              </div>
-            )}
 
             {/* Chat Thread */}
             <div 
@@ -407,11 +222,6 @@ export default function ProductAssistant() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}
                 >
-                  {msg.contextPill && (
-                    <span className="text-[10px] text-zinc-400 mb-1 px-2">
-                      {msg.contextPill}
-                    </span>
-                  )}
                   <div className={`max-w-[88%] p-3.5 sm:p-4 rounded-2xl text-xs sm:text-sm leading-relaxed shadow-xs ${
                     msg.sender === 'user' 
                       ? 'bg-zinc-900 text-white font-normal rounded-tr-none' 
@@ -420,30 +230,6 @@ export default function ProductAssistant() {
                     <div className="prose prose-xs sm:prose-sm max-w-none text-inherit">
                       <ReactMarkdown>{msg.text}</ReactMarkdown>
                     </div>
-
-                    {/* Google Maps Grounding Links */}
-                    {msg.grounding && msg.grounding.length > 0 && (
-                      <div className="mt-3 pt-2.5 border-t border-zinc-100 space-y-1.5 not-prose">
-                        <div className="text-[10px] font-bold text-zinc-500 uppercase tracking-wider flex items-center gap-1">
-                          <MapPin className="w-3 h-3 text-red-500" /> Google Maps Places
-                        </div>
-                        <div className="flex flex-wrap gap-1.5">
-                          {msg.grounding.map((place, idx) => (
-                            <a
-                              key={idx}
-                              href={place.uri}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 px-2.5 py-1 bg-zinc-50 hover:bg-zinc-100 border border-zinc-200 rounded-lg text-[11px] font-medium text-blue-600 hover:text-blue-700 transition-colors shadow-2xs"
-                            >
-                              <Compass className="w-3 h-3 text-red-500 shrink-0" />
-                              <span className="truncate max-w-[190px] sm:max-w-[240px]">{place.title}</span>
-                              <ExternalLink className="w-2.5 h-2.5 text-zinc-400 shrink-0" />
-                            </a>
-                          ))}
-                        </div>
-                      </div>
-                    )}
                   </div>
                   <span className="text-[9px] text-zinc-400 mt-1 px-2">
                     {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
@@ -461,15 +247,14 @@ export default function ProductAssistant() {
                     <span className="w-1.5 h-1.5 bg-zinc-400 rounded-full animate-bounce [animation-duration:0.6s]" />
                     <span className="w-1.5 h-1.5 bg-zinc-400 rounded-full animate-bounce [animation-duration:0.6s] [animation-delay:0.2s]" />
                     <span className="w-1.5 h-1.5 bg-zinc-400 rounded-full animate-bounce [animation-duration:0.6s] [animation-delay:0.4s]" />
-                    <span className="text-[11px] font-medium text-zinc-500 ml-1.5">Checking paints & Google Maps...</span>
                   </div>
                 </motion.div>
               )}
             </div>
 
-            {/* Quick Contextual Prompts */}
+            {/* Quick Prompts */}
             <div className="px-4 py-2 bg-zinc-50/70 border-t border-zinc-100 overflow-x-auto no-scrollbar flex items-center gap-1.5">
-              {getSuggestedPrompts().map((prompt, pIdx) => (
+              {SUGGESTED_PROMPTS.map((prompt, pIdx) => (
                 <button
                   key={pIdx}
                   type="button"
@@ -489,13 +274,14 @@ export default function ProductAssistant() {
                   type="text"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
-                  placeholder={currentProduct ? `Ask about ${currentProduct.name} or delivery...` : "Ask Rani about paints, colors, or locations..."}
+                  placeholder="Ask about paints, prices, or store info..."
                   className="w-full bg-zinc-50 border border-zinc-200 rounded-xl py-2.5 sm:py-3 pl-3.5 sm:pl-4 pr-11 text-xs sm:text-sm text-zinc-900 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
                 />
                 <button 
                   type="submit"
                   disabled={!inputValue.trim() || isTyping}
                   className="absolute right-1.5 top-1/2 -translate-y-1/2 p-2 bg-zinc-900 text-white rounded-lg hover:bg-zinc-800 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+                  aria-label="Send message"
                 >
                   <Send className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </button>
@@ -504,7 +290,7 @@ export default function ProductAssistant() {
               <div className="flex items-center justify-between text-[10px] text-zinc-500 pt-0.5">
                 <div className="flex items-center gap-1">
                   <MapPin className="w-3 h-3 text-red-500" />
-                  <span>54 Cox St, Ganapathy, CBE</span>
+                  <span>54 Cox St, Kattoor, CBE</span>
                 </div>
                 <a 
                   href={`https://wa.me/${whatsappNumber}?text=Hi! I need help with paints from the Rainbow Paints website.`}
@@ -559,10 +345,10 @@ export default function ProductAssistant() {
         </AnimatePresence>
         
         {/* Helper text bubble */}
-        {(showHelperBubble && !isOpen) && (
-          <div className="absolute bottom-[105%] left-[50%] -translate-x-[50%] bg-white px-3 py-1.5 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-zinc-100 flex items-center justify-center pointer-events-none animate-bounce z-20 whitespace-nowrap">
-            <span className="text-[10px] sm:text-xs font-serif font-bold text-zinc-900 tracking-wide">Ask Rani (AI + Maps)</span>
-            <div className="absolute top-full left-1/2 -translate-x-1/2 w-2 h-2 bg-white border-r border-b border-zinc-100 rotate-45 -mt-1" />
+        {!isOpen && (
+          <div className="absolute bottom-[105%] right-0 bg-white px-3 py-1.5 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-zinc-100 flex items-center justify-center pointer-events-none animate-bounce z-20 whitespace-nowrap">
+            <span className="text-[10px] sm:text-xs font-serif font-bold text-zinc-900 tracking-wide">May I help you?</span>
+            <div className="absolute top-full right-6 w-2 h-2 bg-white border-r border-b border-zinc-100 rotate-45 -mt-1" />
           </div>
         )}
       </motion.button>

@@ -410,6 +410,8 @@ export default function UniversalSearchModal() {
       'floor epoxy coating',
       'food grade epoxy',
       'mio coatings',
+      'bp red oxide primer',
+      'luxol metal primer',
     ];
 
     // Filter matching products

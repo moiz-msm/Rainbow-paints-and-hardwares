@@ -1087,7 +1087,9 @@ export default function ProductsSection({
       'Apex Advanced',
       'Floor Epoxy Coating',
       'Food Grade Epoxy',
-      'MIO Coatings'
+      'MIO Coatings',
+      'BP Red Oxide Primer',
+      'Luxol Metal Primer'
     ].map(n => n.toLowerCase());
 
     const finalProducts = Array.from(map.values()).filter(p => !removedNames.includes(p.name?.toLowerCase()));

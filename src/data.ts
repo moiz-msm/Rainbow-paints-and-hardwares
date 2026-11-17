@@ -3127,54 +3127,6 @@ export const mockProducts = [
     "image": "https://image.makewebcdn.com/makeweb/r_409x409/M1sidwdt1/Beger/Beger_Shield_2in1_Sheen.jpg?v=202405291424"
   },
   {
-    "id": 4019,
-    "name": "BP Red Oxide Primer",
-    "brand": "Berger Paints",
-    "topCategory": "Home Paint",
-    "subCategory": "Primers",
-    "price": "₹ 110.00",
-    "sizes": [
-      0.5,
-      1,
-      4,
-      10,
-      20
-    ],
-    "unit": "L",
-    "properties": [
-      "Anti-Corrosive Metal Iron Oxide Sealer",
-      "High-adhesion coat prevents rust formation on mild steel",
-      "Offers an excellent level base for premium Luxol Enamels",
-      "Tough, impact-resistant industrial standard primer"
-    ],
-    "popular": false,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2022/10/SI/LI/TD/3923053/iron-oxide-red-powder-500x500.jpg"
-  },
-  {
-    "id": 4020,
-    "name": "Luxol Metal Primer",
-    "brand": "Berger Paints",
-    "topCategory": "Home Paint",
-    "subCategory": "Primers",
-    "price": "₹ 160.00",
-    "sizes": [
-      0.5,
-      1,
-      4,
-      10,
-      20
-    ],
-    "unit": "L",
-    "properties": [
-      "Zinc Chromate-Based Heavy Duty Metal Primer",
-      "Ultimate cathodic rust defense under harsh moisture weather",
-      "Excellent leveling and wetting properties for steel and iron",
-      "Professional trade choice for industrial fabrication, grills, & structures"
-    ],
-    "popular": false,
-    "image": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3818474593267350109"
-  },
-  {
     "id": 4021,
     "name": "BP White Wood Primer",
     "brand": "Berger Paints",

@@ -1,31 +1,62 @@
-import { initializeApp } from 'firebase/app';
+import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { 
+  getFirestore,
   initializeFirestore, 
   persistentLocalCache, 
-  persistentMultipleTabManager 
+  persistentMultipleTabManager,
+  memoryLocalCache,
+  doc,
+  getDocFromServer,
+  type FirestoreSettings,
 } from 'firebase/firestore';
 import { getAnalytics, isSupported } from 'firebase/analytics';
 import * as config from '../../firebase-applet-config.json';
 
 const firebaseConfig = config as Record<string, string>;
 
-const app = initializeApp(firebaseConfig);
+const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 
-// Configure persistent local cache and robust long polling to prevent 10s backend timeout and offline errors
-const firestoreSettings = {
-  localCache: persistentLocalCache({
-    tabManager: persistentMultipleTabManager()
-  }),
-  experimentalAutoDetectLongPolling: true,
-  useFetchStreams: false
+// Force long polling to bypass buffered WebChannel streaming proxies/iframes that trigger 10s backend timeouts
+const createFirestoreSettings = (usePersistentCache: boolean): FirestoreSettings => ({
+  localCache: usePersistentCache
+    ? persistentLocalCache({ tabManager: persistentMultipleTabManager() })
+    : memoryLocalCache(),
+  experimentalForceLongPolling: true,
+  experimentalLongPollingOptions: { timeoutSeconds: 15 },
+});
+
+const initDb = () => {
+  const databaseId = firebaseConfig.firestoreDatabaseId;
+  try {
+    return databaseId
+      ? initializeFirestore(app, createFirestoreSettings(true), databaseId)
+      : initializeFirestore(app, createFirestoreSettings(true));
+  } catch {
+    try {
+      return databaseId
+        ? initializeFirestore(app, createFirestoreSettings(false), databaseId)
+        : initializeFirestore(app, createFirestoreSettings(false));
+    } catch {
+      return databaseId ? getFirestore(app, databaseId) : getFirestore(app);
+    }
+  }
 };
 
-export const db = firebaseConfig.firestoreDatabaseId 
-  ? initializeFirestore(app, firestoreSettings, firebaseConfig.firestoreDatabaseId) 
-  : initializeFirestore(app, firestoreSettings);
+export const db = initDb();
 
 export const auth = getAuth(app);
+
+async function testConnection() {
+  try {
+    await getDocFromServer(doc(db, 'products', '__connection_test__'));
+  } catch (error) {
+    if (error instanceof Error && error.message.includes('the client is offline')) {
+      console.warn('Firestore client is currently offline; operating with local cache/fallback.');
+    }
+  }
+}
+testConnection();
 
 let analytics: any = null;
 isSupported()

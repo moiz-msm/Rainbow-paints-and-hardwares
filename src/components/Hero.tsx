@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Store, Award, MessageCircle, ShieldCheck, ArrowRight, PackageOpen, Truck, Tags, Shield, Sparkles, Mouse, ShoppingBag, Palette, Package, Tag, ShoppingCart, Phone, MapPin } from 'lucide-react';
+import { Store, Award, MessageCircle, ShieldCheck, ArrowRight, PackageOpen, Truck, Tags, Shield, Mouse, ShoppingBag, Palette, Package, Tag, ShoppingCart, Phone, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { brandDetails } from '../data';
 
@@ -58,9 +58,8 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="inline-flex items-center gap-2 px-3 py-1 sm:px-4 sm:py-1.5 bg-gold/10 rounded-full border border-gold/30 mb-2 sm:mb-4"
+                    className="inline-flex items-center px-3 py-1 sm:px-4 sm:py-1.5 bg-gold/10 rounded-full border border-gold/30 mb-2 sm:mb-4"
                   >
-                    <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-gold" />
                     <span className="text-[9px] sm:text-[10px] md:text-xs font-sans font-bold text-gold tracking-[0.15em] sm:tracking-[0.2em] uppercase">
                       EST.2001 • 20+ years of trust
                     </span>
@@ -80,7 +79,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="mt-2 sm:mt-3 text-[11px] sm:text-xs md:text-sm lg:text-base text-ivory/70 font-sans max-w-sm lg:max-w-lg leading-relaxed px-4 lg:px-0"
+                    className="mt-2.5 sm:mt-3.5 text-xs sm:text-sm md:text-[15px] lg:text-base text-ivory/90 font-sans font-medium max-w-sm lg:max-w-lg leading-relaxed px-4 lg:px-0"
                   >
                     Buy paints and related products online from top brands for homes, industries and waterproofing solutions.
                   </motion.p>
@@ -103,27 +102,29 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.35 }}
-                    className="mt-4 sm:mt-5 grid grid-cols-4 gap-2 sm:gap-4 lg:flex lg:flex-row lg:flex-nowrap lg:items-start lg:justify-start lg:gap-8 w-full max-w-full"
+                    className="mt-4 sm:mt-5 grid grid-cols-4 gap-1.5 sm:gap-3 lg:gap-3.5 w-full max-w-xl"
                   >
-                    <div className="flex flex-col items-center text-center">
-                      <Package className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#C6A87C] mb-1 sm:mb-2" strokeWidth={1.5} />
-                      <span className="text-[#C6A87C] text-[8px] sm:text-[9px] lg:text-[11px] font-sans font-bold uppercase tracking-widest leading-tight">200+<br/>Products</span>
-                    </div>
-                    
-                    <div className="flex flex-col items-center text-center">
-                      <Palette className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#C6A87C] mb-1 sm:mb-2" strokeWidth={1.5} />
-                      <span className="text-[#C6A87C] text-[8px] sm:text-[9px] lg:text-[11px] font-sans font-bold uppercase tracking-widest leading-tight">5000+<br/>Shades</span>
-                    </div>
-                    
-                    <div className="flex flex-col items-center text-center">
-                      <Truck className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#C6A87C] mb-1 sm:mb-2" strokeWidth={1.5} />
-                      <span className="text-[#C6A87C] text-[8px] sm:text-[9px] lg:text-[11px] font-sans font-bold uppercase tracking-widest leading-tight">Pan India<br/>Delivery</span>
-                    </div>
-                    
-                    <div className="flex flex-col items-center text-center">
-                      <Tag className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#C6A87C] mb-1 sm:mb-2" strokeWidth={1.5} />
-                      <span className="text-[#C6A87C] text-[8px] sm:text-[9px] lg:text-[11px] font-sans font-bold uppercase tracking-widest leading-tight">Best<br/>Pricing</span>
-                    </div>
+                    {[
+                      { icon: Package, value: "400+", label: "Products" },
+                      { icon: Palette, value: "5000+", label: "Shades" },
+                      { icon: Truck, value: "Pan India", label: "Delivery" },
+                      { icon: Tag, value: "Best", label: "Pricing" },
+                    ].map((item, idx) => (
+                      <div
+                        key={idx}
+                        className="flex flex-col items-center justify-center text-center bg-white/25 backdrop-blur-xl border border-white/60 rounded-xl sm:rounded-2xl px-1.5 py-2 sm:px-3 sm:py-2.5 lg:px-3.5 lg:py-3 shadow-[0_8px_24px_rgba(26,54,93,0.08),inset_0_1px_1px_rgba(255,255,255,0.75)] hover:bg-white/40 hover:border-white/85 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(26,54,93,0.12),inset_0_1px_1px_rgba(255,255,255,0.9)] transition-all duration-300"
+                      >
+                        <div className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 rounded-lg bg-white/35 backdrop-blur-md border border-white/65 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] flex items-center justify-center mb-1.5 sm:mb-2">
+                          <item.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-[18px] lg:h-[18px] text-[#8F6D31]" strokeWidth={2} />
+                        </div>
+                        <span className="text-ivory font-serif font-bold text-[10px] sm:text-xs lg:text-sm leading-none tracking-tight whitespace-nowrap drop-shadow-[0_1px_1px_rgba(255,255,255,0.65)]">
+                          {item.value}
+                        </span>
+                        <span className="text-ivory/85 text-[8px] sm:text-[9px] lg:text-[10px] font-sans font-bold uppercase tracking-wider leading-tight mt-0.5 sm:mt-1 whitespace-nowrap drop-shadow-[0_1px_1px_rgba(255,255,255,0.65)]">
+                          {item.label}
+                        </span>
+                      </div>
+                    ))}
                   </motion.div>
 
                   <motion.div 

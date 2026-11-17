@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useParams, useNavigate, Link, useSearchParams } from 'react-router-dom';
-import { collection, query, where, getDocs } from 'firebase/firestore';
+import { collection, query, where, getDocs, getDocsFromCache } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { ArrowLeft, Star, ShoppingCart, Heart, Check, ChevronRight, Filter, Ruler, Info, Minus, Plus, ShieldCheck, Tags, Truck, Award } from 'lucide-react';
 import { useCartStore } from '../store/useCartStore';
@@ -101,8 +101,19 @@ export default function ProductDetailPage() {
         const targetSlugNormalized = productSlug ? normalizeStr(productSlug) : '';
         let found: any = null;
 
-        // 1. Fetch from Firebase and find a case-insensitive match
-        const snapshot = await getDocs(collection(db, 'products'));
+        // 1. Fetch from Firebase and find a case-insensitive match (with cache/offline fallback)
+        let snapshotDocs: any[] = [];
+        try {
+          const snapshot = await getDocs(collection(db, 'products'));
+          snapshotDocs = snapshot.docs;
+        } catch (firestoreErr) {
+          try {
+            const cachedSnapshot = await getDocsFromCache(collection(db, 'products'));
+            snapshotDocs = cachedSnapshot.docs;
+          } catch {
+            snapshotDocs = [];
+          }
+        }
         const removedNames = [
           'Tractor Sparc Emulsion',
           'Tractor Uno Acrylic Distemper',
@@ -112,12 +123,14 @@ export default function ProductDetailPage() {
           'Apex Advanced',
           'Floor Epoxy Coating',
           'Food Grade Epoxy',
-          'MIO Coatings'
+          'MIO Coatings',
+          'BP Red Oxide Primer',
+          'Luxol Metal Primer'
         ].map(n => n.toLowerCase());
 
         const blacklistedIds = ['FtYxbQJggWPGiFQmCZqU', 'cfC16vcJc7Y6SuG8I0io', 'urWWhE0zkeCmRzBcTHqw', 'KQsvJ6kbraBWrRqaiLPB'];
 
-        let dbProducts = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+        let dbProducts = snapshotDocs.map(doc => ({ id: doc.id, ...doc.data() }))
           .filter((p: any) => !removedNames.includes(p.name?.toLowerCase()) && !blacklistedIds.includes(p.id));
           
         const accurateImageNames = [
