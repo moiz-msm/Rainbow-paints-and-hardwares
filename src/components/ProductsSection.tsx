@@ -1345,11 +1345,28 @@ export default function ProductsSection({
     currentPage * productsPerPage,
   );
 
-  const getPageNumbers = () => {
-    const pages = [];
-    for (let i = 1; i <= totalPages; i++) {
+  const getPageNumbers = (): (number | 'ellipsis-left' | 'ellipsis-right')[] => {
+    if (totalPages <= 5) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
+
+    const pages: (number | 'ellipsis-left' | 'ellipsis-right')[] = [1];
+    const start = Math.max(2, currentPage - 1);
+    const end = Math.min(totalPages - 1, currentPage + 1);
+
+    if (start > 2) {
+      pages.push('ellipsis-left');
+    }
+
+    for (let i = start; i <= end; i++) {
       pages.push(i);
     }
+
+    if (end < totalPages - 1) {
+      pages.push('ellipsis-right');
+    }
+
+    pages.push(totalPages);
     return pages;
   };
 
@@ -1758,14 +1775,15 @@ export default function ProductsSection({
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="flex justify-center items-center gap-1.5 mt-10 mb-6">
+          <div className="flex flex-wrap justify-center items-center gap-1 sm:gap-1.5 mt-10 mb-6 w-full max-w-full px-1">
             <button
               onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
               disabled={currentPage === 1}
-              className="w-10 h-10 flex items-center justify-center rounded-xl border border-zinc-200 bg-white hover:bg-zinc-50 hover:border-zinc-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all text-zinc-600 active:scale-95"
+              aria-label="Previous page"
+              className="w-8 h-8 sm:w-10 sm:h-10 shrink-0 flex items-center justify-center rounded-xl border border-zinc-200 bg-white hover:bg-zinc-50 hover:border-zinc-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all text-zinc-600 active:scale-95"
             >
               <svg
-                className="w-4 h-4"
+                className="w-3.5 h-3.5 sm:w-4 sm:h-4"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -1778,28 +1796,39 @@ export default function ProductsSection({
                 />
               </svg>
             </button>
-            <div className="flex items-center gap-1">
-              {getPageNumbers().map((num) => (
-                <button
-                  key={num}
-                  onClick={() => setCurrentPage(num)}
-                  className={`w-10 h-10 flex items-center justify-center rounded-xl text-xs font-bold transition-all ${
-                    currentPage === num
-                      ? "bg-gradient-gold text-white border-transparent"
-                      : "border border-transparent bg-white hover:bg-zinc-50 hover:border-zinc-200 text-zinc-600"
-                  }`}
-                >
-                  {num}
-                </button>
-              ))}
+            <div className="flex items-center gap-1 max-w-full overflow-x-auto no-scrollbar">
+              {getPageNumbers().map((item) =>
+                typeof item === "string" ? (
+                  <span
+                    key={item}
+                    className="w-5 sm:w-7 h-8 sm:h-10 shrink-0 flex items-center justify-center text-xs font-bold text-zinc-400 select-none"
+                  >
+                    ...
+                  </span>
+                ) : (
+                  <button
+                    key={item}
+                    onClick={() => setCurrentPage(item)}
+                    aria-current={currentPage === item ? "page" : undefined}
+                    className={`min-w-8 h-8 px-1.5 sm:min-w-10 sm:h-10 sm:px-2.5 shrink-0 flex items-center justify-center rounded-xl text-xs font-bold transition-all ${
+                      currentPage === item
+                        ? "bg-gradient-gold text-white border-transparent shadow-sm"
+                        : "border border-transparent bg-white hover:bg-zinc-50 hover:border-zinc-200 text-zinc-600"
+                    }`}
+                  >
+                    {item}
+                  </button>
+                )
+              )}
             </div>
             <button
               onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
               disabled={currentPage === totalPages}
-              className="w-10 h-10 flex items-center justify-center rounded-xl border border-zinc-200 bg-white hover:bg-zinc-50 hover:border-zinc-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all text-zinc-600 active:scale-95"
+              aria-label="Next page"
+              className="w-8 h-8 sm:w-10 sm:h-10 shrink-0 flex items-center justify-center rounded-xl border border-zinc-200 bg-white hover:bg-zinc-50 hover:border-zinc-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all text-zinc-600 active:scale-95"
             >
               <svg
-                className="w-4 h-4"
+                className="w-3.5 h-3.5 sm:w-4 sm:h-4"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
