@@ -130,30 +130,42 @@ export default function Home() {
       {
         "@type": "SiteNavigationElement",
         "position": 2,
+        "name": "Industrial Paint and Coatings",
+        "url": "https://www.rainbowpaint.in/c/industrial-paint-and-coatings"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 3,
+        "name": "Interior Wall Paints",
+        "url": "https://www.rainbowpaint.in/c/interior-paint"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 4,
         "name": "Paint Cost Calculator",
         "url": "https://www.rainbowpaint.in/calculator"
       },
       {
         "@type": "SiteNavigationElement",
-        "position": 3,
+        "position": 5,
         "name": "AI Color Visualizer",
         "url": "https://www.rainbowpaint.in/visualizer"
       },
       {
         "@type": "SiteNavigationElement",
-        "position": 4,
+        "position": 6,
         "name": "Compare Paints",
         "url": "https://www.rainbowpaint.in/compare-paints"
       },
       {
         "@type": "SiteNavigationElement",
-        "position": 5,
+        "position": 7,
         "name": "Paint Industry Blog",
         "url": "https://www.rainbowpaint.in/blog"
       },
       {
         "@type": "SiteNavigationElement",
-        "position": 6,
+        "position": 8,
         "name": "About Our Paint Shop",
         "url": "https://www.rainbowpaint.in/about"
       }

@@ -10,6 +10,7 @@ const categories = [
   { name: 'Waterproofing', slug: 'waterproofing', image: 'https://img.icons8.com/color/144/water.png' },
   { name: 'Wood Finishes', slug: 'wood-finishes', image: 'https://img.icons8.com/color/144/wood.png' },
   { name: 'Enamel Paint', slug: 'enamel-paint', image: 'https://img.icons8.com/color/144/metal.png' },
+  { name: 'Industrial Paint and Coatings', slug: 'industrial-paint-and-coatings', image: 'https://img.icons8.com/color/144/factory.png' },
   { name: 'Painting Tools', slug: 'painting-tools', image: 'https://img.icons8.com/color/144/paint-brush.png' },
   { name: 'Thinners & Solvents', slug: 'thinners-&-solvents', image: 'https://img.icons8.com/color/144/flask.png' },
   { name: 'Tile Adhesives', slug: 'tile-adhesives', image: 'https://img.icons8.com/color/144/brick-wall.png' },
@@ -71,7 +72,7 @@ export default function ShopByCategory() {
             Shop By <span className="text-gradient italic">Category</span>
           </h2>
           <p className="text-[10px] sm:text-xs text-[#1A365D]/70 max-w-xl mx-auto font-sans font-light leading-relaxed">
-            Wall painting, industrial, waterproofing, wood and hardwares.
+            Wall painting, industrial paint & coatings, waterproofing, wood and hardwares.
           </p>
         </motion.div>
         

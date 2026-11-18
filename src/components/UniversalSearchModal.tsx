@@ -184,6 +184,10 @@ const COMMON_TYPOS: Record<string, string> = {
   epoxey: 'Epoxy Paint',
   epoxi: 'Epoxy Paint',
   'floor epoxy': 'Epoxy Paint',
+  industrial: 'Industrial Paint and Coatings',
+  'industrial paint': 'Industrial Paint and Coatings',
+  'industrial coatings': 'Industrial Paint and Coatings',
+  'industrial paint and coatings': 'Industrial Paint and Coatings',
   waterprof: 'Waterproofing',
   waterprofing: 'Waterproofing',
   'water proof': 'Waterproofing',
@@ -260,6 +264,7 @@ const SEARCHABLE_DICTIONARY = [
   'Enamel Paint',
   'PU Paint',
   'Epoxy Paint',
+  'Industrial Paint and Coatings',
   'Waterproofing',
   'Wood Finishes',
   'Painting Tools',
@@ -407,11 +412,13 @@ export default function UniversalSearchModal() {
       'tractor emulsion shyne',
       'apcolite premium satin emulsion',
       'apcolite advanced emulsion',
+      'apcolite premium enamel',
       'floor epoxy coating',
       'food grade epoxy',
       'mio coatings',
       'bp red oxide primer',
       'luxol metal primer',
+      'protecton red oxide metal primer is 2339',
     ];
 
     // Filter matching products

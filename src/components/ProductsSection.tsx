@@ -1407,6 +1407,21 @@ export default function ProductsSection({
           image: "/assets/aistudio/Berger_Luxol_PU_Enamel_Paint_Can_fe1cf491.png"
         };
         key = mergedProduct.name.toLowerCase();
+      } else if (key === "mrf zameen floor coat" || key === "mrf zameen 2k pu floor paint - for concrete and paver blocks surfaces") {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "MRF Zameen 2K PU Floor Paint - For Concrete and Paver Blocks Surfaces",
+          seoTitle: "MRF Zameen 2K PU Floor Paint - For Concrete and Paver Blocks Surfaces",
+          seoDescription: "Buy MRF Zameen 2K PU Floor Paint - For Concrete and Paver Blocks Surfaces online at wholesale prices. Heavy-duty two-pack 2K polyurethane floor coating for concrete driveways, interlocking paver blocks, garage floors & industrial bays in White, Black, Dark Grey, Smoke Grey, Golden Yellow, Signal Red, Blue, Green & custom RAL shades.",
+          seoKeywords: "MRF Zameen 2K PU Floor Paint, For Concrete and Paver Blocks Surfaces, MRF Zameen Floor Coat, 2K PU Floor Paint, concrete driveway paint, paver block floor coating, MRF Vapocure Zameen",
+          properties: [
+            "Heavy-duty 2K polyurethane floor paint for concrete and paver blocks surfaces",
+            "Extreme abrasion resistance against forklift, car tire, and heavy foot traffic",
+            "Superior resistance to oil, grease, detergents, water, and chemical spills",
+            "Ideal for concrete driveways, paver blocks, garage floors, showrooms & walkways"
+          ]
+        };
+        key = mergedProduct.name.toLowerCase();
       }
 
       // Retain accurate images for specific products from mock data
@@ -1445,12 +1460,14 @@ export default function ProductsSection({
       'Tractor Emulsion Shyne',
       'Apcolite Premium Satin Emulsion',
       'Apcolite Advanced Emulsion',
+      'Apcolite Premium Enamel',
       'Apex Advanced',
       'Floor Epoxy Coating',
       'Food Grade Epoxy',
       'MIO Coatings',
       'BP Red Oxide Primer',
-      'Luxol Metal Primer'
+      'Luxol Metal Primer',
+      'Protecton Red Oxide Metal Primer IS 2339'
     ].map(n => n.toLowerCase());
 
     const finalProducts = Array.from(map.values()).filter(p => !removedNames.includes(p.name?.toLowerCase()));
@@ -1587,6 +1604,7 @@ export default function ProductsSection({
       "Power Tools": "https://img.icons8.com/color/144/drill.png",
       "Synthetic Enamels": "https://img.icons8.com/color/144/paint-can.png",
       "Industrial": "https://img.icons8.com/color/144/factory.png",
+      "Industrial Paint and Coatings": "https://img.icons8.com/color/144/factory.png",
       "Tile Adhesives": "https://img.icons8.com/color/144/brick-wall.png",
       "Thinners & Solvents": "https://img.icons8.com/color/144/flask.png",
     };
@@ -1602,7 +1620,7 @@ export default function ProductsSection({
       subs.forEach((sub: string) => uniqueSubs.add(sub));
     });
 
-    return Array.from(uniqueSubs)
+    const bubbles = Array.from(uniqueSubs)
       .sort()
       .map((name) => {
         let image = defaultImages[name];
@@ -1616,6 +1634,14 @@ export default function ProductsSection({
           image,
         };
       });
+
+    bubbles.unshift({
+      name: "Industrial Paint and Coatings",
+      slug: "industrial-paint-and-coatings",
+      image: defaultImages["Industrial Paint and Coatings"],
+    });
+
+    return bubbles;
   }, [productList]);
 
   const totalSubCategories = useMemo(
@@ -1635,8 +1661,13 @@ export default function ProductsSection({
 
   const filtered = productList.filter((p) => {
     const pSubs: string[] = (p as any).subCategories || (p.subCategory ? [p.subCategory] : []);
+    const isIndustrialTop =
+      activeCategoryFilter === "Industrial Paint and Coatings" ||
+      activeCategoryFilter === "Industrial" ||
+      activeCategoryFilter === "All Industrial";
     const matchCat =
       activeCategoryFilter === "All Categories" ||
+      (isIndustrialTop && p.topCategory === "Industrial") ||
       (activeCategoryFilter.startsWith("All ") &&
         p.topCategory === activeCategoryFilter.replace("All ", "")) ||
       pSubs.some(sub => sub.toLowerCase() === activeCategoryFilter.toLowerCase());
@@ -1742,12 +1773,88 @@ export default function ProductsSection({
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-ivory tracking-tight uppercase leading-none">
-              {pageTitle || "All Products"}
+              {!initialBrand && activeCategoryFilter !== "All Categories"
+                ? activeCategoryFilter
+                : pageTitle || "All Products"}
             </h1>
             <p className="text-ivory/60 mt-2 font-light max-w-2xl text-sm sm:text-base leading-relaxed">
               {pageDescription ||
                 "Explore our wide range of premium paints and hardware."}
             </p>
+            <nav aria-label="Related categories and brands" className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] sm:text-xs font-sans text-ivory/65">
+              {activeCategoryFilter === "Industrial Paint and Coatings" ||
+              activeCategoryFilter === "Industrial" ||
+              activeCategoryFilter === "All Industrial" ||
+              activeCategoryFilter === "Epoxy Paint" ||
+              activeCategoryFilter === "PU Paint" ||
+              activeCategoryFilter === "Synthetic Enamels" ? (
+                <>
+                  <span className="text-[10px] uppercase tracking-widest text-gold font-semibold">Quick Links:</span>
+                  <Link to="/c/industrial-paint-and-coatings" className="hover:text-gold underline decoration-gold/30 underline-offset-4 transition-colors">
+                    Industrial Paint &amp; Coatings
+                  </Link>
+                  <span className="opacity-30">&bull;</span>
+                  <Link to="/c/epoxy-paint" className="hover:text-gold hover:underline underline-offset-4 transition-colors">
+                    Epoxy Paints
+                  </Link>
+                  <span className="opacity-30">&bull;</span>
+                  <Link to="/c/pu-paint" className="hover:text-gold hover:underline underline-offset-4 transition-colors">
+                    2K PU Coatings
+                  </Link>
+                  <span className="opacity-30">&bull;</span>
+                  <Link to="/c/synthetic-enamels" className="hover:text-gold hover:underline underline-offset-4 transition-colors">
+                    Synthetic Enamels
+                  </Link>
+                  <span className="opacity-30">&bull;</span>
+                  <Link to="/c/primers" className="hover:text-gold hover:underline underline-offset-4 transition-colors">
+                    Metal Primers
+                  </Link>
+                  <span className="opacity-30">&bull;</span>
+                  <Link to="/brands/berger-paints" className="hover:text-gold hover:underline underline-offset-4 transition-colors">
+                    Berger Paints
+                  </Link>
+                  <span className="opacity-30">&bull;</span>
+                  <Link to="/brands/mrf-vapocure" className="hover:text-gold hover:underline underline-offset-4 transition-colors">
+                    MRF Vapocure
+                  </Link>
+                  <span className="opacity-30">&bull;</span>
+                  <Link to="/services/industrial-flooring" className="hover:text-gold hover:underline underline-offset-4 transition-colors">
+                    Industrial Epoxy Flooring
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <span className="text-[10px] uppercase tracking-widest text-gold font-semibold">Shop Categories:</span>
+                  <Link to="/c/industrial-paint-and-coatings" className="hover:text-gold underline decoration-gold/30 underline-offset-4 transition-colors">
+                    Industrial Paint &amp; Coatings
+                  </Link>
+                  <span className="opacity-30">&bull;</span>
+                  <Link to="/c/interior-paint" className="hover:text-gold hover:underline underline-offset-4 transition-colors">
+                    Interior Paint
+                  </Link>
+                  <span className="opacity-30">&bull;</span>
+                  <Link to="/c/exterior-paint" className="hover:text-gold hover:underline underline-offset-4 transition-colors">
+                    Exterior Paint
+                  </Link>
+                  <span className="opacity-30">&bull;</span>
+                  <Link to="/c/enamel-paint" className="hover:text-gold hover:underline underline-offset-4 transition-colors">
+                    Enamel Paint
+                  </Link>
+                  <span className="opacity-30">&bull;</span>
+                  <Link to="/c/primers" className="hover:text-gold hover:underline underline-offset-4 transition-colors">
+                    Primers
+                  </Link>
+                  <span className="opacity-30">&bull;</span>
+                  <Link to="/c/waterproofing" className="hover:text-gold hover:underline underline-offset-4 transition-colors">
+                    Waterproofing
+                  </Link>
+                  <span className="opacity-30">&bull;</span>
+                  <Link to="/c/wood-finishes" className="hover:text-gold hover:underline underline-offset-4 transition-colors">
+                    Wood Finishes
+                  </Link>
+                </>
+              )}
+            </nav>
           </motion.div>
 
           {/* Page Trust Indicators & Badges */}
@@ -1934,41 +2041,47 @@ export default function ProductsSection({
             </button>
 
             {/* Category Bubbles */}
-            {categoryBubblesData.map((cat) => (
-              <button
-                key={cat.slug}
-                onClick={() =>
-                  setActiveCategoryFilter(
-                    activeCategoryFilter === cat.name
-                      ? "All Categories"
-                      : cat.name,
-                  )
-                }
-                className="flex flex-col items-center gap-2.5 flex-shrink-0 group w-[72px] sm:w-[90px]"
-              >
-                <div
-                  className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden flex items-center justify-center p-0.5 shadow-sm border-2 transition-all duration-300 ${activeCategoryFilter === cat.name || activeCategoryFilter === "All " + cat.name ? "border-gold shadow-md" : "border-transparent bg-zinc-50 group-hover:border-zinc-300 group-hover:shadow-md"}`}
+            {categoryBubblesData.map((cat) => {
+              const isSelected =
+                activeCategoryFilter === cat.name ||
+                activeCategoryFilter === "All " + cat.name ||
+                (cat.name === "Industrial Paint and Coatings" &&
+                  (activeCategoryFilter === "Industrial" ||
+                    activeCategoryFilter === "All Industrial"));
+              return (
+                <button
+                  key={cat.slug}
+                  onClick={() =>
+                    setActiveCategoryFilter(
+                      isSelected ? "All Categories" : cat.name,
+                    )
+                  }
+                  className="flex flex-col items-center gap-2.5 flex-shrink-0 group w-[72px] sm:w-[90px]"
                 >
-                  <div className="w-full h-full rounded-full overflow-hidden bg-white relative">
-                    <img
-                      src={cat.image}
-                      alt={cat.name}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div
-                      className={`absolute inset-0 transition-opacity duration-300 ${activeCategoryFilter === cat.name || activeCategoryFilter === "All " + cat.name ? "bg-gold/10" : "bg-transparent group-hover:bg-black/5"}`}
-                    />
+                  <div
+                    className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden flex items-center justify-center p-0.5 shadow-sm border-2 transition-all duration-300 ${isSelected ? "border-gold shadow-md" : "border-transparent bg-zinc-50 group-hover:border-zinc-300 group-hover:shadow-md"}`}
+                  >
+                    <div className="w-full h-full rounded-full overflow-hidden bg-white relative">
+                      <img
+                        src={cat.image}
+                        alt={cat.name}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div
+                        className={`absolute inset-0 transition-opacity duration-300 ${isSelected ? "bg-gold/10" : "bg-transparent group-hover:bg-black/5"}`}
+                      />
+                    </div>
                   </div>
-                </div>
-                <span
-                  className={`text-[9px] sm:text-[10px] text-center font-medium leading-tight transition-colors ${activeCategoryFilter === cat.name || activeCategoryFilter === "All " + cat.name ? "text-gold font-bold" : "text-zinc-600 group-hover:text-zinc-900"}`}
-                >
-                  {cat.name}
-                </span>
-              </button>
-            ))}
+                  <span
+                    className={`text-[9px] sm:text-[10px] text-center font-medium leading-tight transition-colors ${isSelected ? "text-gold font-bold" : "text-zinc-600 group-hover:text-zinc-900"}`}
+                  >
+                    {cat.name}
+                  </span>
+                </button>
+              );
+            })}
           </div>
 
           <button

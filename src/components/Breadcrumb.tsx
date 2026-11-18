@@ -10,10 +10,11 @@ export interface BreadcrumbItem {
 
 interface BreadcrumbProps {
   items?: BreadcrumbItem[]; 
-  className?: string; 
+  className?: string;
+  omitSchema?: boolean;
 }
 
-export default function Breadcrumb({ items, className = 'text-zinc-600' }: BreadcrumbProps) {
+export default function Breadcrumb({ items, className = 'text-zinc-600', omitSchema = false }: BreadcrumbProps) {
   const location = useLocation();
 
   let breadcrumbItems: BreadcrumbItem[] = [];
@@ -29,18 +30,32 @@ export default function Breadcrumb({ items, className = 'text-zinc-600' }: Bread
     pathnames.forEach((name, index) => {
       routeTo += `/${name}`;
       const isLast = index === pathnames.length - 1;
+      const lowerName = name.toLowerCase();
       
       // format name (replace dashes with spaces, title case)
       let formattedName = name.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+      let resolvedHref = routeTo;
       
       // Specific overrides
-      if (name.toLowerCase() === 'p') formattedName = 'Product';
-      if (name.toLowerCase() === 'faqs') formattedName = 'FAQs';
-      if (name.toLowerCase() === 'buy-paint-online') formattedName = 'Products';
+      if (lowerName === 'p') formattedName = 'Product';
+      if (lowerName === 'c') {
+        formattedName = 'Products';
+        resolvedHref = '/buy-paint-online';
+      }
+      if (lowerName === 'faqs') formattedName = 'FAQs';
+      if (lowerName === 'buy-paint-online') formattedName = 'Products';
+      if (
+        lowerName === 'industrial' ||
+        lowerName === 'all-industrial' ||
+        lowerName === 'industrial-paint-and-coatings'
+      ) {
+        formattedName = 'Industrial Paint and Coatings';
+      }
+      if (lowerName === 'all-home-paint') formattedName = 'Home Paint';
 
       breadcrumbItems.push({
         label: formattedName,
-        href: isLast ? undefined : routeTo
+        href: isLast ? undefined : resolvedHref
       });
     });
   }
@@ -59,30 +74,34 @@ export default function Breadcrumb({ items, className = 'text-zinc-600' }: Bread
 
   return (
     <>
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify(schema)}
-        </script>
-      </Helmet>
-      <nav aria-label="breadcrumb" className={`flex flex-wrap items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs font-sans mb-6 uppercase tracking-wider ${className}`}>
-        {breadcrumbItems.map((item, index) => {
-          const isLast = index === breadcrumbItems.length - 1;
-          return (
-            <div key={index} className="flex items-center gap-1.5 sm:gap-2">
-              {index > 0 && <ChevronRight className="w-3 h-3 opacity-50" />}
-              {isLast || !item.href ? (
-                <span className="font-semibold text-current opacity-90 truncate max-w-[200px] sm:max-w-none" aria-current="page">
-                  {item.label}
-                </span>
-              ) : (
-                <Link to={item.href} className="opacity-70 hover:opacity-100 hover:text-gold transition-colors inline-flex items-center gap-1">
-                  {index === 0 && <Home className="w-3 h-3 mb-0.5 inline-block" />}
-                  {item.label}
-                </Link>
-              )}
-            </div>
-          );
-        })}
+      {!omitSchema && (
+        <Helmet>
+          <script type="application/ld+json">
+            {JSON.stringify(schema)}
+          </script>
+        </Helmet>
+      )}
+      <nav aria-label="Breadcrumb" className={`flex flex-wrap items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs font-sans mb-6 uppercase tracking-wider ${className}`}>
+        <ol className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+          {breadcrumbItems.map((item, index) => {
+            const isLast = index === breadcrumbItems.length - 1;
+            return (
+              <li key={index} className="flex items-center gap-1.5 sm:gap-2">
+                {index > 0 && <ChevronRight className="w-3 h-3 opacity-50 shrink-0" aria-hidden="true" />}
+                {isLast || !item.href ? (
+                  <span className="font-semibold text-current opacity-95 truncate max-w-[240px] sm:max-w-none" aria-current="page">
+                    {item.label}
+                  </span>
+                ) : (
+                  <Link to={item.href} className="opacity-75 hover:opacity-100 hover:text-gold transition-colors inline-flex items-center gap-1">
+                    {index === 0 && <Home className="w-3 h-3 mb-0.5 inline-block" aria-hidden="true" />}
+                    {item.label}
+                  </Link>
+                )}
+              </li>
+            );
+          })}
+        </ol>
       </nav>
     </>
   );

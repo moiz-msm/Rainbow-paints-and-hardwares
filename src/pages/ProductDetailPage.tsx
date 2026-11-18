@@ -124,12 +124,14 @@ export default function ProductDetailPage() {
           'Tractor Emulsion Shyne',
           'Apcolite Premium Satin Emulsion',
           'Apcolite Advanced Emulsion',
+          'Apcolite Premium Enamel',
           'Apex Advanced',
           'Floor Epoxy Coating',
           'Food Grade Epoxy',
           'MIO Coatings',
           'BP Red Oxide Primer',
-          'Luxol Metal Primer'
+          'Luxol Metal Primer',
+          'Protecton Red Oxide Metal Primer IS 2339'
         ].map(n => n.toLowerCase());
 
         const blacklistedIds = ['FtYxbQJggWPGiFQmCZqU', 'cfC16vcJc7Y6SuG8I0io', 'urWWhE0zkeCmRzBcTHqw', 'KQsvJ6kbraBWrRqaiLPB'];
@@ -301,6 +303,21 @@ export default function ProductDetailPage() {
               image: '/assets/aistudio/Berger_Luxol_PU_Enamel_Paint_Can_fe1cf491.png'
             };
             key = updatedP.name.toLowerCase();
+          } else if (key === 'mrf zameen floor coat' || key === 'mrf zameen 2k pu floor paint - for concrete and paver blocks surfaces') {
+            updatedP = {
+              ...updatedP,
+              name: 'MRF Zameen 2K PU Floor Paint - For Concrete and Paver Blocks Surfaces',
+              seoTitle: 'MRF Zameen 2K PU Floor Paint - For Concrete and Paver Blocks Surfaces',
+              seoDescription: 'Buy MRF Zameen 2K PU Floor Paint - For Concrete and Paver Blocks Surfaces online at wholesale prices. Heavy-duty two-pack 2K polyurethane floor coating for concrete driveways, interlocking paver blocks, garage floors & industrial bays in White, Black, Dark Grey, Smoke Grey, Golden Yellow, Signal Red, Blue, Green & custom RAL shades.',
+              seoKeywords: 'MRF Zameen 2K PU Floor Paint, For Concrete and Paver Blocks Surfaces, MRF Zameen Floor Coat, 2K PU Floor Paint, concrete driveway paint, paver block floor coating, MRF Vapocure Zameen',
+              properties: [
+                'Heavy-duty 2K polyurethane floor paint for concrete and paver blocks surfaces',
+                'Extreme abrasion resistance against forklift, car tire, and heavy foot traffic',
+                'Superior resistance to oil, grease, detergents, water, and chemical spills',
+                'Ideal for concrete driveways, paver blocks, garage floors, showrooms & walkways'
+              ]
+            };
+            key = updatedP.name.toLowerCase();
           }
           
           if (accurateImageNames.includes(key)) {
@@ -348,7 +365,8 @@ export default function ProductDetailPage() {
         }).filter((p: any) => !p.subCategories.includes("Color Oxides") && !p.subCategories.includes("Colour Oxide"));
 
         const effectiveSlugNormalized =
-          targetSlugNormalized === 'protectonepilux4miocoating'
+          targetSlugNormalized === 'protectonepilux4miocoating' ||
+          targetSlugNormalized === 'protectonredoxidemetalprimeris2339'
             ? 'bergerpaintsredoxidezincchromatemetalprimeris2074'
             : targetSlugNormalized === 'protectonyellowzincchromateprimer'
             ? 'bergerindustrialzincyellowprimer'
@@ -367,6 +385,10 @@ export default function ProductDetailPage() {
             ? 'mrfdurothane2kpupaintmetalandwoodfinish'
             : targetSlugNormalized === 'puenamel'
             ? 'luxolpuenamelpaintformetalandwoodfinishes'
+            : targetSlugNormalized === 'apcolitepremiumenamel'
+            ? 'apcolitepremiumglossenamel'
+            : targetSlugNormalized === 'mrfzameenfloorcoat'
+            ? 'mrfzameen2kpufloorpaintforconcreteandpaverblockssurfaces'
             : targetSlugNormalized;
 
         found = dbProducts.find(
@@ -785,6 +807,18 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
     warranty: "4 Years Performance Warranty",
     desc1: "Luxol PU Enamel Paint - For Metal and Wood Finishes by Berger Paints is an engineering-grade polyurethane enamel formulated for superior surface hardness, non-yellowing UV stability, and mirror-rich gloss across metal and wood surfaces.",
     desc2: "Backed by a 4 Years Warranty, it shields doors, windows, grilles, gates, wooden furniture, and machinery against scratches, daily wear, and mild chemical splashes. Available in White, Black, Dark Grey, Smoke Grey, Golden Yellow, Signal Red, Blue, Green, and custom RAL Classic shade codes."
+  },
+  "mrf zameen 2k pu floor paint - for concrete and paver blocks surfaces": {
+    finish: "2K Polyurethane Heavy-Duty Satin / Gloss Floor Finish",
+    dryingTime: "1 - 2 Hours (Touch Dry) / 24 Hours (Light Foot) / 7 Days (Vehicle Traffic)",
+    coverage: "80 - 100 sq.ft/L (Per Coat on Smooth Concrete)",
+    washability: "High Abrasion, Tire Mark, Oil & Chemical Resistance",
+    base: "Two-Pack 2K Polyurethane (Concrete & Paver Block Coating)",
+    coats: "2 Coats over Clean, Dry Concrete / Paver Substrate",
+    vocLevel: "Heavy-Duty Exterior & Industrial 2K PU Standard",
+    warranty: "Long-Lasting Heavy-Traffic & Weather Protection",
+    desc1: "MRF Zameen 2K PU Floor Paint - For Concrete and Paver Blocks Surfaces is a heavy-duty two-component polyurethane floor coating engineered by MRF Vapocure to protect concrete driveways, interlocking paver blocks, parking bays, showrooms, and walkways.",
+    desc2: "Resisting hot car tires, forklift abrasion, oil, grease, detergents, and UV weathering, it is available in 1L, 4L, and 20L packs across White, Black, Dark Grey, Smoke Grey, Golden Yellow, Signal Red, Blue, Green, and custom RAL Classic shade codes."
   }
 };
 
@@ -1248,45 +1282,47 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
     };
   }, [product, basePrice, discountFactor]);
 
+  const breadcrumbItems = useMemo(() => {
+    if (!product) return [];
+    const items: { label: string; href?: string }[] = [
+      { label: 'Home', href: '/' },
+      { label: 'Products', href: '/buy-paint-online' },
+    ];
+    if (product.topCategory === 'Industrial') {
+      items.push({ label: 'Industrial Paint and Coatings', href: '/c/industrial-paint-and-coatings' });
+    } else if (product.topCategory === 'Home Paint') {
+      items.push({ label: 'Home Paint', href: '/c/all-home-paint' });
+    }
+    if (product.subCategory) {
+      items.push({
+        label: product.subCategory,
+        href: `/c/${product.subCategory.toLowerCase().replace(/\s+/g, '-')}`,
+      });
+    }
+    if (product.brand) {
+      items.push({
+        label: product.brand,
+        href: `/brands/${product.brand.toLowerCase().replace(/\s+/g, '-')}`,
+      });
+    }
+    items.push({ label: product.name });
+    return items;
+  }, [product]);
+
   const breadcrumbSchema = useMemo(() => {
-    if (!product) return null;
+    if (!product || breadcrumbItems.length === 0) return null;
+    const productCanonicalUrl = `https://www.rainbowpaint.in/p/${product.slug || product.name?.replace(/\s+/g, '-').toLowerCase()}`;
     return {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://www.rainbowpaint.in/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Products",
-          "item": "https://www.rainbowpaint.in/buy-paint-online"
-        },
-        product.brand && {
-          "@type": "ListItem",
-          "position": 3,
-          "name": product.brand,
-          "item": `https://www.rainbowpaint.in/brands/${product.brand.toLowerCase().replace(/\s+/g, '-')}`
-        },
-        product.subCategory && {
-          "@type": "ListItem",
-          "position": 4,
-          "name": product.subCategory,
-          "item": `https://www.rainbowpaint.in/c/${product.subCategory.toLowerCase().replace(/\s+/g, '-')}`
-        },
-        {
-          "@type": "ListItem",
-          "position": 5,
-          "name": product.name,
-          "item": `https://www.rainbowpaint.in/p/${product.slug || product.name?.replace(/\s+/g, '-').toLowerCase()}`
-        }
-      ].filter(Boolean)
+      "itemListElement": breadcrumbItems.map((item, idx) => ({
+        "@type": "ListItem",
+        "position": idx + 1,
+        "name": item.label,
+        "item": item.href ? `https://www.rainbowpaint.in${item.href}` : productCanonicalUrl
+      }))
     };
-  }, [product]);
+  }, [product, breadcrumbItems]);
 
   const metaDesc = useMemo(() => {
     if ((product as any)?.seoDescription) return (product as any).seoDescription;
@@ -1496,15 +1532,7 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
         schema={[productSchema, breadcrumbSchema, faqSchema].filter(Boolean)}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px]">
-        <Breadcrumb 
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Products', href: '/buy-paint-online' },
-            ...(product.brand ? [{ label: product.brand, href: `/brands/${product.brand.toLowerCase().replace(/\s+/g, '-')}` }] : []),
-            ...(product.subCategory ? [{ label: product.subCategory, href: `/c/${product.subCategory.toLowerCase().replace(/\s+/g, '-')}` }] : []),
-            { label: product.name }
-          ]} 
-        />
+        <Breadcrumb items={breadcrumbItems} omitSchema />
 
         <button onClick={() => navigate(-1)} className="text-zinc-600 hover:text-ivory flex items-center gap-2 text-xs mb-8 transition-colors">
           <ArrowLeft className="w-3.5 h-3.5" /> Back to Products

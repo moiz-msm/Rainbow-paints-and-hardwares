@@ -16,27 +16,46 @@ export default function ProductsPage() {
   const slugAliasMap: Record<string, string> = {
     'interior-paint': 'Interior Paint',
     'interior-wall': 'Interior Paint',
+    'interior-texture': 'Interior Texture',
     'exterior-paint': 'Exterior Paint',
     'exterior-wall': 'Exterior Paint',
+    'exterior-texture': 'Exterior Texture',
     'primers': 'Primers',
     'undercoats': 'Primers',
+    'waterproofing': 'Waterproofing',
+    'wood-finishes': 'Wood Finishes',
     'enamel-paint': 'Enamel Paint',
     'metals-and-grills': 'Enamel Paint',
     'metal-and-grills': 'Enamel Paint',
+    'painting-tools': 'Painting Tools',
+    'thinners-&-solvents': 'Thinners & Solvents',
+    'thinners-and-solvents': 'Thinners & Solvents',
+    'tile-adhesives': 'Tile Adhesives',
+    'power-tools': 'Power Tools',
     'pu-paint': 'PU Paint',
     'pu-coatings': 'PU Paint',
     'epoxy-paint': 'Epoxy Paint',
-    'epoxy-coatings': 'Epoxy Paint'
+    'epoxy-coatings': 'Epoxy Paint',
+    'synthetic-enamels': 'Synthetic Enamels',
+    'industrial': 'Industrial Paint and Coatings',
+    'all-industrial': 'Industrial Paint and Coatings',
+    'industrial-paint-and-coatings': 'Industrial Paint and Coatings',
+    'industrial-coatings': 'Industrial Paint and Coatings',
+    'industrial-paints': 'Industrial Paint and Coatings',
+    'industrial-paint': 'Industrial Paint and Coatings',
+    'all-home-paint': 'All Home Paint',
+    'all-adhesives': 'All Adhesives',
+    'all-power-tools': 'All Power Tools'
   };
 
   let initialCategory = categorySlug ? categorySlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : undefined; 
   if (categorySlug) { 
-    const lowerSlug = categorySlug.toLowerCase();
+    const lowerSlug = decodeURIComponent(categorySlug).toLowerCase();
     if (slugAliasMap[lowerSlug]) {
       initialCategory = slugAliasMap[lowerSlug];
     } else {
       const allSubs = Object.values(subCategories).flat(); 
-      const exactCat = allSubs.find(c => c.toLowerCase().replace(/\s+/g, '-') === categorySlug); 
+      const exactCat = allSubs.find(c => c.toLowerCase().replace(/\s+/g, '-') === lowerSlug); 
       if (exactCat) initialCategory = exactCat;
     }
   } else if (queryCategory) {
@@ -63,6 +82,21 @@ export default function ProductsPage() {
   }
 
   const pageTitle = initialCategory || initialBrand || 'All Products';
+
+  const canonicalPath = useMemo(() => {
+    if (initialCategory === 'Industrial Paint and Coatings') {
+      return '/c/industrial-paint-and-coatings';
+    }
+    if (categorySlug) {
+      return `/c/${categorySlug}`;
+    }
+    if (brandSlug) {
+      return `/brands/${brandSlug}`;
+    }
+    return '/buy-paint-online';
+  }, [initialCategory, categorySlug, brandSlug]);
+
+  const currentUrl = `https://www.rainbowpaint.in${canonicalPath}`;
   
   const seoTitle = useMemo(() => {
     if (initialBrand) {
@@ -109,13 +143,18 @@ export default function ProductsPage() {
       return 'Exterior Wall Paints in Coimbatore – Weatherproof Emulsions | Rainbow';
     }
     if (initialCategory === 'PU Paint' || initialCategory === 'PU Coatings') {
-      return 'PU Wood Coatings in Coimbatore – Sealer, Polish & Finish | Rainbow';
+      return 'PU Wood & Metal Coatings in Coimbatore – 2K PU Finish | Rainbow';
     }
     if (initialCategory === 'Epoxy Paint' || initialCategory === 'Epoxy Coatings') {
       return 'Industrial Epoxy Paints in Coimbatore – Floor Coatings | Rainbow';
     }
-    if (initialCategory === 'Industrial' || initialCategory === 'Industrial Coatings' || initialCategory === 'Industrial Paints') {
-      return 'Industrial Paints in Coimbatore – Protective Coatings | Rainbow';
+    if (
+      initialCategory === 'Industrial Paint and Coatings' ||
+      initialCategory === 'Industrial' ||
+      initialCategory === 'Industrial Coatings' ||
+      initialCategory === 'Industrial Paints'
+    ) {
+      return 'Industrial Paint and Coatings in Coimbatore | Epoxy & PU | Rainbow';
     }
     if (initialCategory === 'Primers' || initialCategory === 'Undercoats' || initialCategory === 'Primer') {
       return 'Metal Primers in Coimbatore – Red Oxide & Undercoats | Rainbow';
@@ -174,16 +213,21 @@ export default function ProductsPage() {
       return 'Discover weatherproof exterior wall paints in Coimbatore designed for maximum durability. Compare exterior emulsions from leading brands with fast delivery!';
     }
     if (initialCategory === 'PU Paint' || initialCategory === 'PU Coatings') {
-      return 'Explore PU wood coatings, sealers, topcoats & polishes in Coimbatore for furniture, doors & wooden surfaces. Compare MRF & top brands at Rainbow Paints.';
+      return 'Explore PU wood & metal coatings, sealers, topcoats & polishes in Coimbatore for furniture, machinery & metal fabrication. Compare MRF & Berger at Rainbow Paints.';
     }
     if (initialCategory === 'Epoxy Paint' || initialCategory === 'Epoxy Coatings') {
       return 'Industrial epoxy floor paints, primers & chemical-resistant protective systems in Coimbatore for concrete & metal surfaces. Request wholesale quotes today!';
     }
-    if (initialCategory === 'Industrial' || initialCategory === 'Industrial Coatings' || initialCategory === 'Industrial Paints') {
-      return 'Source industrial paints, metal primers, epoxy & PU coatings in Coimbatore for factories, fabricators & workshops. Bulk wholesale pricing & delivery!';
+    if (
+      initialCategory === 'Industrial Paint and Coatings' ||
+      initialCategory === 'Industrial' ||
+      initialCategory === 'Industrial Coatings' ||
+      initialCategory === 'Industrial Paints'
+    ) {
+      return 'Buy industrial paint and coatings in Coimbatore at wholesale prices: 2-pack epoxy paints, 2K PU metal coatings, zinc primers & heavy-duty floor paints.';
     }
     if (initialCategory === 'Primers' || initialCategory === 'Undercoats' || initialCategory === 'Primer') {
-      return 'Find anti-rust metal primers in Coimbatore for iron & steel: red oxide primers, etch primers & protective undercoats. Compare top brand specs & prices!';
+      return 'Find anti-rust metal primers in Coimbatore for iron & steel: red oxide primers, zinc chromate & protective undercoats. Compare top brand specs & prices!';
     }
     if (initialCategory === 'Waterproofing' || initialCategory === 'Waterproofing Solutions') {
       return 'Shop waterproofing products in Coimbatore for roofs, terraces, bathrooms & exterior walls. Compare Dr. Fixit & SmartCare coatings at wholesale rates!';
@@ -196,6 +240,25 @@ export default function ProductsPage() {
     }
     return `Buy paint online at wholesale prices. Rainbow Paints is the leading paint dealer in Coimbatore offering top brands, waterproofing, and fast local delivery.`;
   }, [initialBrand, initialCategory]);
+
+  const seoKeywords = useMemo(() => {
+    if (initialCategory === 'Industrial Paint and Coatings') {
+      return 'industrial paint and coatings, industrial coatings Coimbatore, 2-pack epoxy paint, 2K PU metal coating, zinc phosphate primer, red oxide metal primer, Berger Epilux 155 HB, MRF MetalCoat PU, industrial enamel paint wholesale';
+    }
+    if (initialCategory === 'Epoxy Paint') {
+      return 'epoxy paint Coimbatore, two pack epoxy coating, industrial epoxy floor paint, Berger Epilux, polyamide epoxy enamel, wholesale epoxy paint';
+    }
+    if (initialCategory === 'PU Paint') {
+      return '2K PU paint Coimbatore, MRF WoodCoat, MRF MetalCoat, polyurethane wood and metal coating, Luxol PU enamel';
+    }
+    if (initialCategory) {
+      return `${initialCategory}, buy ${initialCategory.toLowerCase()} in Coimbatore, ${initialCategory.toLowerCase()} wholesale price, Rainbow Paints Coimbatore`;
+    }
+    if (initialBrand) {
+      return `${initialBrand}, ${initialBrand} dealer Coimbatore, buy ${initialBrand} online, Rainbow Paints`;
+    }
+    return undefined;
+  }, [initialCategory, initialBrand]);
 
   useEffect(() => {
     // Show Smart Buying Guide once per session when user enters
@@ -234,9 +297,9 @@ export default function ProductsPage() {
         "name": "Coimbatore"
       },
       "description": `Fast local doorstep delivery of ${pageTitle.toLowerCase()} across Coimbatore.`,
-      "url": `https://www.rainbowpaint.in${categorySlug ? '/c/' + categorySlug : brandSlug ? '/brands/' + brandSlug : '/buy-paint-online'}`
+      "url": currentUrl
     };
-  }, [pageTitle, categorySlug, brandSlug]);
+  }, [pageTitle, currentUrl]);
 
   const collectionSchema = useMemo(() => {
     return {
@@ -244,11 +307,44 @@ export default function ProductsPage() {
       "@type": "CollectionPage",
       "name": seoTitle,
       "description": pageDescription,
-      "url": `https://www.rainbowpaint.in${categorySlug ? '/c/' + categorySlug : brandSlug ? '/brands/' + brandSlug : '/buy-paint-online'}`
+      "url": currentUrl
     };
-  }, [seoTitle, pageDescription, categorySlug, brandSlug]);
+  }, [seoTitle, pageDescription, currentUrl]);
 
   const faqSchema = useMemo(() => {
+    if (initialCategory === 'Industrial Paint and Coatings') {
+      return {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What types of industrial paint and coatings do you supply in Coimbatore?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Rainbow Paints & Hardwares supplies two-pack polyamide epoxy coatings (such as Berger Epilux 155 HB and Apcodur), 2K polyurethane (PU) metal & wood finishes (MRF MetalCoat, MRF Durothane, Luxol PU Enamel), anti-corrosive red oxide, zinc chromate & zinc phosphate primers, and heavy-duty PU & epoxy floor coatings in 1L, 4L, and 20L wholesale packs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I choose Epoxy paint or 2K PU coating for industrial machinery and fabrication?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "2-pack epoxy coatings offer superior chemical resistance, primer adhesion, and indoor structural steel/floor protection, whereas 2K polyurethane (PU) coatings provide superior UV stability, chalk-resistance, and high-gloss color retention for outdoor machinery, gates, and industrial equipment exposed to sunlight."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you offer bulk wholesale pricing and custom RAL shade matching for industrial coatings?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. We provide wholesale contractor & factory pricing, GST billing, 20L industrial drum packs, custom RAL & IS shade tinting, and rapid dispatch across Coimbatore industrial belts."
+            }
+          }
+        ]
+      };
+    }
+
     if (initialCategory === 'Exterior Paint' || initialCategory === 'Exterior Paints' || initialCategory === 'Exterior Wall') {
       return {
         "@context": "https://schema.org",
@@ -338,15 +434,36 @@ export default function ProductsPage() {
   const breadcrumbItems = useMemo(() => {
     const items: { label: string; href?: string }[] = [{ label: 'Home', href: '/' }];
     
-    if (categorySlug || brandSlug) {
+    if (categorySlug || brandSlug || queryCategory || queryBrand) {
       items.push({ label: 'Products', href: '/buy-paint-online' });
+      if (initialCategory) {
+        if (['PU Paint', 'Epoxy Paint', 'Synthetic Enamels'].includes(initialCategory)) {
+          items.push({ label: 'Industrial Paint and Coatings', href: '/c/industrial-paint-and-coatings' });
+        } else if (
+          [
+            'Interior Paint',
+            'Interior Texture',
+            'Exterior Paint',
+            'Exterior Texture',
+            'Primers',
+            'Waterproofing',
+            'Wood Finishes',
+            'Enamel Paint',
+            'Painting Tools',
+            'Thinners & Solvents',
+            'Tile Adhesives'
+          ].includes(initialCategory)
+        ) {
+          items.push({ label: 'Home Paint', href: '/c/all-home-paint' });
+        }
+      }
       items.push({ label: pageTitle });
     } else {
       items.push({ label: 'Products' });
     }
     
     return items;
-  }, [categorySlug, brandSlug, pageTitle]);
+  }, [categorySlug, brandSlug, queryCategory, queryBrand, initialCategory, pageTitle]);
 
   const breadcrumbSchema = useMemo(() => {
     return {
@@ -356,28 +473,37 @@ export default function ProductsPage() {
         "@type": "ListItem",
         "position": index + 1,
         "name": item.label,
-        "item": item.href ? "https://www.rainbowpaint.in" + item.href : undefined
+        "item": item.href ? "https://www.rainbowpaint.in" + item.href : currentUrl
       }))
     };
-  }, [breadcrumbItems]);
+  }, [breadcrumbItems, currentUrl]);
 
   const itemListSchema = useMemo(() => {
     let filtered = mockProducts;
     if (initialCategory) {
-      if (initialCategory === 'Exterior Paint' || initialCategory === 'Exterior Wall' || initialCategory === 'Exterior Paints') {
-        filtered = filtered.filter((p: any) => p.subCategory === 'Exterior Paint' || p.subCategory === 'Exterior Wall' || p.category === 'Exterior Wall');
+      if (
+        initialCategory === 'Industrial Paint and Coatings' ||
+        initialCategory === 'Industrial' ||
+        initialCategory === 'All Industrial'
+      ) {
+        filtered = filtered.filter((p: any) => p.topCategory === 'Industrial');
+      } else if (initialCategory.startsWith('All ')) {
+        const topName = initialCategory.replace('All ', '');
+        filtered = filtered.filter((p: any) => p.topCategory === topName);
+      } else if (initialCategory === 'Exterior Paint' || initialCategory === 'Exterior Wall' || initialCategory === 'Exterior Paints') {
+        filtered = filtered.filter((p: any) => p.subCategory === 'Exterior Paint' || p.subCategory === 'Exterior Wall' || p.category === 'Exterior Wall' || (p.subCategories && p.subCategories.includes('Exterior Paint')));
       } else if (initialCategory === 'Interior Paint' || initialCategory === 'Interior Wall' || initialCategory === 'Interior Paints') {
-        filtered = filtered.filter((p: any) => p.subCategory === 'Interior Paint' || p.subCategory === 'Interior Wall' || p.category === 'Interior Wall');
+        filtered = filtered.filter((p: any) => p.subCategory === 'Interior Paint' || p.subCategory === 'Interior Wall' || p.category === 'Interior Wall' || (p.subCategories && p.subCategories.includes('Interior Paint')));
       } else if (initialCategory === 'Primers' || initialCategory === 'Undercoats') {
-        filtered = filtered.filter((p: any) => p.subCategory === 'Primers' || p.subCategory === 'Undercoats');
+        filtered = filtered.filter((p: any) => p.subCategory === 'Primers' || p.subCategory === 'Undercoats' || (p.subCategories && p.subCategories.includes('Primers')));
       } else if (initialCategory === 'Enamel Paint' || initialCategory === 'Metals and Grills') {
-        filtered = filtered.filter((p: any) => p.subCategory === 'Enamel Paint' || p.subCategory === 'Metals and Grills');
+        filtered = filtered.filter((p: any) => p.subCategory === 'Enamel Paint' || p.subCategory === 'Metals and Grills' || (p.subCategories && p.subCategories.includes('Enamel Paint')));
       } else if (initialCategory === 'PU Paint' || initialCategory === 'PU Coatings') {
-        filtered = filtered.filter((p: any) => p.subCategory === 'PU Paint' || p.subCategory === 'PU Coatings');
+        filtered = filtered.filter((p: any) => p.subCategory === 'PU Paint' || p.subCategory === 'PU Coatings' || (p.subCategories && p.subCategories.includes('PU Paint')));
       } else if (initialCategory === 'Epoxy Paint' || initialCategory === 'Epoxy Coatings') {
-        filtered = filtered.filter((p: any) => p.subCategory === 'Epoxy Paint' || p.subCategory === 'Epoxy Coatings');
+        filtered = filtered.filter((p: any) => p.subCategory === 'Epoxy Paint' || p.subCategory === 'Epoxy Coatings' || (p.subCategories && p.subCategories.includes('Epoxy Paint')));
       } else {
-        filtered = filtered.filter((p: any) => p.subCategory === initialCategory || p.category === initialCategory);
+        filtered = filtered.filter((p: any) => p.subCategory === initialCategory || p.category === initialCategory || (p.subCategories && p.subCategories.includes(initialCategory)));
       }
     }
     if (initialBrand) {
@@ -422,21 +548,20 @@ export default function ProductsPage() {
     return brandDetails.find(b => b.name.toLowerCase() === initialBrand.toLowerCase());
   }, [initialBrand]);
 
-  const currentUrl = `https://www.rainbowpaint.in${categorySlug ? '/c/' + categorySlug : brandSlug ? '/brands/' + brandSlug : '/buy-paint-online'}`;
-
   return (
     <div className="pt-20 sm:pt-24 pb-12 bg-royale-bg min-h-screen relative">
       <SEO 
         title={seoTitle}
         description={pageDescription}
+        keywords={seoKeywords}
         url={currentUrl}
         image={brandDetail?.logo || undefined}
         schema={schemas}
         type="category"
       />
       
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
-        <Breadcrumb items={breadcrumbItems} className="text-ivory/60 mb-6" />
+      <div className="max-w-[1400px] lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Breadcrumb items={breadcrumbItems} className="text-ivory/70 mb-4" omitSchema />
       </div>
 
       <ProductsSection 

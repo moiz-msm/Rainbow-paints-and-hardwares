@@ -162,26 +162,53 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-gold/5 mt-8">
-          <h4 className="text-gold/60 font-display text-[10px] uppercase tracking-[0.2em] mb-4 text-center">
-            Locations & Top Searches
-          </h4>
-          <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-[10px] text-ivory/40 uppercase tracking-widest font-light">
-            <Link to="/store/coimbatore" className="hover:text-gold transition">Paint Store Near Me</Link>
-            <span className="opacity-30">&bull;</span>
-            <Link to="/store/rs-puram-coimbatore" className="hover:text-gold transition">RS Puram</Link>
-            <span className="opacity-30">&bull;</span>
-            <Link to="/store/gandhipuram-coimbatore" className="hover:text-gold transition">Gandhipuram</Link>
-            <span className="opacity-30">&bull;</span>
-            <Link to="/store/peelamedu-coimbatore" className="hover:text-gold transition">Peelamedu</Link>
-            <span className="opacity-30">&bull;</span>
-            <Link to="/store/saibaba-colony-coimbatore" className="hover:text-gold transition">Saibaba Colony</Link>
-            <span className="opacity-30">&bull;</span>
-            <Link to="/brands/asian-paints" className="hover:text-gold transition">Asian Paints Dealer</Link>
-            <span className="opacity-30">&bull;</span>
-            <Link to="/brands/berger-paints" className="hover:text-gold transition">Berger Paints</Link>
-            <span className="opacity-30">&bull;</span>
-            <Link to="/brands/dr-fixit" className="hover:text-gold transition">Dr Fixit Waterproofing</Link>
+        <div className="pt-8 border-t border-gold/5 mt-8 space-y-5">
+          <div>
+            <h4 className="text-gold/60 font-display text-[10px] uppercase tracking-[0.2em] mb-3 text-center">
+              Popular Paint Categories
+            </h4>
+            <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-[10px] text-ivory/50 uppercase tracking-widest font-light">
+              <Link to="/c/industrial-paint-and-coatings" className="hover:text-gold transition">Industrial Paint &amp; Coatings</Link>
+              <span className="opacity-30">&bull;</span>
+              <Link to="/c/epoxy-paint" className="hover:text-gold transition">Epoxy Paint</Link>
+              <span className="opacity-30">&bull;</span>
+              <Link to="/c/pu-paint" className="hover:text-gold transition">2K PU Paint</Link>
+              <span className="opacity-30">&bull;</span>
+              <Link to="/c/interior-paint" className="hover:text-gold transition">Interior Paint</Link>
+              <span className="opacity-30">&bull;</span>
+              <Link to="/c/exterior-paint" className="hover:text-gold transition">Exterior Paint</Link>
+              <span className="opacity-30">&bull;</span>
+              <Link to="/c/enamel-paint" className="hover:text-gold transition">Enamel Paint</Link>
+              <span className="opacity-30">&bull;</span>
+              <Link to="/c/primers" className="hover:text-gold transition">Metal Primers</Link>
+              <span className="opacity-30">&bull;</span>
+              <Link to="/c/waterproofing" className="hover:text-gold transition">Waterproofing</Link>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="text-gold/60 font-display text-[10px] uppercase tracking-[0.2em] mb-3 text-center">
+              Locations &amp; Top Searches
+            </h4>
+            <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-[10px] text-ivory/40 uppercase tracking-widest font-light">
+              <Link to="/store/coimbatore" className="hover:text-gold transition">Paint Store Near Me</Link>
+              <span className="opacity-30">&bull;</span>
+              <Link to="/store/rs-puram-coimbatore" className="hover:text-gold transition">RS Puram</Link>
+              <span className="opacity-30">&bull;</span>
+              <Link to="/store/gandhipuram-coimbatore" className="hover:text-gold transition">Gandhipuram</Link>
+              <span className="opacity-30">&bull;</span>
+              <Link to="/store/peelamedu-coimbatore" className="hover:text-gold transition">Peelamedu</Link>
+              <span className="opacity-30">&bull;</span>
+              <Link to="/store/saibaba-colony-coimbatore" className="hover:text-gold transition">Saibaba Colony</Link>
+              <span className="opacity-30">&bull;</span>
+              <Link to="/brands/asian-paints" className="hover:text-gold transition">Asian Paints Dealer</Link>
+              <span className="opacity-30">&bull;</span>
+              <Link to="/brands/berger-paints" className="hover:text-gold transition">Berger Paints</Link>
+              <span className="opacity-30">&bull;</span>
+              <Link to="/brands/mrf-vapocure" className="hover:text-gold transition">MRF Vapocure PU</Link>
+              <span className="opacity-30">&bull;</span>
+              <Link to="/brands/dr-fixit" className="hover:text-gold transition">Dr Fixit Waterproofing</Link>
+            </div>
           </div>
         </div>
 

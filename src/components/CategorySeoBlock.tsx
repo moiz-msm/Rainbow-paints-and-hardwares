@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface CategorySeoBlockProps {
   category?: string;
@@ -23,10 +24,50 @@ export default function CategorySeoBlock({ category }: CategorySeoBlockProps) {
           We stock 100% genuine, unadulterated products from industry leaders like <strong>Asian Paints, Berger Paints, Dr. Fixit, and MRF Vapocure</strong>. By bypassing middlemen, we guarantee that you get authentic paints, primers, putty, and texture finishes directly from the manufacturer's warehouse to your doorstep.
         </p>
         <ul className="list-disc pl-5 space-y-2 mb-6">
-          <li><strong>Home Wall Paints:</strong> Washable interior luxury emulsions and ultra-durable exterior weather-proof coatings.</li>
-          <li><strong>Construction Chemicals:</strong> Professional-grade damp-proofing, crack fillers, and epoxy tile grouts.</li>
-          <li><strong>Wood & Metal Care:</strong> High-gloss polyurethane (PU) polishes, melamine, and anti-rust synthetic enamels.</li>
+          <li><strong>Home Wall Paints:</strong> Washable <Link to="/c/interior-paint" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">interior luxury emulsions</Link> and ultra-durable <Link to="/c/exterior-paint" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">exterior weather-proof coatings</Link>.</li>
+          <li><strong>Industrial Paint &amp; Coatings:</strong> Heavy-duty <Link to="/c/industrial-paint-and-coatings" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">industrial paint and coatings</Link> including <Link to="/c/epoxy-paint" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">2-pack epoxy paints</Link> and <Link to="/c/pu-paint" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">2K PU metal coatings</Link>.</li>
+          <li><strong>Construction Chemicals:</strong> Professional-grade <Link to="/c/waterproofing" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">waterproofing chemicals</Link>, crack fillers, and <Link to="/c/tile-adhesives" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">epoxy tile grouts</Link>.</li>
+          <li><strong>Wood &amp; Metal Care:</strong> High-gloss polyurethane (PU) polishes, <Link to="/c/wood-finishes" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">wood finishes</Link>, and anti-rust <Link to="/c/enamel-paint" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">synthetic enamels</Link>.</li>
         </ul>
+      </>
+    ),
+
+    'Industrial Paint and Coatings': (
+      <>
+        <h2 className="text-2xl sm:text-3xl font-serif font-medium text-[#1A365D] mb-6">
+          Heavy-Duty <span className="text-gold">Industrial Paint and Coatings</span> in Coimbatore
+        </h2>
+        <p className="mb-4">
+          Protect factory structures, CNC machinery, storage tanks, steel sheds, and concrete shop floors with genuine <strong>industrial paint and coatings</strong> at wholesale dealer prices. As a leading industrial coating supplier in Coimbatore, Rainbow Paints &amp; Hardwares stocks authorized two-pack systems from{' '}
+          <Link to="/brands/berger-paints" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">Berger Paints (Protecton &amp; Epilux)</Link>,{' '}
+          <Link to="/brands/mrf-vapocure" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">MRF Vapocure (MetalCoat &amp; Durothane)</Link>, and{' '}
+          <Link to="/brands/asian-paints" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">Asian Paints</Link>.
+        </p>
+        <h3 className="text-xl font-serif font-medium text-[#1A365D] mt-8 mb-4">
+          Specialized <span className="text-gold">Protective Coating Systems</span>
+        </h3>
+        <ul className="list-disc pl-5 space-y-2 mb-6">
+          <li>
+            <strong><Link to="/c/epoxy-paint" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">2-Pack Epoxy Paints &amp; Floor Coatings</Link>:</strong> High-build polyamide epoxy enamels, solvent-free self-leveling floor systems, and chemical-resistant tank linings for factories, pharma cleanrooms, and automotive workshops.
+          </li>
+          <li>
+            <strong><Link to="/c/pu-paint" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">2K Polyurethane (PU) Coatings</Link>:</strong> Non-yellowing, UV-resistant topcoats offering mirror gloss and scratch durability for heavy fabrication, gates, turbines, and outdoor equipment.
+          </li>
+          <li>
+            <strong><Link to="/c/primers" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">Anti-Corrosive Metal Primers</Link>:</strong> IS 2074 Red Oxide Zinc Chromate, Zinc Yellow Chromate, Zinc Phosphate Grey, and epoxy primers engineered to prevent structural steel corrosion.
+          </li>
+          <li>
+            <strong><Link to="/c/synthetic-enamels" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">High-Gloss Industrial &amp; PU Enamels</Link>:</strong> Rapid-drying single-pack and PU-modified enamels in custom RAL &amp; IS shades in 1L, 4L, and 20L drum packs.
+          </li>
+        </ul>
+        <h3 className="text-xl font-serif font-medium text-[#1A365D] mt-8 mb-4">
+          End-to-End <span className="text-gold">Industrial Supply &amp; Application</span>
+        </h3>
+        <p className="mb-4">
+          Need turnkey <Link to="/services/industrial-flooring" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">industrial epoxy flooring installation</Link>,{' '}
+          <Link to="/calculator" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">paint quantity estimation</Link>, or side-by-side specification comparisons on our{' '}
+          <Link to="/compare-paints" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">paint comparison tool</Link>? Contact our Cox Street, Coimbatore desk for GST billing and bulk local delivery.
+        </p>
       </>
     ),
 
@@ -258,7 +299,7 @@ export default function CategorySeoBlock({ category }: CategorySeoBlockProps) {
           UV Resistance & <span className="text-gold">Non-Yellowing Finishes</span>
         </h3>
         <p className="mb-4">
-          Choose from top-tier brands like <strong>MRF WoodCoat and Asian Paints Emporio</strong>. Our exterior-grade PU coatings are UV-resistant and non-yellowing, ensuring that clear wood finishes and vivid metal colors remain vibrant and protected against harsh sunlight.
+          Choose from top-tier brands like <strong><Link to="/brands/mrf-vapocure" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">MRF WoodCoat &amp; MetalCoat</Link></strong> and <strong>Asian Paints Emporio</strong>. Explore our broader <Link to="/c/industrial-paint-and-coatings" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">Industrial Paint and Coatings</Link> range or compare options with <Link to="/c/epoxy-paint" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">2-pack epoxy paints</Link>.
         </p>
       </>
     ),
@@ -275,7 +316,7 @@ export default function CategorySeoBlock({ category }: CategorySeoBlockProps) {
           Self-Leveling <span className="text-gold">Epoxy Flooring</span>
         </h3>
         <p className="mb-4">
-          We stock high-performance two-pack (2K) epoxy primers and self-leveling floor paints from <strong>Berger Paints and Asian Paints</strong>. Whether you need an anti-slip texture for a factory floor or a hygienic coating for a pharmaceutical lab, we have the right industrial solution.
+          We stock high-performance two-pack (2K) epoxy primers and floor paints from <Link to="/brands/berger-paints" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">Berger Paints</Link> and <Link to="/brands/asian-paints" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">Asian Paints</Link>. Browse all <Link to="/c/industrial-paint-and-coatings" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">Industrial Paint and Coatings</Link> or book our <Link to="/services/industrial-flooring" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">turnkey epoxy flooring service</Link>.
         </p>
       </>
     ),
@@ -292,7 +333,7 @@ export default function CategorySeoBlock({ category }: CategorySeoBlockProps) {
           Top Enamel <span className="text-gold">Brands</span>
         </h3>
         <p className="mb-4">
-          We carry trusted oil-based enamels like <strong>Asian Paints Apcolite Premium Enamel</strong> and <strong>Berger Luxol</strong>. These paints provide a tough, water-resistant barrier that is easy to clean, making them ideal for both interior trims and exterior metalwork.
+          We carry trusted oil-based enamels like <strong>Asian Paints Apcolite Premium Enamel</strong> and <strong>Berger Luxol</strong>. Pair with anti-rust <Link to="/c/primers" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">metal primers</Link> or upgrade to heavy-duty <Link to="/c/industrial-paint-and-coatings" className="text-[#1A365D] underline decoration-gold/60 hover:text-gold">Industrial Paint and Coatings</Link>.
         </p>
       </>
     ),
@@ -318,7 +359,10 @@ export default function CategorySeoBlock({ category }: CategorySeoBlockProps) {
   contentMap['Tools'] = contentMap['Painting Tools'];
   contentMap['Primer'] = contentMap['Undercoats'];
   contentMap['Primers'] = contentMap['Undercoats'];
-  contentMap['Industrial'] = contentMap['Epoxy Coatings'];
+  contentMap['Industrial'] = contentMap['Industrial Paint and Coatings'];
+  contentMap['All Industrial'] = contentMap['Industrial Paint and Coatings'];
+  contentMap['Industrial Coatings'] = contentMap['Industrial Paint and Coatings'];
+  contentMap['Industrial Paints'] = contentMap['Industrial Paint and Coatings'];
   contentMap['Exterior Wall'] = contentMap['Exterior Paints'];
   contentMap['Exterior Paint'] = contentMap['Exterior Paints'];
   contentMap['Interior Wall'] = contentMap['Interior Paints'];
@@ -327,7 +371,6 @@ export default function CategorySeoBlock({ category }: CategorySeoBlockProps) {
   contentMap['PU Paint'] = contentMap['PU Coatings'];
   contentMap['Epoxy Paint'] = contentMap['Epoxy Coatings'];
   contentMap['All Home Paint'] = contentMap['All Categories'];
-  contentMap['All Industrial'] = contentMap['All Categories'];
 
   const content = contentMap[category];
 

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const categoryIcons = [
   { emoji: "🎨", name: "Home Paint" },
-  { emoji: "🏭", name: "Industrial" },
+  { emoji: "🏭", name: "Industrial Paint & Coatings" },
   { emoji: "💧", name: "Waterproofing" },
   { emoji: "🪵", name: "Wood Finishes" },
   { emoji: "🛡️", name: "Gates & Grills" },
@@ -176,12 +176,30 @@ export default function ProductsAndIndustrial() {
                 <span className="italic opacity-80 font-light">Industries</span>
               </h2>
 
-              <p className="text-[#1C4173] font-sans font-light leading-relaxed text-[11px] sm:text-xs mb-6 max-w-sm">
-                We continue to support and deliver specialized industrial
+              <p className="text-[#1C4173] font-sans font-light leading-relaxed text-[11px] sm:text-xs mb-4 max-w-sm">
+                We continue to support and deliver specialized industrial paint and
                 coatings to all kinds of industries. Our robust, heavy-duty
                 paints ensure lasting protection and peak performance for your
                 infrastructure, backed by decades of technical expertise.
               </p>
+
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] sm:text-[11px] font-medium text-[#102A4C]/80 mb-5">
+                <Link to="/c/industrial-paint-and-coatings" className="underline decoration-[#2C62AA]/40 hover:text-[#2C62AA] transition-colors">
+                  All Industrial Coatings
+                </Link>
+                <span className="opacity-30">&bull;</span>
+                <Link to="/c/epoxy-paint" className="hover:text-[#2C62AA] hover:underline transition-colors">
+                  Epoxy Paints
+                </Link>
+                <span className="opacity-30">&bull;</span>
+                <Link to="/c/pu-paint" className="hover:text-[#2C62AA] hover:underline transition-colors">
+                  2K PU Finishes
+                </Link>
+                <span className="opacity-30">&bull;</span>
+                <Link to="/c/primers" className="hover:text-[#2C62AA] hover:underline transition-colors">
+                  Zinc Primers
+                </Link>
+              </div>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6">
                 <div className="bg-white/60 shadow-sm border border-white/40 rounded-xl p-3 flex flex-col items-center justify-center text-center">
@@ -215,21 +233,29 @@ export default function ProductsAndIndustrial() {
               </div>
             </div>
 
-            <div className="relative z-10 flex gap-3 mt-auto">
-              <a
-                href="https://wa.me/+918072442930?text=Hi%20Rainbow%20Paints!%20I%20would%20like%20to%20enquire%20about%20industrial%20coatings."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#25D366] hover:bg-[#20b858] text-white py-2.5 px-4 rounded-xl font-display font-bold transition-all tracking-widest text-[9px] sm:text-[10px] uppercase shadow-lg shadow-[#25D366]/20 flex justify-center items-center gap-2 flex-1"
+            <div className="relative z-10 flex flex-col gap-2.5 mt-auto">
+              <Link
+                to="/c/industrial-paint-and-coatings"
+                className="bg-[#102A4C] hover:bg-[#1C4173] text-white py-2.5 px-4 rounded-xl font-display font-bold transition-all tracking-widest text-[9px] sm:text-[10px] uppercase shadow-md flex justify-center items-center gap-2 w-full"
               >
-                <WhatsappIcon className="w-4 h-4 ml-[-4px]" /> Whatsapp
-              </a>
-              <a
-                href="mailto:rainbow_paint@hotmail.com?subject=Industrial%20Coatings%20Enquiry"
-                className="bg-white/60 hover:bg-white/80 text-[#102A4C] border border-white/40 py-2.5 px-4 rounded-xl font-display font-medium transition-all tracking-widest text-[9px] sm:text-[10px] uppercase flex justify-center items-center gap-2 flex-1"
-              >
-                <span className="text-xs sm:text-sm">✉️</span> Email
-              </a>
+                Explore Industrial Paint & Coatings <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+              <div className="flex gap-3">
+                <a
+                  href="https://wa.me/+918072442930?text=Hi%20Rainbow%20Paints!%20I%20would%20like%20to%20enquire%20about%20industrial%20coatings."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-[#25D366] hover:bg-[#20b858] text-white py-2.5 px-4 rounded-xl font-display font-bold transition-all tracking-widest text-[9px] sm:text-[10px] uppercase shadow-lg shadow-[#25D366]/20 flex justify-center items-center gap-2 flex-1"
+                >
+                  <WhatsappIcon className="w-4 h-4 ml-[-4px]" /> Whatsapp
+                </a>
+                <a
+                  href="mailto:rainbow_paint@hotmail.com?subject=Industrial%20Coatings%20Enquiry"
+                  className="bg-white/60 hover:bg-white/80 text-[#102A4C] border border-white/40 py-2.5 px-4 rounded-xl font-display font-medium transition-all tracking-widest text-[9px] sm:text-[10px] uppercase flex justify-center items-center gap-2 flex-1"
+                >
+                  <span className="text-xs sm:text-sm">✉️</span> Email
+                </a>
+              </div>
             </div>
           </motion.div>
         </div>

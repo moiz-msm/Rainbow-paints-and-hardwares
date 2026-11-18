@@ -22,7 +22,7 @@ export const subCategories: Record<string, string[]> = {
     "Power Tools"
   ],
   Industrial: [
-    "All Industrial",
+    "Industrial Paint and Coatings",
     "PU Paint",
     "Epoxy Paint",
     "Synthetic Enamels"
@@ -1895,21 +1895,6 @@ const rawMockProducts = [
     "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/wood-finishes-italiano-emporio-pu-packshot-asian-paints.png"
   },
   {
-    "id": 39,
-    "name": "Apcolite Premium Enamel",
-    "brand": "Asian Paints",
-    "topCategory": "Home Paint",
-    "subCategory": "Enamel Paint",
-    "price": "₹ 290.00",
-    "properties": [
-      "High Gloss Finish",
-      "Stain Resistance",
-      "Tough Film"
-    ],
-    "popular": false,
-    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/apcolite-premium-enamel-hi-gloss-new-packshot.png"
-  },
-  {
     "id": 40,
     "name": "Specta PU Enamel",
     "brand": "MRF Vapocure",
@@ -3656,28 +3641,6 @@ const rawMockProducts = [
     "image": "https://www.rashmienterprisesbhilai.com/images/berger.jpg"
   },
   {
-    "id": 4043,
-    "name": "Protecton Red Oxide Metal Primer IS 2339",
-    "brand": "Berger Paints",
-    "topCategory": "Industrial",
-    "subCategory": "Synthetic Enamels",
-    "price": "₹ 150.00",
-    "sizes": [
-      1,
-      4,
-      20
-    ],
-    "unit": "L",
-    "properties": [
-      "Single-Pack Synthetic Red Oxide Primer conforming to IS 2339",
-      "High anticorrosive performance for structural steel fabrications",
-      "Excellent brushing properties, good wet edge, and quick air dry",
-      "Standard trade anti-rust primer for building metal structures"
-    ],
-    "popular": false,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2022/10/SI/LI/TD/3923053/iron-oxide-red-powder-500x500.jpg"
-  },
-  {
     "id": 4044,
     "name": "Berger Paints Industrial Bison Zinc Phosphate Grey Primer",
     "seoTitle": "Berger Paints Industrial Bison Zinc Phosphate Grey Primer",
@@ -3772,7 +3735,10 @@ const rawMockProducts = [
   },
   {
     "id": 5003,
-    "name": "MRF Zameen Floor Coat",
+    "name": "MRF Zameen 2K PU Floor Paint - For Concrete and Paver Blocks Surfaces",
+    "seoTitle": "MRF Zameen 2K PU Floor Paint - For Concrete and Paver Blocks Surfaces",
+    "seoDescription": "Buy MRF Zameen 2K PU Floor Paint - For Concrete and Paver Blocks Surfaces online at wholesale prices. Heavy-duty two-pack 2K polyurethane floor coating for concrete driveways, interlocking paver blocks, garage floors & industrial bays in White, Black, Dark Grey, Smoke Grey, Golden Yellow, Signal Red, Blue, Green & custom RAL shades.",
+    "seoKeywords": "MRF Zameen 2K PU Floor Paint, For Concrete and Paver Blocks Surfaces, MRF Zameen Floor Coat, 2K PU Floor Paint, concrete driveway paint, paver block floor coating, MRF Vapocure Zameen",
     "brand": "MRF Vapocure",
     "topCategory": "Industrial",
     "subCategory": "PU Paint",
@@ -3784,10 +3750,10 @@ const rawMockProducts = [
     ],
     "unit": "L",
     "properties": [
-      "Heavy-duty premium polyurethane floor finish",
-      "Extreme durability resisting abrasion, forklift, and car tire traffic",
-      "Excellent resistance to oil, grease, detergents, and chemical spills",
-      "Ideal for concrete driveways, garage floors, showrooms, and sports courts"
+      "Heavy-duty 2K polyurethane floor paint for concrete and paver blocks surfaces",
+      "Extreme abrasion resistance against forklift, car tire, and heavy foot traffic",
+      "Superior resistance to oil, grease, detergents, water, and chemical spills",
+      "Ideal for concrete driveways, paver blocks, garage floors, showrooms & walkways"
     ],
     "popular": true,
     "image": "https://www.mrfpaint.com/wp-content/uploads/2024/11/zameen-copy.png"
