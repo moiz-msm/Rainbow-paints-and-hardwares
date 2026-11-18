@@ -1,3 +1,5 @@
+import { applyStandardEnamelIndustrialShades } from "./constants/industrialEnamelShades";
+
 export const topCategories = ["All Categories", "Home Paint", "Industrial", "Adhesives", "Power Tools"];
 
 export const subCategories: Record<string, string[]> = {
@@ -177,7 +179,7 @@ export const brandDetails: BrandDetail[] = [
   }
 ];
 
-export const mockProducts = [
+const rawMockProducts = [
 
   {
     "id": 9005,
@@ -1815,18 +1817,22 @@ export const mockProducts = [
   },
   {
     "id": 31,
-    "name": "Luxol High Gloss Enamel",
+    "name": "Luxol High Gloss Enamel Paint",
+    "seoTitle": "Luxol High Gloss Enamel Paint by Berger Paints | Buy Online",
+    "seoDescription": "Buy Berger Luxol High Gloss Enamel Paint online at wholesale prices. Mirror-like high-gloss solvent-based enamel for wood & metal surfaces in White, Black, Dark Grey, Smoke Grey, Golden Yellow, Signal Red, Blue, Green & custom RAL shades.",
+    "seoKeywords": "Luxol High Gloss Enamel Paint, Berger Luxol Hi-Gloss Enamel, Luxol Enamel Paint, metal and wood enamel paint, high gloss synthetic enamel, RAL shade enamel paint",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
     "subCategory": "Enamel Paint",
     "price": "₹ 340.00",
     "properties": [
-      "High Gloss",
-      "Tough Film",
-      "Anti-Corrosive"
+      "Mirror-Like High-Gloss Enamel Finish",
+      "Tough, Stain & Scratch-Resistant Protective Film",
+      "Anti-Corrosive Shield for Wood, Metal Grills & Doors",
+      "Available in 8 Standard Colors & Custom RAL Shade Codes"
     ],
     "popular": true,
-    "image": "https://www.bergerpaints.com/products/packshots/luxol.png"
+    "image": "/assets/aistudio/Lewis_Berger_LUXOL_Red_Paint_Can_98daa79b.png"
   },
   {
     "id": 32,
@@ -1998,7 +2004,10 @@ export const mockProducts = [
   },
   {
     "id": 2001,
-    "name": "Just Spray JS1 Acrylic Spray Paint - Classic Shades",
+    "name": "Acrylic Spray Paint Just Spray Classic Shades",
+    "seoTitle": "Acrylic Spray Paint Just Spray Classic Shades | Buy Online",
+    "seoDescription": "Buy Acrylic Spray Paint Just Spray Classic Shades (400ml Aerosol Can) online at wholesale prices. Fast-drying 100% pure acrylic spray paint in Glossy Black, Glossy White, Signal Red, Matt Black, Medium Yellow & Forest Green.",
+    "seoKeywords": "Acrylic Spray Paint Just Spray Classic Shades, Just Spray Acrylic Spray Paint, Just Spray Thailand 400ml, aerosol spray paint, fast dry acrylic spray paint, classic shades spray paint",
     "brand": "Just Spray",
     "topCategory": "Home Paint",
     "subCategory": "Enamel Paint",
@@ -2013,48 +2022,48 @@ export const mockProducts = [
       "Interior/Exterior Multi-Surface Protection"
     ],
     "popular": true,
-    "image": "https://justspray.in/wp-content/uploads/2025/04/1-5-1.png",
+    "image": "/assets/aistudio/JUST_Thailand_Acrylic_Paint_Collection_72d74a65.png",
     "shades": [
       {
         "name": "Glossy Black",
         "code": "No. 40",
         "hex": "#121212",
-        "image": "https://justspray.in/wp-content/uploads/2025/04/1-5-1.png",
+        "image": "/assets/aistudio/JUST_Thailand_Acrylic_Paint_Collection_72d74a65.png",
         "price": "₹ 240.00"
       },
       {
         "name": "Glossy White",
         "code": "No. 39",
         "hex": "#FFFFFF",
-        "image": "https://rukminim2.flixcart.com/image/480/640/xif0q/spray-paints/9/d/m/400-glossy-white-glossy-white-spray-paint-new-just-sprey-original-imahf4szye7zhyzk.jpeg?q=90",
+        "image": "/assets/aistudio/JUST_Thailand_Acrylic_Paint_Collection_72d74a65.png",
         "price": "₹ 240.00"
       },
       {
         "name": "Signal Red",
         "code": "No. 6",
         "hex": "#E60000",
-        "image": "https://justspray.in/wp-content/uploads/2025/04/1-5-1.png",
+        "image": "/assets/aistudio/JUST_Thailand_Acrylic_Paint_Collection_72d74a65.png",
         "price": "₹ 240.00"
       },
       {
         "name": "Matt Black",
         "code": "No. 33",
         "hex": "#1C1C1C",
-        "image": "https://justspray.in/wp-content/uploads/2025/04/1-5-1.png",
+        "image": "/assets/aistudio/JUST_Thailand_Acrylic_Paint_Collection_72d74a65.png",
         "price": "₹ 240.00"
       },
       {
         "name": "Medium Yellow",
         "code": "No. 15",
         "hex": "#FFCC00",
-        "image": "https://justspray.in/wp-content/uploads/2025/04/1-5-1.png",
+        "image": "/assets/aistudio/JUST_Thailand_Acrylic_Paint_Collection_72d74a65.png",
         "price": "₹ 240.00"
       },
       {
         "name": "Forest Green",
         "code": "No. 36",
         "hex": "#1E3B20",
-        "image": "https://justspray.in/wp-content/uploads/2025/04/1-5-1.png",
+        "image": "/assets/aistudio/JUST_Thailand_Acrylic_Paint_Collection_72d74a65.png",
         "price": "₹ 240.00"
       }
     ]
@@ -3360,24 +3369,74 @@ export const mockProducts = [
   },
   {
     "id": 4032,
-    "name": "Protecton Epilux 155 HB Coating",
+    "name": "Berger Industrial Epoxy Paint - Epilux 155 HB Enamel Paint",
+    "seoTitle": "Berger Industrial Epoxy Paint - Epilux 155 HB Enamel Paint | Buy Online",
+    "seoDescription": "Buy Berger Industrial Epoxy Paint - Epilux 155 HB Enamel Paint in 4L (₹1,480) & 20L (₹6,800) packs. Heavy-duty two-pack polyamide epoxy coating in White, Black, Dark Grey, Smoke Grey, Golden Yellow, Signal Red, Blue, Green & custom RAL shades.",
+    "seoKeywords": "Berger Industrial Epoxy Paint, Epilux 155 HB Enamel Paint, Berger Protecton Epilux 155 HB, industrial epoxy enamel 4L 20L, RAL shade epoxy paint, Dark Grey Smoke Grey Golden Yellow Signal Red Blue Green epoxy",
     "brand": "Berger Paints",
     "topCategory": "Industrial",
     "subCategory": "Epoxy Paint",
-    "price": "₹ 380.00",
+    "price": "₹ 1,480.00",
     "sizes": [
       4,
       20
     ],
+    "sizePrices": {
+      "4": 1480,
+      "20": 6800
+    },
     "unit": "L",
+    "shades": [
+      {
+        "name": "White",
+        "code": "WHITE",
+        "hex": "#FFFFFF"
+      },
+      {
+        "name": "Black",
+        "code": "BLACK",
+        "hex": "#1A1A1A"
+      },
+      {
+        "name": "Dark Grey",
+        "code": "DARK GREY",
+        "hex": "#4A4E52"
+      },
+      {
+        "name": "Smoke Grey",
+        "code": "SMOKE GREY",
+        "hex": "#7A8084"
+      },
+      {
+        "name": "Golden Yellow",
+        "code": "GOLDEN YELLOW",
+        "hex": "#E5A01D"
+      },
+      {
+        "name": "Signal Red",
+        "code": "SIGNAL RED",
+        "hex": "#B81D24"
+      },
+      {
+        "name": "Blue",
+        "code": "BLUE",
+        "hex": "#1E5AA8"
+      },
+      {
+        "name": "Green",
+        "code": "GREEN",
+        "hex": "#1B7A43"
+      }
+    ],
+    "allowRalShades": true,
     "properties": [
-      "Two-Pack High-Build Polyamide Epoxy Topcoat",
-      "Provides excellent defense against water condensation & oil spills",
-      "Very hard, abrasion-resistant gloss/semi-gloss coat",
-      "Excellent chemical resistance on structural steel and tanks"
+      "Two-Pack High-Build Polyamide-Cured Industrial Epoxy Enamel (3:1 Mixing Ratio)",
+      "Superior defense against water condensation, mineral oils, and chemical splashes",
+      "Hard, abrasion-resistant gloss/semi-gloss topcoat for structural steel & machinery",
+      "Available in 4L & 20L packs — White, Black, Dark Grey, Smoke Grey, Golden Yellow, Signal Red, Blue, Green & RAL codes"
     ],
     "popular": false,
-    "image": "https://bergerpaints.com.sg/wp-content/uploads/2024/02/Protective-image-tile-3.png"
+    "image": "/assets/aistudio/Green_Berger_Epilux_Industrial_Paint_Drum_9548146d.png"
   },
   {
     "id": 4033,
@@ -8828,3 +8887,5 @@ export const mockProducts = [
     "slug": "berger-high-pressure-washer"
   }
 ];
+
+export const mockProducts = rawMockProducts.map(applyStandardEnamelIndustrialShades);

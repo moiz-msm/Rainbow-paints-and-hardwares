@@ -10,10 +10,14 @@ import { mockProducts } from '../data';
 import { motion, AnimatePresence } from 'framer-motion';
 import PolicyHighlights from '../components/PolicyHighlights';
 import DeliveryEstimator from '../components/DeliveryEstimator';
-import { InlineShadePicker, DEFAULT_WHITES } from '../components/ProductsSection';
+import { InlineShadePicker, RalShadePicker, DEFAULT_WHITES } from '../components/ProductsSection';
 import { Shade } from '../services/shadeService';
 import SEO from '../components/SEO';
 import Breadcrumb from '../components/Breadcrumb';
+import {
+  applyStandardEnamelIndustrialShades,
+  STANDARD_ENAMEL_INDUSTRIAL_SHADES,
+} from '../constants/industrialEnamelShades';
 
 const SIZES = [1, 4, 10, 20];
 
@@ -196,6 +200,61 @@ export default function ProductDetailPage() {
               image: '/assets/aistudio/5a50c524-2a35-4a96-8e39-799a97d1c66a_02114f07.png'
             };
             key = updatedP.name.toLowerCase();
+          } else if (key === 'protecton epilux 155 hb coating' || key === 'berger industrial epoxy paint - epilux 155 hb enamel paint') {
+            updatedP = {
+              ...updatedP,
+              name: 'Berger Industrial Epoxy Paint - Epilux 155 HB Enamel Paint',
+              seoTitle: 'Berger Industrial Epoxy Paint - Epilux 155 HB Enamel Paint | Buy Online',
+              seoDescription: 'Buy Berger Industrial Epoxy Paint - Epilux 155 HB Enamel Paint in 4L (₹1,480) & 20L (₹6,800) packs. Heavy-duty two-pack polyamide epoxy coating in White, Black, Dark Grey, Smoke Grey, Golden Yellow, Signal Red, Blue, Green & custom RAL shades.',
+              seoKeywords: 'Berger Industrial Epoxy Paint, Epilux 155 HB Enamel Paint, Berger Protecton Epilux 155 HB, industrial epoxy enamel 4L 20L, RAL shade epoxy paint, Dark Grey Smoke Grey Golden Yellow Signal Red Blue Green epoxy',
+              subCategory: 'Epoxy Paint',
+              price: '₹ 1,480.00',
+              sizes: [4, 20],
+              sizePrices: { 4: 1480, 20: 6800 },
+              unit: 'L',
+              shades: STANDARD_ENAMEL_INDUSTRIAL_SHADES,
+              allowRalShades: true,
+              properties: [
+                'Two-Pack High-Build Polyamide-Cured Industrial Epoxy Enamel (3:1 Mixing Ratio)',
+                'Superior defense against water condensation, mineral oils, and chemical splashes',
+                'Hard, abrasion-resistant gloss/semi-gloss topcoat for structural steel & machinery',
+                'Available in 4L & 20L packs — White, Black, Dark Grey, Smoke Grey, Golden Yellow, Signal Red, Blue, Green & RAL codes'
+              ],
+              image: '/assets/aistudio/Green_Berger_Epilux_Industrial_Paint_Drum_9548146d.png'
+            };
+            key = updatedP.name.toLowerCase();
+          } else if (key === 'luxol high gloss enamel' || key === 'luxol high gloss enamel paint') {
+            updatedP = {
+              ...updatedP,
+              name: 'Luxol High Gloss Enamel Paint',
+              seoTitle: 'Luxol High Gloss Enamel Paint by Berger Paints | Buy Online',
+              seoDescription: 'Buy Berger Luxol High Gloss Enamel Paint online at wholesale prices. Mirror-like high-gloss solvent-based enamel for wood & metal surfaces in White, Black, Dark Grey, Smoke Grey, Golden Yellow, Signal Red, Blue, Green & custom RAL shades.',
+              seoKeywords: 'Luxol High Gloss Enamel Paint, Berger Luxol Hi-Gloss Enamel, Luxol Enamel Paint, metal and wood enamel paint, high gloss synthetic enamel, RAL shade enamel paint',
+              properties: [
+                'Mirror-Like High-Gloss Enamel Finish',
+                'Tough, Stain & Scratch-Resistant Protective Film',
+                'Anti-Corrosive Shield for Wood, Metal Grills & Doors',
+                'Available in 8 Standard Colors & Custom RAL Shade Codes'
+              ],
+              image: '/assets/aistudio/Lewis_Berger_LUXOL_Red_Paint_Can_98daa79b.png'
+            };
+            key = updatedP.name.toLowerCase();
+          } else if (key === 'just spray js1 acrylic spray paint - classic shades' || key === 'acrylic spray paint just spray classic shades') {
+            updatedP = {
+              ...updatedP,
+              name: 'Acrylic Spray Paint Just Spray Classic Shades',
+              seoTitle: 'Acrylic Spray Paint Just Spray Classic Shades | Buy Online',
+              seoDescription: 'Buy Acrylic Spray Paint Just Spray Classic Shades (400ml Aerosol Can) online at wholesale prices. Fast-drying 100% pure acrylic spray paint in Glossy Black, Glossy White, Signal Red, Matt Black, Medium Yellow & Forest Green.',
+              seoKeywords: 'Acrylic Spray Paint Just Spray Classic Shades, Just Spray Acrylic Spray Paint, Just Spray Thailand 400ml, aerosol spray paint, fast dry acrylic spray paint, classic shades spray paint',
+              image: '/assets/aistudio/JUST_Thailand_Acrylic_Paint_Collection_72d74a65.png',
+              shades: Array.isArray(updatedP.shades)
+                ? updatedP.shades.map((s: any) => ({
+                    ...s,
+                    image: '/assets/aistudio/JUST_Thailand_Acrylic_Paint_Collection_72d74a65.png'
+                  }))
+                : updatedP.shades
+            };
+            key = updatedP.name.toLowerCase();
           }
           
           if (accurateImageNames.includes(key)) {
@@ -239,7 +298,7 @@ export default function ProductDetailPage() {
             updatedP.subCategory = updatedP.subCategories[0];
           }
           
-          return updatedP;
+          return applyStandardEnamelIndustrialShades(updatedP);
         }).filter((p: any) => !p.subCategories.includes("Color Oxides") && !p.subCategories.includes("Colour Oxide"));
 
         const effectiveSlugNormalized =
@@ -249,6 +308,12 @@ export default function ProductDetailPage() {
             ? 'bergerindustrialzincyellowprimer'
             : targetSlugNormalized === 'protectongreyoxidezincchromateprimer'
             ? 'bergerpaintsindustrialbisonzincphosphategreyprimer'
+            : targetSlugNormalized === 'protectonepilux155hbcoating'
+            ? 'bergerindustrialepoxypaintepilux155hbenamelpaint'
+            : targetSlugNormalized === 'luxolhighglossenamel'
+            ? 'luxolhighglossenamelpaint'
+            : targetSlugNormalized === 'justsprayjs1acrylicspraypaintclassicshades'
+            ? 'acrylicspraypaintjustsprayclassicshades'
             : targetSlugNormalized;
 
         found = dbProducts.find(
@@ -280,7 +345,7 @@ export default function ProductDetailPage() {
             
             (updatedP as any).subCategories = Array.from(new Set(subs));
             if ((updatedP as any).subCategories.length > 0) updatedP.subCategory = (updatedP as any).subCategories[0];
-            return updatedP;
+            return applyStandardEnamelIndustrialShades(updatedP);
           });
           found = processedMockProducts.find(
             p =>
@@ -595,6 +660,42 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
     warranty: "5 Years Anti-Corrosion Performance",
     desc1: "Berger Paints Industrial Bison Zinc Phosphate Grey Primer (Protecton Bison Z/P Primer Grey VA5 633) is a high-corrosion protective grey metal primer formulated with zinc phosphate anti-corrosive pigments.",
     desc2: "Designed for structural steel, mild steel sheets, trusses, and industrial fabrication, it provides a high-build matte undercoat with strong adhesion for synthetic enamels and protective topcoats."
+  },
+  "berger industrial epoxy paint - epilux 155 hb enamel paint": {
+    finish: "High-Build Gloss / Semi-Gloss Industrial Epoxy Enamel",
+    dryingTime: "1 - 2 Hours (Surface Dry) / 16 Hours (Hard Dry)",
+    coverage: "80 - 100 sq.ft/L (Per Coat at Recommended DFT)",
+    washability: "High Chemical, Oil, Solvent & Abrasion Resistance",
+    base: "Two-Pack Polyamide-Cured Epoxy (3:1 Base:Catalyst)",
+    coats: "1 - 2 High-Build Coats over Epilux Primer",
+    vocLevel: "Industrial Protective Coating Standard",
+    warranty: "Heavy-Duty Industrial Chemical & Corrosion Protection",
+    desc1: "Berger Industrial Epoxy Paint - Epilux 155 HB Enamel Paint is a heavy-duty two-pack high-build polyamide-cured epoxy topcoat engineered for demanding industrial environments (3:1 Base to Catalyst mixing ratio by volume).",
+    desc2: "Ideal for structural steelwork, storage tank exteriors, chemical plants, refineries, pipelines, and industrial machinery, it cures to a tough, abrasion-resistant film that resists moisture condensation, mineral oils, and chemical splashes. Available in 4L and 20L packs in White, Black, Dark Grey, Smoke Grey, Golden Yellow, Signal Red, Blue, Green, and custom RAL Classic shade codes."
+  },
+  "luxol high gloss enamel paint": {
+    finish: "Mirror-Like High Gloss",
+    dryingTime: "4 - 6 Hours (Touch Dry) / 12 - 16 Hours (Hard Dry)",
+    coverage: "130 - 150 sq.ft/L (Per Coat)",
+    washability: "High Washable & Oil/Stain-Resistant Film",
+    base: "Solvent-Based Alkyd Synthetic Enamel",
+    coats: "2 Coats over Metal / Wood Primer",
+    vocLevel: "Commercial Decorative Enamel Standard",
+    warranty: "2 Years Performance Warranty",
+    desc1: "Luxol High Gloss Enamel Paint by Berger Paints is a premium solvent-based synthetic enamel engineered to deliver a rich, mirror-like gloss finish on interior and exterior wood, mild steel, and metal surfaces.",
+    desc2: "Designed for doors, windows, grilles, gates, machinery, and furniture, it forms a tough, stain-resistant and anti-corrosive film that withstands daily wear. Available in White, Black, Dark Grey, Smoke Grey, Golden Yellow, Signal Red, Blue, Green, and custom RAL Classic shade codes."
+  },
+  "acrylic spray paint just spray classic shades": {
+    finish: "Super Smooth Gloss / Matt Acrylic Finish",
+    dryingTime: "Under 10 Mins (Touch Dry) / 1 Hour (Hard Dry)",
+    coverage: "15 - 20 sq.ft per 400ml Can (2 - 3 Mist Coats)",
+    washability: "Weather & UV-Resistant Acrylic Film",
+    base: "100% Pure Acrylic Aerosol Formula (Thailand)",
+    coats: "2 - 3 Uniform Mist Coats",
+    vocLevel: "Aerosol Propellant Standard",
+    warranty: "Manufacturer Quality Assured",
+    desc1: "Acrylic Spray Paint Just Spray Classic Shades (Thailand formulation) is an all-purpose fast-drying 100% pure acrylic aerosol spray paint engineered for super smooth coverage across metal, wood, plastics, glass, automobiles, and DIY crafts.",
+    desc2: "Equipped with a precision clog-resistant nozzle for effortless mist application, it dries in under 10 minutes and delivers lasting indoor and outdoor protection in Glossy Black, Glossy White, Signal Red, Matt Black, Medium Yellow, and Forest Green."
   }
 };
 
@@ -1099,6 +1200,7 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
   }, [product]);
 
   const metaDesc = useMemo(() => {
+    if ((product as any)?.seoDescription) return (product as any).seoDescription;
     const categoryLabel = product?.subCategory || product?.category || product?.topCategory || 'Quality paint';
     return `Buy ${product?.name} by ${product?.brand} online at wholesale prices. ${categoryLabel} with fast local delivery in Coimbatore.`;
   }, [product]);
@@ -1122,6 +1224,24 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
       productSlug === 'protecton-grey-oxide-zinc-chromate-primer'
     ) {
       return "Berger Paints Industrial Bison Zinc Phosphate Grey Primer";
+    }
+    if (
+      productSlug === 'berger-industrial-epoxy-paint-epilux-155-hb-enamel-paint' ||
+      productSlug === 'protecton-epilux-155-hb-coating'
+    ) {
+      return "Berger Industrial Epoxy Paint - Epilux 155 HB Enamel Paint | Buy Online";
+    }
+    if (
+      productSlug === 'luxol-high-gloss-enamel-paint' ||
+      productSlug === 'luxol-high-gloss-enamel'
+    ) {
+      return "Luxol High Gloss Enamel Paint by Berger Paints | Buy Online";
+    }
+    if (
+      productSlug === 'acrylic-spray-paint-just-spray-classic-shades' ||
+      productSlug === 'just-spray-js1-acrylic-spray-paint---classic-shades'
+    ) {
+      return "Acrylic Spray Paint Just Spray Classic Shades | Buy Online";
     }
     const name = productSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     return `${name} - Buy Online | Wholesale Price`;
@@ -1255,7 +1375,7 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
         type="product"
         title={product.seoTitle || `${product.name} by ${product.brand} - Buy Online | Wholesale Price`}
         description={metaDesc}
-        keywords={`${product.name}, ${product.brand}, ${product.category || product.topCategory}, ${product.subCategory}`}
+        keywords={(product as any).seoKeywords || `${product.name}, ${product.brand}, ${product.category || product.topCategory}, ${product.subCategory}`}
         url={`https://www.rainbowpaint.in/p/${product.slug || product.name.replace(/\s+/g, '-').toLowerCase()}`}
         image={displayImage || product.image}
         productBrand={product.brand}
@@ -1397,8 +1517,8 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
             {/* Custom Embedded Shades Selector */}
             {hasShades && product.shades && (
               <div className="mb-8">
-                <div className="flex items-center justify-between mb-3">
-                  <h2 className="text-[11px] text-zinc-400 font-display uppercase tracking-widest font-semibold flex items-center gap-1.5">
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <h2 className="text-[11px] text-zinc-800 font-display uppercase tracking-widest font-semibold flex items-center gap-1.5">
                     <Info className="w-3.5 h-3.5 text-gold"/> Select Color / Shade
                   </h2>
                   {selectedShade && (
@@ -1407,13 +1527,14 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
                     </span>
                   )}
                 </div>
-                <div className="bg-royale-surface border border-zinc-200/20 p-4 rounded-xl">
-                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
+                <div className="bg-white border border-zinc-200 p-4 rounded-xl shadow-xs">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-3">
                     {product.shades.map((shade: any) => {
                       const isSelected = selectedShade?.shadeCode === shade.code;
                       return (
                         <button
                           key={shade.code}
+                          type="button"
                           onClick={() => {
                             setSelectedShade({
                               id: `custom-shade-${product.id}-${shade.code}`,
@@ -1423,28 +1544,35 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
                               brand: product.brand
                             });
                           }}
-                          className={`flex flex-col items-center gap-1.5 p-2 rounded-xl border transition-all ${
+                          className={`flex flex-col items-center gap-1.5 p-2.5 rounded-xl border transition-all ${
                             isSelected 
-                              ? 'border-gold bg-gold/5 shadow-sm ring-1 ring-gold/20' 
-                              : 'border-zinc-200/10 hover:border-zinc-200/30 bg-zinc-800/20'
+                              ? 'border-gold bg-gold/10 shadow-sm ring-1 ring-gold/30' 
+                              : 'border-zinc-200 hover:border-zinc-300 bg-zinc-50/70 hover:bg-zinc-50'
                           }`}
                           title={`${shade.name} (${shade.code})`}
                         >
                           <div 
-                            className="w-8 h-8 rounded-full border border-white/10 shadow-inner relative flex items-center justify-center shrink-0"
+                            className="w-8 h-8 rounded-full border border-zinc-300 shadow-inner relative flex items-center justify-center shrink-0"
                             style={{ backgroundColor: shade.hex }}
                           >
                             {isSelected && (
-                              <div className="w-2.5 h-2.5 rounded-full bg-white shadow-sm ring-1 ring-black/20" />
+                              <div className="w-2.5 h-2.5 rounded-full bg-gold shadow-sm ring-2 ring-white" />
                             )}
                           </div>
-                          <span className="text-[9px] font-medium text-ivory/80 text-center truncate w-full leading-tight">
+                          <span className="text-[10px] font-semibold text-ivory text-center truncate w-full leading-tight">
                             {shade.name}
                           </span>
                         </button>
                       );
                     })}
                   </div>
+
+                  {(product as any).allowRalShades && (
+                    <RalShadePicker
+                      currentShade={selectedShade}
+                      onSelect={(shade) => setSelectedShade(shade)}
+                    />
+                  )}
                 </div>
               </div>
             )}

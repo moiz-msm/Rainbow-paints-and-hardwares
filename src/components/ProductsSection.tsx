@@ -23,6 +23,10 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { mockProducts, subCategories, brands, brandDetails } from "../data";
+import {
+  applyStandardEnamelIndustrialShades,
+  STANDARD_ENAMEL_INDUSTRIAL_SHADES,
+} from "../constants/industrialEnamelShades";
 import { useSearchParams, useNavigate, Link } from "react-router-dom";
 import { useCartStore } from "../store/useCartStore";
 import { shadeService, Shade } from "../services/shadeService";
@@ -385,6 +389,196 @@ export const InlineShadePicker = ({
   );
 };
 
+export const RalShadePicker = ({
+  onSelect,
+  currentShade,
+}: {
+  onSelect: (shade: Shade) => void;
+  currentShade?: Shade | null;
+}) => {
+  const [ralQuery, setRalQuery] = useState("");
+  const [results, setResults] = useState<Shade[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const debounced = useDebounce(ralQuery, 200);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    const q = debounced.trim();
+    if (!q) {
+      setResults([]);
+      return;
+    }
+    setLoading(true);
+    shadeService
+      .getShades({ brand: "ral", search: q, limit: 8 })
+      .then((res) => setResults(res.shades))
+      .finally(() => setLoading(false));
+  }, [debounced]);
+
+  const formatRalCode = (code: string) => {
+    const trimmed = code.trim();
+    return /^ral\b/i.test(trimmed) ? trimmed.toUpperCase() : `RAL ${trimmed.toUpperCase()}`;
+  };
+
+  const selectOfficialRalShade = (shade: Shade) => {
+    const formattedCode = formatRalCode(shade.shadeCode);
+    onSelect({
+      ...shade,
+      shadeCode: formattedCode,
+    });
+    setRalQuery("");
+    setShowDropdown(false);
+  };
+
+  const handleApplyCustomRal = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    const raw = ralQuery.trim();
+    if (!raw) return;
+
+    const cleanedCode = raw.replace(/^ral\s*/i, "").trim().toLowerCase();
+    const res = await shadeService.getShades({ brand: "ral", search: cleanedCode, limit: 20 });
+    const exactMatch = res.shades.find(
+      (s) =>
+        s.shadeCode.toLowerCase() === cleanedCode ||
+        s.shadeCode.toLowerCase() === raw.toLowerCase() ||
+        `ral ${s.shadeCode.toLowerCase()}` === raw.toLowerCase()
+    );
+
+    if (exactMatch) {
+      selectOfficialRalShade(exactMatch);
+      return;
+    }
+
+    const formattedCode = formatRalCode(raw);
+    onSelect({
+      id: `custom-ral-${formattedCode.replace(/\s+/g, "-").toLowerCase()}`,
+      name: `Custom ${formattedCode}`,
+      shadeCode: formattedCode,
+      hex: "#6B7280",
+      rgb: "107, 114, 128",
+      brand: "RAL Classic",
+      category: "RAL Shade",
+      finish: "Industrial Epoxy",
+      popular: false,
+      family: "custom",
+    });
+    setRalQuery("");
+    setShowDropdown(false);
+  };
+
+  return (
+    <div ref={containerRef} className="relative mt-3 pt-3 border-t border-zinc-200/70">
+      <div className="flex items-center justify-between gap-2 mb-2">
+        <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-600">
+          Or Enter / Search RAL Shade Code
+        </span>
+        {currentShade?.shadeCode?.startsWith("RAL") && (
+          <span className="text-[10px] font-mono font-bold text-gold bg-gold/10 px-2 py-0.5 rounded-full">
+            {currentShade.name} ({currentShade.shadeCode})
+          </span>
+        )}
+      </div>
+
+      <form onSubmit={handleApplyCustomRal} className="flex items-center gap-2">
+        <div className="relative flex-1">
+          <Search className="w-3.5 h-3.5 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+          <input
+            type="text"
+            value={ralQuery}
+            onFocus={() => setShowDropdown(true)}
+            onChange={(e) => {
+              setRalQuery(e.target.value);
+              setShowDropdown(true);
+            }}
+            placeholder="e.g. RAL 7035, 9005, Light Grey..."
+            className="w-full bg-white border border-zinc-200 rounded-lg py-2 pl-8 pr-7 text-xs text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30"
+          />
+          {ralQuery && (
+            <button
+              type="button"
+              onClick={() => {
+                setRalQuery("");
+                setResults([]);
+              }}
+              className="absolute right-2 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-700"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          )}
+        </div>
+        <button
+          type="submit"
+          disabled={!ralQuery.trim()}
+          className="px-3 py-2 rounded-lg bg-zinc-900 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider hover:bg-zinc-800 transition-colors disabled:opacity-40 shrink-0"
+        >
+          Apply RAL
+        </button>
+      </form>
+
+      <p className="text-[10px] text-zinc-500 mt-1.5">
+        Pick from RAL Classic suggestions or apply any custom RAL shade code.
+      </p>
+
+      <AnimatePresence>
+        {showDropdown && ralQuery.trim().length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            className="absolute left-0 right-0 mt-1.5 bg-white border border-zinc-200 rounded-xl shadow-xl z-[120] overflow-hidden"
+          >
+            {loading ? (
+              <div className="p-3 text-center text-[11px] text-zinc-500">Searching RAL shades...</div>
+            ) : results.length > 0 ? (
+              <div className="max-h-48 overflow-y-auto custom-scrollbar divide-y divide-zinc-100">
+                {results.map((shade) => (
+                  <button
+                    key={shade.id}
+                    type="button"
+                    onClick={() => selectOfficialRalShade(shade)}
+                    className="w-full flex items-center gap-2.5 px-3 py-2 hover:bg-zinc-50 text-left transition-colors"
+                  >
+                    <span
+                      className="w-6 h-6 rounded-md border border-zinc-300 shrink-0 shadow-xs"
+                      style={{ backgroundColor: shade.hex }}
+                    />
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs font-semibold text-zinc-900 truncate">{shade.name}</p>
+                      <p className="text-[10px] font-mono font-bold text-gold">RAL {shade.shadeCode}</p>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={() => handleApplyCustomRal()}
+                className="w-full px-3 py-2.5 text-left text-xs text-zinc-700 hover:bg-zinc-50 flex items-center justify-between"
+              >
+                <span>
+                  Use custom RAL code: <strong className="text-zinc-900">{formatRalCode(ralQuery)}</strong>
+                </span>
+                <span className="text-[10px] font-bold text-gold uppercase">Apply</span>
+              </button>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
 const AddToCartModal = ({
   product,
   onClose,
@@ -419,8 +613,20 @@ const AddToCartModal = ({
     );
   }, [product.subCategory, product.topCategory, product.name]);
 
+  const hasCustomShades = !!(product.shades && product.shades.length > 0);
+  const allowRalShades = !!(product as any).allowRalShades;
+
   useEffect(() => {
-    if (isPaint) {
+    if (product.shades && product.shades.length > 0) {
+      const first = product.shades[0];
+      setSelectedShade({
+        id: `custom-shade-${product.id}-${first.code}`,
+        name: first.name,
+        shadeCode: first.code,
+        hex: first.hex,
+        brand: product.brand,
+      });
+    } else if (isPaint) {
       const def = DEFAULT_WHITES[product.brand] ||
         DEFAULT_WHITES.default || { name: "White", code: "", hex: "#FFFFFF" };
       setSelectedShade({
@@ -431,7 +637,7 @@ const AddToCartModal = ({
         brand: product.brand,
       });
     }
-  }, [isPaint, product.brand]);
+  }, [isPaint, product]);
 
   const parsePrice = (priceVal: any) => {
     if (typeof priceVal === "number") return priceVal;
@@ -500,7 +706,7 @@ const AddToCartModal = ({
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
         onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-sm rounded-2xl shadow-xl overflow-hidden bg-white"
+        className="w-full max-w-sm max-h-[90vh] overflow-y-auto rounded-2xl shadow-xl bg-white"
       >
         <div className="flex justify-between items-center p-4 border-b border-zinc-100 bg-zinc-50/50">
           <h2 className="text-base font-bold text-zinc-900 line-clamp-1">
@@ -565,7 +771,61 @@ const AddToCartModal = ({
             </div>
           </div>
 
-          {isPaint && (
+          {hasCustomShades && (
+            <div className="pt-2 border-t border-zinc-100">
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-[10px] font-bold text-gold uppercase tracking-[0.2em]">
+                  Select Color / Shade
+                </h3>
+                {selectedShade && (
+                  <span className="text-[10px] font-semibold text-gold bg-gold/10 px-2 py-0.5 rounded-full">
+                    {selectedShade.name} ({selectedShade.shadeCode})
+                  </span>
+                )}
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                {product.shades.map((shade: any) => {
+                  const isSelected = selectedShade?.shadeCode === shade.code;
+                  return (
+                    <button
+                      key={shade.code}
+                      type="button"
+                      onClick={() =>
+                        setSelectedShade({
+                          id: `custom-shade-${product.id}-${shade.code}`,
+                          name: shade.name,
+                          shadeCode: shade.code,
+                          hex: shade.hex,
+                          brand: product.brand,
+                        })
+                      }
+                      className={`flex items-center gap-2 p-2 rounded-xl border text-left transition-all ${
+                        isSelected
+                          ? "border-gold bg-gold/10 ring-1 ring-gold/30"
+                          : "border-zinc-200 bg-white hover:border-zinc-300"
+                      }`}
+                    >
+                      <span
+                        className="w-5 h-5 rounded-full border border-zinc-300 shrink-0"
+                        style={{ backgroundColor: shade.hex }}
+                      />
+                      <span className="text-xs font-semibold text-zinc-900 truncate">
+                        {shade.name}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+              {allowRalShades && (
+                <RalShadePicker
+                  currentShade={selectedShade}
+                  onSelect={(shade) => setSelectedShade(shade)}
+                />
+              )}
+            </div>
+          )}
+
+          {!hasCustomShades && isPaint && (
             <div className="pt-2 border-t border-zinc-100">
               <h3 className="text-[10px] font-bold text-gold uppercase tracking-[0.2em] mb-2">
                 Color Shade
@@ -1046,6 +1306,61 @@ export default function ProductsSection({
           image: "/assets/aistudio/5a50c524-2a35-4a96-8e39-799a97d1c66a_02114f07.png"
         };
         key = mergedProduct.name.toLowerCase();
+      } else if (key === "protecton epilux 155 hb coating" || key === "berger industrial epoxy paint - epilux 155 hb enamel paint") {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "Berger Industrial Epoxy Paint - Epilux 155 HB Enamel Paint",
+          seoTitle: "Berger Industrial Epoxy Paint - Epilux 155 HB Enamel Paint | Buy Online",
+          seoDescription: "Buy Berger Industrial Epoxy Paint - Epilux 155 HB Enamel Paint in 4L (₹1,480) & 20L (₹6,800) packs. Heavy-duty two-pack polyamide epoxy coating in White, Black, Dark Grey, Smoke Grey, Golden Yellow, Signal Red, Blue, Green & custom RAL shades.",
+          seoKeywords: "Berger Industrial Epoxy Paint, Epilux 155 HB Enamel Paint, Berger Protecton Epilux 155 HB, industrial epoxy enamel 4L 20L, RAL shade epoxy paint, Dark Grey Smoke Grey Golden Yellow Signal Red Blue Green epoxy",
+          subCategory: "Epoxy Paint",
+          price: "₹ 1,480.00",
+          sizes: [4, 20],
+          sizePrices: { 4: 1480, 20: 6800 },
+          unit: "L",
+          shades: STANDARD_ENAMEL_INDUSTRIAL_SHADES,
+          allowRalShades: true,
+          properties: [
+            "Two-Pack High-Build Polyamide-Cured Industrial Epoxy Enamel (3:1 Mixing Ratio)",
+            "Superior defense against water condensation, mineral oils, and chemical splashes",
+            "Hard, abrasion-resistant gloss/semi-gloss topcoat for structural steel & machinery",
+            "Available in 4L & 20L packs — White, Black, Dark Grey, Smoke Grey, Golden Yellow, Signal Red, Blue, Green & RAL codes"
+          ],
+          image: "/assets/aistudio/Green_Berger_Epilux_Industrial_Paint_Drum_9548146d.png"
+        };
+        key = mergedProduct.name.toLowerCase();
+      } else if (key === "luxol high gloss enamel" || key === "luxol high gloss enamel paint") {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "Luxol High Gloss Enamel Paint",
+          seoTitle: "Luxol High Gloss Enamel Paint by Berger Paints | Buy Online",
+          seoDescription: "Buy Berger Luxol High Gloss Enamel Paint online at wholesale prices. Mirror-like high-gloss solvent-based enamel for wood & metal surfaces in White, Black, Dark Grey, Smoke Grey, Golden Yellow, Signal Red, Blue, Green & custom RAL shades.",
+          seoKeywords: "Luxol High Gloss Enamel Paint, Berger Luxol Hi-Gloss Enamel, Luxol Enamel Paint, metal and wood enamel paint, high gloss synthetic enamel, RAL shade enamel paint",
+          properties: [
+            "Mirror-Like High-Gloss Enamel Finish",
+            "Tough, Stain & Scratch-Resistant Protective Film",
+            "Anti-Corrosive Shield for Wood, Metal Grills & Doors",
+            "Available in 8 Standard Colors & Custom RAL Shade Codes"
+          ],
+          image: "/assets/aistudio/Lewis_Berger_LUXOL_Red_Paint_Can_98daa79b.png"
+        };
+        key = mergedProduct.name.toLowerCase();
+      } else if (key === "just spray js1 acrylic spray paint - classic shades" || key === "acrylic spray paint just spray classic shades") {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "Acrylic Spray Paint Just Spray Classic Shades",
+          seoTitle: "Acrylic Spray Paint Just Spray Classic Shades | Buy Online",
+          seoDescription: "Buy Acrylic Spray Paint Just Spray Classic Shades (400ml Aerosol Can) online at wholesale prices. Fast-drying 100% pure acrylic spray paint in Glossy Black, Glossy White, Signal Red, Matt Black, Medium Yellow & Forest Green.",
+          seoKeywords: "Acrylic Spray Paint Just Spray Classic Shades, Just Spray Acrylic Spray Paint, Just Spray Thailand 400ml, aerosol spray paint, fast dry acrylic spray paint, classic shades spray paint",
+          image: "/assets/aistudio/JUST_Thailand_Acrylic_Paint_Collection_72d74a65.png",
+          shades: Array.isArray(mergedProduct.shades)
+            ? mergedProduct.shades.map((s: any) => ({
+                ...s,
+                image: "/assets/aistudio/JUST_Thailand_Acrylic_Paint_Collection_72d74a65.png"
+              }))
+            : mergedProduct.shades
+        };
+        key = mergedProduct.name.toLowerCase();
       }
 
       // Retain accurate images for specific products from mock data
@@ -1160,7 +1475,7 @@ export default function ProductsSection({
         updatedP.subCategory = updatedP.subCategories[0];
       }
       
-      return updatedP;
+      return applyStandardEnamelIndustrialShades(updatedP);
     });
     
     // Filter out remaining color oxides
