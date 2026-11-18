@@ -1361,6 +1361,21 @@ export default function ProductsSection({
             : mergedProduct.shades
         };
         key = mergedProduct.name.toLowerCase();
+      } else if (key === "mrf metalcoat polyurethane finish" || key === "mrf metalcoat luxury 2k pu paint finish - for metal and wood" || key === "mrf metalcoat luxury 2k pu paint - metal and wood finish") {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "MRF MetalCoat Luxury 2K PU Paint - Metal and Wood Finish",
+          seoTitle: "MRF MetalCoat Luxury 2K PU Paint - Metal and Wood Finish",
+          seoDescription: "Buy MRF MetalCoat Luxury 2K PU Paint - Metal and Wood Finish online at wholesale prices. Two-component non-yellowing polyurethane coating for metal gates, grilles, wood doors & industrial structures in White, Black, Dark Grey, Smoke Grey, Golden Yellow, Signal Red, Blue, Green & custom RAL shades.",
+          seoKeywords: "MRF MetalCoat Luxury 2K PU Paint, Metal and Wood Finish, MRF MetalCoat PU Paint, 2K PU Paint for Metal and Wood, MRF Vapocure MetalCoat, RAL shade PU paint",
+          properties: [
+            "Two-component luxury 2K polyurethane (PU) finish for metal and wood",
+            "Outstanding non-yellowing high-gloss or matt finish",
+            "Superior abrasion, scratch, and chemical splash resistance",
+            "Perfect for metal gates, wooden doors, automotive touchups & industrial structures"
+          ]
+        };
+        key = mergedProduct.name.toLowerCase();
       }
 
       // Retain accurate images for specific products from mock data

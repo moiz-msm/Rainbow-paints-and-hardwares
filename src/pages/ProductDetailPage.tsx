@@ -255,6 +255,21 @@ export default function ProductDetailPage() {
                 : updatedP.shades
             };
             key = updatedP.name.toLowerCase();
+          } else if (key === 'mrf metalcoat polyurethane finish' || key === 'mrf metalcoat luxury 2k pu paint finish - for metal and wood' || key === 'mrf metalcoat luxury 2k pu paint - metal and wood finish') {
+            updatedP = {
+              ...updatedP,
+              name: 'MRF MetalCoat Luxury 2K PU Paint - Metal and Wood Finish',
+              seoTitle: 'MRF MetalCoat Luxury 2K PU Paint - Metal and Wood Finish',
+              seoDescription: 'Buy MRF MetalCoat Luxury 2K PU Paint - Metal and Wood Finish online at wholesale prices. Two-component non-yellowing polyurethane coating for metal gates, grilles, wood doors & industrial structures in White, Black, Dark Grey, Smoke Grey, Golden Yellow, Signal Red, Blue, Green & custom RAL shades.',
+              seoKeywords: 'MRF MetalCoat Luxury 2K PU Paint, Metal and Wood Finish, MRF MetalCoat PU Paint, 2K PU Paint for Metal and Wood, MRF Vapocure MetalCoat, RAL shade PU paint',
+              properties: [
+                'Two-component luxury 2K polyurethane (PU) finish for metal and wood',
+                'Outstanding non-yellowing high-gloss or matt finish',
+                'Superior abrasion, scratch, and chemical splash resistance',
+                'Perfect for metal gates, wooden doors, automotive touchups & industrial structures'
+              ]
+            };
+            key = updatedP.name.toLowerCase();
           }
           
           if (accurateImageNames.includes(key)) {
@@ -314,6 +329,9 @@ export default function ProductDetailPage() {
             ? 'luxolhighglossenamelpaint'
             : targetSlugNormalized === 'justsprayjs1acrylicspraypaintclassicshades'
             ? 'acrylicspraypaintjustsprayclassicshades'
+            : targetSlugNormalized === 'mrfmetalcoatpolyurethanefinish' ||
+              targetSlugNormalized === 'mrfmetalcoatluxury2kpupaintfinishformetalandwood'
+            ? 'mrfmetalcoatluxury2kpupaintmetalandwoodfinish'
             : targetSlugNormalized;
 
         found = dbProducts.find(
@@ -696,6 +714,18 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
     warranty: "Manufacturer Quality Assured",
     desc1: "Acrylic Spray Paint Just Spray Classic Shades (Thailand formulation) is an all-purpose fast-drying 100% pure acrylic aerosol spray paint engineered for super smooth coverage across metal, wood, plastics, glass, automobiles, and DIY crafts.",
     desc2: "Equipped with a precision clog-resistant nozzle for effortless mist application, it dries in under 10 minutes and delivers lasting indoor and outdoor protection in Glossy Black, Glossy White, Signal Red, Matt Black, Medium Yellow, and Forest Green."
+  },
+  "mrf metalcoat luxury 2k pu paint - metal and wood finish": {
+    finish: "Luxury 2K Polyurethane High Gloss / Matt Finish",
+    dryingTime: "30 - 45 Mins (Touch Dry) / 8 - 12 Hours (Hard Dry)",
+    coverage: "110 - 130 sq.ft/L (Per Coat)",
+    washability: "High Chemical, UV, Scratch & Abrasion Resistance",
+    base: "Two-Pack Aliphatic 2K Polyurethane (Metal & Wood)",
+    coats: "2 Coats over PU / Epoxy Primer",
+    vocLevel: "Commercial 2K PU Protective Standard",
+    warranty: "Long-Lasting Non-Yellowing 2K PU Protection",
+    desc1: "MRF MetalCoat Luxury 2K PU Paint - Metal and Wood Finish is a premium two-component polyurethane coating engineered by MRF Vapocure for superior durability, UV color stability, and mirror-like richness on both metal and wood substrates.",
+    desc2: "Ideal for luxury metal gates, window grilles, wooden doors, furniture, machinery, and exterior structures, it resists yellowing, weather exposure, and chemical splashes. Available in White, Black, Dark Grey, Smoke Grey, Golden Yellow, Signal Red, Blue, Green, and custom RAL Classic shade codes."
   }
 };
 
@@ -1242,6 +1272,14 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
       productSlug === 'just-spray-js1-acrylic-spray-paint---classic-shades'
     ) {
       return "Acrylic Spray Paint Just Spray Classic Shades | Buy Online";
+    }
+    if (
+      productSlug === 'mrf-metalcoat-luxury-2k-pu-paint---metal-and-wood-finish' ||
+      productSlug === 'mrf-metalcoat-luxury-2k-pu-paint-metal-and-wood-finish' ||
+      productSlug === 'mrf-metalcoat-luxury-2k-pu-paint-finish---for-metal-and-wood' ||
+      productSlug === 'mrf-metalcoat-polyurethane-finish'
+    ) {
+      return "MRF MetalCoat Luxury 2K PU Paint - Metal and Wood Finish";
     }
     const name = productSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     return `${name} - Buy Online | Wholesale Price`;
