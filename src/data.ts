@@ -3023,7 +3023,10 @@ const rawMockProducts = [
   },
   {
     "id": 4014,
-    "name": "PU Enamel",
+    "name": "Luxol PU Enamel Paint - For Metal and Wood Finishes",
+    "seoTitle": "Luxol PU Enamel Paint - For Metal and Wood Finishes",
+    "seoDescription": "Buy Berger Luxol PU Enamel Paint - For Metal and Wood Finishes online at wholesale prices. 4 Years Warranty polyurethane enamel for wooden doors, furniture, gates & metal surfaces in White, Black, Dark Grey, Smoke Grey, Golden Yellow, Signal Red, Blue, Green & custom RAL shades.",
+    "seoKeywords": "Luxol PU Enamel Paint, Luxol PU Enamel, Metal and Wood Finishes, Berger Luxol PU Enamel, polyurethane enamel paint, RAL shade PU enamel",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
     "subCategory": "Enamel Paint",
@@ -3035,13 +3038,13 @@ const rawMockProducts = [
     ],
     "unit": "L",
     "properties": [
-      "Engineering Grade Polyurethane Coating",
+      "Engineering Grade Polyurethane (PU) Enamel for Metal & Wood Finishes (4 Years Warranty)",
       "Extreme Hardness & Absolute Scratch Shield",
-      "Maintains Gloss and Color without Yellowing in UV",
-      "Resists Mild Chemical Splashes and Heavy Impact"
+      "Maintains High Gloss and Color without Yellowing in UV",
+      "Available in 8 Standard Colors & Custom RAL Shade Codes"
     ],
     "popular": false,
-    "image": "https://youconstruct.in/wp-content/uploads/2025/01/21iBQ0Lj6YL.jpg"
+    "image": "/assets/aistudio/Berger_Luxol_PU_Enamel_Paint_Can_fe1cf491.png"
   },
   {
     "id": 4015,
@@ -4962,7 +4965,10 @@ const rawMockProducts = [
   },
   {
     "id": 5007,
-    "name": "MRF Durothane PU Wood Finish",
+    "name": "MRF Durothane 2K PU Paint - Metal and Wood Finish",
+    "seoTitle": "MRF Durothane 2K PU Paint - Metal and Wood Finish",
+    "seoDescription": "Buy MRF Durothane 2K PU Paint - Metal and Wood Finish online at wholesale prices. Premium two-pack 2K polyurethane coating for wooden doors, furniture & metal surfaces with scratch, water & chemical resistance.",
+    "seoKeywords": "MRF Durothane 2K PU Paint, Metal and Wood Finish, MRF Durothane PU Wood Finish, 2K PU Paint for Metal and Wood, MRF Vapocure Durothane, polyurethane metal wood coating",
     "brand": "MRF Vapocure",
     "topCategory": "Home Paint",
     "subCategory": "Wood Finishes",
@@ -4973,10 +4979,10 @@ const rawMockProducts = [
     ],
     "unit": "L",
     "properties": [
-      "Premium two-pack polyurethane wood coating",
-      "Exceptional gloss retention and clarity that highlights wood grain",
+      "Premium two-pack 2K polyurethane finish for metal and wood",
+      "Exceptional gloss retention, clarity & smooth film build",
       "Outstanding resistance to scratching, water, and domestic chemicals",
-      "Suitable for both interior wood surfaces and heavy-wear areas"
+      "Suitable for wooden doors, furniture, gates & heavy-wear metal and wood surfaces"
     ],
     "popular": true,
     "image": "https://www.mrfpaint.com/wp-content/uploads/2024/10/Durothane.webp"

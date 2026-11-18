@@ -270,6 +270,37 @@ export default function ProductDetailPage() {
               ]
             };
             key = updatedP.name.toLowerCase();
+          } else if (key === 'mrf durothane pu wood finish' || key === 'mrf durothane 2k pu paint - metal and wood finish' || key === 'mrf durothane 2k pu paint -metal and wood finish') {
+            updatedP = {
+              ...updatedP,
+              name: 'MRF Durothane 2K PU Paint - Metal and Wood Finish',
+              seoTitle: 'MRF Durothane 2K PU Paint - Metal and Wood Finish',
+              seoDescription: 'Buy MRF Durothane 2K PU Paint - Metal and Wood Finish online at wholesale prices. Premium two-pack 2K polyurethane coating for wooden doors, furniture & metal surfaces with scratch, water & chemical resistance.',
+              seoKeywords: 'MRF Durothane 2K PU Paint, Metal and Wood Finish, MRF Durothane PU Wood Finish, 2K PU Paint for Metal and Wood, MRF Vapocure Durothane, polyurethane metal wood coating',
+              properties: [
+                'Premium two-pack 2K polyurethane finish for metal and wood',
+                'Exceptional gloss retention, clarity & smooth film build',
+                'Outstanding resistance to scratching, water, and domestic chemicals',
+                'Suitable for wooden doors, furniture, gates & heavy-wear metal and wood surfaces'
+              ]
+            };
+            key = updatedP.name.toLowerCase();
+          } else if (key === 'pu enamel' || key === 'luxol pu enamel paint - for metal and wood finishes') {
+            updatedP = {
+              ...updatedP,
+              name: 'Luxol PU Enamel Paint - For Metal and Wood Finishes',
+              seoTitle: 'Luxol PU Enamel Paint - For Metal and Wood Finishes',
+              seoDescription: 'Buy Berger Luxol PU Enamel Paint - For Metal and Wood Finishes online at wholesale prices. 4 Years Warranty polyurethane enamel for wooden doors, furniture, gates & metal surfaces in White, Black, Dark Grey, Smoke Grey, Golden Yellow, Signal Red, Blue, Green & custom RAL shades.',
+              seoKeywords: 'Luxol PU Enamel Paint, Luxol PU Enamel, Metal and Wood Finishes, Berger Luxol PU Enamel, polyurethane enamel paint, RAL shade PU enamel',
+              properties: [
+                'Engineering Grade Polyurethane (PU) Enamel for Metal & Wood Finishes (4 Years Warranty)',
+                'Extreme Hardness & Absolute Scratch Shield',
+                'Maintains High Gloss and Color without Yellowing in UV',
+                'Available in 8 Standard Colors & Custom RAL Shade Codes'
+              ],
+              image: '/assets/aistudio/Berger_Luxol_PU_Enamel_Paint_Can_fe1cf491.png'
+            };
+            key = updatedP.name.toLowerCase();
           }
           
           if (accurateImageNames.includes(key)) {
@@ -332,6 +363,10 @@ export default function ProductDetailPage() {
             : targetSlugNormalized === 'mrfmetalcoatpolyurethanefinish' ||
               targetSlugNormalized === 'mrfmetalcoatluxury2kpupaintfinishformetalandwood'
             ? 'mrfmetalcoatluxury2kpupaintmetalandwoodfinish'
+            : targetSlugNormalized === 'mrfdurothanepuwoodfinish'
+            ? 'mrfdurothane2kpupaintmetalandwoodfinish'
+            : targetSlugNormalized === 'puenamel'
+            ? 'luxolpuenamelpaintformetalandwoodfinishes'
             : targetSlugNormalized;
 
         found = dbProducts.find(
@@ -726,6 +761,30 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
     warranty: "Long-Lasting Non-Yellowing 2K PU Protection",
     desc1: "MRF MetalCoat Luxury 2K PU Paint - Metal and Wood Finish is a premium two-component polyurethane coating engineered by MRF Vapocure for superior durability, UV color stability, and mirror-like richness on both metal and wood substrates.",
     desc2: "Ideal for luxury metal gates, window grilles, wooden doors, furniture, machinery, and exterior structures, it resists yellowing, weather exposure, and chemical splashes. Available in White, Black, Dark Grey, Smoke Grey, Golden Yellow, Signal Red, Blue, Green, and custom RAL Classic shade codes."
+  },
+  "mrf durothane 2k pu paint - metal and wood finish": {
+    finish: "2K Polyurethane Gloss / Satin / Matt Finish",
+    dryingTime: "30 - 45 Mins (Touch Dry) / 8 - 12 Hours (Hard Dry)",
+    coverage: "110 - 130 sq.ft/L (Per Coat)",
+    washability: "High Scratch, Water, Stain & Chemical Resistance",
+    base: "Two-Pack Aliphatic 2K Polyurethane (Metal & Wood)",
+    coats: "2 Coats over PU Sealer / Metal Primer",
+    vocLevel: "Commercial 2K PU Coating Standard",
+    warranty: "Long-Lasting Scratch & Abrasion Protection",
+    desc1: "MRF Durothane 2K PU Paint - Metal and Wood Finish is a high-performance two-pack polyurethane coating engineered by MRF Vapocure for superior clarity, durability, and gloss retention across wood and metal surfaces.",
+    desc2: "Formulated to withstand daily scratches, water spills, and household or industrial chemicals, it is ideal for wooden doors, cabinetry, furniture, railings, gates, and architectural metalwork."
+  },
+  "luxol pu enamel paint - for metal and wood finishes": {
+    finish: "High-Gloss Polyurethane (PU) Enamel",
+    dryingTime: "3 - 4 Hours (Touch Dry) / 10 - 12 Hours (Hard Dry)",
+    coverage: "130 - 150 sq.ft/L (Per Coat)",
+    washability: "High Scratch, UV, Stain & Chemical Splash Resistance",
+    base: "Polyurethane-Modified Alkyd Enamel (Metal & Wood)",
+    coats: "2 Coats over Metal / Wood Primer",
+    vocLevel: "Commercial Decorative PU Enamel Standard",
+    warranty: "4 Years Performance Warranty",
+    desc1: "Luxol PU Enamel Paint - For Metal and Wood Finishes by Berger Paints is an engineering-grade polyurethane enamel formulated for superior surface hardness, non-yellowing UV stability, and mirror-rich gloss across metal and wood surfaces.",
+    desc2: "Backed by a 4 Years Warranty, it shields doors, windows, grilles, gates, wooden furniture, and machinery against scratches, daily wear, and mild chemical splashes. Available in White, Black, Dark Grey, Smoke Grey, Golden Yellow, Signal Red, Blue, Green, and custom RAL Classic shade codes."
   }
 };
 
@@ -1280,6 +1339,20 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
       productSlug === 'mrf-metalcoat-polyurethane-finish'
     ) {
       return "MRF MetalCoat Luxury 2K PU Paint - Metal and Wood Finish";
+    }
+    if (
+      productSlug === 'mrf-durothane-2k-pu-paint---metal-and-wood-finish' ||
+      productSlug === 'mrf-durothane-2k-pu-paint-metal-and-wood-finish' ||
+      productSlug === 'mrf-durothane-pu-wood-finish'
+    ) {
+      return "MRF Durothane 2K PU Paint - Metal and Wood Finish";
+    }
+    if (
+      productSlug === 'luxol-pu-enamel-paint---for-metal-and-wood-finishes' ||
+      productSlug === 'luxol-pu-enamel-paint-for-metal-and-wood-finishes' ||
+      productSlug === 'pu-enamel'
+    ) {
+      return "Luxol PU Enamel Paint - For Metal and Wood Finishes";
     }
     const name = productSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     return `${name} - Buy Online | Wholesale Price`;
