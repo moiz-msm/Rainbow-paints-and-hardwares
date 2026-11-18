@@ -1422,6 +1422,337 @@ export default function ProductsSection({
           ]
         };
         key = mergedProduct.name.toLowerCase();
+      } else if (key === "luxol anti rust 1k qd epoxy primer grey" || key === "luxol anti-rust quick drying epoxy primer") {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "Luxol Anti Rust 1K QD Epoxy Primer Grey",
+          seoTitle: "Luxol Anti Rust 1K QD Epoxy Primer Grey by Berger Paints | Buy Online",
+          seoDescription: "Buy Berger Luxol Anti Rust 1K QD Epoxy Primer Grey online at wholesale prices. Quick-drying single-pack (1K) anti-corrosive epoxy metal primer for steel, wood & masonry. Touch dry in 20 mins; available in 1L (₹440), 4L (₹1,550) & 20L (₹6,900) packs.",
+          seoKeywords: "Luxol Anti Rust 1K QD Epoxy Primer Grey, Berger Luxol Quick Drying Epoxy Primer, 1K Epoxy Primer Grey, Berger anti rust metal primer, quick dry epoxy primer 1L 4L 20L",
+          price: "₹ 440.00",
+          sizes: [1, 4, 20],
+          sizePrices: { 1: 440, 4: 1550, 20: 6900 },
+          unit: "L",
+          image: "/assets/aistudio/Lewis_Berger_Luxol_Anti-Rust_Primer_187bd4e7.png"
+        };
+        key = mergedProduct.name.toLowerCase();
+      } else if (key === "mrf single pack epoxy primer grey" || key === "mrf vapocure spep single pack epoxy primer grey") {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "MRF Single Pack Epoxy Primer Grey",
+          seoTitle: "MRF Single Pack Epoxy Primer Grey (SPEP) | MRF Vapocure | Buy Online",
+          seoDescription: "Buy MRF Single Pack Epoxy Primer Grey (Vapocure SPEP) online at wholesale prices. Fast-drying 1K solvent-based epoxy metal primer for mild steel, industrial fabrication & automotive parts. Available in 1L (₹420) & 4L (₹1,560) packs.",
+          seoKeywords: "MRF Single Pack Epoxy Primer Grey, MRF Vapocure SPEP Grey, MRF SP EP Primer Grey, 1K epoxy primer metal, single pack epoxy primer 1L 4L, anti corrosive grey primer",
+          price: "₹ 420.00",
+          sizes: [1, 4],
+          sizePrices: { 1: 420, 4: 1560 },
+          unit: "L",
+          image: "/assets/aistudio/MRF_Vapocure_SPEP_Epoxy_Primer_Tin_671ab43b.png"
+        };
+        key = mergedProduct.name.toLowerCase();
+      } else if (key === "pure turpentine oil (local brand)" || key === "turpentine oil - for thinning/drying oil paints") {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "Turpentine Oil - For Thinning/Drying Oil Paints",
+          slug: "turpentine-oil-for-thinning-drying-oil-paints",
+          seoTitle: "Turpentine Oil - For Thinning/Drying Oil Paints",
+          seoDescription: "Buy Turpentine Oil - For Thinning/Drying Oil Paints online at wholesale prices. Pure mineral turpentine oil solvent for thinning synthetic enamels, oil paints, varnishes & cleaning painting brushes and rollers.",
+          seoKeywords: "Turpentine Oil, Turpentine Oil For Thinning Drying Oil Paints, Mineral Turpentine Oil, Oil Paint Thinner, Enamel Paint Thinner, Paint Brush Cleaner, Turpentine Thinner 500ml 1L 3L 5L",
+          properties: [
+            "Genuine Mineral Turpentine Oil for Thinning & Drying Oil Paints",
+            "Enhances Synthetic Enamel Wetting, Coverage & Brush Flow Control",
+            "Effective for Cleansing Paint Brushes, Rollers & Spray Equipment",
+            "Aromatic Hydrocarbon Solvent with Controlled Evaporation Rate"
+          ],
+          image: "/assets/aistudio/Clear_Ribbed_Water_Bottle_52311ca2.png"
+        };
+        key = mergedProduct.name.toLowerCase();
+      } else if (key === "berger red oxide primer" || key === "berger red oxide metal primer") {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "Berger Red Oxide Primer",
+          slug: "berger-red-oxide-primer",
+          seoTitle: "Berger Red Oxide Primer (Solvent Thinnable) 1L & 4L | Buy Online",
+          seoDescription: "Buy Berger Red Oxide Primer (Solvent Thinnable) in 1L (₹210) & 4L (₹820) tins online at wholesale prices. Alkyd-based anti-corrosive metal primer for iron gates, grills & mild steel. Surface dry in 30 mins; coverage 100-120 sq.ft/L.",
+          seoKeywords: "Berger Red Oxide Primer, Berger Red Oxide Metal Primer, Solvent Thinnable Red Oxide Primer, Berger Red Oxide Primer 1L 4L price, anti rust metal primer, iron gate grill primer",
+          price: "₹ 210.00",
+          sizes: [1, 4],
+          sizePrices: { 1: 210, 4: 820 },
+          unit: "L",
+          image: "/assets/aistudio/Berger_Red_Oxide_Primer_Tin_2bba15c7.png"
+        };
+        key = mergedProduct.name.toLowerCase();
+      } else if (key === "berger bp zinc yellow primer" || key === "berger zinc yellow primer") {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "Berger BP Zinc Yellow Primer",
+          slug: "berger-bp-zinc-yellow-primer",
+          seoTitle: "Berger BP Zinc Yellow Primer (Solvent Thinnable) 1L & 4L | Buy Online",
+          seoDescription: "Buy Berger BP Zinc Yellow Primer (Solvent Thinnable) in 1L (₹290) & 4L (₹1,120) tins online at wholesale prices. Micro-zinc alkyd anti-corrosive primer for mild steel, GI, aluminum & coastal environments. Green Pro Certified.",
+          seoKeywords: "Berger BP Zinc Yellow Primer, Berger Zinc Yellow Primer, Zinc Chromate Metal Primer 1L 4L, Berger Solvent Thinnable Zinc Yellow Primer, non ferrous metal primer, anti corrosive yellow primer",
+          price: "₹ 290.00",
+          sizes: [1, 4],
+          sizePrices: { 1: 290, 4: 1120 },
+          unit: "L",
+          image: "/assets/aistudio/Berger_BP_Zinc_Yellow_Primer_Tin_147c7eea.png"
+        };
+        key = mergedProduct.name.toLowerCase();
+      } else if (key === "mrf xuper yellow primer" || key === "mrf vapocure xuper yellow primer") {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "MRF Xuper Yellow Primer",
+          slug: "mrf-xuper-yellow-primer",
+          seoTitle: "MRF Xuper Yellow Primer (Vapocure V254) 1L & 4L | Buy Online",
+          seoDescription: "Buy MRF Xuper Yellow Primer (MRF Vapocure V254 Zinc Chrome Yellow Metal Primer) in 1L (₹360) & 4L (₹1,420) tins online at wholesale prices. Fast-drying ~30 min surface dry anti-rust primer for iron, mild steel & structural fabrication.",
+          seoKeywords: "MRF Xuper Yellow Primer, MRF Vapocure Xuper Yellow Primer, MRF Zinc Chrome Yellow Primer V254, MRF Yellow Metal Primer 1L 4L, fast dry metal primer",
+          price: "₹ 360.00",
+          sizes: [1, 4],
+          sizePrices: { 1: 360, 4: 1420 },
+          unit: "L",
+          image: "/assets/aistudio/MRF_Vapocure_Xuper_Yellow_Primer_Can_117fa5e0.png"
+        };
+        key = mergedProduct.name.toLowerCase();
+      } else if (key === "protecton bergethane pu finish" || key === "industrial 2k bergerthane pu enamel paint") {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "Industrial 2K Bergerthane PU Enamel Paint",
+          slug: "industrial-2k-bergerthane-pu-enamel-paint",
+          seoTitle: "Industrial 2K Bergerthane PU Enamel Paint | 11L & 20L | Berger Protecton",
+          seoDescription: "Buy Industrial 2K Bergerthane PU Enamel Paint (Berger Protecton BTHANE PU) in 11L & 20L packs at wholesale prices. Two-pack 10:1 aliphatic acrylic polyurethane coating with UV & chemical resistance in standard & custom RAL shades.",
+          seoKeywords: "Industrial 2K Bergerthane PU Enamel Paint, Berger Protecton Bergethane PU, BTHANE PU Glossy Finish, 2K industrial polyurethane paint 11L 20L, RAL shade 2K PU enamel, Berger Thinner 825 PU coating",
+          price: "₹ 3,950.00",
+          sizes: [11, 20],
+          sizePrices: { 11: 3950, 20: 6950 },
+          unit: "L",
+          properties: [
+            "Two-Pack Aliphatic 2K Acrylic Polyurethane (10:1 Mixing Ratio with Catalyst M15C70)",
+            "Non-Yellowing High-Gloss UV & Weather Resistance for Tanks, Pipelines & Machinery",
+            "Available in 11L (10L Base + 1L Catalyst) & 20L Industrial Packs",
+            "Available in 8 Standard Colors & Custom RAL Classic Shade Codes"
+          ],
+          image: "/assets/aistudio/Berger_Protecton_Industrial_Paint_Pail_ee70a210.png"
+        };
+        key = mergedProduct.name.toLowerCase();
+      } else if (key === "berger industrial epilux 78 high build tank liner" || key === "epilux 78 hbtl" || key === "protecton epilux 78 hbtl") {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "Berger Industrial Epilux 78 High Build Tank Liner",
+          slug: "berger-industrial-epilux-78-high-build-tank-liner",
+          seoTitle: "Berger Industrial Epilux 78 High Build Tank Liner (20L) | White & Grey",
+          seoDescription: "Buy Berger Industrial Epilux 78 High Build Tank Liner (HBTL) 20L Pack online at wholesale prices. CFTRI & USFDA 21 CFR 175.300 compliant 2-pack amine-adduct epoxy tank coating in White & Grey for potable water, chemical & hydrocarbon tanks.",
+          seoKeywords: "Berger Industrial Epilux 78 High Build Tank Liner, Berger Epilux 78 HBTL White Grey, Epilux 78 20L Tank Coating, food grade potable water epoxy tank paint, CFTRI USFDA epoxy tank liner, Berger Catalyst 955938 Thinner 844",
+          price: "₹ 9,650.00",
+          sizes: [20],
+          sizePrices: { 20: 9650 },
+          unit: "L",
+          shades: [
+            { name: "White", code: "955000", hex: "#F8F9FA" },
+            { name: "Grey", code: "GREY", hex: "#8D9296" }
+          ],
+          allowRalShades: false,
+          image: "/assets/aistudio/Berger_Protecton_Green_Paint_Drum_823bd727.png"
+        };
+        key = mergedProduct.name.toLowerCase();
+      } else if (
+        key === "berger industrial ferrotol heat resistant aluminium paint (upto 250°c)" ||
+        key === "berger ferrotol hr aluminium paint" ||
+        key === "ferrotol hr aluminium medium"
+      ) {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "Berger Industrial Ferrotol Heat Resistant Aluminium Paint (Upto 250°C)",
+          slug: "berger-industrial-ferrotol-heat-resistant-aluminium-paint-upto-250c",
+          seoTitle: "Berger Industrial Ferrotol Heat Resistant Aluminium Paint (Upto 250°C) | 4L & 20L",
+          seoDescription: "Buy Berger Industrial Ferrotol HR Heat Resistant Aluminium Paint (up to 250°C) in 4L (₹1,620) & 20L (₹7,880) dual packs online at wholesale prices. Dual-pack oleoresinous leafing aluminium coating for boilers, stacks, chimneys, pipes & tanks.",
+          seoKeywords: "Berger Industrial Ferrotol Heat Resistant Aluminium Paint, Berger Ferrotol HR Aluminium 250C, heat resistant aluminium paint 250 degree, boiler chimney pipe heat paint, Berger Ferrotol Medium 541984 Al Paste 511985",
+          price: "₹ 1,620.00",
+          sizes: [4, 20],
+          sizePrices: { 4: 1620, 20: 7880 },
+          unit: "L",
+          image: "/assets/aistudio/Berger_Ferrotol_HR_Aluminium_Paint_Drum_b3ed3008.png"
+        };
+        key = mergedProduct.name.toLowerCase();
+      } else if (
+        key === "berger g.p synthetic enamel paint - industrial grade" ||
+        key === "berger butterfly g.p. synthetic enamel" ||
+        key === "berger gp synthetic enamel paint - industrial grade"
+      ) {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "Berger G.P Synthetic Enamel Paint - Industrial Grade",
+          slug: "berger-gp-synthetic-enamel-paint-industrial-grade",
+          seoTitle: "Berger G.P Synthetic Enamel Paint - Industrial Grade (20L) | RAL & Standard Shades",
+          seoDescription: "Buy Berger Butterfly G.P. Synthetic Enamel Paint - Industrial Grade in 20L drums (₹4,530) at wholesale prices. High-gloss alkyd enamel (80±5° gloss) for mild steel grilles, gates, machinery & interior wood in White, Black, Grey, Yellow, Red, Blue, Green & custom RAL shades.",
+          seoKeywords: "Berger G.P Synthetic Enamel Paint, Berger Butterfly GP Synthetic Enamel 20L, industrial synthetic enamel paint, bright grey synthetic enamel, Berger Thinner 800 enamel, RAL shade GP enamel 20L",
+          price: "₹ 4,530.00",
+          sizes: [20],
+          sizePrices: { 20: 4530 },
+          unit: "L",
+          image: "/assets/aistudio/Berger_Butterfly_Burgundy_Paint_Can_0bd8ae57.png"
+        };
+        key = mergedProduct.name.toLowerCase();
+      } else if (
+        key === "berger torpedo quick drying enamel paint - industrial grade" ||
+        key === "berger torpedo qd enamel paint - industrial grade" ||
+        key === "berger torpedo qd enamel"
+      ) {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "Berger Torpedo Quick Drying Enamel Paint - Industrial Grade",
+          slug: "berger-torpedo-quick-drying-enamel-paint-industrial-grade",
+          seoTitle: "Berger Torpedo Quick Drying Enamel Paint - Industrial Grade (20L) | RAL Shades",
+          seoDescription: "Buy Berger Torpedo Quick Drying (QD) Enamel Paint - Industrial Grade in 20L ColorBank drums (₹5,390) at wholesale prices. Rapid 30-min touch-dry & 60-min hard-dry alkyd enamel for machinery, fabrication & structural steel in standard & custom RAL shades.",
+          seoKeywords: "Berger Torpedo Quick Drying Enamel Paint, Berger Torpedo QD Enamel 20L, industrial QAD enamel paint, fast drying metal enamel 30 min dry, Berger Protecton Torpedo N Base V92I77, RAL shade QD enamel",
+          price: "₹ 5,390.00",
+          sizes: [20],
+          sizePrices: { 20: 5390 },
+          unit: "L",
+          image: "/assets/aistudio/Berger_Protecton_Green_Paint_Drum__1__0566f887.png"
+        };
+        key = mergedProduct.name.toLowerCase();
+      } else if (
+        key === "protecton epilux 610 epoxy primer" ||
+        key === "berger epilux 610 coating grey epoxy primer - industrial grade" ||
+        key === "epilux 610 coating grey"
+      ) {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "Berger Epilux 610 Coating Grey Epoxy Primer - Industrial Grade",
+          slug: "berger-epilux-610-coating-grey-epoxy-primer-industrial-grade",
+          seoTitle: "Berger Epilux 610 Coating Grey Epoxy Primer - Industrial Grade",
+          seoDescription: "Buy Berger Epilux 610 Coating Grey Epoxy Primer (P43633) - Industrial Grade online at wholesale prices. Two-pack epoxy zinc phosphate anti-corrosive primer (5:1 with Catalyst P43C50) in 4L & 18L drums; Berger Thinner 844 compatible.",
+          seoKeywords: "Berger Epilux 610 Coating Grey Epoxy Primer, Epilux 610 Grey P43633, Protecton Epilux 610 Epoxy Primer, Berger Catalyst P43C50, two pack epoxy grey metal primer, industrial zinc phosphate epoxy primer",
+          subCategory: "Primers",
+          price: "₹ 1,150.00",
+          sizes: [4, 18],
+          sizePrices: { 4: 1150, 18: 4140 },
+          unit: "L",
+          image: "/assets/aistudio/Berger_Epilux_610_Protective_Coating_Drum_7d1fa625.png"
+        };
+        key = mergedProduct.name.toLowerCase();
+      } else if (
+        key === "berger epoxy thinner 844 - industrial grade" ||
+        key === "berger thinner 844" ||
+        key === "thinner 844" ||
+        key === "epoxy thinner 844"
+      ) {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "Berger Epoxy Thinner 844 - Industrial Grade",
+          slug: "berger-epoxy-thinner-844-industrial-grade",
+          seoTitle: "Berger Epoxy Thinner 844 - Industrial Grade (EP-4/5 | 20L)",
+          seoDescription: "Buy Berger Protecton Epoxy Thinner 844 (EP-4/5, Code 844 900) in 20L drums at wholesale prices. Specialized solvent for Epilux 4, Epilux 5, Epilux 610 & 78.",
+          seoKeywords: "Berger Epoxy Thinner 844, Berger Thinner 844 EP-4/5, Berger 844 900 Thinner 20L, Epilux Epoxy Thinner 844, Epilux 610 thinner, Epilux 78 thinner, industrial epoxy paint thinner",
+          subCategory: "Thinners & Solvents",
+          price: "₹ 4,200.00",
+          sizes: [20],
+          sizePrices: { 20: 4200 },
+          unit: "L",
+          image: "/assets/aistudio/Berger_Protecton_Industrial_Thinner_Drum_b565d737.png"
+        };
+        key = mergedProduct.name.toLowerCase();
+      } else if (
+        key === "protecton epilux 5 coal tar epoxy" ||
+        key === "berger epilux 5 coal tar epoxy black" ||
+        key === "epilux 5 coal tar epoxy black" ||
+        key === "epilux-5 ctar epoxy-black"
+      ) {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "Berger Epilux 5 Coal Tar Epoxy Black",
+          slug: "berger-epilux-5-coal-tar-epoxy-black",
+          seoTitle: "Berger Epilux 5 Coal Tar Epoxy Black (20L Drum) | Protecton",
+          seoDescription: "Buy Berger Protecton Epilux 5 Coal Tar Epoxy Black (655800) 20L drum online at wholesale price. Heavy-duty 2K waterproof & chemical resistant steel coating.",
+          seoKeywords: "Berger Epilux 5 Coal Tar Epoxy Black, Epilux 5 Coal Tar Epoxy 20L, Berger 655800 655821 Catalyst, Protecton Epilux 5 Black, coal tar epoxy paint 20 litre drum, underground pipeline epoxy coating, marine hull black coal tar epoxy",
+          subCategory: "Epoxy Paint",
+          price: "₹ 5,150.00",
+          sizes: [20],
+          sizePrices: { 20: 5150 },
+          unit: "L",
+          image: "/assets/aistudio/Berger_Protecton_Epoxy_Paint_Drum_caad1fa1.png"
+        };
+        key = mergedProduct.name.toLowerCase();
+      } else if (
+        key === "mrf pu thinner for finish" ||
+        key === "thinner for finish" ||
+        key === "mrf thinner for finish"
+      ) {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "MRF PU Thinner For Finish",
+          slug: "mrf-pu-thinner-for-finish",
+          seoTitle: "MRF PU Thinner For Finish (TFF) | 1L, 5L & 20L | MRF Vapocure",
+          seoDescription: "Buy MRF PU Thinner For Finish (Thinner For Finish TFF) in 1L, 5L & 20L packs online at wholesale price. Slow-evaporating genuine solvent for WoodCoat & MetalCoat.",
+          seoKeywords: "MRF PU Thinner For Finish, MRF Thinner For Finish, MRF TFF Thinner, MRF WoodCoat Thinner, MRF MetalCoat Thinner, MRF Durothane PU Thinner 1L 5L 20L",
+          subCategory: "Thinners & Solvents",
+          price: "₹ 390.00",
+          sizes: [1, 5, 20],
+          sizePrices: { 1: 390, 5: 1920, 20: 7450 },
+          unit: "L",
+          image: "/assets/aistudio/Thinner_for_Finish_Product_Can_14e3833f.png"
+        };
+        key = mergedProduct.name.toLowerCase();
+      } else if (
+        key === "mrf epoxy thinner 1110 ep" ||
+        key === "mrf thinner 1110 ep" ||
+        key === "thinner 1110 ep"
+      ) {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "MRF Epoxy Thinner 1110 EP",
+          slug: "mrf-epoxy-thinner-1110-ep",
+          seoTitle: "MRF Epoxy Thinner 1110 EP | 1L, 5L & 20L | MRF Vapocure",
+          seoDescription: "Buy MRF Vapocure Epoxy Thinner 1110 EP in 1L, 5L & 20L packs online at wholesale prices. Specialized epoxy dilution solvent for Epidec primers & high-build finishes.",
+          seoKeywords: "MRF Epoxy Thinner 1110 EP, MRF Thinner 1110 EP, MRF Vapocure 1110 EP, MRF Epidec Epoxy Thinner, 1110EP thinner 5L 20L, industrial epoxy thinner",
+          subCategory: "Thinners & Solvents",
+          price: "₹ 400.00",
+          sizes: [1, 5, 20],
+          sizePrices: { 1: 400, 5: 1960, 20: 7650 },
+          unit: "L",
+          image: "/assets/aistudio/Blue_Vapocure_Paints_Thinner_Can_82b1b978.png"
+        };
+        key = mergedProduct.name.toLowerCase();
+      } else if (
+        key === "mrf melamine thinner 3830" ||
+        key === "mrf thinner 3830" ||
+        key === "thinner 3830"
+      ) {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "MRF Melamine Thinner 3830",
+          slug: "mrf-melamine-thinner-3830",
+          seoTitle: "MRF Melamine Thinner 3830 (PU & Wood) | 1L, 5L & 20L",
+          seoDescription: "Buy MRF Vapocure Melamine Thinner 3830 in 1L, 5L & 20L cans online at wholesale price. Medium-drying thinner for Melamine Aura wood finish & 2K PU sealers.",
+          seoKeywords: "MRF Melamine Thinner 3830, MRF Thinner 3830, MRF Vapocure 3830 Thinner 5L, MRF Melamine Aura Thinner, wood polish thinner 3830, MRF PU melamine thinner",
+          subCategory: "Thinners & Solvents",
+          price: "₹ 340.00",
+          sizes: [1, 5, 20],
+          sizePrices: { 1: 340, 5: 1650, 20: 6450 },
+          unit: "L",
+          image: "/assets/aistudio/MRF_Vapocure_Thinner_3830_Can_8b24fe26.png"
+        };
+        key = mergedProduct.name.toLowerCase();
+      } else if (
+        key === "mrf fast drying pu primer grey" ||
+        key === "mrf fast dry 2:30 primer" ||
+        key === "mrf 2:30 primer" ||
+        key === "mrf 2k pu primer grey"
+      ) {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "MRF Fast Drying PU Primer Grey",
+          slug: "mrf-fast-drying-pu-primer-grey",
+          seoTitle: "MRF Fast Drying PU Primer Grey (2:30 Hr Dry) | 1L & 4L",
+          seoDescription: "Buy MRF Vapocure Fast Dry 2:30 PU Primer Grey (with Hardener) in 1L & 4L packs online at wholesale prices. Dries in 2 Hr 30 Min @ 30°C for automotive & metal.",
+          seoKeywords: "MRF Fast Drying PU Primer Grey, MRF Fast Dry 2:30 Primer, MRF Vapocure 2K PU Primer Grey, 2K PU metal primer automotive, fast dry polyurethane surfacer 1L 4L, MRF PU primer with hardener",
+          subCategory: "Primers",
+          price: "₹ 520.00",
+          sizes: [1, 4],
+          sizePrices: { 1: 520, 4: 1980 },
+          unit: "L",
+          image: "/assets/aistudio/MRF_Vapocure_Paints_Product_Set_c2f2bd85.png"
+        };
+        key = mergedProduct.name.toLowerCase();
       }
 
       // Retain accurate images for specific products from mock data
@@ -1526,7 +1857,9 @@ export default function ProductsSection({
       if (nameLower.includes("enamel")) {
          subs.push("Synthetic Enamels", "Enamel Paint", "Wood Finishes");
       }
-      if (nameLower.includes("metal primer") || nameLower.includes("epoxy finish")) {
+      if (nameLower.includes("epoxy primer")) {
+         subs.push("Primers", "Epoxy Paint");
+      } else if (nameLower.includes("metal primer") || nameLower.includes("epoxy finish")) {
          subs.push("Primers", "Enamel Paint");
       }
       if (nameLower.includes("aluminium paint") || nameLower.includes("black board paint")) {

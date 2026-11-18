@@ -78,6 +78,7 @@ export const applyStandardEnamelIndustrialShades = <T extends Record<string, any
   return {
     ...product,
     shades: existingShades || STANDARD_ENAMEL_INDUSTRIAL_SHADES,
-    allowRalShades: true,
+    allowRalShades:
+      typeof product.allowRalShades === 'boolean' ? product.allowRalShades : true,
   };
 };
