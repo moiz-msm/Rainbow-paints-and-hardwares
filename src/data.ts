@@ -3990,6 +3990,68 @@ const rawMockProducts = [
     "slug": "berger-epoxy-thinner-844-industrial-grade"
   },
   {
+    "id": 4054,
+    "name": "Berger Acid Alkali & Heat Resistant Bituminous Black IS 158 Paint",
+    "slug": "berger-acid-alkali-heat-resistant-bituminous-black-is158-paint",
+    "seoTitle": "Berger Bituminous Black IS 158 Paint (20L) | Acid & Heat",
+    "seoDescription": "Buy Berger Black Bituminous IS 158 Paint (Code 767991) 20L drum online at wholesale price. Lead-free acid, alkali & heat resisting coating for steel & boilers.",
+    "seoKeywords": "Berger Acid Alkali and Heat Resistant Bituminous Black IS 158 Paint, Berger Black Bituminous IS 158, Berger 767991 Bituminous Paint 20L, IS 158 bituminous black paint, acid alkali heat resisting black paint, industrial black bitumen paint 20 litre drum, boiler funnel chimney black paint",
+    "description": "Berger Acid Alkali & Heat Resistant Bituminous Black IS 158 Paint (Protecton Code 767991) is a single-pack, lead-free ready-mixed bituminous protective coating conforming to BIS IS 158. Engineered for funnels, boilers, cooling towers, industrial steel structures, and underground concrete exposed to dilute acids, alkalis, chemical fumes, moisture, and elevated heat up to 300°C. Supplied exclusively in 20L industrial drums.",
+    "brand": "Berger Paints",
+    "topCategory": "Industrial",
+    "subCategory": "Industrial Paint and Coatings",
+    "price": "₹ 5,100.00",
+    "sizes": [
+      20
+    ],
+    "sizePrices": {
+      "20": 5100
+    },
+    "unit": "L",
+    "properties": [
+      "Conforms to BIS IS 158 (Lead-Free Acid, Alkali & Heat Resisting Bituminous Black)",
+      "Resists Dilute Acids, Alkalis, Moisture, Chemical Fumes & Heat Up to 300°C",
+      "Self-Priming Single-Pack Ready-Mixed Formula (8–14 sq.m/L @ ~30µm DFT; Hard Dry 6–8 Hrs)",
+      "Supplied Only in Sealed 20L Industrial Drums (Berger Protecton Code 767991)"
+    ],
+    "popular": true,
+    "isAuthorised": true,
+    "rating": 4.9,
+    "reviews": 32,
+    "image": "/assets/aistudio/Berger_Black_Bituminous_Paint_Drum_4a05332e.png"
+  },
+  {
+    "id": 4055,
+    "name": "Berger Lumeros Hot Oil Resistant Coating White",
+    "slug": "berger-lumeros-hot-oil-resistant-coating-white",
+    "seoTitle": "Berger Lumeros Hot Oil Resistant Coating White (HOR | 20L)",
+    "seoDescription": "Buy Berger Protecton Lumeros HOR Coating White (R59000) 20L drum online at wholesale price. Single-pack hot oil resistant white paint for transformer tanks.",
+    "seoKeywords": "Berger Lumeros Hot Oil Resistant Coating White, Berger Lumerous Hot Oil Resistant Coating White, Berger Lumeros HOR Coating White R59000, transformer internal white paint 20L, hot oil resistant transformer tank coating, IS 1180 IS 2026 transformer paint, Berger Protecton HOR coating",
+    "description": "Berger Lumeros Hot Oil Resistant Coating White (Berger Protecton Lumeros HOR Coating - White, Code R59000) is a specialized single-pack industrial coating engineered for internal power & distribution transformer tanks, oil-filled switchgear, and gearboxes. Resists prolonged hot mineral oil immersion (90°C–120°C) without blistering, softening, or contaminating dielectric oil BDV, while delivering bright white internal inspection visibility in 20L drums.",
+    "brand": "Berger Paints",
+    "topCategory": "Industrial",
+    "subCategory": "Industrial Paint and Coatings",
+    "price": "₹ 7,980.00",
+    "sizes": [
+      20
+    ],
+    "sizePrices": {
+      "20": 7980
+    },
+    "unit": "L",
+    "properties": [
+      "Official Berger Protecton Lumeros HOR Coating - White (Code R59000 | 20L Drum)",
+      "Resists Continuous Hot Transformer Oil Immersion (90°C–120°C; IS 335 / IEC 60296)",
+      "Dielectric-Safe Film: Zero Peeling, Softening or Oil BDV Contamination (IS 1180 / IS 2026)",
+      "High-Luminosity White Finish Enhances Internal Tank Inspection (10–12 sq.m/L @ 25–30µm DFT)"
+    ],
+    "popular": true,
+    "isAuthorised": true,
+    "rating": 4.9,
+    "reviews": 29,
+    "image": "/assets/aistudio/Berger_Protecton_Green_Paint_Drum__2__9f8732f4.png"
+  },
+  {
     "id": 5001,
     "name": "MRF MetalCoat Luxury 2K PU Paint - Metal and Wood Finish",
     "seoTitle": "MRF MetalCoat Luxury 2K PU Paint - Metal and Wood Finish",

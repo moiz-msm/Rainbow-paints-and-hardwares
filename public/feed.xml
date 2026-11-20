@@ -26926,5 +26926,47 @@
         <g:max_transit_time>0</g:max_transit_time>
       </g:shipping>
     </item>
+    <item>
+      <g:id>RP-4054-20l</g:id>
+      <g:item_group_id>4054</g:item_group_id>
+      <g:title>Berger Paints Berger Acid Alkali &amp; Heat Resistant Bituminous Black IS 158 Paint - 20L</g:title>
+      <g:description>Berger Black Bituminous Acid Alkali &amp; Heat Resisting IS 158 Paint (Code 767991) by Berger Paints - Industrial &gt; Industrial Paint and Coatings. Lead-free 20L drum resisting dilute acids, alkalis &amp; heat up to 300°C.</g:description>
+      <g:link>https://www.rainbowpaint.in/p/berger-acid-alkali-heat-resistant-bituminous-black-is158-paint?size=20</g:link>
+      <g:image_link>https://www.rainbowpaint.in/assets/aistudio/Berger_Black_Bituminous_Paint_Drum_4a05332e.png</g:image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>5100.00 INR</g:price>
+      <g:brand>Berger Paints</g:brand>
+      <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>0 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
+    </item>
+    <item>
+      <g:id>RP-4055-20l</g:id>
+      <g:item_group_id>4055</g:item_group_id>
+      <g:title>Berger Paints Berger Lumeros Hot Oil Resistant Coating White - 20L</g:title>
+      <g:description>Berger Protecton Lumeros HOR Coating - White (Code R59000) by Berger Paints - Industrial &gt; Industrial Paint and Coatings. Single-pack 20L drum resisting hot mineral transformer oil (90°C–120°C) without contaminating dielectric BDV.</g:description>
+      <g:link>https://www.rainbowpaint.in/p/berger-lumeros-hot-oil-resistant-coating-white?size=20</g:link>
+      <g:image_link>https://www.rainbowpaint.in/assets/aistudio/Berger_Protecton_Green_Paint_Drum__2__9f8732f4.png</g:image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>7980.00 INR</g:price>
+      <g:brand>Berger Paints</g:brand>
+      <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>0 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
+    </item>
   </channel>
 </rss>

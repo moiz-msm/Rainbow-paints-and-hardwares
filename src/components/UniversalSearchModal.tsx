@@ -310,6 +310,17 @@ const COMMON_TYPOS: Record<string, string> = {
   'fast dry primer': 'MRF Fast Drying PU Primer Grey',
   'pu primer': 'MRF Fast Drying PU Primer Grey',
   'mrf pu primer': 'MRF Fast Drying PU Primer Grey',
+  'bituminous': 'Berger Acid Alkali & Heat Resistant Bituminous Black IS 158 Paint',
+  'bituminous black': 'Berger Acid Alkali & Heat Resistant Bituminous Black IS 158 Paint',
+  'is 158': 'Berger Acid Alkali & Heat Resistant Bituminous Black IS 158 Paint',
+  'is158': 'Berger Acid Alkali & Heat Resistant Bituminous Black IS 158 Paint',
+  '767991': 'Berger Acid Alkali & Heat Resistant Bituminous Black IS 158 Paint',
+  'lumeros': 'Berger Lumeros Hot Oil Resistant Coating White',
+  'lumerous': 'Berger Lumeros Hot Oil Resistant Coating White',
+  'hor coating': 'Berger Lumeros Hot Oil Resistant Coating White',
+  'hot oil resistant': 'Berger Lumeros Hot Oil Resistant Coating White',
+  'transformer paint': 'Berger Lumeros Hot Oil Resistant Coating White',
+  'r59000': 'Berger Lumeros Hot Oil Resistant Coating White',
   '0953': '0952',
   '952': '0952',
 };
@@ -359,6 +370,8 @@ const SEARCHABLE_DICTIONARY = [
   'MRF Epoxy Thinner 1110 EP',
   'MRF Melamine Thinner 3830',
   'MRF Fast Drying PU Primer Grey',
+  'Berger Acid Alkali & Heat Resistant Bituminous Black IS 158 Paint',
+  'Berger Lumeros Hot Oil Resistant Coating White',
   '0952',
 ];
 

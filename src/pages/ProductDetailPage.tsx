@@ -649,6 +649,48 @@ export default function ProductDetailPage() {
               image: '/assets/aistudio/MRF_Vapocure_Paints_Product_Set_c2f2bd85.png'
             };
             key = updatedP.name.toLowerCase();
+          } else if (
+            key === 'berger acid alkali & heat resistant bituminous black is 158 paint' ||
+            key === 'berger acid alkali and heat resistant bituminous black is158 paint' ||
+            key === 'berger black bituminous is 158' ||
+            key === 'berger bituminous black is 158'
+          ) {
+            updatedP = {
+              ...updatedP,
+              name: 'Berger Acid Alkali & Heat Resistant Bituminous Black IS 158 Paint',
+              slug: 'berger-acid-alkali-heat-resistant-bituminous-black-is158-paint',
+              seoTitle: 'Berger Bituminous Black IS 158 Paint (20L) | Acid & Heat',
+              seoDescription: 'Buy Berger Black Bituminous IS 158 Paint (Code 767991) 20L drum online at wholesale price. Lead-free acid, alkali & heat resisting coating for steel & boilers.',
+              seoKeywords: 'Berger Acid Alkali and Heat Resistant Bituminous Black IS 158 Paint, Berger Black Bituminous IS 158, Berger 767991 Bituminous Paint 20L, IS 158 bituminous black paint, acid alkali heat resisting black paint, industrial black bitumen paint 20 litre drum, boiler funnel chimney black paint',
+              subCategory: 'Industrial Paint and Coatings',
+              price: '₹ 5,100.00',
+              sizes: [20],
+              sizePrices: { 20: 5100 },
+              unit: 'L',
+              image: '/assets/aistudio/Berger_Black_Bituminous_Paint_Drum_4a05332e.png'
+            };
+            key = updatedP.name.toLowerCase();
+          } else if (
+            key === 'berger lumeros hot oil resistant coating white' ||
+            key === 'berger lumerous hot oil resistant coating white' ||
+            key === 'lumeros hor coating - white' ||
+            key === 'lumeros hor coating white'
+          ) {
+            updatedP = {
+              ...updatedP,
+              name: 'Berger Lumeros Hot Oil Resistant Coating White',
+              slug: 'berger-lumeros-hot-oil-resistant-coating-white',
+              seoTitle: 'Berger Lumeros Hot Oil Resistant Coating White (HOR | 20L)',
+              seoDescription: 'Buy Berger Protecton Lumeros HOR Coating White (R59000) 20L drum online at wholesale price. Single-pack hot oil resistant white paint for transformer tanks.',
+              seoKeywords: 'Berger Lumeros Hot Oil Resistant Coating White, Berger Lumerous Hot Oil Resistant Coating White, Berger Lumeros HOR Coating White R59000, transformer internal white paint 20L, hot oil resistant transformer tank coating, IS 1180 IS 2026 transformer paint, Berger Protecton HOR coating',
+              subCategory: 'Industrial Paint and Coatings',
+              price: '₹ 7,980.00',
+              sizes: [20],
+              sizePrices: { 20: 7980 },
+              unit: 'L',
+              image: '/assets/aistudio/Berger_Protecton_Green_Paint_Drum__2__9f8732f4.png'
+            };
+            key = updatedP.name.toLowerCase();
           }
           
           if (accurateImageNames.includes(key)) {
@@ -734,6 +776,9 @@ export default function ProductDetailPage() {
             : targetSlugNormalized === 'protectonepilux5coaltarepoxy' ||
               targetSlugNormalized === 'epilux5coaltarepoxyblack'
             ? 'bergerepilux5coaltarepoxyblack'
+            : targetSlugNormalized === 'bergerlumeroushotoilresistantcoatingwhite' ||
+              targetSlugNormalized === 'lumeroshorcoatingwhite'
+            ? 'bergerlumeroshotoilresistantcoatingwhite'
             : targetSlugNormalized;
 
         found = dbProducts.find(
@@ -1381,6 +1426,30 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
     warranty: "MRF Corp Limited Authorized Corrosion & Adhesion Protection",
     desc1: "MRF Fast Drying PU Primer Grey (MRF Vapocure Fast Dry 2:30 Primer) is a two-component (2K) polyurethane anti-corrosive primer-surfacer packaged with matching PU Hardener for automotive body refinishing, OEM machinery, and ferrous/non-ferrous fabrication.",
     desc2: "Formulated to dry hard and ready for sanding or topcoating in just 2 hours 30 minutes at 30°C, its high-build grey film fills minor surface imperfections while locking out rust and maximizing topcoat adhesion under MRF MetalCoat, Durothane, and 2K PU enamels. Available in 1L and 4L combo packs."
+  },
+  "berger acid alkali & heat resistant bituminous black is 158 paint": {
+    finish: "Smooth Semi-Glossy to Eggshell Characteristic Jet Black",
+    dryingTime: "1 - 3 Hrs (Touch Dry) / 6 - 8 Hrs (Hard Dry) / 16 - 24 Hrs Overnight (Overcoat)",
+    coverage: "85 - 140 sq.ft/L (8 - 14 sq.m/L @ ~30 microns DFT per Coat)",
+    washability: "High Resistance to Dilute Acids, Alkalis, Moisture, Chemical Fumes & Heat (IS 158)",
+    base: "Single-Pack Ready-Mixed Lead-Free Inert Bituminous Composition (Code 767991 | IS 158)",
+    coats: "2 Coats Direct Self-Priming by Soft Brush/Roller (Use as Self-Finish Black Only)",
+    vocLevel: "Lead-Free IS 158 Standard; Flash Point >30°C; Heat Resisting Up to 300°C; 12 Mo Shelf Life",
+    warranty: "Berger Protecton Authorized Industrial IS 158 Protective Coating Standard",
+    desc1: "Berger Acid Alkali & Heat Resistant Bituminous Black IS 158 Paint (Protecton Code 767991) is a ready-mixed, single-pack lead-free inert bituminous protective coating manufactured to BIS IS 158 specifications for industrial ferrous steel, cast iron, underground concrete, boilers, funnels, chimneys, and cooling tower structures.",
+    desc2: "Formulated for self-priming brush or roller application without a separate primer, it resists dilute sulphuric acid, sodium carbonate alkalis, chemical fumes, moisture, and elevated dry heat up to 300°C at 8-14 sq.m/L (~30 µm DFT). Supplied exclusively in sealed 20L industrial drums (keep as a black self-finish to prevent bitumen bleed-through)."
+  },
+  "berger lumeros hot oil resistant coating white": {
+    finish: "Smooth High-Luminosity Semi-Gloss to Gloss White",
+    dryingTime: "30 - 60 Mins (Touch Dry) / 6 - 8 Hrs (Hard Dry & Recoat) / Full Cure Before Oil Fill",
+    coverage: "100 - 130 sq.ft/L (10 - 12 sq.m/L @ 25 - 30 microns DFT per Coat)",
+    washability: "Continuous Hot Mineral Transformer Oil Immersion (90°C - 120°C; IEC 60296 / IS 335)",
+    base: "Single-Pack (1K) Specialty Hot Oil Resistant (HOR) Industrial Resin (Code R59000)",
+    coats: "2 Coats @ 25 - 30 µm DFT Each (50 - 60 µm System DFT on Sa 2½ / St 3 Steel)",
+    vocLevel: "Non-Contaminating Dielectric Safe Film (Preserves Oil BDV; IS 1180 / IS 2026)",
+    warranty: "Berger Protecton Authorized Transformer & Oil-Immersed Equipment Coating",
+    desc1: "Berger Lumeros Hot Oil Resistant Coating White (Protecton Lumeros HOR Coating - White, Code R59000) is a specialized single-pack industrial protective coating engineered for internal walls of power and distribution transformer tanks, oil-filled switchgear, gearboxes, and oil-immersed electrical apparatus.",
+    desc2: "Engineered to withstand prolonged immersion in hot mineral insulating oils (IS 335 / IEC 60296) up to 90°C-120°C without blistering, softening, peeling, or degrading transformer oil dielectric breakdown voltage (BDV). Its bright white finish enhances internal tank visibility during core assembly and inspection; supplied exclusively in sealed 20L industrial drums."
   }
 };
 
@@ -2024,6 +2093,15 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
     }
     if (productSlug === 'mrf-fast-drying-pu-primer-grey') {
       return "MRF Fast Drying PU Primer Grey (2:30 Hr Dry) | 1L & 4L";
+    }
+    if (productSlug === 'berger-acid-alkali-heat-resistant-bituminous-black-is158-paint') {
+      return "Berger Bituminous Black IS 158 Paint (20L) | Acid & Heat";
+    }
+    if (
+      productSlug === 'berger-lumeros-hot-oil-resistant-coating-white' ||
+      productSlug === 'berger-lumerous-hot-oil-resistant-coating-white'
+    ) {
+      return "Berger Lumeros Hot Oil Resistant Coating White (HOR | 20L)";
     }
     const name = productSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     return `${name} - Buy Online | Wholesale Price`;

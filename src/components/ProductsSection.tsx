@@ -1753,6 +1753,48 @@ export default function ProductsSection({
           image: "/assets/aistudio/MRF_Vapocure_Paints_Product_Set_c2f2bd85.png"
         };
         key = mergedProduct.name.toLowerCase();
+      } else if (
+        key === "berger acid alkali & heat resistant bituminous black is 158 paint" ||
+        key === "berger acid alkali and heat resistant bituminous black is158 paint" ||
+        key === "berger black bituminous is 158" ||
+        key === "berger bituminous black is 158"
+      ) {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "Berger Acid Alkali & Heat Resistant Bituminous Black IS 158 Paint",
+          slug: "berger-acid-alkali-heat-resistant-bituminous-black-is158-paint",
+          seoTitle: "Berger Bituminous Black IS 158 Paint (20L) | Acid & Heat",
+          seoDescription: "Buy Berger Black Bituminous IS 158 Paint (Code 767991) 20L drum online at wholesale price. Lead-free acid, alkali & heat resisting coating for steel & boilers.",
+          seoKeywords: "Berger Acid Alkali and Heat Resistant Bituminous Black IS 158 Paint, Berger Black Bituminous IS 158, Berger 767991 Bituminous Paint 20L, IS 158 bituminous black paint, acid alkali heat resisting black paint, industrial black bitumen paint 20 litre drum, boiler funnel chimney black paint",
+          subCategory: "Industrial Paint and Coatings",
+          price: "₹ 5,100.00",
+          sizes: [20],
+          sizePrices: { 20: 5100 },
+          unit: "L",
+          image: "/assets/aistudio/Berger_Black_Bituminous_Paint_Drum_4a05332e.png"
+        };
+        key = mergedProduct.name.toLowerCase();
+      } else if (
+        key === "berger lumeros hot oil resistant coating white" ||
+        key === "berger lumerous hot oil resistant coating white" ||
+        key === "lumeros hor coating - white" ||
+        key === "lumeros hor coating white"
+      ) {
+        mergedProduct = {
+          ...mergedProduct,
+          name: "Berger Lumeros Hot Oil Resistant Coating White",
+          slug: "berger-lumeros-hot-oil-resistant-coating-white",
+          seoTitle: "Berger Lumeros Hot Oil Resistant Coating White (HOR | 20L)",
+          seoDescription: "Buy Berger Protecton Lumeros HOR Coating White (R59000) 20L drum online at wholesale price. Single-pack hot oil resistant white paint for transformer tanks.",
+          seoKeywords: "Berger Lumeros Hot Oil Resistant Coating White, Berger Lumerous Hot Oil Resistant Coating White, Berger Lumeros HOR Coating White R59000, transformer internal white paint 20L, hot oil resistant transformer tank coating, IS 1180 IS 2026 transformer paint, Berger Protecton HOR coating",
+          subCategory: "Industrial Paint and Coatings",
+          price: "₹ 7,980.00",
+          sizes: [20],
+          sizePrices: { 20: 7980 },
+          unit: "L",
+          image: "/assets/aistudio/Berger_Protecton_Green_Paint_Drum__2__9f8732f4.png"
+        };
+        key = mergedProduct.name.toLowerCase();
       }
 
       // Retain accurate images for specific products from mock data

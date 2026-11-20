@@ -29,6 +29,9 @@ export const isEnamelOrIndustrialShadeApplicable = (product: any): boolean => {
   const excludedTerms = [
     'primer',
     'coal tar',
+    'bituminous',
+    'lumeros',
+    'hot oil',
     'aluminium',
     'aluminum',
     'black board',
