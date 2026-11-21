@@ -691,6 +691,49 @@ export default function ProductDetailPage() {
               image: '/assets/aistudio/Berger_Protecton_Green_Paint_Drum__2__9f8732f4.png'
             };
             key = updatedP.name.toLowerCase();
+          } else if (
+            key === 'berger industrial aluminium paint is 2339 medium' ||
+            key === 'berger industrial aluminium paint is2339 medium' ||
+            key === 'berger aluminium is 2339 medium' ||
+            key === 'berger aluminium paint is 2339'
+          ) {
+            updatedP = {
+              ...updatedP,
+              name: 'Berger Industrial Aluminium Paint IS 2339 Medium',
+              slug: 'berger-industrial-aluminium-paint-is2339-medium',
+              seoTitle: 'Berger Industrial Aluminium Paint IS 2339 Medium (20L Kit)',
+              seoDescription: 'Buy Berger Industrial Aluminium Paint IS 2339 Medium (17.1L 661984 + 4.4Kg Paste 661985) 20L dual pack online. Reflective metallic coating up to 200°C heat.',
+              seoKeywords: 'Berger Industrial Aluminium Paint IS 2339 Medium, Berger Aluminium IS 2339 Medium 661984, Berger 661985 Aluminium Paste, IS 2339 dual container aluminium paint 20L, industrial heat reflective silver aluminium paint, storage tank pipeline structural steel aluminium paint, Berger Protecton aluminium paint wholesale',
+              subCategory: 'Industrial Paint and Coatings',
+              price: '₹ 6,695.00',
+              sizes: [20],
+              sizePrices: { 20: 6695 },
+              unit: 'L',
+              image: '/assets/aistudio/Berger_Green_Industrial_Paint_Drum_c47eabff.png'
+            };
+            key = updatedP.name.toLowerCase();
+          } else if (
+            key === 'berger boiler compound heat resistant ferrotol no. 1 paint' ||
+            key === 'berger boiler compound heat resistant ferrotol no.1 paint' ||
+            key === 'berger ferrotol - 1' ||
+            key === 'berger ferrotol no. 1' ||
+            key === 'ferrotol - 1'
+          ) {
+            updatedP = {
+              ...updatedP,
+              name: 'Berger Boiler Compound Heat Resistant Ferrotol No. 1 Paint',
+              slug: 'berger-boiler-compound-heat-resistant-ferrotol-no-1-paint',
+              seoTitle: 'Berger Ferrotol No. 1 Boiler Compound Paint (20L | 540°C)',
+              seoDescription: 'Buy Berger Protecton Ferrotol - 1 Boiler Compound Paint (Code 052991) 20L drum online. Graphite-bituminous coating for boiler interiors up to 540°C wet heat.',
+              seoKeywords: 'Berger Boiler Compound Heat Resistant Ferrotol No. 1 Paint, Berger Protecton Ferrotol - 1 052991, Ferrotol No 1 boiler interior paint 20L, heat resistant boiler drum tube coating 540C, graphite bituminous boiler compound paint, steam turbine economizer water wall coating, Berger Protecton industrial paint wholesale',
+              subCategory: 'Industrial Paint and Coatings',
+              price: '₹ 5,590.00',
+              sizes: [20],
+              sizePrices: { 20: 5590 },
+              unit: 'L',
+              image: '/assets/aistudio/Berger_Ferrotol_Industrial_Paint_Drum_628fd187.png'
+            };
+            key = updatedP.name.toLowerCase();
           }
           
           if (accurateImageNames.includes(key)) {
@@ -1450,6 +1493,30 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
     warranty: "Berger Protecton Authorized Transformer & Oil-Immersed Equipment Coating",
     desc1: "Berger Lumeros Hot Oil Resistant Coating White (Protecton Lumeros HOR Coating - White, Code R59000) is a specialized single-pack industrial protective coating engineered for internal walls of power and distribution transformer tanks, oil-filled switchgear, gearboxes, and oil-immersed electrical apparatus.",
     desc2: "Engineered to withstand prolonged immersion in hot mineral insulating oils (IS 335 / IEC 60296) up to 90°C-120°C without blistering, softening, peeling, or degrading transformer oil dielectric breakdown voltage (BDV). Its bright white finish enhances internal tank visibility during core assembly and inspection; supplied exclusively in sealed 20L industrial drums."
+  },
+  "berger industrial aluminium paint is 2339 medium": {
+    finish: "Bright, Lustrous Leafing Silvery Metallic Sheen",
+    dryingTime: "4 - 6 Hrs (Surface Dry) / 12 Hrs (Handle Dry) / 24 Hrs (Hard Dry & Overcoat @ 30°C)",
+    coverage: "130 - 160 sq.ft/L (12 - 15 sq.m/L @ 12 - 15 microns DFT per Coat; ~30-40% Vol. Solids)",
+    washability: "High Solar/Light Reflectivity, Moisture Shielding & Continuous Dry Heat Up to 200°C",
+    base: "Dual-Container BIS IS 2339 System: 17.1L Oleoresinous Medium (661984) + 4.4 Kg Leafing Al. Paste (661985)",
+    coats: "2 Coats over Primed Steel (Sa 2.5 / St 2-3); Brush Unthinned or Spray (Up to 10% Berger Thinner 800)",
+    vocLevel: "BIS IS 2339 Standard; Flash Point >30°C; 12 Months Sealed Shelf Life (20L Factory Combo Kit)",
+    warranty: "Berger Protecton Authorized BIS IS 2339 Industrial Protective Coating",
+    desc1: "Berger Industrial Aluminium Paint IS 2339 Medium (Code 661984) is a factory-matched dual-container BIS IS 2339 protective finish supplied as a complete 20L industrial kit containing 17.1L oleoresinous medium (661984) and 4.4 Kg high-grade leafing aluminium paste (661985, included in pack MRP ₹7,876). Separating the paste until site mixing preserves full leafing brilliance so aluminium flakes overlap horizontally into an impervious metallic shield.",
+    desc2: "Engineered for exterior surfaces of petroleum/oil/chemical storage tanks, bridges, pipelines, transmission towers, factory steel trusses, chimneys, and moderately heated equipment up to 200°C continuous dry heat. Delivers 12-15 sq.m/L at 12-15 µm DFT over Red Oxide Zinc Phosphate or Zinc Chromate primed steel; apply unthinned by brush or thin up to 10% with Berger Thinner 800 for conventional spray (2.8-3.5 kg/cm²)."
+  },
+  "berger boiler compound heat resistant ferrotol no. 1 paint": {
+    finish: "Smooth Matt Black (Graphite-Dispersed Bituminous Film)",
+    dryingTime: "6 - 8 Hrs (Touch Dry) / Overnight (Handle & Overcoat) + Mandatory 100°C Water-Bake Cure (8 Hrs)",
+    coverage: "~138 sq.ft/L (12.9 sq.m/L @ 35 microns DFT / 78 microns WFT per Coat)",
+    washability: "Continuous Hot Water & Steam Wet Heat Up to 540°C; Excellent Water Immersion & Abrasion Resistance",
+    base: "Single-Pack (1K) Graphite Suspended in Specialized Bituminous Medium (Protecton Code 052991)",
+    coats: "2 Coats Direct by Brush on Cleaned Bare Boiler Steel (Thin/Clean with Berger Thinner 800)",
+    vocLevel: "Internal Hot-Wet Systems Only (Not for Exterior Weathering); Flash Point >30°C; 12 Mo Shelf Life",
+    warranty: "Berger Protecton Authorized Industrial Boiler Interior Anti-Corrosive Compound",
+    desc1: "Berger Boiler Compound Heat Resistant Ferrotol No. 1 Paint (Berger Protecton Ferrotol - 1, Code 052991) is a single-pack Matt Black anti-corrosive graphite-in-bituminous protective composition engineered specifically for 'hot-wet' metal surfaces in continuous contact with boiling water and high-temperature steam up to 540°C.",
+    desc2: "Ideal for internal surfaces of boiler drums, boiler tubes, water walls, economizers, evaporators, steam accumulators, clarifiers, calorifiers, and steam turbine casings. Mandatory Curing: after 24 hours of air drying, fill the treated vessel with water and raise internal temperature to 100°C for at least 8 hours to bake Ferrotol No. 1 into an inert, insoluble, tightly bound barrier that protects against pitting and simplifies future descaling. Supplied in sealed 20L drums (MRP ₹6,579)."
   }
 };
 
@@ -2102,6 +2169,19 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
       productSlug === 'berger-lumerous-hot-oil-resistant-coating-white'
     ) {
       return "Berger Lumeros Hot Oil Resistant Coating White (HOR | 20L)";
+    }
+    if (
+      productSlug === 'berger-industrial-aluminium-paint-is2339-medium' ||
+      productSlug === 'berger-industrial-aluminium-paint-is-2339-medium'
+    ) {
+      return "Berger Industrial Aluminium Paint IS 2339 Medium (20L Kit)";
+    }
+    if (
+      productSlug === 'berger-boiler-compound-heat-resistant-ferrotol-no-1-paint' ||
+      productSlug === 'berger-boiler-compound-heat-resistant-ferrotol-no1-paint' ||
+      productSlug === 'berger-ferrotol-1'
+    ) {
+      return "Berger Ferrotol No. 1 Boiler Compound Paint (20L | 540°C)";
     }
     const name = productSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     return `${name} - Buy Online | Wholesale Price`;

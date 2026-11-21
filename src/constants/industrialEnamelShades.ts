@@ -30,6 +30,8 @@ export const isEnamelOrIndustrialShadeApplicable = (product: any): boolean => {
     'primer',
     'coal tar',
     'bituminous',
+    'ferrotol',
+    'boiler',
     'lumeros',
     'hot oil',
     'aluminium',

@@ -6,6 +6,7 @@ import { ArrowLeft, Calendar, Bookmark, Tag } from 'lucide-react';
 import { blogPosts } from '../data/blogPosts';
 import SEO from '../components/SEO';
 import LuxuryBackground from '../components/LuxuryBackground';
+import InformationalBlogTemplate from '../components/InformationalBlogTemplate';
 
 export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -14,39 +15,123 @@ export default function BlogPostPage() {
     return blogPosts.find((p) => p.slug === slug);
   }, [slug]);
 
+  const relatedPosts = useMemo(() => {
+    if (!post) return [];
+    return blogPosts.filter((p) => p.slug !== post.slug).slice(0, 2);
+  }, [post]);
+
   if (!post) {
     return <Navigate to="/blog" replace />;
   }
+
+  const postUrl = `https://www.rainbowpaint.in/blog/${post.slug}`;
+  const absoluteImg = post.image.startsWith('http')
+    ? post.image
+    : `https://www.rainbowpaint.in${post.image.startsWith('/') ? '' : '/'}${post.image}`;
+
+  const schemas: object[] = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.seoTitle || post.title,
+      "description": post.excerpt,
+      "image": absoluteImg,
+      "keywords": post.seoKeywords.join(', '),
+      "articleSection": post.category,
+      "author": {
+        "@type": "Organization",
+        "name": post.author
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Rainbow Paints and Hardwares",
+        "url": "https://www.rainbowpaint.in"
+      },
+      "datePublished": new Date(post.date).toISOString(),
+      "dateModified": new Date(post.date).toISOString(),
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": postUrl
+      },
+      "url": postUrl
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.rainbowpaint.in"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://www.rainbowpaint.in/blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": post.title,
+          "item": postUrl
+        }
+      ]
+    }
+  ];
+
+  if (post.faqs && post.faqs.length > 0) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": post.faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": f.answer
+        }
+      }))
+    });
+  }
+
+  if (post.featuredProducts && post.featuredProducts.length > 0) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": `Featured Products in ${post.title}`,
+      "itemListElement": post.featuredProducts.map((prod, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": prod.name,
+        "url": `https://www.rainbowpaint.in/p/${prod.slug}`
+      }))
+    });
+  }
+
+  const useInformationalTemplate =
+    post.template === 'informational-seo' ||
+    Boolean(post.keyTakeaways?.length || post.featuredProducts?.length || post.faqs?.length);
 
   return (
     <>
       <LuxuryBackground />
       <main className="min-h-screen pb-20 relative z-10">
         <SEO 
-          title={`${post.title} | Rainbow Paints`}
+          type="article"
+          title={`${post.seoTitle || post.title} | Rainbow Paints`}
           description={post.excerpt}
           keywords={post.seoKeywords.join(", ")}
           image={post.image}
-          url={`https://www.rainbowpaint.in/blog/${post.slug}`}
-          schema={{
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": post.title,
-            "description": post.excerpt,
-            "image": post.image,
-            "author": {
-              "@type": "Person",
-              "name": post.author
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Rainbow Paints and Hardwares"
-            },
-            "datePublished": new Date(post.date).toISOString(),
-            "url": `https://www.rainbowpaint.in/blog/${post.slug}`
-          }}
+          url={postUrl}
+          schema={schemas}
         />
 
+        {useInformationalTemplate ? (
+          <InformationalBlogTemplate post={post} relatedPosts={relatedPosts} />
+        ) : (
+        <>
         <article className="pt-24 md:pt-32">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <Link 
@@ -79,6 +164,7 @@ export default function BlogPostPage() {
               <img 
                 src={post.image} 
                 alt={post.title} 
+                referrerPolicy="no-referrer"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -151,6 +237,8 @@ export default function BlogPostPage() {
             </Link>
           </div>
         </div>
+        </>
+        )}
       </main>
     </>
   );

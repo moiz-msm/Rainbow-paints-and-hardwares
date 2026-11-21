@@ -4052,6 +4052,68 @@ const rawMockProducts = [
     "image": "/assets/aistudio/Berger_Protecton_Green_Paint_Drum__2__9f8732f4.png"
   },
   {
+    "id": 4056,
+    "name": "Berger Industrial Aluminium Paint IS 2339 Medium",
+    "slug": "berger-industrial-aluminium-paint-is2339-medium",
+    "seoTitle": "Berger Industrial Aluminium Paint IS 2339 Medium (20L Kit)",
+    "seoDescription": "Buy Berger Industrial Aluminium Paint IS 2339 Medium (17.1L 661984 + 4.4Kg Paste 661985) 20L dual pack online. Reflective metallic coating up to 200°C heat.",
+    "seoKeywords": "Berger Industrial Aluminium Paint IS 2339 Medium, Berger Aluminium IS 2339 Medium 661984, Berger 661985 Aluminium Paste, IS 2339 dual container aluminium paint 20L, industrial heat reflective silver aluminium paint, storage tank pipeline structural steel aluminium paint, Berger Protecton aluminium paint wholesale",
+    "description": "Berger Industrial Aluminium Paint IS 2339 Medium is a genuine BIS IS 2339 dual-container industrial protective coating supplied as a 20L factory kit combining 17.1L oleoresinous medium (Code 661984) with 4.4 Kg leafing aluminium paste (Code 661985). Delivers a brilliant silvery metallic barrier with high solar reflectivity, weather/moisture shielding, and continuous heat resistance up to 200°C for storage tanks, pipelines, bridges, structural steel, and chimneys.",
+    "brand": "Berger Paints",
+    "topCategory": "Industrial",
+    "subCategory": "Industrial Paint and Coatings",
+    "price": "₹ 6,695.00",
+    "sizes": [
+      20
+    ],
+    "sizePrices": {
+      "20": 6695
+    },
+    "unit": "L",
+    "properties": [
+      "Conforms to BIS IS 2339 Dual-Container Spec: 17.1L Medium (661984) + 4.4 Kg Al. Paste (661985)",
+      "Bright Leafing Metallic Silver Finish with High Solar/Heat Reflectivity (Up to 200°C Continuous)",
+      "Coverage 12–15 sq.m/L @ 12–15µm DFT | Surface Dry 4–6 Hrs, Hard Dry 24 Hrs | Thinner 800",
+      "Ideal for Storage Tanks, Pipelines, Structural Steel, Bridges, Chimneys & Industrial Sheds"
+    ],
+    "popular": true,
+    "isAuthorised": true,
+    "rating": 4.9,
+    "reviews": 36,
+    "image": "/assets/aistudio/Berger_Green_Industrial_Paint_Drum_c47eabff.png"
+  },
+  {
+    "id": 4057,
+    "name": "Berger Boiler Compound Heat Resistant Ferrotol No. 1 Paint",
+    "slug": "berger-boiler-compound-heat-resistant-ferrotol-no-1-paint",
+    "seoTitle": "Berger Ferrotol No. 1 Boiler Compound Paint (20L | 540°C)",
+    "seoDescription": "Buy Berger Protecton Ferrotol - 1 Boiler Compound Paint (Code 052991) 20L drum online. Graphite-bituminous coating for boiler interiors up to 540°C wet heat.",
+    "seoKeywords": "Berger Boiler Compound Heat Resistant Ferrotol No. 1 Paint, Berger Protecton Ferrotol - 1 052991, Ferrotol No 1 boiler interior paint 20L, heat resistant boiler drum tube coating 540C, graphite bituminous boiler compound paint, steam turbine economizer water wall coating, Berger Protecton industrial paint wholesale",
+    "description": "Berger Boiler Compound Heat Resistant Ferrotol No. 1 Paint (Berger Protecton Ferrotol - 1, Code 052991) is a specialized single-pack Matt Black anti-corrosive graphite-in-bituminous protective compound engineered for 'hot-wet' steel interiors exposed to continuous hot water and steam up to 540°C. Bakes into an inert, impermeable barrier inside boiler drums, tubes, water walls, economizers, evaporators, steam accumulators, and turbine casings while simplifying future descaling.",
+    "brand": "Berger Paints",
+    "topCategory": "Industrial",
+    "subCategory": "Industrial Paint and Coatings",
+    "price": "₹ 5,590.00",
+    "sizes": [
+      20
+    ],
+    "sizePrices": {
+      "20": 5590
+    },
+    "unit": "L",
+    "properties": [
+      "Official Berger Protecton Ferrotol - 1 (Code 052991 | 20L Drum | Matt Black Graphite-Bituminous)",
+      "Resists Continuous Hot Water & Steam Wet Heat Up to 540°C Inside Boiler Drums, Tubes & Economizers",
+      "Coverage ~12.9 sq.m/L @ 35µm DFT (78µm WFT) | Touch Dry 6–8 Hrs | Thin/Clean with Berger Thinner 800",
+      "Thermal Bake-Cure (100°C Water Fill for 8 Hrs After 24 Hrs Air Dry) Simplifies Future Descaling"
+    ],
+    "popular": true,
+    "isAuthorised": true,
+    "rating": 4.9,
+    "reviews": 31,
+    "image": "/assets/aistudio/Berger_Ferrotol_Industrial_Paint_Drum_628fd187.png"
+  },
+  {
     "id": 5001,
     "name": "MRF MetalCoat Luxury 2K PU Paint - Metal and Wood Finish",
     "seoTitle": "MRF MetalCoat Luxury 2K PU Paint - Metal and Wood Finish",

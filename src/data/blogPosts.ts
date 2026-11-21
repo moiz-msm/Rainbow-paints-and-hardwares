@@ -1,18 +1,223 @@
+export interface BlogComparisonRow {
+  cells: string[];
+  linkText?: string;
+  linkHref?: string;
+}
+
+export interface BlogFeaturedProduct {
+  name: string;
+  slug: string;
+  brand: string;
+  packSizes: string;
+  price: string;
+  image: string;
+  badge: string;
+  bestFor: string;
+}
+
+export interface BlogFaqItem {
+  question: string;
+  answer: string;
+}
+
 export interface BlogPost {
   id: string;
   slug: string;
   title: string;
+  seoTitle?: string;
   excerpt: string;
   content: string;
   author: string;
+  authorRole?: string;
   date: string;
   category: string;
   readTime: string;
   image: string;
   seoKeywords: string[];
+  template?: 'standard' | 'informational-seo';
+  keyTakeaways?: string[];
+  comparisonTable?: {
+    title: string;
+    subtitle?: string;
+    headers: string[];
+    rows: BlogComparisonRow[];
+  };
+  featuredProducts?: BlogFeaturedProduct[];
+  faqs?: BlogFaqItem[];
+  cta?: {
+    title: string;
+    subtitle: string;
+    primaryLabel: string;
+    primaryHref: string;
+    secondaryLabel?: string;
+    secondaryHref?: string;
+  };
 }
 
 export const blogPosts: BlogPost[] = [
+  {
+    "id": "industrial-thinners-mrf-berger-guide",
+    "slug": "why-professional-grade-thinners-mrf-berger-matter-industrial-paints",
+    "template": "informational-seo",
+    "title": "Why Professional-Grade Thinners Like MRF & Berger Matter for Industrial Paints",
+    "seoTitle": "Why MRF & Berger Industrial Paint Thinners Matter | Epoxy & PU Guide",
+    "excerpt": "Using cheap commercial solvents can ruin expensive 2K epoxy and polyurethane coatings overnight. Discover how OEM-matched Berger Thinner 844 and MRF Vapocure PU, Epoxy & Melamine thinners prevent pinholes, blushing, and delamination.",
+    "author": "Rainbow Paints Industrial Desk",
+    "authorRole": "Authorised Berger Protecton & MRF Vapocure Specialist",
+    "date": "November 20, 2026",
+    "category": "Industrial Coatings",
+    "readTime": "7 min read",
+    "image": "/assets/aistudio/industrial_thinner_coating_hero.jpg",
+    "seoKeywords": [
+      "Industrial Paint Thinner",
+      "Berger Epoxy Thinner 844",
+      "MRF PU Thinner For Finish",
+      "MRF Epoxy Thinner 1110 EP",
+      "MRF Melamine Thinner 3830",
+      "2K Epoxy Thinner",
+      "Polyurethane Thinner India",
+      "Industrial Coatings Coimbatore",
+      "OEM Paint Solvents",
+      "Prevent Orange Peel & Pinholes"
+    ],
+    "keyTakeaways": [
+      "Cheap local NC or reclaimed solvents contain trace moisture and uncalibrated aromatics that react with 2K polyurethane isocyanate hardeners—causing immediate bubbling, milkiness (blushing), and peeling.",
+      "Epoxy systems like Berger Epilux 610, Epilux 5, and Epilux 78 require calibrated epoxy diluents such as Berger Epoxy Thinner 844 (5%–10% by volume after induction) to achieve pinhole-free dry film thickness (DFT).",
+      "MRF Vapocure splits thinners by exact evaporation speed: slow-evaporating MRF PU Thinner For Finish (TFF) for 2K PU gloss, active-blend MRF Epoxy Thinner 1110 EP for Epidec epoxies, and medium-drying MRF Melamine Thinner 3830 for wood finishes.",
+      "Spending just 8%–12% of your coating budget on genuine factory-sealed OEM thinners protects 100% of your structural steel, machinery, and labour investment."
+    ],
+    "comparisonTable": {
+      "title": "Industrial Paint & OEM Thinner Compatibility Chart",
+      "subtitle": "Match your coating chemistry to the factory-approved Berger or MRF thinner for optimal spray atomization, curing, and dry film thickness.",
+      "headers": [
+        "Industrial Coating System",
+        "Recommended OEM Thinner",
+        "Typical Dilution",
+        "Key Performance Benefit"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Berger Epilux 610, Epilux 5 Coal Tar & Epilux 78 Tank Liner",
+            "Berger Epoxy Thinner 844 (EP-4/5)",
+            "5% – 10% by volume (after induction)",
+            "Zero solvent entrapment, clean airless spray leveling & uniform high-build DFT"
+          ],
+          "linkText": "Berger Epoxy Thinner 844 - Industrial Grade",
+          "linkHref": "/p/berger-epoxy-thinner-844-industrial-grade"
+        },
+        {
+          "cells": [
+            "MRF WoodCoat, MetalCoat, Durothane & 2K PU Topcoats",
+            "MRF PU Thinner For Finish (TFF)",
+            "15% – 25% by volume",
+            "Moisture-free slow evaporation eliminates orange peel, dry spray & humidity blush"
+          ],
+          "linkText": "MRF PU Thinner For Finish",
+          "linkHref": "/p/mrf-pu-thinner-for-finish"
+        },
+        {
+          "cells": [
+            "MRF Epidec 2K Epoxy Primers & Heavy-Duty Epoxy Enamels",
+            "MRF Epoxy Thinner 1110 EP",
+            "10% – 20% by volume",
+            "Balanced aromatic-ketone solvency preserves polyamide cure & flushes spray lines cleanly"
+          ],
+          "linkText": "MRF Epoxy Thinner 1110 EP",
+          "linkHref": "/p/mrf-epoxy-thinner-1110-ep"
+        },
+        {
+          "cells": [
+            "MRF Melamine Aura Gloss/Matt & Sanding Sealers",
+            "MRF Melamine Thinner 3830",
+            "15% – 25% by volume",
+            "Controlled medium flash-off releases trapped air bubbles for optical wood clarity"
+          ],
+          "linkText": "MRF Melamine Thinner 3830",
+          "linkHref": "/p/mrf-melamine-thinner-3830"
+        },
+        {
+          "cells": [
+            "Synthetic Alkyd Enamels, Oil Paints & Red Oxide Primers",
+            "Turpentine Oil (MTO)",
+            "5% – 10% by volume",
+            "Smooth brush drag reduction and economical roller/brush cleanup for 1K oil systems"
+          ],
+          "linkText": "Turpentine Oil - For Thinning/Drying Oil Paints",
+          "linkHref": "/p/turpentine-oil-for-thinning-drying-oil-paints"
+        }
+      ]
+    },
+    "featuredProducts": [
+      {
+        "name": "Berger Epoxy Thinner 844 - Industrial Grade",
+        "slug": "berger-epoxy-thinner-844-industrial-grade",
+        "brand": "Berger Paints",
+        "packSizes": "20L Drum",
+        "price": "₹ 4,200",
+        "image": "/assets/aistudio/Berger_Protecton_Industrial_Thinner_Drum_b565d737.png",
+        "badge": "2K Epoxy OEM",
+        "bestFor": "Official Protecton solvent (EP-4/5) for Epilux 4, 5, 78 & 610 epoxy primers and liners."
+      },
+      {
+        "name": "MRF PU Thinner For Finish",
+        "slug": "mrf-pu-thinner-for-finish",
+        "brand": "MRF Vapocure",
+        "packSizes": "1L, 5L & 20L",
+        "price": "₹ 390",
+        "image": "/assets/aistudio/Thinner_for_Finish_Product_Can_14e3833f.png",
+        "badge": "Urethane Grade",
+        "bestFor": "Moisture-free slow-evaporating 2K PU thinner for MRF MetalCoat, WoodCoat & Durothane."
+      },
+      {
+        "name": "MRF Epoxy Thinner 1110 EP",
+        "slug": "mrf-epoxy-thinner-1110-ep",
+        "brand": "MRF Vapocure",
+        "packSizes": "1L, 5L & 20L",
+        "price": "₹ 400",
+        "image": "/assets/aistudio/Blue_Vapocure_Paints_Thinner_Can_82b1b978.png",
+        "badge": "Epoxy Active",
+        "bestFor": "Precision industrial thinner for MRF Epidec epoxy primers, mid-coats & spray flushing."
+      },
+      {
+        "name": "MRF Melamine Thinner 3830",
+        "slug": "mrf-melamine-thinner-3830",
+        "brand": "MRF Vapocure",
+        "packSizes": "1L, 5L & 20L",
+        "price": "₹ 340",
+        "image": "/assets/aistudio/MRF_Vapocure_Thinner_3830_Can_8b24fe26.png",
+        "badge": "Medium Dry",
+        "bestFor": "Balanced wood & PU sealer solvent for MRF Melamine Aura gloss and matt finishes."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Can I use regular NC thinner or mineral turpentine oil in 2K epoxy or polyurethane industrial paints?",
+        "answer": "No. Regular NC thinners and mineral turpentine oil (MTO) contain alcohols, high-aliphatic cuts, and trace water that chemically disrupt epoxy polyamide curing and react violently with polyurethane isocyanate hardeners. This leads to pinholing, soft tacky films, cloudy blush, and early rusting. Always use an OEM epoxy thinner like Berger Thinner 844 or MRF 1110 EP for epoxies, and moisture-free MRF PU Thinner For Finish for 2K PU paints."
+      },
+      {
+        "question": "When should Berger Epoxy Thinner 844 be added during two-pack epoxy mixing?",
+        "answer": "Always mix the epoxy base and catalyst thoroughly first in the specified ratio (for example, 5:1 for Berger Epilux 610 or 3:1 for Berger Epilux 5 Coal Tar Epoxy), observe any induction time stated on the technical data sheet, and then add 5% to 10% Berger Epoxy Thinner 844 slowly while stirring to achieve target spray or brush viscosity."
+      },
+      {
+        "question": "What is the difference between MRF PU Thinner For Finish and MRF Melamine Thinner 3830?",
+        "answer": "MRF PU Thinner For Finish (TFF) is a moisture-free, slow-evaporating urethane-grade solvent formulated specifically for two-pack polyurethane topcoats like MRF MetalCoat, WoodCoat, and Durothane to prevent orange peel and blushing. MRF Melamine Thinner 3830 is a medium-drying solvent tailored for acid-cured MRF Melamine Aura wood finishes and sanding sealers to release trapped air bubbles quickly."
+      },
+      {
+        "question": "How much thinner should I buy for a 20-litre industrial epoxy or PU coating project?",
+        "answer": "As a practical fabrication-shop rule of thumb, plan for 15% to 25% of your total paint volume in matching OEM thinner—covering both coating dilution (5%–15%) and thorough cleaning of airless/HVLP spray guns, hoses, and mixing vessels before the two-pack resin cures inside the equipment."
+      }
+    ],
+    "cta": {
+      "title": "Protect Every Industrial Coating with Factory-Sealed OEM Thinners",
+      "subtitle": "Avoid costly recoating failures. Shop genuine Berger Protecton Thinner 844 and MRF Vapocure 1110 EP, TFF & 3830 thinners alongside heavy-duty epoxy primers and 2K PU enamels at wholesale Coimbatore dealer rates.",
+      "primaryLabel": "Shop Thinners & Solvents",
+      "primaryHref": "/c/thinners-&-solvents",
+      "secondaryLabel": "Explore Industrial Coatings",
+      "secondaryHref": "/c/industrial-paint-and-coatings"
+    },
+    "content": "## The Most Overlooked Reason Industrial Coatings Fail\n\nAcross fabrication yards, OEM machinery lines, structural steel workshops, and chemical plants, project managers spend lakhs investing in high-build two-pack epoxies and UV-resistant polyurethane enamels—only to cut corners on the final 10% of the budget by buying generic, unbranded commercial thinner.\n\n**That single shortcut is one of the leading causes of premature industrial paint failure.**\n\nA professional industrial thinner is not just a liquid that makes thick paint easier to spray. It is a precisely engineered **chemical carrier** calibrated to dissolve specific resin polymers, regulate wet-film flow, control evaporation speed across ambient Indian temperatures, and evacuate cleanly from the film before cross-linking completes.\n\n---\n\n## What Happens When You Use Local or Mismatched Thinners?\n\nGeneric NC thinners, recycled solvents, and standard [Turpentine Oil](/p/turpentine-oil-for-thinning-drying-oil-paints) work well for basic oil-based enamels—but pouring them into heavy-duty 2K epoxy or polyurethane systems triggers irreversible film defects:\n\n1. **Moisture Contamination & Micro-Bubbling in 2K PU Paints:** Urethane hardeners (isocyanates) react instantly with even 0.1% trace water or alcohol present in cheap thinners. The reaction releases CO₂ gas trapped inside the curing coat, leaving pinholes, haze, and brittle blistering.\n2. **Solvent Entrapment & Soft Films in High-Build Epoxies:** Unbalanced heavy solvents fail to evaporate before the surface skins over, trapping solvent underneath coatings like [Berger Epilux 5 Coal Tar Epoxy Black](/p/berger-epilux-5-coal-tar-epoxy-black) or [Berger Industrial Epilux 78 High Build Tank Liner](/p/berger-industrial-epilux-78-high-build-tank-liner). Under immersion or thermal load, trapped solvent causes osmotic blistering.\n3. **Orange Peel & Dry Spray:** Solvents that flash off too rapidly in warm Indian workshops (30°C–40°C) prevent atomized paint droplets from coalescing into a smooth glass-like film—ruining gloss on [Industrial 2K Bergerthane PU Enamel Paint](/p/industrial-2k-bergerthane-pu-enamel-paint) and [MRF MetalCoat Luxury 2K PU Paint](/p/mrf-metalcoat-luxury-2k-pu-paint-metal-and-wood-finish).\n4. **Resin Kick-Out (Gelling in the Pot):** Wrong solvency strength causes epoxy or PU polymers to separate or gel prematurely in the mixing bucket, destroying an entire 20-litre industrial batch.\n\n> **Industrial Coating Rule of Thumb:** Never compromise a ₹5,000–₹10,000 drum of two-pack epoxy or 2K PU coating to save ₹50 per litre on uncertified thinner. The chemical system is only as strong as the solvent carrying it onto the steel.\n\n---\n\n## Why Berger Protecton Epoxy Thinner 844 Sets the Industrial Benchmark\n\nWhen working with Berger’s heavy-duty Protecton protective coatings, [Berger Epoxy Thinner 844 - Industrial Grade](/p/berger-epoxy-thinner-844-industrial-grade) (designated **EP-4/5**, Code `844 900`) is the factory-specified solvent blend.\n\nFormulated from carefully balanced aromatic and aliphatic hydrocarbons (specific gravity `0.84–0.86`, flash point `>35°C`), Thinner 844 is engineered specifically to work alongside:\n\n- **[Berger Epilux 610 Coating Grey Epoxy Primer - Industrial Grade](/p/berger-epilux-610-coating-grey-epoxy-primer-industrial-grade):** Keeps zinc-phosphate epoxy primers at optimal spray viscosity so steel beams achieve uniform `25–35 µm` DFT without sagging.\n- **[Berger Epilux 5 Coal Tar Epoxy Black](/p/berger-epilux-5-coal-tar-epoxy-black):** Cuts high-viscosity coal tar pitch-epoxy (`66±2%` volume solids) smoothly for `100–125 µm` per-coat immersion builds on marine hulls and buried pipelines.\n- **[Berger Industrial Epilux 78 High Build Tank Liner](/p/berger-industrial-epilux-78-high-build-tank-liner):** Ensures pinhole-free film continuity inside potable water and industrial storage tanks.\n\nBy adding just **5%–10% Berger Thinner 844** strictly *after* mixing base and catalyst and observing induction time, applicators unlock effortless airless atomization plus high-solvency flushing of spray lines before the epoxy hardens.\n\n---\n\n## Precision Solvent Engineering: Inside the MRF Vapocure Thinner Range\n\nMRF Corp Limited’s **Vapocure** coatings are renowned across Indian automotive refinishing, machinery fabrication, and luxury wood finishing because MRF does not sell a 'one-size-fits-all' thinner. Instead, every resin chemistry gets a purpose-built solvent:\n\n### 1. MRF PU Thinner For Finish (TFF) — For Flawless 2K Polyurethane Gloss\n[MRF PU Thinner For Finish](/p/mrf-pu-thinner-for-finish) is a genuine, moisture-free, **slow-evaporating urethane-grade thinner**. Designed for [MRF MetalCoat Luxury 2K PU Paint](/p/mrf-metalcoat-luxury-2k-pu-paint-metal-and-wood-finish), WoodCoat, Durothane, and [MRF Fast Drying PU Primer Grey](/p/mrf-fast-drying-pu-primer-grey), its slow flash-off extends wet-edge open time even in hot Coimbatore summers—eliminating orange peel, humidity blushing, and dull overspray.\n\n### 2. MRF Epoxy Thinner 1110 EP — For Heavy-Duty Epidec Epoxy Systems\n[MRF Epoxy Thinner 1110 EP](/p/mrf-epoxy-thinner-1110-ep) uses an active aromatic-ketone blend engineered specifically for MRF Epidec 2K epoxy primers, zinc-phosphate metal primers, and chemical-resistant epoxy finishes. It delivers crisp spray breakup and rapid gun/hose flushing without destabilizing curing speed.\n\n### 3. MRF Melamine Thinner 3830 — For Acid-Cured Melamine & Wood Sealers\nFor interior wood polish and sealer workflows, [MRF Melamine Thinner 3830](/p/mrf-melamine-thinner-3830) provides a **controlled medium-drying evaporation curve**. It gives acid-cured Melamine Aura and PU sanding sealers enough open time to expel micro-bubbles and self-level into crystal-clear gloss or velvety matt woodwork.\n\n---\n\n## 5 Best Practices for Diluting Industrial Coatings on Site\n\nFollow these shop-floor protocols to get maximum adhesion, corrosion defense, and finish longevity out of every drum:\n\n1. **Always Mix Base & Hardener First:** For 2K epoxies and 2K PU paints, combine Part A (Base) and Part B (Catalyst/Hardener) in the exact volume ratio first, allow the recommended induction time, and add OEM thinner last.\n2. **Measure Dilution—Never Guess:** Stick strictly to `5%–10%` for high-build epoxies and `15%–25%` for 2K PU/melamine spray coats. Over-thinning drops Dry Film Thickness (DFT) below anti-corrosion minimums and causes runs.\n3. **Never Mix Solvent Families:** Do not pour alkyd [Turpentine Oil](/p/turpentine-oil-for-thinning-drying-oil-paints) into epoxy/PU coatings, and avoid using fast NC thinner in slow-curing topcoats like [Berger Torpedo Quick Drying Enamel](/p/berger-torpedo-quick-drying-enamel-paint-industrial-grade) or 2K PU enamels unless explicitly permitted on the datasheet.\n4. **Reseal Containers Immediately:** Polyurethane thinners absorb atmospheric humidity if left open, which silently ruins subsequent 2K PU batches.\n5. **Flush Spray Equipment Immediately After Use:** Run matching OEM thinner through HVLP guns, pressure pots, and airless lines immediately after spraying—once a 2K epoxy or PU cures inside nozzles, mechanical replacement is the only fix.\n\n---\n\n## Where to Buy Genuine Berger & MRF Industrial Thinners Online\n\nCounterfeit and diluted tins sold in unorganised markets are a major hazard for contractors and industrial procurement teams. At **Rainbow Paints & Hardwares (Coimbatore)**, every 1L, 5L, and 20L drum of [Berger Epoxy Thinner 844](/p/berger-epoxy-thinner-844-industrial-grade), [MRF PU Thinner For Finish](/p/mrf-pu-thinner-for-finish), [MRF Epoxy Thinner 1110 EP](/p/mrf-epoxy-thinner-1110-ep), and [MRF Melamine Thinner 3830](/p/mrf-melamine-thinner-3830) is supplied **100% factory-sealed at wholesale dealer pricing**.\n\nNeed help pairing the right thinner with your next structural steel, transformer tank, or automotive PU job? Browse our complete [Thinners & Solvents catalogue](/c/thinners-&-solvents) or explore all [Industrial Paints & Coatings](/c/industrial-paint-and-coatings)."
+  },
   {
     "id": "glossary-of-finishes",
     "slug": "understanding-paint-finishes-glossary",
