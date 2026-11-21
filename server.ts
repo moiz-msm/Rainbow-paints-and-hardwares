@@ -5,7 +5,7 @@ import { GoogleGenAI } from "@google/genai";
 import { Resend } from "resend";
 
 import { mockProducts, brands, topCategories, subCategories } from "./src/data";
-import { getRichProductContent } from "./src/data/richProductContent";
+import { getProductSeoData } from "./src/utils/productSeo";
 
 let allShades: any[] = [];
 try {
@@ -1143,15 +1143,24 @@ Return exactly a valid JSON object with {"name": "string", "pincode": "string"}.
           const slug = decodeURIComponent(url.split('/')[2]);
           const product: any = mockProducts.find(p => ((p as any).slug || p.name.replace(/\s+/g, '-').toLowerCase()) === slug);
           if (product) {
-            const richContent = getRichProductContent(product.name);
-            title =
-              richContent?.seo?.title ||
-              product.seoTitle ||
-              `${product.name} | ${product.brand} | Buy Online in Coimbatore | Rainbow Paints`;
-            desc =
-              richContent?.seo?.description ||
-              product.seoDescription ||
-              `Buy ${product.name} online in Coimbatore. Genuine ${product.subCategory} from ${product.brand}. Best wholesale price & fast local delivery.`;
+            const parseP = (str?: string) => {
+              if (!str) return 0;
+              const n = parseFloat(str.replace(/[^0-9.]/g, ''));
+              return isNaN(n) ? 0 : n;
+            };
+            const firstSize = (product.sizes && product.sizes[0]) || 1;
+            const unitSym = product.unit === 'kg' ? 'kg' : product.unit === 'pcs' ? 'pcs' : 'L';
+            const startPrice =
+              (product.sizePrices && product.sizePrices[firstSize]) ||
+              product.basePrice ||
+              parseP(product.price) ||
+              850;
+            const seoData = getProductSeoData(product, {
+              sizeLabel: firstSize < 1 && unitSym === 'L' ? `${Math.round(firstSize * 1000)}ml` : `${firstSize}${unitSym}`,
+              price: startPrice,
+            });
+            title = seoData.title;
+            desc = seoData.description;
             let finalImage = product.image;
             
             const key = product.name ? product.name.trim().toLowerCase() : '';
@@ -1170,38 +1179,36 @@ Return exactly a valid JSON object with {"name": "string", "pincode": "string"}.
             
             img = finalImage ? (finalImage.startsWith('http') ? finalImage : `https://www.rainbowpaint.in${finalImage.startsWith('/') ? '' : '/'}${finalImage}`) : img;
 
-            if (richContent) {
-              const ssrSchemas: any[] = [];
-              if (richContent.faqs?.length) {
-                ssrSchemas.push({
-                  "@context": "https://schema.org",
-                  "@type": "FAQPage",
-                  "mainEntity": richContent.faqs.map((faq) => ({
-                    "@type": "Question",
-                    "name": faq.question,
-                    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
-                  }))
-                });
-              }
-              if (richContent.applicationSteps?.steps?.length) {
-                ssrSchemas.push({
-                  "@context": "https://schema.org",
-                  "@type": "HowTo",
-                  "name": `How to Apply ${product.brand} ${product.name}`,
-                  "description": richContent.applicationSteps.subtitle,
-                  "image": img,
-                  "step": richContent.applicationSteps.steps.map((step, idx) => ({
-                    "@type": "HowToStep",
-                    "position": idx + 1,
-                    "name": step.title,
-                    "text": `${step.detail} (${step.timing})`
-                  }))
-                });
-              }
-              if (ssrSchemas.length > 0) {
-                const scripts = ssrSchemas.map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join('\n');
-                html = html.replace('</head>', `${scripts}\n</head>`);
-              }
+            const ssrSchemas: any[] = [];
+            if (seoData.faqs.length) {
+              ssrSchemas.push({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": seoData.faqs.map((faq) => ({
+                  "@type": "Question",
+                  "name": faq.question,
+                  "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+                }))
+              });
+            }
+            if (seoData.richContent?.applicationSteps?.steps?.length) {
+              ssrSchemas.push({
+                "@context": "https://schema.org",
+                "@type": "HowTo",
+                "name": `How to Apply ${product.brand} ${product.name}`,
+                "description": seoData.richContent.applicationSteps.subtitle,
+                "image": img,
+                "step": seoData.richContent.applicationSteps.steps.map((step, idx) => ({
+                  "@type": "HowToStep",
+                  "position": idx + 1,
+                  "name": step.title,
+                  "text": `${step.detail} (${step.timing})`
+                }))
+              });
+            }
+            if (ssrSchemas.length > 0) {
+              const scripts = ssrSchemas.map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join('\n');
+              html = html.replace('</head>', `${scripts}\n</head>`);
             }
           }
         } else if (url.startsWith('/color/')) {

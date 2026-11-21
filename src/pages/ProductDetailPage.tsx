@@ -1893,12 +1893,6 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
         )
       : [absImage];
 
-    const numericPrices = variationOffers
-      .map((o: any) => Number(o.price))
-      .filter((n: number) => !isNaN(n) && n > 0);
-    const lowPrice = numericPrices.length > 0 ? Math.min(...numericPrices) : basePrice;
-    const highPrice = numericPrices.length > 0 ? Math.max(...numericPrices) : basePrice;
-
     const richAdditionalProperties = richDataForSchema?.seo?.additionalProperties?.map((prop) => ({
       "@type": "PropertyValue",
       "name": prop.name,
@@ -1965,25 +1959,12 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
       ]
     };
 
-    const structuredOffers =
-      variationOffers.length > 1
-        ? {
-            "@type": "AggregateOffer",
-            "priceCurrency": "INR",
-            "lowPrice": String(lowPrice),
-            "highPrice": String(highPrice),
-            "offerCount": variationOffers.length,
-            "availability": "https://schema.org/InStock",
-            "offers": variationOffers
-          }
-        : variationOffers[0];
-
     return {
       ...baseSchema,
       "@type": "Product",
       "sku": `RP-${targetProduct.id || '1'}`,
       "mpn": `MPN-${targetProduct.id || '1'}`,
-      "offers": structuredOffers
+      "offers": variationOffers
     };
   }, [product, productDetails, basePrice, displayImage, selectedSize]);
 

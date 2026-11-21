@@ -192,20 +192,6 @@ mockProducts.forEach((product: any) => {
     };
   });
 
-  const numericPrices = variationOffers.map((o: any) => Number(o.price)).filter((n: number) => !isNaN(n) && n > 0);
-  const structuredOffers =
-    variationOffers.length > 1
-      ? {
-          "@type": "AggregateOffer",
-          "priceCurrency": "INR",
-          "lowPrice": String(Math.min(...numericPrices)),
-          "highPrice": String(Math.max(...numericPrices)),
-          "offerCount": variationOffers.length,
-          "availability": "https://schema.org/InStock",
-          "offers": variationOffers
-        }
-      : variationOffers[0];
-
   const productSchema: Record<string, any> = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -243,7 +229,7 @@ mockProducts.forEach((product: any) => {
       "ratingCount": "124",
       "reviewCount": "124"
     },
-    "offers": structuredOffers
+    "offers": variationOffers
   };
 
   const schemas: any[] = [productSchema];
