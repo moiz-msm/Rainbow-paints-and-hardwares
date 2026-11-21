@@ -131,7 +131,7 @@ const ALL_PAINTS: PaintModel[] = [
     description:
       "A highly dependable matte finish emulsion known for its rich appearance and tough durability.",
     image:
-      "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-apcolite-premium-emulsion-asian-paints.png",
+      "/assets/aistudio/apcolite_premium_emulsion_packshot_hd.jpg",
   },
   {
     id: "ap-tractor-emulsion",
@@ -162,7 +162,7 @@ const ALL_PAINTS: PaintModel[] = [
     description:
       "The perfect upgrade from distemper, offering a smooth finish and excellent coverage for budget projects.",
     image:
-      "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-tractor-emulsion-asian-paints.png",
+      "/assets/aistudio/tractor_emulsion_packshot_hd.jpg",
   },
   {
     id: "bp-silk-glamor",
@@ -282,7 +282,7 @@ const ALL_PAINTS: PaintModel[] = [
     description:
       "The ultimate exterior armor, providing lamination-like protection against harsh weather, algae, and cracks.",
     image:
-      "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/exterior-walls-ultima-protek-topcoat-new-asian-paints.png",
+      "/assets/aistudio/apex_ultima_protek_packshot_hd.jpg",
   },
   {
     id: "ap-apex-ultima",
@@ -314,7 +314,7 @@ const ALL_PAINTS: PaintModel[] = [
     description:
       "A high-performance exterior emulsion that keeps walls looking vibrant and protected from algae for years.",
     image:
-      "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/exterior-walls-apex-ultima-asian-paints.png",
+      "/assets/aistudio/apex_ultima_packshot_hd.jpg",
   },
   {
     id: "bp-weathercoat-longlife",

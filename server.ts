@@ -6,6 +6,7 @@ import { Resend } from "resend";
 
 import { mockProducts, brands, topCategories, subCategories } from "./src/data";
 import { getProductSeoData } from "./src/utils/productSeo";
+import { HD_PACKSHOT_IMAGES, upgradeCdnImageUrl } from "./src/constants/hdPackshotImages";
 
 let allShades: any[] = [];
 try {
@@ -1165,17 +1166,16 @@ Return exactly a valid JSON object with {"name": "string", "pincode": "string"}.
             
             const key = product.name ? product.name.trim().toLowerCase() : '';
             const accurateImagesMap: Record<string, string> = {
-              "royale luxury emulsion": "/assets/aistudio/royale_luxury_emulsion_packshot_hd.jpg",
-              "royale glitz reserve": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/royale-glitz-reserv-new-packshot.png",
-              "apcolite all protek shyne": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-apcolite-all-protek-shyne-packshot-asian-paints.png",
               "royale health shield": "https://5.imimg.com/data5/SELLER/Default/2023/7/326440889/MP/SF/RA/22649264/asian-paints-royale-health-shield-500x500.jpg",
               "apex tile guard matt": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/exterior-walls-apex-tile-guard.png",
               "apex ultima stretch": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/ultima-stretch-packshot-asian-paints.png",
-              "weathercoat glow": "https://5.imimg.com/data5/SELLER/Default/2021/7/OI/YW/AW/102796245/berger-weathercoat-glow-exterior-emulsion.jpg"
+              "weathercoat glow": "https://5.imimg.com/data5/SELLER/Default/2021/7/OI/YW/AW/102796245/berger-weathercoat-glow-exterior-emulsion.jpg",
+              ...HD_PACKSHOT_IMAGES
             };
             if (accurateImagesMap[key]) {
                finalImage = accurateImagesMap[key];
             }
+            finalImage = upgradeCdnImageUrl(finalImage);
             
             img = finalImage ? (finalImage.startsWith('http') ? finalImage : `https://www.rainbowpaint.in${finalImage.startsWith('/') ? '' : '/'}${finalImage}`) : img;
 

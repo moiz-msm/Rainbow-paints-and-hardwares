@@ -473,7 +473,7 @@ const rawMockProducts = [
     ],
     "sizes": [1, 5],
     "popular": false,
-    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/royale-play-safari-packshot-asian-paints.png"
+    "image": "/assets/aistudio/royale_play_safari_packshot_hd.jpg"
   },
   {
     "id": 1012,
@@ -512,7 +512,7 @@ const rawMockProducts = [
     ],
     "sizes": [1, 5],
     "popular": false,
-    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/royale-play-stucco-packshot-asian-paints.png"
+    "image": "/assets/aistudio/royale_play_stucco_packshot_hd.jpg"
   },
   {
     "id": 1010,
@@ -551,7 +551,7 @@ const rawMockProducts = [
       20
     ],
     "popular": true,
-    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/royale-glitz-reserv-new-packshot.png"
+    "image": "/assets/aistudio/royale_glitz_reserve_packshot_hd.jpg"
   },
   {
     "id": 1003,
@@ -572,7 +572,7 @@ const rawMockProducts = [
       20
     ],
     "popular": false,
-    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/royale-glitz-ultra-matt-new-packshot.png"
+    "image": "/assets/aistudio/royale_glitz_ultra_matt_packshot_hd.jpg"
   },
   {
     "id": 1004,
@@ -593,7 +593,7 @@ const rawMockProducts = [
       20
     ],
     "popular": false,
-    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-apcolite-all-protek-matt-packshot-asian-paints.png"
+    "image": "/assets/aistudio/apcolite_all_protek_matt_packshot_hd.jpg"
   },
   {
     "id": 1005,
@@ -614,7 +614,7 @@ const rawMockProducts = [
       20
     ],
     "popular": true,
-    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-apcolite-all-protek-shyne-packshot-asian-paints.png"
+    "image": "/assets/aistudio/apcolite_all_protek_shyne_packshot_hd.jpg"
   },
   {
     "id": 1006,
@@ -656,7 +656,7 @@ const rawMockProducts = [
       20
     ],
     "popular": false,
-    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/exterior-walls-apex-floor-guard-asian-paints.png"
+    "image": "/assets/aistudio/apex_floor_guard_packshot_hd.jpg"
   },
   {
     "id": 1008,
@@ -677,7 +677,7 @@ const rawMockProducts = [
       20
     ],
     "popular": false,
-    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/exterior-walls-apex-tile-guard-new-asian-paints.png"
+    "image": "/assets/aistudio/apex_tile_guard_packshot_hd.jpg"
   },
   {
     "id": 1009,
@@ -698,7 +698,7 @@ const rawMockProducts = [
       20
     ],
     "popular": false,
-    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/exterior-walls-apex-tile-guard.png"
+    "image": "/assets/aistudio/apex_tile_guard_packshot_hd.jpg"
   },
   {
     "id": 1001,
@@ -719,7 +719,7 @@ const rawMockProducts = [
       20
     ],
     "popular": true,
-    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/exterior-walls-apex-ultima-asian-paints.png"
+    "image": "/assets/aistudio/apex_ultima_packshot_hd.jpg"
   },
   {
     "id": 10,
@@ -797,7 +797,7 @@ const rawMockProducts = [
       "Integral powder waterproofing"
     ],
     "popular": false,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/1/482154179/YQ/DH/SG/1774309/dr-fixit-pidifin-2k-waterproofing-chemical-500x500.jpg"
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/1/482154179/YQ/DH/SG/1774309/dr-fixit-pidifin-2k-waterproofing-chemical-1000x1000.jpg"
   },
   {
     "id": 11,
@@ -875,7 +875,7 @@ const rawMockProducts = [
       "Acrylic waterproof polymer"
     ],
     "popular": false,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2023/8/336094569/TV/WV/BG/11348985/dr-fixit-301-pidicrete-urp-waterproofing-chemical-500x500.jpeg"
+    "image": "https://5.imimg.com/data5/SELLER/Default/2023/8/336094569/TV/WV/BG/11348985/dr-fixit-301-pidicrete-urp-waterproofing-chemical-1000x1000.jpeg"
   },
   {
     "id": 61,
@@ -1008,7 +1008,7 @@ const rawMockProducts = [
       "Universal elastomeric base coat"
     ],
     "popular": false,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2023/8/335815699/QT/GO/BG/11348985/dr-fixit-raincoat-neo-waterproofing-chemical-500x500.jpeg"
+    "image": "https://5.imimg.com/data5/SELLER/Default/2023/8/335815699/QT/GO/BG/11348985/dr-fixit-raincoat-neo-waterproofing-chemical-1000x1000.jpeg"
   },
   {
     "id": 64,
@@ -1165,7 +1165,7 @@ const rawMockProducts = [
       "Non-reinforced twin sided self adhesive bituminous membrane"
     ],
     "popular": false,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/3/494665028/MD/DL/EU/1774309/dr-fixit-bathseal-tape-500x500.png"
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/3/494665028/MD/DL/EU/1774309/dr-fixit-bathseal-tape-1000x1000.png"
   },
   {
     "id": 67,
@@ -1182,7 +1182,7 @@ const rawMockProducts = [
       "Silicone based water repellent"
     ],
     "popular": false,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/9/542738527/HA/OH/DO/193587917/dr-fixit-103-repellent-wire-500x500.jpg"
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/9/542738527/HA/OH/DO/193587917/dr-fixit-103-repellent-wire-1000x1000.jpg"
   },
   {
     "id": 68,
@@ -1231,7 +1231,7 @@ const rawMockProducts = [
       "Two part solvent free epoxy resin"
     ],
     "popular": false,
-    "image": "https://5.imimg.com/data5/DQ/RC/BH/SELLER-1774309/sikadur-32-bonding-agent-500x500.jpg"
+    "image": "https://5.imimg.com/data5/DQ/RC/BH/SELLER-1774309/sikadur-32-bonding-agent-1000x1000.jpg"
   },
   {
     "id": 70,
@@ -1247,7 +1247,7 @@ const rawMockProducts = [
       "Single component ready to use dual shrinkage"
     ],
     "popular": false,
-    "image": "https://5.imimg.com/data5/SELLER/PDFImage/2025/3/496114877/HY/ME/EJ/1774309/fosroc-renderoc-sp40-500x500.png"
+    "image": "https://5.imimg.com/data5/SELLER/PDFImage/2025/3/496114877/HY/ME/EJ/1774309/fosroc-renderoc-sp40-1000x1000.png"
   },
   {
     "id": 71,
@@ -1264,7 +1264,7 @@ const rawMockProducts = [
       "Liquid for cleaning re-bars & steel surfaces"
     ],
     "popular": false,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/3/493746631/LT/GP/FI/1774309/dr-fixit-super-latex-500x500.webp"
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/3/493746631/LT/GP/FI/1774309/dr-fixit-super-latex-1000x1000.webp"
   },
   {
     "id": 72,
@@ -1280,7 +1280,7 @@ const rawMockProducts = [
       "Expansive plasticising admixture"
     ],
     "popular": false,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2023/8/336094569/TV/WV/BG/11348985/dr-fixit-301-pidicrete-urp-waterproofing-chemical-500x500.jpeg"
+    "image": "https://5.imimg.com/data5/SELLER/Default/2023/8/336094569/TV/WV/BG/11348985/dr-fixit-301-pidicrete-urp-waterproofing-chemical-1000x1000.jpeg"
   },
   {
     "id": 73,
@@ -1296,7 +1296,7 @@ const rawMockProducts = [
       "Fiber reinforced dual shrinkage repair mortars"
     ],
     "popular": false,
-    "image": "https://5.imimg.com/data5/SELLER/PDFImage/2025/3/496114877/HY/ME/EJ/1774309/fosroc-renderoc-sp40-500x500.png"
+    "image": "https://5.imimg.com/data5/SELLER/PDFImage/2025/3/496114877/HY/ME/EJ/1774309/fosroc-renderoc-sp40-1000x1000.png"
   },
   {
     "id": 74,
@@ -1312,7 +1312,7 @@ const rawMockProducts = [
       "Flowable mortar for repairs to damaged reinforced concrete"
     ],
     "popular": false,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/3/493957549/OM/HM/AR/1774309/repair-pro-dr-fixit-micro-concrete-500x500.jpg"
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/3/493957549/OM/HM/AR/1774309/repair-pro-dr-fixit-micro-concrete-1000x1000.jpg"
   },
   {
     "id": 75,
@@ -1328,7 +1328,7 @@ const rawMockProducts = [
       "Dual shrinkage cementitious flowable grout"
     ],
     "popular": false,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/3/496843324/TN/CS/DQ/1774309/dr-fixit-repellin-wr-500x500.jpg"
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/3/496843324/TN/CS/DQ/1774309/dr-fixit-repellin-wr-1000x1000.jpg"
   },
   {
     "id": 76,
@@ -1346,7 +1346,7 @@ const rawMockProducts = [
       "A non-shrink, high strength powder crack filler"
     ],
     "popular": false,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/3/494854728/PG/YL/WQ/1774309/dr-fixit-crack-x-shrink-free-500x500.jpg"
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/3/494854728/PG/YL/WQ/1774309/dr-fixit-crack-x-shrink-free-1000x1000.jpg"
   },
   {
     "id": 77,
@@ -1365,7 +1365,7 @@ const rawMockProducts = [
       "Ready to use high strength filler for cracks"
     ],
     "popular": false,
-    "image": "https://5.imimg.com/data5/SELLER/PDFImage/2025/3/496857516/RK/QN/TT/1774309/dr-fixit-prebond-500x500.png"
+    "image": "https://5.imimg.com/data5/SELLER/PDFImage/2025/3/496857516/RK/QN/TT/1774309/dr-fixit-prebond-1000x1000.png"
   },
   {
     "id": 45,
@@ -1398,7 +1398,7 @@ const rawMockProducts = [
       "Acetic cure silicone sealant for windows"
     ],
     "popular": false,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2024/12/472986100/ZG/RQ/MA/7641714/feviseal-gp-pro-silicone-sealant-280ml-ultimate-glass-and-window-sealant-500x500.jpg"
+    "image": "https://5.imimg.com/data5/SELLER/Default/2024/12/472986100/ZG/RQ/MA/7641714/feviseal-gp-pro-silicone-sealant-280ml-ultimate-glass-and-window-sealant-1000x1000.jpg"
   },
   {
     "id": 79,
@@ -1414,7 +1414,7 @@ const rawMockProducts = [
       "Silicone Sealant"
     ],
     "popular": false,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/5/507339793/WP/WP/ZI/7641714/feviseal-neutral-pro-sealent-500x500.jpg"
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/5/507339793/WP/WP/ZI/7641714/feviseal-neutral-pro-sealent-1000x1000.jpg"
   },
   {
     "id": 80,
@@ -1430,7 +1430,7 @@ const rawMockProducts = [
       "Silicone Sealant"
     ],
     "popular": false,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/5/507340443/KX/SY/RT/7641714/feviseal-weatherproof-pro-sealent-500x500.jpg"
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/5/507340443/KX/SY/RT/7641714/feviseal-weatherproof-pro-sealent-1000x1000.jpg"
   },
   {
     "id": 81,
@@ -1446,7 +1446,7 @@ const rawMockProducts = [
       "Low modulus hybrid sealant"
     ],
     "popular": false,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/9/544193440/HK/SV/BF/29232216/dr-fixit-feviseal-hy-100-hybrid-sealant-lm-500x500.png"
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/9/544193440/HK/SV/BF/29232216/dr-fixit-feviseal-hy-100-hybrid-sealant-lm-1000x1000.png"
   },
   {
     "id": 82,
@@ -1462,7 +1462,7 @@ const rawMockProducts = [
       "High modulus hybrid sealant"
     ],
     "popular": false,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/11/562885116/XJ/IR/GR/218152527/feviseal-hy-300-500x500.jpg"
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/11/562885116/XJ/IR/GR/218152527/feviseal-hy-300-1000x1000.jpg"
   },
   {
     "id": 83,
@@ -1478,7 +1478,7 @@ const rawMockProducts = [
       "One pack elastomeric acrylic sealant"
     ],
     "popular": false,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/5/507337619/GT/EV/CZ/7641714/feviseal-multipurpose-acrylic-sealent-500x500.jpg"
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/5/507337619/GT/EV/CZ/7641714/feviseal-multipurpose-acrylic-sealent-1000x1000.jpg"
   },
   {
     "id": 84,
@@ -1494,7 +1494,7 @@ const rawMockProducts = [
       "Gap Filling Acrylic Sealant"
     ],
     "popular": false,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/5/507336028/YC/OJ/QE/7641714/feviseal-bathroom-kitchen-sealent-500x500.jpg"
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/5/507336028/YC/OJ/QE/7641714/feviseal-bathroom-kitchen-sealent-1000x1000.jpg"
   },
   {
     "id": 85,
@@ -1510,7 +1510,7 @@ const rawMockProducts = [
       "One pack water resistant tile grout"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=600"
+    "image": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=90&w=1200"
   },
   {
     "id": 86,
@@ -1528,7 +1528,7 @@ const rawMockProducts = [
       "High performance tile cleaner"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1572224419992-698b6a3b2b8e?auto=format&fit=crop&q=80&w=600"
+    "image": "https://images.unsplash.com/photo-1572224419992-698b6a3b2b8e?auto=format&fit=crop&q=90&w=1200"
   },
   {
     "id": 1,
@@ -1543,7 +1543,7 @@ const rawMockProducts = [
       "15 years warranty*"
     ],
     "popular": true,
-    "image": "https://static.asianpaints.com/content/dam/asian_paints/textures/others/duralife_topcoat_single-layer.png"
+    "image": "/assets/aistudio/apex_ultima_protek_duralife_packshot_hd.jpg"
   },
   {
     "id": 3,
@@ -1558,7 +1558,7 @@ const rawMockProducts = [
       "12 years Warranty*"
     ],
     "popular": true,
-    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/exterior-walls-ultima-protek-topcoat-new-asian-paints.png"
+    "image": "/assets/aistudio/apex_ultima_protek_packshot_hd.jpg"
   },
   {
     "id": 5,
@@ -1573,7 +1573,7 @@ const rawMockProducts = [
       "8 Years Performance Warranty"
     ],
     "popular": true,
-    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/royale-glitz-new-packshot.png"
+    "image": "/assets/aistudio/royale_glitz_packshot_hd.jpg"
   },
   {
     "id": 6,
@@ -1612,7 +1612,7 @@ const rawMockProducts = [
       "5 Years Performance Warranty*"
     ],
     "popular": true,
-    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-apcolite-premium-emulsion-asian-paints.png"
+    "image": "/assets/aistudio/apcolite_premium_emulsion_packshot_hd.jpg"
   },
   {
     "id": 50,
@@ -1627,7 +1627,7 @@ const rawMockProducts = [
       "8 Years Performance Warranty"
     ],
     "popular": true,
-    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-royale-aspira-luxury-emulsion-asian-paints.png"
+    "image": "/assets/aistudio/royale_aspira_packshot_hd.jpg"
   },
   {
     "id": 51,
@@ -1644,7 +1644,7 @@ const rawMockProducts = [
       "8 Years Performance Warranty"
     ],
     "popular": true,
-    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-royale-shyne-luxury-emulsion-asian-paints.png"
+    "image": "/assets/aistudio/royale_shyne_packshot_hd.jpg"
   },
   {
     "id": 52,
@@ -1661,7 +1661,7 @@ const rawMockProducts = [
       "8 Years Performance Warranty"
     ],
     "popular": false,
-    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-royale-matt-asian-paints.png"
+    "image": "/assets/aistudio/royale_matt_emulsion_packshot_hd.jpg"
   },
   {
     "id": 53,
@@ -1678,7 +1678,7 @@ const rawMockProducts = [
       "8 Years Performance Warranty"
     ],
     "popular": true,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2023/7/326440889/MP/SF/RA/22649264/asian-paints-royale-health-shield-500x500.jpg"
+    "image": "https://5.imimg.com/data5/SELLER/Default/2023/7/326440889/MP/SF/RA/22649264/asian-paints-royale-health-shield-1000x1000.jpg"
   },
   {
     "id": 14,
@@ -1693,7 +1693,7 @@ const rawMockProducts = [
       "10 Years Warranty"
     ],
     "popular": true,
-    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/Nilaya-Arc-Matt-new.png"
+    "image": "/assets/aistudio/nilaya_arc_matt_packshot_hd.jpg"
   },
   {
     "id": 60,
@@ -1708,7 +1708,7 @@ const rawMockProducts = [
       "10 Years Warranty"
     ],
     "popular": true,
-    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/Nilaya-Arc-Pearlescent-new.png"
+    "image": "/assets/aistudio/nilaya_arc_pearlescent_packshot_hd.jpg"
   },
   {
     "id": 17,
@@ -1723,7 +1723,7 @@ const rawMockProducts = [
       "6-years Warranty*"
     ],
     "popular": true,
-    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/exterior-walls-apex-dust-proof-emulsion-packshot-asian-paints.png"
+    "image": "/assets/aistudio/apex_dust_proof_packshot_hd.jpg"
   },
   {
     "id": 21,
@@ -1803,7 +1803,7 @@ const rawMockProducts = [
       "Value For Money Smart Upgrade"
     ],
     "popular": true,
-    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-tractor-emulsion-asian-paints.png"
+    "image": "/assets/aistudio/tractor_emulsion_packshot_hd.jpg"
   },
   {
     "id": 30,
@@ -1818,7 +1818,7 @@ const rawMockProducts = [
       "Water Resistance"
     ],
     "popular": false,
-    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/exterior-walls-ace-exterior-emulsion-asian-paints.png"
+    "image": "/assets/aistudio/ace_exterior_emulsion_packshot_hd.jpg"
   },
   {
     "id": 31,
@@ -1966,7 +1966,7 @@ const rawMockProducts = [
       "HP Polymer Formula"
     ],
     "popular": true,
-    "image": "https://www.birlawhite.com/_next/image?url=https%3A%2F%2Fcms.birlawhite.com%2Fuploads%2F9_Putty_Products_340_494_84c21c909f.png&w=384&q=100"
+    "image": "https://cms.birlawhite.com/uploads/9_Putty_Products_340_494_84c21c909f.png"
   },
   {
     "id": 1045,
@@ -1990,7 +1990,7 @@ const rawMockProducts = [
       "Resistant to Cracking"
     ],
     "popular": true,
-    "image": "https://www.birlawhite.com/_next/image?url=https%3A%2F%2Fcms.birlawhite.com%2Fuploads%2FV1_Ever_White_Cement_Product_340x494_e193fda9f9.png&w=384&q=100"
+    "image": "https://cms.birlawhite.com/uploads/V1_Ever_White_Cement_Product_340x494_e193fda9f9.png"
   },
   {
     "id": 2001,
@@ -2095,7 +2095,7 @@ const rawMockProducts = [
         "name": "Metallic Copper",
         "code": "No. 402",
         "hex": "#B87333",
-        "image": "https://rukminim2.flixcart.com/image/480/640/xif0q/spray-paints/g/h/a/400-brown-metallic-brown-spray-paint-new-just-sprey-original-imahb8z8tfhnpcdn.jpeg?q=90",
+        "image": "https://rukminim2.flixcart.com/image/1024/1024/xif0q/spray-paints/g/h/a/400-brown-metallic-brown-spray-paint-new-just-sprey-original-imahb8z8tfhnpcdn.jpeg?q=90",
         "price": "₹ 300.00"
       }
     ]
@@ -2166,7 +2166,7 @@ const rawMockProducts = [
       "Ergonomically Balanced Non-Slip Grip"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1563212068-0a75fcc6a72e?auto=format&fit=crop&q=80&w=600"
+    "image": "https://images.unsplash.com/photo-1563212068-0a75fcc6a72e?auto=format&fit=crop&q=90&w=1200"
   },
   {
     "id": 3002,
@@ -2190,7 +2190,7 @@ const rawMockProducts = [
       "Reinforced Brass Ferrule for Durability"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?auto=format&fit=crop&q=80&w=600"
+    "image": "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?auto=format&fit=crop&q=90&w=1200"
   },
   {
     "id": 3003,
@@ -2214,7 +2214,7 @@ const rawMockProducts = [
       "Prevents paint film cloudiness and leaves a clean, blush-free finish"
     ],
     "popular": true,
-    "image": "https://5.imimg.com/data5/HF/OJ/FE/SELLER-2814892/sheenlac-nc-thinner-500x500.jpg"
+    "image": "https://5.imimg.com/data5/HF/OJ/FE/SELLER-2814892/sheenlac-nc-thinner-1000x1000.jpg"
   },
   {
     "id": 3004,
@@ -2238,7 +2238,7 @@ const rawMockProducts = [
       "Humidity-resistant formula that prevents whitening/blushing of clear finishes"
     ],
     "popular": true,
-    "image": "https://5.imimg.com/data5/KT/SB/GLADMIN-2/sheenlac-paint-thinners-500x500.jpg"
+    "image": "https://5.imimg.com/data5/KT/SB/GLADMIN-2/sheenlac-paint-thinners-1000x1000.jpg"
   },
   {
     "id": 3005,
@@ -2260,41 +2260,41 @@ const rawMockProducts = [
       "Compatible with Spirit Polish, Lacquer, & PU Top Coats"
     ],
     "popular": false,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/8/538895496/UB/BI/NZ/4616531/wood-stains-manufacturer-500x500.jpg",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/8/538895496/UB/BI/NZ/4616531/wood-stains-manufacturer-1000x1000.jpg",
     "shades": [
       {
         "name": "Walnut",
         "code": "Stainer 1",
         "hex": "#483C32",
-        "image": "https://5.imimg.com/data5/SELLER/Default/2025/8/538895496/UB/BI/NZ/4616531/wood-stains-manufacturer-500x500.jpg",
+        "image": "https://5.imimg.com/data5/SELLER/Default/2025/8/538895496/UB/BI/NZ/4616531/wood-stains-manufacturer-1000x1000.jpg",
         "price": "₹ 55.00"
       },
       {
         "name": "Mahogany",
         "code": "Stainer 2",
         "hex": "#4C0013",
-        "image": "https://5.imimg.com/data5/SELLER/Default/2025/8/538895496/UB/BI/NZ/4616531/wood-stains-manufacturer-500x500.jpg",
+        "image": "https://5.imimg.com/data5/SELLER/Default/2025/8/538895496/UB/BI/NZ/4616531/wood-stains-manufacturer-1000x1000.jpg",
         "price": "₹ 55.00"
       },
       {
         "name": "Teak",
         "code": "Stainer 3",
         "hex": "#A9703E",
-        "image": "https://5.imimg.com/data5/SELLER/Default/2025/8/538895496/UB/BI/NZ/4616531/wood-stains-manufacturer-500x500.jpg",
+        "image": "https://5.imimg.com/data5/SELLER/Default/2025/8/538895496/UB/BI/NZ/4616531/wood-stains-manufacturer-1000x1000.jpg",
         "price": "₹ 55.00"
       },
       {
         "name": "Rosewood",
         "code": "Stainer 4",
         "hex": "#651A14",
-        "image": "https://5.imimg.com/data5/SELLER/Default/2025/8/538895496/UB/BI/NZ/4616531/wood-stains-manufacturer-500x500.jpg",
+        "image": "https://5.imimg.com/data5/SELLER/Default/2025/8/538895496/UB/BI/NZ/4616531/wood-stains-manufacturer-1000x1000.jpg",
         "price": "₹ 55.00"
       },
       {
         "name": "Charcoal Black",
         "code": "Stainer 5",
         "hex": "#36454F",
-        "image": "https://5.imimg.com/data5/SELLER/Default/2025/8/538895496/UB/BI/NZ/4616531/wood-stains-manufacturer-500x500.jpg",
+        "image": "https://5.imimg.com/data5/SELLER/Default/2025/8/538895496/UB/BI/NZ/4616531/wood-stains-manufacturer-1000x1000.jpg",
         "price": "₹ 55.00"
       }
     ]
@@ -2341,7 +2341,7 @@ const rawMockProducts = [
       "Prevents topcoat absorption, reducing lacquer consumption"
     ],
     "popular": false,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/8/538899378/LY/PK/UZ/4616531/nc-sanding-sealer-500x500.jpg"
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/8/538899378/LY/PK/UZ/4616531/nc-sanding-sealer-1000x1000.jpg"
   },
   {
     "id": 3010,
@@ -2364,7 +2364,7 @@ const rawMockProducts = [
       "Provides reliable protection against moisture, heat, and mild alcohol"
     ],
     "popular": false,
-    "image": "https://5.imimg.com/data5/TA/FG/GLADMIN-2/sheenlac-surface-polish-500x500.jpg"
+    "image": "https://5.imimg.com/data5/TA/FG/GLADMIN-2/sheenlac-surface-polish-1000x1000.jpg"
   },
   {
     "id": 3008,
@@ -2423,7 +2423,7 @@ const rawMockProducts = [
       "Highly Flexible Backing Contours Comfortably in Hand"
     ],
     "popular": true,
-    "image": "https://images.unsplash.com/photo-1572224419992-698b6a3b2b8e?auto=format&fit=crop&q=80&w=600"
+    "image": "https://images.unsplash.com/photo-1572224419992-698b6a3b2b8e?auto=format&fit=crop&q=90&w=1200"
   },
   {
     "id": 9010,
@@ -2475,7 +2475,7 @@ const rawMockProducts = [
       "Saves cost compared to pre-cut sheet equivalents"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1563212068-0a75fcc6a72e?auto=format&fit=crop&q=80&w=600"
+    "image": "https://images.unsplash.com/photo-1563212068-0a75fcc6a72e?auto=format&fit=crop&q=90&w=1200"
   },
   {
     "id": 3012,
@@ -2501,7 +2501,7 @@ const rawMockProducts = [
       "Perfect tear-off utility roll for paint workshops"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?auto=format&fit=crop&q=80&w=600"
+    "image": "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?auto=format&fit=crop&q=90&w=1200"
   },
   {
     "id": 3013,
@@ -2523,7 +2523,7 @@ const rawMockProducts = [
       "Highly economical and biodegradable cleaning solution"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=600"
+    "image": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=90&w=1200"
   },
   {
     "id": 3014,
@@ -2544,7 +2544,7 @@ const rawMockProducts = [
       "Heavy duty brass ferrule ensures stability"
     ],
     "popular": true,
-    "image": "https://images.unsplash.com/photo-1572224419992-698b6a3b2b8e?auto=format&fit=crop&q=80&w=600"
+    "image": "https://images.unsplash.com/photo-1572224419992-698b6a3b2b8e?auto=format&fit=crop&q=90&w=1200"
   },
   {
     "id": 3015,
@@ -2594,7 +2594,7 @@ const rawMockProducts = [
       "Ideal for Fine Enamels, Acrylic Emulsions, and PU topcoats"
     ],
     "popular": true,
-    "image": "https://images.unsplash.com/photo-1563212068-0a75fcc6a72e?auto=format&fit=crop&q=80&w=600"
+    "image": "https://images.unsplash.com/photo-1563212068-0a75fcc6a72e?auto=format&fit=crop&q=90&w=1200"
   },
   {
     "id": 3017,
@@ -2617,7 +2617,7 @@ const rawMockProducts = [
       "Rust-proof copper-plated hardware"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?auto=format&fit=crop&q=80&w=600"
+    "image": "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?auto=format&fit=crop&q=90&w=1200"
   },
   {
     "id": 3018,
@@ -2638,7 +2638,7 @@ const rawMockProducts = [
       "Saves effort on large stucco, concrete, or rough masonry walls"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=600"
+    "image": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=90&w=1200"
   },
   {
     "id": 3019,
@@ -2665,7 +2665,7 @@ const rawMockProducts = [
       "Ideal for nameboards, signage typography, & fine detailing work"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1572224419992-698b6a3b2b8e?auto=format&fit=crop&q=80&w=600"
+    "image": "https://images.unsplash.com/photo-1572224419992-698b6a3b2b8e?auto=format&fit=crop&q=90&w=1200"
   },
   {
     "id": 3020,
@@ -2710,7 +2710,7 @@ const rawMockProducts = [
       "Excellent for iron pipes, railings, & structural metal works"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1563212068-0a75fcc6a72e?auto=format&fit=crop&q=80&w=600"
+    "image": "https://images.unsplash.com/photo-1563212068-0a75fcc6a72e?auto=format&fit=crop&q=90&w=1200"
   },
   {
     "id": 3022,
@@ -2730,7 +2730,7 @@ const rawMockProducts = [
       "Heavy duty cardboard tray keeps brushes organised"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?auto=format&fit=crop&q=80&w=600"
+    "image": "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?auto=format&fit=crop&q=90&w=1200"
   },
   {
     "id": 3023,
@@ -2752,7 +2752,7 @@ const rawMockProducts = [
       "Reinforced heavy duty steel wire cage frame with threaded handle"
     ],
     "popular": true,
-    "image": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=600"
+    "image": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=90&w=1200"
   },
   {
     "id": 3024,
@@ -2774,7 +2774,7 @@ const rawMockProducts = [
       "Double-welded zinc steel frame prevents bending under hand pressure"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1572224419992-698b6a3b2b8e?auto=format&fit=crop&q=80&w=600"
+    "image": "https://images.unsplash.com/photo-1572224419992-698b6a3b2b8e?auto=format&fit=crop&q=90&w=1200"
   },
   {
     "id": 3025,
@@ -2818,7 +2818,7 @@ const rawMockProducts = [
       "Saves paint consumption with thin uniform film laydowns"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1563212068-0a75fcc6a72e?auto=format&fit=crop&q=80&w=600"
+    "image": "https://images.unsplash.com/photo-1563212068-0a75fcc6a72e?auto=format&fit=crop&q=90&w=1200"
   },
   {
     "id": 3027,
@@ -2896,7 +2896,7 @@ const rawMockProducts = [
       "Slightly sloped reservoir channels paint back to the base efficiently"
     ],
     "popular": false,
-    "image": "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?auto=format&fit=crop&q=80&w=600"
+    "image": "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?auto=format&fit=crop&q=90&w=1200"
   },
   {
     "id": 3029,
@@ -2920,7 +2920,7 @@ const rawMockProducts = [
       "Easy hand-tearable format makes work fast and painless"
     ],
     "popular": true,
-    "image": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=600"
+    "image": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=90&w=1200"
   },
   {
     "id": 4008,
@@ -3084,7 +3084,7 @@ const rawMockProducts = [
       "Perfect for structural repair mortar, bathroom screeds, and roof seals"
     ],
     "popular": false,
-    "image": "https://content.jdmagicbox.com/quickquotes/images_main/berger-home-shield-construction-chemical-377205466-9opi6.jpg?impolicy=queryparam&im=Resize=(360,360),aspect=fit"
+    "image": "https://content.jdmagicbox.com/quickquotes/images_main/berger-home-shield-construction-chemical-377205466-9opi6.jpg?impolicy=queryparam&im=Resize=(1000,1000),aspect=fit"
   },
   {
     "id": 4017,
@@ -3176,7 +3176,7 @@ const rawMockProducts = [
       "Re-usable and easy to wash with water or thinners"
     ],
     "popular": true,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-10/ipaint glow in dark kit.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-10/ipaint glow in dark kit.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 4023,
@@ -4275,7 +4275,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": true,
-    "image": "https://images.bergerpaints.com/s3fs-public/2025-07/Silk_Glamor_Matt_17-1x.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2025-07/Silk_Glamor_Matt_17-1x.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5036,
@@ -4297,7 +4297,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": true,
-    "image": "https://images.bergerpaints.com/s3fs-public/2025-07/Silk_Glamor_Hi_Sheen_0.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2025-07/Silk_Glamor_Hi_Sheen_0.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5037,
@@ -4319,7 +4319,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": true,
-    "image": "https://images.bergerpaints.com/s3fs-public/2025-07/Big-Silk_Glamor_Soft_Sheen_0.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2025-07/Big-Silk_Glamor_Soft_Sheen_0.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5038,
@@ -4341,7 +4341,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": true,
-    "image": "https://images.bergerpaints.com/s3fs-public/2025-07/Silk_Dazzle_Ultra_Hi..._.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2025-07/Silk_Dazzle_Ultra_Hi..._.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5039,
@@ -4363,7 +4363,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/Easy%20Clean%20can_0.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/Easy%20Clean%20can_0.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5040,
@@ -4391,7 +4391,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2024-12/Easy%20Clean%20Silky%20Touch%20%282%29%20%281%29.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2024-12/Easy%20Clean%20Silky%20Touch%20%282%29%20%281%29.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5041,
@@ -4413,7 +4413,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/Easy%20Clean%20Fresh%20can.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/Easy%20Clean%20Fresh%20can.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5042,
@@ -4435,7 +4435,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2025-09/Rangoli_Matt_Rich_1L-removebg-preview.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2025-09/Rangoli_Matt_Rich_1L-removebg-preview.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5043,
@@ -4457,7 +4457,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2025-09/Rangoli_Total_Care-removebg-preview_0.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2025-09/Rangoli_Total_Care-removebg-preview_0.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5044,
@@ -4479,7 +4479,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/Bison%20Glow%20can.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/Bison%20Glow%20can.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5045,
@@ -4501,7 +4501,7 @@ const rawMockProducts = [
       "140-150 sq.ft/litre"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-09/Bison%20Can%20Shot.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-09/Bison%20Can%20Shot.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5046,
@@ -4523,7 +4523,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-11/tmp_9c85c9db-7e50-4c13-89ef-0ef211458fe2-fotor-bg-remover-20231108153920.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-11/tmp_9c85c9db-7e50-4c13-89ef-0ef211458fe2-fotor-bg-remover-20231108153920.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5047,
@@ -4545,7 +4545,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2026-01/Product%20Page_0.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2026-01/Product%20Page_0.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5048,
@@ -4567,7 +4567,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2026-01/Product%20Page_1.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2026-01/Product%20Page_1.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5049,
@@ -4589,7 +4589,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2025-12/Product%20Page.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2025-12/Product%20Page.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5050,
@@ -4611,7 +4611,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2026-01/11%20%281%29.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2026-01/11%20%281%29.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5051,
@@ -4633,7 +4633,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2026-01/Product%20Page.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2026-01/Product%20Page.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5052,
@@ -4655,7 +4655,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2026-01/Product%20Page_2.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2026-01/Product%20Page_2.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5053,
@@ -4677,7 +4677,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-07/silk-glamart-metallica-can.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-07/silk-glamart-metallica-can.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5054,
@@ -4699,7 +4699,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/Silk%20GlamArt%20Non%20Metallic%20can_0.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/Silk%20GlamArt%20Non%20Metallic%20can_0.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5055,
@@ -4721,7 +4721,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-04/silk-glamart-metallica-for-designs-can_2.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-04/silk-glamart-metallica-for-designs-can_2.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5056,
@@ -4743,7 +4743,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/Silk%20GlamArt%20Stucco%20can.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/Silk%20GlamArt%20Stucco%20can.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5057,
@@ -4765,7 +4765,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/Silk%20GlamArt%20Vintage%20can.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/Silk%20GlamArt%20Vintage%20can.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5058,
@@ -4787,7 +4787,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/Silk%20GlamArt%20Stones%20_%20Tones%20can.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/Silk%20GlamArt%20Stones%20_%20Tones%20can.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5059,
@@ -4809,7 +4809,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2024-04/ceiling-white-can.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2024-04/ceiling-white-can.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5060,
@@ -4831,7 +4831,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2025-12/silk%20metallics%20can%20600%20600.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2025-12/silk%20metallics%20can%20600%20600.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5061,
@@ -4853,7 +4853,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2025-06/Kolor%20Plus%20600-600.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2025-06/Kolor%20Plus%20600-600.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5062,
@@ -4875,7 +4875,7 @@ const rawMockProducts = [
       "120-130 sq.ft/litre"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2026-04/3D%20Kolor%20Plus%20Glow%202_1-4Lt%20copy.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2026-04/3D%20Kolor%20Plus%20Glow%202_1-4Lt%20copy.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5063,
@@ -4897,7 +4897,7 @@ const rawMockProducts = [
       "High durability"
     ],
     "popular": true,
-    "image": "https://images.bergerpaints.com/s3fs-public/2024-10/longlife%2015%20can_enhanced.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2024-10/longlife%2015%20can_enhanced.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5064,
@@ -4919,7 +4919,7 @@ const rawMockProducts = [
       "High durability"
     ],
     "popular": true,
-    "image": "https://images.bergerpaints.com/s3fs-public/2025-02/Longlife%2010%20-%20paint%20can-02%20%281%29.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2025-02/Longlife%2010%20-%20paint%20can-02%20%281%29.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5065,
@@ -4941,7 +4941,7 @@ const rawMockProducts = [
       "High durability"
     ],
     "popular": true,
-    "image": "https://images.bergerpaints.com/s3fs-public/2024-10/Weathercoat%20Long%20Life%20Flexo.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2024-10/Weathercoat%20Long%20Life%20Flexo.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5066,
@@ -4963,7 +4963,7 @@ const rawMockProducts = [
       "High durability"
     ],
     "popular": true,
-    "image": "https://images.bergerpaints.com/s3fs-public/2024-10/anti-dustt-kool-can_enhanced-removebg.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2024-10/anti-dustt-kool-can_enhanced-removebg.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5067,
@@ -4985,7 +4985,7 @@ const rawMockProducts = [
       "High durability"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2024-10/weathercoat-anti-dustt-can__1_-removebg-preview.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2024-10/weathercoat-anti-dustt-can__1_-removebg-preview.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5068,
@@ -5007,7 +5007,7 @@ const rawMockProducts = [
       "High durability"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-11/Long%20Life%2015-2.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-11/Long%20Life%2015-2.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5069,
@@ -5029,7 +5029,7 @@ const rawMockProducts = [
       "High durability"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2024-05/WC%20Champ%20600x600.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2024-05/WC%20Champ%20600x600.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5070,
@@ -5051,7 +5051,7 @@ const rawMockProducts = [
       "High durability"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2024-10/Walmasta%20Glow%20paint%20can-02_enhanced.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2024-10/Walmasta%20Glow%20paint%20can-02_enhanced.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5071,
@@ -5073,7 +5073,7 @@ const rawMockProducts = [
       "High durability"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-09/Walmasta%20can.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-09/Walmasta%20can.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5072,
@@ -5095,7 +5095,7 @@ const rawMockProducts = [
       "High durability"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-09/walmasta%20lite%20can%20%281%29.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-09/walmasta%20lite%20can%20%281%29.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5073,
@@ -5117,7 +5117,7 @@ const rawMockProducts = [
       "High durability"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/Florantina%20vintage%20paint%20can-02.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/Florantina%20vintage%20paint%20can-02.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5074,
@@ -5139,7 +5139,7 @@ const rawMockProducts = [
       "High durability"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/Floranita%20Sandstone%20paint%20can-02.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/Floranita%20Sandstone%20paint%20can-02.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5075,
@@ -5161,7 +5161,7 @@ const rawMockProducts = [
       "High durability"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/Florantina%20Glitteratti%20paint%20can-02_0.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/Florantina%20Glitteratti%20paint%20can-02_0.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5076,
@@ -5183,7 +5183,7 @@ const rawMockProducts = [
       "High durability"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/Solitaire%20granite%20paint%20can-02.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/Solitaire%20granite%20paint%20can-02.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5077,
@@ -5205,7 +5205,7 @@ const rawMockProducts = [
       "High durability"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/Solitaire%20stone%20paint%20can-02.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/Solitaire%20stone%20paint%20can-02.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5078,
@@ -5227,7 +5227,7 @@ const rawMockProducts = [
       "High durability"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/ruff_n_tuff%20paint%20can-02.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/ruff_n_tuff%20paint%20can-02.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5079,
@@ -5249,7 +5249,7 @@ const rawMockProducts = [
       "High durability"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/ruff_n_tuff%20paint%20can-02_5.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/ruff_n_tuff%20paint%20can-02_5.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5080,
@@ -5271,7 +5271,7 @@ const rawMockProducts = [
       "High durability"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/ruff_n_tuff%20paint%20can-02_0.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/ruff_n_tuff%20paint%20can-02_0.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5081,
@@ -5293,7 +5293,7 @@ const rawMockProducts = [
       "High durability"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/ruff_n_tuff%20paint%20can-02_1.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/ruff_n_tuff%20paint%20can-02_1.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5082,
@@ -5315,7 +5315,7 @@ const rawMockProducts = [
       "High durability"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/ruff_n_tuff%20paint%20can-02_2.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/ruff_n_tuff%20paint%20can-02_2.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5083,
@@ -5337,7 +5337,7 @@ const rawMockProducts = [
       "High durability"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/longlife%20pu%20tile%20can.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2023-08/longlife%20pu%20tile%20can.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5084,
@@ -5359,7 +5359,7 @@ const rawMockProducts = [
       "High durability"
     ],
     "popular": false,
-    "image": "https://images.bergerpaints.com/s3fs-public/2024-04/Weathercoatfloorprotector.png?format=webp&width=640&quality=75"
+    "image": "https://images.bergerpaints.com/s3fs-public/2024-04/Weathercoatfloorprotector.png?format=webp&width=1200&quality=95"
   },
   {
     "id": 5007,
@@ -5605,7 +5605,7 @@ const rawMockProducts = [
       "Perfect for cleaning spray equipment and paint tools"
     ],
     "popular": true,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2023/1/FU/YJ/AM/2220962/industrial-thinner-500x500.png"
+    "image": "https://5.imimg.com/data5/SELLER/Default/2023/1/FU/YJ/AM/2220962/industrial-thinner-1000x1000.png"
   },
   {
     "id": 5018,
@@ -6738,7 +6738,7 @@ const rawMockProducts = [
     "isAuthorised": true,
     "rating": 4.8,
     "reviews": Math.floor(Math.random() * 200) + 50,
-    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/SC-dampproof.png",
+    "image": "/assets/aistudio/smartcare_damp_proof_packshot_hd.jpg",
     "slug": "smartcare-damp-proof"
   },
   {
@@ -6780,7 +6780,7 @@ const rawMockProducts = [
     "isAuthorised": true,
     "rating": 4.8,
     "reviews": Math.floor(Math.random() * 200) + 50,
-    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/Damp-Proof-Ultra-Updated.png",
+    "image": "/assets/aistudio/smartcare_damp_proof_ultra_packshot_hd.jpg",
     "slug": "smartcare-damp-proof-ultra"
   },
   {
@@ -7140,7 +7140,7 @@ const rawMockProducts = [
     "isAuthorised": true,
     "rating": 4.8,
     "reviews": Math.floor(Math.random() * 200) + 50,
-    "image": "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/SC-damp-sheath-interior-new.png",
+    "image": "/assets/aistudio/smartcare_damp_sheath_interior_packshot_hd.jpg",
     "slug": "smartcare-damp-sheath-interior"
   },
   {
@@ -9473,7 +9473,7 @@ const rawMockProducts = [
     "isAuthorised": true,
     "rating": 4.7,
     "reviews": 92,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2023/11/361878963/ZD/KZ/EA/127283796/berger-multipurpose-mixture-machine-500x500.jpg",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2023/11/361878963/ZD/KZ/EA/127283796/berger-multipurpose-mixture-machine-1000x1000.jpg",
     "slug": "berger-express-putty-mixer"
   },
   {

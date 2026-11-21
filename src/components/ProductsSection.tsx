@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { mockProducts, subCategories, brands, brandDetails } from "../data";
+import { HD_PACKSHOT_IMAGES, upgradeCdnImageUrl } from "../constants/hdPackshotImages";
 import {
   applyStandardEnamelIndustrialShades,
   STANDARD_ENAMEL_INDUSTRIAL_SHADES,
@@ -1840,34 +1841,24 @@ export default function ProductsSection({
         key = mergedProduct.name.toLowerCase();
       }
 
-      // Retain accurate images for specific products from mock data
-      const accurateImageNames = [
-        "royale luxury emulsion",
-        "royale glitz reserve",
-        "apcolite all protek shyne",
-        "royale health shield",
-        "apex tile guard matt",
-        "apex ultima stretch",
-        "weathercoat glow"
-      ];
-      
       const accurateImagesMap: Record<string, string> = {
-        "royale luxury emulsion": "/assets/aistudio/royale_luxury_emulsion_packshot_hd.jpg",
-        "royale glitz reserve": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/royale-glitz-reserv-new-packshot.png",
-        "apcolite all protek shyne": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-apcolite-all-protek-shyne-packshot-asian-paints.png",
         "royale health shield": "https://5.imimg.com/data5/SELLER/Default/2023/7/326440889/MP/SF/RA/22649264/asian-paints-royale-health-shield-500x500.jpg",
         "apex tile guard matt": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/exterior-walls-apex-tile-guard.png",
         "apex ultima stretch": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/ultima-stretch-packshot-asian-paints.png",
-        "weathercoat glow": "https://5.imimg.com/data5/SELLER/Default/2021/7/OI/YW/AW/102796245/berger-weathercoat-glow-exterior-emulsion.jpg"
+        "weathercoat glow": "https://5.imimg.com/data5/SELLER/Default/2021/7/OI/YW/AW/102796245/berger-weathercoat-glow-exterior-emulsion.jpg",
+        ...HD_PACKSHOT_IMAGES
       };
 
-      if (accurateImageNames.includes(key)) {
+      if (accurateImagesMap[key]) {
         mergedProduct.image = accurateImagesMap[key];
       } else {
         const existingMock = map.get(key);
         if (existingMock && (!mergedProduct.image || mergedProduct.image === "" || existingMock.brand === "Berger Paints")) {
           mergedProduct.image = existingMock.image;
         }
+      }
+      if (mergedProduct.image) {
+        mergedProduct.image = upgradeCdnImageUrl(mergedProduct.image);
       }
       map.set(key, mergedProduct);
     });
