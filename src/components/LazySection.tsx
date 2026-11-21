@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { isRestoringScroll } from "../utils/scrollRestoration";
 
 interface LazySectionProps {
   children: React.ReactNode;
@@ -13,10 +14,11 @@ export default function LazySection({
   rootMargin = "300px",
   className = "",
 }: LazySectionProps) {
-  const [isIntersecting, setIsIntersecting] = useState(false);
+  const [isIntersecting, setIsIntersecting] = useState(() => isRestoringScroll());
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (isIntersecting) return;
     if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
       setIsIntersecting(true);
       return;

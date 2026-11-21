@@ -28,7 +28,12 @@ import {
   applyStandardEnamelIndustrialShades,
   STANDARD_ENAMEL_INDUSTRIAL_SHADES,
 } from "../constants/industrialEnamelShades";
-import { useSearchParams, useNavigate, Link } from "react-router-dom";
+import { useSearchParams, useNavigate, useLocation, useNavigationType, Link } from "react-router-dom";
+import {
+  getRouteKey,
+  getSavedCatalogPageState,
+  saveCatalogPageState,
+} from "../utils/scrollRestoration";
 import { useCartStore } from "../store/useCartStore";
 import { shadeService, Shade } from "../services/shadeService";
 import { useDebounce } from "../hooks/useDebounce";
@@ -1137,21 +1142,35 @@ export default function ProductsSection({
   pageDescription?: string;
 }) {
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  const navigationType = useNavigationType();
+  const routeKey = getRouteKey(location.pathname, location.search);
   const brandParam = initialBrand || searchParams.get("brand") || "All Brands";
 
+  // Capture saved catalog state synchronously on initial mount when arriving via Back/Forward (POP)
+  const initialRestoredStateRef = useRef(
+    navigationType === "POP" ? getSavedCatalogPageState(location.key, routeKey) : null,
+  );
+  const restoredState = initialRestoredStateRef.current;
+
   const [activeCategoryFilter, setActiveCategoryFilter] = useState(
-    initialCategory || "All Categories",
+    restoredState?.activeCategoryFilter || initialCategory || "All Categories",
   );
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const [isBrandOpen, setIsBrandOpen] = useState(false);
   const [isSortOpen, setIsSortOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(
+    restoredState?.currentPage && restoredState.currentPage >= 1
+      ? restoredState.currentPage
+      : 1,
+  );
   const productsPerPage = 12; // Changed to 12 for better grid alignment
   const categoryRef = useRef<HTMLDivElement>(null);
   const brandRef = useRef<HTMLDivElement>(null);
   const sortRef = useRef<HTMLDivElement>(null);
   const categoryScrollRef = useRef<HTMLDivElement>(null);
   const brandScrollRef = useRef<HTMLDivElement>(null);
+  const productGridRef = useRef<HTMLDivElement>(null);
 
   const scrollCircles = (
     direction: "left" | "right",
@@ -1179,8 +1198,12 @@ export default function ProductsSection({
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-  const [activeBrand, setActiveBrand] = useState(brandParam);
-  const [sortOption, setSortOption] = useState("Most Popular");
+  const [activeBrand, setActiveBrand] = useState(
+    restoredState?.activeBrand || brandParam,
+  );
+  const [sortOption, setSortOption] = useState(
+    restoredState?.sortOption || "Most Popular",
+  );
   const { searchQuery } = useProductSearchStore();
   const [showAsianFinishesShowroom, setShowAsianFinishesShowroom] =
     useState(false);
@@ -1190,15 +1213,127 @@ export default function ProductsSection({
     { name: string; subCategories: string[] }[]
   >([]);
 
-  useEffect(() => {
-    setActiveBrand(brandParam);
-  }, [brandParam]);
+  const prevRoutePropsRef = useRef({
+    locationKey: location.key,
+    brandParam,
+    initialCategory,
+    pathname: location.pathname,
+  });
 
+  const prevFiltersRef = useRef({
+    activeCategoryFilter,
+    activeBrand,
+    sortOption,
+    searchQuery,
+  });
+
+  // Sync route props on PUSH/REPLACE route changes and restore saved catalog state
+  // on Back/Forward (POP) even when ProductsSection stays mounted across catalog routes.
   useEffect(() => {
-    if (initialCategory) {
-      setActiveCategoryFilter(initialCategory);
+    const prev = prevRoutePropsRef.current;
+    if (prev.locationKey === location.key && prev.pathname === location.pathname && prev.brandParam === brandParam && prev.initialCategory === initialCategory) {
+      return;
     }
-  }, [initialCategory]);
+
+    if (navigationType === "POP") {
+      const saved = getSavedCatalogPageState(location.key, routeKey);
+      const nextCat = saved?.activeCategoryFilter || initialCategory || "All Categories";
+      const nextBrand = saved?.activeBrand || brandParam;
+      const nextSort = saved?.sortOption || "Most Popular";
+      const nextPage = saved?.currentPage && saved.currentPage >= 1 ? saved.currentPage : 1;
+
+      prevFiltersRef.current = {
+        activeCategoryFilter: nextCat,
+        activeBrand: nextBrand,
+        sortOption: nextSort,
+        searchQuery,
+      };
+      setActiveCategoryFilter(nextCat);
+      setActiveBrand(nextBrand);
+      setSortOption(nextSort);
+      setCurrentPage(nextPage);
+
+      if (saved) {
+        window.requestAnimationFrame(() => {
+          if (categoryScrollRef.current && typeof saved.categoryRailScrollLeft === "number") {
+            categoryScrollRef.current.scrollLeft = saved.categoryRailScrollLeft;
+          }
+          if (brandScrollRef.current && typeof saved.brandRailScrollLeft === "number") {
+            brandScrollRef.current.scrollLeft = saved.brandRailScrollLeft;
+          }
+        });
+      }
+    } else {
+      if (prev.brandParam !== brandParam) {
+        setActiveBrand(brandParam);
+      }
+      if (prev.initialCategory !== initialCategory) {
+        setActiveCategoryFilter(initialCategory || "All Categories");
+      } else if (prev.pathname !== location.pathname && !initialCategory) {
+        setActiveCategoryFilter("All Categories");
+      }
+    }
+
+    prevRoutePropsRef.current = {
+      locationKey: location.key,
+      brandParam,
+      initialCategory,
+      pathname: location.pathname,
+    };
+  }, [location.key, routeKey, navigationType, brandParam, initialCategory, location.pathname, searchQuery]);
+
+  // Restore horizontal scroll offsets of category & brand rails on Back/Forward mount
+  useEffect(() => {
+    if (!restoredState) return;
+    const raf = window.requestAnimationFrame(() => {
+      if (
+        categoryScrollRef.current &&
+        typeof restoredState.categoryRailScrollLeft === "number"
+      ) {
+        categoryScrollRef.current.scrollLeft = restoredState.categoryRailScrollLeft;
+      }
+      if (
+        brandScrollRef.current &&
+        typeof restoredState.brandRailScrollLeft === "number"
+      ) {
+        brandScrollRef.current.scrollLeft = restoredState.brandRailScrollLeft;
+      }
+    });
+    return () => window.cancelAnimationFrame(raf);
+  }, []);
+
+  // Persist current catalog view state for this history entry so Back returns to the exact spot
+  useEffect(() => {
+    const persistState = () => {
+      saveCatalogPageState(location.key, routeKey, {
+        activeCategoryFilter,
+        activeBrand,
+        sortOption,
+        currentPage,
+        categoryRailScrollLeft: categoryScrollRef.current?.scrollLeft ?? 0,
+        brandRailScrollLeft: brandScrollRef.current?.scrollLeft ?? 0,
+      });
+    };
+
+    persistState();
+
+    const catRail = categoryScrollRef.current;
+    const brandRail = brandScrollRef.current;
+    catRail?.addEventListener("scroll", persistState, { passive: true });
+    brandRail?.addEventListener("scroll", persistState, { passive: true });
+
+    return () => {
+      catRail?.removeEventListener("scroll", persistState);
+      brandRail?.removeEventListener("scroll", persistState);
+    };
+  }, [
+    location.key,
+    routeKey,
+    activeCategoryFilter,
+    activeBrand,
+    sortOption,
+    currentPage,
+  ]);
 
   useEffect(() => {
     const unsubProducts = onSnapshot(
@@ -2062,12 +2197,14 @@ export default function ProductsSection({
   );
 
   const handleBrandChange = (brand: string) => {
+    setActiveBrand(brand);
+    const nextParams = new URLSearchParams(searchParams);
     if (brand === "All Brands") {
-      searchParams.delete("brand");
+      nextParams.delete("brand");
     } else {
-      searchParams.set("brand", brand);
+      nextParams.set("brand", brand);
     }
-    setSearchParams(searchParams);
+    setSearchParams(nextParams, { replace: true });
   };
 
   const filtered = productList.filter((p) => {
@@ -2139,10 +2276,45 @@ export default function ProductsSection({
   });
 
   useEffect(() => {
-    setCurrentPage(1);
+    const prev = prevFiltersRef.current;
+    const filtersChanged =
+      prev.activeCategoryFilter !== activeCategoryFilter ||
+      prev.activeBrand !== activeBrand ||
+      prev.sortOption !== sortOption ||
+      prev.searchQuery !== searchQuery;
+
+    if (filtersChanged) {
+      setCurrentPage(1);
+    }
+    prevFiltersRef.current = {
+      activeCategoryFilter,
+      activeBrand,
+      sortOption,
+      searchQuery,
+    };
   }, [activeCategoryFilter, activeBrand, sortOption, searchQuery]);
 
   const totalPages = Math.ceil(sortedAndFiltered.length / productsPerPage);
+
+  // Clamp currentPage if dynamic filtering reduces totalPages
+  useEffect(() => {
+    if (totalPages > 0 && currentPage > totalPages) {
+      setCurrentPage(totalPages);
+    }
+  }, [totalPages, currentPage]);
+
+  const handlePageChange = (nextPage: number) => {
+    const clamped = Math.max(1, Math.min(totalPages || 1, nextPage));
+    setCurrentPage(clamped);
+    if (productGridRef.current) {
+      const y =
+        productGridRef.current.getBoundingClientRect().top +
+        window.scrollY -
+        110;
+      window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+    }
+  };
+
   const currentProducts = sortedAndFiltered.slice(
     (currentPage - 1) * productsPerPage,
     currentPage * productsPerPage,
@@ -2650,7 +2822,10 @@ export default function ProductsSection({
         </div>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4 lg:gap-5">
+        <div
+          ref={productGridRef}
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4 lg:gap-5"
+        >
           <AnimatePresence mode="popLayout">
             {currentProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
@@ -2662,7 +2837,7 @@ export default function ProductsSection({
         {totalPages > 1 && (
           <div className="flex flex-wrap justify-center items-center gap-1 sm:gap-1.5 mt-10 mb-6 w-full max-w-full px-1">
             <button
-              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+              onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
               aria-label="Previous page"
               className="w-8 h-8 sm:w-10 sm:h-10 shrink-0 flex items-center justify-center rounded-xl border border-zinc-200 bg-white hover:bg-zinc-50 hover:border-zinc-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all text-zinc-600 active:scale-95"
@@ -2693,7 +2868,7 @@ export default function ProductsSection({
                 ) : (
                   <button
                     key={item}
-                    onClick={() => setCurrentPage(item)}
+                    onClick={() => handlePageChange(item)}
                     aria-current={currentPage === item ? "page" : undefined}
                     className={`min-w-8 h-8 px-1.5 sm:min-w-10 sm:h-10 sm:px-2.5 shrink-0 flex items-center justify-center rounded-xl text-xs font-bold transition-all ${
                       currentPage === item
@@ -2707,7 +2882,7 @@ export default function ProductsSection({
               )}
             </div>
             <button
-              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+              onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
               aria-label="Next page"
               className="w-8 h-8 sm:w-10 sm:h-10 shrink-0 flex items-center justify-center rounded-xl border border-zinc-200 bg-white hover:bg-zinc-50 hover:border-zinc-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all text-zinc-600 active:scale-95"

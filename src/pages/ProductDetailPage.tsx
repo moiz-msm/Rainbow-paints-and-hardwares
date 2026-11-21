@@ -103,7 +103,6 @@ export default function ProductDetailPage() {
   useEffect(() => {
     const fetchProduct = async () => {
       setLoading(true);
-      window.scrollTo(0, 0);
       try {
         const normalizeStr = (str: string) => str.toLowerCase().replace(/[^a-z0-9]/g, '');
         const targetSlugNormalized = productSlug ? normalizeStr(productSlug) : '';
@@ -2408,7 +2407,16 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px]">
         <Breadcrumb items={breadcrumbItems} omitSchema />
 
-        <button onClick={() => navigate(-1)} className="text-zinc-600 hover:text-ivory flex items-center gap-2 text-xs mb-8 transition-colors">
+        <button
+          onClick={() => {
+            if (window.history.state && typeof window.history.state.idx === 'number' && window.history.state.idx > 0) {
+              navigate(-1);
+            } else {
+              navigate('/buy-paint-online');
+            }
+          }}
+          className="text-zinc-600 hover:text-ivory flex items-center gap-2 text-xs mb-8 transition-colors"
+        >
           <ArrowLeft className="w-3.5 h-3.5" /> Back to Products
         </button>
 
