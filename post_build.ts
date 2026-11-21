@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { mockProducts, brands, topCategories, subCategories } from './src/data';
 import { blogPosts } from './src/data/blogPosts';
+import { getRichProductContent } from './src/data/richProductContent';
 
 const distPath = path.join(process.cwd(), 'dist');
 if (!fs.existsSync(distPath)) {
@@ -11,21 +12,48 @@ if (!fs.existsSync(distPath)) {
 
 const indexHtml = fs.readFileSync(path.join(distPath, 'index.html'), 'utf-8');
 
-function generateHtml(urlPath: string, title: string, desc: string, img: string = "https://www.rainbowpaint.in/IMG_20260630_162408.webp", schemaJson?: any) {
+function escapeHtmlAttr(val: string): string {
+  return val.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+}
+
+function generateHtml(
+  urlPath: string,
+  title: string,
+  desc: string,
+  img: string = "https://www.rainbowpaint.in/IMG_20260630_162408.webp",
+  schemaJson?: any,
+  keywords?: string
+) {
+  const safeTitle = escapeHtmlAttr(title);
+  const safeDesc = escapeHtmlAttr(desc);
+  const canonicalUrl = `https://www.rainbowpaint.in/${urlPath.replace(/^\/+|\/+$/g, '')}`;
+
   let html = indexHtml.replace(/<title>.*?<\/title>/g, `<title>${title}</title>`);
-  html = html.replace(/<meta\s+name="description"\s+content="[^"]*"/g, `<meta name="description" content="${desc}"`);
-  html = html.replace(/<meta\s+property="og:title"\s+content="[^"]*"/g, `<meta property="og:title" content="${title}"`);
-  html = html.replace(/<meta\s+property="og:description"\s+content="[^"]*"/g, `<meta property="og:description" content="${desc}"`);
-  html = html.replace(/<meta\s+property="og:image"\s+content="[^"]*"/g, `<meta property="og:image" content="${img}"`);
-  html = html.replace(/<meta\s+property="twitter:title"\s+content="[^"]*"/g, `<meta property="twitter:title" content="${title}"`);
-  html = html.replace(/<meta\s+property="twitter:description"\s+content="[^"]*"/g, `<meta property="twitter:description" content="${desc}"`);
-  html = html.replace(/<meta\s+property="twitter:image"\s+content="[^"]*"/g, `<meta property="twitter:image" content="${img}"`);
-  
-  if (schemaJson) {
-    const schemaScript = `<script type="application/ld+json">${JSON.stringify(schemaJson)}</script>`;
-    html = html.replace('</head>', `${schemaScript}\n</head>`);
+  html = html.replace(/<meta\s+name="description"\s+content="[^"]*"/g, `<meta name="description" content="${safeDesc}"`);
+  if (keywords) {
+    if (/<meta\s+name="keywords"/i.test(html)) {
+      html = html.replace(/<meta\s+name="keywords"\s+content="[^"]*"/g, `<meta name="keywords" content="${escapeHtmlAttr(keywords)}"`);
+    } else {
+      html = html.replace('</head>', `<meta name="keywords" content="${escapeHtmlAttr(keywords)}" />\n</head>`);
+    }
   }
-  
+  html = html.replace(/<meta\s+property="og:title"\s+content="[^"]*"/g, `<meta property="og:title" content="${safeTitle}"`);
+  html = html.replace(/<meta\s+property="og:description"\s+content="[^"]*"/g, `<meta property="og:description" content="${safeDesc}"`);
+  html = html.replace(/<meta\s+property="og:image"\s+content="[^"]*"/g, `<meta property="og:image" content="${img}"`);
+  html = html.replace(/<meta\s+property="og:url"\s+content="[^"]*"/g, `<meta property="og:url" content="${canonicalUrl}"`);
+  html = html.replace(/<meta\s+property="twitter:title"\s+content="[^"]*"/g, `<meta property="twitter:title" content="${safeTitle}"`);
+  html = html.replace(/<meta\s+property="twitter:description"\s+content="[^"]*"/g, `<meta property="twitter:description" content="${safeDesc}"`);
+  html = html.replace(/<meta\s+property="twitter:image"\s+content="[^"]*"/g, `<meta property="twitter:image" content="${img}"`);
+  html = html.replace(/<link\s+rel="canonical"\s+href="[^"]*"/g, `<link rel="canonical" href="${canonicalUrl}"`);
+
+  if (schemaJson) {
+    const schemaList = Array.isArray(schemaJson) ? schemaJson.filter(Boolean) : [schemaJson];
+    const schemaScripts = schemaList
+      .map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`)
+      .join('\n');
+    html = html.replace('</head>', `${schemaScripts}\n</head>`);
+  }
+
   const targetDir = path.join(distPath, urlPath);
   fs.mkdirSync(targetDir, { recursive: true });
   fs.writeFileSync(path.join(targetDir, 'index.html'), html);
@@ -34,12 +62,21 @@ function generateHtml(urlPath: string, title: string, desc: string, img: string 
 console.log("Generating static HTML for products...");
 mockProducts.forEach((product: any) => {
   const slug = product.slug || product.name.replace(/\s+/g, '-').toLowerCase();
-  const title = `${product.name} | ${product.brand} | Buy Online at Best Price in Coimbatore`;
-  const desc = `Buy ${product.name} online. ${product.subCategory} from ${product.brand}.`;
-  
+  const richContent = getRichProductContent(product.name);
+  const title =
+    richContent?.seo?.title ||
+    product.seoTitle ||
+    `${product.name} | ${product.brand} | Buy Online at Best Price in Coimbatore`;
+  const desc =
+    richContent?.seo?.description ||
+    product.seoDescription ||
+    `Buy ${product.name} online. ${product.subCategory} from ${product.brand}.`;
+  const keywords = richContent?.seo?.keywords || product.seoKeywords;
+
   let finalImage = product.image;
   const key = product.name ? product.name.trim().toLowerCase() : '';
   const accurateImagesMap: any = {
+    "royale luxury emulsion": "/assets/aistudio/royale_luxury_emulsion_packshot_hd.jpg",
     "royale glitz reserve": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/royale-glitz-reserv-new-packshot.png",
     "apcolite all protek shyne": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-apcolite-all-protek-shyne-packshot-asian-paints.png",
     "royale health shield": "https://5.imimg.com/data5/SELLER/Default/2023/7/326440889/MP/SF/RA/22649264/asian-paints-royale-health-shield-500x500.jpg",
@@ -50,7 +87,13 @@ mockProducts.forEach((product: any) => {
   if (accurateImagesMap[key]) {
      finalImage = accurateImagesMap[key];
   }
-  const img = finalImage ? (finalImage.startsWith('http') ? finalImage : `https://www.rainbowpaint.in${finalImage}`) : "https://www.rainbowpaint.in/IMG_20260630_162408.webp";
+  const img = finalImage ? (finalImage.startsWith('http') ? finalImage : `https://www.rainbowpaint.in${finalImage.startsWith('/') ? '' : '/'}${finalImage}`) : "https://www.rainbowpaint.in/IMG_20260630_162408.webp";
+
+  const schemaImages = richContent?.gallery?.length
+    ? richContent.gallery.map((g) =>
+        g.src.startsWith('http') ? g.src : `https://www.rainbowpaint.in${g.src.startsWith('/') ? '' : '/'}${g.src}`
+      )
+    : [img];
 
   const parsePrice = (priceStr: string | undefined): number => {
     if (!priceStr) return 0;
@@ -149,17 +192,49 @@ mockProducts.forEach((product: any) => {
     };
   });
 
-  const schemaJson = {
+  const numericPrices = variationOffers.map((o: any) => Number(o.price)).filter((n: number) => !isNaN(n) && n > 0);
+  const structuredOffers =
+    variationOffers.length > 1
+      ? {
+          "@type": "AggregateOffer",
+          "priceCurrency": "INR",
+          "lowPrice": String(Math.min(...numericPrices)),
+          "highPrice": String(Math.max(...numericPrices)),
+          "offerCount": variationOffers.length,
+          "availability": "https://schema.org/InStock",
+          "offers": variationOffers
+        }
+      : variationOffers[0];
+
+  const productSchema: Record<string, any> = {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": product.name,
-    "image": [img],
-    "description": desc,
+    "url": productUrl,
+    "sku": `RP-${product.id || '1'}`,
+    "mpn": `MPN-${product.id || '1'}`,
+    "image": schemaImages,
+    "description": richContent?.heroSummary || product.description || desc,
     "brand": {
       "@type": "Brand",
       "name": product.brand || "Rainbow Paints"
     },
+    "manufacturer": {
+      "@type": "Organization",
+      "name": product.brand || "Rainbow Paints"
+    },
     "category": product.subCategory || product.topCategory || "Home Paint",
+    ...(richContent?.seo?.material ? { "material": richContent.seo.material } : {}),
+    ...(richContent?.seo?.colorSummary ? { "color": richContent.seo.colorSummary } : {}),
+    ...(richContent?.seo?.additionalProperties?.length
+      ? {
+          "additionalProperty": richContent.seo.additionalProperties.map((p) => ({
+            "@type": "PropertyValue",
+            "name": p.name,
+            "value": p.value
+          }))
+        }
+      : {}),
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.8",
@@ -168,10 +243,43 @@ mockProducts.forEach((product: any) => {
       "ratingCount": "124",
       "reviewCount": "124"
     },
-    "offers": variationOffers
+    "offers": structuredOffers
   };
 
-  generateHtml(`p/${slug}`, title, desc, img, schemaJson);
+  const schemas: any[] = [productSchema];
+
+  if (richContent?.faqs?.length) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": richContent.faqs.map((faq) => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    });
+  }
+
+  if (richContent?.applicationSteps?.steps?.length) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": `How to Apply ${product.brand} ${product.name}`,
+      "description": richContent.applicationSteps.subtitle,
+      "image": img,
+      "step": richContent.applicationSteps.steps.map((step, idx) => ({
+        "@type": "HowToStep",
+        "position": idx + 1,
+        "name": step.title,
+        "text": `${step.detail} (${step.timing})`
+      }))
+    });
+  }
+
+  generateHtml(`p/${slug}`, title, desc, img, schemas, keywords);
 });
 
 console.log("Generating static HTML for categories...");

@@ -1842,6 +1842,7 @@ export default function ProductsSection({
 
       // Retain accurate images for specific products from mock data
       const accurateImageNames = [
+        "royale luxury emulsion",
         "royale glitz reserve",
         "apcolite all protek shyne",
         "royale health shield",
@@ -1851,6 +1852,7 @@ export default function ProductsSection({
       ];
       
       const accurateImagesMap: Record<string, string> = {
+        "royale luxury emulsion": "/assets/aistudio/royale_luxury_emulsion_packshot_hd.jpg",
         "royale glitz reserve": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/royale-glitz-reserv-new-packshot.png",
         "apcolite all protek shyne": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-apcolite-all-protek-shyne-packshot-asian-paints.png",
         "royale health shield": "https://5.imimg.com/data5/SELLER/Default/2023/7/326440889/MP/SF/RA/22649264/asian-paints-royale-health-shield-500x500.jpg",

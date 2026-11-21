@@ -100,7 +100,7 @@ const ALL_PAINTS: PaintModel[] = [
     description:
       "The classic choice for premium interiors, offering a soothing, soft pearl-like glow and easy washability.",
     image:
-      "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-royale-luxury-emulsion-asian-paints.png",
+      "/assets/aistudio/royale_luxury_emulsion_packshot_hd.jpg",
   },
   {
     id: "ap-apcolite-premium",

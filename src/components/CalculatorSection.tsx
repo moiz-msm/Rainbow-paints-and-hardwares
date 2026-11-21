@@ -482,7 +482,7 @@ export default function CalculatorSection() {
         brand: productInfo.brand,
         price: `₹ ${productInfo.price}.00`,
         image:
-          "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-royale-luxury-emulsion-asian-paints.png", // fallback image
+          "/assets/aistudio/royale_luxury_emulsion_packshot_hd.jpg", // fallback image
       } as any;
     }
 
@@ -515,7 +515,7 @@ export default function CalculatorSection() {
         brand: matchedProduct!.brand,
         image:
           matchedProduct!.image ||
-          "https://www.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-royale-luxury-emulsion-asian-paints.png",
+          "/assets/aistudio/royale_luxury_emulsion_packshot_hd.jpg",
         size: pack.size,
         quantity: pack.qty,
         unitPrice: effectiveUnitPrice / pack.size,

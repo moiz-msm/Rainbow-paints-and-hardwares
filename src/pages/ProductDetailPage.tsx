@@ -14,6 +14,9 @@ import { InlineShadePicker, RalShadePicker, DEFAULT_WHITES } from '../components
 import { Shade } from '../services/shadeService';
 import SEO from '../components/SEO';
 import Breadcrumb from '../components/Breadcrumb';
+import ProductImageGallery from '../components/ProductImageGallery';
+import RichProductShowcase from '../components/RichProductShowcase';
+import { getRichProductContent } from '../data/richProductContent';
 import {
   applyStandardEnamelIndustrialShades,
   STANDARD_ENAMEL_INDUSTRIAL_SHADES,
@@ -140,6 +143,7 @@ export default function ProductDetailPage() {
           .filter((p: any) => !removedNames.includes(p.name?.toLowerCase()) && !blacklistedIds.includes(p.id));
           
         const accurateImageNames = [
+          "royale luxury emulsion",
           "royale glitz reserve",
           "apcolite all protek shyne",
           "royale health shield",
@@ -149,6 +153,7 @@ export default function ProductDetailPage() {
         ];
         
         const accurateImagesMap: Record<string, string> = {
+          "royale luxury emulsion": "/assets/aistudio/royale_luxury_emulsion_packshot_hd.jpg",
           "royale glitz reserve": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/royale-glitz-reserv-new-packshot.png",
           "apcolite all protek shyne": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-apcolite-all-protek-shyne-packshot-asian-paints.png",
           "royale health shield": "https://5.imimg.com/data5/SELLER/Default/2023/7/326440889/MP/SF/RA/22649264/asian-paints-royale-health-shield-500x500.jpg",
@@ -734,6 +739,23 @@ export default function ProductDetailPage() {
               image: '/assets/aistudio/Berger_Ferrotol_Industrial_Paint_Drum_628fd187.png'
             };
             key = updatedP.name.toLowerCase();
+          } else if (key === 'royale luxury emulsion') {
+            updatedP = {
+              ...updatedP,
+              slug: 'royale-luxury-emulsion',
+              seoTitle: 'Royale Luxury Emulsion by Asian Paints - Buy Online',
+              seoDescription: 'Give your interior walls a smooth, velvety soft sheen with Asian Paints Royale Luxury Emulsion. Washable Teflon™ stain guard, low odor & 8-year warranty.',
+              seoKeywords: 'Asian Paints Royale Luxury Emulsion, Asian Paints Royale Luxury Emulsion price, Royale Luxury Emulsion 1L 4L 10L 20L price, Royale Luxury Emulsion Teflon Surface Protector, Royale Luxury Emulsion coverage per litre, Royale Luxury Emulsion 8 year warranty, soft sheen washable interior wall paint, Low VOC Green Assure interior emulsion, Asian Paints authorized dealer Coimbatore',
+              properties: [
+                'Smooth, Silky Soft Sheen Luxury Interior Finish',
+                'Teflon™ Surface Protector — Easy Removal of Coffee, Tea, Ketchup, Crayon & Lipstick Stains',
+                'Green Assure Low VOC (LEED / ASTM D 6886), Low Odor & JIS Z-2801 Anti-Bacterial Shield',
+                'Coverage: 140–160 sq.ft/L (2 Coats) | Surface Dry 30 Mins | Recoat 3–4 Hrs | 40–45% Dilution',
+                'Official 8-Year Asian Paints Performance Warranty (Colour Retention & Film Integrity)'
+              ],
+              image: '/assets/aistudio/royale_luxury_emulsion_packshot_hd.jpg'
+            };
+            key = updatedP.name.toLowerCase();
           }
           
           if (accurateImageNames.includes(key)) {
@@ -1039,16 +1061,16 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
     desc2: "Engineered with anti-bacterial properties and crack-bridging technology to ensure your walls remain vibrant, flawless, and deeply luxurious for years."
   },
   "royale luxury emulsion": {
-    finish: "Soft Sheen",
-    dryingTime: "30 Mins (Touch Dry)",
-    coverage: "140 - 150 sq.ft/L (2 coats)",
-    washability: "High Washability & Scrub Resistance",
-    base: "Acrylic Water Based",
-    coats: "2 Coats over 1 Coat Primer",
-    vocLevel: "Low VOC (Green Assure Certified)",
-    warranty: "8 Years Performance Warranty",
-    desc1: "Royale Luxury Emulsion by Asian Paints is India's most preferred luxury interior paint. It provides a soft, elegant sheen that elevates your home's aesthetic.",
-    desc2: "Infused with Teflon™ surface protector, this high-performance emulsion prevents stains from sticking and allows effortless cleaning without damaging the vibrant color."
+    finish: "Smooth, Silky Soft Sheen",
+    dryingTime: "30 Mins (Surface Dry @ 30°C, 50–60% RH) / 3 - 4 Hrs (Recoat)",
+    coverage: "140 - 160 sq.ft/L (2 Coats) | 270 - 310 sq.ft/L (1 Coat)",
+    washability: "High Washability — Teflon™ Surface Protector (Hydrophilic & Hydrophobic Stains)",
+    base: "Water-Based Acrylic Emulsion (Dilute 40% - 45% Water; 10% - 20% Airless Spray)",
+    coats: "2 Coats over 1 Coat Interior Wall Primer & 2 Coats Wall Putty (Use Thinned Paint Within 24 Hrs)",
+    vocLevel: "Low VOC (LEED / ASTM D 6886:2018); JIS Z-2801 Anti-Bacterial; Zero Added Lead, Mercury, Arsenic or Chromium",
+    warranty: "8 Years Official Asian Paints Performance Warranty",
+    desc1: "Asian Paints Royale Luxury Emulsion is a water-based luxury interior wall emulsion formulated to deliver a smooth, silky soft sheen finish for living rooms, bedrooms, and refined interior spaces.",
+    desc2: "Fortified with Teflon™ Surface Protector for high washability against both hydrophilic (coffee, tea, ketchup, shoe polish) and hydrophobic (crayon, lipstick) household stains. Meets LEED low-VOC criteria (ASTM D 6886:2018) with very low odor, zero added heavy metals, anti-fungal defense, JIS Z-2801 anti-bacterial protection, and an official 8-year performance warranty."
   },
   "apcolite premium emulsion": {
     finish: "Rich Matt Finish",
@@ -1862,16 +1884,59 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
       };
     });
 
-    const baseSchema = {
+    const richDataForSchema = getRichProductContent(targetProduct.name);
+    const schemaImages = richDataForSchema
+      ? richDataForSchema.gallery.map((g) =>
+          g.src.startsWith('http')
+            ? g.src
+            : `https://www.rainbowpaint.in${g.src.startsWith('/') ? '' : '/'}${g.src}`
+        )
+      : [absImage];
+
+    const numericPrices = variationOffers
+      .map((o: any) => Number(o.price))
+      .filter((n: number) => !isNaN(n) && n > 0);
+    const lowPrice = numericPrices.length > 0 ? Math.min(...numericPrices) : basePrice;
+    const highPrice = numericPrices.length > 0 ? Math.max(...numericPrices) : basePrice;
+
+    const richAdditionalProperties = richDataForSchema?.seo?.additionalProperties?.map((prop) => ({
+      "@type": "PropertyValue",
+      "name": prop.name,
+      "value": prop.value
+    }));
+
+    const richPositiveNotes = richDataForSchema?.seo?.highlights?.length
+      ? {
+          "@type": "ItemList",
+          "itemListElement": richDataForSchema.seo.highlights.map((note, i) => ({
+            "@type": "ListItem",
+            "position": i + 1,
+            "name": note
+          }))
+        }
+      : undefined;
+
+    const baseSchema: Record<string, any> = {
       "@context": "https://schema.org",
       "name": targetProduct.name || "Paint Product",
-      "image": [absImage],
-      "description": productDetails?.desc1 || `Buy ${targetProduct.name} online from Rainbow Paints. ${targetProduct.subCategory || ''} by ${targetProduct.brand}. Original factory packaging with fast delivery.`,
+      "url": productUrl,
+      "image": schemaImages,
+      "description":
+        richDataForSchema?.heroSummary ||
+        productDetails?.desc1 ||
+        `Buy ${targetProduct.name} online from Rainbow Paints. ${targetProduct.subCategory || ''} by ${targetProduct.brand}. Original factory packaging with fast delivery.`,
       "brand": {
         "@type": "Brand",
         "name": targetProduct.brand || "Rainbow Paints"
       },
+      "manufacturer": {
+        "@type": "Organization",
+        "name": targetProduct.brand || "Rainbow Paints"
+      },
       "category": targetProduct.subCategory || targetProduct.topCategory || "Home Paint",
+      ...(richDataForSchema?.seo?.material ? { "material": richDataForSchema.seo.material } : {}),
+      ...(richDataForSchema?.seo?.colorSummary ? { "color": richDataForSchema.seo.colorSummary } : {}),
+      ...(richAdditionalProperties?.length ? { "additionalProperty": richAdditionalProperties } : {}),
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.8",
@@ -1885,6 +1950,7 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
           "@type": "Review",
           "datePublished": "2025-01-15",
           "reviewBody": `Genuine factory product ${targetProduct.name} with fast delivery and high quality finish.`,
+          ...(richPositiveNotes ? { "positiveNotes": richPositiveNotes } : {}),
           "reviewRating": {
             "@type": "Rating",
             "ratingValue": "5",
@@ -1899,29 +1965,25 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
       ]
     };
 
-    const variants = sizes.map((sizeVal: number, idx: number) => {
-      const offer = variationOffers[idx];
-      return {
-        "@type": "Product",
-        "sku": `RP-PG-${targetProduct.id || targetProduct.slug || targetProduct.name.replace(/\s+/g, '-').toLowerCase()}_rp-${targetProduct.id || targetProduct.slug || targetProduct.name.replace(/\s+/g, '-').toLowerCase()}-${String(sizeVal).toLowerCase()}${unitSymbol.toLowerCase()}`,
-        "mpn": `MPN-${targetProduct.id || targetProduct.slug || targetProduct.name.replace(/\s+/g, '-').toLowerCase()}-${sizeVal}${unitSymbol}`,
-        "name": `${targetProduct.name} - ${sizeVal}${unitSymbol} Pack`,
-        "url": `${productUrl}?size=${sizeVal}`,
-        "image": [absImage],
-        "size": `${sizeVal} ${unitSymbol}`,
-        "description": baseSchema.description,
-        "brand": baseSchema.brand,
-        "category": baseSchema.category,
-        "offers": offer
-      };
-    });
+    const structuredOffers =
+      variationOffers.length > 1
+        ? {
+            "@type": "AggregateOffer",
+            "priceCurrency": "INR",
+            "lowPrice": String(lowPrice),
+            "highPrice": String(highPrice),
+            "offerCount": variationOffers.length,
+            "availability": "https://schema.org/InStock",
+            "offers": variationOffers
+          }
+        : variationOffers[0];
 
     return {
       ...baseSchema,
       "@type": "Product",
       "sku": `RP-${targetProduct.id || '1'}`,
       "mpn": `MPN-${targetProduct.id || '1'}`,
-      "offers": variationOffers
+      "offers": structuredOffers
     };
   }, [product, productDetails, basePrice, displayImage, selectedSize]);
 
@@ -1946,8 +2008,24 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
     return { sizeLabel, price: Math.round(basePrice * firstSize * factor) };
   }, [product, productSizes, basePrice]);
 
+  const richContent = useMemo(() => getRichProductContent(product?.name), [product?.name]);
+
   const faqSchema = useMemo(() => {
     if (!product) return null;
+    if (richContent && richContent.faqs.length > 0) {
+      return {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": richContent.faqs.map((faq) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
+          }
+        }))
+      };
+    }
     return {
       "@context": "https://schema.org",
       "@type": "FAQPage",
@@ -1978,7 +2056,7 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
         }
       ]
     };
-  }, [product, basePrice, discountFactor]);
+  }, [product, richContent, startingPackInfo]);
 
   const breadcrumbItems = useMemo(() => {
     if (!product) return [];
@@ -2022,11 +2100,33 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
     };
   }, [product, breadcrumbItems]);
 
+  const howToSchema = useMemo(() => {
+    if (!product || !richContent?.applicationSteps?.steps?.length) return null;
+    const prodImg = displayImage || product.image || '/hero-bg.webp';
+    const absImage = prodImg.startsWith('http')
+      ? prodImg
+      : `https://www.rainbowpaint.in${prodImg.startsWith('/') ? '' : '/'}${prodImg}`;
+    return {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": `How to Apply ${product.brand} ${product.name}`,
+      "description": richContent.applicationSteps.subtitle,
+      "image": absImage,
+      "step": richContent.applicationSteps.steps.map((step, idx) => ({
+        "@type": "HowToStep",
+        "position": idx + 1,
+        "name": step.title,
+        "text": `${step.detail} (${step.timing})`
+      }))
+    };
+  }, [product, richContent, displayImage]);
+
   const metaDesc = useMemo(() => {
+    if (richContent?.seo?.description) return richContent.seo.description;
     if ((product as any)?.seoDescription) return (product as any).seoDescription;
     const categoryLabel = product?.subCategory || product?.category || product?.topCategory || 'Quality paint';
     return `Buy ${product?.name} by ${product?.brand} online at wholesale prices. ${categoryLabel} with fast local delivery in Coimbatore.`;
-  }, [product]);
+  }, [product, richContent]);
 
   const fallbackTitle = useMemo(() => {
     if (!productSlug) return "Buy Paint Online | Rainbow Paints";
@@ -2183,17 +2283,24 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
     ) {
       return "Berger Ferrotol No. 1 Boiler Compound Paint (20L | 540°C)";
     }
+    if (productSlug === 'royale-luxury-emulsion') {
+      return "Royale Luxury Emulsion by Asian Paints - Buy Online";
+    }
     const name = productSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     return `${name} - Buy Online | Wholesale Price`;
   }, [productSlug]);
 
   if (loading) {
+    const loadingDesc =
+      productSlug === 'royale-luxury-emulsion'
+        ? "Give your interior walls a smooth, velvety soft sheen with Asian Paints Royale Luxury Emulsion. Washable Teflon™ stain guard, low odor & 8-year warranty."
+        : `Buy ${fallbackTitle.replace(' - Buy Online | Wholesale Price', '')} online at wholesale prices with fast local delivery in Coimbatore.`;
     return (
       <div className="pt-24 pb-12 bg-royale-bg min-h-[80vh] flex items-center justify-center">
         <SEO 
           type="product"
           title={fallbackTitle}
-          description={`Buy ${fallbackTitle.replace(' - Buy Online | Wholesale Price', '')} online at wholesale prices with fast local delivery in Coimbatore.`}
+          description={loadingDesc}
           url={`https://www.rainbowpaint.in/p/${productSlug}`}
         />
         <div className="w-8 h-8 border-2 border-gold border-t-transparent rounded-full animate-spin"></div>
@@ -2313,16 +2420,17 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
     <article className="pt-[72px] sm:pt-24 pb-12 bg-royale-bg min-h-screen text-ivory/90 relative overflow-x-hidden selection:bg-gold/30">
       <SEO 
         type="product"
-        title={product.seoTitle || `${product.name} by ${product.brand} - Buy Online | Wholesale Price`}
+        title={richContent?.seo?.title || product.seoTitle || `${product.name} by ${product.brand} - Buy Online | Wholesale Price`}
         description={metaDesc}
-        keywords={(product as any).seoKeywords || `${product.name}, ${product.brand}, ${product.category || product.topCategory}, ${product.subCategory}`}
+        keywords={richContent?.seo?.keywords || (product as any).seoKeywords || `${product.name}, ${product.brand}, ${product.category || product.topCategory}, ${product.subCategory}`}
         url={`https://www.rainbowpaint.in/p/${product.slug || product.name.replace(/\s+/g, '-').toLowerCase()}`}
         image={displayImage || product.image}
+        imageAlt={richContent?.seo?.ogImageAlt || `${product.brand} ${product.name} - ${product.subCategory || 'Paint'}`}
         productBrand={product.brand}
         productPrice={currentPrice}
         productCurrency="INR"
         productAvailability="InStock"
-        schema={[productSchema, breadcrumbSchema, faqSchema].filter(Boolean)}
+        schema={[productSchema, breadcrumbSchema, faqSchema, howToSchema].filter(Boolean)}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px]">
         <Breadcrumb items={breadcrumbItems} omitSchema />
@@ -2331,54 +2439,65 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
           <ArrowLeft className="w-3.5 h-3.5" /> Back to Products
         </button>
 
-        <div className="grid md:grid-cols-12 gap-8 md:gap-10 lg:gap-16 items-start">
-          {/* Image Gallery Column - Zoomable */}
-          <div className="md:col-span-6 lg:col-span-5 flex flex-col gap-4">
-            <div 
-              className={`relative bg-white rounded-2xl md:rounded-[2rem] aspect-square overflow-hidden cursor-crosshair border border-zinc-200/10 shadow-xl group`}
-              onMouseEnter={() => setIsZoomed(true)}
-              onMouseLeave={() => setIsZoomed(false)}
-              onMouseMove={handleMouseMove}
-            >
-              {/* Product Badges */}
-              <div className="absolute top-4 left-4 z-10 flex flex-col gap-2">
-                {product.popular && (
-                  <span className="bg-gradient-gold text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
-                    Best Seller
-                  </span>
-                )}
-              </div>
-              
-              <button 
-                onClick={handleWishlistToggle}
-                className="absolute top-4 right-4 z-10 p-2.5 rounded-full bg-white/90 backdrop-blur shadow-sm hover:scale-110 active:scale-95 transition-all text-zinc-600 hover:text-rose-500"
-              >
-                <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-rose-500 text-rose-500' : ''}`} />
-              </button>
-
-              <motion.img 
-                src={displayImage || product.image} 
-                alt={`${product.name} by ${product.brand} - ${product.category}`}
-                title={`${product.name} - ${product.brand} Paint`}
-                referrerPolicy="no-referrer"
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-                width={500}
-                height={500}
-                className={`w-full h-full object-contain p-8 lg:p-12 transition-transform duration-200 ${isZoomed ? 'scale-150 opacity-0' : 'scale-100 opacity-100'}`}
+        <div className="grid md:grid-cols-12 gap-6 sm:gap-8 md:gap-10 lg:gap-16 items-start">
+          {/* Image Gallery Column - Multi-Image or Single Zoomable */}
+          <div className="md:col-span-6 lg:col-span-5 min-w-0 flex flex-col gap-4">
+            {richContent ? (
+              <ProductImageGallery
+                images={richContent.gallery}
+                productName={product.name}
+                brand={product.brand}
+                isPopular={product.popular}
+                isWishlisted={isWishlisted}
+                onToggleWishlist={handleWishlistToggle}
               />
-              
-              {/* Zoom Layer */}
+            ) : (
               <div 
-                className={`absolute inset-0 bg-white bg-no-repeat pointer-events-none transition-opacity duration-200 ${isZoomed ? 'opacity-100' : 'opacity-0'}`}
-                style={{
-                  backgroundImage: `url(${displayImage || product.image})`,
-                  backgroundPosition: `${mousePosition.x}% ${mousePosition.y}%`,
-                  backgroundSize: '150%',
-                }}
-              />
-            </div>
+                className={`relative bg-white rounded-2xl md:rounded-[2rem] aspect-square overflow-hidden cursor-crosshair border border-zinc-200/10 shadow-xl group`}
+                onMouseEnter={() => setIsZoomed(true)}
+                onMouseLeave={() => setIsZoomed(false)}
+                onMouseMove={handleMouseMove}
+              >
+                {/* Product Badges */}
+                <div className="absolute top-4 left-4 z-10 flex flex-col gap-2">
+                  {product.popular && (
+                    <span className="bg-gradient-gold text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+                      Best Seller
+                    </span>
+                  )}
+                </div>
+                
+                <button 
+                  onClick={handleWishlistToggle}
+                  className="absolute top-4 right-4 z-10 p-2.5 rounded-full bg-white/90 backdrop-blur shadow-sm hover:scale-110 active:scale-95 transition-all text-zinc-600 hover:text-rose-500"
+                >
+                  <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-rose-500 text-rose-500' : ''}`} />
+                </button>
+
+                <motion.img 
+                  src={displayImage || product.image} 
+                  alt={`${product.name} by ${product.brand} - ${product.category}`}
+                  title={`${product.name} - ${product.brand} Paint`}
+                  referrerPolicy="no-referrer"
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                  width={500}
+                  height={500}
+                  className={`w-full h-full object-contain p-8 lg:p-12 transition-transform duration-200 ${isZoomed ? 'scale-150 opacity-0' : 'scale-100 opacity-100'}`}
+                />
+                
+                {/* Zoom Layer */}
+                <div 
+                  className={`absolute inset-0 bg-white bg-no-repeat pointer-events-none transition-opacity duration-200 ${isZoomed ? 'opacity-100' : 'opacity-0'}`}
+                  style={{
+                    backgroundImage: `url(${displayImage || product.image})`,
+                    backgroundPosition: `${mousePosition.x}% ${mousePosition.y}%`,
+                    backgroundSize: '150%',
+                  }}
+                />
+              </div>
+            )}
 
             {/* Desktop Details */}
             <div className="hidden md:block mt-8">
@@ -2387,9 +2506,9 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
           </div>
 
           {/* Product Info Column */}
-          <div className="md:col-span-6 lg:col-span-7 flex flex-col">
+          <div className="md:col-span-6 lg:col-span-7 min-w-0 flex flex-col">
             <div className="mb-2 flex items-center justify-between">
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <span className="text-gold font-display text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-semibold">{product.brand}</span>
                 {((product as any).subCategories || (product.subCategory ? [product.subCategory] : [])).map((sub: string, index: number) => (
                   <span key={index} className={`text-[8px] md:text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-widest border transition-colors ${getCategoryBadgeStyle(sub)}`} title={sub}>
@@ -2399,9 +2518,15 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
               </div>
             </div>
             
-            <h1 className="text-3xl md:text-5xl font-serif font-medium text-ivory mb-4 leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-serif font-medium text-ivory mb-2.5 sm:mb-3 leading-tight text-balance">
               {product.name}
             </h1>
+
+            {richContent && (
+              <p className="text-xs sm:text-sm md:text-base text-zinc-600 leading-relaxed mb-4 sm:mb-5 max-w-2xl">
+                {richContent.heroSummary}
+              </p>
+            )}
 
             <div className="flex items-center gap-2 mb-8 bg-green-50 w-fit px-3 py-1.5 rounded-full border border-green-100">
               <div className="relative flex h-2 w-2">
@@ -2528,7 +2653,7 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
             )}
 
             {/* Size Selector */}
-            <div className="mb-8">
+            <div id="purchase-module" className="mb-6 sm:mb-8 scroll-mt-24">
               <div className="flex items-center justify-between mb-3">
                 <h2 className="text-[11px] text-zinc-800 font-display uppercase tracking-widest font-semibold flex items-center gap-1.5"><Ruler className="w-3.5 h-3.5 text-gold"/> Capacity / Size</h2>
               </div>
@@ -2628,37 +2753,56 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
           </div>
         </div>
 
-        {/* Product FAQs for AEO */}
-        <div className="mt-16 pt-16 border-t border-zinc-200/50">
-          <h2 className="text-2xl font-serif text-ivory mb-8">Frequently Asked Questions about <span className="text-gradient italic">{product.name}</span></h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-royale-surface border border-zinc-200/50 rounded-2xl p-6 hover:border-gold/30 transition-colors">
-              <h3 className="font-medium text-ivory mb-3 text-sm">What is the price of {product.name}?</h3>
-              <p className="text-ivory/70 text-xs leading-relaxed font-light">
-                The price of {product.name} starts from ₹{startingPackInfo.price.toLocaleString()} for a {startingPackInfo.sizeLabel} pack at Rainbow Paints & Hardwares. Price varies based on the pack size and selected shade.
-              </p>
-            </div>
-            <div className="bg-royale-surface border border-zinc-200/50 rounded-2xl p-6 hover:border-gold/30 transition-colors">
-              <h3 className="font-medium text-ivory mb-3 text-sm">What warranty comes with {product.name}?</h3>
-              <p className="text-ivory/70 text-xs leading-relaxed font-light">
-                {product.name} comes with an official <strong className="text-gold font-medium">{productDetails?.warranty}</strong> provided by {product.brand} when applied over the recommended primer/undercoat system on sound surfaces.
-              </p>
-            </div>
-            <div className="bg-royale-surface border border-zinc-200/50 rounded-2xl p-6 hover:border-gold/30 transition-colors md:col-span-2">
-              <h3 className="font-medium text-ivory mb-3 text-sm">
-                {product.topCategory?.toLowerCase().includes('power tools') 
-                  ? `What category does ${product.name} fall under and what is it used for?` 
-                  : `What category does ${product.name} fall under and what is its coverage?`}
-              </h3>
-              <p className="text-ivory/70 text-xs leading-relaxed font-light">
-                {product.topCategory?.toLowerCase().includes('power tools')
-                  ? `${product.name} by ${product.brand} belongs to the ${product.subCategory || product.category} category. It is a high-performance professional equipment designed to improve efficiency, accuracy, and quality for your tasks.`
-                  : `${product.name} by ${product.brand} belongs to the ${product.subCategory || product.category} category. It offers an estimated coverage capacity of ${productDetails?.coverage} with a ${productDetails?.finish} and a touch-dry time of ${productDetails?.dryingTime}.`
-                }
-              </p>
+        {/* Rich Conversion Showcase (A+ Editorial Content, Paint Calculator, Comparison, 4-Step Guide & Rich FAQs) */}
+        {richContent ? (
+          <RichProductShowcase
+            content={richContent}
+            productName={product.name}
+            availableSizes={productSizes}
+            basePricePerLitre={basePrice}
+            sizePrices={(product as any)?.sizePrices}
+            selectedSize={selectedSize}
+            currentPrice={currentPrice}
+            onSelectPackSize={(size) => {
+              setSelectedSize(size);
+              setQuantity(1);
+              setSearchParams({ size: String(size) }, { replace: true });
+            }}
+            onAddToCart={handleAddToCart}
+          />
+        ) : (
+          /* Standard Product FAQs for AEO */
+          <div className="mt-16 pt-16 border-t border-zinc-200/50">
+            <h2 className="text-2xl font-serif text-ivory mb-8">Frequently Asked Questions about <span className="text-gradient italic">{product.name}</span></h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-royale-surface border border-zinc-200/50 rounded-2xl p-6 hover:border-gold/30 transition-colors">
+                <h3 className="font-medium text-ivory mb-3 text-sm">What is the price of {product.name}?</h3>
+                <p className="text-ivory/70 text-xs leading-relaxed font-light">
+                  The price of {product.name} starts from ₹{startingPackInfo.price.toLocaleString()} for a {startingPackInfo.sizeLabel} pack at Rainbow Paints & Hardwares. Price varies based on the pack size and selected shade.
+                </p>
+              </div>
+              <div className="bg-royale-surface border border-zinc-200/50 rounded-2xl p-6 hover:border-gold/30 transition-colors">
+                <h3 className="font-medium text-ivory mb-3 text-sm">What warranty comes with {product.name}?</h3>
+                <p className="text-ivory/70 text-xs leading-relaxed font-light">
+                  {product.name} comes with an official <strong className="text-gold font-medium">{productDetails?.warranty}</strong> provided by {product.brand} when applied over the recommended primer/undercoat system on sound surfaces.
+                </p>
+              </div>
+              <div className="bg-royale-surface border border-zinc-200/50 rounded-2xl p-6 hover:border-gold/30 transition-colors md:col-span-2">
+                <h3 className="font-medium text-ivory mb-3 text-sm">
+                  {product.topCategory?.toLowerCase().includes('power tools') 
+                    ? `What category does ${product.name} fall under and what is it used for?` 
+                    : `What category does ${product.name} fall under and what is its coverage?`}
+                </h3>
+                <p className="text-ivory/70 text-xs leading-relaxed font-light">
+                  {product.topCategory?.toLowerCase().includes('power tools')
+                    ? `${product.name} by ${product.brand} belongs to the ${product.subCategory || product.category} category. It is a high-performance professional equipment designed to improve efficiency, accuracy, and quality for your tasks.`
+                    : `${product.name} by ${product.brand} belongs to the ${product.subCategory || product.category} category. It offers an estimated coverage capacity of ${productDetails?.coverage} with a ${productDetails?.finish} and a touch-dry time of ${productDetails?.dryingTime}.`
+                  }
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* Frequently Bought Together Section */}
         {boughtTogether.length > 0 && (

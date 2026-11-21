@@ -1578,19 +1578,24 @@ const rawMockProducts = [
   {
     "id": 6,
     "name": "Royale Luxury Emulsion",
+    "slug": "royale-luxury-emulsion",
+    "seoTitle": "Royale Luxury Emulsion by Asian Paints - Buy Online",
+    "seoDescription": "Give your interior walls a smooth, velvety soft sheen with Asian Paints Royale Luxury Emulsion. Washable Teflon™ stain guard, low odor & 8-year warranty.",
+    "seoKeywords": "Asian Paints Royale Luxury Emulsion, Asian Paints Royale Luxury Emulsion price, Royale Luxury Emulsion 1L 4L 10L 20L price, Royale Luxury Emulsion Teflon Surface Protector, Royale Luxury Emulsion coverage per litre, Royale Luxury Emulsion 8 year warranty, soft sheen washable interior wall paint, Low VOC Green Assure interior emulsion, Asian Paints authorized dealer Coimbatore",
+    "description": "Asian Paints Royale Luxury Emulsion is a luxury water-based interior emulsion featuring a smooth soft sheen, Teflon™ Surface Protector for easy removal of hydrophilic and hydrophobic stains, JIS Z-2801 anti-bacterial & anti-fungal protection, Low VOC (ASTM D 6886) Green Assure safety, and an official 8-Year Performance Warranty.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
     "subCategory": "Interior Paint",
     "price": "₹ 780.00",
     "properties": [
-      "Smooth Exquisite Soft Sheen",
-      "Excellent Stain Resistance (Teflon™)",
-      "Anti-Bacterial & Low VOC (Eco-Friendly)",
-      "High Scrub Resistance & Highly Washable",
-      "8 Years Performance Warranty"
+      "Smooth, Silky Soft Sheen Luxury Interior Finish",
+      "Teflon™ Surface Protector — Easy Removal of Coffee, Tea, Ketchup, Crayon & Lipstick Stains",
+      "Green Assure Low VOC (LEED / ASTM D 6886), Low Odor & JIS Z-2801 Anti-Bacterial Shield",
+      "Coverage: 140–160 sq.ft/L (2 Coats) | Surface Dry 30 Mins | Recoat 3–4 Hrs | 40–45% Dilution",
+      "Official 8-Year Asian Paints Performance Warranty (Colour Retention & Film Integrity)"
     ],
     "popular": true,
-    "image": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-royale-luxury-emulsion-asian-paints.png"
+    "image": "/assets/aistudio/royale_luxury_emulsion_packshot_hd.jpg"
   },
   {
     "id": 7,

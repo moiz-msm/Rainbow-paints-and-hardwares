@@ -5,6 +5,7 @@ import { GoogleGenAI } from "@google/genai";
 import { Resend } from "resend";
 
 import { mockProducts, brands, topCategories, subCategories } from "./src/data";
+import { getRichProductContent } from "./src/data/richProductContent";
 
 let allShades: any[] = [];
 try {
@@ -1140,14 +1141,22 @@ Return exactly a valid JSON object with {"name": "string", "pincode": "string"}.
           desc = 'Got questions on paint coverage, color tinting, drying times, waterproofing or delivery? Read expert answers from Rainbow Paints & Hardwares in Coimbatore.';
         } else if (url.startsWith('/p/')) {
           const slug = decodeURIComponent(url.split('/')[2]);
-          const product = mockProducts.find(p => ((p as any).slug || p.name.replace(/\s+/g, '-').toLowerCase()) === slug);
+          const product: any = mockProducts.find(p => ((p as any).slug || p.name.replace(/\s+/g, '-').toLowerCase()) === slug);
           if (product) {
-            title = `${product.name} | ${product.brand} | Buy Online in Coimbatore | Rainbow Paints`;
-            desc = `Buy ${product.name} online in Coimbatore. Genuine ${product.subCategory} from ${product.brand}. Best wholesale price & fast local delivery.`;
+            const richContent = getRichProductContent(product.name);
+            title =
+              richContent?.seo?.title ||
+              product.seoTitle ||
+              `${product.name} | ${product.brand} | Buy Online in Coimbatore | Rainbow Paints`;
+            desc =
+              richContent?.seo?.description ||
+              product.seoDescription ||
+              `Buy ${product.name} online in Coimbatore. Genuine ${product.subCategory} from ${product.brand}. Best wholesale price & fast local delivery.`;
             let finalImage = product.image;
             
             const key = product.name ? product.name.trim().toLowerCase() : '';
-            const accurateImagesMap = {
+            const accurateImagesMap: Record<string, string> = {
+              "royale luxury emulsion": "/assets/aistudio/royale_luxury_emulsion_packshot_hd.jpg",
               "royale glitz reserve": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/royale-glitz-reserv-new-packshot.png",
               "apcolite all protek shyne": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/interior-walls-apcolite-all-protek-shyne-packshot-asian-paints.png",
               "royale health shield": "https://5.imimg.com/data5/SELLER/Default/2023/7/326440889/MP/SF/RA/22649264/asian-paints-royale-health-shield-500x500.jpg",
@@ -1159,7 +1168,41 @@ Return exactly a valid JSON object with {"name": "string", "pincode": "string"}.
                finalImage = accurateImagesMap[key];
             }
             
-            img = finalImage ? (finalImage.startsWith('http') ? finalImage : `https://www.rainbowpaint.in${finalImage}`) : img;
+            img = finalImage ? (finalImage.startsWith('http') ? finalImage : `https://www.rainbowpaint.in${finalImage.startsWith('/') ? '' : '/'}${finalImage}`) : img;
+
+            if (richContent) {
+              const ssrSchemas: any[] = [];
+              if (richContent.faqs?.length) {
+                ssrSchemas.push({
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  "mainEntity": richContent.faqs.map((faq) => ({
+                    "@type": "Question",
+                    "name": faq.question,
+                    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+                  }))
+                });
+              }
+              if (richContent.applicationSteps?.steps?.length) {
+                ssrSchemas.push({
+                  "@context": "https://schema.org",
+                  "@type": "HowTo",
+                  "name": `How to Apply ${product.brand} ${product.name}`,
+                  "description": richContent.applicationSteps.subtitle,
+                  "image": img,
+                  "step": richContent.applicationSteps.steps.map((step, idx) => ({
+                    "@type": "HowToStep",
+                    "position": idx + 1,
+                    "name": step.title,
+                    "text": `${step.detail} (${step.timing})`
+                  }))
+                });
+              }
+              if (ssrSchemas.length > 0) {
+                const scripts = ssrSchemas.map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join('\n');
+                html = html.replace('</head>', `${scripts}\n</head>`);
+              }
+            }
           }
         } else if (url.startsWith('/color/')) {
            const parts = url.split('/');
@@ -1172,13 +1215,15 @@ Return exactly a valid JSON object with {"name": "string", "pincode": "string"}.
            }
         }
 
+        const safeTitle = title.replace(/"/g, '&quot;');
+        const safeDesc = desc.replace(/"/g, '&quot;');
         html = html.replace(/<title>.*?<\/title>/g, `<title>${title}</title>`);
-        html = html.replace(/<meta\s+name="description"\s+content="[^"]*"/g, `<meta name="description" content="${desc}"`);
-        html = html.replace(/<meta\s+property="og:title"\s+content="[^"]*"/g, `<meta property="og:title" content="${title}"`);
-        html = html.replace(/<meta\s+property="og:description"\s+content="[^"]*"/g, `<meta property="og:description" content="${desc}"`);
+        html = html.replace(/<meta\s+name="description"\s+content="[^"]*"/g, `<meta name="description" content="${safeDesc}"`);
+        html = html.replace(/<meta\s+property="og:title"\s+content="[^"]*"/g, `<meta property="og:title" content="${safeTitle}"`);
+        html = html.replace(/<meta\s+property="og:description"\s+content="[^"]*"/g, `<meta property="og:description" content="${safeDesc}"`);
         html = html.replace(/<meta\s+property="og:image"\s+content="[^"]*"/g, `<meta property="og:image" content="${img}"`);
-        html = html.replace(/<meta\s+property="twitter:title"\s+content="[^"]*"/g, `<meta property="twitter:title" content="${title}"`);
-        html = html.replace(/<meta\s+property="twitter:description"\s+content="[^"]*"/g, `<meta property="twitter:description" content="${desc}"`);
+        html = html.replace(/<meta\s+property="twitter:title"\s+content="[^"]*"/g, `<meta property="twitter:title" content="${safeTitle}"`);
+        html = html.replace(/<meta\s+property="twitter:description"\s+content="[^"]*"/g, `<meta property="twitter:description" content="${safeDesc}"`);
         html = html.replace(/<meta\s+property="twitter:image"\s+content="[^"]*"/g, `<meta property="twitter:image" content="${img}"`);
         
 

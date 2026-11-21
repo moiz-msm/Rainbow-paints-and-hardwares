@@ -7,6 +7,7 @@ export interface SEOProps {
   keywords?: string;
   url?: string;
   image?: string;
+  imageAlt?: string;
   schema?: object | object[];
   type?: "website" | "product" | "category" | "article";
   disableLocalStoreSchema?: boolean;
@@ -86,6 +87,7 @@ export default function SEO({
   keywords = "Asian Paints, Berger Paints, MRF Paints, Dr Fixit, interior paint, exterior paint, primers, enamel paint, pu paint, epoxy paint, waterproofing, industrial paints, colour visualizer, paint cost calculator, faq, blog, buy paint online, wall paint, home colors, paint store near me, Asian paints dealer coimbatore, Berger dealer near me, Paint dealer near me, best paint shop in coimbatore",
   url = "https://www.rainbowpaint.in",
   image = "/hero-bg.webp",
+  imageAlt,
   schema,
   type = "website",
   disableLocalStoreSchema = false,
@@ -271,6 +273,7 @@ export default function SEO({
       <meta name="ICBM" content="11.0168, 76.9558" />
 
       {/* Open Graph Tags */}
+      <meta property="og:locale" content="en_IN" />
       <meta
         property="og:type"
         content={type === "category" ? "website" : type}
@@ -280,6 +283,13 @@ export default function SEO({
       <meta property="og:description" content={description} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:image" content={absoluteImage} />
+      <meta property="og:image:alt" content={imageAlt || title} />
+      {type === "product" && (
+        <>
+          <meta property="og:image:width" content="1024" />
+          <meta property="og:image:height" content="1024" />
+        </>
+      )}
 
       {/* Product Specific Open Graph */}
       {type === "product" && (
@@ -310,6 +320,7 @@ export default function SEO({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={absoluteImage} />
+      <meta name="twitter:image:alt" content={imageAlt || title} />
 
       {type === "product" && productPrice !== undefined && (
         <>
