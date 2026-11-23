@@ -3,6 +3,8 @@ import path from 'path';
 import { mockProducts, brands, topCategories, subCategories } from './src/data';
 import { blogPosts } from './src/data/blogPosts';
 import { getRichProductContent } from './src/data/richProductContent';
+import { getProductSeoData } from './src/utils/productSeo';
+import { buildWaterBasedPrimerHeroSummary, getWaterBasedWallPrimerRole } from './src/utils/primerSeo';
 import { HD_PACKSHOT_IMAGES, upgradeCdnImageUrl } from './src/constants/hdPackshotImages';
 
 const distPath = path.join(process.cwd(), 'dist');
@@ -64,15 +66,32 @@ console.log("Generating static HTML for products...");
 mockProducts.forEach((product: any) => {
   const slug = product.slug || product.name.replace(/\s+/g, '-').toLowerCase();
   const richContent = getRichProductContent(product.name, product);
-  const title =
-    richContent?.seo?.title ||
-    product.seoTitle ||
-    `${product.name} | ${product.brand} | Buy Online at Best Price in Coimbatore`;
-  const desc =
-    richContent?.seo?.description ||
-    product.seoDescription ||
-    `Buy ${product.name} online. ${product.subCategory} from ${product.brand}.`;
-  const keywords = richContent?.seo?.keywords || product.seoKeywords;
+  const parsePrice = (priceStr: string | undefined): number => {
+    if (!priceStr) return 0;
+    const num = parseFloat(priceStr.replace(/[^0-9.]/g, ''));
+    return isNaN(num) ? 0 : num;
+  };
+  const basePrice = product.basePrice || parsePrice(product.price) || 850;
+  const sizes = product.sizes || [1, 4, 10, 20];
+  const unitSymbol = product.unit === 'kg' ? 'kg' : product.unit === 'pcs' ? 'pcs' : 'L';
+  const firstSize = sizes[0] || 1;
+  const startingPrice = (product.sizePrices && product.sizePrices[firstSize]) || basePrice;
+  const startingPack = {
+    sizeLabel: firstSize < 1 && unitSymbol === 'L' ? `${Math.round(firstSize * 1000)}ml` : `${firstSize}${unitSymbol}`,
+    price: startingPrice,
+  };
+
+  const seoData = getProductSeoData(product, startingPack);
+  const primerRole = getWaterBasedWallPrimerRole(product.name);
+  const title = primerRole
+    ? seoData.title
+    : richContent?.seo?.title || product.seoTitle || seoData.title;
+  const desc = primerRole
+    ? seoData.description
+    : richContent?.seo?.description || product.seoDescription || seoData.description;
+  const keywords = primerRole
+    ? seoData.keywords
+    : richContent?.seo?.keywords || product.seoKeywords || seoData.keywords;
 
   let finalImage = product.image;
   const key = product.name ? product.name.trim().toLowerCase() : '';
@@ -95,16 +114,7 @@ mockProducts.forEach((product: any) => {
       )
     : [img];
 
-  const parsePrice = (priceStr: string | undefined): number => {
-    if (!priceStr) return 0;
-    const num = parseFloat(priceStr.replace(/[^0-9.]/g, ''));
-    return isNaN(num) ? 0 : num;
-  };
-  const basePrice = product.basePrice || parsePrice(product.price) || 850;
-
   const productUrl = `https://www.rainbowpaint.in/p/${slug}`;
-  const sizes = product.sizes || [1, 4, 10, 20];
-  const unitSymbol = product.unit === 'kg' ? 'kg' : 'L';
   
   const sellerObj = {
     "@type": ["LocalBusiness", "PaintStore", "Organization"],
@@ -192,6 +202,14 @@ mockProducts.forEach((product: any) => {
     };
   });
 
+  const schemaDescription =
+    richContent?.heroSummary ||
+    (primerRole ? buildWaterBasedPrimerHeroSummary(product.name, product.brand, primerRole, product.properties) : '') ||
+    product.description ||
+    desc;
+
+  const additionalProps = seoData.additionalProperties || richContent?.seo?.additionalProperties || [];
+
   const productSchema: Record<string, any> = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -200,7 +218,7 @@ mockProducts.forEach((product: any) => {
     "sku": `RP-${product.id || '1'}`,
     "mpn": `MPN-${product.id || '1'}`,
     "image": schemaImages,
-    "description": richContent?.heroSummary || product.description || desc,
+    "description": schemaDescription,
     "brand": {
       "@type": "Brand",
       "name": product.brand || "Rainbow Paints"
@@ -212,9 +230,9 @@ mockProducts.forEach((product: any) => {
     "category": product.subCategory || product.topCategory || "Home Paint",
     ...(richContent?.seo?.material ? { "material": richContent.seo.material } : {}),
     ...(richContent?.seo?.colorSummary ? { "color": richContent.seo.colorSummary } : {}),
-    ...(richContent?.seo?.additionalProperties?.length
+    ...(additionalProps.length
       ? {
-          "additionalProperty": richContent.seo.additionalProperties.map((p) => ({
+          "additionalProperty": additionalProps.map((p) => ({
             "@type": "PropertyValue",
             "name": p.name,
             "value": p.value
@@ -234,11 +252,12 @@ mockProducts.forEach((product: any) => {
 
   const schemas: any[] = [productSchema];
 
-  if (richContent?.faqs?.length) {
+  const faqsForSchema = seoData.faqs?.length ? seoData.faqs : richContent?.faqs;
+  if (faqsForSchema?.length) {
     schemas.push({
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      "mainEntity": richContent.faqs.map((faq) => ({
+      "mainEntity": faqsForSchema.map((faq) => ({
         "@type": "Question",
         "name": faq.question,
         "acceptedAnswer": {
@@ -287,8 +306,8 @@ const categorySeoMap: Record<string, { title: string; desc: string }> = {
     desc: 'Industrial epoxy floor paints, primers & chemical-resistant protective systems in Coimbatore for concrete & metal surfaces. Request wholesale quotes today!'
   },
   'primers': {
-    title: 'Metal Primers in Coimbatore – Red Oxide & Undercoats | Rainbow',
-    desc: 'Find anti-rust metal primers in Coimbatore for iron & steel: red oxide primers, etch primers & protective undercoats. Compare top brand specs & prices!'
+    title: 'Interior Primer & Exterior Primer – Wall & Metal Primers | Rainbow',
+    desc: 'Shop water-based interior primer, exterior primer & anti-rust metal primers from Asian Paints, Berger & MRF at wholesale prices in Coimbatore. Fast delivery!'
   },
   'waterproofing': {
     title: 'Waterproofing in Coimbatore – Roof, Terrace & Wall Solutions | Rainbow',

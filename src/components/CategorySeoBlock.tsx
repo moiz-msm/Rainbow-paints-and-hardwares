@@ -171,16 +171,16 @@ export default function CategorySeoBlock({ category }: CategorySeoBlockProps) {
     'Undercoats': (
       <>
         <h2 className="text-2xl sm:text-3xl font-serif font-medium text-[#1A365D] mb-6">
-          Buy <span className="text-gold">Primers & Undercoats</span> Online
+          Buy <span className="text-gold">Interior Primer, Exterior Primer &amp; Undercoats</span> Online
         </h2>
         <p className="mb-4">
-          A flawless paint job starts with a perfect foundation. Explore our wide range of <strong>wall putty, exterior primers, and interior base coats</strong> to ensure your topcoat adheres properly and lasts for years. 
+          A lasting paint finish begins with the right foundation. Shop our complete range of <strong>water-based interior primer</strong>, <strong>water-based exterior primer</strong>, wall putty, and anti-rust metal primers from <strong>Asian Paints, Berger Paints, MRF Vapocure, Dr. Fixit, and Birla White</strong> at direct wholesale dealer prices in Coimbatore.
         </p>
         <h3 className="text-xl font-serif font-medium text-[#1A365D] mt-8 mb-4">
-          The Best Base for <span className="text-gold">Every Surface</span>
+          Water-Based <span className="text-gold">Interior Primer &amp; Exterior Primer</span> for Every Surface
         </h3>
         <p className="mb-4">
-          We carry premium acrylic wall putty, water-thinnable primers, and specialized anti-efflorescence primers from brands like Asian Paints and Birla White. Getting the base right guarantees better coverage, richer color payoff, and reduced paint consumption.
+          Choose a dedicated <strong>interior primer</strong> like Asian Paints Decoprime Interior Wall Primer, TruCare Interior Wall Primer (Water Thinnable), Royale Wall Base Coat Interior Primer, or Berger BP White Interior Primer (Water Based) to seal interior plaster and putty for smoother, richer topcoats. For outdoor walls exposed to rain and alkalinity, select an alkali-resistant <strong>exterior primer</strong> such as TruCare Exterior Wall Primer, Berger WeatherCoat Exterior Primer, Damp Sheath Exterior Primer, or MRF Altura 2-in-1 Interior and Exterior Wall Primer to prevent peeling and maximize exterior paint coverage.
         </p>
       </>
     ),

@@ -1,4 +1,12 @@
 import { HD_PACKSHOT_IMAGES, upgradeCdnImageUrl } from '../constants/hdPackshotImages';
+import {
+  buildWaterBasedPrimerDescription,
+  buildWaterBasedPrimerKeywords,
+  buildWaterBasedPrimerTitle,
+  getWaterBasedPrimerApplicationSurface,
+  getWaterBasedPrimerBadgeLabel,
+  getWaterBasedWallPrimerRole,
+} from '../utils/primerSeo';
 import type {
   ApplicationStep,
   ComparisonRow,
@@ -655,7 +663,7 @@ export const ASIAN_PAINTS_VERIFIED_SPECS: Record<string, VerifiedAsianPaintsSpec
   'smartcare damp sheath interior': {
     tagline: '3-Year Waterproofing Interior Primer with Moisture Block Technology',
     summary:
-      'Asian Paints SmartCare Damp Sheath Interior is a waterproofing interior wall primer engineered with Moisture Block Technology for walls with up to 40% substrate moisture, boosting topcoat coverage by up to 15% with a 3-year waterproofing warranty.',
+      'Asian Paints SmartCare Damp Sheath Interior Primer is a water-based waterproofing interior primer engineered with Moisture Block Technology for walls with up to 40% substrate moisture, boosting topcoat coverage by up to 15% with a 3-year waterproofing warranty.',
     finish: 'Waterproofing Primer Undercoat',
     warranty: '3 Years',
     warrantyDetail: 'Official 3-year interior waterproofing warranty (substrate moisture ≤ 40%)',
@@ -709,9 +717,9 @@ export const ASIAN_PAINTS_VERIFIED_SPECS: Record<string, VerifiedAsianPaintsSpec
 
   // === PRIMERS ===
   'decoprime wall primer': {
-    tagline: 'High-Opacity Water-Thinnable Interior Wall Primer Undercoat',
+    tagline: 'Water-Based Interior Primer — High-Opacity Wall Undercoat',
     summary:
-      'Asian Paints Decoprime Wall Primer seals masonry porosity, strengthens topcoat adhesion, and boosts opacity with 1:1 clean water dilution, quick 20–45 minute surface drying, and high spreading efficiency.',
+      'Asian Paints Decoprime Interior Wall Primer is a water-based interior primer that seals masonry porosity, strengthens topcoat adhesion, and boosts opacity with 1:1 clean water dilution, quick 20–45 minute surface drying, and high spreading efficiency.',
     finish: 'Smooth Matt Undercoat',
     coverageOneCoat: '215–270 sq.ft / L (1 coat on smooth masonry)',
     calcTwoCoatRate: 240,
@@ -722,13 +730,13 @@ export const ASIAN_PAINTS_VERIFIED_SPECS: Record<string, VerifiedAsianPaintsSpec
     recoatInterval: '3–4 hrs',
     keyTechnology: 'High Opacity Seal',
     keyTechnologyDetail: 'Seals porous plaster so emulsion topcoats achieve true shade & coverage',
-    material: 'Water-Thinnable Acrylic Cement Wall Primer',
-    seoBenefitSentence: 'Seal interior walls with high-opacity Decoprime primer for smoother, longer-lasting topcoats.',
+    material: 'Water-Based Acrylic Interior Primer',
+    seoBenefitSentence: 'high opacity, strong grip & 1:1 water dilution for smoother topcoats',
   },
   'trucare interior wall primer - water thinnable': {
-    tagline: 'Water-Thinnable Acrylic Interior Wall Primer for Strong Topcoat Adhesion',
+    tagline: 'Water-Based Interior Primer for Strong Topcoat Adhesion & Alkali Sealing',
     summary:
-      'Asian Paints TruCare Interior Wall Primer (WT) prepares interior plastered walls and putty surfaces with 1:1 water dilution, rapid 20–30 minute touch dry time, and reliable alkali & moisture sealing.',
+      'Asian Paints TruCare Interior Wall Primer (WT) is a water-based interior primer that prepares plastered walls and putty surfaces with 1:1 water dilution, rapid 20–30 minute touch dry time, and reliable alkali & moisture sealing.',
     finish: 'Matt Interior Undercoat',
     coverageOneCoat: '120–140 sq.ft / L (1 coat)',
     calcTwoCoatRate: 130,
@@ -739,13 +747,13 @@ export const ASIAN_PAINTS_VERIFIED_SPECS: Record<string, VerifiedAsianPaintsSpec
     recoatInterval: '4–6 hrs',
     keyTechnology: 'Alkali & Grip Seal',
     keyTechnologyDetail: 'Prevents patchy paint absorption on fresh plaster & wall putty',
-    material: 'Water-Thinnable Acrylic Interior Wall Primer',
-    seoBenefitSentence: 'Prepare interior walls cleanly with fast-drying, water-thinnable TruCare wall primer.',
+    material: 'Water-Based Acrylic Interior Primer',
+    seoBenefitSentence: 'superior whiteness, alkali resistance & fast-drying interior wall prep',
   },
   'trucare exterior wall primer': {
-    tagline: 'Alkali-Resistant Water-Thinnable Exterior Wall Primer',
+    tagline: 'Water-Based Exterior Primer with Alkali Resistance & Peeling Protection',
     summary:
-      'Asian Paints TruCare Exterior Wall Primer is a water-thinnable exterior undercoat formulated to resist wall alkalinity, seal porous cement plaster, and maximize durability of Apex & Ace exterior topcoats.',
+      'Asian Paints TruCare Exterior Wall Primer is a water-based exterior primer formulated to resist wall alkalinity, seal porous cement plaster, and maximize durability of Apex & Ace exterior topcoats.',
     finish: 'Matt Exterior Undercoat',
     coverageOneCoat: '100–140 sq.ft / L (1 coat)',
     calcTwoCoatRate: 120,
@@ -756,13 +764,13 @@ export const ASIAN_PAINTS_VERIFIED_SPECS: Record<string, VerifiedAsianPaintsSpec
     recoatInterval: '4–5 hrs',
     keyTechnology: 'Exterior Alkali Guard',
     keyTechnologyDetail: 'Bonds exterior masonry tightly to prevent peeling & blistering',
-    material: 'Water-Thinnable Acrylic Exterior Wall Primer',
-    seoBenefitSentence: 'Build a strong alkali-resistant foundation for exterior paints with TruCare Exterior Primer.',
+    material: 'Water-Based Acrylic Exterior Primer',
+    seoBenefitSentence: 'alkali resistance, strong masonry adhesion & peeling protection',
   },
   'royale wall base coat': {
-    tagline: 'High-Opacity Luxury Interior Undercoat Engineered for Royale Emulsions',
+    tagline: 'Water-Based Luxury Interior Primer & Base Coat for Royale Emulsions',
     summary:
-      'Asian Paints Royale Wall Base Coat is a high-build, water-thinnable luxury undercoat designed to maximize hiding, smoothness, and true colour brilliance under Royale Luxury, Shyne, Matt, and Glitz topcoats.',
+      'Asian Paints Royale Wall Base Coat Interior Primer is a high-build, water-based interior primer and luxury undercoat designed to maximize hiding, smoothness, and true colour brilliance under Royale Luxury, Shyne, Matt, and Glitz topcoats.',
     finish: 'Smooth High-Opacity Undercoat',
     coverageOneCoat: '175–210 sq.ft / L (1 coat)',
     calcTwoCoatRate: 190,
@@ -773,8 +781,8 @@ export const ASIAN_PAINTS_VERIFIED_SPECS: Record<string, VerifiedAsianPaintsSpec
     recoatInterval: '4–5 hrs',
     keyTechnology: 'High-Build Opacity',
     keyTechnologyDetail: 'Enhances luxury topcoat smoothness & reduces dark-to-light shade coats',
-    material: 'Water-Thinnable Luxury Interior Base Coat Primer',
-    seoBenefitSentence: 'Maximize smoothness & true colour richness under Royale paints with Royale Wall Base Coat.',
+    material: 'Water-Based Luxury Interior Primer & Base Coat',
+    seoBenefitSentence: 'high-build opacity, smoothness & true shade richness under Royale paints',
   },
 
   // === SYNTHETIC ENAMELS ===
@@ -1135,7 +1143,7 @@ function getCategoryApplicationSteps(
           title: 'Seal with Interior Primer',
           timing: 'Dry 4–6 hrs',
           detail: 'Apply 1 uniform coat of water-thinnable interior wall primer to equalize wall porosity and improve base coat adhesion.',
-          linkedProductName: 'Decoprime Wall Primer',
+          linkedProductName: 'Decoprime Interior Wall Primer',
           linkedProductSlug: 'decoprime-wall-primer',
         },
         {
@@ -1486,14 +1494,18 @@ function getCategoryApplicationSteps(
             title: 'Prime Before Topcoat',
             timing: 'Mandatory seal',
             detail: 'Apply 1 coat of interior wall primer over dried putty to lock in smoothness and maximize emulsion spreading.',
-            linkedProductName: 'Decoprime Wall Primer',
+            linkedProductName: 'Decoprime Interior Wall Primer',
             linkedProductSlug: 'decoprime-wall-primer',
           },
         ],
       };
     }
+    const primerRoleStep = getWaterBasedWallPrimerRole(product.name);
+    const isExtPrimer = primerRoleStep === 'exterior' || nameLower.includes('exterior');
     return {
-      title: 'Recommended 4-Step Wall Priming System',
+      title: isExtPrimer
+        ? 'Recommended 4-Step Exterior Priming System'
+        : 'Recommended 4-Step Wall Priming System',
       subtitle: `Build strong adhesion and uniform colour holdout with ${product.name}.`,
       steps: [
         {
@@ -1520,9 +1532,11 @@ function getCategoryApplicationSteps(
           stepNumber: '04',
           title: 'Apply Finish Emulsion Coats',
           timing: '2 finish coats',
-          detail: 'Once the primer is completely dry, apply 2 coats of your chosen Asian Paints interior or exterior emulsion.',
-          linkedProductName: sub.includes('exterior') ? 'Apex Ultima' : 'Royale Luxury Emulsion',
-          linkedProductSlug: sub.includes('exterior') ? 'apex-ultima' : 'royale-luxury-emulsion',
+          detail: isExtPrimer
+            ? 'Once the exterior primer is completely dry, apply 2 coats of your chosen Asian Paints exterior emulsion.'
+            : 'Once the interior primer is completely dry, apply 2 coats of your chosen Asian Paints interior emulsion.',
+          linkedProductName: isExtPrimer ? 'Apex Ultima' : 'Royale Luxury Emulsion',
+          linkedProductSlug: isExtPrimer ? 'apex-ultima' : 'royale-luxury-emulsion',
         },
       ],
     };
@@ -1552,7 +1566,7 @@ function getCategoryApplicationSteps(
         title: 'Apply Interior Wall Primer',
         timing: 'Dry 4–6 hrs',
         detail: 'Apply 1 uniform coat of water-thinnable interior wall primer to seal porosity and maximize topcoat coverage.',
-        linkedProductName: 'Decoprime Wall Primer',
+        linkedProductName: 'Decoprime Interior Wall Primer',
         linkedProductSlug: 'decoprime-wall-primer',
       },
       {
@@ -1636,9 +1650,15 @@ function buildFeatureCards(
   return cards.slice(0, 4);
 }
 
+const SPEC_KEY_ALIASES: Record<string, string> = {
+  'decoprime interior wall primer': 'decoprime wall primer',
+  'royale wall base coat interior primer': 'royale wall base coat',
+  'smartcare damp sheath interior primer': 'smartcare damp sheath interior',
+};
+
 export function buildAsianPaintsRichContent(product: CatalogProductLike): RichProductContent {
   const normalized = product.name.trim().toLowerCase();
-  const spec = ASIAN_PAINTS_VERIFIED_SPECS[normalized];
+  const spec = ASIAN_PAINTS_VERIFIED_SPECS[normalized] || ASIAN_PAINTS_VERIFIED_SPECS[SPEC_KEY_ALIASES[normalized] || ''];
   const sub = product.subCategory || product.category || 'Paint';
   const unitShort = getUnitShort(product.unit);
   const sizes = getPackSizes(product);
@@ -1733,9 +1753,17 @@ export function buildAsianPaintsRichContent(product: CatalogProductLike): RichPr
   }
 
   // Build Official Technical Specifications Table (100% grounded!)
+  const primerRole = getWaterBasedWallPrimerRole(product.name);
+  const primerTypeLabel = primerRole ? getWaterBasedPrimerBadgeLabel(primerRole) : null;
   const specificationsTable: { label: string; value: string }[] = [
     { label: 'Brand', value: 'Asian Paints (Authorized Dealer Stock)' },
     { label: 'Product Category', value: sub },
+    ...(primerRole && primerTypeLabel
+      ? [
+          { label: 'Primer Type', value: primerTypeLabel },
+          { label: 'Application Surface', value: getWaterBasedPrimerApplicationSurface(primerRole) },
+        ]
+      : []),
   ];
   if (spec?.finish) specificationsTable.push({ label: 'Finish / Type', value: spec.finish });
   if (spec?.material) specificationsTable.push({ label: 'Base Formulation', value: spec.material });
@@ -1754,18 +1782,26 @@ export function buildAsianPaintsRichContent(product: CatalogProductLike): RichPr
     specificationsTable.push({ label: 'Key Attributes', value: props.join(' · ') });
   }
 
-  // Build Hero Summary & Tagline (100% factual)
+  // Build Hero Summary & Tagline (100% factual; water-based primers explicitly state interior/exterior primer role)
   const tagline =
     spec?.tagline ||
-    (props.length >= 2
-      ? `Asian Paints ${sub} — ${props[0]} & ${props[1]}`
-      : `Genuine Asian Paints ${sub}`);
+    (primerTypeLabel
+      ? props.length >= 2
+        ? `${primerTypeLabel} by Asian Paints — ${props[0]} & ${props[1]}`
+        : `Genuine Asian Paints ${primerTypeLabel}`
+      : props.length >= 2
+        ? `Asian Paints ${sub} — ${props[0]} & ${props[1]}`
+        : `Genuine Asian Paints ${sub}`);
 
   const heroSummary =
     spec?.summary ||
-    (props.length > 0
-      ? `Genuine Asian Paints ${product.name} (${sub}) featuring ${props.join(', ').toLowerCase()}. Available in factory-sealed ${packSizesLabel} packs at wholesale dealer pricing.`
-      : `Genuine Asian Paints ${product.name} for ${sub.toLowerCase()} applications. Supplied in factory-sealed ${packSizesLabel} packs by Rainbow Paints & Hardwares, Coimbatore.`);
+    (primerTypeLabel
+      ? props.length > 0
+        ? `Genuine Asian Paints ${product.name} is a ${primerTypeLabel.toLowerCase()} featuring ${props.join(', ').toLowerCase()}. Available in factory-sealed ${packSizesLabel} packs at wholesale dealer pricing.`
+        : `Genuine Asian Paints ${product.name} is a ${primerTypeLabel.toLowerCase()} for reliable masonry adhesion and topcoat performance. Supplied in factory-sealed ${packSizesLabel} packs by Rainbow Paints & Hardwares, Coimbatore.`
+      : props.length > 0
+        ? `Genuine Asian Paints ${product.name} (${sub}) featuring ${props.join(', ').toLowerCase()}. Available in factory-sealed ${packSizesLabel} packs at wholesale dealer pricing.`
+        : `Genuine Asian Paints ${product.name} for ${sub.toLowerCase()} applications. Supplied in factory-sealed ${packSizesLabel} packs by Rainbow Paints & Hardwares, Coimbatore.`);
 
   // Build Dynamic Real-Price FAQs (synced to FAQPage JSON-LD!)
   const basePrice = parseBasePrice(product);
@@ -1788,6 +1824,12 @@ export function buildAsianPaintsRichContent(product: CatalogProductLike): RichPr
   });
 
   const faqs: ProductFaqItem[] = [];
+  if (primerRole && primerTypeLabel) {
+    faqs.push({
+      question: `Is Asian Paints ${product.name} a ${primerTypeLabel.toLowerCase()}?`,
+      answer: `Yes. Asian Paints ${product.name} is a genuine ${primerTypeLabel.toLowerCase()} formulated for ${getWaterBasedPrimerApplicationSurface(primerRole).toLowerCase()}, sealing wall porosity and improving topcoat adhesion and durability.`,
+    });
+  }
   if (basePrice > 0) {
     faqs.push({
       question: `What is the price of Asian Paints ${product.name} across available pack sizes?`,
@@ -1815,7 +1857,7 @@ export function buildAsianPaintsRichContent(product: CatalogProductLike): RichPr
   if (props.length > 0) {
     faqs.push({
       question: `What are the key benefits of Asian Paints ${product.name}?`,
-      answer: `${product.name} is formulated for ${sub.toLowerCase()} applications and stands out for ${props.join(', ')}.`,
+      answer: `${product.name} is formulated for ${primerTypeLabel ? `${primerTypeLabel.toLowerCase()} & ${sub.toLowerCase()}` : sub.toLowerCase()} applications and stands out for ${props.join(', ')}.`,
     });
   }
   faqs.push({
@@ -1826,13 +1868,24 @@ export function buildAsianPaintsRichContent(product: CatalogProductLike): RichPr
     faqs.push(...spec.extraFaqs);
   }
 
-  // Build SEO metadata (keep benefit-focused, exact "{Name} by Asian Paints - Buy Online" title!)
+  // Build SEO metadata (water-based wall primers include exact Interior Primer / Exterior Primer keywords)
   const alreadyHasBrand = normalized.includes('asian paints');
-  const seoTitle = alreadyHasBrand
-    ? `${product.name} - Buy Online`
-    : `${product.name} by Asian Paints - Buy Online`;
+  const seoTitle = primerRole
+    ? buildWaterBasedPrimerTitle(product.name, 'Asian Paints', primerRole)
+    : alreadyHasBrand
+      ? `${product.name} - Buy Online`
+      : `${product.name} by Asian Paints - Buy Online`;
 
   const buildCleanSeoDesc = (): string => {
+    if (primerRole) {
+      const primerBenefit =
+        spec?.seoBenefitSentence ||
+        (props.length >= 2
+          ? `${props[0].toLowerCase()} & ${props[1].toLowerCase()}`
+          : props[0]?.toLowerCase());
+      return buildWaterBasedPrimerDescription(product.name, 'Asian Paints', primerRole, primerBenefit);
+    }
+
     const MAX_LEN = 156;
     if (spec?.seoBenefitSentence) {
       const candidates = [
@@ -1860,6 +1913,7 @@ export function buildAsianPaintsRichContent(product: CatalogProductLike): RichPr
   const seoDescription = buildCleanSeoDesc();
 
   const highlights: string[] = [
+    ...(primerTypeLabel ? [`Primer Type: ${primerTypeLabel}`] : []),
     ...(spec?.finish ? [`Finish: ${spec.finish}`] : []),
     ...(spec?.warranty ? [`Official Warranty: ${spec.warranty}`] : []),
     ...(spec?.coverageTwoCoats ? [`Coverage: ${spec.coverageTwoCoats}`] : spec?.coverageOneCoat ? [`Coverage: ${spec.coverageOneCoat}`] : []),
@@ -1889,16 +1943,23 @@ export function buildAsianPaintsRichContent(product: CatalogProductLike): RichPr
     seo: {
       title: seoTitle,
       description: seoDescription,
-      keywords: [
-        `Asian Paints ${product.name}`,
-        `${product.name} price`,
-        `buy ${product.name} online`,
-        `Asian Paints ${sub}`,
-        ...props.slice(0, 3),
-        'Asian Paints authorized dealer Coimbatore',
-      ].join(', '),
-      ogImageAlt: `Asian Paints ${product.name} - ${sub} Original Factory Pack`,
-      material: spec?.material || `Asian Paints ${sub}`,
+      keywords: primerRole
+        ? buildWaterBasedPrimerKeywords(product.name, 'Asian Paints', primerRole, [
+            ...props.slice(0, 3),
+            'Asian Paints authorized dealer Coimbatore',
+          ])
+        : [
+            `Asian Paints ${product.name}`,
+            `${product.name} price`,
+            `buy ${product.name} online`,
+            `Asian Paints ${sub}`,
+            ...props.slice(0, 3),
+            'Asian Paints authorized dealer Coimbatore',
+          ].join(', '),
+      ogImageAlt: primerTypeLabel
+        ? `Asian Paints ${product.name} – ${primerTypeLabel} Original Factory Pack`
+        : `Asian Paints ${product.name} - ${sub} Original Factory Pack`,
+      material: spec?.material || primerTypeLabel || `Asian Paints ${sub}`,
       colorSummary: spec?.shadeSummary || (sub.toLowerCase().includes('paint') ? 'White & Computerized Asian Paints Shades' : 'Standard Factory Finish'),
       highlights,
       additionalProperties: specificationsTable.map((s) => ({ name: s.label, value: s.value })),

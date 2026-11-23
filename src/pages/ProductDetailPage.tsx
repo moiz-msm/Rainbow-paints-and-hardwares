@@ -17,6 +17,12 @@ import Breadcrumb from '../components/Breadcrumb';
 import ProductImageGallery from '../components/ProductImageGallery';
 import RichProductShowcase from '../components/RichProductShowcase';
 import { getRichProductContent } from '../data/richProductContent';
+import { getProductSeoData } from '../utils/productSeo';
+import {
+  buildWaterBasedPrimerHeroSummary,
+  getWaterBasedWallPrimerConfig,
+  getWaterBasedWallPrimerRole,
+} from '../utils/primerSeo';
 import {
   applyStandardEnamelIndustrialShades,
   STANDARD_ENAMEL_INDUSTRIAL_SHADES,
@@ -879,7 +885,16 @@ export default function ProductDetailPage() {
           }
         }
 
-          if (found) {
+        if (found) {
+          const primerCfg = getWaterBasedWallPrimerConfig(found.name);
+          if (primerCfg && found.name !== primerCfg.canonicalName) {
+            const mockMatch = mockProducts.find((m) => m.name === primerCfg.canonicalName);
+            found = {
+              ...found,
+              name: primerCfg.canonicalName,
+              slug: found.slug || (mockMatch as any)?.slug,
+            };
+          }
           setProduct(found);
           const parsedSizeParam = sizeParam ? parseInt(sizeParam, 10) : null;
           if (parsedSizeParam && found.sizes && found.sizes.includes(parsedSizeParam)) {
@@ -1981,9 +1996,28 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
   }, [product, productSizes, basePrice]);
 
   const richContent = useMemo(() => getRichProductContent(product?.name, product), [product]);
+  const waterBasedPrimerRole = useMemo(() => getWaterBasedWallPrimerRole(product?.name), [product]);
+  const seoData = useMemo(
+    () => (product ? getProductSeoData(product, startingPackInfo) : null),
+    [product, startingPackInfo]
+  );
 
   const faqSchema = useMemo(() => {
     if (!product) return null;
+    if (seoData?.faqs?.length) {
+      return {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": seoData.faqs.map((faq) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
+          }
+        }))
+      };
+    }
     if (richContent && richContent.faqs.length > 0) {
       return {
         "@context": "https://schema.org",
@@ -2028,7 +2062,7 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
         }
       ]
     };
-  }, [product, richContent, startingPackInfo]);
+  }, [product, richContent, seoData, startingPackInfo]);
 
   const breadcrumbItems = useMemo(() => {
     if (!product) return [];
@@ -2094,11 +2128,13 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
   }, [product, richContent, displayImage]);
 
   const metaDesc = useMemo(() => {
+    if (waterBasedPrimerRole && seoData?.description) return seoData.description;
     if (richContent?.seo?.description) return richContent.seo.description;
     if ((product as any)?.seoDescription) return (product as any).seoDescription;
+    if (seoData?.description) return seoData.description;
     const categoryLabel = product?.subCategory || product?.category || product?.topCategory || 'Quality paint';
     return `Buy ${product?.name} by ${product?.brand} online at wholesale prices. ${categoryLabel} with fast local delivery in Coimbatore.`;
-  }, [product, richContent]);
+  }, [product, richContent, seoData, waterBasedPrimerRole]);
 
   const fallbackTitle = useMemo(() => {
     if (!productSlug) return "Buy Paint Online | Rainbow Paints";
@@ -2392,12 +2428,20 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
     <article className="pt-[72px] sm:pt-24 pb-12 bg-royale-bg min-h-screen text-ivory/90 relative overflow-x-hidden selection:bg-gold/30">
       <SEO 
         type="product"
-        title={richContent?.seo?.title || product.seoTitle || `${product.name} by ${product.brand} - Buy Online | Wholesale Price`}
+        title={
+          waterBasedPrimerRole && seoData?.title
+            ? seoData.title
+            : richContent?.seo?.title || product.seoTitle || seoData?.title || `${product.name} by ${product.brand} - Buy Online | Wholesale Price`
+        }
         description={metaDesc}
-        keywords={richContent?.seo?.keywords || (product as any).seoKeywords || `${product.name}, ${product.brand}, ${product.category || product.topCategory}, ${product.subCategory}`}
+        keywords={
+          waterBasedPrimerRole && seoData?.keywords
+            ? seoData.keywords
+            : richContent?.seo?.keywords || (product as any).seoKeywords || seoData?.keywords || `${product.name}, ${product.brand}, ${product.category || product.topCategory}, ${product.subCategory}`
+        }
         url={`https://www.rainbowpaint.in/p/${product.slug || product.name.replace(/\s+/g, '-').toLowerCase()}`}
         image={displayImage || product.image}
-        imageAlt={richContent?.seo?.ogImageAlt || `${product.brand} ${product.name} - ${product.subCategory || 'Paint'}`}
+        imageAlt={seoData?.imageAlt || richContent?.seo?.ogImageAlt || `${product.brand} ${product.name} - ${product.subCategory || 'Paint'}`}
         productBrand={product.brand}
         productPrice={currentPrice}
         productCurrency="INR"
@@ -2503,11 +2547,15 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
               {product.name}
             </h1>
 
-            {richContent && (
+            {richContent ? (
               <p className="text-xs sm:text-sm md:text-base text-zinc-600 leading-relaxed mb-4 sm:mb-5 max-w-2xl">
                 {richContent.heroSummary}
               </p>
-            )}
+            ) : waterBasedPrimerRole ? (
+              <p className="text-xs sm:text-sm md:text-base text-zinc-600 leading-relaxed mb-4 sm:mb-5 max-w-2xl">
+                {buildWaterBasedPrimerHeroSummary(product.name, product.brand, waterBasedPrimerRole, product.properties)}
+              </p>
+            ) : null}
 
             <div className="flex items-center gap-2 mb-8 bg-green-50 w-fit px-3 py-1.5 rounded-full border border-green-100">
               <div className="relative flex h-2 w-2">

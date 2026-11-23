@@ -917,7 +917,8 @@ const rawMockProducts = [
   },
   {
     "id": 55,
-    "name": "604 PRIMESEAL",
+    "name": "604 PRIMESEAL Interior and Exterior Wall Primer",
+    "slug": "604-primeseal",
     "brand": "Dr. Fixit",
     "topCategory": "Home Paint",
     "subCategory": "Waterproofing",
@@ -1871,7 +1872,8 @@ const rawMockProducts = [
   },
   {
     "id": 37,
-    "name": "Decoprime Wall Primer",
+    "name": "Decoprime Interior Wall Primer",
+    "slug": "decoprime-wall-primer",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
     "subCategory": "Primers",
@@ -1916,7 +1918,8 @@ const rawMockProducts = [
   },
   {
     "id": 41,
-    "name": "AquaFresh DampGarde",
+    "name": "AquaFresh DampGarde Exterior Primer",
+    "slug": "aquafresh-dampgarde",
     "brand": "MRF Vapocure",
     "topCategory": "Home Paint",
     "subCategory": "Primers",
@@ -2947,7 +2950,8 @@ const rawMockProducts = [
   },
   {
     "id": 4009,
-    "name": "BP White Primer (Water Based)",
+    "name": "BP White Interior Primer (Water Based)",
+    "slug": "bp-white-primer-(water-based)",
     "brand": "Berger Paints",
     "topCategory": "Home Paint",
     "subCategory": "Primers",
@@ -5542,7 +5546,8 @@ const rawMockProducts = [
   },
   {
     "id": 5011,
-    "name": "MRF AquaFresh PU Wall Primer",
+    "name": "MRF AquaFresh PU Interior and Exterior Wall Primer",
+    "slug": "mrf-aquafresh-pu-wall-primer",
     "brand": "MRF Vapocure",
     "topCategory": "Home Paint",
     "subCategory": "Primers",
@@ -5565,7 +5570,8 @@ const rawMockProducts = [
   },
   {
     "id": 5012,
-    "name": "MRF Altura 2-in-1 Wall Primer",
+    "name": "MRF Altura 2-in-1 Interior and Exterior Wall Primer",
+    "slug": "mrf-altura-2-in-1-wall-primer",
     "brand": "MRF Vapocure",
     "topCategory": "Home Paint",
     "subCategory": "Primers",
@@ -5588,7 +5594,8 @@ const rawMockProducts = [
   },
   {
     "id": 5013,
-    "name": "MRF Sello 2-in-1 Wall Primer",
+    "name": "MRF Sello 2-in-1 Interior and Exterior Wall Primer",
+    "slug": "mrf-sello-2-in-1-wall-primer",
     "brand": "MRF Vapocure",
     "topCategory": "Home Paint",
     "subCategory": "Primers",
@@ -7128,7 +7135,7 @@ const rawMockProducts = [
   },
   {
     "id": 1132,
-    "name": "SmartCare Damp Sheath Interior Advanced",
+    "name": "SmartCare Damp Sheath Interior Primer Advanced",
     "description": "A specially formulated interior waterproofing primer to prevent surface dampness.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
@@ -7212,7 +7219,7 @@ const rawMockProducts = [
   },
   {
     "id": 1151,
-    "name": "SmartCare Damp Sheath Interior",
+    "name": "SmartCare Damp Sheath Interior Primer",
     "description": "A specially formulated interior waterproofing primer to prevent surface dampness.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
@@ -8829,7 +8836,7 @@ const rawMockProducts = [
   },
   {
     "id": 9011,
-    "name": "Royale Wall Base Coat",
+    "name": "Royale Wall Base Coat Interior Primer",
     "description": "Create the perfect base coat that primes for a smooth finish, better paint adhesion, and added moisture protection.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
@@ -8955,7 +8962,7 @@ const rawMockProducts = [
   },
   {
     "id": 9017,
-    "name": "SmartCare Primero",
+    "name": "SmartCare Primero Exterior Primer",
     "description": "Make your paint job last with our water-based primer that adds extra durability and moisture resistance to your exterior walls.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
@@ -9207,7 +9214,7 @@ const rawMockProducts = [
   },
   {
     "id": 9029,
-    "name": "Damp Sheath Exterior",
+    "name": "Damp Sheath Exterior Primer",
     "description": "Keep moisture out with our damp-proof coating that protects your exterior walls and keeps your paint looking fresh.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
@@ -9312,7 +9319,7 @@ const rawMockProducts = [
   },
   {
     "id": 9034,
-    "name": "SmartCare Damp Sheath Exterior Advanced",
+    "name": "SmartCare Damp Sheath Exterior Primer Advanced",
     "description": "Keep your exteriors water-tight with this high-performance coating that lasts longer and provides good adhesion.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",
@@ -9333,7 +9340,7 @@ const rawMockProducts = [
   },
   {
     "id": 9035,
-    "name": "Damp Secure",
+    "name": "Damp Secure Exterior Primer",
     "description": "Protect your walls the secure way with our primer that offers 3 years of waterproofing warranty. Designed for exterior vertical walls, it locks in paint better while providing a strong, protective base against dampness.",
     "brand": "Asian Paints",
     "topCategory": "Home Paint",

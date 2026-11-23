@@ -24,6 +24,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { mockProducts, subCategories, brands, brandDetails } from "../data";
 import { HD_PACKSHOT_IMAGES, upgradeCdnImageUrl } from "../constants/hdPackshotImages";
+import { getWaterBasedWallPrimerConfig } from "../utils/primerSeo";
 import {
   applyStandardEnamelIndustrialShades,
   STANDARD_ENAMEL_INDUSTRIAL_SHADES,
@@ -1400,6 +1401,18 @@ export default function ProductsSection({
       if (blacklistedIds.includes(p.id)) return;
       let mergedProduct = { ...p };
       let key = mergedProduct.name ? mergedProduct.name.trim().toLowerCase() : mergedProduct.id?.toString();
+
+      const primerCfg = getWaterBasedWallPrimerConfig(mergedProduct.name);
+      if (primerCfg) {
+        const canonicalKey = primerCfg.canonicalName.toLowerCase();
+        const existingMock = map.get(canonicalKey);
+        mergedProduct = {
+          ...mergedProduct,
+          name: primerCfg.canonicalName,
+          slug: mergedProduct.slug || existingMock?.slug,
+        };
+        key = canonicalKey;
+      }
 
       if (key === "protecton epilux 4 mio coating" || key === "berger paints red oxide zinc chromate metal primer is2074") {
         mergedProduct = {

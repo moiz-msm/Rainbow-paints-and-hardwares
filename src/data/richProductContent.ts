@@ -324,7 +324,7 @@ export const RICH_PRODUCT_CONTENT: Record<string, RichProductContent> = {
           title: 'Apply Interior Wall Primer',
           timing: 'Dry 4–6 hrs',
           detail: 'Apply 1 uniform coat of water-based interior wall primer to seal porosity, improve adhesion, and deliver consistent topcoat coverage.',
-          linkedProductName: 'Decoprime Wall Primer',
+          linkedProductName: 'Decoprime Interior Wall Primer',
           linkedProductSlug: 'decoprime-wall-primer',
         },
         {

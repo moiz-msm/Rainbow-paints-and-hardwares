@@ -157,7 +157,7 @@ export default function ProductsPage() {
       return 'Industrial Paint and Coatings in Coimbatore | Epoxy & PU | Rainbow';
     }
     if (initialCategory === 'Primers' || initialCategory === 'Undercoats' || initialCategory === 'Primer') {
-      return 'Metal Primers in Coimbatore – Red Oxide & Undercoats | Rainbow';
+      return 'Interior Primer & Exterior Primer – Wall & Metal Primers | Rainbow';
     }
     if (initialCategory === 'Waterproofing' || initialCategory === 'Waterproofing Solutions') {
       return 'Waterproofing in Coimbatore – Roof, Terrace & Wall Solutions | Rainbow';
@@ -227,7 +227,7 @@ export default function ProductsPage() {
       return 'Buy industrial paint and coatings in Coimbatore at wholesale prices: 2-pack epoxy paints, 2K PU metal coatings, zinc primers & heavy-duty floor paints.';
     }
     if (initialCategory === 'Primers' || initialCategory === 'Undercoats' || initialCategory === 'Primer') {
-      return 'Find anti-rust metal primers in Coimbatore for iron & steel: red oxide primers, zinc chromate & protective undercoats. Compare top brand specs & prices!';
+      return 'Shop water-based interior primer, exterior primer & anti-rust metal primers from Asian Paints, Berger & MRF at wholesale prices in Coimbatore. Fast delivery!';
     }
     if (initialCategory === 'Waterproofing' || initialCategory === 'Waterproofing Solutions') {
       return 'Shop waterproofing products in Coimbatore for roofs, terraces, bathrooms & exterior walls. Compare Dr. Fixit & SmartCare coatings at wholesale rates!';
@@ -250,6 +250,9 @@ export default function ProductsPage() {
     }
     if (initialCategory === 'PU Paint') {
       return '2K PU paint Coimbatore, MRF WoodCoat, MRF MetalCoat, polyurethane wood and metal coating, Luxol PU enamel';
+    }
+    if (initialCategory === 'Primers' || initialCategory === 'Undercoats' || initialCategory === 'Primer') {
+      return 'interior primer, exterior primer, water based interior primer, water based exterior primer, interior wall primer, exterior wall primer, Asian Paints interior primer, Berger exterior primer, metal primer, red oxide primer, buy primers Coimbatore';
     }
     if (initialCategory) {
       return `${initialCategory}, buy ${initialCategory.toLowerCase()} in Coimbatore, ${initialCategory.toLowerCase()} wholesale price, Rainbow Paints Coimbatore`;

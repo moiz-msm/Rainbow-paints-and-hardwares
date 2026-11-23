@@ -1,4 +1,12 @@
 import { getRichProductContent, RichProductContent } from '../data/richProductContent';
+import {
+  buildWaterBasedPrimerDescription,
+  buildWaterBasedPrimerKeywords,
+  buildWaterBasedPrimerTitle,
+  getWaterBasedPrimerApplicationSurface,
+  getWaterBasedPrimerBadgeLabel,
+  getWaterBasedWallPrimerRole,
+} from './primerSeo';
 
 export interface SeoProductInput {
   id?: string | number;
@@ -83,9 +91,15 @@ export function getBrandedProductName(name: string, brand?: string): string {
 /**
  * Standardized high-CTR product page title:
  * "{Product Name} by {Brand} - Buy Online"
- * Avoids repeating brand when the product name already contains the brand (or brand is Local).
+ * For verified water-based wall primers, explicitly includes "Interior Primer" / "Exterior Primer"
+ * apart from the product name for search ranking optimization.
  */
 export function buildProductSeoTitle(product: SeoProductInput): string {
+  const primerRole = getWaterBasedWallPrimerRole(product.name);
+  if (primerRole) {
+    return buildWaterBasedPrimerTitle(product.name, product.brand, primerRole);
+  }
+
   const richContent = getRichProductContent(product.name, product);
   if (richContent?.seo?.title) {
     return richContent.seo.title;
@@ -326,6 +340,13 @@ function getCategoryLeadSentence(product: SeoProductInput, brandedName: string):
  * Tells shoppers about the product and its real benefits rather than dumping dry specs.
  */
 export function buildProductSeoDescription(product: SeoProductInput): string {
+  const primerRole = getWaterBasedWallPrimerRole(product.name);
+  if (primerRole) {
+    const benefits = extractHumanBenefits(product.properties);
+    const benefitSnippet = benefits.length > 0 ? joinBenefits(benefits.slice(0, 2)) : undefined;
+    return buildWaterBasedPrimerDescription(product.name, product.brand, primerRole, benefitSnippet);
+  }
+
   const richContent = getRichProductContent(product.name, product);
   if (richContent?.seo?.description) {
     return richContent.seo.description;
@@ -377,6 +398,12 @@ export function buildProductSeoDescription(product: SeoProductInput): string {
  */
 export function buildProductSeoKeywords(product: SeoProductInput): string {
   const richContent = getRichProductContent(product.name, product);
+  const primerRole = getWaterBasedWallPrimerRole(product.name);
+  if (primerRole) {
+    const extra = extractHumanBenefits(product.properties).slice(0, 3);
+    return buildWaterBasedPrimerKeywords(product.name, product.brand, primerRole, extra);
+  }
+
   if (richContent?.seo?.keywords) {
     return richContent.seo.keywords;
   }
@@ -406,11 +433,25 @@ export function buildProductSeoKeywords(product: SeoProductInput): string {
  */
 export function buildProductAdditionalProperties(product: SeoProductInput): { name: string; value: string }[] {
   const richContent = getRichProductContent(product.name, product);
+  const primerRole = getWaterBasedWallPrimerRole(product.name);
+
   if (richContent?.seo?.additionalProperties?.length) {
-    return richContent.seo.additionalProperties;
+    const existing = richContent.seo.additionalProperties;
+    if (primerRole && !existing.some((p) => p.name.toLowerCase() === 'primer type')) {
+      return [
+        { name: 'Primer Type', value: getWaterBasedPrimerBadgeLabel(primerRole) },
+        { name: 'Application Surface', value: getWaterBasedPrimerApplicationSurface(primerRole) },
+        ...existing,
+      ];
+    }
+    return existing;
   }
 
   const props: { name: string; value: string }[] = [];
+  if (primerRole) {
+    props.push({ name: 'Primer Type', value: getWaterBasedPrimerBadgeLabel(primerRole) });
+    props.push({ name: 'Application Surface', value: getWaterBasedPrimerApplicationSurface(primerRole) });
+  }
   const sub = product.subCategory || product.category || product.topCategory;
   if (sub) props.push({ name: 'Category', value: sub });
   if (product.brand && product.brand.toLowerCase() !== 'local') {
@@ -460,8 +501,18 @@ export function buildProductFaqs(
   const brandedName = getBrandedProductName(product.name, product.brand);
   const sub = product.subCategory || product.category || product.topCategory || 'painting';
   const benefits = extractHumanBenefits(product.properties);
+  const primerRole = getWaterBasedWallPrimerRole(product.name);
 
   const faqs: { question: string; answer: string }[] = [];
+
+  if (primerRole) {
+    const roleLabel = getWaterBasedPrimerBadgeLabel(primerRole).toLowerCase();
+    const surfaceLabel = getWaterBasedPrimerApplicationSurface(primerRole).toLowerCase();
+    faqs.push({
+      question: `Is ${brandedName} a ${roleLabel}?`,
+      answer: `Yes. ${brandedName} is a genuine ${roleLabel} formulated for ${surfaceLabel}, helping seal masonry porosity and strengthen topcoat paint adhesion.`,
+    });
+  }
 
   if (startingPack && startingPack.price > 0) {
     faqs.push({
@@ -473,7 +524,7 @@ export function buildProductFaqs(
   if (benefits.length > 0) {
     faqs.push({
       question: `What are the key benefits of ${brandedName}?`,
-      answer: `${brandedName} is designed for ${sub.toLowerCase()} applications and offers ${joinBenefits(benefits.slice(0, 4))}.`,
+      answer: `${brandedName} is designed for ${primerRole ? `${getWaterBasedPrimerBadgeLabel(primerRole).toLowerCase()} & ${sub.toLowerCase()}` : sub.toLowerCase()} applications and offers ${joinBenefits(benefits.slice(0, 4))}.`,
     });
   }
 
@@ -497,17 +548,22 @@ export function getProductSeoData(
   const richContent = getRichProductContent(product.name, product);
   const brandedName = getBrandedProductName(product.name, product.brand);
   const sub = product.subCategory || product.category || product.topCategory || 'Paint';
+  const primerRole = getWaterBasedWallPrimerRole(product.name);
 
   const highlights =
     richContent?.seo?.highlights?.length
       ? richContent.seo.highlights
       : (product.properties || []).map((p) => cleanWhitespace(p)).filter(Boolean).slice(0, 5);
 
+  const defaultAlt = primerRole
+    ? `${brandedName} – ${getWaterBasedPrimerBadgeLabel(primerRole)} Original Pack`
+    : `${brandedName} - ${sub} Original Pack`;
+
   return {
     title: buildProductSeoTitle(product),
     description: buildProductSeoDescription(product),
     keywords: buildProductSeoKeywords(product),
-    imageAlt: richContent?.seo?.ogImageAlt || `${brandedName} - ${sub} Original Pack`,
+    imageAlt: primerRole ? defaultAlt : (richContent?.seo?.ogImageAlt || defaultAlt),
     highlights,
     additionalProperties: buildProductAdditionalProperties(product),
     faqs: buildProductFaqs(product, startingPack),

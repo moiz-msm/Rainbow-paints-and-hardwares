@@ -1055,8 +1055,8 @@ Return exactly a valid JSON object with {"name": "string", "pincode": "string"}.
               desc: 'Industrial epoxy floor paints, primers & chemical-resistant protective systems in Coimbatore for concrete & metal surfaces. Request wholesale quotes today!'
             },
             'primers': {
-              title: 'Metal Primers in Coimbatore – Red Oxide & Undercoats | Rainbow',
-              desc: 'Find anti-rust metal primers in Coimbatore for iron & steel: red oxide primers, etch primers & protective undercoats. Compare top brand specs & prices!'
+              title: 'Interior Primer & Exterior Primer – Wall & Metal Primers | Rainbow',
+              desc: 'Shop water-based interior primer, exterior primer & anti-rust metal primers from Asian Paints, Berger & MRF at wholesale prices in Coimbatore. Fast delivery!'
             },
             'waterproofing': {
               title: 'Waterproofing in Coimbatore – Roof, Terrace & Wall Solutions | Rainbow',
@@ -1162,6 +1162,14 @@ Return exactly a valid JSON object with {"name": "string", "pincode": "string"}.
             });
             title = seoData.title;
             desc = seoData.description;
+            if (seoData.keywords) {
+              const safeKw = seoData.keywords.replace(/"/g, '&quot;');
+              if (/<meta\s+name="keywords"/i.test(html)) {
+                html = html.replace(/<meta\s+name="keywords"\s+content="[^"]*"/g, `<meta name="keywords" content="${safeKw}"`);
+              } else {
+                html = html.replace('</head>', `<meta name="keywords" content="${safeKw}" />\n</head>`);
+              }
+            }
             let finalImage = product.image;
             
             const key = product.name ? product.name.trim().toLowerCase() : '';
