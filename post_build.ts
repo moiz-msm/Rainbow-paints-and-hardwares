@@ -63,7 +63,7 @@ function generateHtml(
 console.log("Generating static HTML for products...");
 mockProducts.forEach((product: any) => {
   const slug = product.slug || product.name.replace(/\s+/g, '-').toLowerCase();
-  const richContent = getRichProductContent(product.name);
+  const richContent = getRichProductContent(product.name, product);
   const title =
     richContent?.seo?.title ||
     product.seoTitle ||

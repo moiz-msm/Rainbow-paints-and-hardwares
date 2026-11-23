@@ -32305,5 +32305,59 @@
         <g:max_transit_time>0</g:max_transit_time>
       </g:shipping>
     </item>
+    <item>
+      <g:id>RP-4058-6l</g:id>
+      <g:item_group_id>4058</g:item_group_id>
+      <g:title>Berger Epoxy Floor Paint - Pro Epishield Mark 100 - 6L (White &amp; Golden Yellow)</g:title>
+      <g:description>Protect concrete &amp; plastered floors with Berger Pro Epishield Mark 100 Epoxy Floor Paint (6L kit: 5L Base + 1L Catalyst R62CI2). High-gloss 2K chemical &amp; abrasion defense in Golden Yellow (R6236) &amp; White.</g:description>
+      <g:link>https://www.rainbowpaint.in/p/berger-epoxy-floor-paint-pro-epishield-mark-100?size=6</g:link>
+      <g:image_link>https://www.rainbowpaint.in/assets/aistudio/Berger_Pro_Epishield_Golden_Yellow_Drum_4b354320.png</g:image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>3169.00 INR</g:price>
+      <g:brand>Berger Paints</g:brand>
+      <g:color>Golden Yellow / White</g:color>
+      <g:product_type>Industrial &gt; Epoxy Paint</g:product_type>
+      <g:product_highlight>Two-Pack (2K) Aliphatic Amine-Cured Glossy Epoxy Floor Paint for Concrete &amp; Plastered Surfaces</g:product_highlight>
+      <g:product_highlight>Complete 6L Kit (5L Net Base + 1L Catalyst R62CI2, 5:1 v/v Mixing Ratio)</g:product_highlight>
+      <g:product_highlight>High Volume Solids (54±2%) | 50–55 µm DFT | Coverage 9.8–10.8 m²/L (105–116 sq.ft/L)</g:product_highlight>
+      <g:product_highlight>Available in High-Gloss Golden Yellow (R6236) &amp; White for Warehouses, Factories &amp; Floor Marking</g:product_highlight>
+      <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>0 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
+    </item>
+    <item>
+      <g:id>RP-4059-20l</g:id>
+      <g:item_group_id>4059</g:item_group_id>
+      <g:title>Berger Guideline Road and Kerb Marking 164 Floor Paint (Water Based) - 20L (White &amp; Yellow)</g:title>
+      <g:description>Mark roads, kerbs, parking lots &amp; concrete floors with Berger Guideline 164 Water-Based Acrylic Marking Paint (20L). Fast-dry IS-164 compliant, low VOC (&lt;30 g/L), weather &amp; abrasion resistant in White &amp; Yellow.</g:description>
+      <g:link>https://www.rainbowpaint.in/p/berger-guideline-road-and-kerb-marking-164-floor-paint-water-based?size=20</g:link>
+      <g:image_link>https://www.rainbowpaint.in/assets/aistudio/Berger_Guideline_Road_Marking_Paint_Bucket_f35b7aa2.png</g:image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>3361.00 INR</g:price>
+      <g:brand>Berger Paints</g:brand>
+      <g:color>White / Yellow</g:color>
+      <g:product_type>Industrial &gt; Industrial Paint and Coatings</g:product_type>
+      <g:product_highlight>Single-Pack Water-Based 100% Acrylic Road, Kerb &amp; Floor Marking Paint (Guideline RM 164 · IS-164)</g:product_highlight>
+      <g:product_highlight>Fast Drying (~20 Min Surface Dry / ~60 Min Hard Dry) | Low VOC (&lt;30 g/L) | Lead ≤ 90 ppm</g:product_highlight>
+      <g:product_highlight>High Coverage: 10–14 m²/L (108–150 sq.ft/L) per Coat @ 25–35 µm DFT (35±2% Volume Solids)</g:product_highlight>
+      <g:product_highlight>For Road Lines, Kerbs, Parking Lots, Runways, Crash Barriers &amp; Concrete Floors (20L · White &amp; Yellow)</g:product_highlight>
+      <g:google_product_category>Hardware &gt; Building Materials &gt; Paint</g:google_product_category>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:price>0 INR</g:price>
+        <g:min_handling_time>0</g:min_handling_time>
+        <g:max_handling_time>0</g:max_handling_time>
+        <g:min_transit_time>0</g:min_transit_time>
+        <g:max_transit_time>0</g:max_transit_time>
+      </g:shipping>
+    </item>
   </channel>
 </rss>

@@ -86,7 +86,7 @@ export function getBrandedProductName(name: string, brand?: string): string {
  * Avoids repeating brand when the product name already contains the brand (or brand is Local).
  */
 export function buildProductSeoTitle(product: SeoProductInput): string {
-  const richContent = getRichProductContent(product.name);
+  const richContent = getRichProductContent(product.name, product);
   if (richContent?.seo?.title) {
     return richContent.seo.title;
   }
@@ -326,7 +326,7 @@ function getCategoryLeadSentence(product: SeoProductInput, brandedName: string):
  * Tells shoppers about the product and its real benefits rather than dumping dry specs.
  */
 export function buildProductSeoDescription(product: SeoProductInput): string {
-  const richContent = getRichProductContent(product.name);
+  const richContent = getRichProductContent(product.name, product);
   if (richContent?.seo?.description) {
     return richContent.seo.description;
   }
@@ -376,7 +376,7 @@ export function buildProductSeoDescription(product: SeoProductInput): string {
  * Builds rich, product-specific SEO keywords grounded in real product attributes.
  */
 export function buildProductSeoKeywords(product: SeoProductInput): string {
-  const richContent = getRichProductContent(product.name);
+  const richContent = getRichProductContent(product.name, product);
   if (richContent?.seo?.keywords) {
     return richContent.seo.keywords;
   }
@@ -405,7 +405,7 @@ export function buildProductSeoKeywords(product: SeoProductInput): string {
  * Generates Schema.org additionalProperty entries strictly from verified product properties & metadata.
  */
 export function buildProductAdditionalProperties(product: SeoProductInput): { name: string; value: string }[] {
-  const richContent = getRichProductContent(product.name);
+  const richContent = getRichProductContent(product.name, product);
   if (richContent?.seo?.additionalProperties?.length) {
     return richContent.seo.additionalProperties;
   }
@@ -452,7 +452,7 @@ export function buildProductFaqs(
   product: SeoProductInput,
   startingPack?: { sizeLabel: string; price: number }
 ): { question: string; answer: string }[] {
-  const richContent = getRichProductContent(product.name);
+  const richContent = getRichProductContent(product.name, product);
   if (richContent?.faqs?.length) {
     return richContent.faqs;
   }
@@ -494,7 +494,7 @@ export function getProductSeoData(
   product: SeoProductInput,
   startingPack?: { sizeLabel: string; price: number }
 ): GeneratedProductSeo {
-  const richContent = getRichProductContent(product.name);
+  const richContent = getRichProductContent(product.name, product);
   const brandedName = getBrandedProductName(product.name, product.brand);
   const sub = product.subCategory || product.category || product.topCategory || 'Paint';
 

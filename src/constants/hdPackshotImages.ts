@@ -31,6 +31,8 @@ export const HD_PACKSHOT_IMAGES: Record<string, string> = {
   'smartcare damp proof': '/assets/aistudio/smartcare_damp_proof_packshot_hd.jpg',
   'smartcare damp proof ultra': '/assets/aistudio/smartcare_damp_proof_ultra_packshot_hd.jpg',
   'smartcare damp sheath interior': '/assets/aistudio/smartcare_damp_sheath_interior_packshot_hd.jpg',
+  'berger epoxy floor paint - pro epishield mark 100': '/assets/aistudio/Berger_Pro_Epishield_Golden_Yellow_Drum_4b354320.png',
+  'berger guideline road and kerb marking 164 floor paint (water based)': '/assets/aistudio/Berger_Guideline_Road_Marking_Paint_Bucket_f35b7aa2.png',
 };
 
 /**

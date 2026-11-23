@@ -203,9 +203,11 @@ export default function ProductImageGallery({
         )}
 
         {/* Bottom Counter Overlay */}
-        <div className="absolute bottom-3 right-3 z-10 bg-black/65 backdrop-blur-sm text-white text-[11px] sm:text-xs font-mono tabular-nums px-2.5 py-1 rounded-md pointer-events-none">
-          {activeIndex + 1} / {images.length}
-        </div>
+        {images.length > 1 && (
+          <div className="absolute bottom-3 right-3 z-10 bg-black/65 backdrop-blur-sm text-white text-[11px] sm:text-xs font-mono tabular-nums px-2.5 py-1 rounded-md pointer-events-none">
+            {activeIndex + 1} / {images.length}
+          </div>
+        )}
       </div>
 
       {/* Quiet Unboxed Caption Row */}
@@ -279,10 +281,14 @@ export default function ProductImageGallery({
         >
           <div className="w-full max-w-5xl flex items-center justify-between text-white/85 mb-3 sm:mb-4" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center gap-2 text-xs sm:text-sm min-w-0">
-              <span className="font-mono tabular-nums text-white/60 shrink-0">
-                {activeIndex + 1} / {images.length}
-              </span>
-              <span aria-hidden="true" className="text-white/40 shrink-0">·</span>
+              {images.length > 1 && (
+                <>
+                  <span className="font-mono tabular-nums text-white/60 shrink-0">
+                    {activeIndex + 1} / {images.length}
+                  </span>
+                  <span aria-hidden="true" className="text-white/40 shrink-0">·</span>
+                </>
+              )}
               <span className="truncate">{currentImage.caption}</span>
             </div>
             <button
@@ -332,27 +338,29 @@ export default function ProductImageGallery({
           </div>
 
           {/* Lightbox Thumbnails */}
-          <div className="mt-4 flex items-center gap-2 overflow-x-auto max-w-full py-1 px-1" onClick={(e) => e.stopPropagation()}>
-            {images.map((img, idx) => (
-              <button
-                key={img.src}
-                type="button"
-                onClick={() => setActiveIndex(idx)}
-                className={`w-12 h-12 sm:w-16 sm:h-16 rounded-lg overflow-hidden border-2 shrink-0 transition-all ${
-                  idx === activeIndex ? 'border-gold opacity-100 scale-105' : 'border-transparent opacity-55 hover:opacity-90'
-                }`}
-              >
-                <img
-                  src={img.src}
-                  alt={img.label}
-                  referrerPolicy="no-referrer"
-                  className={`w-full h-full ${
-                    img.objectFit === 'contain' ? 'object-contain p-1 bg-white' : 'object-cover'
+          {images.length > 1 && (
+            <div className="mt-4 flex items-center gap-2 overflow-x-auto max-w-full py-1 px-1" onClick={(e) => e.stopPropagation()}>
+              {images.map((img, idx) => (
+                <button
+                  key={img.src}
+                  type="button"
+                  onClick={() => setActiveIndex(idx)}
+                  className={`w-12 h-12 sm:w-16 sm:h-16 rounded-lg overflow-hidden border-2 shrink-0 transition-all ${
+                    idx === activeIndex ? 'border-gold opacity-100 scale-105' : 'border-transparent opacity-55 hover:opacity-90'
                   }`}
-                />
-              </button>
-            ))}
-          </div>
+                >
+                  <img
+                    src={img.src}
+                    alt={img.label}
+                    referrerPolicy="no-referrer"
+                    className={`w-full h-full ${
+                      img.objectFit === 'contain' ? 'object-contain p-1 bg-white' : 'object-cover'
+                    }`}
+                  />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       )}
     </div>

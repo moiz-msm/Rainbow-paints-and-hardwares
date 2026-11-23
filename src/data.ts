@@ -4119,6 +4119,94 @@ const rawMockProducts = [
     "image": "/assets/aistudio/Berger_Ferrotol_Industrial_Paint_Drum_628fd187.png"
   },
   {
+    "id": 4058,
+    "name": "Berger Epoxy Floor Paint - Pro Epishield Mark 100",
+    "slug": "berger-epoxy-floor-paint-pro-epishield-mark-100",
+    "seoTitle": "Berger Epoxy Floor Paint Pro Epishield Mark 100 - Buy Online",
+    "seoDescription": "Protect concrete & plastered floors with Berger Pro Epishield Mark 100 Epoxy Floor Paint (6L). High-gloss 2K chemical & abrasion defense in White & Yellow.",
+    "seoKeywords": "epoxy floor paint, Berger epoxy floor paint, Berger Pro Epishield Mark 100, Pro Epishield Mark100 Golden Yellow R6236, epoxy floor paint for concrete, epoxy floor paint for plastered surfaces, 2K epoxy floor marking paint 6L, industrial epoxy floor coating white yellow, Berger Protecton Catalyst R62CI2, epoxy floor paint price Coimbatore",
+    "description": "Berger Epoxy Floor Paint - Pro Epishield Mark 100 (Berger Protection / Protecton Protective Coating Division) is a high-performance two-pack (2K) aliphatic amine-cured glossy epoxy floor coating and line marking paint engineered for concrete and plastered surfaces. Supplied as a complete 6L industrial kit (5L Net Base + 1L Catalyst R62CI2, 5:1 v/v mixing ratio) in Golden Yellow (R6236) and White for warehouses, factories, clean rooms, pharma plants, workshops, and automotive showrooms.",
+    "brand": "Berger Paints",
+    "topCategory": "Industrial",
+    "subCategory": "Epoxy Paint",
+    "price": "₹ 3,169.00",
+    "sizes": [
+      6
+    ],
+    "sizePrices": {
+      "6": 3169
+    },
+    "unit": "L",
+    "shades": [
+      {
+        "name": "Golden Yellow",
+        "code": "R6236",
+        "hex": "#E5A01D"
+      },
+      {
+        "name": "White",
+        "code": "WHITE",
+        "hex": "#FFFFFF"
+      }
+    ],
+    "allowRalShades": false,
+    "properties": [
+      "Two-Pack (2K) Aliphatic Amine-Cured Glossy Epoxy Floor Paint for Concrete & Plastered Surfaces",
+      "Complete 6L Kit (5L Base + 1L Catalyst R62CI2) · Strictly 5:1 (v/v) Mixing Ratio",
+      "High Volume Solids (54 ± 2%) · 50–55 µm DFT/Coat · Coverage 9.8–10.8 m²/L (105–116 sq.ft/L)",
+      "Chemical & Abrasion Resistant High-Gloss Finish in Golden Yellow (R6236) & White"
+    ],
+    "popular": true,
+    "isAuthorised": true,
+    "rating": 4.9,
+    "reviews": 28,
+    "image": "/assets/aistudio/Berger_Pro_Epishield_Golden_Yellow_Drum_4b354320.png"
+  },
+  {
+    "id": 4059,
+    "name": "Berger Guideline Road and Kerb Marking 164 Floor Paint (Water Based)",
+    "slug": "berger-guideline-road-and-kerb-marking-164-floor-paint-water-based",
+    "seoTitle": "Berger Guideline 164 Road & Kerb Marking Paint - Buy Online",
+    "seoDescription": "Mark roads, kerbs, parking lots & concrete floors with Berger Guideline 164 Water-Based Marking Paint (20L). Fast-dry IS-164 acrylic, low VOC, White & Yellow.",
+    "seoKeywords": "Berger Guideline 164, Berger Guideline RM 164, road marking paint, kerb marking paint, water based road marking paint, IS 164 road marking paint, concrete floor marking paint, parking lot marking paint 20L, white yellow kerb paint, Berger water based floor paint Coimbatore",
+    "description": "Berger Guideline Road and Kerb Marking 164 Floor Paint (Water Based) — Guideline RM 164 Paint (Code P34/000) is a single-pack, air-drying, 100% acrylic water-based road, kerb, and floor marking paint conforming to IS-164 specifications. Engineered with low VOC (< 30 g/L), lead content below 90 ppm, rapid 20-minute surface dry, UV & weather resistance, and tough wear durability across concrete floors, asphalt/bitumen roads, highway kerbs, parking lots, crash barriers, road lines, and runways. Supplied in 20L factory-sealed buckets in White and Yellow.",
+    "brand": "Berger Paints",
+    "topCategory": "Industrial",
+    "subCategory": "Industrial Paint and Coatings",
+    "price": "₹ 3,361.00",
+    "sizes": [
+      20
+    ],
+    "sizePrices": {
+      "20": 3361
+    },
+    "unit": "L",
+    "shades": [
+      {
+        "name": "White",
+        "code": "P34/000",
+        "hex": "#FFFFFF"
+      },
+      {
+        "name": "Yellow",
+        "code": "YELLOW",
+        "hex": "#F2B705"
+      }
+    ],
+    "allowRalShades": false,
+    "properties": [
+      "Single-Pack Water-Based 100% Acrylic Road, Kerb & Floor Marking Paint (Guideline RM 164 · IS-164)",
+      "Fast Drying (~20 Min Surface Dry / ~60 Min Hard Dry) · Low VOC (< 30 g/L) · Lead ≤ 90 ppm",
+      "High Spreading Rate: 10–14 m²/L (108–150 sq.ft/L) @ 25–35 µm DFT · Smooth Matt Finish",
+      "Ideal for Road Lines, Kerbs, Parking Lots, Runways, Crash Barriers & Concrete Floors (20L · White & Yellow)"
+    ],
+    "popular": true,
+    "isAuthorised": true,
+    "rating": 4.8,
+    "reviews": 22,
+    "image": "/assets/aistudio/Berger_Guideline_Road_Marking_Paint_Bucket_f35b7aa2.png"
+  },
+  {
     "id": 5001,
     "name": "MRF MetalCoat Luxury 2K PU Paint - Metal and Wood Finish",
     "seoTitle": "MRF MetalCoat Luxury 2K PU Paint - Metal and Wood Finish",

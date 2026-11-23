@@ -1875,7 +1875,7 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
       };
     });
 
-    const richDataForSchema = getRichProductContent(targetProduct.name);
+    const richDataForSchema = getRichProductContent(targetProduct.name, targetProduct);
     const schemaImages = richDataForSchema
       ? richDataForSchema.gallery.map((g) =>
           g.src.startsWith('http')
@@ -1980,7 +1980,7 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
     return { sizeLabel, price: Math.round(basePrice * firstSize * factor) };
   }, [product, productSizes, basePrice]);
 
-  const richContent = useMemo(() => getRichProductContent(product?.name), [product?.name]);
+  const richContent = useMemo(() => getRichProductContent(product?.name, product), [product]);
 
   const faqSchema = useMemo(() => {
     if (!product) return null;
@@ -2744,6 +2744,7 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
             sizePrices={(product as any)?.sizePrices}
             selectedSize={selectedSize}
             currentPrice={currentPrice}
+            unit={(product as any)?.unit}
             onSelectPackSize={(size) => {
               setSelectedSize(size);
               setQuantity(1);
