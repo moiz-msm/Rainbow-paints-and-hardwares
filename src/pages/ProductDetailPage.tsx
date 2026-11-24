@@ -158,6 +158,14 @@ export default function ProductDetailPage() {
         
         dbProducts = dbProducts.map((p: any) => {
           let updatedP = { ...p };
+          const primerCfg = getWaterBasedWallPrimerConfig(updatedP.name);
+          if (primerCfg) {
+            updatedP = {
+              ...updatedP,
+              name: primerCfg.productName,
+              slug: updatedP.slug || primerCfg.canonicalSlug,
+            };
+          }
           let key = updatedP.name ? updatedP.name.trim().toLowerCase() : '';
 
           if (key === 'protecton epilux 4 mio coating' || key === 'berger paints red oxide zinc chromate metal primer is2074') {
@@ -887,12 +895,12 @@ export default function ProductDetailPage() {
 
         if (found) {
           const primerCfg = getWaterBasedWallPrimerConfig(found.name);
-          if (primerCfg && found.name !== primerCfg.canonicalName) {
-            const mockMatch = mockProducts.find((m) => m.name === primerCfg.canonicalName);
+          if (primerCfg && found.name !== primerCfg.productName) {
+            const mockMatch = mockProducts.find((m) => m.name === primerCfg.productName);
             found = {
               ...found,
-              name: primerCfg.canonicalName,
-              slug: found.slug || (mockMatch as any)?.slug,
+              name: primerCfg.productName,
+              slug: found.slug || (mockMatch as any)?.slug || primerCfg.canonicalSlug,
             };
           }
           setProduct(found);

@@ -1404,12 +1404,12 @@ export default function ProductsSection({
 
       const primerCfg = getWaterBasedWallPrimerConfig(mergedProduct.name);
       if (primerCfg) {
-        const canonicalKey = primerCfg.canonicalName.toLowerCase();
+        const canonicalKey = primerCfg.productName.toLowerCase();
         const existingMock = map.get(canonicalKey);
         mergedProduct = {
           ...mergedProduct,
-          name: primerCfg.canonicalName,
-          slug: mergedProduct.slug || existingMock?.slug,
+          name: primerCfg.productName,
+          slug: mergedProduct.slug || existingMock?.slug || primerCfg.canonicalSlug,
         };
         key = canonicalKey;
       }
