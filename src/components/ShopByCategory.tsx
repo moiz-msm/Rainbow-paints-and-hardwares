@@ -96,9 +96,9 @@ export default function ShopByCategory() {
                 display: none;
               }
             `}</style>
-            {categories.map((category) => (
+            {categories.map((category, index) => (
               <Link 
-                key={category.slug} 
+                key={`${category.slug}-${index}`} 
                 to={`/c/${category.slug}`}
                 className="flex-shrink-0 flex flex-col items-center gap-3 w-[100px] sm:w-[120px] lg:w-[140px] group/cat"
               >

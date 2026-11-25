@@ -74,7 +74,7 @@ export default function AboutPage() {
               What truly sets us apart is our technical expertise and product knowledge. Whether you need help choosing the right wall finish, industrial coating, waterproofing solution, wood coating, or painting accessories, our experienced team is here to guide you with practical, honest advice.
             </p>
             <p>
-              For over 20+ years, Rainbow Paints & Hardware has been built on trust, genuine products, expert service, and lasting customer relationships.
+              For over 25+ years, Rainbow Paints & Hardware has been built on trust, genuine products, expert service, and lasting customer relationships.
             </p>
           </div>
 

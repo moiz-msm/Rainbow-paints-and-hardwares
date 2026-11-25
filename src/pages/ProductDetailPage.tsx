@@ -2579,7 +2579,7 @@ const PRODUCT_FACTUAL_SPECS: Record<string, any> = {
                   { icon: ShieldCheck, line1: "Authorized", line2: "distributors", sub: "for featured products" },
                   { icon: Tags, line1: "Same Price", line2: "as In-Store", sub: "no online extra charge" },
                   { icon: Truck, line1: "Doorstep", line2: "delivery", sub: "skip the trip, we deliver" },
-                  { icon: Award, line1: "20+ yrs", line2: "trusted", sub: "msme/gst certified" }
+                  { icon: Award, line1: "25+ yrs", line2: "trusted", sub: "msme/gst certified" }
                 ].map((item, idx) => {
                   const Icon = item.icon;
                   return (

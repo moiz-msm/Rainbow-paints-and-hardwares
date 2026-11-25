@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import SEO from "../components/SEO";
 import Hero from "../components/Hero";
+import TrustCardBanner from "../components/TrustCardBanner";
 import { lazyWithRetry as lazy } from "../utils/lazyWithRetry";
 import { FadeInUp } from "../components/FadeInUp";
 
@@ -213,9 +214,6 @@ export default function Home() {
         schema={[storeSchema, websiteSchema, siteNavigationSchema, faqSchema]}
       />
       <Hero />
-      <Suspense fallback={<div className="h-10 w-full bg-royale-bg"></div>}>
-        <FadeInUp><ToolsOverview /></FadeInUp>
-      </Suspense>
 
       <LazySection className="py-1">
         <Suspense fallback={null}>
@@ -234,6 +232,14 @@ export default function Home() {
           <FadeInUp><PaintingServicesOverview /></FadeInUp>
         </Suspense>
       </LazySection>
+
+      <LazySection className="py-1">
+        <Suspense fallback={null}>
+          <FadeInUp><ToolsOverview /></FadeInUp>
+        </Suspense>
+      </LazySection>
+
+      <TrustCardBanner />
 
       <LazySection className="py-1">
         <Suspense fallback={null}>

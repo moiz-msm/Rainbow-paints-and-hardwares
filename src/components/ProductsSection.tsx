@@ -2478,7 +2478,7 @@ export default function ProductsSection({
                   },
                   {
                     icon: Award,
-                    line1: "20+ yrs",
+                    line1: "25+ yrs",
                     line2: "trusted",
                     sub: "msme/gst certified",
                   },

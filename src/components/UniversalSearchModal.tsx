@@ -132,7 +132,7 @@ const WEBSITE_TOOLS: WebsiteTool[] = [
   {
     id: 'about',
     name: 'About Rainbow Paints',
-    description: '20+ years of trust, authorised dealers for Asian Paints, Berger, MRF & Dr. Fixit in Coimbatore.',
+    description: '25+ years of trust, authorised dealers for Asian Paints, Berger, MRF & Dr. Fixit in Coimbatore.',
     category: 'Company Info',
     url: '/about',
     icon: Info,

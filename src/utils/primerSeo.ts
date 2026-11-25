@@ -108,11 +108,51 @@ const PRIMER_CONFIG_LIST: WaterBasedPrimerSeoConfig[] = [
     role: 'interior',
     productName: 'BP White Interior Primer (Water Based)',
     canonicalSlug: 'bp-white-primer-(water-based)',
-    aliases: ['BP White Primer (Water Based)'],
-    seoTitle: 'BP White Interior Primer (Water Based) by Berger Paints - Buy Online',
-    seoDisplayName: 'Berger BP White Interior Primer (Water Based)',
+    aliases: ['BP White Primer (Water Based)', 'BP White Primer'],
+    seoTitle: 'BP White Primer (Water Based) by Berger Paints - Buy Online',
+    seoDisplayName: 'Berger BP White Primer',
     seoDescription:
-      'Buy Berger BP White Interior Primer (Water Based), a fast-drying acrylic interior primer with high opacity & strong plaster grip for interior paint.',
+      'Buy Berger BP White Primer, a fast-drying acrylic interior primer with high opacity & strong plaster grip for interior paint.',
+  },
+  {
+    role: 'both',
+    productName: 'Dampstop Duo Interior and Exterior Waterproof Primer',
+    canonicalSlug: 'dampstop-duo-interior-and-exterior-waterproof-primer',
+    aliases: ['Home Shield Dampstop', 'Dampstop Duo'],
+    seoTitle: 'Dampstop Duo Interior and Exterior Waterproof Primer by Berger',
+    seoDisplayName: 'Berger Dampstop Duo Interior and Exterior Waterproof Primer',
+    seoDescription:
+      'Protect walls with Berger Dampstop Duo Interior and Exterior Waterproof Primer, a dual-action waterproofing primer for interior paint and exterior paint.',
+  },
+  {
+    role: 'both',
+    productName: 'Seal O Prime Interior and Exterior Waterproof Primer',
+    canonicalSlug: 'seal-o-prime-interior-and-exterior-waterproof-primer',
+    aliases: ['Seal O Prime'],
+    seoTitle: 'Seal O Prime Interior and Exterior Waterproof Primer by Berger',
+    seoDisplayName: 'Berger Seal O Prime Interior and Exterior Waterproof Primer',
+    seoDescription:
+      'Shop Berger Seal O Prime Interior and Exterior Waterproof Primer for ultimate alkali & damp protection on interior paint and exterior paint.',
+  },
+  {
+    role: 'both',
+    productName: 'Walmasta Primer - Interior and Exterior Primer',
+    canonicalSlug: 'walmasta-primer-interior-and-exterior-primer',
+    aliases: ['Walmasta Primer'],
+    seoTitle: 'Walmasta Primer (Interior and Exterior Primer) by Berger - Buy Online',
+    seoDisplayName: 'Berger Walmasta Primer - Interior and Exterior Primer',
+    seoDescription:
+      'Buy Berger Walmasta Primer (Interior and Exterior Primer), a water-based primer delivering superior adhesion for interior paint and exterior paint.',
+  },
+  {
+    role: 'exterior',
+    productName: 'Dampshield Exterior Primer',
+    canonicalSlug: 'dampshield-exterior-primer',
+    aliases: ['Dampshield Exterior Primer'],
+    seoTitle: 'Dampshield Exterior Primer by Berger Paints - Buy Online',
+    seoDisplayName: 'Berger Dampshield Exterior Primer',
+    seoDescription:
+      'Protect masonry with Berger Dampshield Exterior Primer, a high-performance damp-resistant water-based exterior primer for durable exterior paint.',
   },
 
   // === WATER-BASED EXTERIOR PRIMERS (10) ===
