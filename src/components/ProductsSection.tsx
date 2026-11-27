@@ -1206,10 +1206,6 @@ export default function ProductsSection({
     restoredState?.sortOption || "Most Popular",
   );
   const { searchQuery } = useProductSearchStore();
-  const [selectedSidebarBrands, setSelectedSidebarBrands] = useState<string[]>([]);
-  const [selectedPriceRanges, setSelectedPriceRanges] = useState<string[]>([]);
-  const [selectedFinishes, setSelectedFinishes] = useState<string[]>([]);
-  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
   const [showAsianFinishesShowroom, setShowAsianFinishesShowroom] =
     useState(false);
   const [dbProducts, setDbProducts] = useState<any[]>([]);
@@ -1998,14 +1994,6 @@ export default function ProductsSection({
         "apex tile guard matt": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/exterior-walls-apex-tile-guard.png",
         "apex ultima stretch": "https://static.asianpaints.com/content/dam/asian_paints/products/packshots/ultima-stretch-packshot-asian-paints.png",
         "weathercoat glow": "https://5.imimg.com/data5/SELLER/Default/2021/7/OI/YW/AW/102796245/berger-weathercoat-glow-exterior-emulsion.jpg",
-        "dampstop duo interior and exterior waterproof primer": "/assets/aistudio/Berger_Dampstop_Duo_Waterproofing_Primer_Bucket__1__b4621b38.png",
-        "seal o prime interior and exterior waterproof primer": "/assets/aistudio/Berger_Seal-O-Prime_White_Paint_Bucket_Mockup_10b3425f.png",
-        "walmasta primer - interior and exterior primer": "/assets/aistudio/WALMASTA_Primer_Paint_Pail__1__ba227d7d.png",
-        "dampshield exterior primer": "/assets/aistudio/Berger_Home_Shield_Damp_Shield_Bucket_6dcbcb7d.png",
-        "bp white primer": "/assets/aistudio/Berger_Water-Thinable_Cement_Primer_Bucket_89b385b2.png",
-        "home shield epoxy tile grout": "/assets/aistudio/Berger_Epoxy_Tile_Grout_Bucket_a6d61114.png",
-        "imperia gold pu wood finish": "/assets/aistudio/Berger_Imperia_Gold_Paint_Can_Packshot_bc346297.png",
-        "protecton epilux 4 zinc rich primer": "/assets/aistudio/Green_Berger_Protecton_Industrial_Paint_Drum_e4ebfb0a.png",
         ...HD_PACKSHOT_IMAGES
       };
 
@@ -2232,27 +2220,6 @@ export default function ProductsSection({
     setSearchParams(nextParams, { replace: true });
   };
 
-  const parsePrice = (priceVal: any) => {
-    if (typeof priceVal === "number") return priceVal;
-    if (typeof priceVal === "string")
-      return parseFloat(priceVal.replace(/[^0-9.]/g, ""));
-    return 0;
-  };
-
-  const getFinishType = (product: any) => {
-    const text = (
-      product.name +
-      " " +
-      (product.subCategory || "") +
-      " " +
-      (product.properties?.join(" ") || "")
-    ).toLowerCase();
-    if (text.includes("matt") || text.includes("matte")) return "matt";
-    if (text.includes("sheen") || text.includes("shyne")) return "sheen";
-    if (text.includes("gloss") || text.includes("glossy")) return "gloss";
-    return "other";
-  };
-
   const filtered = productList.filter((p) => {
     const pSubs: string[] = (p as any).subCategories || (p.subCategory ? [p.subCategory] : []);
     const isIndustrialTop =
@@ -2267,20 +2234,8 @@ export default function ProductsSection({
       pSubs.some(sub => sub.toLowerCase() === activeCategoryFilter.toLowerCase());
 
     const matchBrand =
-      (selectedSidebarBrands.length === 0 || selectedSidebarBrands.includes(p.brand)) &&
-      (activeBrand === "All Brands" || p.brand.toLowerCase() === activeBrand.toLowerCase());
-
-    const price = parsePrice(p.price || (p.sizes && p.sizes[0] ? p.sizes[0] * 850 : 850));
-    const matchPrice = selectedPriceRanges.length === 0 || selectedPriceRanges.some(range => {
-      if (range === 'under-500') return price < 500;
-      if (range === '500-2000') return price >= 500 && price <= 2000;
-      if (range === '2000-5000') return price > 2000 && price <= 5000;
-      if (range === 'above-5000') return price > 5000;
-      return true;
-    });
-
-    const finish = getFinishType(p);
-    const matchFinish = selectedFinishes.length === 0 || selectedFinishes.includes(finish);
+      activeBrand === "All Brands" ||
+      p.brand.toLowerCase() === activeBrand.toLowerCase();
 
     // Check if searchQuery is in product name or properties or subCategory
     const searchLower = searchQuery.toLowerCase();
@@ -2293,12 +2248,26 @@ export default function ProductsSection({
           prop.toLowerCase().includes(searchLower),
         ));
 
-    return matchCat && matchBrand && matchPrice && matchFinish && matchSearch;
+    return matchCat && matchBrand && matchSearch;
   });
 
+  const parsePrice = (priceVal: any) => {
+    if (typeof priceVal === "number") return priceVal;
+    if (typeof priceVal === "string")
+      return parseFloat(priceVal.replace(/[^0-9.]/g, ""));
+    return 0;
+  };
 
-
-  const getFinishValue = getFinishType;
+  const getFinishValue = (product: any) => {
+    const text = (
+      product.name +
+      " " +
+      (product.properties?.join(" ") || "")
+    ).toLowerCase();
+    if (text.includes("matt")) return "matt";
+    if (text.includes("sheen") || text.includes("shyne")) return "sheen";
+    return "other";
+  };
 
   const sortedAndFiltered = [...filtered].sort((a, b) => {
     if (sortOption === "Most Popular") {
@@ -2849,442 +2818,104 @@ export default function ProductsSection({
           </div>
         )}
 
-        {/* Mobile Filter Button */}
-        <div className="flex items-center justify-between gap-2 sm:gap-4 mb-4 lg:hidden">
-          <button
-            onClick={() => setIsMobileFilterOpen(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-white border border-zinc-200 rounded-xl text-xs font-bold text-zinc-800 shadow-sm hover:bg-zinc-50"
-          >
-            <Filter className="w-4 h-4 text-gold" />
-            <span>
-              Filters {(selectedSidebarBrands.length > 0 || selectedPriceRanges.length > 0 || selectedFinishes.length > 0) && `(${selectedSidebarBrands.length + selectedPriceRanges.length + selectedFinishes.length})`}
-            </span>
-          </button>
-        </div>
+        {/* Geolocation & Delivery Estimation Header */}
 
-        {/* Mobile Filter Drawer */}
-        <AnimatePresence>
-          {isMobileFilterOpen && (
-            <div className="fixed inset-0 z-[200] flex">
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.5 }}
-                exit={{ opacity: 0 }}
-                onClick={() => setIsMobileFilterOpen(false)}
-                className="fixed inset-0 bg-black"
-              />
-              <motion.div
-                initial={{ x: "-100%" }}
-                animate={{ x: 0 }}
-                exit={{ x: "-100%" }}
-                transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                className="relative w-80 max-w-full bg-white h-full shadow-2xl z-10 p-6 overflow-y-auto"
-              >
-                <div className="flex items-center justify-between mb-4 pb-3 border-b">
-                  <div className="flex items-center gap-2">
-                    <Filter className="w-4 h-4 text-gold" />
-                    <span className="font-serif font-bold text-base text-zinc-900 uppercase tracking-wide">Filters</span>
-                  </div>
-                  <button onClick={() => setIsMobileFilterOpen(false)} className="p-1.5 hover:bg-zinc-100 rounded-full">
-                    <X className="w-5 h-5 text-zinc-500" />
-                  </button>
-                </div>
-
-                {/* Filter Sidebar Content */}
-                <div className="space-y-6 text-zinc-800">
-                  <div className="flex items-center justify-between">
-                    {(selectedSidebarBrands.length > 0 || selectedPriceRanges.length > 0 || selectedFinishes.length > 0 || activeBrand !== "All Brands" || activeCategoryFilter !== "All Categories") && (
-                      <button
-                        onClick={() => {
-                          setSelectedSidebarBrands([]);
-                          setSelectedPriceRanges([]);
-                          setSelectedFinishes([]);
-                          setActiveBrand("All Brands");
-                          setActiveCategoryFilter("All Categories");
-                        }}
-                        className="text-[11px] font-bold text-red-600 hover:underline uppercase tracking-wider"
-                      >
-                        Clear All Filters
-                      </button>
-                    )}
-                  </div>
-
-                  {/* Category Filter */}
-                  <div className="pb-4 border-b border-zinc-200">
-                    <h3 className="text-xs font-bold font-serif uppercase tracking-wider text-zinc-900 mb-3">Category</h3>
-                    <div className="space-y-2 max-h-48 overflow-y-auto custom-scrollbar pr-1">
-                      <label className="flex items-center gap-2.5 text-xs text-zinc-700 cursor-pointer hover:text-zinc-900 select-none">
-                        <input
-                          type="radio"
-                          name="sidebar-category-mobile"
-                          checked={activeCategoryFilter === "All Categories"}
-                          onChange={() => setActiveCategoryFilter("All Categories")}
-                          className="w-4 h-4 text-gold focus:ring-gold/50 cursor-pointer"
-                        />
-                        <span className="truncate flex-1 font-medium">All Categories</span>
-                      </label>
-                      {categoryBubblesData.map((cat) => {
-                        const isSelected = activeCategoryFilter === cat.name || activeCategoryFilter === "All " + cat.name;
-                        return (
-                          <label key={cat.slug} className="flex items-center gap-2.5 text-xs text-zinc-700 cursor-pointer hover:text-zinc-900 select-none">
-                            <input
-                              type="radio"
-                              name="sidebar-category-mobile"
-                              checked={isSelected}
-                              onChange={() => setActiveCategoryFilter(cat.name)}
-                              className="w-4 h-4 text-gold focus:ring-gold/50 cursor-pointer"
-                            />
-                            <span className="truncate flex-1">{cat.name}</span>
-                          </label>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  {/* Brand Filter */}
-                  <div>
-                    <h3 className="text-xs font-bold font-serif uppercase tracking-wider text-zinc-900 mb-3">Brand</h3>
-                    <div className="space-y-2 max-h-48 overflow-y-auto custom-scrollbar pr-1">
-                      {availableBrands.map((brand) => {
-                        const isChecked = selectedSidebarBrands.includes(brand) || activeBrand === brand;
-                        return (
-                          <label key={brand} className="flex items-center gap-2.5 text-xs text-zinc-700 cursor-pointer hover:text-zinc-900 select-none">
-                            <input
-                              type="checkbox"
-                              checked={isChecked}
-                              onChange={(e) => {
-                                if (e.target.checked) {
-                                  setSelectedSidebarBrands(prev => [...prev, brand]);
-                                } else {
-                                  setSelectedSidebarBrands(prev => prev.filter(b => b !== brand));
-                                  if (activeBrand === brand) setActiveBrand("All Brands");
-                                }
-                              }}
-                              className="w-4 h-4 rounded border-zinc-300 text-gold focus:ring-gold/50 cursor-pointer"
-                            />
-                            <span className="truncate flex-1">{brand}</span>
-                          </label>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  {/* Price Range Filter */}
-                  <div className="pt-4 border-t border-zinc-200">
-                    <h3 className="text-xs font-bold font-serif uppercase tracking-wider text-zinc-900 mb-3">Price Range</h3>
-                    <div className="space-y-2">
-                      {[
-                        { id: 'under-500', label: 'Under ₹500' },
-                        { id: '500-2000', label: '₹500 – ₹2,000' },
-                        { id: '2000-5000', label: '₹2,000 – ₹5,000' },
-                        { id: 'above-5000', label: 'Above ₹5,000' },
-                      ].map((range) => (
-                        <label key={range.id} className="flex items-center gap-2.5 text-xs text-zinc-700 cursor-pointer hover:text-zinc-900 select-none">
-                          <input
-                            type="checkbox"
-                            checked={selectedPriceRanges.includes(range.id)}
-                            onChange={(e) => {
-                              if (e.target.checked) {
-                                setSelectedPriceRanges(prev => [...prev, range.id]);
-                              } else {
-                                setSelectedPriceRanges(prev => prev.filter(r => r !== range.id));
-                              }
-                            }}
-                            className="w-4 h-4 rounded border-zinc-300 text-gold focus:ring-gold/50 cursor-pointer"
-                          />
-                          <span className="truncate flex-1">{range.label}</span>
-                        </label>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Paint Finish Filter */}
-                  <div className="pt-4 border-t border-zinc-200">
-                    <h3 className="text-xs font-bold font-serif uppercase tracking-wider text-zinc-900 mb-3">Paint Finish</h3>
-                    <div className="space-y-2">
-                      {[
-                        { id: 'matt', label: 'Matte (Matt)' },
-                        { id: 'sheen', label: 'Sheen / Shyne' },
-                        { id: 'gloss', label: 'Gloss / Glossy' },
-                      ].map((finish) => (
-                        <label key={finish.id} className="flex items-center gap-2.5 text-xs text-zinc-700 cursor-pointer hover:text-zinc-900 select-none">
-                          <input
-                            type="checkbox"
-                            checked={selectedFinishes.includes(finish.id)}
-                            onChange={(e) => {
-                              if (e.target.checked) {
-                                setSelectedFinishes(prev => [...prev, finish.id]);
-                              } else {
-                                setSelectedFinishes(prev => prev.filter(f => f !== finish.id));
-                              }
-                            }}
-                            className="w-4 h-4 rounded border-zinc-300 text-gold focus:ring-gold/50 cursor-pointer"
-                          />
-                          <span className="truncate flex-1">{finish.label}</span>
-                        </label>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-8 pt-4 border-t">
-                  <button
-                    onClick={() => setIsMobileFilterOpen(false)}
-                    className="w-full py-3 bg-gradient-gold text-white text-xs font-bold uppercase tracking-widest rounded-xl shadow-md"
-                  >
-                    Apply Filters ({sortedAndFiltered.length} Products)
-                  </button>
-                </div>
-              </motion.div>
-            </div>
-          )}
-        </AnimatePresence>
-
-        {/* Main Desktop Sidebar + Content Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
-          {/* Desktop Sticky Sidebar */}
-          <div className="hidden lg:block lg:col-span-1 bg-white border border-zinc-200/80 rounded-2xl p-5 shadow-sm sticky top-28">
-            <div className="space-y-6 text-zinc-800">
-              <div className="flex items-center justify-between pb-3 border-b border-zinc-200">
-                <div className="flex items-center gap-2">
-                  <Filter className="w-4 h-4 text-gold" />
-                  <span className="font-serif font-bold text-sm tracking-wide text-zinc-900 uppercase">Filters</span>
-                </div>
-                {(selectedSidebarBrands.length > 0 || selectedPriceRanges.length > 0 || selectedFinishes.length > 0 || activeBrand !== "All Brands" || activeCategoryFilter !== "All Categories") && (
-                  <button
-                    onClick={() => {
-                      setSelectedSidebarBrands([]);
-                      setSelectedPriceRanges([]);
-                      setSelectedFinishes([]);
-                      setActiveBrand("All Brands");
-                      setActiveCategoryFilter("All Categories");
-                    }}
-                    className="text-[11px] font-bold text-red-600 hover:underline uppercase tracking-wider"
-                  >
-                    Clear All
-                  </button>
-                )}
-              </div>
-
-              {/* Category Filter */}
-              <div className="pb-4 border-b border-zinc-200">
-                <h3 className="text-xs font-bold font-serif uppercase tracking-wider text-zinc-900 mb-3">Category</h3>
-                <div className="space-y-2 max-h-48 overflow-y-auto custom-scrollbar pr-1">
-                  <label className="flex items-center gap-2.5 text-xs text-zinc-700 cursor-pointer hover:text-zinc-900 select-none">
-                    <input
-                      type="radio"
-                      name="sidebar-category-desktop"
-                      checked={activeCategoryFilter === "All Categories"}
-                      onChange={() => setActiveCategoryFilter("All Categories")}
-                      className="w-4 h-4 text-gold focus:ring-gold/50 cursor-pointer"
-                    />
-                    <span className="truncate flex-1 font-medium">All Categories</span>
-                  </label>
-                  {categoryBubblesData.map((cat) => {
-                    const isSelected = activeCategoryFilter === cat.name || activeCategoryFilter === "All " + cat.name;
-                    return (
-                      <label key={cat.slug} className="flex items-center gap-2.5 text-xs text-zinc-700 cursor-pointer hover:text-zinc-900 select-none">
-                        <input
-                          type="radio"
-                          name="sidebar-category-desktop"
-                          checked={isSelected}
-                          onChange={() => setActiveCategoryFilter(cat.name)}
-                          className="w-4 h-4 text-gold focus:ring-gold/50 cursor-pointer"
-                        />
-                        <span className="truncate flex-1">{cat.name}</span>
-                      </label>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Brand Filter */}
-              <div>
-                <h3 className="text-xs font-bold font-serif uppercase tracking-wider text-zinc-900 mb-3">Brand</h3>
-                <div className="space-y-2 max-h-48 overflow-y-auto custom-scrollbar pr-1">
-                  {availableBrands.map((brand) => {
-                    const isChecked = selectedSidebarBrands.includes(brand) || activeBrand === brand;
-                    return (
-                      <label key={brand} className="flex items-center gap-2.5 text-xs text-zinc-700 cursor-pointer hover:text-zinc-900 select-none">
-                        <input
-                          type="checkbox"
-                          checked={isChecked}
-                          onChange={(e) => {
-                            if (e.target.checked) {
-                              setSelectedSidebarBrands(prev => [...prev, brand]);
-                            } else {
-                              setSelectedSidebarBrands(prev => prev.filter(b => b !== brand));
-                              if (activeBrand === brand) setActiveBrand("All Brands");
-                            }
-                          }}
-                          className="w-4 h-4 rounded border-zinc-300 text-gold focus:ring-gold/50 cursor-pointer"
-                        />
-                        <span className="truncate flex-1">{brand}</span>
-                      </label>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Price Range Filter */}
-              <div className="pt-4 border-t border-zinc-200">
-                <h3 className="text-xs font-bold font-serif uppercase tracking-wider text-zinc-900 mb-3">Price Range</h3>
-                <div className="space-y-2">
-                  {[
-                    { id: 'under-500', label: 'Under ₹500' },
-                    { id: '500-2000', label: '₹500 – ₹2,000' },
-                    { id: '2000-5000', label: '₹2,000 – ₹5,000' },
-                    { id: 'above-5000', label: 'Above ₹5,000' },
-                  ].map((range) => (
-                    <label key={range.id} className="flex items-center gap-2.5 text-xs text-zinc-700 cursor-pointer hover:text-zinc-900 select-none">
-                      <input
-                        type="checkbox"
-                        checked={selectedPriceRanges.includes(range.id)}
-                        onChange={(e) => {
-                          if (e.target.checked) {
-                            setSelectedPriceRanges(prev => [...prev, range.id]);
-                          } else {
-                            setSelectedPriceRanges(prev => prev.filter(r => r !== range.id));
-                          }
-                        }}
-                        className="w-4 h-4 rounded border-zinc-300 text-gold focus:ring-gold/50 cursor-pointer"
-                      />
-                      <span className="truncate flex-1">{range.label}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Paint Finish Filter */}
-              <div className="pt-4 border-t border-zinc-200">
-                <h3 className="text-xs font-bold font-serif uppercase tracking-wider text-zinc-900 mb-3">Paint Finish</h3>
-                <div className="space-y-2">
-                  {[
-                    { id: 'matt', label: 'Matte (Matt)' },
-                    { id: 'sheen', label: 'Sheen / Shyne' },
-                    { id: 'gloss', label: 'Gloss / Glossy' },
-                  ].map((finish) => (
-                    <label key={finish.id} className="flex items-center gap-2.5 text-xs text-zinc-700 cursor-pointer hover:text-zinc-900 select-none">
-                      <input
-                        type="checkbox"
-                        checked={selectedFinishes.includes(finish.id)}
-                        onChange={(e) => {
-                          if (e.target.checked) {
-                            setSelectedFinishes(prev => [...prev, finish.id]);
-                          } else {
-                            setSelectedFinishes(prev => prev.filter(f => f !== finish.id));
-                          }
-                        }}
-                        className="w-4 h-4 rounded border-zinc-300 text-gold focus:ring-gold/50 cursor-pointer"
-                      />
-                      <span className="truncate flex-1">{finish.label}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
+        {/* Product Grid Header */}
+        <div className="flex flex-col gap-3 mb-4">
+          <div className="flex flex-row items-center justify-between gap-2 sm:gap-4 flex-wrap sm:flex-nowrap">
+            <p className="text-[10px] sm:text-sm text-ivory/60 font-medium font-sans whitespace-nowrap shrink-0">
+              Showing{" "}
+              <span className="text-ivory">{sortedAndFiltered.length}</span>{" "}
+              {sortedAndFiltered.length === 1 ? "product" : "products"}
+            </p>
+            <div className="w-auto flex-1 max-w-[280px] sm:max-w-md">
+              <DeliveryEstimator />
             </div>
           </div>
+        </div>
 
-          {/* Product Grid & Pagination Area */}
-          <div className="lg:col-span-3">
-            {/* Product Grid Header */}
-            <div className="flex flex-col gap-3 mb-4">
-              <div className="flex flex-row items-center justify-between gap-2 sm:gap-4 flex-wrap sm:flex-nowrap">
-                <p className="text-[10px] sm:text-sm text-ivory/60 font-medium font-sans whitespace-nowrap shrink-0">
-                  Showing{" "}
-                  <span className="text-ivory">{sortedAndFiltered.length}</span>{" "}
-                  {sortedAndFiltered.length === 1 ? "product" : "products"}
-                </p>
-                <div className="w-auto flex-1 max-w-[280px] sm:max-w-md">
-                  <DeliveryEstimator />
-                </div>
-              </div>
-            </div>
+        {/* Product Grid */}
+        <div
+          ref={productGridRef}
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4 lg:gap-5"
+        >
+          <AnimatePresence mode="popLayout">
+            {currentProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </AnimatePresence>
+        </div>
 
-            {/* Product Grid */}
-            <div
-              ref={productGridRef}
-              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2 sm:gap-4 lg:gap-5"
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex flex-wrap justify-center items-center gap-1 sm:gap-1.5 mt-10 mb-6 w-full max-w-full px-1">
+            <button
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+              aria-label="Previous page"
+              className="w-8 h-8 sm:w-10 sm:h-10 shrink-0 flex items-center justify-center rounded-xl border border-zinc-200 bg-white hover:bg-zinc-50 hover:border-zinc-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all text-zinc-600 active:scale-95"
             >
-              <AnimatePresence mode="popLayout">
-                {currentProducts.map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
-              </AnimatePresence>
+              <svg
+                className="w-3.5 h-3.5 sm:w-4 sm:h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
+            <div className="flex items-center gap-1 max-w-full overflow-x-auto no-scrollbar">
+              {getPageNumbers().map((item) =>
+                typeof item === "string" ? (
+                  <span
+                    key={item}
+                    className="w-5 sm:w-7 h-8 sm:h-10 shrink-0 flex items-center justify-center text-xs font-bold text-zinc-400 select-none"
+                  >
+                    ...
+                  </span>
+                ) : (
+                  <button
+                    key={item}
+                    onClick={() => handlePageChange(item)}
+                    aria-current={currentPage === item ? "page" : undefined}
+                    className={`min-w-8 h-8 px-1.5 sm:min-w-10 sm:h-10 sm:px-2.5 shrink-0 flex items-center justify-center rounded-xl text-xs font-bold transition-all ${
+                      currentPage === item
+                        ? "bg-gradient-gold text-white border-transparent shadow-sm"
+                        : "border border-transparent bg-white hover:bg-zinc-50 hover:border-zinc-200 text-zinc-600"
+                    }`}
+                  >
+                    {item}
+                  </button>
+                )
+              )}
             </div>
-
-            {/* Pagination */}
-            {totalPages > 1 && (
-              <div className="flex flex-wrap justify-center items-center gap-1 sm:gap-1.5 mt-10 mb-6 w-full max-w-full px-1">
-                <button
-                  onClick={() => handlePageChange(currentPage - 1)}
-                  disabled={currentPage === 1}
-                  aria-label="Previous page"
-                  className="w-8 h-8 sm:w-10 sm:h-10 shrink-0 flex items-center justify-center rounded-xl border border-zinc-200 bg-white hover:bg-zinc-50 hover:border-zinc-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all text-zinc-600 active:scale-95"
-                >
-                  <svg
-                    className="w-3.5 h-3.5 sm:w-4 sm:h-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 19l-7-7 7-7"
-                    />
-                  </svg>
-                </button>
-                <div className="flex items-center gap-1 max-w-full overflow-x-auto no-scrollbar">
-                  {getPageNumbers().map((item) =>
-                    typeof item === "string" ? (
-                      <span
-                        key={item}
-                        className="w-5 sm:w-7 h-8 sm:h-10 shrink-0 flex items-center justify-center text-xs font-bold text-zinc-400 select-none"
-                      >
-                        ...
-                      </span>
-                    ) : (
-                      <button
-                        key={item}
-                        onClick={() => handlePageChange(item)}
-                        aria-current={currentPage === item ? "page" : undefined}
-                        className={`min-w-8 h-8 px-1.5 sm:min-w-10 sm:h-10 sm:px-2.5 shrink-0 flex items-center justify-center rounded-xl text-xs font-bold transition-all ${
-                          currentPage === item
-                            ? "bg-gradient-gold text-white border-transparent shadow-sm"
-                            : "border border-transparent bg-white hover:bg-zinc-50 hover:border-zinc-200 text-zinc-600"
-                        }`}
-                      >
-                        {item}
-                      </button>
-                    )
-                  )}
-                </div>
-                <button
-                  onClick={() => handlePageChange(currentPage + 1)}
-                  disabled={currentPage === totalPages}
-                  aria-label="Next page"
-                  className="w-8 h-8 sm:w-10 sm:h-10 shrink-0 flex items-center justify-center rounded-xl border border-zinc-200 bg-white hover:bg-zinc-50 hover:border-zinc-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all text-zinc-600 active:scale-95"
-                >
-                  <svg
-                    className="w-3.5 h-3.5 sm:w-4 sm:h-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </button>
-              </div>
-            )}
+            <button
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              aria-label="Next page"
+              className="w-8 h-8 sm:w-10 sm:h-10 shrink-0 flex items-center justify-center rounded-xl border border-zinc-200 bg-white hover:bg-zinc-50 hover:border-zinc-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all text-zinc-600 active:scale-95"
+            >
+              <svg
+                className="w-3.5 h-3.5 sm:w-4 sm:h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
           </div>
-        </div>
+        )}
       </div>
 
       <CategorySeoBlock category={activeCategoryFilter} />

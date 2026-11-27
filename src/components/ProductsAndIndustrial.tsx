@@ -203,7 +203,7 @@ export default function ProductsAndIndustrial() {
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6">
                 <div className="bg-white/60 shadow-sm border border-white/40 rounded-xl p-3 flex flex-col items-center justify-center text-center">
-                  <h3 className="text-lg font-serif text-[#2C62AA] mb-1">25+</h3>
+                  <h3 className="text-lg font-serif text-[#2C62AA] mb-1">20+</h3>
                   <p className="text-[8px] font-display uppercase tracking-wider text-[#1C4173]">
                     years service
                   </p>
