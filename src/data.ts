@@ -3242,7 +3242,7 @@ const rawMockProducts = [
       "Maintains vibrant, color-fast, non-cracking grout lines"
     ],
     "popular": true,
-    "image": "https://cpimg.tistatic.com/08869313/b/4/WATERPROOFING-Flexogum.jpg"
+    "image": "/assets/aistudio/Berger_Epoxy_Tile_Grout_Bucket_a6d61114.png"
   },
   {
     "id": 4026,
@@ -3324,7 +3324,7 @@ const rawMockProducts = [
       "Optimal flexibility adapts to seasonal timber contractions"
     ],
     "popular": true,
-    "image": "https://images.bergerpaints.com/2023-10/imperia_grande_clear_2.png?format=webp&width=1080&quality=75"
+    "image": "/assets/aistudio/Berger_Imperia_Gold_Paint_Can_Packshot_bc346297.png"
   },
   {
     "id": 4030,
@@ -3458,7 +3458,7 @@ const rawMockProducts = [
       "Outstanding solvent and chemical resistance profile"
     ],
     "popular": true,
-    "image": "https://ae-pic-a1.aliexpress-media.com/kf/S9fa56423132245c89f27cecf1a72e415Y.jpg"
+    "image": "/assets/aistudio/Green_Berger_Protecton_Industrial_Paint_Drum_e4ebfb0a.png"
   },
   {
     "id": 4034,
@@ -4232,7 +4232,7 @@ const rawMockProducts = [
     "isAuthorised": true,
     "rating": 4.9,
     "reviews": 34,
-    "image": "https://5.imimg.com/data5/SELLER/Default/2023/9/346440914/LA/MQ/KL/138991556/berger-dampstop-duo.jpeg"
+    "image": "/assets/aistudio/Berger_Dampstop_Duo_Waterproofing_Primer_Bucket__1__b4621b38.png"
   },
   {
     "id": 4061,
@@ -4256,7 +4256,7 @@ const rawMockProducts = [
     "isAuthorised": true,
     "rating": 4.8,
     "reviews": 29,
-    "image": "https://bergerpaints.com.sg/wp-content/uploads/2024/02/water_based-Sealer.png"
+    "image": "/assets/aistudio/Berger_Seal-O-Prime_White_Paint_Bucket_Mockup_10b3425f.png"
   },
   {
     "id": 4062,
@@ -4280,7 +4280,7 @@ const rawMockProducts = [
     "isAuthorised": true,
     "rating": 4.7,
     "reviews": 41,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-09/Walmasta%20can.png?format=webp&width=1200&quality=95"
+    "image": "/assets/aistudio/WALMASTA_Primer_Paint_Pail__1__ba227d7d.png"
   },
   {
     "id": 4063,
@@ -4304,7 +4304,7 @@ const rawMockProducts = [
     "isAuthorised": true,
     "rating": 4.9,
     "reviews": 52,
-    "image": "https://images.bergerpaints.com/s3fs-public/2023-09/Walmasta%20can.png?format=webp&width=1200&quality=95"
+    "image": "/assets/aistudio/Berger_Home_Shield_Damp_Shield_Bucket_6dcbcb7d.png"
   },
   {
     "id": 4064,
@@ -4328,7 +4328,7 @@ const rawMockProducts = [
     "isAuthorised": true,
     "rating": 4.8,
     "reviews": 65,
-    "image": "https://m.media-amazon.com/images/I/61AHShwUXoL.jpg_BO30,255,255,255_UF750,750_SR1910,1000,0,C_QL100_.jpg"
+    "image": "/assets/aistudio/Berger_Water-Thinable_Cement_Primer_Bucket_89b385b2.png"
   },
   {
     "id": 5001,

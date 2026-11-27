@@ -4,20 +4,76 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const categories = [
-  { name: 'Interior Paint', slug: 'interior-paint', image: 'https://img.icons8.com/color/144/living-room.png' },
-  { name: 'Exterior Paint', slug: 'exterior-paint', image: 'https://img.icons8.com/color/144/home.png' },
-  { name: 'Primers', slug: 'primers', image: 'https://img.icons8.com/color/144/paint-bucket.png' },
-  { name: 'Waterproofing', slug: 'waterproofing', image: 'https://img.icons8.com/color/144/water.png' },
-  { name: 'Wood Finishes', slug: 'wood-finishes', image: 'https://img.icons8.com/color/144/wood.png' },
-  { name: 'Enamel Paint', slug: 'enamel-paint', image: 'https://img.icons8.com/color/144/metal.png' },
-  { name: 'Industrial Paint and Coatings', slug: 'industrial-paint-and-coatings', image: 'https://img.icons8.com/color/144/factory.png' },
-  { name: 'Painting Tools', slug: 'painting-tools', image: 'https://img.icons8.com/color/144/paint-brush.png' },
-  { name: 'Thinners & Solvents', slug: 'thinners-&-solvents', image: 'https://img.icons8.com/color/144/flask.png' },
-  { name: 'Tile Adhesives', slug: 'tile-adhesives', image: 'https://img.icons8.com/color/144/brick-wall.png' },
-  { name: 'PU Paint', slug: 'pu-paint', image: 'https://img.icons8.com/color/144/paint.png' },
-  { name: 'Epoxy Paint', slug: 'epoxy-paint', image: 'https://img.icons8.com/color/144/test-tube.png' },
-  { name: 'Synthetic Enamels', slug: 'synthetic-enamels', image: 'https://img.icons8.com/color/144/paint-can.png' },
-  { name: 'Power Tools', slug: 'power-tools', image: 'https://img.icons8.com/color/144/drill.png' }
+  { 
+    name: 'Interior Paint', 
+    slug: 'interior-paint', 
+    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80' 
+  },
+  { 
+    name: 'Exterior Paint', 
+    slug: 'exterior-paint', 
+    image: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=600&q=80' 
+  },
+  { 
+    name: 'Primers', 
+    slug: 'primers', 
+    image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=600&q=80' 
+  },
+  { 
+    name: 'Waterproofing', 
+    slug: 'waterproofing', 
+    image: 'https://images.unsplash.com/photo-1541888946425-d0fbb18f6458?auto=format&fit=crop&w=600&q=80' 
+  },
+  { 
+    name: 'Wood Finishes', 
+    slug: 'wood-finishes', 
+    image: 'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=600&q=80' 
+  },
+  { 
+    name: 'Enamel Paint', 
+    slug: 'enamel-paint', 
+    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80' 
+  },
+  { 
+    name: 'Industrial Paint and Coatings', 
+    slug: 'industrial-paint-and-coatings', 
+    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80' 
+  },
+  { 
+    name: 'Painting Tools', 
+    slug: 'painting-tools', 
+    image: 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=600&q=80' 
+  },
+  { 
+    name: 'Thinners & Solvents', 
+    slug: 'thinners-&-solvents', 
+    image: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=600&q=80' 
+  },
+  { 
+    name: 'Tile Adhesives', 
+    slug: 'tile-adhesives', 
+    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80' 
+  },
+  { 
+    name: 'PU Paint', 
+    slug: 'pu-paint', 
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80' 
+  },
+  { 
+    name: 'Epoxy Paint', 
+    slug: 'epoxy-paint', 
+    image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80' 
+  },
+  { 
+    name: 'Synthetic Enamels', 
+    slug: 'synthetic-enamels', 
+    image: 'https://images.unsplash.com/photo-1572931089311-66782627e163?auto=format&fit=crop&w=600&q=80' 
+  },
+  { 
+    name: 'Power Tools', 
+    slug: 'power-tools', 
+    image: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=600&q=80' 
+  }
 ];
 
 export default function ShopByCategory() {
@@ -100,35 +156,23 @@ export default function ShopByCategory() {
               <Link 
                 key={`${category.slug}-${index}`} 
                 to={`/c/${category.slug}`}
-                className="flex-shrink-0 flex flex-col items-center gap-3 w-[100px] sm:w-[120px] lg:w-[140px] group/cat"
+                className="flex-shrink-0 flex flex-col items-center gap-3 w-[110px] sm:w-[130px] lg:w-[150px] group/cat"
               >
-                <div className="w-full aspect-square rounded-2xl overflow-hidden shadow-sm border border-zinc-200/50 group-hover/cat:shadow-[0_8px_25px_rgb(0,0,0,0.06)] group-hover/cat:border-gold/30 transition-all duration-300 relative bg-gradient-to-br from-white to-zinc-50 flex items-center justify-center p-4">
+                <div className="w-full aspect-square rounded-2xl overflow-hidden shadow-sm border border-zinc-200/50 group-hover/cat:shadow-[0_12px_30px_rgba(184,151,90,0.2)] group-hover/cat:border-gold/50 transition-all duration-300 relative bg-white">
                   <img 
                     src={category.image} 
                     alt={category.name} 
                     loading="lazy"
                     decoding="async"
-                    className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 object-contain group-hover/cat:scale-110 transition-transform duration-500 ease-out drop-shadow-sm"
+                    className="w-full h-full object-cover object-center group-hover/cat:scale-110 transition-transform duration-700 ease-out"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover/cat:opacity-100 transition-opacity duration-300" />
                 </div>
-                <span className="font-serif font-medium text-[11px] sm:text-xs lg:text-sm text-center leading-tight text-[#1A365D]">
+                <span className="font-serif font-medium text-[11px] sm:text-xs lg:text-sm text-center leading-tight text-[#1A365D] group-hover/cat:text-gold transition-colors">
                   {category.name}
                 </span>
               </Link>
             ))}
-            <Link 
-              to="/buy-paint-online"
-              className="flex-shrink-0 flex flex-col items-center gap-3 w-[100px] sm:w-[120px] lg:w-[140px] group/cat"
-            >
-              <div className="w-full aspect-square rounded-2xl bg-white border border-ivory/10 shadow-[0_4px_15px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_25px_rgb(0,0,0,0.06)] hover:border-gold/30 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center p-3 sm:p-4">
-                <span className="text-gold font-display font-bold text-[9px] sm:text-[11px] uppercase tracking-widest text-center mt-1">
-                  View All<br />Categories
-                </span>
-              </div>
-              <span className="text-transparent font-serif font-medium text-[11px] sm:text-xs lg:text-sm text-center leading-tight">
-                All
-              </span>
-            </Link>
           </div>
 
           <button 
@@ -139,16 +183,6 @@ export default function ShopByCategory() {
             <ChevronRight size={16} />
           </button>
         </div>
-
-        {/* Scroll Indicator */}
-        {canScroll && (
-          <div className="w-24 h-1 bg-zinc-200/60 rounded-full mx-auto mt-6 overflow-hidden relative">
-            <div 
-              className="absolute top-0 left-0 h-full bg-[#1A365D] rounded-full w-1/3 transition-transform duration-100 ease-out"
-              style={{ transform: `translateX(${scrollProgress * 200}%)` }} 
-            />
-          </div>
-        )}
       </motion.div>
     </section>
   );

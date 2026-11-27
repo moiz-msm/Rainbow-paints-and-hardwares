@@ -24,7 +24,7 @@ export default function TrustCardBanner() {
       >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           
-          {/* Left Column: 20+ Years of Trust */}
+          {/* Left Column: 25+ Years of Trust */}
           <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
             <span className="text-[11px] sm:text-xs font-sans font-bold text-slate-500 tracking-[0.25em] uppercase mb-2">
               Est. 2001

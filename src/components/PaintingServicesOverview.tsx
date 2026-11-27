@@ -1,37 +1,37 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Brush, ShieldCheck, PenTool, Droplet, ArrowRight, Factory, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const services = [
   {
     title: 'Interior Wall Painting',
     description: 'Transform your living spaces with premium Royale finishes.',
-    image: 'https://img.icons8.com/color/144/living-room.png',
+    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80',
     link: '/services/interior-wall-painting',
   },
   {
     title: 'Exterior Wall Painting',
     description: 'Protect your building with Apex and Ultima Protek systems.',
-    image: 'https://img.icons8.com/color/144/home.png',
+    image: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=600&q=80',
     link: '/services/exterior-wall-painting',
   },
   {
     title: 'Wood & Metal Painting',
     description: 'PU finishes, Melamine polish, and Enamel for doors and grills.',
-    image: 'https://img.icons8.com/color/144/wood.png',
+    image: 'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=600&q=80',
     link: '/services/wood-metal-painting',
   },
   {
     title: 'Waterproofing Services',
     description: 'Scientific solutions to stop leaks and dampness permanently.',
-    image: 'https://img.icons8.com/color/144/water.png',
+    image: 'https://images.unsplash.com/photo-1541888946425-d0fbb18f6458?auto=format&fit=crop&w=600&q=80',
     link: '/services/waterproofing',
   },
   {
     title: 'Industrial Flooring',
     description: 'High-performance Epoxy and PU flooring systems for extreme durability.',
-    image: 'https://img.icons8.com/color/144/factory.png',
+    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
     link: '/services/industrial-flooring',
   },
 ];
@@ -64,7 +64,7 @@ export default function PaintingServicesOverview() {
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
       const { current } = scrollRef;
-      const scrollAmount = direction === 'left' ? -250 : 250;
+      const scrollAmount = direction === 'left' ? -280 : 280;
       current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
   };
@@ -98,14 +98,14 @@ export default function PaintingServicesOverview() {
             Professional <span className="text-gradient italic">Painting Services</span>
           </h2>
           <p className="text-[10px] sm:text-xs text-[#1A365D]/70 max-w-xl mx-auto font-sans font-light leading-relaxed">
-            Authorised painters by top brands for all painting services
+            Expert site inspection, professional application, and flawless finishes across Coimbatore.
           </p>
         </motion.div>
         
         <div className="relative mt-2 flex items-center group">
           <button 
             onClick={() => scroll('left')}
-            className="absolute -left-2 sm:-left-4 z-10 w-8 h-8 rounded-full bg-white border border-zinc-200 text-[#1A365D] flex items-center justify-center hover:bg-zinc-50 hover:border-gold/50 hover:text-gold transition-all opacity-0 group-hover:opacity-100 shadow-sm"
+            className="absolute -left-2 sm:-left-4 z-10 w-8 h-8 rounded-full bg-white border border-zinc-200 text-ivory flex items-center justify-center hover:bg-zinc-50 hover:border-gold/50 hover:text-gold transition-all opacity-0 group-hover:opacity-100 shadow-sm"
             aria-label="Scroll left"
           >
             <ChevronLeft size={16} />
@@ -114,7 +114,7 @@ export default function PaintingServicesOverview() {
           <div 
             ref={scrollRef}
             onScroll={handleScroll}
-            className="flex overflow-x-auto gap-4 sm:gap-6 lg:gap-8 px-4 py-8 scroll-smooth w-full snap-x snap-mandatory"
+            className="flex overflow-x-auto gap-5 sm:gap-6 lg:gap-8 px-2 py-4 scroll-smooth w-full"
             style={{ msOverflowStyle: 'none', scrollbarWidth: 'none' }}
           >
             <style>{`
@@ -122,67 +122,48 @@ export default function PaintingServicesOverview() {
                 display: none;
               }
             `}</style>
-            
-            {services.map((service, index) => {
-              return (
-                <Link 
-                  key={index} 
-                  to={service.link}
-                  className="snap-start flex-shrink-0 flex flex-col items-center gap-3 w-[120px] sm:w-[140px] lg:w-[160px] group/cat"
-                >
-                  <div className="w-full aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_4px_15px_rgb(0,0,0,0.03)] border border-ivory/10 group-hover/cat:shadow-[0_8px_25px_rgb(0,0,0,0.08)] group-hover/cat:border-gold/40 transition-all duration-500 relative bg-gradient-to-br from-white to-zinc-50 group-hover/cat:-translate-y-1 flex items-center justify-center p-6">
-                    <img 
-                      src={service.image} 
-                      alt={service.title} 
-                      loading="lazy"
-                      decoding="async"
-                      className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-contain group-hover/cat:scale-110 transition-transform duration-700 ease-out drop-shadow-md"
-                    />
-                    <div className="absolute inset-0 bg-[#1A365D]/5 opacity-0 group-hover/cat:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-                  <span className="font-serif font-medium text-[11px] sm:text-xs lg:text-sm text-center leading-tight text-[#1A365D] group-hover/cat:text-gold transition-colors line-clamp-2 mt-1">
-                    {service.title}
-                  </span>
-                </Link>
-              );
-            })}
-            
-            <Link 
-              to="/painting-services"
-              className="snap-start flex-shrink-0 flex flex-col items-center gap-3 w-[120px] sm:w-[140px] lg:w-[160px] group/cat"
-            >
-              <div className="w-full aspect-square rounded-2xl sm:rounded-3xl bg-white border border-ivory/10 shadow-[0_4px_15px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_25px_rgb(0,0,0,0.06)] hover:border-gold/30 hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center p-3 sm:p-4 group/all">
-                <div className="w-10 h-10 rounded-full bg-royale-surface flex items-center justify-center mb-3 group-hover/all:bg-gold/10 transition-colors">
-                  <ArrowRight className="w-4 h-4 text-gold" />
+            {services.map((service, index) => (
+              <Link 
+                key={`${service.link}-${index}`}
+                to={service.link}
+                className="flex-shrink-0 flex flex-col bg-white border border-zinc-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-[0_12px_35px_rgba(184,151,90,0.2)] hover:border-gold/50 transition-all duration-500 w-[240px] sm:w-[280px] lg:w-[310px] group/srv"
+              >
+                <div className="w-full aspect-[16/10] overflow-hidden relative bg-zinc-100">
+                  <img 
+                    src={service.image} 
+                    alt={service.title} 
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover object-center group-hover/srv:scale-110 transition-transform duration-700 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 group-hover/srv:opacity-40 transition-opacity" />
                 </div>
-                <span className="text-gold font-display font-bold text-[9px] sm:text-[11px] uppercase tracking-widest text-center leading-relaxed">
-                  Explore All<br />Services
-                </span>
-              </div>
-
-              <span className="text-transparent font-serif font-medium text-[11px] sm:text-xs lg:text-sm text-center leading-tight">
-                All
-              </span>
-            </Link>
+                <div className="p-4 sm:p-5 flex flex-col justify-between flex-1">
+                  <div>
+                    <h3 className="font-serif font-bold text-sm sm:text-base text-[#1A365D] group-hover/srv:text-gold transition-colors mb-1.5">
+                      {service.title}
+                    </h3>
+                    <p className="font-sans text-xs text-zinc-600 line-clamp-2 leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
+                  <div className="mt-4 pt-3 border-t border-zinc-100 flex items-center justify-between text-xs font-bold text-gold uppercase tracking-wider">
+                    <span>Explore Service</span>
+                    <span className="transform group-hover/srv:translate-x-1 transition-transform">&rarr;</span>
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
 
           <button 
             onClick={() => scroll('right')}
-            className="absolute -right-2 sm:-right-4 z-10 w-8 h-8 rounded-full bg-white border border-zinc-200 text-[#1A365D] flex items-center justify-center hover:bg-zinc-50 hover:border-gold/50 hover:text-gold transition-all opacity-0 group-hover:opacity-100 shadow-sm"
+            className="absolute -right-2 sm:-right-4 z-10 w-8 h-8 rounded-full bg-white border border-zinc-200 text-ivory flex items-center justify-center hover:bg-zinc-50 hover:border-gold/50 hover:text-gold transition-all opacity-0 group-hover:opacity-100 shadow-sm"
             aria-label="Scroll right"
           >
             <ChevronRight size={16} />
           </button>
         </div>
-
-        {canScroll && (
-          <div className="w-24 h-1 bg-zinc-200/60 rounded-full mx-auto mt-6 overflow-hidden relative">
-            <div 
-              className="absolute top-0 left-0 h-full bg-[#1A365D] rounded-full w-1/3 transition-transform duration-100 ease-out"
-              style={{ transform: `translateX(${scrollProgress * 200}%)` }} 
-            />
-          </div>
-        )}
       </motion.div>
     </section>
   );
